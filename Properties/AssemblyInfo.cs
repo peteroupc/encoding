@@ -20,7 +20,7 @@ using System.Reflection;
 
   AssemblyCopyright("Written by Peter O. in 2015. Any copyright is released to the Public Domain. <http://creativecommons.org/publicdomain/zero/1.0/>"
 )]
-[assembly: AssemblyProduct("MailLib")]
+[assembly: AssemblyProduct("Encoding")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("0.1.0")]
+[assembly: AssemblyVersion("0.2.0")]

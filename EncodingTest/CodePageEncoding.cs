@@ -33,11 +33,11 @@ namespace MailLibTest {
     }
 
     public ICharacterDecoder GetDecoder() {
-      return new CodePageCoder(this.coder);
+      return new CodePageCoder(this.coder, false);
     }
 
     public ICharacterEncoder GetEncoder() {
-      return new CodePageCoder(this.coder);
+      return new CodePageCoder(this.coder, false);
     }
 
     private sealed class CodePageCoder : ICharacterEncoder, ICharacterDecoder {
@@ -142,6 +142,7 @@ namespace MailLibTest {
 
       private int lastByte = -1;
       private bool unget = false;
+      private bool useGlyphs = false;
 
       public int ReadChar(IByteReader input) {
         int b1 = unget ? lastByte : input.ReadByte();
@@ -149,7 +150,7 @@ namespace MailLibTest {
         if (b1 < 0) {
           return -1;
         }
-        int b = bytesToUCS[b1];
+        int b = (useGlyphs) ? bytesToGlyphs[b1] : bytesToUCS[b1];
         if (b == -2) {
           return this.defaultUCS;
         } else if (b == -3) {
@@ -344,6 +345,7 @@ namespace MailLibTest {
       }
 
       private int[] bytesToUCS;
+      private int[] bytesToGlyphs;
       private UCSMapping dbcsToUCS;
       private UCSMapping ucsToBytes;
       private int codepageNumber;
@@ -391,8 +393,9 @@ namespace MailLibTest {
         }
       }
 
-      public CodePageCoder(CodePageCoder other) {
+      public CodePageCoder(CodePageCoder other, bool useGlyphs) {
         this.bytesToUCS = other.bytesToUCS;
+        this.bytesToGlyphs = other.bytesToGlyphs;
         this.dbcsToUCS = other.dbcsToUCS;
         this.lastByte = -1;
         this.unget = false;
@@ -400,6 +403,7 @@ namespace MailLibTest {
         this.defaultNative = other.defaultNative;
         this.defaultUCS = other.defaultUCS;
         this.ucsToBytes = other.ucsToBytes;
+        this.useGlyphs = (useGlyphs && this.bytesToGlyphs!=null);
       }
 
       public CodePageCoder(ICharacterInput input) {
@@ -415,11 +419,14 @@ namespace MailLibTest {
         var done = false;
         var haveMbTable = false;
         var haveWcTable = false;
+        var haveGlyphTable = false;
         dbcsToUCS = new UCSMapping();
         ucsToBytes = new UCSMapping();
         bytesToUCS = new int[256];
+        bytesToGlyphs = new int[256];
         for (var i = 0; i < 256; ++i) {
           bytesToUCS[i] = -2;
+          bytesToGlyphs[i] = -2;
         }
         while (!done) {
           switch (state) {
@@ -463,6 +470,7 @@ namespace MailLibTest {
                   lineCount = token.ExpectNumberOnSameLine();
                   token.SkipToLine();
                   state = 5;
+                  haveGlyphTable = true;
                 } else if (word.Equals("ENDCODEPAGE") && haveMbTable &&
                     haveWcTable) {
                   done = true;
@@ -519,18 +527,22 @@ namespace MailLibTest {
               }
               break;
             case 5: {
-                // Ignore glyph table.
-                // NOTE: This table, if implemented, would replace
-                // the appropriate entries in the WCTABLE.
                 for (int i = 0; i < lineCount; ++i) {
-                  token.ExpectByte();
-                  token.ExpectCodePointOnSameLine();
+                  int nativeValue = token.ExpectByte();
+                  int ucs = token.ExpectCodePointOnSameLine();
+                  bytesToGlyphs[nativeValue] = ucs;
                   token.SkipToLine();
                 }
                 state = 1;
               }
               break;
           }
+        }
+        if(haveGlyphTable){
+         for (var i = 0; i < 256; ++i) {
+           if(bytesToGlyphs[i]==-2)
+            bytesToGlyphs[i]=bytesToUCS[i]; 
+         }          
         }
       }
     }

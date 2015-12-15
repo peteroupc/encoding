@@ -25,7 +25,7 @@ namespace PeterO {
     /// <returns>A byte reader wrapping the byte array.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
-    public static IByteReader ToByteReader(this byte[] bytes) {
+    public static IReader ToReader(this byte[] bytes) {
       if (bytes == null) {
         throw new ArgumentNullException("bytes");
       }
@@ -52,7 +52,7 @@ namespace PeterO {
     /// greater than <paramref name='bytes'/> 's length, or <paramref
     /// name='bytes'/> 's length minus <paramref name='offset'/> is less
     /// than <paramref name='length'/>.</exception>
-    public static IByteReader ToByteReader(
+    public static IReader ToReader(
 this byte[] bytes,
 int offset,
 int length) {
@@ -95,104 +95,33 @@ int length) {
     /// <returns>A byte reader wrapping the input stream.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='input'/> is null.</exception>
-    public static IByteReader ToByteReader(this Stream input) {
+    public static IReader ToReader(this Stream input) {
       if (input == null) {
         throw new ArgumentNullException("input");
       }
       return new WrappedStream(input);
     }
 
-    /// <summary>Wraps a byte array into a byte reader. The reader will
-    /// start at the beginning of the byte array.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any byte array object and can be called as
-    /// follows: <c>bytes.ToTransform()</c>. If the object's class already
-    /// has a ToTransform method with the same parameters, that method
-    /// takes precedence over this extension method.</para></summary>
-    /// <param name='bytes'>The byte array to wrap.</param>
-    /// <returns>A byte reader wrapping the byte array.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='bytes'/> is null.</exception>
-    [Obsolete("Renamed to ToByteReader.")]
-    public static IByteReader ToTransform(this byte[] bytes) {
-      if (bytes == null) {
-        throw new ArgumentNullException("bytes");
-      }
-      return new ByteArrayTransform(bytes, 0, bytes.Length);
-    }
-
-    /// <summary>Wraps a portion of a byte array into a byte reader object.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any byte array object and can be called as
-    /// follows: <c>bytes.ToTransform(offset, length)</c>. If the object's
-    /// class already has a ToTransform method with the same parameters,
-    /// that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='bytes'>The byte array to wrap.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of "bytes" begins.</param>
-    /// <param name='length'>The length, in bytes, of the desired portion
-    /// of "bytes" (but not more than "bytes" 's length).</param>
-    /// <returns>A byte reader wrapping the byte array.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='bytes'/> is null.</exception>
-    /// <exception cref='ArgumentException'>Either <paramref
-    /// name='offset'/> or <paramref name='length'/> is less than 0 or
-    /// greater than <paramref name='bytes'/> 's length, or <paramref
-    /// name='bytes'/> 's length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>.</exception>
-    [Obsolete("Renamed to ToByteReader.")]
-    public static IByteReader ToTransform(
+    /// <summary>Not documented yet.</summary>
+    [Obsolete("Use ToReader instead.")]
+    public static IByteReader ToByteReader(
 this byte[] bytes,
 int offset,
-int length) {
-      if (bytes == null) {
-        throw new ArgumentNullException("bytes");
-      }
-      if (offset < 0) {
-        throw new ArgumentException("offset (" + offset +
-          ") is less than " + 0);
-      }
-      if (offset > bytes.Length) {
-        throw new ArgumentException("offset (" + offset + ") is more than " +
-          bytes.Length);
-      }
-      if (length < 0) {
-        throw new ArgumentException("length (" + length +
-          ") is less than " + 0);
-      }
-      if (length > bytes.Length) {
-        throw new ArgumentException("length (" + length + ") is more than " +
-          bytes.Length);
-      }
-      if (bytes.Length - offset < length) {
-        throw new ArgumentException("bytes's length minus " + offset + " (" +
-          (bytes.Length - offset) + ") is less than " + length);
-      }
-      return new ByteArrayTransform(bytes, offset, length);
+int length){
+  return (IByteReader)ToReader(bytes,offset,length);
+}
+    
+    /// <summary>Not documented yet.</summary>
+    [Obsolete("Use ToReader instead.")]
+    public static IByteReader ToByteReader(this Stream input) {
+  return (IByteReader)ToReader(input);      
     }
-
-    /// <summary>Wraps an input stream into a reader object. If an
-    /// IOException is thrown by the input stream, the reader object throws
-    /// InvalidOperationException instead.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing Stream and can be
-    /// called as follows: <c>input.ToTransform()</c>. If the object's
-    /// class already has a ToTransform method with the same parameters,
-    /// that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='input'>The input stream to wrap.</param>
-    /// <returns>A byte reader wrapping the input stream.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='input'/> is null.</exception>
-    [Obsolete("Renamed to ToByteReader.")]
-    public static IByteReader ToTransform(this Stream input) {
-      if (input == null) {
-        throw new ArgumentNullException("input");
-      }
-      return new WrappedStream(input);
+    /// <summary>Not documented yet.</summary>
+    [Obsolete("Use ToReader instead.")]
+    public static IByteReader ToByteReader(this byte[] bytes) {
+  return (IByteReader)ToReader(bytes);      
     }
-
+    
     /// <summary>Wraps an output stream into a writer object. If an
     /// IOException is thrown by the input stream, the writer object throws
     /// InvalidOperationException instead.
@@ -232,7 +161,7 @@ int length) {
       return new WrappedOutputStreamFromByteWriter(output);
     }
 
-    private sealed class ByteArrayTransform : IByteReader {
+    private sealed class ByteArrayTransform : IReader {
       private readonly byte[] bytes;
       private int offset;
       private readonly int endOffset;
@@ -252,6 +181,23 @@ int length) {
         int b = this.bytes[this.offset];
         ++this.offset;
         return ((int)b) & 0xff;
+      }
+
+    /// <summary>This is an internal method.</summary>
+    /// <returns>A 32-bit signed integer.</returns>
+      public int Read(byte[] bytes, int offset, int length) {
+        //ArgumentAssert.CheckBuffer(bytes,offset,length);
+        var count = 0;
+        for (var i = 0; i < length; ++i) {
+          int c = this.ReadByte();
+          if (c == -1) {
+            break;
+          }
+          bytes[offset] = c;
+          ++count;
+          ++offset;
+        }
+        return count;
       }
     }
 
@@ -350,7 +296,7 @@ int length) {
       }
     }
 
-    private sealed class WrappedStream : IByteReader {
+    private sealed class WrappedStream : IReader {
       private readonly Stream stream;
 
       public WrappedStream(Stream stream) {
@@ -362,6 +308,13 @@ int length) {
       public int ReadByte() {
         try {
           return this.stream.ReadByte();
+        } catch (IOException ex) {
+          throw new InvalidOperationException(ex.Message, ex);
+        }
+      }
+      public int Read(byte[] bytes, int offset, int length) {
+        try {
+          return Math.Max(0,this.stream.Read(bytes,offset,length));
         } catch (IOException ex) {
           throw new InvalidOperationException(ex.Message, ex);
         }

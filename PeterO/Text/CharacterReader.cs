@@ -9,10 +9,10 @@ using System;
 using System.IO;
 
 namespace PeterO.Text {
-    /// <summary>A general-purpose character input for reading Unicode text
-    /// from byte streams and text strings. It supports UTF-8 by default,
-    /// but can be configured to support UTF-16 and UTF-32 as
-    /// well.</summary>
+    /// <summary>A general-purpose character input for reading text from
+    /// byte streams and text strings. When reading byte streams, this
+    /// class supports the UTF-8 character encoding by default, but can be
+    /// configured to support UTF-16 and UTF-32 as well.</summary>
   public sealed class CharacterReader : ICharacterInput {
     private readonly int mode;
     private readonly bool errorThrow;
@@ -67,8 +67,10 @@ namespace PeterO.Text {
     /// class.</summary>
     /// <param name='stream'>Not documented yet.</param>
     /// <param name='mode'>Not documented yet.</param>
-    /// <param name='errorThrow'>Not documented yet. (3).</param>
-    /// <param name='dontSkipUtf8Bom'>Not documented yet. (4).</param>
+    /// <param name='errorThrow'>If true, will throw an exception if invalid byte sequences
+    /// (in the detected encoding) are found in the byte stream.</param>
+    /// <param name='dontSkipUtf8Bom'>If the stream is detected as UTF-8 and this parameter is <c>true</c>,
+    /// won't skip the BOM character if it occurs at the start of the stream.</param>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='stream'/> is null.</exception>
     public CharacterReader(
@@ -90,7 +92,8 @@ bool dontSkipUtf8Bom) {
       int ReadByte();
     }
 
-  /// <summary>Not documented yet.</summary>
+  /// <summary>Reads a series of characters from a Unicode stream or a
+    /// string.</summary>
     public int Read(int[] chars, int index, int length) {
       if (chars == null) {
         throw new ArgumentNullException("chars");

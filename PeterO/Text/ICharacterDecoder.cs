@@ -7,7 +7,7 @@ namespace PeterO.Text {
     /// convert a stream of bytes to Unicode code points.</summary>
 public interface ICharacterDecoder {
     /// <summary>Reads bytes from an input transform until a Unicode code
-    /// points is decoded or until the end of the stream is reached.
+    /// point is decoded or until the end of the stream is reached.
     /// <para>If this method returns -2, indicating an error, the caller of
     /// this method can take one of a variety of actions to handle the
     /// error. For example, it can output one or more replacement code

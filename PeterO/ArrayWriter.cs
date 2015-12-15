@@ -22,12 +22,12 @@ namespace PeterO {
     }
 
     /// <summary>Initializes a new instance of the ArrayWriter
-    /// class.</summary>
+    /// class with a default buffer size.</summary>
     public ArrayWriter() : this(16) {
     }
 
     /// <summary>Initializes a new instance of the ArrayWriter
-    /// class.</summary>
+    /// class with the given initial buffer size.</summary>
     /// <param name='initialSize'>A 32-bit signed integer.</param>
     public ArrayWriter(int initialSize) {
       this.retval = new byte[initialSize];

@@ -9,9 +9,9 @@ import com.upokecenter.util.*;
      */
 public interface ICharacterDecoder {
     /**
-     * Reads bytes from an input transform until a Unicode code points is decoded
-     * or until the end of the stream is reached. <p>If this method returns
-     * -2, indicating an error, the caller of this method can take one of a
+     * Reads bytes from an input transform until a Unicode code point is decoded or
+     * until the end of the stream is reached. <p>If this method returns -2,
+     * indicating an error, the caller of this method can take one of a
      * variety of actions to handle the error. For example, it can output
      * one or more replacement code points instead (such as the Replacement
      * Character 0xfffd), or it can throw an exception. In some cases, where

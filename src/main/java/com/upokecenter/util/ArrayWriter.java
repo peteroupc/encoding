@@ -24,17 +24,19 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
     }
 
     /**
-     * Initializes a new instance of the ArrayWriter class.
+     * Initializes a new instance of the ArrayWriter class with a default buffer
+     * size.
      */
-    public ArrayWriter() {
+    public ArrayWriter () {
  this(16);
     }
 
     /**
-     * Initializes a new instance of the ArrayWriter class.
+     * Initializes a new instance of the ArrayWriter class with the given initial
+     * buffer size.
      * @param initialSize A 32-bit signed integer.
      */
-    public ArrayWriter(int initialSize) {
+    public ArrayWriter (int initialSize) {
       this.retval = new byte[initialSize];
     }
 

@@ -1,6 +1,7 @@
 package com.upokecenter.text;
 
 import java.util.*;
+import java.io.*;
 
 import com.upokecenter.util.*;
 import com.upokecenter.text.encoders.*;
@@ -109,28 +110,44 @@ private Encodings() {
      * to a text string. <p>In the .NET implementation, this method is
      * implemented as an extension method to any object implementing
      * ICharacterEncoding and can be called as follows:
-     * "encoding.DecodeString(transform)". If the object's class already has
-     * a DecodeToString method with the same parameters, that method takes
+     * "encoding.DecodeString(input)". If the object's class already has a
+     * DecodeToString method with the same parameters, that method takes
      * precedence over this extension method.</p>
      * @param encoding An object that implements a given character encoding. Any
      * bytes that can&#x27;t be decoded are converted to the replacement
      * character (U + FFFD).
-     * @param transform An object that implements a byte stream.
+     * @param input An object that implements a byte stream.
      * @return The converted string.
      * @throws NullPointerException The parameter {@code encoding} or {@code
-     * transform} is null.
+     * input} is null.
      */
     public static String DecodeToString(
      ICharacterEncoding encoding,
-     IByteReader transform) {
+     IByteReader input) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
       }
-      if (transform == null) {
-        throw new NullPointerException("transform");
+      if (input == null) {
+        throw new NullPointerException("input");
       }
       return InputToString(
-         GetDecoderInput(encoding, transform));
+         GetDecoderInput(encoding, input));
+    }
+
+  /**
+   * Not documented yet.
+   */
+    public static String DecodeToString(
+     ICharacterEncoding encoding,
+     InputStream input) {
+      if (encoding == null) {
+        throw new NullPointerException("encoding");
+      }
+      if (input == null) {
+        throw new NullPointerException("input");
+      }
+      return InputToString(
+         GetDecoderInput(encoding, DataIO.ToReader(input)));
     }
 
     /**
@@ -158,7 +175,7 @@ byte[] bytes) {
       if (bytes == null) {
         throw new NullPointerException("bytes");
       }
-      return DecodeToString(enc, DataIO.ToByteReader(bytes));
+      return DecodeToString(enc, DataIO.ToReader(bytes));
     }
 
     /**
@@ -216,7 +233,7 @@ int length) {
         throw new IllegalArgumentException("bytes's length minus " + offset + " (" +
           (bytes.length - offset) + ") is less than " + length);
       }
-      return DecodeToString(enc, DataIO.ToByteReader(bytes, offset, length));
+      return DecodeToString(enc, DataIO.ToReader(bytes, offset, length));
     }
 
     /**
@@ -418,7 +435,7 @@ IWriter writer) {
      * UTF-8 before using the character encoding's decoder. <p>In the .NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterEncoding and can be called as
-     * follows: "encoding.GetDecoderInput(transform)". If the object's class
+     * follows: "encoding.GetDecoderInput(input)". If the object's class
      * already has a GetDecoderInput method with the same parameters, that
      * method takes precedence over this extension method.</p>
      * @param encoding Encoding that exposes a decoder to be converted into a
@@ -436,6 +453,17 @@ IWriter writer) {
         stream);
     }
 
+  /**
+   * Not documented yet.
+   */
+    public static ICharacterInput GetDecoderInput(
+      ICharacterEncoding encoding,
+      InputStream input) {
+      return new DecoderToInputClass(
+        encoding.GetDecoder(),
+        DataIO.ToReader(input));
+    }
+
     /**
      * Converts a character encoding into a character input stream, given a
      * streamable source of bytes. But if the input stream starts with a
@@ -445,9 +473,9 @@ IWriter writer) {
      * Encoding standard.</p> <p>In the .NET implementation, this method is
      * implemented as an extension method to any object implementing
      * ICharacterEncoding and can be called as follows:
-     * "encoding.GetDecoderInput(transform)". If the object's class already
-     * has a GetDecoderInput method with the same parameters, that method
-     * takes precedence over this extension method.</p>
+     * "encoding.GetDecoderInput(input)". If the object's class already has
+     * a GetDecoderInput method with the same parameters, that method takes
+     * precedence over this extension method.</p>
      * @param encoding Encoding object that exposes a decoder to be converted into
      * a character input stream. If the decoder returns -2 (indicating a
      * decode error), the character input stream handles the error by
@@ -459,6 +487,17 @@ IWriter writer) {
       ICharacterEncoding encoding,
       IByteReader stream) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
+    }
+
+  /**
+   * Not documented yet.
+   */
+    public static ICharacterInput GetDecoderInputSkipBom(
+      ICharacterEncoding encoding,
+      InputStream input) {
+      return EncoderAlgorithms.DecodeAlgorithmInput(
+        DataIO.ToReader(input),
+        encoding);
     }
 
     /**
@@ -1506,7 +1545,7 @@ int length) {
       private final IByteReader stream;
       private final ICharacterDecoder reader;
 
-      public DecoderToInputClass(ICharacterDecoder reader, IByteReader stream) {
+      public DecoderToInputClass (ICharacterDecoder reader, IByteReader stream) {
         this.reader = reader;
         this.stream = stream;
       }

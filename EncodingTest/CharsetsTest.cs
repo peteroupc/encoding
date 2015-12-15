@@ -453,7 +453,7 @@ stringTemp);
           continue;
         }
         if (i == 0xa5 || i == 0x203e || i == 0x0e || i == 0x0f || i == 0x1b ||
-          i == 0x2022) {
+          i == 0x2212) {
           // ignore certain characters that intentionally
           // don't round trip in certain encodings
           continue;

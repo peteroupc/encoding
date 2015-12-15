@@ -67,6 +67,7 @@
     <Compile Include="PeterO\IByteReader.cs" />
     <Compile Include="PeterO\IByteWriter.cs" />
     <Compile Include="PeterO\IWriter.cs" />
+    <Compile Include="PeterO\IReader.cs" />
     <Compile Include="PeterO\ArrayWriter.cs" />
     <Compile Include="PeterO\Text\CharacterReader.cs" />
     <Compile Include="PeterO\Text\Encoders\Big5.cs" />

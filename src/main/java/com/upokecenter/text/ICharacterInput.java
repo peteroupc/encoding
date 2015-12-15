@@ -1,11 +1,11 @@
 package com.upokecenter.text;
 
     /**
-     * An interface for reading Unicode characters from a data source.
+     * An interface for reading Unicode code points from a data source.
      */
   public interface ICharacterInput {
     /**
-     * Reads a Unicode character from a data source.
+     * Reads a Unicode code point from a data source.
      * @return Either a Unicode code point (from 0-0xd7ff or from 0xe000 to
      * 0x10ffff), or the value -1 indicating the end of the source.
      */

@@ -1,6 +1,9 @@
 Encoding
 =======
 
+[![NuGet Status](http://img.shields.io/nuget/v/PeterO.Encoding.svg?style=flat)](https://www.nuget.org/packages/PeterO.Encoding)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.peteroupc/encoding.svg?style=plastic)](https://search.maven.org/#search|ga|1|g%3A%22com.github.peteroupc%22%20AND%20a%3A%22encoding%22)
+
 **Download source code: [ZIP file](https://github.com/peteroupc/MailLib/archive/master.zip)**
 
 If you like this software, consider donating to me at this link: [http://upokecenter.dreamhosters.com/articles/donate-now-2/](http://upokecenter.dreamhosters.com/articles/donate-now-2/)
@@ -15,7 +18,7 @@ How to Install
 ---------
 The C# implementation is available in the
 NuGet Package Gallery under the name
-[PeterO.MailLib](https://www.nuget.org/packages/PeterO.Encoding). To install
+[PeterO.Encoding](https://www.nuget.org/packages/PeterO.Encoding). To install
 this library as a NuGet package, enter `Install-Package PeterO.Encoding` in the
 NuGet Package Manager Console.
 

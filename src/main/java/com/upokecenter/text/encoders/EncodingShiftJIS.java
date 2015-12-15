@@ -10,7 +10,7 @@ import com.upokecenter.text.*;
       private final DecoderState state;
       private int lead;
 
-      public Decoder() {
+      public Decoder () {
         this.state = new DecoderState(1);
         this.lead = 0;
       }
@@ -82,7 +82,7 @@ import com.upokecenter.text.*;
           output.write((byte)(c - 0xff61 + 0xa1));
           return 1;
         }
-        if (c == 0x2022) {
+        if (c == 0x2212) {
           c = 0xff0d;
         }
         int cp = Jis0208.ShiftJISCodePointToIndex(c);

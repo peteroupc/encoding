@@ -23,8 +23,8 @@ namespace PeterO.Text {
     /// stream.</param>
     /// <param name='output'>Output stream where the converted bytes will
     /// be written. The decoder can maintain internal state, including data
-    /// on code points already passed as input, so this parameter should not
-    /// change when using the same character encoder object.</param>
+    /// on code points already passed as input, so this parameter should
+    /// not change when using the same character encoder object.</param>
     /// <returns>The number of bytes written to the stream; -1 if no
     /// further code points remain (for example, if _c_ is -1 indicating
     /// the end of the stream), or -2 if an encoding error occurs. (Note

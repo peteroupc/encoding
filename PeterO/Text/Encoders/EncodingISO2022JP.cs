@@ -203,7 +203,7 @@ namespace PeterO.Text.Encoders {
             count += 3;
             continue;
           }
-          if (c == 0x2022) {
+          if (c == 0x2212) {
             c = 0xff0d;
           }
           int cp = Jis0208.CodePointToIndex(c);

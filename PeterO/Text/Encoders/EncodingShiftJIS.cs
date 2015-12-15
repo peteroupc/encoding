@@ -82,7 +82,7 @@ namespace PeterO.Text.Encoders {
           output.WriteByte((byte)(c - 0xff61 + 0xa1));
           return 1;
         }
-        if (c == 0x2022) {
+        if (c == 0x2212) {
           c = 0xff0d;
         }
         int cp = Jis0208.ShiftJISCodePointToIndex(c);

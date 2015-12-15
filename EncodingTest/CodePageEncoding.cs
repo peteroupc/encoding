@@ -403,7 +403,7 @@ namespace MailLibTest {
         this.defaultNative = other.defaultNative;
         this.defaultUCS = other.defaultUCS;
         this.ucsToBytes = other.ucsToBytes;
-        this.useGlyphs = (useGlyphs && this.bytesToGlyphs!=null);
+        this.useGlyphs = (useGlyphs && this.bytesToGlyphs != null);
       }
 
       public CodePageCoder(ICharacterInput input) {
@@ -538,11 +538,12 @@ namespace MailLibTest {
               break;
           }
         }
-        if(haveGlyphTable){
+        if (haveGlyphTable) {
          for (var i = 0; i < 256; ++i) {
-           if(bytesToGlyphs[i]==-2)
-            bytesToGlyphs[i]=bytesToUCS[i]; 
-         }          
+           if (bytesToGlyphs[i]==-2) {
+ bytesToGlyphs[i]=bytesToUCS[i];
+}
+         }
         }
       }
     }

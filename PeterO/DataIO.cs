@@ -102,26 +102,63 @@ int length) {
       return new WrappedStream(input);
     }
 
-    /// <summary>Not documented yet.</summary>
+    /// <summary>Not documented yet.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing byte[] and can be
+    /// called as follows: <c>bytes.ToByteReader(offset, length)</c>. If
+    /// the object's class already has a ToByteReader method with the same
+    /// parameters, that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='bytes'>Not documented yet.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of <paramref name='bytes'/> begins.</param>
+    /// <param name='length'>The length, in bytes, of the desired portion
+    /// of <paramref name='bytes'/> (but not more than <paramref
+    /// name='bytes'/> 's length).</param>
+    /// <returns>An IByteReader object.</returns>
+    /// <exception cref='ArgumentException'>Either &#x22;offset&#x22; or
+    /// &#x22;length&#x22; is less than 0 or greater than
+    /// &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
+    /// minus &#x22;offset&#x22; is less than
+    /// &#x22;length&#x22;.</exception>
+    /// <exception cref='ArgumentNullException'>The parameter
+    /// &#x22;bytes&#x22; is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
 this byte[] bytes,
 int offset,
-int length){
-  return (IByteReader)ToReader(bytes,offset,length);
+int length) {
+  return (IByteReader)ToReader(bytes, offset, length);
 }
-    
-    /// <summary>Not documented yet.</summary>
+
+    /// <summary>Not documented yet.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing Stream and can be
+    /// called as follows: <c>input.ToByteReader()</c>. If the object's
+    /// class already has a ToByteReader method with the same parameters,
+    /// that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='input'>Not documented yet.</param>
+    /// <returns>An IByteReader object.</returns>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(this Stream input) {
-  return (IByteReader)ToReader(input);      
+  return (IByteReader)ToReader(input);
     }
-    /// <summary>Not documented yet.</summary>
+
+    /// <summary>Not documented yet.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing byte[] and can be
+    /// called as follows: <c>bytes.ToByteReader()</c>. If the object's
+    /// class already has a ToByteReader method with the same parameters,
+    /// that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='bytes'>Not documented yet.</param>
+    /// <returns>An IByteReader object.</returns>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(this byte[] bytes) {
-  return (IByteReader)ToReader(bytes);      
+  return (IByteReader)ToReader(bytes);
     }
-    
+
     /// <summary>Wraps an output stream into a writer object. If an
     /// IOException is thrown by the input stream, the writer object throws
     /// InvalidOperationException instead.
@@ -184,16 +221,51 @@ int length){
       }
 
     /// <summary>This is an internal method.</summary>
+    /// <param name='bytes'>Not documented yet.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of <paramref name='bytes'/> begins.</param>
+    /// <param name='length'>The length, in bytes, of the desired portion
+    /// of <paramref name='bytes'/> (but not more than <paramref
+    /// name='bytes'/> 's length).</param>
     /// <returns>A 32-bit signed integer.</returns>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='bytes'/> is null.</exception>
+    /// <exception cref='ArgumentException'>Either &#x22;offset&#x22; or
+    /// &#x22;length&#x22; is less than 0 or greater than
+    /// &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
+    /// minus &#x22;offset&#x22; is less than
+    /// &#x22;length&#x22;.</exception>
       public int Read(byte[] bytes, int offset, int length) {
-        //ArgumentAssert.CheckBuffer(bytes,offset,length);
+        if (bytes == null) {
+  throw new ArgumentNullException("bytes");
+}
+if (offset < 0) {
+  throw new ArgumentException("offset (" + offset +
+    ") is less than " + 0);
+}
+if (offset > bytes.Length) {
+  throw new ArgumentException("offset (" + offset +
+    ") is more than " + bytes.Length);
+}
+if (length < 0) {
+  throw new ArgumentException("length (" + length +
+    ") is less than " + 0);
+}
+if (length > bytes.Length) {
+  throw new ArgumentException("length (" + length +
+    ") is more than " + bytes.Length);
+}
+if (bytes.Length - offset < length) {
+  throw new ArgumentException("bytes's length minus " + offset + " (" +
+    (bytes.Length - offset) + ") is less than " + length);
+}
         var count = 0;
         for (var i = 0; i < length; ++i) {
           int c = this.ReadByte();
           if (c == -1) {
             break;
           }
-          bytes[offset] = c;
+          bytes[offset] = (byte)(c & 0xff);
           ++count;
           ++offset;
         }
@@ -312,9 +384,10 @@ int length){
           throw new InvalidOperationException(ex.Message, ex);
         }
       }
+
       public int Read(byte[] bytes, int offset, int length) {
         try {
-          return Math.Max(0,this.stream.Read(bytes,offset,length));
+          return Math.Max(0, this.stream.Read(bytes, offset, length));
         } catch (IOException ex) {
           throw new InvalidOperationException(ex.Message, ex);
         }

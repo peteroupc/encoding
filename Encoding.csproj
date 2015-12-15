@@ -56,6 +56,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DocumentationFile>bin\Release\Encoding.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseNet40|AnyCPU'">
+    <DocumentationFile>bin\ReleaseNet40\Encoding.xml</DocumentationFile>
+  </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
@@ -65,6 +68,7 @@
     <Compile Include="PeterO\IByteWriter.cs" />
     <Compile Include="PeterO\IWriter.cs" />
     <Compile Include="PeterO\ArrayWriter.cs" />
+    <Compile Include="PeterO\Text\CharacterReader.cs" />
     <Compile Include="PeterO\Text\Encoders\Big5.cs" />
     <Compile Include="PeterO\Text\Encoders\DecoderState.cs" />
     <Compile Include="PeterO\Text\Encoders\EncoderAlgorithms.cs" />

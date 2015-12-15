@@ -28,7 +28,7 @@ A portable library for .NET that implements character encodings used in Web page
   <files>
     <file src="bin/Release/Encoding.dll" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp80" />
     <file src="bin/Release/Encoding.xml" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp80" />
-    <file src="Encoding-Net4/bin/Release/Encoding.dll" target="lib/portable-net40+sl50+win+wpa81+wp80" />
-    <file src="Encoding-Net4/bin/Release/Encoding.xml" target="lib/portable-net40+sl50+win+wpa81+wp80" />
+    <file src="bin/ReleaseNet40/Encoding.dll" target="lib/portable-net40+sl50+win+wpa81+wp80" />
+    <file src="bin/ReleaseNet40/Encoding.xml" target="lib/portable-net40+sl50+win+wpa81+wp80" />
   </files>
 </package>

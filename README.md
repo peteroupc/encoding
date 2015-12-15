@@ -11,6 +11,27 @@ A portable library in C# and Java that implements character encodings used in We
 
 It implements the Encoding Standard, which is currently a candidate recommendation at the time of this writing.
 
+How to Install
+---------
+The C# implementation is available in the
+NuGet Package Gallery under the name
+[PeterO.MailLib](https://www.nuget.org/packages/PeterO.Encoding). To install
+this library as a NuGet package, enter `Install-Package PeterO.Encoding` in the
+NuGet Package Manager Console.
+
+The Java implementation is available
+as an [artifact](https://search.maven.org/#search|ga|1|g%3A%22com.github.peteroupc%22%20AND%20a%3A%22encoding%22) in the Central Repository. To add this library to a Maven
+project, add the following to the `dependencies` section in your `pom.xml` file:
+
+    <dependency>
+      <groupId>com.github.peteroupc</groupId>
+      <artifactId>encoding</artifactId>
+      <version>0.1.0</version>
+    </dependency>
+
+In other Java-based environments, the library can be referred to by its
+group ID (`com.github.peteroupc`), artifact ID (`encoding`), and version, as given above.
+
 About
 -----------
 

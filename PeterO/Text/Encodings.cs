@@ -151,18 +151,7 @@ namespace PeterO.Text {
          GetDecoderInput(encoding, input));
     }
 
-    /// <summary>Not documented yet.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>encoding.DecodeToString(input)</c>.
-    /// If the object's class already has a DecodeToString method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='encoding'>Not documented yet.</param>
-    /// <param name='input'>Not documented yet.</param>
-    /// <returns>A string object.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoding'/> or <paramref name='input'/> is null.</exception>
+  /// <summary>Not documented yet.</summary>
     public static string DecodeToString(
      this ICharacterEncoding encoding,
      Stream input) {
@@ -466,6 +455,90 @@ IWriter writer) {
       EncodeToWriter(new StringCharacterInput(str), enc, writer);
     }
 
+    /// <summary>Reads Unicode characters from a character input and writes
+    /// them to a byte array encoded using the given character encoder.
+    /// When writing to the byte array, any characters that can't be
+    /// encoded are replaced with the byte 0x3f (the question mark
+    /// character).
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterInput and can
+    /// be called as follows: <c>input.EncodeToBytes(encoding)</c>. If the
+    /// object's class already has a EncodeToBytes method with the same
+    /// parameters, that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='input'>An object that implements a stream of universal
+    /// code points.</param>
+    /// <param name='encoding'>An object that implements a character
+    /// encoding.</param>
+    /// <param name='output'>A writable data stream.</param>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='encoding'/> is null.</exception>
+    public static void EncodeToWriter(
+      this ICharacterInput input,
+      ICharacterEncoding encoding,
+      Stream output) {
+      if (encoding == null) {
+        throw new ArgumentNullException("encoding");
+      }
+      EncodeToWriter(input, encoding.GetEncoder(), DataIO.ToWriter(output));
+    }
+
+    /// <summary>Reads Unicode characters from a character input and writes
+    /// them to a byte array encoded in a given character encoding. When
+    /// writing to the byte array, any characters that can't be encoded are
+    /// replaced with the byte 0x3f (the question mark character).
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterInput and can
+    /// be called as follows: <c>input.EncodeToBytes(encoder)</c>. If the
+    /// object's class already has a EncodeToBytes method with the same
+    /// parameters, that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='input'>An object that implements a stream of universal
+    /// code points.</param>
+    /// <param name='encoder'>An object that implements a character
+    /// encoder.</param>
+    /// <param name='output'>A writable data stream.</param>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='encoder'/> or <paramref name='input'/> is null.</exception>
+    public static void EncodeToWriter(
+      this ICharacterInput input,
+      ICharacterEncoder encoder,
+      Stream output) {
+        return EncodeToWriter(input, encoder, DataIO.ToWriter(output));
+    }
+
+    /// <summary>Converts a text string to bytes and writes the bytes to an
+    /// output data stream. When reading the string, any unpaired surrogate
+    /// characters are replaced with the replacement character (U + FFFD),
+    /// and when writing to the byte stream, any characters that can't be
+    /// encoded are replaced with the byte 0x3f (the question mark
+    /// character).
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any String object and can be called as follows:
+    /// <c>str.EncodeToBytes(enc, writer)</c>. If the object's class
+    /// already has a EncodeToBytes method with the same parameters, that
+    /// method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='str'>A string object to encode.</param>
+    /// <param name='enc'>An object implementing a character encoding
+    /// (gives access to an encoder and a decoder).</param>
+    /// <param name='output'>A writable data stream.</param>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='str'/> or <paramref name='enc'/> is null.</exception>
+    public static void EncodeToWriter(
+this string str,
+ICharacterEncoding enc,
+Stream output) {
+      if (str == null) {
+        throw new ArgumentNullException("str");
+      }
+      if (enc == null) {
+        throw new ArgumentNullException("enc");
+      }
+   EncodeToWriter(new StringCharacterInput(str), enc,
+        DataIO.ToWriter(output));
+    }
+
     /// <summary>Converts a character encoding into a character input
     /// stream, given a streamable source of bytes. The input stream
     /// doesn't check the first few bytes for a byte-order mark indicating
@@ -492,16 +565,6 @@ IWriter writer) {
         stream);
     }
 
-    /// <summary>Not documented yet.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>encoding.GetDecoderInput(input)</c>.
-    /// If the object's class already has a GetDecoderInput method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='encoding'>Not documented yet.</param>
-    /// <param name='input'>Not documented yet.</param>
-    /// <returns>An ICharacterInput object.</returns>
     public static ICharacterInput GetDecoderInput(
       this ICharacterEncoding encoding,
       Stream input) {
@@ -536,17 +599,6 @@ IWriter writer) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
 
-    /// <summary>Not documented yet.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows:
-    /// <c>encoding.GetDecoderInputSkipBom(input)</c>. If the object's
-    /// class already has a GetDecoderInputSkipBom method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='encoding'>Not documented yet.</param>
-    /// <param name='input'>Not documented yet.</param>
-    /// <returns>An ICharacterInput object.</returns>
     public static ICharacterInput GetDecoderInputSkipBom(
       this ICharacterEncoding encoding,
       Stream input) {

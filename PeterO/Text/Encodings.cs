@@ -151,7 +151,18 @@ namespace PeterO.Text {
          GetDecoderInput(encoding, input));
     }
 
-  /// <summary>Not documented yet.</summary>
+    /// <summary>Not documented yet.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterEncoding and
+    /// can be called as follows: <c>encoding.DecodeToString(input)</c>.
+    /// If the object's class already has a DecodeToString method with the
+    /// same parameters, that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='encoding'>Not documented yet.</param>
+    /// <param name='input'>Not documented yet.</param>
+    /// <returns>A string object.</returns>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='encoding'/> or <paramref name='input'/> is null.</exception>
     public static string DecodeToString(
      this ICharacterEncoding encoding,
      Stream input) {
@@ -504,7 +515,8 @@ IWriter writer) {
       this ICharacterInput input,
       ICharacterEncoder encoder,
       Stream output) {
-        return EncodeToWriter(input, encoder, DataIO.ToWriter(output));
+      IWriter writer = DataIO.ToWriter(output);
+        EncodeToWriter(input, encoder, writer);
     }
 
     /// <summary>Converts a text string to bytes and writes the bytes to an
@@ -535,8 +547,10 @@ Stream output) {
       if (enc == null) {
         throw new ArgumentNullException("enc");
       }
-   EncodeToWriter(new StringCharacterInput(str), enc,
-        DataIO.ToWriter(output));
+   EncodeToWriter(
+new StringCharacterInput(str),
+enc,
+DataIO.ToWriter(output));
     }
 
     /// <summary>Converts a character encoding into a character input
@@ -565,6 +579,7 @@ Stream output) {
         stream);
     }
 
+  /// <summary>Not documented yet.</summary>
     public static ICharacterInput GetDecoderInput(
       this ICharacterEncoding encoding,
       Stream input) {
@@ -599,6 +614,7 @@ Stream output) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
 
+  /// <summary>Not documented yet.</summary>
     public static ICharacterInput GetDecoderInputSkipBom(
       this ICharacterEncoding encoding,
       Stream input) {

@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using PeterO;
 using PeterO.Text;
 using System;
 
@@ -38,6 +39,44 @@ namespace MailLibTest {
     [Test]
     public void TestGetDecoderInput() {
       // not implemented yet
+    }
+    [Test]
+    public void TestGetDecoderInputSkipBom() {
+ICharacterInput input;
+IByteReader reader;
+ICharacterEncoding wenc=Encodings.GetEncoding("windows-1252");
+reader = DataIO.ToReader(new byte[] { 0xef, 0xbb, 0xbf, 0x41, 0x42, 0x43 });
+input = Encodings.GetDecoderInputSkipBom(wenc, reader);
+{
+string stringTemp = Encodings.InputToString(input);
+Assert.AreEqual(
+"ABC",
+stringTemp);
+}
+reader = DataIO.ToReader(new byte[] { 0xff, 0xfe, 0x41, 0, 0x42, 0, 0x43, 0 });
+input = Encodings.GetDecoderInputSkipBom(wenc, reader);
+{
+string stringTemp = Encodings.InputToString(input);
+Assert.AreEqual(
+"ABC",
+stringTemp);
+}
+reader = DataIO.ToReader(new byte[] { 0xfe, 0xff, 0, 0x41, 0, 0x42, 0, 0x43 });
+input = Encodings.GetDecoderInputSkipBom(wenc, reader);
+{
+string stringTemp = Encodings.InputToString(input);
+Assert.AreEqual(
+"ABC",
+stringTemp);
+}
+reader = DataIO.ToReader(new byte[] { 0x41, 0x42, 0x43 });
+input = Encodings.GetDecoderInputSkipBom(wenc, reader);
+{
+string stringTemp = Encodings.InputToString(input);
+Assert.AreEqual(
+"ABC",
+stringTemp);
+}
     }
     [Test]
     public void TestGetEncoding() {

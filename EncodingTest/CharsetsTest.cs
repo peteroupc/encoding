@@ -305,7 +305,7 @@ stringTemp);
       for (var i = 0; i < 256; ++i) {
         bytes[i] = (byte)(i);
       }
-      IByteReader ib = DataIO.ToByteReader(bytes);
+      IByteReader ib = DataIO.ToReader(bytes);
       for (var i = 0; i < 256; ++i) {
         int c = decoder.ReadChar(ib);
         if (c == -1) {
@@ -344,7 +344,7 @@ stringTemp);
         for (var i = 0; i < 256; ++i) {
           bytes[i] = (byte)i;
         }
-        IByteReader reader = DataIO.ToByteReader(bytes);
+        IByteReader reader = DataIO.ToReader(bytes);
         for (var i = 0; i < 256; ++i) {
           ints[i] = dec.ReadChar(reader);
           if (ints[i] >= 0) {
@@ -430,7 +430,7 @@ stringTemp);
           Assert.Fail("Failed to encode " + i);
         }
       }
-      IByteReader reader = DataIO.ToByteReader(aw.ToArray());
+      IByteReader reader = DataIO.ToReader(aw.ToArray());
       for (var i = 0; i < 0x110000; ++i) {
         if (i >= 0xd800 && i < 0xe000) {
           continue;
@@ -458,6 +458,9 @@ stringTemp);
           // don't round trip in certain encodings
           continue;
         }
+        if (i == 0xe5e5) {
+ continue;
+}
         int e = encoder.Encode(i, aw);
         if (e >= 0) {
           list.Add(i);
@@ -465,7 +468,7 @@ stringTemp);
       }
       while (encoder.Encode(-1, aw) >= 0) {
       }
-      IByteReader reader = DataIO.ToByteReader(aw.ToArray());
+      IReader reader = DataIO.ToReader(aw.ToArray());
       for (var i = 0;i<list.Count; ++i) {
         int ch = list[i];
         int c = decoder.ReadChar(reader);
@@ -478,10 +481,8 @@ stringTemp);
     public void TestGBK() {
       TestCJKRoundTrip("gbk");
     }
-    //[Test]
+    [Test]
     public void TestGB18030RoundTrip() {
-      // TODO: Disabled for now since Encoding Standard
-      // has issues here
       TestCJKRoundTrip("gb18030");
     }
     [Test]
@@ -513,7 +514,7 @@ stringTemp);
       ICharacterEncoding enc = Encodings.GetEncoding("hz-gb-2312", true);
       ICharacterEncoder encoder = enc.GetEncoder();
       ICharacterDecoder decoder = enc.GetDecoder();
-      IByteReader reader = DataIO.ToByteReader(new byte[] { 0, 0, 0, 0 });
+      IByteReader reader = DataIO.ToReader(new byte[] { 0, 0, 0, 0 });
       Assert.AreEqual(-2, decoder.ReadChar(reader));
       Assert.AreEqual(-1, decoder.ReadChar(reader));
       TestUtfRoundTrip(

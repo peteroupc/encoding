@@ -134,9 +134,19 @@ private Encodings() {
          GetDecoderInput(encoding, input));
     }
 
-  /**
-   * Not documented yet.
-   */
+    /**
+     * Not documented yet. <p>In the .NET implementation, this method is
+     * implemented as an extension method to any object implementing
+     * ICharacterEncoding and can be called as follows:
+     * <code>encoding.DecodeToString(input)</code>. If the object's class already
+     * has a DecodeToString method with the same parameters, that method
+     * takes precedence over this extension method.</p>
+     * @param encoding Not documented yet.
+     * @param input Not documented yet.
+     * @return A string object.
+     * @throws NullPointerException The parameter {@code encoding} or {@code
+     * input} is null.
+     */
     public static String DecodeToString(
      ICharacterEncoding encoding,
      InputStream input) {
@@ -453,9 +463,17 @@ IWriter writer) {
         stream);
     }
 
-  /**
-   * Not documented yet.
-   */
+    /**
+     * Not documented yet. <p>In the .NET implementation, this method is
+     * implemented as an extension method to any object implementing
+     * ICharacterEncoding and can be called as follows:
+     * <code>encoding.GetDecoderInput(input)</code>. If the object's class already
+     * has a GetDecoderInput method with the same parameters, that method
+     * takes precedence over this extension method.</p>
+     * @param encoding Not documented yet.
+     * @param input Not documented yet.
+     * @return An ICharacterInput object.
+     */
     public static ICharacterInput GetDecoderInput(
       ICharacterEncoding encoding,
       InputStream input) {
@@ -489,9 +507,17 @@ IWriter writer) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
 
-  /**
-   * Not documented yet.
-   */
+    /**
+     * Not documented yet. <p>In the .NET implementation, this method is
+     * implemented as an extension method to any object implementing
+     * ICharacterEncoding and can be called as follows:
+     * <code>encoding.GetDecoderInputSkipBom(input)</code>. If the object's class
+     * already has a GetDecoderInputSkipBom method with the same parameters,
+     * that method takes precedence over this extension method.</p>
+     * @param encoding Not documented yet.
+     * @param input Not documented yet.
+     * @return An ICharacterInput object.
+     */
     public static ICharacterInput GetDecoderInputSkipBom(
       ICharacterEncoding encoding,
       InputStream input) {

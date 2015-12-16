@@ -19,7 +19,8 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
      * bytes} begins.
      * @param length The number of elements in the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
-     * @return Not documented yet.
+     * @return The number of bytes read from the data source. Can be less than
+     * "length" if the end of the stream was reached.
      * @throws NullPointerException Should be thrown if the parameter "bytes" is
      * null.
      * @throws IllegalArgumentException Should be thrown if either "offset" or "length" is

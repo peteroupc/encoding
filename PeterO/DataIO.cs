@@ -116,13 +116,13 @@ int length) {
     /// of <paramref name='bytes'/> (but not more than <paramref
     /// name='bytes'/> 's length).</param>
     /// <returns>An IByteReader object.</returns>
-    /// <exception cref='ArgumentException'>Either &#x22;offset&#x22; or
-    /// &#x22;length&#x22; is less than 0 or greater than
-    /// &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
-    /// minus &#x22;offset&#x22; is less than
-    /// &#x22;length&#x22;.</exception>
-    /// <exception cref='ArgumentNullException'>The parameter
-    /// &#x22;bytes&#x22; is null.</exception>
+    /// <exception cref='ArgumentException'>Either <paramref
+    /// name='offset'/> or <paramref name='length'/> is less than 0 or
+    /// greater than <paramref name='bytes'/> 's length, or <paramref
+    /// name='bytes'/> 's length minus <paramref name='offset'/> is less
+    /// than <paramref name='length'/>.</exception>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='bytes'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
 this byte[] bytes,
@@ -230,11 +230,11 @@ int length) {
     /// <returns>A 32-bit signed integer.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
-    /// <exception cref='ArgumentException'>Either &#x22;offset&#x22; or
-    /// &#x22;length&#x22; is less than 0 or greater than
-    /// &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
-    /// minus &#x22;offset&#x22; is less than
-    /// &#x22;length&#x22;.</exception>
+    /// <exception cref='ArgumentException'>Either <paramref
+    /// name='offset'/> or <paramref name='length'/> is less than 0 or
+    /// greater than <paramref name='bytes'/> 's length, or <paramref
+    /// name='bytes'/> 's length minus <paramref name='offset'/> is less
+    /// than <paramref name='length'/>.</exception>
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
   throw new ArgumentNullException("bytes");

@@ -115,10 +115,10 @@ int length) {
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return An IByteReader object.
-     * @throws IllegalArgumentException Either "offset" or "length" is less than 0 or
-     * greater than "bytes"'s length, or "bytes"'s length minus "offset" is
-     * less than "length".
-     * @throws NullPointerException The parameter "bytes" is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
+     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
+     * length minus {@code offset} is less than {@code length}.
+     * @throws NullPointerException The parameter {@code bytes} is null.
      * @deprecated Use ToReader instead.
  */
 @Deprecated
@@ -232,9 +232,9 @@ int length) {
      * (but not more than {@code bytes} 's length).
      * @return A 32-bit signed integer.
      * @throws NullPointerException The parameter {@code bytes} is null.
-     * @throws IllegalArgumentException Either "offset" or "length" is less than 0 or
-     * greater than "bytes"'s length, or "bytes"'s length minus "offset" is
-     * less than "length".
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
+     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
+     * length minus {@code offset} is less than {@code length}.
      */
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {

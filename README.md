@@ -35,6 +35,37 @@ project, add the following to the `dependencies` section in your `pom.xml` file:
 In other Java-based environments, the library can be referred to by its
 group ID (`com.github.peteroupc`), artifact ID (`encoding`), and version, as given above.
 
+Examples
+-------------
+
+In C#.
+
+```
+    // Reads text from a UTF-8/UTF-16/UTF-32 file
+    public static string ReadTextFromFile(string filename) {
+      using (var stream = new FileStream(filename, FileMode.Open)) {
+        return new CharacterReader(stream, 2).InputToString();
+      }
+    }
+```
+
+```
+    // Reads text from a SHIFT-JIS stream, but uses UTF-8/UTF-16
+    // instead if it detects byte order marks
+      using (var stream = new FileStream(filename, FileMode.Open)) {
+        return Encodings.GetEncoding("shift-jis")
+           .GetDecoderInputSkipBom(stream).InputToString();
+      }
+```
+
+```
+    // Writes text in UTF-8 to a file
+      using (var stream = new FileStream(filename, FileMode.Create)) {
+        var str="Hello world!"
+        str.EncodeToWriter(Encodings.UTF8,stream);
+      }
+```
+
 About
 -----------
 

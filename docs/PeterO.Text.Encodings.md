@@ -425,6 +425,24 @@ Converts a character encoding into a character input stream, given a streamable 
 
 An ICharacterInput object.
 
+### GetDecoderInput
+
+    public static PeterO.Text.ICharacterInput GetDecoderInput(
+        this PeterO.Text.ICharacterEncoding encoding,
+        System.IO.Stream input);
+
+Not documented yet.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.GetDecoderInput(input)` . If the object's class already has a GetDecoderInput method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>encoding</i>: Not documented yet.
+
+ * <i>input</i>: Not documented yet.
+
+<b>Returns:</b>
+
+An ICharacterInput object.
+
 ### GetDecoderInputSkipBom
 
     public static PeterO.Text.ICharacterInput GetDecoderInputSkipBom(
@@ -440,6 +458,24 @@ In the .NET implementation, this method is implemented as an extension method to
  * <i>encoding</i>: Encoding object that exposes a decoder to be converted into a character input stream. If the decoder returns -2 (indicating a decode error), the character input stream handles the error by returning a replacement character in its place.
 
  * <i>stream</i>: Byte stream to convert into Unicode characters.
+
+<b>Returns:</b>
+
+An ICharacterInput object.
+
+### GetDecoderInputSkipBom
+
+    public static PeterO.Text.ICharacterInput GetDecoderInputSkipBom(
+        this PeterO.Text.ICharacterEncoding encoding,
+        System.IO.Stream input);
+
+Not documented yet.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInputSkipBom(input)` . If the object's class already has a GetDecoderInputSkipBom method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>encoding</i>: Not documented yet.
+
+ * <i>input</i>: Not documented yet.
 
 <b>Returns:</b>
 

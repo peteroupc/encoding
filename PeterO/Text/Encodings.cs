@@ -579,7 +579,16 @@ DataIO.ToWriter(output));
         stream);
     }
 
-  /// <summary>Not documented yet.</summary>
+    /// <summary>Not documented yet.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterEncoding and
+    /// can be called as follows: <c>encoding.GetDecoderInput(input)</c>.
+    /// If the object's class already has a GetDecoderInput method with the
+    /// same parameters, that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='encoding'>Not documented yet.</param>
+    /// <param name='input'>Not documented yet.</param>
+    /// <returns>An ICharacterInput object.</returns>
     public static ICharacterInput GetDecoderInput(
       this ICharacterEncoding encoding,
       Stream input) {
@@ -614,7 +623,17 @@ DataIO.ToWriter(output));
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
 
-  /// <summary>Not documented yet.</summary>
+    /// <summary>Not documented yet.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterEncoding and
+    /// can be called as follows:
+    /// <c>encoding.GetDecoderInputSkipBom(input)</c>. If the object's
+    /// class already has a GetDecoderInputSkipBom method with the same
+    /// parameters, that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='encoding'>Not documented yet.</param>
+    /// <param name='input'>Not documented yet.</param>
+    /// <returns>An ICharacterInput object.</returns>
     public static ICharacterInput GetDecoderInputSkipBom(
       this ICharacterEncoding encoding,
       Stream input) {

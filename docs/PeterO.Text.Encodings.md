@@ -293,6 +293,30 @@ The parameter  <i>encoder</i>
 
     public static void EncodeToWriter(
         this PeterO.Text.ICharacterInput input,
+        PeterO.Text.ICharacterEncoder encoder,
+        System.IO.Stream output);
+
+Reads Unicode characters from a character input and writes them to a byte array encoded in a given character encoding. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToBytes(encoder)` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>input</i>: An object that implements a stream of universal code points.
+
+ * <i>encoder</i>: An object that implements a character encoder.
+
+ * <i>output</i>: A writable data stream.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter  <i>encoder</i>
+ or  <i>input</i>
+ is null.
+
+### EncodeToWriter
+
+    public static void EncodeToWriter(
+        this PeterO.Text.ICharacterInput input,
         PeterO.Text.ICharacterEncoding encoding,
         PeterO.IWriter writer);
 
@@ -305,6 +329,29 @@ Reads Unicode characters from a character input and writes them to a byte array 
  * <i>encoding</i>: An object that implements a character encoding.
 
  * <i>writer</i>: A byte writer to write the encoded bytes to.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter  <i>encoding</i>
+ is null.
+
+### EncodeToWriter
+
+    public static void EncodeToWriter(
+        this PeterO.Text.ICharacterInput input,
+        PeterO.Text.ICharacterEncoding encoding,
+        System.IO.Stream output);
+
+Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToBytes(encoding)` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>input</i>: An object that implements a stream of universal code points.
+
+ * <i>encoding</i>: An object that implements a character encoding.
+
+ * <i>output</i>: A writable data stream.
 
 <b>Exceptions:</b>
 
@@ -336,6 +383,30 @@ The parameter  <i>str</i>
  or  <i>enc</i>
  is null.
 
+### EncodeToWriter
+
+    public static void EncodeToWriter(
+        this string str,
+        PeterO.Text.ICharacterEncoding enc,
+        System.IO.Stream output);
+
+Converts a text string to bytes and writes the bytes to an output data stream. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U + FFFD), and when writing to the byte stream, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `str.EncodeToBytes(enc, writer)` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>str</i>: A string object to encode.
+
+ * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
+
+ * <i>output</i>: A writable data stream.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter  <i>str</i>
+ or  <i>enc</i>
+ is null.
+
 ### GetDecoderInput
 
     public static PeterO.Text.ICharacterInput GetDecoderInput(
@@ -349,24 +420,6 @@ Converts a character encoding into a character input stream, given a streamable 
  * <i>encoding</i>: Encoding that exposes a decoder to be converted into a character input stream. If the decoder returns -2 (indicating a decode error), the character input stream handles the error by returning a replacement character in its place.
 
  * <i>stream</i>: Byte stream to convert into Unicode characters.
-
-<b>Returns:</b>
-
-An ICharacterInput object.
-
-### GetDecoderInput
-
-    public static PeterO.Text.ICharacterInput GetDecoderInput(
-        this PeterO.Text.ICharacterEncoding encoding,
-        System.IO.Stream input);
-
-Not documented yet.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.GetDecoderInput(input)` . If the object's class already has a GetDecoderInput method with the same parameters, that method takes precedence over this extension method.
-
-<b>Parameters:</b>
-
- * <i>encoding</i>: Not documented yet.
-
- * <i>input</i>: Not documented yet.
 
 <b>Returns:</b>
 
@@ -387,24 +440,6 @@ In the .NET implementation, this method is implemented as an extension method to
  * <i>encoding</i>: Encoding object that exposes a decoder to be converted into a character input stream. If the decoder returns -2 (indicating a decode error), the character input stream handles the error by returning a replacement character in its place.
 
  * <i>stream</i>: Byte stream to convert into Unicode characters.
-
-<b>Returns:</b>
-
-An ICharacterInput object.
-
-### GetDecoderInputSkipBom
-
-    public static PeterO.Text.ICharacterInput GetDecoderInputSkipBom(
-        this PeterO.Text.ICharacterEncoding encoding,
-        System.IO.Stream input);
-
-Not documented yet.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInputSkipBom(input)` . If the object's class already has a GetDecoderInputSkipBom method with the same parameters, that method takes precedence over this extension method.
-
-<b>Parameters:</b>
-
- * <i>encoding</i>: Not documented yet.
-
- * <i>input</i>: Not documented yet.
 
 <b>Returns:</b>
 

@@ -1614,11 +1614,6 @@ int length) {
     }
 
     private static String TrimAsciiWhite(String str) {
-      return ((str) == null || (str).length() == 0) ? str :
-        TrimAsciiWhiteLeft(TrimAsciiWhiteRight(str));
-    }
-
-    private static String TrimAsciiWhiteLeft(String str) {
       if (((str) == null || (str).length() == 0)) {
         return str;
       }
@@ -1631,19 +1626,20 @@ int length) {
         }
         ++index;
       }
-      return (index == valueSLength) ? "" : ((index == 0) ? str :
-        str.substring(index));
-    }
-
-    private static String TrimAsciiWhiteRight(String str) {
-      if (((str) == null || (str).length() == 0)) {
-        return str;
-      }
-      int index = str.length() - 1;
+      if (index == valueSLength) {
+ return "";
+}
+      int indexStart = index;
+      index = str.length() - 1;
       while (index >= 0) {
         char c = str.charAt(index);
         if (c != 0x09 && c != 0x20 && c != 0x0c && c != 0x0d && c != 0x0a) {
-          return str.substring(0, index + 1);
+          int indexEnd = index + 1;
+          if (indexEnd == indexStart) {
+ return "";
+}
+          return (indexEnd == str.length() && indexStart == 0) ? str :
+            str.substring(indexStart, (indexStart)+(indexEnd - indexStart));
         }
         --index;
       }

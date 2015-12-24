@@ -1666,11 +1666,6 @@ int length) {
     }
 
     private static string TrimAsciiWhite(string str) {
-      return string.IsNullOrEmpty(str) ? str :
-        TrimAsciiWhiteLeft(TrimAsciiWhiteRight(str));
-    }
-
-    private static string TrimAsciiWhiteLeft(string str) {
       if (string.IsNullOrEmpty(str)) {
         return str;
       }
@@ -1683,19 +1678,20 @@ int length) {
         }
         ++index;
       }
-      return (index == valueSLength) ? String.Empty : ((index == 0) ? str :
-        str.Substring(index));
-    }
-
-    private static string TrimAsciiWhiteRight(string str) {
-      if (string.IsNullOrEmpty(str)) {
-        return str;
-      }
-      int index = str.Length - 1;
+      if (index == valueSLength) {
+ return String.Empty;
+}
+      int indexStart = index;
+      index = str.Length - 1;
       while (index >= 0) {
         char c = str[index];
         if (c != 0x09 && c != 0x20 && c != 0x0c && c != 0x0d && c != 0x0a) {
-          return str.Substring(0, index + 1);
+          int indexEnd = index + 1;
+          if (indexEnd == indexStart) {
+ return String.Empty;
+}
+          return (indexEnd == str.Length && indexStart == 0) ? str :
+            str.Substring(indexStart, indexEnd - indexStart);
         }
         --index;
       }

@@ -267,7 +267,7 @@ import com.upokecenter.text.*;
       private int gbk1, gbk2, gbk3;
       private final DecoderState state;
 
-      public Decoder() {
+      public Decoder () {
         this.state = new DecoderState(3);
       }
 
@@ -346,7 +346,7 @@ import com.upokecenter.text.*;
     private static class Encoder implements ICharacterEncoder {
       private final boolean gbk;
 
-      public Encoder(boolean gbk) {
+      public Encoder (boolean gbk) {
         this.gbk = gbk;
       }
 

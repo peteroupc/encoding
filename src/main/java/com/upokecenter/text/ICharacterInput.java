@@ -18,9 +18,9 @@ package com.upokecenter.text;
      * chars} begins.
      * @param length The number of elements in the desired portion of {@code chars}
      * (but not more than {@code chars} 's length).
-     * @return The number of Unicode code points read, or 0 if the end of the
-     * source is reached.
-     * @throws NullPointerException Should be thrown if "chars" is null.
+     * @return Either a Unicode code point (from 0-0xd7ff or from 0xe000 to
+     * 0x10ffff), or the value -1 indicating the end of the source.
+     * @throws java.lang.NullPointerException Should be thrown if "chars" is null.
      */
     int Read(int[] chars, int index, int length);
   }

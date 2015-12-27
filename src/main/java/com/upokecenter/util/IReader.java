@@ -21,11 +21,11 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
      * (but not more than {@code bytes} 's length).
      * @return The number of bytes read from the data source. Can be less than
      * "length" if the end of the stream was reached.
-     * @throws NullPointerException Should be thrown if the parameter "bytes" is
-     * null.
-     * @throws IllegalArgumentException Should be thrown if either "offset" or "length" is
-     * less than 0 or greater than "bytes" 's length, or "bytes" 's length
-     * minus "offset" is less than "length".
+     * @throws java.lang.NullPointerException Should be thrown if the parameter
+     * "bytes" is null.
+     * @throws IllegalArgumentException Should be thrown if either "offset" or
+     * "length" is less than 0 or greater than "bytes" 's length, or "bytes"
+     * 's length minus "offset" is less than "length".
      */
     int Read(byte[] bytes, int offset, int length);
   }

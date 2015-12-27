@@ -37,7 +37,7 @@ import com.upokecenter.text.*;
     private final Encoder encoder;
     private final Decoder decoder;
 
-    public EncodingAscii() {
+    public EncodingAscii () {
       this.encoder = new Encoder();
       this.decoder = new Decoder();
     }

@@ -77,9 +77,9 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
      * src} begins.
      * @param length The number of elements in the desired portion of {@code src}
      * (but not more than {@code src} 's length).
-     * @throws NullPointerException The parameter {@code src} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code src} 's length, or {@code src} 's
+     * @throws java.lang.NullPointerException The parameter {@code src} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code src} 's length, or {@code src} 's
      * length minus {@code offset} is less than {@code length}.
      */
     public void write(byte[] src, int offset, int length) {

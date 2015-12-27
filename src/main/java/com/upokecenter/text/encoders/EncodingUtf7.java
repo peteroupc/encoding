@@ -33,7 +33,7 @@ import com.upokecenter.text.*;
       // 0: not in base64; 1: start of base 64; 2: continuing base64
       private int machineState;
 
-      public Decoder() {
+      public Decoder () {
         this.state = new DecoderState(4);
         this.appender = new CodeUnitAppender();
       }
@@ -42,7 +42,7 @@ import com.upokecenter.text.*;
         private int surrogate;
         private int lastByte;
 
-        public CodeUnitAppender() {
+        public CodeUnitAppender () {
           this.surrogate = -1;
           this.lastByte = -1;
         }

@@ -28,8 +28,8 @@ import com.upokecenter.text.encoders.*;
      * character set that includes the English letters and digits, common
      * punctuation and symbols, and control characters. As used here, its
      * code points match the code points within the Basic Latin range (0-127
-     * or U + 0000 to U + 007F) of the Unicode Standard.</li></ul> <p>There
-     * are several kinds of character encodings:</p> <ul> <li><b>Single-byte
+     * or U + 0000 to U + 007F) of the Unicode Standard.</li></ul> <p>There are
+     * several kinds of character encodings:</p> <ul> <li><b>Single-byte
      * encodings</b> define a character set that assigns one code point to
      * one byte. Thus, they can have a maximum of 256 code points. For
      * example:</li> <li>(a) ISO 8859 encodings and
@@ -114,12 +114,12 @@ private Encodings() {
      * DecodeToString method with the same parameters, that method takes
      * precedence over this extension method.</p>
      * @param encoding An object that implements a given character encoding. Any
-     * bytes that can&#x27;t be decoded are converted to the replacement
+     * bytes that can't be decoded are converted to the replacement
      * character (U + FFFD).
      * @param input An object that implements a byte stream.
      * @return The converted string.
-     * @throws NullPointerException The parameter {@code encoding} or {@code
-     * input} is null.
+     * @throws java.lang.NullPointerException The parameter {@code encoding} or
+     * {@code input} is null.
      */
     public static String DecodeToString(
      ICharacterEncoding encoding,
@@ -141,11 +141,12 @@ private Encodings() {
      * <code>encoding.DecodeToString(input)</code>. If the object's class already
      * has a DecodeToString method with the same parameters, that method
      * takes precedence over this extension method.</p>
-     * @param encoding Not documented yet.
-     * @param input Not documented yet.
-     * @return A string object.
-     * @throws NullPointerException The parameter {@code encoding} or {@code
-     * input} is null.
+     * @param enc An object implementing a character encoding (gives access to an
+     * encoder and a decoder).
+     * @param input A readable byte stream.
+     * @return A string consisting of the decoded text.
+     * @throws java.lang.NullPointerException The parameter {@code encoding} or
+     * {@code input} is null.
      */
     public static String DecodeToString(
      ICharacterEncoding encoding,
@@ -173,8 +174,8 @@ private Encodings() {
      * @param enc An ICharacterEncoding object.
      * @param bytes A byte array.
      * @return A string consisting of the decoded text.
-     * @throws NullPointerException The parameter {@code enc} or {@code bytes} is
-     * null.
+     * @throws java.lang.NullPointerException The parameter {@code enc} or {@code
+     * bytes} is null.
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
@@ -206,11 +207,11 @@ byte[] bytes) {
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return A string consisting of the decoded text.
-     * @throws NullPointerException The parameter {@code enc} or {@code bytes} is
-     * null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
-     * length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code enc} or {@code
+     * bytes} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * 's length minus {@code offset} is less than {@code length}.
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
@@ -259,7 +260,7 @@ int length) {
      * @param input An object that implements a stream of universal code points.
      * @param encoding An object that implements a given character encoding.
      * @return A byte array containing the encoded text.
-     * @throws NullPointerException The parameter {@code encoding} is null.
+     * @throws java.lang.NullPointerException The parameter {@code encoding} is null.
      */
     public static byte[] EncodeToBytes(
       ICharacterInput input,
@@ -283,8 +284,8 @@ int length) {
      * @param input An object that implements a stream of universal code points.
      * @param encoder An object that implements a character encoder.
      * @return A byte array.
-     * @throws NullPointerException The parameter {@code encoder} or {@code input}
-     * is null.
+     * @throws java.lang.NullPointerException The parameter {@code encoder} or {@code
+     * input} is null.
      */
     public static byte[] EncodeToBytes(
       ICharacterInput input,
@@ -317,7 +318,7 @@ int length) {
      * character (U + FFFD), and when writing to the byte array, any
      * characters that can't be encoded are replaced with the byte 0x3f (the
      * question mark character). <p>In the .NET implementation, this method
-     * is implemented as an extension method to any string object and can be
+     * is implemented as an extension method to any String object and can be
      * called as follows: <code>str.EncodeToBytes(enc)</code>. If the object's
      * class already has a EncodeToBytes method with the same parameters,
      * that method takes precedence over this extension method.</p>
@@ -325,8 +326,8 @@ int length) {
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @return A byte array.
-     * @throws NullPointerException The parameter {@code str} or {@code enc} is
-     * null.
+     * @throws java.lang.NullPointerException The parameter {@code str} or {@code
+     * enc} is null.
      */
     public static byte[] EncodeToBytes(
 String str,
@@ -353,7 +354,7 @@ ICharacterEncoding enc) {
      * @param input An object that implements a stream of universal code points.
      * @param encoding An object that implements a character encoding.
      * @param writer A byte writer to write the encoded bytes to.
-     * @throws NullPointerException The parameter {@code encoding} is null.
+     * @throws java.lang.NullPointerException The parameter {@code encoding} is null.
      */
     public static void EncodeToWriter(
       ICharacterInput input,
@@ -378,8 +379,8 @@ ICharacterEncoding enc) {
      * @param input An object that implements a stream of universal code points.
      * @param encoder An object that implements a character encoder.
      * @param writer A byte writer to write the encoded bytes to.
-     * @throws NullPointerException The parameter {@code encoder} or {@code input}
-     * is null.
+     * @throws java.lang.NullPointerException The parameter {@code encoder} or {@code
+     * input} is null.
      */
     public static void EncodeToWriter(
       ICharacterInput input,
@@ -414,7 +415,7 @@ ICharacterEncoding enc) {
      * writing to the byte stream, any characters that can't be encoded are
      * replaced with the byte 0x3f (the question mark character). <p>In the
      * .NET implementation, this method is implemented as an extension
-     * method to any string object and can be called as follows:
+     * method to any String object and can be called as follows:
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
      * takes precedence over this extension method.</p>
@@ -422,8 +423,8 @@ ICharacterEncoding enc) {
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @param writer A byte writer where the encoded bytes will be written to.
-     * @throws NullPointerException The parameter {@code str} or {@code enc} is
-     * null.
+     * @throws java.lang.NullPointerException The parameter {@code str} or {@code
+     * enc} is null.
      */
     public static void EncodeToWriter(
 String str,
@@ -451,7 +452,7 @@ IWriter writer) {
      * @param input An object that implements a stream of universal code points.
      * @param encoding An object that implements a character encoding.
      * @param output A writable data stream.
-     * @throws NullPointerException The parameter {@code encoding} is null.
+     * @throws java.lang.NullPointerException The parameter {@code encoding} is null.
      */
     public static void EncodeToWriter(
       ICharacterInput input,
@@ -476,8 +477,8 @@ IWriter writer) {
      * @param input An object that implements a stream of universal code points.
      * @param encoder An object that implements a character encoder.
      * @param output A writable data stream.
-     * @throws NullPointerException The parameter {@code encoder} or {@code input}
-     * is null.
+     * @throws java.lang.NullPointerException The parameter {@code encoder} or {@code
+     * input} is null.
      */
     public static void EncodeToWriter(
       ICharacterInput input,
@@ -494,7 +495,7 @@ IWriter writer) {
      * writing to the byte stream, any characters that can't be encoded are
      * replaced with the byte 0x3f (the question mark character). <p>In the
      * .NET implementation, this method is implemented as an extension
-     * method to any string object and can be called as follows:
+     * method to any String object and can be called as follows:
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
      * takes precedence over this extension method.</p>
@@ -502,8 +503,8 @@ IWriter writer) {
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @param output A writable data stream.
-     * @throws NullPointerException The parameter {@code str} or {@code enc} is
-     * null.
+     * @throws java.lang.NullPointerException The parameter {@code str} or {@code
+     * enc} is null.
      */
     public static void EncodeToWriter(
 String str,
@@ -553,8 +554,11 @@ DataIO.ToWriter(output));
      * <code>encoding.GetDecoderInput(input)</code>. If the object's class already
      * has a GetDecoderInput method with the same parameters, that method
      * takes precedence over this extension method.</p>
-     * @param encoding Not documented yet.
-     * @param input Not documented yet.
+     * @param encoding Encoding object that exposes a decoder to be converted into
+     * a character input stream. If the decoder returns -2 (indicating a
+     * decode error), the character input stream handles the error by
+     * returning a replacement character in its place.
+     * @param stream Byte stream to convert into Unicode characters.
      * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInput(
@@ -597,8 +601,11 @@ DataIO.ToWriter(output));
      * <code>encoding.GetDecoderInputSkipBom(input)</code>. If the object's class
      * already has a GetDecoderInputSkipBom method with the same parameters,
      * that method takes precedence over this extension method.</p>
-     * @param encoding Not documented yet.
-     * @param input Not documented yet.
+     * @param encoding Encoding object that exposes a decoder to be converted into
+     * a character input stream. If the decoder returns -2 (indicating a
+     * decode error), the character input stream handles the error by
+     * returning a replacement character in its place.
+     * @param stream Byte stream to convert into Unicode characters.
      * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInputSkipBom(
@@ -623,8 +630,12 @@ DataIO.ToWriter(output));
      * Returns a character encoding from the given name.
      * @param name A string naming a character encoding. See the ResolveAlias
      * method. Can be null.
-     * @param forEmail A Boolean object.
-     * @return An ICharacterEncoding object.
+     * @param forEmail If false, uses the encoding resolution rules in the Encoding
+     * Standard. If true, uses modified rules as described in the
+     * ResolveAliasForEmail method.
+     * @return An object that enables encoding and decoding text in the given
+     * character encoding. Returns null if the name is null or empty, or if
+     * it names an unrecognized or unsupported encoding.
      */
     public static ICharacterEncoding GetEncoding(String name, boolean forEmail) {
       return GetEncoding(name, forEmail, false);
@@ -1240,7 +1251,7 @@ boolean allowReplacement) {
      * @param str A string to be encoded into a byte array.
      * @return A byte array containing the string encoded in the given text
      * encoding.
-     * @throws NullPointerException The parameter {@code encoding} is null.
+     * @throws java.lang.NullPointerException The parameter {@code encoding} is null.
      */
     public static byte[] StringToBytes(
       ICharacterEncoding encoding,
@@ -1254,8 +1265,8 @@ boolean allowReplacement) {
     /**
      * Converts a text string to a byte array using the given character encoder.
      * When reading the string, any unpaired surrogate characters are
-     * replaced with the replacement character (U + FFFD), and when writing
-     * to the byte array, any characters that can't be encoded are replaced
+     * replaced with the replacement character (U + FFFD), and when writing to
+     * the byte array, any characters that can't be encoded are replaced
      * with the byte 0x3f (the question mark character). <p>In the .NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterEncoder and can be called as
@@ -1265,8 +1276,8 @@ boolean allowReplacement) {
      * @param encoder An object that implements a character encoder.
      * @param str A text string to encode into a byte array.
      * @return A byte array.
-     * @throws NullPointerException The parameter {@code encoder} or {@code str}
-     * is null.
+     * @throws java.lang.NullPointerException The parameter {@code encoder} or {@code
+     * str} is null.
      */
     public static byte[] StringToBytes(
       ICharacterEncoder encoder,
@@ -1286,15 +1297,15 @@ boolean allowReplacement) {
      * Converts a text string to a character input. The resulting input can then be
      * used to encode the text to bytes, or to read the string code point by
      * code point, among other things. When reading the string, any unpaired
-     * surrogate characters are replaced with the replacement character (U +
-     * FFFD). <p>In the .NET implementation, this method is implemented as
-     * an extension method to any string object and can be called as
+     * surrogate characters are replaced with the replacement character
+     * (U + FFFD). <p>In the .NET implementation, this method is implemented
+     * as an extension method to any String object and can be called as
      * follows: <code>str.StringToInput(offset, length)</code>. If the object's
      * class already has a StringToInput method with the same parameters,
      * that method takes precedence over this extension method.</p>
      * @param str A string object.
      * @return An ICharacterInput object.
-     * @throws NullPointerException The parameter {@code str} is null.
+     * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
     public static ICharacterInput StringToInput(String str) {
       if (str == null) {
@@ -1309,7 +1320,7 @@ boolean allowReplacement) {
      * string code point by code point, among other things. When reading the
      * string, any unpaired surrogate characters are replaced with the
      * replacement character (U + FFFD). <p>In the .NET implementation, this
-     * method is implemented as an extension method to any string object and
+     * method is implemented as an extension method to any String object and
      * can be called as follows: <code>str.StringToInput(offset, length)</code>.
      * If the object's class already has a StringToInput method with the
      * same parameters, that method takes precedence over this extension
@@ -1320,9 +1331,9 @@ boolean allowReplacement) {
      * @param length The length, in code units, of the desired portion of {@code
      * str} (but not more than {@code str} 's length).
      * @return An ICharacterInput object.
-     * @throws NullPointerException The parameter {@code str} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code str} 's length, or {@code str} 's
+     * @throws java.lang.NullPointerException The parameter {@code str} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code str} 's length, or {@code str} 's
      * length minus {@code offset} is less than {@code length}.
      */
     public static ICharacterInput StringToInput(
@@ -1579,8 +1590,8 @@ int length) {
     }
 
     /**
-     * Returns a string with the basic upper-case letters A to Z (U + 0041 to U +
-     * 005A) converted to lower-case. Other characters remain unchanged.
+     * Returns a string with the basic upper-case letters A to Z (U + 0041 to U + 005A)
+     * converted to lower-case. Other characters remain unchanged.
      * @param str A string.
      * @return The converted string, or null if {@code str} is null.
      */
@@ -1672,10 +1683,10 @@ int length) {
      * @param length The number of elements in the desired portion of {@code
      * buffer} (but not more than {@code buffer} 's length).
      * @return A 32-bit signed integer.
-     * @throws NullPointerException The parameter {@code buffer} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code buffer} 's length, or {@code buffer} 's
-     * length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code buffer} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code buffer} 's length, or {@code
+     * buffer} 's length minus {@code offset} is less than {@code length}.
      */
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {

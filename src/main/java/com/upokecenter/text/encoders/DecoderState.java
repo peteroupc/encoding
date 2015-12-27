@@ -11,7 +11,7 @@ import com.upokecenter.util.*;
     private int[] chars;
     private int prependedBytes;
 
-    public DecoderState(int initialSize) {
+    public DecoderState (int initialSize) {
       this.bytes = new int[initialSize];
     }
 
@@ -94,7 +94,7 @@ import com.upokecenter.util.*;
       private final DecoderState s;
       private final IByteReader t;
 
-      public StateToTransform(DecoderState s, IByteReader t) {
+      public StateToTransform (DecoderState s, IByteReader t) {
         this.t = t;
         this.s = s;
       }

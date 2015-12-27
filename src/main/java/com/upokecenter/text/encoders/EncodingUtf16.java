@@ -12,7 +12,7 @@ import com.upokecenter.text.*;
       private int surrogate;
       private final boolean bigEndian;
 
-      public Decoder(boolean bigEndian) {
+      public Decoder (boolean bigEndian) {
         this.bigEndian = bigEndian;
         this.state = new DecoderState(1);
         this.lead = -1;
@@ -66,7 +66,7 @@ import com.upokecenter.text.*;
     private static class Encoder implements ICharacterEncoder {
       private final boolean bigEndian;
 
-      public Encoder(boolean bigEndian) {
+      public Encoder (boolean bigEndian) {
         this.bigEndian = bigEndian;
       }
 

@@ -26,7 +26,7 @@ private DataIO() {
      * method.</p>
      * @param bytes The byte array to wrap.
      * @return A byte reader wrapping the byte array.
-     * @throws NullPointerException The parameter {@code bytes} is null.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(byte[] bytes) {
       if (bytes == null) {
@@ -48,10 +48,10 @@ private DataIO() {
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      * not more than "bytes" 's length).
      * @return A byte reader wrapping the byte array.
-     * @throws NullPointerException The parameter {@code bytes} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
-     * length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * 's length minus {@code offset} is less than {@code length}.
      */
     public static IReader ToReader(
 byte[] bytes,
@@ -85,7 +85,7 @@ int length) {
 
     /**
      * Wraps an input stream into a reader object. If an IOException is thrown by
-     * the input stream, the reader object throws IllegalStateException
+     * the input stream, the reader object throws InvalidOperationException
      * instead. <p>In the .NET implementation, this method is implemented as
      * an extension method to any object implementing InputStream and can be
      * called as follows: <code>input.ToByteReader()</code>. If the object's class
@@ -93,7 +93,7 @@ int length) {
      * method takes precedence over this extension method.</p>
      * @param input The input stream to wrap.
      * @return A byte reader wrapping the input stream.
-     * @throws NullPointerException The parameter {@code input} is null.
+     * @throws java.lang.NullPointerException The parameter {@code input} is null.
      */
     public static IReader ToReader(InputStream input) throws java.io.IOException {
       if (input == null) {
@@ -115,10 +115,10 @@ int length) {
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return An IByteReader object.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
-     * length minus {@code offset} is less than {@code length}.
-     * @throws NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * 's length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      * @deprecated Use ToReader instead.
  */
 @Deprecated
@@ -163,7 +163,7 @@ int length) {
 
     /**
      * Wraps an output stream into a writer object. If an IOException is thrown by
-     * the input stream, the writer object throws IllegalStateException
+     * the input stream, the writer object throws InvalidOperationException
      * instead. <p>In the .NET implementation, this method is implemented as
      * an extension method to any object implementing InputStream and can be
      * called as follows: <code>output.ToWriter()</code>. If the object's class
@@ -171,7 +171,7 @@ int length) {
      * takes precedence over this extension method.</p>
      * @param output Output stream to wrap.
      * @return A byte writer that wraps the given output stream.
-     * @throws NullPointerException The parameter {@code output} is null.
+     * @throws java.lang.NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(OutputStream output) {
       if (output == null) {
@@ -190,7 +190,7 @@ int length) {
      * precedence over this extension method.</p>
      * @param output A byte stream.
      * @return A writer that wraps the given stream.
-     * @throws NullPointerException The parameter {@code output} is null.
+     * @throws java.lang.NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(IByteWriter output) {
       if (output == null) {
@@ -231,10 +231,10 @@ int length) {
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return A 32-bit signed integer.
-     * @throws NullPointerException The parameter {@code bytes} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
-     * length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * 's length minus {@code offset} is less than {@code length}.
      */
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
@@ -300,10 +300,10 @@ if (bytes.length - offset < length) {
      * "bytes" begins.
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      * not more than "bytes" 's length).
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
-     * length minus {@code offset} is less than {@code length}.
-     * @throws NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * 's length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      */
       public void write(byte[] bytes, int offset, int length) {
         try {
@@ -336,10 +336,10 @@ if (bytes.length - offset < length) {
      * "bytes" begins.
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      * not more than "bytes" 's length).
-     * @throws NullPointerException The parameter {@code bytes} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
-     * length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * 's length minus {@code offset} is less than {@code length}.
      */
       public void write(byte[] bytes, int offset, int length) {
         if (bytes == null) {

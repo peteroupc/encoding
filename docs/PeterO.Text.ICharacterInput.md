@@ -26,7 +26,7 @@ Reads a sequence of Unicode code points from a data source.
 
 <b>Returns:</b>
 
-The number of Unicode code points read, or 0 if the end of the source is reached.
+Either a Unicode code point (from 0-0xd7ff or from 0xe000 to 0x10ffff), or the value -1 indicating the end of the source.
 
 <b>Exceptions:</b>
 

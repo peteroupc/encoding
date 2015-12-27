@@ -10,7 +10,7 @@ import com.upokecenter.text.*;
       private final DecoderState state;
       private int lead;
 
-      public Decoder() {
+      public Decoder () {
         this.state = new DecoderState(1);
         this.lead = 0;
       }

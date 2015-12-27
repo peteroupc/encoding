@@ -14,7 +14,7 @@ import com.upokecenter.text.*;
       private ICharacterDecoder decoder;
       private boolean useOriginal;
 
-      public DecodeWithFallbackDecoder(ICharacterEncoding encoding) {
+      public DecodeWithFallbackDecoder (ICharacterEncoding encoding) {
         this.decoder = encoding.GetDecoder();
         this.state = new DecoderState(3);
         this.useOriginal = false;
@@ -97,7 +97,7 @@ import com.upokecenter.text.*;
       private final IByteReader transform;
       private boolean bomChecked;
 
-      public BomBufferedTransform(IByteReader transform) {
+      public BomBufferedTransform (IByteReader transform) {
         this.buffer = new int[3];
         this.transform = transform;
       }

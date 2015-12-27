@@ -1131,21 +1131,21 @@ boolean allowReplacement) {
      * leading and trailing whitespace is removed and the name converted to
      * lowercase before resolving the encoding&#x27;s name. The Encoding
      * Standard supports only the following encodings (and defines aliases
-     * for most of them):. <ul> <li> {@code utf-8} - UTF-8 (8-bit universal
-     * character set, the encoding recommended by the Encoding Standard for
-     * new data formats)</li> <li> {@code utf-16le} - UTF-16 little-endian
-     * (16-bit UCS)</li> <li> {@code utf-16be} - UTF-16 big-endian (16-bit
-     * UCS)</li> <li>The special-purpose encoding {@code
+     * for most of them):. <ul> <li> {@code utf-8} - UTF-8 (8-bit encoding of
+     * the universal character set, the encoding recommended by the Encoding
+     * Standard for new data formats)</li> <li> {@code utf-16le} - UTF-16
+     * little-endian (16-bit UCS)</li> <li> {@code utf-16be} - UTF-16
+     * big-endian (16-bit UCS)</li> <li>The special-purpose encoding {@code
      * x-user-defined}</li> <li>The special-purpose encoding {@code
      * replacement}, which this function returns only if one of several
      * aliases are passed to it, as defined in the Encoding Standard.</li>
      * <li>28 legacy single-byte encodings: <ul> <li> {@code windows-1252} :
      * Western Europe (Note: The Encoding Standard aliases the names {@code
-     * us-ascii} and {@code iso-8859-1} to {@code windows-1252}, which
-     * specifies a different character set from either; it differs from
-     * {@code iso-8859-1} by assigning different characters to some bytes
-     * from 0x80 to 0x9F. The Encoding Standard does this for compatibility
-     * with existing Web pages.)</li> <li> {@code iso-8859-2}, {@code
+     * us-ascii} and {@code iso-8859-1} to {@code windows-1252}, which uses
+     * a different character set from either; it differs from {@code
+     * iso-8859-1} by assigning different characters to some bytes from 0x80
+     * to 0x9F. The Encoding Standard does this for compatibility with
+     * existing Web pages.)</li> <li> {@code iso-8859-2}, {@code
      * windows-1250} : Central Europe</li> <li> {@code iso-8859-10} :
      * Northern Europe</li> <li> {@code iso-8859-4}, {@code windows-1257} :
      * Baltic</li> <li> {@code iso-8859-13} : Estonian</li> <li> {@code

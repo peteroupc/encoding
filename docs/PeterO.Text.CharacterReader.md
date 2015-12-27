@@ -10,7 +10,7 @@ A general-purpose character input for reading text from byte streams and text st
     public CharacterReader(
         string str);
 
-Initializes a new instance of the CharacterReader class using a Unicode 16-bit string; if the string begins with a byte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate code points (U + D800 to U + DFFF) in the string are replaced with replacement characters (U + FFFD).
+Initializes a new instance of the CharacterReader class using a Unicode 16-bit string; if the string begins with a byte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -28,13 +28,13 @@ The parameter  <i>str</i>
         string str,
         bool skipByteOrderMark);
 
-Initializes a new instance of the CharacterReader class using a Unicode 16-bit string; any unpaired surrogate code points (U + D800 to U + DFFF) in the string are replaced with replacement characters (U + FFFD).
+Initializes a new instance of the CharacterReader class using a Unicode 16-bit string; any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
  * <i>str</i>: The string to read.
 
- * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U + FEFF), will skip that code point as it reads the string.
+ * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip that code point as it reads the string.
 
 <b>Exceptions:</b>
 
@@ -55,9 +55,9 @@ Initializes a new instance of the CharacterReader class using a Unicode 16-bit s
 
  * <i>str</i>: The string to read.
 
- * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U + FEFF), will skip that code point as it reads the string.
+ * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip that code point as it reads the string.
 
- * <i>errorThrow</i>: If true, will throw an exception if unpaired surrogate code points (U + D800 to U + DFFF) are found in the string. If false, replaces those byte sequences with replacement characters (U + FFFD) as the stream is read.
+ * <i>errorThrow</i>: If true, will throw an exception if unpaired surrogate code points (U+D800 to U+DFFF) are found in the string. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
 
 <b>Exceptions:</b>
 
@@ -70,7 +70,7 @@ The parameter  <i>str</i>
     public CharacterReader(
         System.IO.Stream stream);
 
-Initializes a new instance of the CharacterReader class; will read the stream as UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the stream, and replace invalidly encoded bytes with replacement characters (U + FFFD).
+Initializes a new instance of the CharacterReader class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the stream, and replace invalidly encoded bytes with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -88,13 +88,13 @@ The parameter  <i>stream</i>
         System.IO.Stream stream,
         int mode);
 
-Initializes a new instance of the CharacterReader class; will skip the byte-order mark (U + FEFF) if it appears first in the stream and replace invalidly encoded bytes with replacement characters (U + FFFD).
+Initializes a new instance of the CharacterReader class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and replace invalidly encoded bytes with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
  * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code point (NZB, U + 0001 to U + 007F) before reading the rest of the stream. This value can be one of the following:
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (NZB, U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
 
  * 0: UTF-8 only.
 
@@ -121,13 +121,13 @@ The parameter  <i>stream</i>
         int mode,
         bool errorThrow);
 
-Initializes a new instance of the CharacterReader class; will skip the byte-order mark (U + FEFF) if it appears first in the stream.
+Initializes a new instance of the CharacterReader class; will skip the byte-order mark (U+FEFF) if it appears first in the stream.
 
 <b>Parameters:</b>
 
  * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code point (NZB, U + 0001 to U + 007F) before reading the rest of the stream. This value can be one of the following:
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (NZB, U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
 
  * 0: UTF-8 only.
 
@@ -141,7 +141,7 @@ Initializes a new instance of the CharacterReader class; will skip the byte-orde
 
 .
 
- * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U + FFFD) as the stream is read.
+ * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
 
 <b>Exceptions:</b>
 
@@ -163,7 +163,7 @@ Initializes a new instance of the CharacterReader class.
 
  * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code point (NZB, U + 0001 to U + 007F) before reading the rest of the stream. This value can be one of the following:
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (NZB, U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
 
  * 0: UTF-8 only.
 
@@ -177,7 +177,7 @@ Initializes a new instance of the CharacterReader class.
 
 .
 
- * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U + FFFD) as the stream is read.
+ * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
 
  * <i>dontSkipUtf8Bom</i>: If the stream is detected as UTF-8 and this parameter is  `true` , won't skip the BOM character if it occurs at the start of the stream.
 

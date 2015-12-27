@@ -917,7 +917,7 @@
             name. The Encoding Standard supports only the following encodings
             (and defines aliases for most of them):.
             <list type='bullet'>
-            <item><c>utf-8</c> - UTF-8 (8-bit universal character set, the
+            <item><c>utf-8</c> - UTF-8 (8-bit encoding of the universal character set, the
             encoding recommended by the Encoding Standard for new data
             formats)</item>
             <item><c>utf-16le</c> - UTF-16 little-endian (16-bit UCS)</item>
@@ -930,7 +930,7 @@
             <list type='bullet'>
             <item><c>windows-1252</c> : Western Europe (Note: The Encoding
             Standard aliases the names <c>us-ascii</c> and <c>iso-8859-1</c> to
-            <c>windows-1252</c>, which specifies a different character set
+            <c>windows-1252</c>, which uses a different character set
             from either; it differs from <c>iso-8859-1</c> by assigning
             different characters to some bytes from 0x80 to 0x9F. The Encoding
             Standard does this for compatibility with existing Web

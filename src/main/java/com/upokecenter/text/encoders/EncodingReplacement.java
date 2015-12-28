@@ -18,7 +18,7 @@ import com.upokecenter.text.*;
       }
     }
 
-    public EncodingReplacement () {
+    public EncodingReplacement() {
     }
 
     public ICharacterDecoder GetDecoder() {

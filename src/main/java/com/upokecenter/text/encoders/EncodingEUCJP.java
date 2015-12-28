@@ -11,7 +11,7 @@ import com.upokecenter.text.*;
       private int lead;
         private boolean jis0212;
 
-      public Decoder () {
+      public Decoder() {
         this.state = new DecoderState(1);
         this.lead = 0;
       }

@@ -15,7 +15,7 @@ import com.upokecenter.util.*;
     private int index;
     private final int endIndex;
 
-    public StringCharacterInput (String str) {
+    public StringCharacterInput(String str) {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -23,7 +23,7 @@ import com.upokecenter.util.*;
       this.endIndex = str.length();
     }
 
-    public StringCharacterInput (String str, int index, int length) {
+    public StringCharacterInput(String str, int index, int length) {
       if (str == null) {
         throw new NullPointerException("str");
       }

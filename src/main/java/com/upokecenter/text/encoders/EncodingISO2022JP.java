@@ -13,7 +13,7 @@ import com.upokecenter.text.*;
       private int output;
       private final DecoderState state;
 
-      public Decoder () {
+      public Decoder() {
         this.state = new DecoderState(2);
       }
 
@@ -155,7 +155,7 @@ import com.upokecenter.text.*;
     private static class Encoder implements ICharacterEncoder {
       private int encoderState;
 
-      public Encoder () {
+      public Encoder() {
       }
 
       public int Encode(int c, IWriter output) {

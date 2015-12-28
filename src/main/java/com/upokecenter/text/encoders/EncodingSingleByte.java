@@ -9,7 +9,7 @@ import com.upokecenter.text.*;
    private static class Decoder implements ICharacterDecoder {
       private final int[] codepoints;
 
-      public Decoder (int[] codepoints) {
+      public Decoder(int[] codepoints) {
         this.codepoints = codepoints;
       }
 
@@ -22,7 +22,7 @@ import com.upokecenter.text.*;
    private static class Encoder implements ICharacterEncoder {
       private final int[] codepoints;
 
-      public Encoder (int[] codepoints) {
+      public Encoder(int[] codepoints) {
         this.codepoints = codepoints;
       }
 
@@ -49,7 +49,7 @@ import com.upokecenter.text.*;
     private final Encoder encoder;
     private final Decoder decoder;
 
-    public EncodingSingleByte (int[] codepoints) {
+    public EncodingSingleByte(int[] codepoints) {
         if (codepoints == null) {
   throw new NullPointerException("codepoints");
 }

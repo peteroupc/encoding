@@ -1661,7 +1661,7 @@ int length) {
       private final IByteReader stream;
       private final ICharacterDecoder reader;
 
-      public DecoderToInputClass (ICharacterDecoder reader, IByteReader stream) {
+      public DecoderToInputClass(ICharacterDecoder reader, IByteReader stream) {
         this.reader = reader;
         this.stream = stream;
       }

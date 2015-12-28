@@ -14,7 +14,7 @@ import com.upokecenter.text.*;
         private int lower = 0x80;
         private int upper = 0xbf;
 
-        public Decoder () {
+        public Decoder() {
         this.state = new DecoderState(2);
       }
 

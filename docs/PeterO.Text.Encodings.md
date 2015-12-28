@@ -561,7 +561,7 @@ Resolves a character encoding's name to a standard form. This involves changing 
 
  * <i>name</i>: A string that names a given character encoding. Can be null. Any leading and trailing whitespace is removed and the name converted to lowercase before resolving the encoding's name. The Encoding Standard supports only the following encodings (and defines aliases for most of them):.
 
- *  `utf-8`  - UTF-8 (8-bit universal character set, the encoding recommended by the Encoding Standard for new data formats)
+ *  `utf-8`  - UTF-8 (8-bit encoding of the universal character set, the encoding recommended by the Encoding Standard for new data formats)
 
  *  `utf-16le`  - UTF-16 little-endian (16-bit UCS)
 
@@ -573,7 +573,7 @@ Resolves a character encoding's name to a standard form. This involves changing 
 
  * 28 legacy single-byte encodings:
 
- *  `windows-1252`  : Western Europe (Note: The Encoding Standard aliases the names  `us-ascii`  and  `iso-8859-1`  to `windows-1252` , which specifies a different character set from either; it differs from  `iso-8859-1`  by assigning different characters to some bytes from 0x80 to 0x9F. The Encoding Standard does this for compatibility with existing Web pages.)
+ *  `windows-1252`  : Western Europe (Note: The Encoding Standard aliases the names  `us-ascii`  and  `iso-8859-1`  to `windows-1252` , which uses a different character set from either; it differs from  `iso-8859-1`  by assigning different characters to some bytes from 0x80 to 0x9F. The Encoding Standard does this for compatibility with existing Web pages.)
 
  *  `iso-8859-2` ,  `windows-1250`  : Central Europe
 

@@ -26,7 +26,7 @@ import com.upokecenter.text.*;
         return coder.getNumber();
       }
 
-    public CodePageEncoding (ICharacterInput input) {
+    public CodePageEncoding(ICharacterInput input) {
       this.coder = new CodePageCoder(input);
     }
 
@@ -44,7 +44,7 @@ import com.upokecenter.text.*;
         private int lastByte;
         private boolean unget;
 
-        public InputWithUnget (ICharacterInput stream) {
+        public InputWithUnget(ICharacterInput stream) {
           this.lastByte = -1;
           this.transform = stream;
         }
@@ -77,46 +77,6 @@ import com.upokecenter.text.*;
           }
           return (count == 0) ? -1 : count;
         }
-      }
-
-      public static int ParseNumber(String word) {
-        if (word.length() > 2 && word.charAt(0) == '0' && word.charAt(1) == 'x') {
-          int value = 0;
-          int index = 2;
-          while (index < word.length()) {
-            char c = word.charAt(index);
-            ++index;
-            if (c >= '0' && c <= '9') {
-              value <<= 4;
-              value |= (c - '0');
-            } else if (c >= 'a' && c <= 'f') {
-              value <<= 4;
-              value |= ((c - 'a') + 10);
-            } else if (c >= 'A' && c <= 'F') {
-              value <<= 4;
-              value |= ((c - 'f') + 10);
-            } else {
-              return -1;
-            }
-          }
-          return value;
-        }
-        if (word.length() > 0 && word.charAt(0) >= '0' && word.charAt(0) <= '9') {
-          int value = 0;
-          int index = 0;
-          while (index < word.length()) {
-            char c = word.charAt(index);
-            ++index;
-            if (c >= '0' && c <= '9') {
-              value *= 10;
-              value += (c - '0');
-            } else {
-              return -1;
-            }
-          }
-          return value;
-        }
-        return -1;
       }
 
       public int Encode(int c, IWriter output) {
@@ -170,24 +130,18 @@ import com.upokecenter.text.*;
       }
 
       private enum TokenType {
-        Word,
-
-        Number,
+        Token,
 
         LineBreak,
 
         End }
 
       private static final class TokenReader {
-        private int number;
         private String word;
         private TokenType type;
         private InputWithUnget input;
-        public TokenReader (ICharacterInput ci) {
+        public TokenReader(ICharacterInput ci) {
           this.input = new InputWithUnget(ci);
-        }
-        public boolean IsWord(String str) {
-          return type == TokenType.Word && word.equals(str);
         }
         public void SkipToLine() {
           while (true) {
@@ -197,24 +151,15 @@ import com.upokecenter.text.*;
             }
           }
         }
-        public boolean IsNumber() {
-          return type == TokenType.Number;
-        }
         public int ExpectNumberOnSameLine() {
-          ReadToken();
-          if (type != TokenType.Number) {
-            throw new IllegalArgumentException("number expected");
-          }
-          return this.number;
+          ReadToTokenChar();
+          return ExpectNumberInternal();
         }
         public int ExpectNumber() {
           do {
-            ReadToken();
+            ReadToTokenChar();
           } while (type == TokenType.LineBreak);
-          if (type != TokenType.Number) {
-            throw new IllegalArgumentException("number expected");
-          }
-          return this.number;
+          return ExpectNumberInternal();
         }
         public int ExpectByte() {
           int number = ExpectNumber();
@@ -256,25 +201,139 @@ import com.upokecenter.text.*;
           }
           return number;
         }
-        public String ExpectWord() {
+        public int ExpectAnyOneWord(String... words) {
           do {
-            ReadToken();
+            ReadToTokenChar();
           } while (type == TokenType.LineBreak);
-          if (type != TokenType.Word) {
-            throw new IllegalArgumentException("word expected");
+          boolean[] isPossible = new boolean[words.length];
+          int[] wordIndices = new int[words.length];
+          int possibleCount = words.length;
+          for (int i = 0;i<words.length; ++i) {
+            isPossible[i]=true;
           }
-          return word;
-        }
-        public void ExpectSpecificWord(String word) {
-          do {
-            ReadToken();
-          } while (type == TokenType.LineBreak);
-          if (type != TokenType.Word && !word.equals(this.word)) {
-            throw new IllegalArgumentException("word '" + word + "' expected, got '" +
-              this.word + "'");
+          while (true) {
+            int ch = input.ReadChar();
+            for (int i = 0;i<words.length; ++i) {
+              int index = wordIndices[i];
+              if (isPossible[i]) {
+                if (index >= words[i].length) {
+                  if (IsWordEndChar(c)) {
+                    input.Unget();
+                    return i;
+                  } else {
+                  isPossible[i]=false;
+                  --possibleCount;
+                  if (possibleCount == 0) {
+                    if (words.length == 1) {
+                    throw new
+  IllegalArgumentException("Expected non-word character after '" + words[0] + "'"
+);
+                    } else {
+                    throw new IllegalArgumentException("unexpected word found");
+                    }
+                  }
+                  }
+                }
+                int c = DataUtilities.CodePointAt(words[i], index);
+                index+=(c >= 0x10000) ? 2 : 1;
+                wordIndices[i]=index;
+                if (ch != c) {
+                  isPossible[i]=false;
+                  --possibleCount;
+                  if (possibleCount == 0) {
+                    if (words.length == 1) {
+               throw new IllegalArgumentException("word '" + words[0] +
+                      "' expected");
+                    } else {
+                    throw new IllegalArgumentException("unexpected word found");
+                    }
+                  }
+                }
+              }
+            }
           }
         }
-        private void ReadToken() {
+        private int ExpectNumberInternal() {
+          if (type != TokenType.Token) {
+            throw new IllegalArgumentException("number expected");
+          }
+          int number = ParseNumber();
+          int c = input.ReadChar();
+          input.Unget();
+          if (!IsWordEnd()) {
+              throw new
+                IllegalArgumentException("Expected non-word character after '" +
+                number + "'");
+          }
+          return number;
+        }
+        private static int ParseNumber() {
+          int c1 = input.ReadChar();
+          int c2 = 0;
+          if (c<'0' || c>'9') {
+            throw new IllegalArgumentException("Expected number");
+          }
+          boolean hex = false;
+          int value = 0;
+          if (c=='0') {
+            c = input.ReadChar();
+            if (c=='x') {
+              hex = true;
+            } else if (c<'0' || c>'9') {
+              input.Unget();
+              return 0;
+            } else {
+              value+=(c-'0');
+            }
+          }
+          if (hex) {
+            while (true) {
+              c = input.ReadChar();
+              if (c >= '0' && c <= '9') {
+                if ((value >> 28) != 0) {
+ throw new IllegalArgumentException("Overflow");
+}
+                value <<= 4;
+                value |= (c - '0');
+              } else if (c >= 'a' && c <= 'f') {
+                if ((value >> 28) != 0) {
+ throw new IllegalArgumentException("Overflow");
+}
+                value <<= 4;
+                value |= ((c - 'a') + 10);
+              } else if (c >= 'A' && c <= 'F') {
+                if ((value >> 28) != 0) {
+ throw new IllegalArgumentException("Overflow");
+}
+                value <<= 4;
+                value |= ((c - 'f') + 10);
+              } else {
+                input.Unget();
+                return value;
+              }
+            }
+          } else {
+            while (true) {
+              c = input.ReadChar();
+              if (c >= '0' && c <= '9') {
+                if (value>Integer.MAX_VALUE/10) {
+ throw new IllegalArgumentException("Overflow");
+}
+                value *= 10;
+                int add=(c-0);
+                if (value>Integer.MAX_VALUE-add) {
+ throw new IllegalArgumentException("Overflow");
+}
+                value += add;
+              } else {
+                input.Unget();
+                return value;
+              }
+            }
+          }
+        }
+
+        private void ReadToTokenChar() {
           while (true) {
             int c = input.ReadChar();
             if (c == 0x0a) {
@@ -304,41 +363,15 @@ import com.upokecenter.text.*;
               }
               continue;
             } else {
-              // Word
-              StringBuilder sb = new StringBuilder();
-              if (c <= 0xffff) {
-                sb.append((char)(c));
-              } else if (c <= 0x10ffff) {
-                sb.append((char)((((c - 0x10000) >> 10) & 0x3ff) + 0xd800));
-                sb.append((char)(((c - 0x10000) & 0x3ff) + 0xdc00));
-              }
-              while (true) {
-                c = input.ReadChar();
-                if (c == -1 || c == 0x0d || c == 0x0a ||
-                  c == 0x09 || c == 0x20 || c == (int)';') {
-                  input.Unget();
-                  break;
-                } else {
-                  if (c <= 0xffff) {
-                    sb.append((char)(c));
-                  } else if (c <= 0x10ffff) {
-                    sb.append((char)((((c - 0x10000) >> 10) & 0x3ff) + 0xd800));
-                    sb.append((char)(((c - 0x10000) & 0x3ff) + 0xdc00));
-                  }
-                }
-              }
-              String word = sb.toString();
-              int number = ParseNumber(word);
-              if (number >= 0) {
-                this.number = number;
-                this.type = TokenType.Number;
-              } else {
-                this.word = word;
-                this.type = TokenType.Word;
-              }
+              input.Unget();
+              this.type = TokenType.Token;
               break;
             }
           }
+        }
+        private boolean IsWordEndChar(int c) {
+          return (c == -1 || c == 0x0d || c == 0x0a ||
+                  c == 0x09 || c == 0x20 || c == (int)';');
         }
       }
 
@@ -352,7 +385,7 @@ import com.upokecenter.text.*;
 
       private static final class UCSMapping {
         private int[] array;
-        public UCSMapping () {
+        public UCSMapping() {
           array = new int[256];
           for (int i = 0; i < array.length; ++i) {
             array[i] = -2;
@@ -389,7 +422,7 @@ import com.upokecenter.text.*;
           return codepageNumber;
         }
 
-      public CodePageCoder (CodePageCoder other, boolean useGlyphs) {
+      public CodePageCoder(CodePageCoder other, boolean useGlyphs) {
         this.bytesToUCS = other.bytesToUCS;
         this.bytesToGlyphs = other.bytesToGlyphs;
         this.dbcsToUCS = other.dbcsToUCS;
@@ -402,7 +435,7 @@ import com.upokecenter.text.*;
         this.useGlyphs = (useGlyphs && this.bytesToGlyphs != null);
       }
 
-      public CodePageCoder (ICharacterInput input) {
+      public CodePageCoder(ICharacterInput input) {
         TokenReader token = new TokenReader(input);
         int state = 0;
         int byteCount = 0;
@@ -427,10 +460,10 @@ import com.upokecenter.text.*;
         while (!done) {
           switch (state) {
             case 0: {
-                token.ExpectSpecificWord("CODEPAGE");
+                token.ExpectAnyOneWord("CODEPAGE");
                 this.codepageNumber = token.ExpectNumberOnSameLine();
                 token.SkipToLine();
-                token.ExpectSpecificWord("CPINFO");
+                token.ExpectAnyOneWord("CPINFO");
                 byteCount = token.ExpectNumberOnSameLine();
                 if (byteCount != 1 && byteCount != 2) {
                   throw new IllegalArgumentException("Expected byte count 1 or 2");
@@ -442,36 +475,41 @@ import com.upokecenter.text.*;
               }
               break;
             case 1: {
-                String word = token.ExpectWord();
-                if (word.equals("MBTABLE")) {
+                int wordIndex = token.ExpectAnyOneWord(
+                  "MBTABLE",
+                  "DBCSRANGE",
+                  "WCTABLE",
+                  "GLYPHTABLE",
+                  "ENDCODEPAGE");
+                if (wordIndex == 0) {
                   lineCount = token.ExpectNumberOnSameLine();
                   token.SkipToLine();
                   state = 2;
                   haveMbTable = true;
-                } else if (word.equals("DBCSRANGE")) {
+                } else if (wordIndex == 1) {
                   ranges = token.ExpectNumberOnSameLine();
                   if (ranges == 0) {
                     throw new IllegalArgumentException("ranges is 0");
                   }
                   token.SkipToLine();
                   state = 4;
-                } else if (word.equals("WCTABLE")) {
+                } else if (wordIndex == 2) {
                   lineCount = token.ExpectNumberOnSameLine();
                   token.SkipToLine();
                   state = 3;
                   haveWcTable = true;
-                } else if (word.equals("GLYPHTABLE")) {
+                } else if (wordIndex == 3) {
                   // Alternate characters for some bytes, for
                   // display purposes.
                   lineCount = token.ExpectNumberOnSameLine();
                   token.SkipToLine();
                   state = 5;
                   haveGlyphTable = true;
-                } else if (word.equals("ENDCODEPAGE") && haveMbTable &&
+                } else if (wordIndex == 4 && haveMbTable &&
                     haveWcTable) {
                   done = true;
                 } else {
-                  throw new IllegalArgumentException("Unexpected word: " + word);
+                  throw new IllegalArgumentException("Unexpected word");
                 }
               }
               break;
@@ -505,7 +543,7 @@ import com.upokecenter.text.*;
                 token.SkipToLine();
                 for (int i = rangeLow; i <= rangeHigh; ++i) {
                   bytesToUCS[i] = -3;
-                  token.ExpectSpecificWord("DBCSTABLE");
+                  token.ExpectAnyOneWord("DBCSTABLE");
                   lineCount = token.ExpectNumberOnSameLine();
                   token.SkipToLine();
                   int range = i << 8;

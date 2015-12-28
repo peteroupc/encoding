@@ -1,7 +1,6 @@
 using PeterO;
 using PeterO.Text;
 using System;
-using System.Text;
 
 namespace MailLibTest {
     /// <summary>A character encoding class that implements a code page
@@ -81,46 +80,6 @@ namespace MailLibTest {
         }
       }
 
-      public static int ParseNumber(string word) {
-        if (word.Length > 2 && word[0] == '0' && word[1] == 'x') {
-          var value = 0;
-          var index = 2;
-          while (index < word.Length) {
-            char c = word[index];
-            ++index;
-            if (c >= '0' && c <= '9') {
-              value <<= 4;
-              value |= (c - '0');
-            } else if (c >= 'a' && c <= 'f') {
-              value <<= 4;
-              value |= ((c - 'a') + 10);
-            } else if (c >= 'A' && c <= 'F') {
-              value <<= 4;
-              value |= ((c - 'f') + 10);
-            } else {
-              return -1;
-            }
-          }
-          return value;
-        }
-        if (word.Length > 0 && word[0] >= '0' && word[0] <= '9') {
-          var value = 0;
-          var index = 0;
-          while (index < word.Length) {
-            char c = word[index];
-            ++index;
-            if (c >= '0' && c <= '9') {
-              value *= 10;
-              value += (c - '0');
-            } else {
-              return -1;
-            }
-          }
-          return value;
-        }
-        return -1;
-      }
-
       public int Encode(int c, IWriter output) {
         if (c < 0) {
           return -1;
@@ -172,51 +131,35 @@ namespace MailLibTest {
       }
 
       private enum TokenType {
-        Word,
-
-        Number,
+        Token,
 
         LineBreak,
 
         End }
 
       private sealed class TokenReader {
-        private int number;
-        private string word;
         private TokenType type;
         private InputWithUnget input;
         public TokenReader(ICharacterInput ci) {
           this.input = new InputWithUnget(ci);
         }
-        public bool IsWord(string str) {
-          return type == TokenType.Word && word.Equals(str);
-        }
         public void SkipToLine() {
           while (true) {
-            ReadToken();
+            ReadToTokenChar();
             if (type == TokenType.LineBreak || type == TokenType.End) {
               return;
             }
           }
         }
-        public bool IsNumber() {
-          return type == TokenType.Number;
-        }
         public int ExpectNumberOnSameLine() {
-          ReadToken();
-          if (type != TokenType.Number) {
-            throw new ArgumentException("number expected");
-          }
-          return this.number;
+          ReadToTokenChar();
+          return ExpectNumberInternal();
         }
         public int ExpectNumber() {
           do {
-            ReadToken();
+            ReadToTokenChar();
           } while (type == TokenType.LineBreak);
-          if (type != TokenType.Number) {
-            throw new ArgumentException("number expected");
-          }
-          return this.number;
+          return ExpectNumberInternal();
         }
         public int ExpectByte() {
           int number = ExpectNumber();
@@ -258,25 +201,151 @@ namespace MailLibTest {
           }
           return number;
         }
-        public string ExpectWord() {
+        public int ExpectAnyOneWord(params string[] words) {
           do {
-            ReadToken();
+            ReadToTokenChar();
           } while (type == TokenType.LineBreak);
-          if (type != TokenType.Word) {
-            throw new ArgumentException("word expected");
+          bool[] isPossible = new bool[words.Length];
+          int[] wordIndices = new int[words.Length];
+          int possibleCount = words.Length;
+          for (var i = 0;i<words.Length; ++i) {
+            isPossible[i]=true;
+            wordIndices[i] = 0;
           }
-          return word;
-        }
-        public void ExpectSpecificWord(string word) {
-          do {
-            ReadToken();
-          } while (type == TokenType.LineBreak);
-          if (type != TokenType.Word && !word.Equals(this.word)) {
-            throw new ArgumentException("word '" + word + "' expected, got '" +
-              this.word + "'");
+          while (true) {
+            int ch = input.ReadChar();
+            for (var i = 0;i<words.Length; ++i) {
+              int index = wordIndices[i];
+              if (isPossible[i]) {
+                if (index >= words[i].Length) {
+                  if (IsWordEndChar(ch)) {
+                    input.Unget();
+                    return i;
+                  } else {
+                  isPossible[i]=false;
+                  --possibleCount;
+                  if (possibleCount == 0) {
+                    if (words.Length == 1) {
+                    throw new
+  ArgumentException("Expected non-word character after '" + words[0] + "'"
+);
+                    } else {
+                    throw new ArgumentException("unexpected word found");
+                    }
+                  }
+                  }
+                }
+                string str = words[i];
+                int c = str[index];
+                index++;
+                if ((c & 0xfc00) == 0xd800 && index + 1 < str.Length &&
+                    str[index + 1] >= 0xdc00 && str[index + 1] <= 0xdfff) {
+                  // Get the Unicode code point for the surrogate pair
+                  c = 0x10000 + ((c - 0xd800) << 10) + (str[index + 1] - 0xdc00);
+                  ++index;
+                } else if ((c & 0xf800) == 0xd800) {
+                  // unpaired surrogate
+                  c = 0xfffd;
+                }
+                wordIndices[i]=index;
+                if (ch != c) {
+                  isPossible[i]=false;
+                  --possibleCount;
+                  if (possibleCount == 0) {
+                    if (words.Length == 1) {
+               throw new ArgumentException("word '" + words[0] +
+                      "' expected");
+                    } else {
+                    throw new ArgumentException("unexpected word found");
+                    }
+                  }
+                }
+              }
+            }
           }
         }
-        private void ReadToken() {
+        private int ExpectNumberInternal() {
+          if (type != TokenType.Token) {
+            throw new ArgumentException("number expected");
+          }
+          int number = ParseNumber();
+          int c = input.ReadChar();
+          input.Unget();
+          if (!IsWordEndChar(c)) {
+              throw new
+                ArgumentException("Expected non-word character after '" +
+                number + "'");
+          }
+          return number;
+        }
+        private int ParseNumber() {
+          int c = input.ReadChar();
+          if (c<'0' || c>'9') {
+            throw new ArgumentException("Expected number");
+          }
+          bool hex = false;
+          int value = 0;
+          if (c=='0') {
+            c = input.ReadChar();
+            if (c=='x') {
+              hex = true;
+            } else if (c<'0' || c>'9') {
+              input.Unget();
+              return 0;
+            } else {
+              value+=(c-'0');
+            }
+          } else {
+            value = (c - '0');
+          }
+          if (hex) {
+            while (true) {
+              c = input.ReadChar();
+              if (c >= '0' && c <= '9') {
+                if ((value >> 28) != 0) {
+ throw new ArgumentException("Overflow");
+}
+                value <<= 4;
+                value |= (c - '0');
+              } else if (c >= 'a' && c <= 'f') {
+                if ((value >> 28) != 0) {
+ throw new ArgumentException("Overflow");
+}
+                value <<= 4;
+                value |= ((c - 'a') + 10);
+              } else if (c >= 'A' && c <= 'F') {
+                if ((value >> 28) != 0) {
+ throw new ArgumentException("Overflow");
+}
+                value <<= 4;
+                value |= ((c - 'A') + 10);
+              } else {
+                input.Unget();
+                return value;
+              }
+            }
+          } else {
+            while (true) {
+              c = input.ReadChar();
+              if (c >= '0' && c <= '9') {
+                if (value>Int32.MaxValue/10) {
+ throw new ArgumentException("Overflow");
+}
+                value *= 10;
+                int add=(c-'0');
+                if (value>Int32.MaxValue-add) {
+ throw new ArgumentException("Overflow");
+}
+                value += add;
+              } else {
+                input.Unget();
+                return value;
+              }
+            }
+          }
+        }
+
+        private void ReadToTokenChar() {
           while (true) {
             int c = input.ReadChar();
             if (c == 0x0a) {
@@ -306,41 +375,15 @@ namespace MailLibTest {
               }
               continue;
             } else {
-              // Word
-              var sb = new StringBuilder();
-              if (c <= 0xffff) {
-                sb.Append((char)(c));
-              } else if (c <= 0x10ffff) {
-                sb.Append((char)((((c - 0x10000) >> 10) & 0x3ff) + 0xd800));
-                sb.Append((char)(((c - 0x10000) & 0x3ff) + 0xdc00));
-              }
-              while (true) {
-                c = input.ReadChar();
-                if (c == -1 || c == 0x0d || c == 0x0a ||
-                  c == 0x09 || c == 0x20 || c == (int)';') {
-                  input.Unget();
-                  break;
-                } else {
-                  if (c <= 0xffff) {
-                    sb.Append((char)(c));
-                  } else if (c <= 0x10ffff) {
-                    sb.Append((char)((((c - 0x10000) >> 10) & 0x3ff) + 0xd800));
-                    sb.Append((char)(((c - 0x10000) & 0x3ff) + 0xdc00));
-                  }
-                }
-              }
-              string word = sb.ToString();
-              int number = ParseNumber(word);
-              if (number >= 0) {
-                this.number = number;
-                this.type = TokenType.Number;
-              } else {
-                this.word = word;
-                this.type = TokenType.Word;
-              }
+              input.Unget();
+              this.type = TokenType.Token;
               break;
             }
           }
+        }
+        private static bool IsWordEndChar(int c) {
+          return (c == -1 || c == 0x0d || c == 0x0a ||
+                  c == 0x09 || c == 0x20 || c == (int)';');
         }
       }
 
@@ -431,10 +474,10 @@ namespace MailLibTest {
         while (!done) {
           switch (state) {
             case 0: {
-                token.ExpectSpecificWord("CODEPAGE");
+                token.ExpectAnyOneWord("CODEPAGE");
                 this.codepageNumber = token.ExpectNumberOnSameLine();
                 token.SkipToLine();
-                token.ExpectSpecificWord("CPINFO");
+                token.ExpectAnyOneWord("CPINFO");
                 byteCount = token.ExpectNumberOnSameLine();
                 if (byteCount != 1 && byteCount != 2) {
                   throw new ArgumentException("Expected byte count 1 or 2");
@@ -446,36 +489,41 @@ namespace MailLibTest {
               }
               break;
             case 1: {
-                string word = token.ExpectWord();
-                if (word.Equals("MBTABLE")) {
+                int wordIndex = token.ExpectAnyOneWord(
+                  "MBTABLE",
+                  "DBCSRANGE",
+                  "WCTABLE",
+                  "GLYPHTABLE",
+                  "ENDCODEPAGE");
+                if (wordIndex == 0) {
                   lineCount = token.ExpectNumberOnSameLine();
                   token.SkipToLine();
                   state = 2;
                   haveMbTable = true;
-                } else if (word.Equals("DBCSRANGE")) {
+                } else if (wordIndex == 1) {
                   ranges = token.ExpectNumberOnSameLine();
                   if (ranges == 0) {
                     throw new ArgumentException("ranges is 0");
                   }
                   token.SkipToLine();
                   state = 4;
-                } else if (word.Equals("WCTABLE")) {
+                } else if (wordIndex == 2) {
                   lineCount = token.ExpectNumberOnSameLine();
                   token.SkipToLine();
                   state = 3;
                   haveWcTable = true;
-                } else if (word.Equals("GLYPHTABLE")) {
+                } else if (wordIndex == 3) {
                   // Alternate characters for some bytes, for
                   // display purposes.
                   lineCount = token.ExpectNumberOnSameLine();
                   token.SkipToLine();
                   state = 5;
                   haveGlyphTable = true;
-                } else if (word.Equals("ENDCODEPAGE") && haveMbTable &&
+                } else if (wordIndex == 4 && haveMbTable &&
                     haveWcTable) {
                   done = true;
                 } else {
-                  throw new ArgumentException("Unexpected word: " + word);
+                  throw new ArgumentException("Unexpected word");
                 }
               }
               break;
@@ -509,7 +557,7 @@ namespace MailLibTest {
                 token.SkipToLine();
                 for (int i = rangeLow; i <= rangeHigh; ++i) {
                   bytesToUCS[i] = -3;
-                  token.ExpectSpecificWord("DBCSTABLE");
+                  token.ExpectAnyOneWord("DBCSTABLE");
                   lineCount = token.ExpectNumberOnSameLine();
                   token.SkipToLine();
                   int range = i << 8;

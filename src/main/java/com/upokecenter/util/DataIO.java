@@ -204,7 +204,7 @@ int length) {
       private int offset;
       private final int endOffset;
 
-      public ByteArrayTransform (byte[] bytes, int offset, int length) {
+      public ByteArrayTransform(byte[] bytes, int offset, int length) {
         this.bytes = bytes;
         this.offset = offset;
         this.endOffset = offset + length;
@@ -277,7 +277,7 @@ if (bytes.length - offset < length) {
     private static final class WrappedOutputStream implements IWriter {
       private final OutputStream output;
 
-      public WrappedOutputStream (OutputStream output) {
+      public WrappedOutputStream(OutputStream output) {
         this.output = output;
       }
 
@@ -317,7 +317,7 @@ if (bytes.length - offset < length) {
     private static final class WrappedOutputStreamFromByteWriter implements IWriter {
       private final IByteWriter output;
 
-      public WrappedOutputStreamFromByteWriter (IByteWriter output) {
+      public WrappedOutputStreamFromByteWriter(IByteWriter output) {
         this.output = output;
       }
 
@@ -374,7 +374,7 @@ if (bytes.length - offset < length) {
     private static final class WrappedStream implements IReader {
       private final InputStream stream;
 
-      public WrappedStream (InputStream stream) {
+      public WrappedStream(InputStream stream) {
         this.stream = stream;
       }
 

@@ -24,7 +24,7 @@ namespace PeterO.Text {
      this ICharacterEncoding encoding,
      IByteReader input) {
       if (encoding == null) {
-        throw new ArgumentNullException("encoding");
+        throw new ArgumentNullException("enc");
       }
       if (input == null) {
         throw new ArgumentNullException("input");
@@ -37,16 +37,16 @@ namespace PeterO.Text {
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]'
     /// />
     public static string DecodeToString(
-     this ICharacterEncoding encoding,
+     this ICharacterEncoding enc,
      Stream input) {
-      if (encoding == null) {
-        throw new ArgumentNullException("encoding");
+      if (enc == null) {
+        throw new ArgumentNullException("enc");
       }
       if (input == null) {
         throw new ArgumentNullException("input");
       }
       return InputToString(
-         GetDecoderInput(encoding, DataIO.ToReader(input)));
+         GetDecoderInput(enc, DataIO.ToReader(input)));
     }
 
     /// <include file='docs.xml'
@@ -108,7 +108,7 @@ int length) {
       this ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
-        throw new ArgumentNullException("encoding");
+        throw new ArgumentNullException("enc");
       }
       return EncodeToBytes(input, encoding.GetEncoder());
     }
@@ -163,7 +163,7 @@ ICharacterEncoding enc) {
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
-        throw new ArgumentNullException("encoding");
+        throw new ArgumentNullException("enc");
       }
       EncodeToWriter(input, encoding.GetEncoder(), writer);
     }
@@ -221,7 +221,7 @@ IWriter writer) {
       ICharacterEncoding encoding,
       Stream output) {
       if (encoding == null) {
-        throw new ArgumentNullException("encoding");
+        throw new ArgumentNullException("enc");
       }
       EncodeToWriter(input, encoding.GetEncoder(), DataIO.ToWriter(output));
     }
@@ -828,7 +828,7 @@ bool allowReplacement) {
       this ICharacterEncoding encoding,
       string str) {
       if (encoding == null) {
-        throw new ArgumentNullException("encoding");
+        throw new ArgumentNullException("enc");
       }
       return StringToBytes(encoding.GetEncoder(), str);
     }

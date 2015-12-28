@@ -35,7 +35,7 @@ import com.upokecenter.text.*;
     private final Encoder encoder;
     private final Decoder decoder;
 
-    public EncodingXUserDefined () {
+    public EncodingXUserDefined() {
       this.encoder = new Encoder();
       this.decoder = new Decoder();
     }

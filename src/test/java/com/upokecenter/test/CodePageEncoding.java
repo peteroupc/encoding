@@ -137,7 +137,6 @@ import com.upokecenter.text.*;
         End }
 
       private static final class TokenReader {
-        private String word;
         private TokenType type;
         private InputWithUnget input;
         public TokenReader(ICharacterInput ci) {
@@ -145,7 +144,7 @@ import com.upokecenter.text.*;
         }
         public void SkipToLine() {
           while (true) {
-            ReadToken();
+            ReadToTokenChar();
             if (type == TokenType.LineBreak || type == TokenType.End) {
               return;
             }
@@ -210,6 +209,7 @@ import com.upokecenter.text.*;
           int possibleCount = words.length;
           for (int i = 0;i<words.length; ++i) {
             isPossible[i]=true;
+            wordIndices[i] = 0;
           }
           while (true) {
             int ch = input.ReadChar();
@@ -217,7 +217,7 @@ import com.upokecenter.text.*;
               int index = wordIndices[i];
               if (isPossible[i]) {
                 if (index >= words[i].length) {
-                  if (IsWordEndChar(c)) {
+                  if (IsWordEndChar(ch)) {
                     input.Unget();
                     return i;
                   } else {
@@ -226,16 +226,26 @@ import com.upokecenter.text.*;
                   if (possibleCount == 0) {
                     if (words.length == 1) {
                     throw new
-  IllegalArgumentException("Expected non-word character after '" + words[0] + "'"
-);
+  IllegalArgumentException("Expected non-word character after '" + words[0] + "'");
                     } else {
                     throw new IllegalArgumentException("unexpected word found");
                     }
                   }
                   }
                 }
-                int c = DataUtilities.CodePointAt(words[i], index);
-                index+=(c >= 0x10000) ? 2 : 1;
+                String str = words[i];
+                int c = str.charAt(index);
+                ++index;
+                if ((c & 0xfc00) == 0xd800 && index + 1 < str.length() &&
+                    str.charAt(index + 1) >= 0xdc00 && str.charAt(index + 1) <= 0xdfff) {
+                  // Get the Unicode code point for the surrogate pair
+                c = 0x10000 + ((c - 0xd800) << 10) + (str.charAt(index + 1) -
+                    0xdc00);
+                  ++index;
+                } else if ((c & 0xf800) == 0xd800) {
+                  // unpaired surrogate
+                  c = 0xfffd;
+                }
                 wordIndices[i]=index;
                 if (ch != c) {
                   isPossible[i]=false;
@@ -243,7 +253,7 @@ import com.upokecenter.text.*;
                   if (possibleCount == 0) {
                     if (words.length == 1) {
                throw new IllegalArgumentException("word '" + words[0] +
-                      "' expected");
+                    "' expected");
                     } else {
                     throw new IllegalArgumentException("unexpected word found");
                     }
@@ -260,16 +270,15 @@ import com.upokecenter.text.*;
           int number = ParseNumber();
           int c = input.ReadChar();
           input.Unget();
-          if (!IsWordEnd()) {
+          if (!IsWordEndChar(c)) {
               throw new
                 IllegalArgumentException("Expected non-word character after '" +
                 number + "'");
           }
           return number;
         }
-        private static int ParseNumber() {
-          int c1 = input.ReadChar();
-          int c2 = 0;
+        private int ParseNumber() {
+          int c = input.ReadChar();
           if (c<'0' || c>'9') {
             throw new IllegalArgumentException("Expected number");
           }
@@ -285,6 +294,8 @@ import com.upokecenter.text.*;
             } else {
               value+=(c-'0');
             }
+          } else {
+            value = (c - '0');
           }
           if (hex) {
             while (true) {
@@ -306,7 +317,7 @@ import com.upokecenter.text.*;
  throw new IllegalArgumentException("Overflow");
 }
                 value <<= 4;
-                value |= ((c - 'f') + 10);
+                value |= ((c - 'A') + 10);
               } else {
                 input.Unget();
                 return value;
@@ -320,7 +331,7 @@ import com.upokecenter.text.*;
  throw new IllegalArgumentException("Overflow");
 }
                 value *= 10;
-                int add=(c-0);
+                int add=(c-'0');
                 if (value>Integer.MAX_VALUE-add) {
  throw new IllegalArgumentException("Overflow");
 }
@@ -369,7 +380,7 @@ import com.upokecenter.text.*;
             }
           }
         }
-        private boolean IsWordEndChar(int c) {
+        private static boolean IsWordEndChar(int c) {
           return (c == -1 || c == 0x0d || c == 0x0a ||
                   c == 0x09 || c == 0x20 || c == (int)';');
         }

@@ -205,8 +205,8 @@ namespace MailLibTest {
           do {
             ReadToTokenChar();
           } while (type == TokenType.LineBreak);
-          bool[] isPossible = new bool[words.Length];
-          int[] wordIndices = new int[words.Length];
+          var isPossible = new bool[words.Length];
+          var wordIndices = new int[words.Length];
           int possibleCount = words.Length;
           for (var i = 0;i<words.Length; ++i) {
             isPossible[i]=true;
@@ -227,8 +227,7 @@ namespace MailLibTest {
                   if (possibleCount == 0) {
                     if (words.Length == 1) {
                     throw new
-  ArgumentException("Expected non-word character after '" + words[0] + "'"
-);
+  ArgumentException("Expected non-word character after '" + words[0] + "'");
                     } else {
                     throw new ArgumentException("unexpected word found");
                     }
@@ -237,11 +236,12 @@ namespace MailLibTest {
                 }
                 string str = words[i];
                 int c = str[index];
-                index++;
+                ++index;
                 if ((c & 0xfc00) == 0xd800 && index + 1 < str.Length &&
                     str[index + 1] >= 0xdc00 && str[index + 1] <= 0xdfff) {
                   // Get the Unicode code point for the surrogate pair
-                  c = 0x10000 + ((c - 0xd800) << 10) + (str[index + 1] - 0xdc00);
+                c = 0x10000 + ((c - 0xd800) << 10) + (str[index + 1] -
+                    0xdc00);
                   ++index;
                 } else if ((c & 0xf800) == 0xd800) {
                   // unpaired surrogate
@@ -254,7 +254,7 @@ namespace MailLibTest {
                   if (possibleCount == 0) {
                     if (words.Length == 1) {
                throw new ArgumentException("word '" + words[0] +
-                      "' expected");
+                    "' expected");
                     } else {
                     throw new ArgumentException("unexpected word found");
                     }
@@ -283,8 +283,8 @@ namespace MailLibTest {
           if (c<'0' || c>'9') {
             throw new ArgumentException("Expected number");
           }
-          bool hex = false;
-          int value = 0;
+          var hex = false;
+          var value = 0;
           if (c=='0') {
             c = input.ReadChar();
             if (c=='x') {

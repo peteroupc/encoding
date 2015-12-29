@@ -417,7 +417,7 @@
 <summary>Contains methods for converting text from one character
             encoding to another. This class also contains convenience methods
             for converting strings and other character inputs to sequences of
-            bytes.
+            bytes and vice versa.
             <para>The Encoding Standard, which is a Candidate Recommendation as
             of early November 2015, defines algorithms for the most common
             character encodings used on Web pages and recommends the UTF-8
@@ -432,7 +432,7 @@
             <item>A <b>character set</b> is a set of code points which are each
             assigned to a single text character. (This may also be called a
             <i>coded character set</i>.) As used here, character sets don't
-            define the in-memory representation of those code points.</item>
+            define how code points are laid out in memory.</item>
             <item>A <b>character encoding</b> is a mapping from a sequence of
             code points, in one or more specific character sets, to a sequence
             of bytes and vice versa.</item>
@@ -839,7 +839,7 @@
             <returns>An ICharacterInput object.</returns>
 </doc>
 <doc name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,System.IO.Stream)">
-<summary>Not documented yet.
+<summary>Converts a character encoding into a character input stream, given a readable data stream. But if the input stream starts with a UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may be, rather than the given character encoding.This method implements the "decode" algorithm specified in the Encoding standard.
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing ICharacterEncoding and
             can be called as follows:

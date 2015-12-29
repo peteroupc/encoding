@@ -9,20 +9,20 @@ import com.upokecenter.text.encoders.*;
     /**
      * Contains methods for converting text from one character encoding to another.
      * This class also contains convenience methods for converting strings
-     * and other character inputs to sequences of bytes. <p>The Encoding
-     * Standard, which is a Candidate Recommendation as of early November
-     * 2015, defines algorithms for the most common character encodings used
-     * on Web pages and recommends the UTF-8 encoding for new specifications
-     * and Web pages. Calling the <code>GetEncoding(name)</code> method returns
-     * one of the character encodings with the given name under the Encoding
-     * Standard.</p> <p>Now let's define some terms.</p> <p><b>Encoding
-     * Terms</b></p> <ul> <li>A <b>code point</b> is a number that
-     * identifies a single text character, such as a letter, digit, or
+     * and other character inputs to sequences of bytes and vice versa.
+     * <p>The Encoding Standard, which is a Candidate Recommendation as of
+     * early November 2015, defines algorithms for the most common character
+     * encodings used on Web pages and recommends the UTF-8 encoding for new
+     * specifications and Web pages. Calling the <code>GetEncoding(name)</code>
+     * method returns one of the character encodings with the given name
+     * under the Encoding Standard.</p> <p>Now let's define some terms.</p>
+     * <p><b>Encoding Terms</b></p> <ul> <li>A <b>code point</b> is a number
+     * that identifies a single text character, such as a letter, digit, or
      * symbol.</li> <li>A <b>character set</b> is a set of code points which
      * are each assigned to a single text character. (This may also be
      * called a <i>coded character set</i>.) As used here, character sets
-     * don't define the in-memory representation of those code points.</li>
-     * <li>A <b>character encoding</b> is a mapping from a sequence of code
+     * don't define how code points are laid out in memory.</li> <li>A
+     * <b>character encoding</b> is a mapping from a sequence of code
      * points, in one or more specific character sets, to a sequence of
      * bytes and vice versa.</li> <li><b>ASCII</b> is a 128-code-point
      * character set that includes the English letters and digits, common
@@ -125,7 +125,7 @@ private Encodings() {
      ICharacterEncoding encoding,
      IByteReader input) {
       if (encoding == null) {
-        throw new NullPointerException("encoding");
+        throw new NullPointerException("enc");
       }
       if (input == null) {
         throw new NullPointerException("input");
@@ -149,16 +149,16 @@ private Encodings() {
      * {@code input} is null.
      */
     public static String DecodeToString(
-     ICharacterEncoding encoding,
+     ICharacterEncoding enc,
      InputStream input) {
-      if (encoding == null) {
-        throw new NullPointerException("encoding");
+      if (enc == null) {
+        throw new NullPointerException("enc");
       }
       if (input == null) {
         throw new NullPointerException("input");
       }
       return InputToString(
-         GetDecoderInput(encoding, DataIO.ToReader(input)));
+         GetDecoderInput(enc, DataIO.ToReader(input)));
     }
 
     /**
@@ -266,7 +266,7 @@ int length) {
       ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
-        throw new NullPointerException("encoding");
+        throw new NullPointerException("enc");
       }
       return EncodeToBytes(input, encoding.GetEncoder());
     }
@@ -361,7 +361,7 @@ ICharacterEncoding enc) {
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
-        throw new NullPointerException("encoding");
+        throw new NullPointerException("enc");
       }
       EncodeToWriter(input, encoding.GetEncoder(), writer);
     }
@@ -459,7 +459,7 @@ IWriter writer) {
       ICharacterEncoding encoding,
       OutputStream output) throws java.io.IOException {
       if (encoding == null) {
-        throw new NullPointerException("encoding");
+        throw new NullPointerException("enc");
       }
       EncodeToWriter(input, encoding.GetEncoder(), DataIO.ToWriter(output));
     }
@@ -595,9 +595,14 @@ DataIO.ToWriter(output));
     }
 
     /**
-     * Not documented yet. <p>In the .NET implementation, this method is
-     * implemented as an extension method to any object implementing
-     * ICharacterEncoding and can be called as follows:
+     * Converts a character encoding into a character input stream, given a
+     * readable data stream. But if the input stream starts with a UTF-8 or
+     * UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as
+     * the case may be, rather than the given character encoding.This method
+     * implements the "decode" algorithm specified in the Encoding standard.
+     * <p>In the .NET implementation, this method is implemented as an
+     * extension method to any object implementing ICharacterEncoding and
+     * can be called as follows:
      * <code>encoding.GetDecoderInputSkipBom(input)</code>. If the object's class
      * already has a GetDecoderInputSkipBom method with the same parameters,
      * that method takes precedence over this extension method.</p>
@@ -1257,7 +1262,7 @@ boolean allowReplacement) {
       ICharacterEncoding encoding,
       String str) {
       if (encoding == null) {
-        throw new NullPointerException("encoding");
+        throw new NullPointerException("enc");
       }
       return StringToBytes(encoding.GetEncoder(), str);
     }

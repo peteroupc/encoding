@@ -8,41 +8,41 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
 using System;
 
 namespace PeterO {
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="T:PeterO.ArrayWriter"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="T:PeterO.ArrayWriter"]/*'/>
   public sealed class ArrayWriter : IWriter {
     private int retvalPos;
     private int retvalMax;
     private byte[] retval;
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.ArrayWriter.Clear"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.ArrayWriter.Clear"]/*'/>
     public void Clear() {
       this.retvalPos = 0;
       this.retvalMax = 0;
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.ArrayWriter.#ctor"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.ArrayWriter.#ctor"]/*'/>
     public ArrayWriter() : this(16) {
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.ArrayWriter.#ctor(System.Int32)"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.ArrayWriter.#ctor(System.Int32)"]/*'/>
     public ArrayWriter(int initialSize) {
       this.retval = new byte[initialSize];
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.ArrayWriter.ToArray"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.ArrayWriter.ToArray"]/*'/>
     public byte[] ToArray() {
       var ret = new byte[this.retvalMax];
       Array.Copy(this.retval, 0, ret, 0, this.retvalMax);
       return ret;
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.ArrayWriter.WriteByte(System.Int32)"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.ArrayWriter.WriteByte(System.Int32)"]/*'/>
     public void WriteByte(int byteValue) {
       if (this.retval.Length <= this.retvalPos) {
         // Array too small, make it grow
@@ -58,9 +58,8 @@ namespace PeterO {
       this.retvalMax = Math.Max(this.retvalMax, this.retvalPos);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.ArrayWriter.Write(System.Byte[],System.Int32,System.Int32)"]'
-    /// />
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.ArrayWriter.Write(System.Byte[],System.Int32,System.Int32)"]/*'/>
     public void Write(byte[] src, int offset, int length) {
       if (src == null) {
         throw new ArgumentNullException("src");

@@ -3,18 +3,18 @@ package com.upokecenter.text.encoders;
   public final class Gb18030 {
 private Gb18030() {
 }
-    private static final short[] table = new short[23940];
+    private static final short[] ValueTable = new short[23940];
 
     static {
-      System.arraycopy(method0(), 0, table, 0, 4096);
-      System.arraycopy(method1(), 0, table, 4096, 4096);
-      System.arraycopy(method2(), 0, table, 8192, 4096);
-      System.arraycopy(method3(), 0, table, 12288, 4096);
-      System.arraycopy(method4(), 0, table, 16384, 4096);
-      System.arraycopy(method5(), 0, table, 20480, 3460);
+      System.arraycopy(method0(), 0, ValueTable, 0, 4096);
+      System.arraycopy(method1(), 0, ValueTable, 4096, 4096);
+      System.arraycopy(method2(), 0, ValueTable, 8192, 4096);
+      System.arraycopy(method3(), 0, ValueTable, 12288, 4096);
+      System.arraycopy(method4(), 0, ValueTable, 16384, 4096);
+      System.arraycopy(method5(), 0, ValueTable, 20480, 3460);
     }
 
-    private static final int[] indextable ={
+    private static final int[] ValueIndextable = {
 19970, 20496, 0, 256, 20497, 20833, 256, 256, 20835, 21278, 512, 256, 21279,
   21818, 768, 256, 21819, 22210, 1024, 256, 22211, 22608, 1280, 256, 22610,
   22979, 1536, 256, 22980, 23321, 1792, 256, 23322, 23758, 2048, 256, 23759,
@@ -55,12 +55,13 @@ private Gb18030() {
  return -1;
 }
       short cps = ((short)(codepoint & 0xffff));
-      for (int i = 0; i < indextable.length; i += 4) {
-        if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
-          int startindex = indextable[i + 2];
-          int length = indextable[i + 3];
+      for (int i = 0; i < ValueIndextable.length; i += 4) {
+  if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
+          1]) {
+          int startindex = ValueIndextable[i + 2];
+          int length = ValueIndextable[i + 3];
           for (int j = 0; j < length; ++j) {
-            if (table[j + startindex] == cps) {
+            if (ValueTable[j + startindex] == cps) {
  return j + startindex;
 }
           }
@@ -73,7 +74,7 @@ private Gb18030() {
       if (index < 0 || index >= 23940) {
  return -1;
 }
-      int cp = ((int)table[index]) & 0xffff;
+      int cp = ((int)ValueTable[index]) & 0xffff;
       return (cp == 0) ? -1 : cp;
     }
 

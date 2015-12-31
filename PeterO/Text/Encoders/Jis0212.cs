@@ -2,18 +2,18 @@ using System;
 
 namespace PeterO.Text.Encoders {
   internal static class Jis0212 {
-    private static readonly short[] table = new short[7211];
+    private static readonly short[] ValueTable = new short[7211];
 
     static Jis0212() {
-      Array.Copy(method0(), 0, table, 0, 4096);
-      Array.Copy(method1(), 0, table, 4096, 3115);
+      Array.Copy(method0(), 0, ValueTable, 0, 4096);
+      Array.Copy(method1(), 0, ValueTable, 4096, 3115);
     }
 
     public static int IndexToCodePoint(int index) {
       if (index < 0 || index >= 7211) {
  return -1;
 }
-      int cp = ((int)table[index]) & 0xffff;
+      int cp = ((int)ValueTable[index]) & 0xffff;
       return (cp == 0) ? -1 : cp;
     }
 

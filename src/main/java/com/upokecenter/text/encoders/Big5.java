@@ -3,17 +3,17 @@ package com.upokecenter.text.encoders;
   public final class Big5 {
 private Big5() {
 }
-    private static final int[] table = new int[19782];
+    private static final int[] ValueTable = new int[19782];
 
     static {
-      System.arraycopy(method0(), 0, table, 0, 4096);
-      System.arraycopy(method1(), 0, table, 4096, 4096);
-      System.arraycopy(method2(), 0, table, 8192, 4096);
-      System.arraycopy(method3(), 0, table, 12288, 4096);
-      System.arraycopy(method4(), 0, table, 16384, 3398);
+      System.arraycopy(method0(), 0, ValueTable, 0, 4096);
+      System.arraycopy(method1(), 0, ValueTable, 4096, 4096);
+      System.arraycopy(method2(), 0, ValueTable, 8192, 4096);
+      System.arraycopy(method3(), 0, ValueTable, 12288, 4096);
+      System.arraycopy(method4(), 0, ValueTable, 16384, 3398);
     }
 
-    private static final int[] indextable ={
+    private static final int[] ValueIndextable = {
 167, 65509, 5024, 256, 711, 65370, 5280, 256, 19981, 31435, 5536, 256,
   20018, 38433, 5792, 256, 20006, 38450, 6048, 256, 22369, 33459, 6304, 256,
   20127, 38750, 6560, 256, 20056, 39321, 6816, 256, 22466, 32607, 7072, 256,
@@ -59,12 +59,13 @@ private Big5() {
       if (codepoint == 21317) {
  return 5599;
 }
-      for (int i = 0; i < indextable.length; i += 4) {
-        if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
-          int startindex = indextable[i + 2];
-          int length = indextable[i + 3];
+      for (int i = 0; i < ValueIndextable.length; i += 4) {
+  if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
+          1]) {
+          int startindex = ValueIndextable[i + 2];
+          int length = ValueIndextable[i + 3];
           for (int j = 0; j < length; ++j) {
-            if (table[j + startindex] == codepoint) {
+            if (ValueTable[j + startindex] == codepoint) {
  return j + startindex;
 }
           }
@@ -77,7 +78,7 @@ private Big5() {
       if (index < 0 || index >= 19782) {
  return -1;
 }
-      int cp = table[index];
+      int cp = ValueTable[index];
       return (cp == 0) ? -1 : cp;
     }
 

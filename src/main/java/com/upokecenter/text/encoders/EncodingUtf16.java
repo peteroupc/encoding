@@ -8,9 +8,9 @@ import com.upokecenter.text.*;
   public class EncodingUtf16 implements ICharacterEncoding {
     private static class Decoder implements ICharacterDecoder {
       private final DecoderState state;
+      private final boolean bigEndian;
       private int lead;
       private int surrogate;
-      private final boolean bigEndian;
 
       public Decoder(boolean bigEndian) {
         this.bigEndian = bigEndian;

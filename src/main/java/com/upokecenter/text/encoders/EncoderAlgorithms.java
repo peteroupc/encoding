@@ -9,8 +9,8 @@ import com.upokecenter.text.*;
   public class EncoderAlgorithms {
     private static class DecodeWithFallbackDecoder implements ICharacterDecoder,
       ICharacterEncoding {
-      private boolean bomChecked;
       private final DecoderState state;
+      private boolean bomChecked;
       private ICharacterDecoder decoder;
       private boolean useOriginal;
 
@@ -92,9 +92,9 @@ import com.upokecenter.text.*;
 
     private static class BomBufferedTransform implements IByteReader {
       private final int[] buffer;
+      private final IByteReader transform;
       private int bufferOffset;
       private int bufferCount;
-      private final IByteReader transform;
       private boolean bomChecked;
 
       public BomBufferedTransform(IByteReader transform) {

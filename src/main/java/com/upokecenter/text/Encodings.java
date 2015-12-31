@@ -102,7 +102,7 @@ private Encodings() {
      */
     public static final ICharacterEncoding UTF8 = new EncodingUtf8();
 
-    private static final Map<String, String> charsetAliases =
+    private static final Map<String, String> ValueCharsetAliases =
         CreateAliasMap();
 
     /**
@@ -125,7 +125,7 @@ private Encodings() {
      ICharacterEncoding encoding,
      IByteReader input) {
       if (encoding == null) {
-        throw new NullPointerException("enc");
+        throw new NullPointerException("encoding");
       }
       if (input == null) {
         throw new NullPointerException("input");
@@ -145,8 +145,8 @@ private Encodings() {
      * encoder and a decoder).
      * @param input A readable byte stream.
      * @return A string consisting of the decoded text.
-     * @throws java.lang.NullPointerException The parameter {@code encoding} or
-     * {@code input} is null.
+     * @throws java.lang.NullPointerException The parameter "encoding" or {@code
+     * input} is null.
      */
     public static String DecodeToString(
      ICharacterEncoding enc,
@@ -211,7 +211,7 @@ byte[] bytes) {
      * bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * 's length minus {@code offset} is less than {@code length}.
+     * ' s length minus {@code offset} is less than {@code length}.
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
@@ -322,7 +322,7 @@ int length) {
      * called as follows: <code>str.EncodeToBytes(enc)</code>. If the object's
      * class already has a EncodeToBytes method with the same parameters,
      * that method takes precedence over this extension method.</p>
-     * @param str A string object.
+     * @param str A text string.
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @return A byte array.
@@ -338,7 +338,7 @@ ICharacterEncoding enc) {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
-      return EncodeToBytes(new StringCharacterInput(str), enc);
+      return EncodeToBytes(new CharacterReader(str), enc);
     }
 
     /**
@@ -419,7 +419,7 @@ ICharacterEncoding enc) {
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
      * takes precedence over this extension method.</p>
-     * @param str A string object to encode.
+     * @param str A text string to encode.
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @param writer A byte writer where the encoded bytes will be written to.
@@ -436,7 +436,7 @@ IWriter writer) {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
-      EncodeToWriter(new StringCharacterInput(str), enc, writer);
+      EncodeToWriter(new CharacterReader(str), enc, writer);
     }
 
     /**
@@ -499,7 +499,7 @@ IWriter writer) {
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
      * takes precedence over this extension method.</p>
-     * @param str A string object to encode.
+     * @param str A text string to encode.
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @param output A writable data stream.
@@ -517,7 +517,7 @@ OutputStream output) throws java.io.IOException {
         throw new NullPointerException("enc");
       }
    EncodeToWriter(
-new StringCharacterInput(str),
+new CharacterReader(str),
 enc,
 DataIO.ToWriter(output));
     }
@@ -558,7 +558,7 @@ DataIO.ToWriter(output));
      * a character input stream. If the decoder returns -2 (indicating a
      * decode error), the character input stream handles the error by
      * returning a replacement character in its place.
-     * @param stream Byte stream to convert into Unicode characters.
+     * @param input Byte stream to convert into Unicode characters.
      * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInput(
@@ -578,9 +578,10 @@ DataIO.ToWriter(output));
      * Encoding standard.</p> <p>In the .NET implementation, this method is
      * implemented as an extension method to any object implementing
      * ICharacterEncoding and can be called as follows:
-     * "encoding.GetDecoderInput(input)". If the object's class already has
-     * a GetDecoderInput method with the same parameters, that method takes
-     * precedence over this extension method.</p>
+     * <code>encoding.GetDecoderInputSkipBom(input)</code>. If the object's class
+     * already has a <code>GetDecoderInputSkipBom</code> method with the same
+     * parameters, that method takes precedence over this extension
+     * method.</p>
      * @param encoding Encoding object that exposes a decoder to be converted into
      * a character input stream. If the decoder returns -2 (indicating a
      * decode error), the character input stream handles the error by
@@ -604,13 +605,14 @@ DataIO.ToWriter(output));
      * extension method to any object implementing ICharacterEncoding and
      * can be called as follows:
      * <code>encoding.GetDecoderInputSkipBom(input)</code>. If the object's class
-     * already has a GetDecoderInputSkipBom method with the same parameters,
-     * that method takes precedence over this extension method.</p>
+     * already has a <code>GetDecoderInputSkipBom</code> method with the same
+     * parameters, that method takes precedence over this extension
+     * method.</p>
      * @param encoding Encoding object that exposes a decoder to be converted into
      * a character input stream. If the decoder returns -2 (indicating a
      * decode error), the character input stream handles the error by
      * returning a replacement character in its place.
-     * @param stream Byte stream to convert into Unicode characters.
+     * @param input Byte stream to convert into Unicode characters.
      * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInputSkipBom(
@@ -1186,7 +1188,7 @@ boolean allowReplacement) {
       }
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
-      return charsetAliases.containsKey(name) ? charsetAliases.get(name) :
+      return ValueCharsetAliases.containsKey(name) ? ValueCharsetAliases.get(name) :
              "";
     }
 
@@ -1222,8 +1224,8 @@ boolean allowReplacement) {
         // but occurs quite frequently
         return "us-ascii";
       }
-      if (charsetAliases.containsKey(name)) {
-        return charsetAliases.get(name);
+      if (ValueCharsetAliases.containsKey(name)) {
+        return ValueCharsetAliases.get(name);
       }
       if (name.equals("iso-2022-jp-2")) {
         // NOTE: Treat as the same as iso-2022-jp
@@ -1294,7 +1296,7 @@ boolean allowReplacement) {
         throw new NullPointerException("str");
       }
       return EncodeToBytes(
-          new StringCharacterInput(str),
+          new CharacterReader(str),
           encoder);
     }
 
@@ -1308,7 +1310,7 @@ boolean allowReplacement) {
      * follows: <code>str.StringToInput(offset, length)</code>. If the object's
      * class already has a StringToInput method with the same parameters,
      * that method takes precedence over this extension method.</p>
-     * @param str A string object.
+     * @param str A text string.
      * @return An ICharacterInput object.
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
@@ -1330,7 +1332,7 @@ boolean allowReplacement) {
      * If the object's class already has a StringToInput method with the
      * same parameters, that method takes precedence over this extension
      * method.</p>
-     * @param str A string object.
+     * @param str A text string.
      * @param offset A zero-based index showing where the desired portion of {@code
      * str} begins.
      * @param length The length, in code units, of the desired portion of {@code
@@ -1338,7 +1340,7 @@ boolean allowReplacement) {
      * @return An ICharacterInput object.
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
-     * less than 0 or greater than {@code str} 's length, or {@code str} 's
+     * less than 0 or greater than {@code str} 's length, or {@code str} ' s
      * length minus {@code offset} is less than {@code length}.
      */
     public static ICharacterInput StringToInput(
@@ -1368,7 +1370,7 @@ int length) {
         throw new IllegalArgumentException("str's length minus " + offset + " (" +
           (str.length() - offset) + ") is less than " + length);
       }
-      return new StringCharacterInput(str, offset, length);
+      return new CharacterReader(str, offset, length);
     }
 
     private static Map<String, String> CreateAliasMap() {
@@ -1691,7 +1693,7 @@ int length) {
      * @throws java.lang.NullPointerException The parameter {@code buffer} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code buffer} 's length, or {@code
-     * buffer} 's length minus {@code offset} is less than {@code length}.
+     * buffer} ' s length minus {@code offset} is less than {@code length}.
      */
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {

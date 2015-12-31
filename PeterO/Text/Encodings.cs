@@ -7,24 +7,23 @@ using PeterO;
 using PeterO.Text.Encoders;
 
 namespace PeterO.Text {
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="T:PeterO.Text.Encodings"]'/>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="T:PeterO.Text.Encodings"]/*'/>
   public static class Encodings {
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="F:PeterO.Text.Encodings.UTF8"]'/>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="F:PeterO.Text.Encodings.UTF8"]/*'/>
     public static readonly ICharacterEncoding UTF8 = new EncodingUtf8();
 
-    private static readonly IDictionary<string, string> charsetAliases =
+    private static readonly IDictionary<string, string> ValueCharsetAliases =
         CreateAliasMap();
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static string DecodeToString(
      this ICharacterEncoding encoding,
      IByteReader input) {
       if (encoding == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException("encoding");
       }
       if (input == null) {
         throw new ArgumentNullException("input");
@@ -33,9 +32,8 @@ namespace PeterO.Text {
          GetDecoderInput(encoding, input));
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static string DecodeToString(
      this ICharacterEncoding enc,
      Stream input) {
@@ -49,9 +47,8 @@ namespace PeterO.Text {
          GetDecoderInput(enc, DataIO.ToReader(input)));
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[])"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[])"]/*'/>
     public static string DecodeToString(
 this ICharacterEncoding enc,
 byte[] bytes) {
@@ -64,9 +61,8 @@ byte[] bytes) {
       return DecodeToString(enc, DataIO.ToReader(bytes));
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[],System.Int32,System.Int32)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[],System.Int32,System.Int32)"]/*'/>
     public static string DecodeToString(
 this ICharacterEncoding enc,
 byte[] bytes,
@@ -101,9 +97,8 @@ int length) {
       return DecodeToString(enc, DataIO.ToReader(bytes, offset, length));
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding)"]/*'/>
     public static byte[] EncodeToBytes(
       this ICharacterInput input,
       ICharacterEncoding encoding) {
@@ -113,9 +108,8 @@ int length) {
       return EncodeToBytes(input, encoding.GetEncoder());
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder)"]/*'/>
     public static byte[] EncodeToBytes(
       this ICharacterInput input,
       ICharacterEncoder encoder) {
@@ -140,9 +134,8 @@ int length) {
       return writer.ToArray();
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding)"]/*'/>
     public static byte[] EncodeToBytes(
 this string str,
 ICharacterEncoding enc) {
@@ -152,12 +145,11 @@ ICharacterEncoding enc) {
       if (enc == null) {
         throw new ArgumentNullException("enc");
       }
-      return EncodeToBytes(new StringCharacterInput(str), enc);
+      return EncodeToBytes(new CharacterReader(str), enc);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,PeterO.IWriter)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
       this ICharacterInput input,
       ICharacterEncoding encoding,
@@ -168,9 +160,8 @@ ICharacterEncoding enc) {
       EncodeToWriter(input, encoding.GetEncoder(), writer);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,PeterO.IWriter)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
       this ICharacterInput input,
       ICharacterEncoder encoder,
@@ -197,9 +188,8 @@ ICharacterEncoding enc) {
       }
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,PeterO.IWriter)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
 this string str,
 ICharacterEncoding enc,
@@ -210,12 +200,11 @@ IWriter writer) {
       if (enc == null) {
         throw new ArgumentNullException("enc");
       }
-      EncodeToWriter(new StringCharacterInput(str), enc, writer);
+      EncodeToWriter(new CharacterReader(str), enc, writer);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,System.IO.Stream)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
       this ICharacterInput input,
       ICharacterEncoding encoding,
@@ -226,9 +215,8 @@ IWriter writer) {
       EncodeToWriter(input, encoding.GetEncoder(), DataIO.ToWriter(output));
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,System.IO.Stream)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
       this ICharacterInput input,
       ICharacterEncoder encoder,
@@ -237,9 +225,8 @@ IWriter writer) {
         EncodeToWriter(input, encoder, writer);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,System.IO.Stream)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
 this string str,
 ICharacterEncoding enc,
@@ -251,14 +238,13 @@ Stream output) {
         throw new ArgumentNullException("enc");
       }
    EncodeToWriter(
-new StringCharacterInput(str),
+new CharacterReader(str),
 enc,
 DataIO.ToWriter(output));
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static ICharacterInput GetDecoderInput(
       this ICharacterEncoding encoding,
       IByteReader stream) {
@@ -267,9 +253,8 @@ DataIO.ToWriter(output));
         stream);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static ICharacterInput GetDecoderInput(
       this ICharacterEncoding encoding,
       Stream input) {
@@ -278,18 +263,16 @@ DataIO.ToWriter(output));
         DataIO.ToReader(input));
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static ICharacterInput GetDecoderInputSkipBom(
       this ICharacterEncoding encoding,
       IByteReader stream) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static ICharacterInput GetDecoderInputSkipBom(
       this ICharacterEncoding encoding,
       Stream input) {
@@ -298,23 +281,20 @@ DataIO.ToWriter(output));
         encoding);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String)"]/*'/>
     public static ICharacterEncoding GetEncoding(string name) {
       return GetEncoding(name, false, false);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean)"]/*'/>
     public static ICharacterEncoding GetEncoding(string name, bool forEmail) {
       return GetEncoding(name, forEmail, false);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]/*'/>
     public static ICharacterEncoding GetEncoding(
 string name,
 bool forEmail,
@@ -752,9 +732,8 @@ bool allowReplacement) {
           EncodingReplacement()) : null);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.InputToString(PeterO.Text.ICharacterInput)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.InputToString(PeterO.Text.ICharacterInput)"]/*'/>
     public static string InputToString(this ICharacterInput reader) {
       var builder = new StringBuilder();
       while (true) {
@@ -772,22 +751,20 @@ bool allowReplacement) {
       return builder.ToString();
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.ResolveAlias(System.String)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.ResolveAlias(System.String)"]/*'/>
     public static string ResolveAlias(string name) {
       if (String.IsNullOrEmpty(name)) {
         return String.Empty;
       }
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
-      return charsetAliases.ContainsKey(name) ? charsetAliases[name] :
+      return ValueCharsetAliases.ContainsKey(name) ? ValueCharsetAliases[name] :
              String.Empty;
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.ResolveAliasForEmail(System.String)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.ResolveAliasForEmail(System.String)"]/*'/>
     public static string ResolveAliasForEmail(string name) {
       if (String.IsNullOrEmpty(name)) {
         return String.Empty;
@@ -803,8 +780,8 @@ bool allowReplacement) {
         // but occurs quite frequently
         return "us-ascii";
       }
-      if (charsetAliases.ContainsKey(name)) {
-        return charsetAliases[name];
+      if (ValueCharsetAliases.ContainsKey(name)) {
+        return ValueCharsetAliases[name];
       }
       if (name.Equals("iso-2022-jp-2")) {
         // NOTE: Treat as the same as iso-2022-jp
@@ -821,9 +798,8 @@ bool allowReplacement) {
       return String.Empty;
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoding,System.String)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoding,System.String)"]/*'/>
     public static byte[] StringToBytes(
       this ICharacterEncoding encoding,
       string str) {
@@ -833,9 +809,8 @@ bool allowReplacement) {
       return StringToBytes(encoding.GetEncoder(), str);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoder,System.String)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoder,System.String)"]/*'/>
     public static byte[] StringToBytes(
       this ICharacterEncoder encoder,
       string str) {
@@ -846,13 +821,12 @@ bool allowReplacement) {
         throw new ArgumentNullException("str");
       }
       return EncodeToBytes(
-          new StringCharacterInput(str),
+          new CharacterReader(str),
           encoder);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String)"]/*'/>
     public static ICharacterInput StringToInput(this string str) {
       if (str == null) {
         throw new ArgumentNullException("str");
@@ -860,9 +834,8 @@ bool allowReplacement) {
       return StringToInput(str, 0, str.Length);
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String,System.Int32,System.Int32)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String,System.Int32,System.Int32)"]/*'/>
     public static ICharacterInput StringToInput(
 this string str,
 int offset,
@@ -890,7 +863,7 @@ int length) {
         throw new ArgumentException("str's length minus " + offset + " (" +
           (str.Length - offset) + ") is less than " + length);
       }
-      return new StringCharacterInput(str, offset, length);
+      return new CharacterReader(str, offset, length);
     }
 
     private static IDictionary<string, string> CreateAliasMap() {
@@ -1116,9 +1089,8 @@ int length) {
       return aliases;
     }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.ToLowerCaseAscii(System.String)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.ToLowerCaseAscii(System.String)"]/*'/>
     private static string ToLowerCaseAscii(string str) {
       if (str == null) {
         return null;
@@ -1190,17 +1162,15 @@ int length) {
         this.stream = stream;
       }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar"]/*'/>
       public int ReadChar() {
         int c = this.reader.ReadChar(this.stream);
         return (c == -2) ? 0xfffd : c;
       }
 
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.Read(System.Int32[],System.Int32,System.Int32)"]'
-    /// />
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.Read(System.Int32[],System.Int32,System.Int32)"]/*'/>
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {
           throw new ArgumentNullException("buffer");

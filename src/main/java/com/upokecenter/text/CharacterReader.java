@@ -18,19 +18,20 @@ import java.io.*;
   public final class CharacterReader implements ICharacterInput {
     private final int mode;
     private final boolean errorThrow;
-    private int offset;
     private final boolean dontSkipUtf8Bom;
-
-    private ICharacterInput reader;
-
     private final String str;
+    private final int strLength;
     private final IByteReader stream;
 
+    private int offset;
+    private ICharacterInput reader;
+
     /**
-     * Initializes a new instance of the CharacterReader class using a Unicode
-     * 16-bit string; if the string begins with a byte-order mark (U + FEFF),
-     * it won't be skipped, and any unpaired surrogate code points (U+D800
-     * to U + DFFF) in the string are replaced with replacement characters
+     * Initializes a new instance of the <see
+     * cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit
+     * string; if the string begins with a byte-order mark (U + FEFF), it
+     * won't be skipped, and any unpaired surrogate code points (U+D800 to
+     * U + DFFF) in the string are replaced with replacement characters
      * (U + FFFD).
      * @param str The string to read.
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
@@ -40,9 +41,10 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the CharacterReader class using a Unicode
-     * 16-bit string; any unpaired surrogate code points (U + D800 to U + DFFF)
-     * in the string are replaced with replacement characters (U + FFFD).
+     * Initializes a new instance of the <see
+     * cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit
+     * string; any unpaired surrogate code points (U + D800 to U + DFFF) in the
+     * string are replaced with replacement characters (U + FFFD).
      * @param str The string to read.
      * @param skipByteOrderMark If true and the string begins with a byte-order
      * mark (U + FEFF), will skip that code point as it reads the string.
@@ -53,8 +55,9 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the CharacterReader class using a Unicode
-     * 16-bit string.
+     * Initializes a new instance of the <see
+     * cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit
+     * string.
      * @param str The string to read.
      * @param skipByteOrderMark If true and the string begins with a byte-order
      * mark (U + FEFF), will skip that code point as it reads the string.
@@ -71,7 +74,8 @@ boolean errorThrow) {
       if (str == null) {
         throw new NullPointerException("str");
       }
-      this.offset = (skipByteOrderMark && str.length() > 0 && str.charAt(0) ==
+      this.strLength = str.length();
+      this.offset = (skipByteOrderMark && this.strLength > 0 && str.charAt(0) ==
         0xfeff) ? 1 : 0;
       this.str = str;
       this.errorThrow = errorThrow;
@@ -81,10 +85,69 @@ boolean errorThrow) {
     }
 
     /**
-     * Initializes a new instance of the CharacterReader class; will read the
-     * stream as UTF-8, skip the byte-order mark (U + FEFF) if it appears
-     * first in the stream, and replace invalidly encoded bytes with
-     * replacement characters (U + FFFD).
+     * Initializes a new instance of the CharacterReader/> class.
+     * @param str A text string.
+     * @param offset A 32-bit signed integer.
+     * @param length Another 32-bit signed integer.
+     */
+    public CharacterReader(String str, int offset, int length) :
+      this(str, offset, length, false, false) {
+    }
+
+    /**
+     * Initializes a new instance of the CharacterReader/> class.
+     * @param str A text string.
+     * @param offset A 32-bit signed integer.
+     * @param length Another 32-bit signed integer.
+     * @param skipByteOrderMark A Boolean object.
+     * @param errorThrow Another Boolean object.
+     * @throws java.lang.NullPointerException The parameter {@code str} is null.
+     */
+    public CharacterReader(
+String str,
+int offset,
+int length,
+boolean skipByteOrderMark,
+boolean errorThrow) {
+      if (str == null) {
+  throw new NullPointerException("str");
+}
+if (offset < 0) {
+  throw new IllegalArgumentException("offset (" + offset +
+    ") is less than " + 0);
+}
+if (offset > str.length()) {
+  throw new IllegalArgumentException("offset (" + offset +
+    ") is more than " + str.length());
+}
+if (length < 0) {
+  throw new IllegalArgumentException("length (" + length +
+    ") is less than " + 0);
+}
+if (length > str.length()) {
+  throw new IllegalArgumentException("length (" + length +
+    ") is more than " + str.length());
+}
+if (str.length() - offset < length) {
+  throw new IllegalArgumentException("str's length minus " + offset + " (" +
+    (str.length() - offset) + ") is less than " + length);
+}
+      this.strLength = length;
+      this.offset = (skipByteOrderMark && length > 0 && str.charAt(offset) ==
+        0xfeff) ? offset + 1 : 0;
+      this.str = str;
+      this.errorThrow = errorThrow;
+      this.mode = -1;
+      this.dontSkipUtf8Bom = false;
+      this.stream = null;
+    }
+
+    /**
+     * Initializes a new instance of the <see
+     * cref='T:PeterO.Text.CharacterReader'/> class; will read the stream as
+     * UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
+     * stream, and replace invalidly encoded bytes with replacement
+     * characters (U + FFFD).
      * @param stream A readable data stream.
      * @throws java.lang.NullPointerException The parameter {@code stream} is null.
      */
@@ -93,7 +156,8 @@ boolean errorThrow) {
     }
 
     /**
-     * Initializes a new instance of the CharacterReader class; will skip the
+     * Initializes a new instance of the <see
+     * cref='T:PeterO.Text.CharacterReader'/> class; will skip the
      * byte-order mark (U + FEFF) if it appears first in the stream.
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
@@ -117,7 +181,8 @@ boolean errorThrow) {
     }
 
     /**
-     * Initializes a new instance of the CharacterReader class; will skip the
+     * Initializes a new instance of the <see
+     * cref='T:PeterO.Text.CharacterReader'/> class; will skip the
      * byte-order mark (U + FEFF) if it appears first in the stream and
      * replace invalidly encoded bytes with replacement characters (U + FFFD).
      * @param stream A readable byte stream.
@@ -138,7 +203,8 @@ boolean errorThrow) {
     }
 
     /**
-     * Initializes a new instance of the CharacterReader class.
+     * Initializes a new instance of the <see
+     * cref='T:PeterO.Text.CharacterReader'/> class.
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream
@@ -241,8 +307,8 @@ boolean dontSkipUtf8Bom) {
       if (this.stream != null) {
         return this.DetectUnicodeEncoding();
       } else {
-        int c = (this.offset < this.str.length()) ? this.str.charAt(this.offset) : -1;
-        if ((c & 0xfc00) == 0xd800 && this.offset + 1 < this.str.length() &&
+        int c = (this.offset < this.strLength) ? this.str.charAt(this.offset) : -1;
+        if ((c & 0xfc00) == 0xd800 && this.offset + 1 < this.strLength &&
                 this.str.charAt(this.offset + 1) >= 0xdc00 && this.str.charAt(this.offset + 1)
                 <= 0xdfff) {
           // Get the Unicode code point for the surrogate pair
@@ -670,9 +736,9 @@ this.errorThrow);
 
     private static final class Utf8Reader implements ICharacterInput {
       private final IByteReader stream;
-      private int lastChar;
       private final SavedState state;
       private final boolean errorThrow;
+      private int lastChar;
 
       public Utf8Reader(IByteReader stream, boolean errorThrow) {
         this.stream = stream;

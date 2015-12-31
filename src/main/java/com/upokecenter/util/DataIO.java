@@ -51,7 +51,7 @@ private DataIO() {
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * 's length minus {@code offset} is less than {@code length}.
+     * ' s length minus {@code offset} is less than {@code length}.
      */
     public static IReader ToReader(
 byte[] bytes,
@@ -109,7 +109,7 @@ int length) {
      * length)</code>. If the object's class already has a ToByteReader method
      * with the same parameters, that method takes precedence over this
      * extension method.</p>
-     * @param bytes Not documented yet.
+     * @param bytes The parameter {@code bytes} is not documented yet.
      * @param offset A zero-based index showing where the desired portion of {@code
      * bytes} begins.
      * @param length The length, in bytes, of the desired portion of {@code bytes}
@@ -117,7 +117,7 @@ int length) {
      * @return An IByteReader object.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * 's length minus {@code offset} is less than {@code length}.
+     * ' s length minus {@code offset} is less than {@code length}.
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      * @deprecated Use ToReader instead.
  */
@@ -136,7 +136,7 @@ int length) {
      * object's class already has a ToByteReader method with the same
      * parameters, that method takes precedence over this extension
      * method.</p>
-     * @param input Not documented yet.
+     * @param input The parameter {@code input} is not documented yet.
      * @return An IByteReader object.
      * @deprecated Use ToReader instead.
  */
@@ -152,7 +152,7 @@ int length) {
      * object's class already has a ToByteReader method with the same
      * parameters, that method takes precedence over this extension
      * method.</p>
-     * @param bytes Not documented yet.
+     * @param bytes The parameter {@code bytes} is not documented yet.
      * @return An IByteReader object.
      * @deprecated Use ToReader instead.
  */
@@ -201,8 +201,8 @@ int length) {
 
     private static final class ByteArrayTransform implements IReader {
       private final byte[] bytes;
-      private int offset;
       private final int endOffset;
+      private int offset;
 
       public ByteArrayTransform(byte[] bytes, int offset, int length) {
         this.bytes = bytes;
@@ -225,7 +225,7 @@ int length) {
 
     /**
      * This is an internal method.
-     * @param bytes Not documented yet.
+     * @param bytes The parameter {@code bytes} is not documented yet.
      * @param offset A zero-based index showing where the desired portion of {@code
      * bytes} begins.
      * @param length The length, in bytes, of the desired portion of {@code bytes}
@@ -234,7 +234,7 @@ int length) {
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * 's length minus {@code offset} is less than {@code length}.
+     * ' s length minus {@code offset} is less than {@code length}.
      */
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
@@ -302,7 +302,7 @@ if (bytes.length - offset < length) {
      * not more than "bytes" 's length).
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * 's length minus {@code offset} is less than {@code length}.
+     * ' s length minus {@code offset} is less than {@code length}.
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      */
       public void write(byte[] bytes, int offset, int length) {
@@ -339,7 +339,7 @@ if (bytes.length - offset < length) {
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * 's length minus {@code offset} is less than {@code length}.
+     * ' s length minus {@code offset} is less than {@code length}.
      */
       public void write(byte[] bytes, int offset, int length) {
         if (bytes == null) {

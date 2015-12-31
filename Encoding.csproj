@@ -52,12 +52,15 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\Encoding.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>PeterO.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DocumentationFile>bin\Release\Encoding.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>PeterO.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseNet40|AnyCPU'">
     <DocumentationFile>bin\ReleaseNet40\Encoding.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>PeterO.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -98,13 +101,13 @@
     <Compile Include="PeterO\Text\ICharacterEncoder.cs" />
     <Compile Include="PeterO\Text\ICharacterEncoding.cs" />
     <Compile Include="PeterO\Text\ICharacterInput.cs" />
-    <Compile Include="PeterO\Text\StringCharacterInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="PeterO.ruleset" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\StyleCop\v4.7\StyleCop.targets" />

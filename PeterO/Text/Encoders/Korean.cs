@@ -2,18 +2,18 @@ using System;
 
 namespace PeterO.Text.Encoders {
   internal static class Korean {
-    private static readonly short[] table = new short[23750];
+    private static readonly short[] ValueTable = new short[23750];
 
     static Korean() {
-      Array.Copy(method0(), 0, table, 0, 4096);
-      Array.Copy(method1(), 0, table, 4096, 4096);
-      Array.Copy(method2(), 0, table, 8192, 4096);
-      Array.Copy(method3(), 0, table, 12288, 4096);
-      Array.Copy(method4(), 0, table, 16384, 4096);
-      Array.Copy(method5(), 0, table, 20480, 3270);
+      Array.Copy(method0(), 0, ValueTable, 0, 4096);
+      Array.Copy(method1(), 0, ValueTable, 4096, 4096);
+      Array.Copy(method2(), 0, ValueTable, 8192, 4096);
+      Array.Copy(method3(), 0, ValueTable, 12288, 4096);
+      Array.Copy(method4(), 0, ValueTable, 16384, 4096);
+      Array.Copy(method5(), 0, ValueTable, 20480, 3270);
     }
 
-    private static readonly int[] indextable ={
+    private static readonly int[] ValueIndextable = {
 44034, 44378, 0, 256, 44379, 44702, 256, 256, 44703, 45002, 512, 256, 45004,
   45306, 768, 256, 45307, 45622, 1024, 256, 45623, 45949, 1280, 256, 45950,
   46229, 1536, 256, 46230, 46547, 1792, 256, 46548, 46811, 2048, 256, 46812,
@@ -54,12 +54,13 @@ namespace PeterO.Text.Encoders {
  return -1;
 }
       short cps = unchecked((short)(codepoint & 0xffff));
-      for (int i = 0; i < indextable.Length; i += 4) {
-        if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
-          int startindex = indextable[i + 2];
-          int length = indextable[i + 3];
+      for (int i = 0; i < ValueIndextable.Length; i += 4) {
+  if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
+          1]) {
+          int startindex = ValueIndextable[i + 2];
+          int length = ValueIndextable[i + 3];
           for (int j = 0; j < length; ++j) {
-            if (table[j + startindex] == cps) {
+            if (ValueTable[j + startindex] == cps) {
  return j + startindex;
 }
           }
@@ -72,7 +73,7 @@ namespace PeterO.Text.Encoders {
       if (index < 0 || index >= 23750) {
  return -1;
 }
-      int cp = ((int)table[index]) & 0xffff;
+      int cp = ((int)ValueTable[index]) & 0xffff;
       return (cp == 0) ? -1 : cp;
     }
 

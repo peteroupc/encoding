@@ -8,9 +8,9 @@ namespace PeterO.Text.Encoders {
   internal class EncodingUtf16 : ICharacterEncoding {
     private class Decoder : ICharacterDecoder {
       private readonly DecoderState state;
+      private readonly bool bigEndian;
       private int lead;
       private int surrogate;
-      private readonly bool bigEndian;
 
       public Decoder(bool bigEndian) {
         this.bigEndian = bigEndian;

@@ -1,14 +1,16 @@
 <docs>
 <doc name="T:PeterO.ArrayWriter">
-<summary>A growable array of bytes.</summary>
+<summary>An array of bytes that grows as needed.</summary>
 </doc>
 <doc name="M:PeterO.ArrayWriter.#ctor">
-<summary>Initializes a new instance of the ArrayWriter class with a
-            default buffer size.</summary>
+<summary>Initializes a new instance of the
+            <see cref='T:PeterO.ArrayWriter'/> class with a default buffer
+            size.</summary>
 </doc>
 <doc name="M:PeterO.ArrayWriter.#ctor(System.Int32)">
-<summary>Initializes a new instance of the ArrayWriter class with
-            the given initial buffer size.</summary>
+<summary>Initializes a new instance of the
+            <see cref='T:PeterO.ArrayWriter'/> class with the given initial buffer
+            size.</summary>
             <param name='initialSize'>A 32-bit signed integer.</param>
 </doc>
 <doc name="M:PeterO.ArrayWriter.Clear">
@@ -28,10 +30,11 @@
             <param name='length'>The number of elements in the desired portion
             of <paramref name='src'/> (but not more than <paramref name='src'/>
             's length).</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='src'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='src'/> is null.</exception>
             <exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='src'/> 's length, or <paramref name='src'/> 's length minus <paramref name='offset'/> is less than
-            <paramref name='length'/>.</exception>
+            greater than <paramref name='src'/> 's length, or <paramref name='src'/> ' s length minus <paramref name='offset'/> is less
+            than <paramref name='length'/>.</exception>
 </doc>
 <doc name="M:PeterO.ArrayWriter.WriteByte(System.Int32)">
 <summary>Writes an 8-bit byte to the array.</summary>
@@ -45,15 +48,17 @@
 </doc>
 <doc name="M:PeterO.DataIO.ByteArrayTransform.Read(System.Byte[],System.Int32,System.Int32)">
 <summary>This is an internal method.</summary>
-            <param name='bytes'>Not documented yet.</param>
+            <param name='bytes'>The parameter <paramref name='bytes'/> is not
+            documented yet.</param>
             <param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='bytes'/> begins.</param>
             <param name='length'>The length, in bytes, of the desired portion
             of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param>
             <returns>A 32-bit signed integer.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null.</exception>
             <exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> 's length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
 </doc>
 <doc name="M:PeterO.DataIO.ByteArrayTransform.ReadByte">
@@ -68,7 +73,8 @@
             class already has a ToByteReader method with the same parameters,
             that method takes precedence over this extension
             method.</para></summary>
-            <param name='bytes'>Not documented yet.</param>
+            <param name='bytes'>The parameter <paramref name='bytes'/> is not
+            documented yet.</param>
             <returns>An IByteReader object.</returns>
 </doc>
 <doc name="M:PeterO.DataIO.ToByteReader(System.Byte[],System.Int32,System.Int32)">
@@ -79,16 +85,18 @@
             the object's class already has a ToByteReader method with the same
             parameters, that method takes precedence over this extension
             method.</para></summary>
-            <param name='bytes'>Not documented yet.</param>
+            <param name='bytes'>The parameter <paramref name='bytes'/> is not
+            documented yet.</param>
             <param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='bytes'/> begins.</param>
             <param name='length'>The length, in bytes, of the desired portion
             of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param>
             <returns>An IByteReader object.</returns>
             <exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> 's length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.DataIO.ToByteReader(System.IO.Stream)">
 <summary>Not documented yet.
@@ -98,7 +106,8 @@
             class already has a ToByteReader method with the same parameters,
             that method takes precedence over this extension
             method.</para></summary>
-            <param name='input'>Not documented yet.</param>
+            <param name='input'>The parameter <paramref name='input'/> is not
+            documented yet.</param>
             <returns>An IByteReader object.</returns>
 </doc>
 <doc name="M:PeterO.DataIO.ToReader(System.Byte[])">
@@ -112,7 +121,8 @@
             method.</para></summary>
             <param name='bytes'>The byte array to wrap.</param>
             <returns>A byte reader wrapping the byte array.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.DataIO.ToReader(System.Byte[],System.Int32,System.Int32)">
 <summary>Wraps a portion of a byte array into a byte reader object.
@@ -128,9 +138,10 @@
             <param name='length'>The length, in bytes, of the desired portion
             of "bytes" (but not more than "bytes" 's length).</param>
             <returns>A byte reader wrapping the byte array.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null.</exception>
             <exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> 's length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
 </doc>
 <doc name="M:PeterO.DataIO.ToReader(System.IO.Stream)">
@@ -145,7 +156,8 @@
             method.</para></summary>
             <param name='input'>The input stream to wrap.</param>
             <returns>A byte reader wrapping the input stream.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='input'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='input'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.DataIO.ToWriter(PeterO.IByteWriter)">
 <summary>Wraps a byte writer (one that only implements a ReadByte
@@ -158,7 +170,8 @@
             takes precedence over this extension method.</para></summary>
             <param name='output'>A byte stream.</param>
             <returns>A writer that wraps the given stream.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='output'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='output'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.DataIO.ToWriter(System.IO.Stream)">
 <summary>Wraps an output stream into a writer object. If an
@@ -172,7 +185,8 @@
             <param name='output'>Output stream to wrap.</param>
             <returns>A byte writer that wraps the given output
             stream.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='output'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='output'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStream.Write(System.Byte[],System.Int32,System.Int32)">
 <summary>This is an internal method.</summary>
@@ -182,9 +196,10 @@
             <param name='length'>The length, in bytes, of the desired portion
             of "bytes" (but not more than "bytes" 's length).</param>
             <exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> 's length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStream.WriteByte(System.Int32)">
 <summary>This is an internal method.</summary>
@@ -197,9 +212,10 @@
             portion of "bytes" begins.</param>
             <param name='length'>The length, in bytes, of the desired portion
             of "bytes" (but not more than "bytes" 's length).</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null.</exception>
             <exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> 's length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.WriteByte(System.Int32)">
@@ -242,11 +258,11 @@
             of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param>
             <returns>The number of bytes read from the data source. Can be less
             than "length" if the end of the stream was reached.</returns>
-            <exception cref='T:System.ArgumentNullException'>Should be thrown if the
-            parameter "bytes" is null.</exception>
-            <exception cref='T:System.ArgumentException'>Should be thrown if either
-            "offset" or "length" is less than 0 or greater than "bytes" 's
-            length, or "bytes" 's length minus "offset" is less than
+            <exception cref='T:System.ArgumentNullException'>Should be thrown
+            if the parameter "bytes" is null.</exception>
+            <exception cref='T:System.ArgumentException'>Should be thrown if
+            either "offset" or "length" is less than 0 or greater than "bytes"
+            's length, or "bytes" 's length minus "offset" is less than
             "length".</exception>
 </doc>
 <doc name="T:PeterO.IWriter">
@@ -261,11 +277,11 @@
             portion of <paramref name='bytes'/> begins.</param>
             <param name='length'>The number of elements in the desired portion
             of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param>
-            <exception cref='T:System.ArgumentNullException'>Should be thrown if the
-            parameter "bytes" is null.</exception>
-            <exception cref='T:System.ArgumentException'>Should be thrown if either
-            "offset" or "length" is less than 0 or greater than "bytes" 's
-            length, or "bytes" 's length minus "offset" is less than
+            <exception cref='T:System.ArgumentNullException'>Should be thrown
+            if the parameter "bytes" is null.</exception>
+            <exception cref='T:System.ArgumentException'>Should be thrown if
+            either "offset" or "length" is less than 0 or greater than "bytes"
+            's length, or "bytes" 's length minus "offset" is less than
             "length".</exception>
 </doc>
 <doc name="T:PeterO.Text.CharacterReader">
@@ -275,18 +291,20 @@
             configured to support UTF-16 and UTF-32 as well.</summary>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream)">
-<summary>Initializes a new instance of the CharacterReader class;
-            will read the stream as UTF-8, skip the byte-order mark (U+FEFF)
-            if it appears first in the stream, and replace invalidly encoded
-            bytes with replacement characters (U+FFFD).</summary>
+<summary>Initializes a new instance of the
+            <see cref='T:PeterO.Text.CharacterReader'/> class; will read the stream as UTF-8,
+            skip the byte-order mark (U+FEFF) if it appears first in the
+            stream, and replace invalidly encoded bytes with replacement
+            characters (U+FFFD).</summary>
             <param name='stream'>A readable data stream.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='stream'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='stream'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32)">
-<summary>Initializes a new instance of the CharacterReader class;
-            will skip the byte-order mark (U+FEFF) if it appears first in the
-            stream and replace invalidly encoded bytes with replacement
-            characters (U+FFFD).</summary>
+<summary>Initializes a new instance of the
+            <see cref='T:PeterO.Text.CharacterReader'/> class; will skip the byte-order mark
+            (U+FEFF) if it appears first in the stream and replace invalidly
+            encoded bytes with replacement characters (U+FFFD).</summary>
             <param name='stream'>A readable byte stream.</param>
             <param name='mode'>The method to use when detecting encodings other
             than UTF-8 in the byte stream. This usually involves checking
@@ -302,12 +320,13 @@
             <item>3: Detect UTF-16 using BOM, otherwise UTF-8.</item>
             <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
             detect UTF-32 first.)</item></list>.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='stream'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='stream'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)">
-<summary>Initializes a new instance of the CharacterReader class;
-            will skip the byte-order mark (U+FEFF) if it appears first in the
-            stream.</summary>
+<summary>Initializes a new instance of the
+            <see cref='T:PeterO.Text.CharacterReader'/> class; will skip the byte-order mark
+            (U+FEFF) if it appears first in the stream.</summary>
             <param name='stream'>A readable byte stream.</param>
             <param name='mode'>The method to use when detecting encodings other
             than UTF-8 in the byte stream. This usually involves checking
@@ -327,11 +346,12 @@
             invalid byte sequences (in the detected encoding) are found in the
             byte stream. If false, replaces those byte sequences with
             replacement characters (U+FFFD) as the stream is read.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='stream'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='stream'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean,System.Boolean)">
-<summary>Initializes a new instance of the CharacterReader
-            class.</summary>
+<summary>Initializes a new instance of the
+            <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
             <param name='stream'>A readable byte stream.</param>
             <param name='mode'>The method to use when detecting encodings other
             than UTF-8 in the byte stream. This usually involves checking
@@ -354,31 +374,34 @@
             <param name='dontSkipUtf8Bom'>If the stream is detected as UTF-8
             and this parameter is <c>true</c>, won't skip the BOM character if
             it occurs at the start of the stream.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='stream'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='stream'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String)">
-<summary>Initializes a new instance of the CharacterReader class
-            using a Unicode 16-bit string; if the string begins with a
-            byte-order mark (U+FEFF), it won't be skipped, and any unpaired
-            surrogate code points (U+D800 to U+DFFF) in the string are
-            replaced with replacement characters (U+FFFD).</summary>
+<summary>Initializes a new instance of the
+            <see cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit string;
+            if the string begins with a byte-order mark (U+FEFF), it won't be
+            skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).</summary>
             <param name='str'>The string to read.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean)">
-<summary>Initializes a new instance of the CharacterReader class
-            using a Unicode 16-bit string; any unpaired surrogate code points
-            (U+D800 to U+DFFF) in the string are replaced with replacement
-            characters (U+FFFD).</summary>
+<summary>Initializes a new instance of the
+            <see cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit string;
+            any unpaired surrogate code points (U+D800 to U+DFFF) in the
+            string are replaced with replacement characters (U+FFFD).</summary>
             <param name='str'>The string to read.</param>
             <param name='skipByteOrderMark'>If true and the string begins with
             a byte-order mark (U+FEFF), will skip that code point as it reads
             the string.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean,System.Boolean)">
-<summary>Initializes a new instance of the CharacterReader class
-            using a Unicode 16-bit string.</summary>
+<summary>Initializes a new instance of the
+            <see cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit
+            string.</summary>
             <param name='str'>The string to read.</param>
             <param name='skipByteOrderMark'>If true and the string begins with
             a byte-order mark (U+FEFF), will skip that code point as it reads
@@ -387,6 +410,22 @@
             unpaired surrogate code points (U+D800 to U+DFFF) are found in
             the string. If false, replaces those byte sequences with
             replacement characters (U+FFFD) as the stream is read.</param>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> is null.</exception>
+</doc>
+<doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32)">
+<summary>Initializes a new instance of the <see cref='CharacterReader'/> class.</summary>
+            <param name='str'>A text string.</param>
+            <param name='offset'>A 32-bit signed integer.</param>
+            <param name='length'>Another 32-bit signed integer.</param>
+</doc>
+<doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+<summary>Initializes a new instance of the <see cref='CharacterReader'/> class.</summary>
+            <param name='str'>A text string.</param>
+            <param name='offset'>A 32-bit signed integer.</param>
+            <param name='length'>Another 32-bit signed integer.</param>
+            <param name='skipByteOrderMark'>A Boolean object.</param>
+            <param name='errorThrow'>Another Boolean object.</param>
             <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.Read(System.Int32[],System.Int32,System.Int32)">
@@ -401,11 +440,11 @@
             <returns>The number of code points read from the stream. This can
             be less than the <paramref name='length'/> parameter if the end of
             the stream is reached.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='chars'/> is null.</exception>
-            <exception cref='T:System.ArgumentException'>Either <paramref name='index'/>
-            or <paramref name='length'/> is less than 0 or greater than
-            <paramref name='chars'/> 's length, or <paramref name='chars'/> 's
-            length minus <paramref name='index'/> is less than <paramref name='length'/>.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='chars'/> is null.</exception>
+            <exception cref='T:System.ArgumentException'>Either <paramref name='index'/> or <paramref name='length'/> is less than 0 or
+            greater than <paramref name='chars'/> 's length, or <paramref name='chars'/> 's length minus <paramref name='index'/> is less
+            than <paramref name='length'/>.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.ReadChar">
 <summary>Reads the next character from a Unicode stream or a
@@ -536,7 +575,9 @@
             <param name='input'>An object that implements a byte
             stream.</param>
             <returns>The converted string.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoding'/> or <paramref name='input'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoding'/> or <paramref name='input'/> is
+            null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[])">
 <summary>Reads a byte array from a data source and converts the
@@ -552,7 +593,9 @@
             <param name='enc'>An ICharacterEncoding object.</param>
             <param name='bytes'>A byte array.</param>
             <returns>A string consisting of the decoded text.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='enc'/> or <paramref name='bytes'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='enc'/> or <paramref name='bytes'/> is
+            null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[],System.Int32,System.Int32)">
 <summary>Reads a portion of a byte array from a data source and
@@ -574,9 +617,11 @@
             <param name='length'>The length, in bytes, of the desired portion
             of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param>
             <returns>A string consisting of the decoded text.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='enc'/> or <paramref name='bytes'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='enc'/> or <paramref name='bytes'/> is
+            null.</exception>
             <exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> 's length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)">
@@ -591,7 +636,8 @@
             (gives access to an encoder and a decoder).</param>
             <param name='input'>A readable byte stream.</param>
             <returns>A string consisting of the decoded text.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoding'/> or <paramref name='input'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            "encoding" or <paramref name='input'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecoderToInputClass.Read(System.Int32[],System.Int32,System.Int32)">
 <summary>This is an internal method.</summary>
@@ -601,9 +647,10 @@
             <param name='length'>The number of elements in the desired portion
             of <paramref name='buffer'/> (but not more than <paramref name='buffer'/> 's length).</param>
             <returns>A 32-bit signed integer.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='buffer'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='buffer'/> is null.</exception>
             <exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='buffer'/> 's length, or <paramref name='buffer'/> 's length minus <paramref name='offset'/> is less
+            greater than <paramref name='buffer'/> 's length, or <paramref name='buffer'/> ' s length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar">
@@ -626,7 +673,9 @@
             <param name='encoder'>An object that implements a character
             encoder.</param>
             <returns>A byte array.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoder'/> or <paramref name='input'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoder'/> or <paramref name='input'/> is
+            null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding)">
 <summary>Reads Unicode characters from a character input and writes
@@ -645,7 +694,8 @@
             <param name='encoding'>An object that implements a given character
             encoding.</param>
             <returns>A byte array containing the encoded text.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoding'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoding'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding)">
 <summary>Reads Unicode characters from a text string and writes
@@ -659,11 +709,13 @@
             <c>str.EncodeToBytes(enc)</c>. If the object's class already has a
             EncodeToBytes method with the same parameters, that method takes
             precedence over this extension method.</para></summary>
-            <param name='str'>A string object.</param>
+            <param name='str'>A text string.</param>
             <param name='enc'>An object implementing a character encoding
             (gives access to an encoder and a decoder).</param>
             <returns>A byte array.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> or <paramref name='enc'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> or <paramref name='enc'/> is
+            null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,PeterO.IWriter)">
 <summary>Reads Unicode characters from a character input and writes
@@ -682,7 +734,9 @@
             encoder.</param>
             <param name='writer'>A byte writer to write the encoded bytes
             to.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoder'/> or <paramref name='input'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoder'/> or <paramref name='input'/> is
+            null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,System.IO.Stream)">
 <summary>Reads Unicode characters from a character input and writes
@@ -700,7 +754,9 @@
             <param name='encoder'>An object that implements a character
             encoder.</param>
             <param name='output'>A writable data stream.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoder'/> or <paramref name='input'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoder'/> or <paramref name='input'/> is
+            null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,PeterO.IWriter)">
 <summary>Reads Unicode characters from a character input and writes
@@ -720,7 +776,8 @@
             encoding.</param>
             <param name='writer'>A byte writer to write the encoded bytes
             to.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoding'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoding'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,System.IO.Stream)">
 <summary>Reads Unicode characters from a character input and writes
@@ -739,7 +796,8 @@
             <param name='encoding'>An object that implements a character
             encoding.</param>
             <param name='output'>A writable data stream.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoding'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoding'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,PeterO.IWriter)">
 <summary>Converts a text string to bytes and writes the bytes to an
@@ -754,12 +812,14 @@
             already has a EncodeToBytes method with the same parameters, that
             method takes precedence over this extension
             method.</para></summary>
-            <param name='str'>A string object to encode.</param>
+            <param name='str'>A text string to encode.</param>
             <param name='enc'>An object implementing a character encoding
             (gives access to an encoder and a decoder).</param>
             <param name='writer'>A byte writer where the encoded bytes will be
             written to.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> or <paramref name='enc'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> or <paramref name='enc'/> is
+            null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,System.IO.Stream)">
 <summary>Converts a text string to bytes and writes the bytes to an
@@ -774,11 +834,13 @@
             already has a EncodeToBytes method with the same parameters, that
             method takes precedence over this extension
             method.</para></summary>
-            <param name='str'>A string object to encode.</param>
+            <param name='str'>A text string to encode.</param>
             <param name='enc'>An object implementing a character encoding
             (gives access to an encoder and a decoder).</param>
             <param name='output'>A writable data stream.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> or <paramref name='enc'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> or <paramref name='enc'/> is
+            null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)">
 <summary>Converts a character encoding into a character input
@@ -812,7 +874,7 @@
             converted into a character input stream. If the decoder returns -2
             (indicating a decode error), the character input stream handles the
             error by returning a replacement character in its place.</param>
-            <param name='stream'>Byte stream to convert into Unicode
+            <param name='input'>Byte stream to convert into Unicode
             characters.</param>
             <returns>An ICharacterInput object.</returns>
 </doc>
@@ -826,9 +888,10 @@
             the Encoding standard.</para>
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing ICharacterEncoding and
-            can be called as follows: "encoding.GetDecoderInput(input)". If the
-            object's class already has a GetDecoderInput method with the same
-            parameters, that method takes precedence over this extension
+            can be called as follows:
+            <c>encoding.GetDecoderInputSkipBom(input)</c>. If the object's
+            class already has a <c>GetDecoderInputSkipBom</c> method with the
+            same parameters, that method takes precedence over this extension
             method.</para></summary>
             <param name='encoding'>Encoding object that exposes a decoder to be
             converted into a character input stream. If the decoder returns -2
@@ -839,19 +902,24 @@
             <returns>An ICharacterInput object.</returns>
 </doc>
 <doc name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,System.IO.Stream)">
-<summary>Converts a character encoding into a character input stream, given a readable data stream. But if the input stream starts with a UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may be, rather than the given character encoding.This method implements the "decode" algorithm specified in the Encoding standard.
+<summary>Converts a character encoding into a character input
+            stream, given a readable data stream. But if the input stream
+            starts with a UTF-8 or UTF-16 byte order mark, the input is decoded
+            as UTF-8 or UTF-16, as the case may be, rather than the given
+            character encoding.This method implements the "decode" algorithm
+            specified in the Encoding standard.
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing ICharacterEncoding and
             can be called as follows:
             <c>encoding.GetDecoderInputSkipBom(input)</c>. If the object's
-            class already has a GetDecoderInputSkipBom method with the same
-            parameters, that method takes precedence over this extension
+            class already has a <c>GetDecoderInputSkipBom</c> method with the
+            same parameters, that method takes precedence over this extension
             method.</para></summary>
             <param name='encoding'>Encoding object that exposes a decoder to be
             converted into a character input stream. If the decoder returns -2
             (indicating a decode error), the character input stream handles the
             error by returning a replacement character in its place.</param>
-            <param name='stream'>Byte stream to convert into Unicode
+            <param name='input'>Byte stream to convert into Unicode
             characters.</param>
             <returns>An ICharacterInput object.</returns>
 </doc>
@@ -917,9 +985,9 @@
             name. The Encoding Standard supports only the following encodings
             (and defines aliases for most of them):.
             <list type='bullet'>
-            <item><c>utf-8</c> - UTF-8 (8-bit encoding of the universal character set, the
-            encoding recommended by the Encoding Standard for new data
-            formats)</item>
+            <item><c>utf-8</c> - UTF-8 (8-bit encoding of the universal
+            character set, the encoding recommended by the Encoding Standard
+            for new data formats)</item>
             <item><c>utf-16le</c> - UTF-16 little-endian (16-bit UCS)</item>
             <item><c>utf-16be</c> - UTF-16 big-endian (16-bit UCS)</item>
             <item>The special-purpose encoding <c>x-user-defined</c></item>
@@ -930,11 +998,10 @@
             <list type='bullet'>
             <item><c>windows-1252</c> : Western Europe (Note: The Encoding
             Standard aliases the names <c>us-ascii</c> and <c>iso-8859-1</c> to
-            <c>windows-1252</c>, which uses a different character set
-            from either; it differs from <c>iso-8859-1</c> by assigning
-            different characters to some bytes from 0x80 to 0x9F. The Encoding
-            Standard does this for compatibility with existing Web
-            pages.)</item>
+            <c>windows-1252</c>, which uses a different character set from
+            either; it differs from <c>iso-8859-1</c> by assigning different
+            characters to some bytes from 0x80 to 0x9F. The Encoding Standard
+            does this for compatibility with existing Web pages.)</item>
             <item><c>iso-8859-2</c>, <c>windows-1250</c> : Central
             Europe</item>
             <item><c>iso-8859-10</c> : Northern Europe</item>
@@ -1012,7 +1079,9 @@
             <param name='str'>A text string to encode into a byte
             array.</param>
             <returns>A byte array.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoder'/> or <paramref name='str'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoder'/> or <paramref name='str'/> is
+            null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoding,System.String)">
 <summary>Converts a text string to a byte array encoded in a given
@@ -1032,7 +1101,8 @@
             <param name='str'>A string to be encoded into a byte array.</param>
             <returns>A byte array containing the string encoded in the given
             text encoding.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoding'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoding'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.StringToInput(System.String)">
 <summary>Converts a text string to a character input. The resulting
@@ -1046,9 +1116,10 @@
             already has a StringToInput method with the same parameters, that
             method takes precedence over this extension
             method.</para></summary>
-            <param name='str'>A string object.</param>
+            <param name='str'>A text string.</param>
             <returns>An ICharacterInput object.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.StringToInput(System.String,System.Int32,System.Int32)">
 <summary>Converts a portion of a text string to a character input.
@@ -1062,16 +1133,17 @@
             already has a StringToInput method with the same parameters, that
             method takes precedence over this extension
             method.</para></summary>
-            <param name='str'>A string object.</param>
+            <param name='str'>A text string.</param>
             <param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='str'/> begins.</param>
             <param name='length'>The length, in code units, of the desired
             portion of <paramref name='str'/> (but not more than <paramref name='str'/> 's length).</param>
             <returns>An ICharacterInput object.</returns>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> is null.</exception>
             <exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='str'/> 's length, or <paramref name='str'/> 's length minus <paramref name='offset'/> is less than
-            <paramref name='length'/>.</exception>
+            greater than <paramref name='str'/> 's length, or <paramref name='str'/> ' s length minus <paramref name='offset'/> is less
+            than <paramref name='length'/>.</exception>
 </doc>
 <doc name="M:PeterO.Text.Encodings.ToLowerCaseAscii(System.String)">
 <summary>Returns a string with the basic upper-case letters A to Z
@@ -1105,7 +1177,7 @@
             already read, so this parameter should not change when using the
             same character decoder object. It's also possible for the decoder
             to read no bytes but still return a code point, depending on the
-            encoding it suppports and its internal state.</param>
+            encoding it supports and its internal state.</param>
             <returns>The Unicode code point decoded, from 0-0xd7ff or from
             0xe000 to 0x10ffff. Returns -1 if the end of the source is reached
             or -2 if a decoder error occurs.</returns>
@@ -1169,8 +1241,8 @@
             <returns>Either a Unicode code point (from 0-0xd7ff or from 0xe000
             to 0x10ffff), or the value -1 indicating the end of the
             source.</returns>
-            <exception cref='T:System.ArgumentNullException'>Should be thrown if "chars"
-            is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>Should be thrown
+            if "chars" is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.ICharacterInput.ReadChar">
 <summary>Reads a Unicode code point from a data source.</summary>

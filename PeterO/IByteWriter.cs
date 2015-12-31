@@ -8,11 +8,11 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
 using System;
 
 namespace PeterO {
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="T:PeterO.IByteWriter"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="T:PeterO.IByteWriter"]/*'/>
   public interface IByteWriter {
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.IByteWriter.WriteByte(System.Int32)"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.IByteWriter.WriteByte(System.Int32)"]/*'/>
     void WriteByte(int b);
   }
 }

@@ -2,7 +2,7 @@
 
     public static class Encodings
 
-Contains methods for converting text from one character encoding to another. This class also contains convenience methods for converting strings and other character inputs to sequences of bytes.The Encoding Standard, which is a Candidate Recommendation as of early November 2015, defines algorithms for the most common character encodings used on Web pages and recommends the UTF-8 encoding for new specifications and Web pages. Calling the `GetEncoding(name)`  method returns one of the character encodings with the given name under the Encoding Standard.
+Contains methods for converting text from one character encoding to another. This class also contains convenience methods for converting strings and other character inputs to sequences of bytes and vice versa.The Encoding Standard, which is a Candidate Recommendation as of early November 2015, defines algorithms for the most common character encodings used on Web pages and recommends the UTF-8 encoding for new specifications and Web pages. Calling the `GetEncoding(name)`  method returns one of the character encodings with the given name under the Encoding Standard.
 
 Now let's define some terms.
 
@@ -10,7 +10,7 @@ Encoding Terms
 
  * A code point is a number that identifies a single text character, such as a letter, digit, or symbol.
 
- * A character set is a set of code points which are each assigned to a single text character. (This may also be called acoded character set.) As used here, character sets don't define the in-memory representation of those code points.
+ * A character set is a set of code points which are each assigned to a single text character. (This may also be called acoded character set.) As used here, character sets don't define how code points are laid out in memory.
 
  * A character encoding is a mapping from a sequence of code points, in one or more specific character sets, to a sequence of bytes and vice versa.
 
@@ -93,7 +93,7 @@ A string consisting of the decoded text.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>enc</i>
+The parameter <i>enc</i>
  or  <i>bytes</i>
  is null.
 
@@ -128,7 +128,7 @@ A string consisting of the decoded text.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>enc</i>
+The parameter <i>enc</i>
  or  <i>bytes</i>
  is null.
 
@@ -137,9 +137,33 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>bytes</i>
  's length, or  <i>bytes</i>
- 's length minus  <i>offset</i>
+ ' s length minus  <i>offset</i>
  is less than  <i>length</i>
 .
+
+### DecodeToString
+
+    public static string DecodeToString(
+        this PeterO.Text.ICharacterEncoding enc,
+        System.IO.Stream input);
+
+Not documented yet.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.DecodeToString(input)` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
+
+ * <i>input</i>: A readable byte stream.
+
+<b>Returns:</b>
+
+A string consisting of the decoded text.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter "encoding" or  <i>input</i>
+ is null.
 
 ### DecodeToString
 
@@ -162,32 +186,7 @@ The converted string.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>encoding</i>
- or  <i>input</i>
- is null.
-
-### DecodeToString
-
-    public static string DecodeToString(
-        this PeterO.Text.ICharacterEncoding encoding,
-        System.IO.Stream input);
-
-Not documented yet.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.DecodeToString(input)` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
-
-<b>Parameters:</b>
-
- * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
-
- * <i>input</i>: A readable byte stream.
-
-<b>Returns:</b>
-
-A string consisting of the decoded text.
-
-<b>Exceptions:</b>
-
- * System.ArgumentNullException:
-The parameter  <i>encoding</i>
+The parameter <i>encoding</i>
  or  <i>input</i>
  is null.
 
@@ -212,7 +211,7 @@ A byte array.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>encoder</i>
+The parameter <i>encoder</i>
  or  <i>input</i>
  is null.
 
@@ -237,7 +236,7 @@ A byte array containing the encoded text.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>encoding</i>
+The parameter <i>encoding</i>
  is null.
 
 ### EncodeToBytes
@@ -250,7 +249,7 @@ Reads Unicode characters from a text string and writes them to a byte array enco
 
 <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: A text string.
 
  * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
@@ -261,7 +260,7 @@ A byte array.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
  or  <i>enc</i>
  is null.
 
@@ -285,7 +284,7 @@ Reads Unicode characters from a character input and writes them to a byte array 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>encoder</i>
+The parameter <i>encoder</i>
  or  <i>input</i>
  is null.
 
@@ -309,7 +308,7 @@ Reads Unicode characters from a character input and writes them to a byte array 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>encoder</i>
+The parameter <i>encoder</i>
  or  <i>input</i>
  is null.
 
@@ -333,7 +332,7 @@ Reads Unicode characters from a character input and writes them to a byte array 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>encoding</i>
+The parameter <i>encoding</i>
  is null.
 
 ### EncodeToWriter
@@ -356,7 +355,7 @@ Reads Unicode characters from a character input and writes them to a byte array 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>encoding</i>
+The parameter <i>encoding</i>
  is null.
 
 ### EncodeToWriter
@@ -370,7 +369,7 @@ Converts a text string to bytes and writes the bytes to an output byte writer. W
 
 <b>Parameters:</b>
 
- * <i>str</i>: A string object to encode.
+ * <i>str</i>: A text string to encode.
 
  * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
@@ -379,7 +378,7 @@ Converts a text string to bytes and writes the bytes to an output byte writer. W
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
  or  <i>enc</i>
  is null.
 
@@ -394,7 +393,7 @@ Converts a text string to bytes and writes the bytes to an output data stream. W
 
 <b>Parameters:</b>
 
- * <i>str</i>: A string object to encode.
+ * <i>str</i>: A text string to encode.
 
  * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
@@ -403,7 +402,7 @@ Converts a text string to bytes and writes the bytes to an output data stream. W
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
  or  <i>enc</i>
  is null.
 
@@ -437,7 +436,7 @@ Not documented yet.In the .NET implementation, this method is implemented as an 
 
  * <i>encoding</i>: Encoding object that exposes a decoder to be converted into a character input stream. If the decoder returns -2 (indicating a decode error), the character input stream handles the error by returning a replacement character in its place.
 
- * <i>stream</i>: Byte stream to convert into Unicode characters.
+ * <i>input</i>: Byte stream to convert into Unicode characters.
 
 <b>Returns:</b>
 
@@ -451,7 +450,7 @@ An ICharacterInput object.
 
 Converts a character encoding into a character input stream, given a streamable source of bytes. But if the input stream starts with a UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may be, rather than the given character encoding.This method implements the "decode" algorithm specified in the Encoding standard.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: "encoding.GetDecoderInput(input)". If the object's class already has a GetDecoderInput method with the same parameters, that method takes precedence over this extension method.
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInputSkipBom(input)` . If the object's class already has a  `GetDecoderInputSkipBom`  method with the same parameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
@@ -469,13 +468,13 @@ An ICharacterInput object.
         this PeterO.Text.ICharacterEncoding encoding,
         System.IO.Stream input);
 
-Not documented yet.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInputSkipBom(input)` . If the object's class already has a GetDecoderInputSkipBom method with the same parameters, that method takes precedence over this extension method.
+Converts a character encoding into a character input stream, given a readable data stream. But if the input stream starts with a UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may be, rather than the given character encoding.This method implements the "decode" algorithm specified in the Encoding standard.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInputSkipBom(input)` . If the object's class already has a  `GetDecoderInputSkipBom`  method with the same parameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
  * <i>encoding</i>: Encoding object that exposes a decoder to be converted into a character input stream. If the decoder returns -2 (indicating a decode error), the character input stream handles the error by returning a replacement character in its place.
 
- * <i>stream</i>: Byte stream to convert into Unicode characters.
+ * <i>input</i>: Byte stream to convert into Unicode characters.
 
 <b>Returns:</b>
 
@@ -671,7 +670,7 @@ A byte array.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>encoder</i>
+The parameter <i>encoder</i>
  or  <i>str</i>
  is null.
 
@@ -696,7 +695,7 @@ A byte array containing the string encoded in the given text encoding.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>encoding</i>
+The parameter <i>encoding</i>
  is null.
 
 ### StringToInput
@@ -708,7 +707,7 @@ Converts a text string to a character input. The resulting input can then be use
 
 <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: A text string.
 
 <b>Returns:</b>
 
@@ -717,7 +716,7 @@ An ICharacterInput object.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
  is null.
 
 ### StringToInput
@@ -731,7 +730,7 @@ Converts a portion of a text string to a character input. The resulting input ca
 
 <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: A text string.
 
  * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
  begins.
@@ -747,7 +746,7 @@ An ICharacterInput object.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
  is null.
 
  * System.ArgumentException:
@@ -755,6 +754,6 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>str</i>
  's length, or  <i>str</i>
- 's length minus  <i>offset</i>
- is less than <i>length</i>
+ ' s length minus  <i>offset</i>
+ is less than  <i>length</i>
 .

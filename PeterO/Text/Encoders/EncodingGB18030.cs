@@ -6,7 +6,7 @@ using PeterO.Text;
 
 namespace PeterO.Text.Encoders {
   internal class EncodingGB18030 : ICharacterEncoding {
-    private static readonly int[] gb18030table = new int[] { 0, 0x0080,
+    private static readonly int[] ValueGb18030table = new int[] { 0, 0x0080,
     36, 0x00a5,
     38, 0x00a9,
     45, 0x00b2,
@@ -222,18 +222,18 @@ namespace PeterO.Text.Encoders {
         return 0x10000 + pointer - 189000;
       }
       var v = -1;
-      for (int i = 0; i < gb18030table.Length; i += 2) {
-        if (gb18030table[i] <= pointer) {
+      for (int i = 0; i < ValueGb18030table.Length; i += 2) {
+        if (ValueGb18030table[i] <= pointer) {
           v = i;
         } else {
           break;
         }
       }
-      if (v >= gb18030table.Length) {
+      if (v >= ValueGb18030table.Length) {
         return -1;
       }
-      int cpoffset = gb18030table[v + 1];
-      int offset = gb18030table[v];
+      int cpoffset = ValueGb18030table[v + 1];
+      int offset = ValueGb18030table[v];
       return cpoffset + pointer - offset;
     }
 
@@ -248,24 +248,24 @@ namespace PeterO.Text.Encoders {
  return 39419;
 }
     var v = -1;
-    for (int i = 0; i < gb18030table.Length; i += 2) {
-      if (gb18030table[i + 1] <= codepoint) {
+    for (int i = 0; i < ValueGb18030table.Length; i += 2) {
+      if (ValueGb18030table[i + 1] <= codepoint) {
         v = i;
       } else {
         break;
       }
     }
-    if (v >= gb18030table.Length) {
+    if (v >= ValueGb18030table.Length) {
         return -1;
       }
-    int cpoffset = gb18030table[v + 1];
-    int offset = gb18030table[v];
+    int cpoffset = ValueGb18030table[v + 1];
+    int offset = ValueGb18030table[v];
     return offset + codepoint - cpoffset;
   }
 
     private class Decoder : ICharacterDecoder {
-      private int gbk1, gbk2, gbk3;
       private readonly DecoderState state;
+      private int gbk1, gbk2, gbk3;
 
       public Decoder() {
         this.state = new DecoderState(3);
@@ -286,8 +286,9 @@ namespace PeterO.Text.Encoders {
           if (this.gbk3 != 0) {
             c = -1;
             if (b >= 0x30 && b <= 0x39) {
-              int ap = (((this.gbk1 - 0x81) * 10 + this.gbk2 - 0x30) * 126 +
-                this.gbk3 - 0x81) * 10 + b - 0x30;
+            int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
+                126) +
+                this.gbk3 - 0x81) * 10) + b - 0x30;
               c = GB18030CodePoint(ap);
             }
             if (c < 0) {
@@ -319,7 +320,7 @@ namespace PeterO.Text.Encoders {
             c = -1;
             int a2 = (b < 0x7f) ? 0x40 : 0x41;
             if ((b >= 0x40 && b <= 0x7e) || (b >= 0x80 && b <= 0xfe)) {
-              ap = (a1 - 0x81) * 190 + (b - a2);
+              ap = ((a1 - 0x81) * 190) + (b - a2);
               c = Gb18030.IndexToCodePoint(ap);
             }
             if (c < 0) {

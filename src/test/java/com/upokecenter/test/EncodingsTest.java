@@ -192,8 +192,12 @@ stringTemp);
         "utf-7",
         stringTemp);
       }
-      Assert.assertEquals("", Encodings.ResolveAliasForEmail(
-    "replacement"));
+      {
+Object objectTemp = "";
+Object objectTemp2 = Encodings.ResolveAliasForEmail(
+    "replacement");
+Assert.assertEquals(objectTemp, objectTemp2);
+}
       {
         String stringTemp = Encodings.ResolveAliasForEmail("hz-gb-2312");
         Assert.assertEquals(

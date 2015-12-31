@@ -8,11 +8,11 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
 using System;
 
 namespace PeterO {
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="T:PeterO.IByteReader"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="T:PeterO.IByteReader"]/*'/>
   public interface IByteReader {
-    /// <include file='docs.xml'
-    /// path='docs/doc[@name="M:PeterO.IByteReader.ReadByte"]'/>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.IByteReader.ReadByte"]/*'/>
     int ReadByte();
   }
 }

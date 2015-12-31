@@ -10,7 +10,7 @@ A general-purpose character input for reading text from byte streams and text st
     public CharacterReader(
         string str);
 
-Initializes a new instance of the CharacterReader class using a Unicode 16-bit string; if the string begins with a byte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
+Initializes a new instance of the class using a Unicode 16-bit string; if the string begins with a byte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -19,7 +19,7 @@ Initializes a new instance of the CharacterReader class using a Unicode 16-bit s
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
  is null.
 
 ### CharacterReader Constructor
@@ -28,7 +28,7 @@ The parameter  <i>str</i>
         string str,
         bool skipByteOrderMark);
 
-Initializes a new instance of the CharacterReader class using a Unicode 16-bit string; any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
+Initializes a new instance of the class using a Unicode 16-bit string; any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -39,7 +39,7 @@ Initializes a new instance of the CharacterReader class using a Unicode 16-bit s
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
  is null.
 
 ### CharacterReader Constructor
@@ -49,7 +49,7 @@ The parameter  <i>str</i>
         bool skipByteOrderMark,
         bool errorThrow);
 
-Initializes a new instance of the CharacterReader class using a Unicode 16-bit string.
+Initializes a new instance of the class using a Unicode 16-bit string.
 
 <b>Parameters:</b>
 
@@ -62,6 +62,52 @@ Initializes a new instance of the CharacterReader class using a Unicode 16-bit s
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
+The parameter <i>str</i>
+ is null.
+
+### CharacterReader Constructor
+
+    public CharacterReader(
+        string str,
+        int offset,
+        int length);
+
+Initializes a new instance of the  class.
+
+<b>Parameters:</b>
+
+ * <i>str</i>: A text string.
+
+ * <i>offset</i>: A 32-bit signed integer.
+
+ * <i>length</i>: Another 32-bit signed integer.
+
+### CharacterReader Constructor
+
+    public CharacterReader(
+        string str,
+        int offset,
+        int length,
+        bool skipByteOrderMark,
+        bool errorThrow);
+
+Initializes a new instance of the  class.
+
+<b>Parameters:</b>
+
+ * <i>str</i>: A text string.
+
+ * <i>offset</i>: A 32-bit signed integer.
+
+ * <i>length</i>: Another 32-bit signed integer.
+
+ * <i>skipByteOrderMark</i>: A Boolean object.
+
+ * <i>errorThrow</i>: Another Boolean object.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
 The parameter  <i>str</i>
  is null.
 
@@ -70,7 +116,7 @@ The parameter  <i>str</i>
     public CharacterReader(
         System.IO.Stream stream);
 
-Initializes a new instance of the CharacterReader class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the stream, and replace invalidly encoded bytes with replacement characters (U+FFFD).
+Initializes a new instance of the class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the stream, and replace invalidly encoded bytes with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -79,7 +125,7 @@ Initializes a new instance of the CharacterReader class; will read the stream as
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>stream</i>
+The parameter <i>stream</i>
  is null.
 
 ### CharacterReader Constructor
@@ -88,7 +134,7 @@ The parameter  <i>stream</i>
         System.IO.Stream stream,
         int mode);
 
-Initializes a new instance of the CharacterReader class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and replace invalidly encoded bytes with replacement characters (U+FFFD).
+Initializes a new instance of the class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and replace invalidly encoded bytes with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -111,7 +157,7 @@ Initializes a new instance of the CharacterReader class; will skip the byte-orde
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>stream</i>
+The parameter <i>stream</i>
  is null.
 
 ### CharacterReader Constructor
@@ -121,7 +167,7 @@ The parameter  <i>stream</i>
         int mode,
         bool errorThrow);
 
-Initializes a new instance of the CharacterReader class; will skip the byte-order mark (U+FEFF) if it appears first in the stream.
+Initializes a new instance of the class; will skip the byte-order mark (U+FEFF) if it appears first in the stream.
 
 <b>Parameters:</b>
 
@@ -146,7 +192,7 @@ Initializes a new instance of the CharacterReader class; will skip the byte-orde
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>stream</i>
+The parameter <i>stream</i>
  is null.
 
 ### CharacterReader Constructor
@@ -157,7 +203,7 @@ The parameter  <i>stream</i>
         bool errorThrow,
         bool dontSkipUtf8Bom);
 
-Initializes a new instance of the CharacterReader class.
+Initializes a new instance of the class.
 
 <b>Parameters:</b>
 
@@ -184,7 +230,7 @@ Initializes a new instance of the CharacterReader class.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>stream</i>
+The parameter <i>stream</i>
  is null.
 
 ### Read
@@ -215,13 +261,13 @@ The number of code points read from the stream. This can be less than the  <i>le
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>chars</i>
+The parameter <i>chars</i>
  is null.
 
  * System.ArgumentException:
 Either  <i>index</i>
-or  <i>length</i>
- is less than 0 or greater than <i>chars</i>
+ or  <i>length</i>
+ is less than 0 or greater than  <i>chars</i>
  's length, or  <i>chars</i>
  's length minus  <i>index</i>
  is less than  <i>length</i>

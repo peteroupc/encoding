@@ -26,9 +26,9 @@ import com.upokecenter.text.*;
 
     private static class Decoder implements ICharacterDecoder {
       private final DecoderState state;
+      private final CodeUnitAppender appender;
       private int alphavalue;
       private int base64value;
-      private final CodeUnitAppender appender;
       private int base64count;
       // 0: not in base64; 1: start of base 64; 2: continuing base64
       private int machineState;

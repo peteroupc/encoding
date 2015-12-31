@@ -3,18 +3,18 @@ package com.upokecenter.text.encoders;
   public final class Jis0212 {
 private Jis0212() {
 }
-    private static final short[] table = new short[7211];
+    private static final short[] ValueTable = new short[7211];
 
     static {
-      System.arraycopy(method0(), 0, table, 0, 4096);
-      System.arraycopy(method1(), 0, table, 4096, 3115);
+      System.arraycopy(method0(), 0, ValueTable, 0, 4096);
+      System.arraycopy(method1(), 0, ValueTable, 4096, 3115);
     }
 
     public static int IndexToCodePoint(int index) {
       if (index < 0 || index >= 7211) {
  return -1;
 }
-      int cp = ((int)table[index]) & 0xffff;
+      int cp = ((int)ValueTable[index]) & 0xffff;
       return (cp == 0) ? -1 : cp;
     }
 

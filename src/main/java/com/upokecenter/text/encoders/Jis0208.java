@@ -3,15 +3,15 @@ package com.upokecenter.text.encoders;
   public final class Jis0208 {
 private Jis0208() {
 }
-    private static final short[] table = new short[11104];
+    private static final short[] ValueTable = new short[11104];
 
     static {
-      System.arraycopy(method0(), 0, table, 0, 4096);
-      System.arraycopy(method1(), 0, table, 4096, 4096);
-      System.arraycopy(method2(), 0, table, 8192, 2912);
+      System.arraycopy(method0(), 0, ValueTable, 0, 4096);
+      System.arraycopy(method1(), 0, ValueTable, 4096, 4096);
+      System.arraycopy(method2(), 0, ValueTable, 8192, 2912);
     }
 
-    private static final int[] indextable ={
+    private static final int[] ValueIndextable = {
 167, 65509, 0, 256, 913, 65370, 256, 256, 955, 9547, 512, 256, 8470, 13261,
   1024, 256, 19968, 40284, 1280, 256, 19979, 40644, 1536, 256, 19992, 40653,
   1792, 256, 20018, 40723, 2048, 256, 19977, 40658, 2304, 256, 19971, 39423,
@@ -31,12 +31,13 @@ private Jis0208() {
  return -1;
 }
       short cps = ((short)(codepoint & 0xffff));
-      for (int i = 0; i < indextable.length; i += 4) {
-        if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
-          int startindex = indextable[i + 2];
-          int length = indextable[i + 3];
+      for (int i = 0; i < ValueIndextable.length; i += 4) {
+  if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
+          1]) {
+          int startindex = ValueIndextable[i + 2];
+          int length = ValueIndextable[i + 3];
           for (int j = 0; j < length; ++j) {
-            if (table[j + startindex] == cps) {
+            if (ValueTable[j + startindex] == cps) {
  return j + startindex;
 }
           }
@@ -45,7 +46,7 @@ private Jis0208() {
       return -1;
     }
 
-    private static final int[] indextable2 ={
+    private static final int[] ValueIndextable2 = {
 167, 65509, 0, 256, 913, 65370, 256, 256, 955, 9547, 512, 256, 8470, 13261,
   1024, 256, 19968, 40284, 1280, 256, 19979, 40644, 1536, 256, 19992, 40653,
   1792, 256, 20018, 40723, 2048, 256, 19977, 40658, 2304, 256, 19971, 39423,
@@ -64,12 +65,13 @@ private Jis0208() {
  return -1;
 }
       short cps = ((short)(codepoint & 0xffff));
-      for (int i = 0; i < indextable2.length; i += 4) {
-        if (codepoint >= indextable2[i] && codepoint <= indextable2[i + 1]) {
-          int startindex = indextable2[i + 2];
-          int length = indextable2[i + 3];
+      for (int i = 0; i < ValueIndextable2.length; i += 4) {
+if (codepoint >= ValueIndextable2[i] && codepoint <= ValueIndextable2[i +
+          1]) {
+          int startindex = ValueIndextable2[i + 2];
+          int length = ValueIndextable2[i + 3];
           for (int j = 0; j < length; ++j) {
-            if (table[j + startindex] == cps) {
+            if (ValueTable[j + startindex] == cps) {
  return j + startindex;
 }
           }
@@ -82,7 +84,7 @@ private Jis0208() {
       if (index < 0 || index >= 11104) {
  return -1;
 }
-      int cp = ((int)table[index]) & 0xffff;
+      int cp = ((int)ValueTable[index]) & 0xffff;
       return (cp == 0) ? -1 : cp;
     }
 

@@ -26,9 +26,9 @@ namespace PeterO.Text.Encoders {
 
     private class Decoder : ICharacterDecoder {
       private readonly DecoderState state;
+      private readonly CodeUnitAppender appender;
       private int alphavalue;
       private int base64value;
-      private readonly CodeUnitAppender appender;
       private int base64count;
       // 0: not in base64; 1: start of base 64; 2: continuing base64
       private int machineState;

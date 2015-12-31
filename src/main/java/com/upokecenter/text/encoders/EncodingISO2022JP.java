@@ -7,11 +7,11 @@ import com.upokecenter.text.*;
 
   public class EncodingISO2022JP implements ICharacterEncoding {
     private static class Decoder implements ICharacterDecoder {
+      private final DecoderState state;
       private int machineState;
       private int outputState;
       private int lead;
       private int output;
-      private final DecoderState state;
 
       public Decoder() {
         this.state = new DecoderState(2);

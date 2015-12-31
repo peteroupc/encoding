@@ -611,9 +611,13 @@ stringTemp);
     }
 
     public static void TestUtf7One(String input, String expected) {
-      Assert.assertEquals(expected, Encodings.DecodeToString(
+      {
+Object objectTemp = expected;
+Object objectTemp2 = Encodings.DecodeToString(
         Encodings.GetEncoding("utf-7", true),
-        Encodings.EncodeToBytes(input, Encodings.UTF8)));
+        Encodings.EncodeToBytes(input, Encodings.UTF8));
+Assert.assertEquals(objectTemp, objectTemp2);
+}
     }
 
     @Test

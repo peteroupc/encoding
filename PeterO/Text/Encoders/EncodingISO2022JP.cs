@@ -7,11 +7,11 @@ using PeterO.Text;
 namespace PeterO.Text.Encoders {
   internal class EncodingISO2022JP : ICharacterEncoding {
     private class Decoder : ICharacterDecoder {
+      private readonly DecoderState state;
       private int machineState;
       private int outputState;
       private int lead;
       private int output;
-      private readonly DecoderState state;
 
       public Decoder() {
         this.state = new DecoderState(2);

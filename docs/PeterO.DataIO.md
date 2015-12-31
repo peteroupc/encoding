@@ -15,7 +15,8 @@ Not documented yet.In the .NET implementation, this method is implemented as an 
 
 <b>Parameters:</b>
 
- * <i>bytes</i>: Not documented yet.
+ * <i>bytes</i>: The parameter  <i>bytes</i>
+ is not documented yet.
 
 <b>Returns:</b>
 
@@ -34,7 +35,8 @@ Not documented yet.In the .NET implementation, this method is implemented as an 
 
 <b>Parameters:</b>
 
- * <i>bytes</i>: Not documented yet.
+ * <i>bytes</i>: The parameter  <i>bytes</i>
+ is not documented yet.
 
  * <i>offset</i>: A zero-based index showing where the desired portion of  <i>bytes</i>
  begins.
@@ -54,12 +56,12 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>bytes</i>
  's length, or  <i>bytes</i>
- 's length minus  <i>offset</i>
+ ' s length minus  <i>offset</i>
  is less than  <i>length</i>
 .
 
  * System.ArgumentNullException:
-The parameter  <i>bytes</i>
+The parameter <i>bytes</i>
  is null.
 
 ### ToByteReader
@@ -73,7 +75,8 @@ Not documented yet.In the .NET implementation, this method is implemented as an 
 
 <b>Parameters:</b>
 
- * <i>input</i>: Not documented yet.
+ * <i>input</i>: The parameter  <i>input</i>
+ is not documented yet.
 
 <b>Returns:</b>
 
@@ -97,7 +100,7 @@ A byte reader wrapping the byte array.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>bytes</i>
+The parameter <i>bytes</i>
  is null.
 
 ### ToReader
@@ -124,7 +127,7 @@ A byte reader wrapping the byte array.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>bytes</i>
+The parameter <i>bytes</i>
  is null.
 
  * System.ArgumentException:
@@ -132,7 +135,7 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>bytes</i>
  's length, or  <i>bytes</i>
- 's length minus  <i>offset</i>
+ ' s length minus  <i>offset</i>
  is less than  <i>length</i>
 .
 
@@ -154,7 +157,7 @@ A byte reader wrapping the input stream.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>input</i>
+The parameter <i>input</i>
  is null.
 
 ### ToWriter
@@ -175,7 +178,7 @@ A writer that wraps the given stream.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>output</i>
+The parameter <i>output</i>
  is null.
 
 ### ToWriter
@@ -196,5 +199,5 @@ A byte writer that wraps the given output stream.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>output</i>
+The parameter <i>output</i>
  is null.

@@ -4,14 +4,14 @@
         PeterO.IWriter,
         PeterO.IByteWriter
 
-A growable array of bytes.
+An array of bytes that grows as needed.
 
 ### ArrayWriter Constructor
 
     public ArrayWriter(
         int initialSize);
 
-Initializes a new instance of the ArrayWriter class with the given initial buffer size.
+Initializes a new instance of the class with the given initial buffer size.
 
 <b>Parameters:</b>
 
@@ -21,7 +21,7 @@ Initializes a new instance of the ArrayWriter class with the given initial buffe
 
     public ArrayWriter();
 
-Initializes a new instance of the ArrayWriter class with a default buffer size.
+Initializes a new instance of the class with a default buffer size.
 
 ### Clear
 
@@ -62,7 +62,7 @@ Writes a series of bytes to the array.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>src</i>
+The parameter <i>src</i>
  is null.
 
  * System.ArgumentException:
@@ -70,8 +70,8 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>src</i>
  's length, or  <i>src</i>
- 's length minus  <i>offset</i>
- is less than <i>length</i>
+ ' s length minus  <i>offset</i>
+ is less than  <i>length</i>
 .
 
 ### WriteByte

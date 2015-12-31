@@ -9,8 +9,8 @@ namespace PeterO.Text.Encoders {
   internal class EncoderAlgorithms {
     private class DecodeWithFallbackDecoder : ICharacterDecoder,
       ICharacterEncoding {
-      private bool bomChecked;
       private readonly DecoderState state;
+      private bool bomChecked;
       private ICharacterDecoder decoder;
       private bool useOriginal;
 
@@ -92,9 +92,9 @@ namespace PeterO.Text.Encoders {
 
     private class BomBufferedTransform : IByteReader {
       private readonly int[] buffer;
+      private readonly IByteReader transform;
       private int bufferOffset;
       private int bufferCount;
-      private readonly IByteReader transform;
       private bool bomChecked;
 
       public BomBufferedTransform(IByteReader transform) {

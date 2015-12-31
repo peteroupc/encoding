@@ -8,7 +8,7 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
  */
 
     /**
-     * A growable array of bytes.
+     * An array of bytes that grows as needed.
      */
   public final class ArrayWriter implements IWriter {
     private int retvalPos;
@@ -24,16 +24,16 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
     }
 
     /**
-     * Initializes a new instance of the ArrayWriter class with a default buffer
-     * size.
+     * Initializes a new instance of the <see cref='T:PeterO.ArrayWriter'/> class
+     * with a default buffer size.
      */
     public ArrayWriter() {
  this(16);
     }
 
     /**
-     * Initializes a new instance of the ArrayWriter class with the given initial
-     * buffer size.
+     * Initializes a new instance of the <see cref='T:PeterO.ArrayWriter'/> class
+     * with the given initial buffer size.
      * @param initialSize A 32-bit signed integer.
      */
     public ArrayWriter(int initialSize) {
@@ -79,7 +79,7 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
      * (but not more than {@code src} 's length).
      * @throws java.lang.NullPointerException The parameter {@code src} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
-     * less than 0 or greater than {@code src} 's length, or {@code src} 's
+     * less than 0 or greater than {@code src} 's length, or {@code src} ' s
      * length minus {@code offset} is less than {@code length}.
      */
     public void write(byte[] src, int offset, int length) {

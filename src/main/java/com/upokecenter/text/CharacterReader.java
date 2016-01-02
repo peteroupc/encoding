@@ -90,8 +90,8 @@ boolean errorThrow) {
      * @param offset A 32-bit signed integer.
      * @param length Another 32-bit signed integer.
      */
-    public CharacterReader(String str, int offset, int length) :
-      this(str, offset, length, false, false) {
+    public CharacterReader(String str, int offset, int length) {
+ this(str, offset, length, false, false);
     }
 
     /**
@@ -238,6 +238,7 @@ boolean dontSkipUtf8Bom) {
       this.errorThrow = errorThrow;
       this.dontSkipUtf8Bom = dontSkipUtf8Bom;
       this.str = "";
+      this.strLength = -1;
     }
 
     private interface IByteReader {

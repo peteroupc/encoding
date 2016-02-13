@@ -18,7 +18,7 @@ Not documented yet.In the .NET implementation, this method is implemented as an 
  * <i>bytes</i>: The parameter  <i>bytes</i>
  is not documented yet.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An IByteReader object.
 
@@ -45,7 +45,7 @@ Not documented yet.In the .NET implementation, this method is implemented as an 
  (but not more than  <i>bytes</i>
  's length).
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An IByteReader object.
 
@@ -78,7 +78,7 @@ Not documented yet.In the .NET implementation, this method is implemented as an 
  * <i>input</i>: The parameter  <i>input</i>
  is not documented yet.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An IByteReader object.
 
@@ -93,7 +93,7 @@ Wraps a byte array into a byte reader. The reader will start at the beginning of
 
  * <i>bytes</i>: The byte array to wrap.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A byte reader wrapping the byte array.
 
@@ -120,7 +120,7 @@ Wraps a portion of a byte array into a byte reader object.In the .NET implementa
 
  * <i>length</i>: The length, in bytes, of the desired portion of "bytes" (but not more than "bytes" 's length).
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A byte reader wrapping the byte array.
 
@@ -150,7 +150,7 @@ Wraps an input stream into a reader object. If an IOException is thrown by the i
 
  * <i>input</i>: The input stream to wrap.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A byte reader wrapping the input stream.
 
@@ -171,7 +171,7 @@ Wraps a byte writer (one that only implements a ReadByte method) to a writer (on
 
  * <i>output</i>: A byte stream.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A writer that wraps the given stream.
 
@@ -192,7 +192,7 @@ Wraps an output stream into a writer object. If an IOException is thrown by the 
 
  * <i>output</i>: Output stream to wrap.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A byte writer that wraps the given output stream.
 

@@ -7,8 +7,8 @@
             size.</summary>
 </doc>
 <doc name="M:PeterO.ArrayWriter.#ctor(System.Int32)">
-<summary>Initializes a new instance of the <see cref='T:PeterO.ArrayWriter'/> class with the given initial buffer
-            size.</summary>
+<summary>Initializes a new instance of the <see cref='T:PeterO.ArrayWriter'/> class with the given initial
+            buffer size.</summary>
             <param name='initialSize'>A 32-bit signed integer.</param>
 </doc>
 <doc name="M:PeterO.ArrayWriter.Clear">
@@ -289,17 +289,18 @@
             configured to support UTF-16 and UTF-32 as well.</summary>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream)">
-<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class; will read the stream as UTF-8,
-            skip the byte-order mark (U+FEFF) if it appears first in the
-            stream, and replace  invalid byte sequences with replacement
-            characters (U+FFFD).</summary>
+<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class; will read the
+            stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears
+            first in the stream, and replace invalid byte sequences with
+            replacement characters (U+FFFD).</summary>
             <param name='stream'>A readable data stream.</param>
             <exception cref='T:System.ArgumentNullException'>The parameter
             <paramref name='stream'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32)">
-<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class; will skip the byte-order mark
-            (U+FEFF) if it appears first in the stream and replace invalid byte sequences with replacement characters (U+FFFD).</summary>
+<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class; will skip the
+            byte-order mark (U+FEFF) if it appears first in the stream and
+            replace invalid byte sequences with replacement characters (U+FFFD).</summary>
             <param name='stream'>A readable byte stream.</param>
             <param name='mode'>The method to use when detecting encodings other
             than UTF-8 in the byte stream. This usually involves checking
@@ -319,8 +320,9 @@
             <paramref name='stream'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)">
-<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class; will skip the byte-order mark
-            (U+FEFF) if it appears first in the stream.</summary>
+<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class; will skip the
+            byte-order mark (U+FEFF) if it appears first in the
+            stream.</summary>
             <param name='stream'>A readable byte stream.</param>
             <param name='mode'>The method to use when detecting encodings other
             than UTF-8 in the byte stream. This usually involves checking
@@ -371,17 +373,18 @@
             <paramref name='stream'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String)">
-<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit string;
-            if the string begins with a byte-order mark (U+FEFF), it won't be
-            skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).</summary>
+<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class using a Unicode
+            16-bit string; if the string begins with a byte-order mark
+            (U+FEFF), it won't be skipped, and any unpaired surrogate code
+            points (U+D800 to U+DFFF) in the string are replaced with
+            replacement characters (U+FFFD).</summary>
             <param name='str'>The string to read.</param>
             <exception cref='T:System.ArgumentNullException'>The parameter
             <paramref name='str'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean)">
-<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit string;
-            any unpaired surrogate code points (U+D800 to U+DFFF) in the
-            string are replaced with replacement characters (U+FFFD).</summary>
+<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class using a Unicode
+            16-bit string; any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).</summary>
             <param name='str'>The string to read.</param>
             <param name='skipByteOrderMark'>If true and the string begins with
             a byte-order mark (U+FEFF), will skip that code point as it reads
@@ -390,8 +393,8 @@
             <paramref name='str'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean,System.Boolean)">
-<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit
-            string.</summary>
+<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class using a Unicode
+            16-bit string.</summary>
             <param name='str'>The string to read.</param>
             <param name='skipByteOrderMark'>If true and the string begins with
             a byte-order mark (U+FEFF), will skip that code point as it reads
@@ -404,20 +407,22 @@
             <paramref name='str'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32)">
-<summary>Initializes a new instance of the <see cref='CharacterReader'/> class.</summary>
+<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
             <param name='str'>A text string.</param>
             <param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='str'/> begins.</param>
             <param name='length'>The number of elements in the desired portion
-            of <paramref name='str'/> (but not more than <paramref name='str'/> 's length).</param>
+            of <paramref name='str'/> (but not more than <paramref name='str'/>
+            's length).</param>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)">
-<summary>Initializes a new instance of the <see cref='CharacterReader'/> class.</summary>
+<summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
             <param name='str'>A text string.</param>
             <param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='str'/> begins.</param>
             <param name='length'>The number of elements in the desired portion
-            of <paramref name='str'/> (but not more than <paramref name='str'/> 's length).</param>
+            of <paramref name='str'/> (but not more than <paramref name='str'/>
+            's length).</param>
             <param name='skipByteOrderMark'>If true and the string begins with
             a byte-order mark (U+FEFF), will skip that code point as it reads
             the string.</param>
@@ -425,7 +430,8 @@
             unpaired surrogate code points (U+D800 to U+DFFF) are found in
             the string. If false, replaces those byte sequences with
             replacement characters (U+FFFD) as the stream is read.</param>
-            <exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> is null.</exception>
+            <exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> is null.</exception>
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.Read(System.Int32[],System.Int32,System.Int32)">
 <summary>Reads a series of code points from a Unicode stream or a
@@ -589,7 +595,8 @@
             object's class already has a DecodeToString method with the same
             parameters, that method takes precedence over this extension
             method.</para></summary>
-            <param name='enc'>An object implementing a character encoding (gives access to an encoder and a decoder).</param>
+            <param name='enc'>An object implementing a character encoding
+            (gives access to an encoder and a decoder).</param>
             <param name='bytes'>A byte array.</param>
             <returns>A string consisting of the decoded text.</returns>
             <exception cref='T:System.ArgumentNullException'>The parameter
@@ -927,7 +934,8 @@
             name.</summary>
             <param name='name'>A string naming a character encoding. See the
             ResolveAlias method. Can be null.</param>
-            <returns>An object implementing a character encoding (gives access to an encoder and a decoder).</returns>
+            <returns>An object implementing a character encoding (gives access
+            to an encoder and a decoder).</returns>
 </doc>
 <doc name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean)">
 <summary>Returns a character encoding from the given

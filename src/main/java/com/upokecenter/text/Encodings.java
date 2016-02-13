@@ -171,7 +171,8 @@ private Encodings() {
      * object's class already has a DecodeToString method with the same
      * parameters, that method takes precedence over this extension
      * method.</p>
-     * @param enc An ICharacterEncoding object.
+     * @param enc An object implementing a character encoding (gives access to an
+     * encoder and a decoder).
      * @param bytes A byte array.
      * @return A string consisting of the decoded text.
      * @throws java.lang.NullPointerException The parameter {@code enc} or {@code
@@ -627,7 +628,8 @@ DataIO.ToWriter(output));
      * Returns a character encoding from the given name.
      * @param name A string naming a character encoding. See the ResolveAlias
      * method. Can be null.
-     * @return An ICharacterEncoding object.
+     * @return An object implementing a character encoding (gives access to an
+     * encoder and a decoder).
      */
     public static ICharacterEncoding GetEncoding(String name) {
       return GetEncoding(name, false, false);

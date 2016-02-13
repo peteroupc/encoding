@@ -35,6 +35,13 @@ project, add the following to the `dependencies` section in your `pom.xml` file:
 In other Java-based environments, the library can be referred to by its
 group ID (`com.github.peteroupc`), artifact ID (`encoding`), and version, as given above.
 
+Documentation
+------------
+
+**See the [Java API documentation](https://peteroupc.github.io/Encoding/api/).**
+
+**See the [C# (.NET) API documentation](https://peteroupc.github.io/Encoding/docs/).**
+
 Examples
 -------------
 

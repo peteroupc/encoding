@@ -18,6 +18,6 @@ Converts a Unicode code point to bytes and writes the bytes to an output stream.
 
  * <i>output</i>: Output stream where the converted bytes will be written. The decoder can maintain internal state, including data on code points already passed as input, so this parameter should not change when using the same character encoder object.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 The number of bytes written to the stream; -1 if no further code points remain (for example, if _c_ is -1 indicating the end of the stream), or -2 if an encoding error occurs. (Note that it's possible for this method to return 0 if, for example, it can't generate new bytes yet based on the current input.). If this method returns -2, it should not write any bytes to the output stream.

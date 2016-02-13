@@ -15,6 +15,6 @@ Reads bytes from an input transform until a Unicode code point is decoded or unt
 
  * <i>input</i>: Source of bytes to decode into code points. The decoder can maintain internal state, including data on bytes already read, so this parameter should not change when using the same character decoder object. It's also possible for the decoder to read no bytes but still return a code point, depending on the encoding it supports and its internal state.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 The Unicode code point decoded, from 0-0xd7ff or from 0xe000 to 0x10ffff. Returns -1 if the end of the source is reached or -2 if a decoder error occurs.

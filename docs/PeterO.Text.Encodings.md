@@ -82,11 +82,11 @@ Reads a byte array from a data source and converts the bytes from a given encodi
 
 <b>Parameters:</b>
 
- * <i>enc</i>: An ICharacterEncoding object.
+ * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
  * <i>bytes</i>: A byte array.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A string consisting of the decoded text.
 
@@ -121,7 +121,7 @@ Reads a portion of a byte array from a data source and converts the bytes from a
  (but not more than  <i>bytes</i>
  's length).
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A string consisting of the decoded text.
 
@@ -155,7 +155,7 @@ Not documented yet.In the .NET implementation, this method is implemented as an 
 
  * <i>input</i>: A readable byte stream.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A string consisting of the decoded text.
 
@@ -179,7 +179,7 @@ Reads bytes from a data source and converts the bytes from a given encoding to a
 
  * <i>input</i>: An object that implements a byte stream.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 The converted string.
 
@@ -204,7 +204,7 @@ Reads Unicode characters from a character input and writes them to a byte array 
 
  * <i>encoder</i>: An object that implements a character encoder.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A byte array.
 
@@ -229,7 +229,7 @@ Reads Unicode characters from a character input and writes them to a byte array 
 
  * <i>encoding</i>: An object that implements a given character encoding.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A byte array containing the encoded text.
 
@@ -253,7 +253,7 @@ Reads Unicode characters from a text string and writes them to a byte array enco
 
  * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A byte array.
 
@@ -420,7 +420,7 @@ Converts a character encoding into a character input stream, given a streamable 
 
  * <i>stream</i>: Byte stream to convert into Unicode characters.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An ICharacterInput object.
 
@@ -438,7 +438,7 @@ Not documented yet.In the .NET implementation, this method is implemented as an 
 
  * <i>input</i>: Byte stream to convert into Unicode characters.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An ICharacterInput object.
 
@@ -458,7 +458,7 @@ In the .NET implementation, this method is implemented as an extension method to
 
  * <i>stream</i>: Byte stream to convert into Unicode characters.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An ICharacterInput object.
 
@@ -476,7 +476,7 @@ Converts a character encoding into a character input stream, given a readable da
 
  * <i>input</i>: Byte stream to convert into Unicode characters.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An ICharacterInput object.
 
@@ -491,9 +491,9 @@ Returns a character encoding from the given name.
 
  * <i>name</i>: A string naming a character encoding. See the ResolveAlias method. Can be null.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
-An ICharacterEncoding object.
+An object implementing a character encoding (gives access to an encoder and a decoder).
 
 ### GetEncoding
 
@@ -509,7 +509,7 @@ Returns a character encoding from the given name.
 
  * <i>forEmail</i>: If false, uses the encoding resolution rules in the Encoding Standard. If true, uses modified rules as described in the ResolveAliasForEmail method.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An object that enables encoding and decoding text in the given character encoding. Returns null if the name is null or empty, or if it names an unrecognized or unsupported encoding.
 
@@ -530,7 +530,7 @@ Returns a character encoding from the given name.
 
  * <i>allowReplacement</i>: If true, allows the label `replacement`  to return the replacement encoding.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An object that enables encoding and decoding text in the given character encoding. Returns null if the name is null or empty, or if it names an unrecognized or unsupported encoding.
 
@@ -545,7 +545,7 @@ Reads Unicode characters from a character input and converts them to a text stri
 
  * <i>reader</i>: A character input whose characters will be converted to a text string.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A text string containing the characters read.
 
@@ -620,7 +620,7 @@ The  `utf-8` ,  `utf-16le` , and  `utf-16be` encodings don't encode a byte-order
 
 .
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A standardized name for the encoding. Returns the empty string if  <i>name</i>
  is null or empty, or if the encoding name is unsupported.
@@ -644,7 +644,7 @@ Resolves a character encoding's name to a canonical form, using rules more suita
 
 .
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A standardized name for the encoding. Returns the empty string if  <i>name</i>
  is null or empty, or if the encoding name is unsupported.
@@ -663,7 +663,7 @@ Converts a text string to a byte array using the given character encoder. When r
 
  * <i>str</i>: A text string to encode into a byte array.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A byte array.
 
@@ -688,7 +688,7 @@ Converts a text string to a byte array encoded in a given character encoding. Wh
 
  * <i>str</i>: A string to be encoded into a byte array.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 A byte array containing the string encoded in the given text encoding.
 
@@ -709,7 +709,7 @@ Converts a text string to a character input. The resulting input can then be use
 
  * <i>str</i>: A text string.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An ICharacterInput object.
 
@@ -739,7 +739,7 @@ Converts a portion of a text string to a character input. The resulting input ca
  (but not more than  <i>str</i>
  's length).
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 An ICharacterInput object.
 

@@ -10,6 +10,6 @@ A generic interface for reading data one byte at a time.
 
 Reads a byte from the data source.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 The byte read (from 0 through 255), or -1 if the end of the source is reached.

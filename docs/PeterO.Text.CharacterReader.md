@@ -10,7 +10,7 @@ A general-purpose character input for reading text from byte streams and text st
     public CharacterReader(
         string str);
 
-Initializes a new instance of the class using a Unicode 16-bit string; if the string begins with a byte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
+Initializes a new instance of the  class using a Unicode 16-bit string; if the string begins with a byte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -28,7 +28,7 @@ The parameter <i>str</i>
         string str,
         bool skipByteOrderMark);
 
-Initializes a new instance of the class using a Unicode 16-bit string; any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
+Initializes a new instance of the  class using a Unicode 16-bit string; any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -49,7 +49,7 @@ The parameter <i>str</i>
         bool skipByteOrderMark,
         bool errorThrow);
 
-Initializes a new instance of the class using a Unicode 16-bit string.
+Initializes a new instance of the  class using a Unicode 16-bit string.
 
 <b>Parameters:</b>
 
@@ -78,9 +78,12 @@ Initializes a new instance of the  class.
 
  * <i>str</i>: A text string.
 
- * <i>offset</i>: A 32-bit signed integer.
+ * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
+ begins.
 
- * <i>length</i>: Another 32-bit signed integer.
+ * <i>length</i>: The number of elements in the desired portion of  <i>str</i>
+ (but not more than  <i>str</i>
+'s length).
 
 ### CharacterReader Constructor
 
@@ -97,18 +100,21 @@ Initializes a new instance of the  class.
 
  * <i>str</i>: A text string.
 
- * <i>offset</i>: A 32-bit signed integer.
+ * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
+ begins.
 
- * <i>length</i>: Another 32-bit signed integer.
+ * <i>length</i>: The number of elements in the desired portion of  <i>str</i>
+ (but not more than  <i>str</i>
+'s length).
 
- * <i>skipByteOrderMark</i>: A Boolean object.
+ * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip that code point as it reads the string.
 
- * <i>errorThrow</i>: Another Boolean object.
+ * <i>errorThrow</i>: If true, will throw an exception if unpaired surrogate code points (U+D800 to U+DFFF) are found in the string. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
  is null.
 
 ### CharacterReader Constructor
@@ -116,7 +122,7 @@ The parameter  <i>str</i>
     public CharacterReader(
         System.IO.Stream stream);
 
-Initializes a new instance of the class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the stream, and replace invalidly encoded bytes with replacement characters (U+FFFD).
+Initializes a new instance of the  class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the stream, and replace invalid byte sequences with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -134,7 +140,7 @@ The parameter <i>stream</i>
         System.IO.Stream stream,
         int mode);
 
-Initializes a new instance of the class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and replace invalidly encoded bytes with replacement characters (U+FFFD).
+Initializes a new instance of the  class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and replace invalid byte sequences with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -167,7 +173,7 @@ The parameter <i>stream</i>
         int mode,
         bool errorThrow);
 
-Initializes a new instance of the class; will skip the byte-order mark (U+FEFF) if it appears first in the stream.
+Initializes a new instance of the  class; will skip the byte-order mark (U+FEFF) if it appears first in the stream.
 
 <b>Parameters:</b>
 
@@ -203,7 +209,7 @@ The parameter <i>stream</i>
         bool errorThrow,
         bool dontSkipUtf8Bom);
 
-Initializes a new instance of the class.
+Initializes a new instance of the  class.
 
 <b>Parameters:</b>
 
@@ -253,7 +259,7 @@ Reads a series of code points from a Unicode stream or a string.
  (but not more than  <i>chars</i>
  's length).
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 The number of code points read from the stream. This can be less than the  <i>length</i>
  parameter if the end of the stream is reached.
@@ -279,6 +285,6 @@ Either  <i>index</i>
 
 Reads the next character from a Unicode stream or a string.
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 The next character, or -1 if the end of the string or stream was reached.

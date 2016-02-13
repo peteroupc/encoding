@@ -25,7 +25,7 @@ Reads a portion of a byte array from the data source.
  (but not more than  <i>bytes</i>
  's length).
 
-<b>Returns:</b>
+<b>Return Value:</b>
 
 The number of bytes read from the data source. Can be less than "length" if the end of the stream was reached.
 

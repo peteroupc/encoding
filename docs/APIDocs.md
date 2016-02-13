@@ -1,4 +1,6 @@
-* [PeterO.ArrayWriter](PeterO.ArrayWriter.md) - An array of bytes that grows as needed.
+## API Documentation
+
+ * [PeterO.ArrayWriter](PeterO.ArrayWriter.md) - An array of bytes that grows as needed.
  * [PeterO.DataIO](PeterO.DataIO.md) - Convenience class that contains static methods for             wrapping byte arrays and streams into byte readers and byte             writers.
  * [PeterO.IByteReader](PeterO.IByteReader.md) - A generic interface for reading data one byte at a             time.
  * [PeterO.IByteWriter](PeterO.IByteWriter.md) - A generic interface for writing bytes of data.

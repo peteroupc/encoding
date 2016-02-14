@@ -11,7 +11,7 @@ An array of bytes that grows as needed.
     public ArrayWriter(
         int initialSize);
 
-Initializes a new instance of the  class with the given initial buffer size.
+Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class with the given initial buffer size.
 
 <b>Parameters:</b>
 
@@ -21,7 +21,7 @@ Initializes a new instance of the  class with the given initial buffer size.
 
     public ArrayWriter();
 
-Initializes a new instance of the  class with a default buffer size.
+Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class with a default buffer size.
 
 ### Clear
 

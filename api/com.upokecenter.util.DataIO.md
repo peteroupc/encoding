@@ -116,7 +116,7 @@ Wraps an input stream into a reader object. If an IOException is thrown by
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader(byte[] bytes, int offset, int length)
-<span class='deprecatedLabel'>Deprecated.</span>&nbsp;<span class='deprecationComment'>Use ToReader instead.</span>
+Deprecated.&nbsp;<i>Use ToReader instead.</i>
 
 **Parameters:**
 
@@ -141,7 +141,7 @@ Wraps an input stream into a reader object. If an IOException is thrown by
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader(InputStream input)
-<span class='deprecatedLabel'>Deprecated.</span>&nbsp;<span class='deprecationComment'>Use ToReader instead.</span>
+Deprecated.&nbsp;<i>Use ToReader instead.</i>
 
 **Parameters:**
 
@@ -153,7 +153,7 @@ Wraps an input stream into a reader object. If an IOException is thrown by
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader(byte[] bytes)
-<span class='deprecatedLabel'>Deprecated.</span>&nbsp;<span class='deprecationComment'>Use ToReader instead.</span>
+Deprecated.&nbsp;<i>Use ToReader instead.</i>
 
 **Parameters:**
 

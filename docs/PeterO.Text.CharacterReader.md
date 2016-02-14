@@ -10,7 +10,7 @@ A general-purpose character input for reading text from byte streams and text st
     public CharacterReader(
         string str);
 
-Initializes a new instance of the  class using a Unicode 16-bit string; if the string begins with a byte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class using a Unicode 16-bit string; if the string begins with a byte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -28,7 +28,7 @@ The parameter <i>str</i>
         string str,
         bool skipByteOrderMark);
 
-Initializes a new instance of the  class using a Unicode 16-bit string; any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class using a Unicode 16-bit string; any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -49,7 +49,7 @@ The parameter <i>str</i>
         bool skipByteOrderMark,
         bool errorThrow);
 
-Initializes a new instance of the  class using a Unicode 16-bit string.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class using a Unicode 16-bit string.
 
 <b>Parameters:</b>
 
@@ -72,7 +72,7 @@ The parameter <i>str</i>
         int offset,
         int length);
 
-Initializes a new instance of the  class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
@@ -94,7 +94,7 @@ Initializes a new instance of the  class.
         bool skipByteOrderMark,
         bool errorThrow);
 
-Initializes a new instance of the  class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
@@ -122,7 +122,7 @@ The parameter <i>str</i>
     public CharacterReader(
         System.IO.Stream stream);
 
-Initializes a new instance of the  class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the stream, and replace invalid byte sequences with replacement characters (U+FFFD).
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the stream, and replace invalid byte sequences with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -140,7 +140,7 @@ The parameter <i>stream</i>
         System.IO.Stream stream,
         int mode);
 
-Initializes a new instance of the  class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and replace invalid byte sequences with replacement characters (U+FFFD).
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and replace invalid byte sequences with replacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -173,7 +173,7 @@ The parameter <i>stream</i>
         int mode,
         bool errorThrow);
 
-Initializes a new instance of the  class; will skip the byte-order mark (U+FEFF) if it appears first in the stream.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will skip the byte-order mark (U+FEFF) if it appears first in the stream.
 
 <b>Parameters:</b>
 
@@ -209,7 +209,7 @@ The parameter <i>stream</i>
         bool errorThrow,
         bool dontSkipUtf8Bom);
 
-Initializes a new instance of the  class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 

@@ -287,8 +287,7 @@ import com.upokecenter.text.*;
             c = -1;
             if (b >= 0x30 && b <= 0x39) {
             int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
-                126) +
-                this.gbk3 - 0x81) * 10) + b - 0x30;
+                126) + this.gbk3 - 0x81) * 10) + b - 0x30;
               c = GB18030CodePoint(ap);
             }
             if (c < 0) {

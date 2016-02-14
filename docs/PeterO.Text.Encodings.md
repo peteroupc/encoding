@@ -6,25 +6,25 @@ Contains methods for converting text from one character encoding to another. Thi
 
 Now let's define some terms.
 
-Encoding Terms
+<b>Encoding Terms</b>
 
- * A code point is a number that identifies a single text character, such as a letter, digit, or symbol.
+ * A <b>code point</b> is a number that identifies a single text character, such as a letter, digit, or symbol.
 
- * A character set is a set of code points which are each assigned to a single text character. (This may also be called acoded character set.) As used here, character sets don't define how code points are laid out in memory.
+ * A <b>character set</b> is a set of code points which are each assigned to a single text character. (This may also be called a<i>coded character set</i>.) As used here, character sets don't define how code points are laid out in memory.
 
- * A character encoding is a mapping from a sequence of code points, in one or more specific character sets, to a sequence of bytes and vice versa.
+ * A <b>character encoding</b> is a mapping from a sequence of code points, in one or more specific character sets, to a sequence of bytes and vice versa.
 
- * ASCII is a 128-code-point character set that includes the English letters and digits, common punctuation and symbols, and control characters. As used here, its code points match the code points within the Basic Latin range (0-127 or U+0000 to U+007F) of the Unicode Standard.
+ * <b>ASCII</b> is a 128-code-point character set that includes the English letters and digits, common punctuation and symbols, and control characters. As used here, its code points match the code points within the Basic Latin range (0-127 or U+0000 to U+007F) of the Unicode Standard.
 
 There are several kinds of character encodings:
 
- * Single-byte encodings define a character set that assigns one code point to one byte. Thus, they can have a maximum of 256 code points. For example:
+ * <b>Single-byte encodings</b> define a character set that assigns one code point to one byte. Thus, they can have a maximum of 256 code points. For example:
 
  * (a) ISO 8859 encodings and  `windows-1252` .
 
  * (b) ASCII is usually used as a single-byte encoding where each code point fits in the lower 7 bits of an eight-bit byte. In the Encoding Standard, all single-byte encodings use the ASCII characters as the first 128 code points of their character sets.
 
- * Multi-byte encodings include code points from one or more character sets and assign some or all code points to several bytes. For example:
+ * <b>Multi-byte encodings</b> include code points from one or more character sets and assign some or all code points to several bytes. For example:
 
  * (a) UTF-16 uses 2 bytes for the most common Unicode code points and 4 bytes for supplementary code points.
 
@@ -32,31 +32,31 @@ There are several kinds of character encodings:
 
  * (c) Most legacy East Asian encodings, such as `shift_jis` ,  `gbk` , and  `big5`  use 1 byte for ASCII (or a slightly modified version) and, usually, 2 or more bytes for national standard character sets. In many of these encodings, notably  `shift_jis` , characters whose code points use one byte traditionally take half the space of characters whose code points use two bytes.
 
- * Escape-based encodings are combinations of single- and/or multi-byte encodings, and use escape sequences and/or shift codes to change which encoding to use for the bytes that follow. For example:
+ * <b>Escape-based encodings</b> are combinations of single- and/or multi-byte encodings, and use escape sequences and/or shift codes to change which encoding to use for the bytes that follow. For example:
 
  * (a)  `iso-2022-jp`  supports several escape sequences that shift into different encodings, including a Katakana, a Kanji, and an ASCII encoding (with ASCII as the default).
 
  * (b) UTF-7 (not included in the Encoding Standard) is a Unicode encoding that uses a limited subset of ASCII. The plus symbol is used to shift into a modified version of base-64 to encode other Unicode code points.
 
- * The Encoding Standard also defines a replacement encoding, which causes a decoding error and is used to alias a few problematic or unsupported encoding names, such as `hz-gb-2312` .
+ * The Encoding Standard also defines a <b>replacement encoding</b>, which causes a decoding error and is used to alias a few problematic or unsupported encoding names, such as `hz-gb-2312` .
 
-Getting an Encoding
+<b>Getting an Encoding</b>
 
 The Encoding Standard includes UTF-8, UTF-16, and many legacy encodings, and gives each one of them a name. The `GetEncoding(name)`  method takes a name string and returns an ICharacterEncoding object that implements that encoding, or `null`  if the name is unrecognized.
 
 However, the Encoding Standard is designed to include only encodings commonly used on Web pages, not in other protocols such as email. For email, the Encoding class includes an alternate function  `GetEncoding(name, forEmail)` . Setting `forEmail`  to  `true`  will use rules modified from the Encoding Standard to better suit encoding and decoding text from email messages.
 
-Classes for Character Encodings
+<b>Classes for Character Encodings</b>
 
 This Encodings class provides access to common character encodings through classes as described below:
 
- * An encoder class is a class that converts a sequence of bytes to a sequence of code points in the universal character set (otherwise known under the name Unicode). An encoder class implements the  `ICharacterEncoder`  interface.
+ * An <b>encoder class</b> is a class that converts a sequence of bytes to a sequence of code points in the universal character set (otherwise known under the name Unicode). An encoder class implements the  `ICharacterEncoder`  interface.
 
- * A decoder class is a class that converts a sequence of Unicode code points to a sequence of bytes. A decoder class implements the  `ICharacterDecoder`  interface.
+ * A <b>decoder class</b> is a class that converts a sequence of Unicode code points to a sequence of bytes. A decoder class implements the  `ICharacterDecoder`  interface.
 
- * An encoding class allows access to both an encoder class and a decoder class and implements the `ICharacterEncoding`  interface. The encoder and decoder classes should implement the same character encoding.
+ * An <b>encoding class</b> allows access to both an encoder class and a decoder class and implements the `ICharacterEncoding`  interface. The encoder and decoder classes should implement the same character encoding.
 
-Custom Encodings
+<b>Custom Encodings</b>
 
 Classes that implement the ICharacterEncoding interface can provide additional character encodings not included in the Encoding Standard. Some examples of these include the following:
 

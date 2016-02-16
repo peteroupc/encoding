@@ -6,12 +6,12 @@ private Korean() {
     private static final short[] ValueTable = new short[23750];
 
     static {
-      System.arraycopy(method0(), 0, ValueTable, 0, 4096);
-      System.arraycopy(method1(), 0, ValueTable, 4096, 4096);
-      System.arraycopy(method2(), 0, ValueTable, 8192, 4096);
-      System.arraycopy(method3(), 0, ValueTable, 12288, 4096);
-      System.arraycopy(method4(), 0, ValueTable, 16384, 4096);
-      System.arraycopy(method5(), 0, ValueTable, 20480, 3270);
+      System.arraycopy(Method0(), 0, ValueTable, 0, 4096);
+      System.arraycopy(Method1(), 0, ValueTable, 4096, 4096);
+      System.arraycopy(Method2(), 0, ValueTable, 8192, 4096);
+      System.arraycopy(Method3(), 0, ValueTable, 12288, 4096);
+      System.arraycopy(Method4(), 0, ValueTable, 16384, 4096);
+      System.arraycopy(Method5(), 0, ValueTable, 20480, 3270);
     }
 
     private static final int[] ValueIndextable = {
@@ -78,7 +78,7 @@ private Korean() {
       return (cp == 0) ? -1 : cp;
     }
 
-    private static short[] method0() {
+    private static short[] Method0() {
       return new short[] { -21502, -21501, -21499, -21498, -21493, -21492,
         -21491, -21490, -21489, -21480, -21474, -21473, -21471, -21470,
         -21469, -21467, -21466, -21465, -21464, -21463, -21462, -21461,
@@ -572,7 +572,7 @@ private Korean() {
         -16602, -16601 };
     }
 
-    private static short[] method1() {
+    private static short[] Method1() {
       return new short[] { -16600, -16599, -16598, -16597, -16596, -16595,
         -16594, -16593, -16592, -16591, -16590, -16589, -16588, -16587,
         -16586, -16585, -16584, -16583, -16582, -16581, -16580, -16579,
@@ -1054,7 +1054,7 @@ private Korean() {
         -13034, -13033, -13030 };
     }
 
-    private static short[] method2() {
+    private static short[] Method2() {
       return new short[] { -13028, -13026, -13025, -13024, 0, 0, 0, 0, 0, 0,
         -13023, -13022, -13021, -13019, -13018, -13017, -13015, -13014,
         -13013, -13011, -13010, -13009, -13008, -13007, -13006, -13005,
@@ -1522,7 +1522,7 @@ private Korean() {
         -14208, -14207, -14205, -14203, -14202, -14201 };
     }
 
-    private static short[] method3() {
+    private static short[] Method3() {
       return new short[] { -14197, -14196, -14195, -14188, -14179, -14177,
         -14175, -14168, -14148, -14147, -14140, -14136, -14132, -14124,
         -14123, -14121, -14119, -14112, -14111, -14108, -14091, -14084,
@@ -1889,7 +1889,7 @@ private Korean() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }
 
-    private static short[] method4() {
+    private static short[] Method4() {
       return new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -28548, -25817, -24691,
@@ -2233,7 +2233,7 @@ private Korean() {
         -29926, 0x4eba, 0x4ec1, 0x5203, 0x5370, -1555, 0x54bd };
     }
 
-    private static short[] method5() {
+    private static short[] Method5() {
       return new short[] { 0x56e0, 0x59fb, 0x5bc5, 0x5f15, 0x5fcd, 0x6e6e,
         -1554, -1553, 0x7d6a, -31947, -1552, -31085, -30067, -1551, -26771,
         -26761, -1550, -1549, 0x4e00, 0x4f5a, 0x4f7e, 0x58f9, 0x65e5,

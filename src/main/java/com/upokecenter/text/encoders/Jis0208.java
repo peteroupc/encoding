@@ -6,9 +6,9 @@ private Jis0208() {
     private static final short[] ValueTable = new short[11104];
 
     static {
-      System.arraycopy(method0(), 0, ValueTable, 0, 4096);
-      System.arraycopy(method1(), 0, ValueTable, 4096, 4096);
-      System.arraycopy(method2(), 0, ValueTable, 8192, 2912);
+      System.arraycopy(Method0(), 0, ValueTable, 0, 4096);
+      System.arraycopy(Method1(), 0, ValueTable, 4096, 4096);
+      System.arraycopy(Method2(), 0, ValueTable, 8192, 2912);
     }
 
     private static final int[] ValueIndextable = {
@@ -88,7 +88,7 @@ if (codepoint >= ValueIndextable2[i] && codepoint <= ValueIndextable2[i +
       return (cp == 0) ? -1 : cp;
     }
 
-    private static short[] method0() {
+    private static short[] Method0() {
       return new short[] { 0x3000, 0x3001, 0x3002, -244, -242, 0x30fb, -230,
         -229, -225, -255, 0x309b, 0x309c, 0x00b4, -192, 0x00a8, -194, -29,
         -193, 0x30fd, 0x30fe, 0x309d, 0x309e, 0x3003, 0x4edd, 0x3005,
@@ -534,7 +534,7 @@ if (codepoint >= ValueIndextable2[i] && codepoint <= ValueIndextable2[i +
         -31998, 0x5984, 0x5b5f, 0x6bdb, 0x731b, 0x76f2, 0x7db2 };
     }
 
-    private static short[] method1() {
+    private static short[] Method1() {
       return new short[] { -32745, -31591, 0x5132, 0x6728, -24871, 0x76ee,
         0x6762, 0x52ff, -26363, 0x5c24, 0x623b, 0x7c7e, -29520, 0x554f,
         0x60b6, 0x7d0b, -27264, 0x5301, 0x4e5f, 0x51b6, 0x591c, 0x723a,
@@ -1015,7 +1015,7 @@ if (codepoint >= ValueIndextable2[i] && codepoint <= ValueIndextable2[i +
         0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }
 
-    private static short[] method2() {
+    private static short[] Method2() {
       return new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

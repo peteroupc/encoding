@@ -453,14 +453,11 @@ stringTemp);
           continue;
         }
         if (i == 0xa5 || i == 0x203e || i == 0x0e || i == 0x0f || i == 0x1b ||
-          i == 0x2212) {
+          i == 0x2212 || i == 0xe5e5) {
           // ignore certain characters that intentionally
           // don't round trip in certain encodings
           continue;
         }
-        if (i == 0xe5e5) {
- continue;
-}
         int e = encoder.Encode(i, aw);
         if (e >= 0) {
           list.Add(i);

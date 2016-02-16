@@ -5,12 +5,12 @@ namespace PeterO.Text.Encoders {
     private static readonly short[] ValueTable = new short[23940];
 
     static Gb18030() {
-      Array.Copy(method0(), 0, ValueTable, 0, 4096);
-      Array.Copy(method1(), 0, ValueTable, 4096, 4096);
-      Array.Copy(method2(), 0, ValueTable, 8192, 4096);
-      Array.Copy(method3(), 0, ValueTable, 12288, 4096);
-      Array.Copy(method4(), 0, ValueTable, 16384, 4096);
-      Array.Copy(method5(), 0, ValueTable, 20480, 3460);
+      Array.Copy(Method0(), 0, ValueTable, 0, 4096);
+      Array.Copy(Method1(), 0, ValueTable, 4096, 4096);
+      Array.Copy(Method2(), 0, ValueTable, 8192, 4096);
+      Array.Copy(Method3(), 0, ValueTable, 12288, 4096);
+      Array.Copy(Method4(), 0, ValueTable, 16384, 4096);
+      Array.Copy(Method5(), 0, ValueTable, 20480, 3460);
     }
 
     private static readonly int[] ValueIndextable = {
@@ -77,7 +77,7 @@ namespace PeterO.Text.Encoders {
       return (cp == 0) ? -1 : cp;
     }
 
-    private static short[] method0() {
+    private static short[] Method0() {
       return new short[] { 0x4e02, 0x4e04, 0x4e05, 0x4e06, 0x4e0f, 0x4e12,
         0x4e17, 0x4e1f, 0x4e20, 0x4e21, 0x4e23, 0x4e26, 0x4e29, 0x4e2e,
         0x4e2f, 0x4e31, 0x4e33, 0x4e35, 0x4e37, 0x4e3c, 0x4e40, 0x4e41,
@@ -593,7 +593,7 @@ namespace PeterO.Text.Encoders {
         0x67c0, 0x67c2 };
     }
 
-    private static short[] method1() {
+    private static short[] Method1() {
       return new short[] { 0x67c5, 0x67c6, 0x67c7, 0x67c8, 0x67c9, 0x67ca,
         0x67cb, 0x67cc, 0x67cd, 0x67ce, 0x67d5, 0x67d6, 0x67d7, 0x67db,
         0x67df, 0x67e1, 0x67e3, 0x67e4, 0x67e6, 0x67e7, 0x67e8, 0x67ea,
@@ -1088,7 +1088,7 @@ namespace PeterO.Text.Encoders {
         0x7412, 0x7413, 0x7414 };
     }
 
-    private static short[] method2() {
+    private static short[] Method2() {
       return new short[] { 0x7415, 0x7416, 0x7417, 0x7418, 0x7419, 0x741c,
         0x741d, 0x741e, 0x741f, 0x7420, 0x7421, 0x7423, 0x7424, 0x7427,
         0x7429, 0x742b, 0x742d, 0x742f, 0x7431, 0x7432, 0x7437, 0x7438,
@@ -1598,7 +1598,7 @@ namespace PeterO.Text.Encoders {
         0x7cb1, -32145, 0x4e24, -28794, -28209, 0x667e };
     }
 
-    private static short[] method3() {
+    private static short[] Method3() {
       return new short[] { 0x4eae, -29691, 0x64a9, -32694, 0x50da, 0x7597,
         0x71ce, 0x5be5, -28739, 0x6f66, 0x4e86, 0x6482, -27293, 0x5ed6,
         0x6599, 0x5217, -30526, 0x70c8, 0x52a3, 0x730e, 0x7433, 0x6797,
@@ -2114,7 +2114,7 @@ namespace PeterO.Text.Encoders {
         -29838, -29837 };
     }
 
-    private static short[] method4() {
+    private static short[] Method4() {
       return new short[] { -29836, -29835, -29834, -29833, -29832, -29831,
         -29830, -29829, -29828, -29827, -29826, -29825, -29824, -29823,
         -29822, -29821, -29820, -29819, -29818, -29817, -29816, -29815,
@@ -2630,7 +2630,7 @@ namespace PeterO.Text.Encoders {
         0x7198 };
     }
 
-    private static short[] method5() {
+    private static short[] Method5() {
       return new short[] { 0x71b3, 0x71b5, 0x71a8, 0x71a0, 0x71e0, 0x71d4,
         0x71e7, 0x71f9, 0x721d, 0x7228, 0x706c, 0x7118, 0x7166, 0x71b9,
         0x623e, 0x623d, 0x6243, 0x6248, 0x6249, 0x793b, 0x7940, 0x7946,

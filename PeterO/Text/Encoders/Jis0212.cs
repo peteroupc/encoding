@@ -5,8 +5,8 @@ namespace PeterO.Text.Encoders {
     private static readonly short[] ValueTable = new short[7211];
 
     static Jis0212() {
-      Array.Copy(method0(), 0, ValueTable, 0, 4096);
-      Array.Copy(method1(), 0, ValueTable, 4096, 3115);
+      Array.Copy(Method0(), 0, ValueTable, 0, 4096);
+      Array.Copy(Method1(), 0, ValueTable, 4096, 3115);
     }
 
     public static int IndexToCodePoint(int index) {
@@ -17,7 +17,7 @@ namespace PeterO.Text.Encoders {
       return (cp == 0) ? -1 : cp;
     }
 
-    private static short[] method0() {
+    private static short[] Method0() {
       return new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -439,7 +439,7 @@ namespace PeterO.Text.Encoders {
         0x7487, 0x7489, 0x748f, 0x7490, 0x7491, 0x7492, 0x7498, 0x7499 };
     }
 
-    private static short[] method1() {
+    private static short[] Method1() {
       return new short[] { 0x749a, 0x749c, 0x749f, 0x74a0, 0x74a1, 0x74a3,
         0x74a6, 0x74a8, 0x74a9, 0x74aa, 0x74ab, 0x74ae, 0x74af, 0x74b1,
         0x74b2, 0x74b5, 0x74b9, 0x74bb, 0x74bf, 0x74c8, 0x74c9, 0x74cc,

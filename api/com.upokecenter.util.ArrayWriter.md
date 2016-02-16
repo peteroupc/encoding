@@ -6,12 +6,12 @@ An array of bytes that grows as needed.
 
 ## Methods
 
-* `ArrayWriter()`<br>
- Initializes a new instance of the  class
- with a default buffer size.
-* `ArrayWriter(int initialSize)`<br>
- Initializes a new instance of the  class
- with the given initial buffer size.
+* `ArrayWriter() PeterO.ArrayWriter`<br>
+ Initializes a new instance of the PeterO.ArrayWriter class with a
+ default buffer size.
+* `ArrayWriter(int initialSize) PeterO.ArrayWriter`<br>
+ Initializes a new instance of the PeterO.ArrayWriter class with the
+ given initial buffer size.
 * `void Clear()`<br>
  Offers a fast way to reset the length of the array writer's data to 0.
 * `byte[] ToArray()`<br>
@@ -25,23 +25,23 @@ An array of bytes that grows as needed.
 
 ## Constructors
 
-* `ArrayWriter()`<br>
- Initializes a new instance of the  class
- with a default buffer size.
-* `ArrayWriter(int initialSize)`<br>
- Initializes a new instance of the  class
- with the given initial buffer size.
+* `ArrayWriter() PeterO.ArrayWriter`<br>
+ Initializes a new instance of the PeterO.ArrayWriter class with a
+ default buffer size.
+* `ArrayWriter(int initialSize) PeterO.ArrayWriter`<br>
+ Initializes a new instance of the PeterO.ArrayWriter class with the
+ given initial buffer size.
 
 ## Method Details
 
 ### ArrayWriter
     public ArrayWriter()
-Initializes a new instance of the <see cref='T:PeterO.ArrayWriter'/> class
- with a default buffer size.
+Initializes a new instance of the <code>PeterO.ArrayWriter</code> class with a
+ default buffer size.
 ### ArrayWriter
     public ArrayWriter(int initialSize)
-Initializes a new instance of the <see cref='T:PeterO.ArrayWriter'/> class
- with the given initial buffer size.
+Initializes a new instance of the <code>PeterO.ArrayWriter</code> class with the
+ given initial buffer size.
 
 **Parameters:**
 

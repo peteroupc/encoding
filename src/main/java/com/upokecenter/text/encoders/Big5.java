@@ -6,11 +6,11 @@ private Big5() {
     private static final int[] ValueTable = new int[19782];
 
     static {
-      System.arraycopy(method0(), 0, ValueTable, 0, 4096);
-      System.arraycopy(method1(), 0, ValueTable, 4096, 4096);
-      System.arraycopy(method2(), 0, ValueTable, 8192, 4096);
-      System.arraycopy(method3(), 0, ValueTable, 12288, 4096);
-      System.arraycopy(method4(), 0, ValueTable, 16384, 3398);
+      System.arraycopy(Method0(), 0, ValueTable, 0, 4096);
+      System.arraycopy(Method1(), 0, ValueTable, 4096, 4096);
+      System.arraycopy(Method2(), 0, ValueTable, 8192, 4096);
+      System.arraycopy(Method3(), 0, ValueTable, 12288, 4096);
+      System.arraycopy(Method4(), 0, ValueTable, 16384, 3398);
     }
 
     private static final int[] ValueIndextable = {
@@ -82,7 +82,7 @@ private Big5() {
       return (cp == 0) ? -1 : cp;
     }
 
-    private static int[] method0() {
+    private static int[] Method0() {
       return new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -468,7 +468,7 @@ private Big5() {
         29080, 26709, 139333, 27113, 14024 };
     }
 
-    private static int[] method1() {
+    private static int[] Method1() {
       return new int[] { 139900, 140247, 140282, 141098, 141425, 141647,
         33533, 141671, 141715, 142037, 35237, 142056, 36768, 142094, 38840,
         142143, 38983, 39613, 142412, 0, 142472, 142519, 154600, 142600,
@@ -919,7 +919,7 @@ private Big5() {
         29481, 29754, 29738, 29747, 29730, 29733 };
     }
 
-    private static int[] method2() {
+    private static int[] Method2() {
       return new int[] { 29749, 29750, 29748, 29743, 29723, 29734, 29736,
         29989, 29990, 30059, 30058, 30178, 30171, 30179, 30169, 30168,
         30174, 30176, 30331, 30332, 30358, 30355, 30388, 30428, 30543,
@@ -1372,7 +1372,7 @@ private Big5() {
         26602, 26571, 27432, 27522, 27524, 27574, 27606, 27608 };
     }
 
-    private static int[] method3() {
+    private static int[] Method3() {
       return new int[] { 27616, 27680, 27681, 27944, 27956, 27949, 27935,
         27964, 27967, 27922, 27914, 27866, 27955, 27908, 27929, 27962,
         27930, 27921, 27904, 27933, 27970, 27905, 27928, 27959, 27907,
@@ -1831,7 +1831,7 @@ private Big5() {
         24508, 24989, 25000 };
     }
 
-    private static int[] method4() {
+    private static int[] Method4() {
       return new int[] { 24982, 25029, 25012, 25030, 25025, 25036, 25018,
         25023, 25016, 24972, 25815, 25814, 25808, 25807, 25801, 25789,
         25737, 25795, 25819, 25843, 25817, 25907, 25983, 25980, 26018,

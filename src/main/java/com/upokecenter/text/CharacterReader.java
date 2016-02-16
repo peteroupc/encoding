@@ -27,8 +27,8 @@ import java.io.*;
     private ICharacterInput reader;
 
     /**
-     * Initializes a new instance of the <see
-     * cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class using a Unicode 16-bit
      * string; if the string begins with a byte-order mark (U + FEFF), it
      * won't be skipped, and any unpaired surrogate code points (U+D800 to
      * U + DFFF) in the string are replaced with replacement characters
@@ -41,8 +41,8 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the <see
-     * cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class using a Unicode 16-bit
      * string; any unpaired surrogate code points (U + D800 to U + DFFF) in the
      * string are replaced with replacement characters (U + FFFD).
      * @param str The string to read.
@@ -55,8 +55,8 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the <see
-     * cref='T:PeterO.Text.CharacterReader'/> class using a Unicode 16-bit
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class using a Unicode 16-bit
      * string.
      * @param str The string to read.
      * @param skipByteOrderMark If true and the string begins with a byte-order
@@ -85,8 +85,8 @@ boolean errorThrow) {
     }
 
     /**
-     * Initializes a new instance of the <see
-     * cref='T:PeterO.Text.CharacterReader'/> class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param str A text string.
      * @param offset A zero-based index showing where the desired portion of {@code
      * str} begins.
@@ -98,8 +98,8 @@ boolean errorThrow) {
     }
 
     /**
-     * Initializes a new instance of the <see
-     * cref='T:PeterO.Text.CharacterReader'/> class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param str A text string.
      * @param offset A zero-based index showing where the desired portion of {@code
      * str} begins.
@@ -153,8 +153,8 @@ if (str.length() - offset < length) {
     }
 
     /**
-     * Initializes a new instance of the <see
-     * cref='T:PeterO.Text.CharacterReader'/> class; will read the stream as
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class; will read the stream as
      * UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
      * stream, and replace invalid byte sequences with replacement
      * characters (U + FFFD).
@@ -166,9 +166,9 @@ if (str.length() - offset < length) {
     }
 
     /**
-     * Initializes a new instance of the <see
-     * cref='T:PeterO.Text.CharacterReader'/> class; will skip the
-     * byte-order mark (U + FEFF) if it appears first in the stream.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class; will skip the byte-order
+     * mark (U + FEFF) if it appears first in the stream.
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream
@@ -191,10 +191,10 @@ if (str.length() - offset < length) {
     }
 
     /**
-     * Initializes a new instance of the <see
-     * cref='T:PeterO.Text.CharacterReader'/> class; will skip the
-     * byte-order mark (U + FEFF) if it appears first in the stream and
-     * replace invalid byte sequences with replacement characters (U + FFFD).
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class; will skip the byte-order
+     * mark (U + FEFF) if it appears first in the stream and replace invalid
+     * byte sequences with replacement characters (U + FFFD).
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream
@@ -213,8 +213,8 @@ if (str.length() - offset < length) {
     }
 
     /**
-     * Initializes a new instance of the <see
-     * cref='T:PeterO.Text.CharacterReader'/> class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream

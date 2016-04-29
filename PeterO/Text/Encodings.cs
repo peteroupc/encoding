@@ -50,8 +50,8 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[])"]/*'/>
     public static string DecodeToString(
-this ICharacterEncoding enc,
-byte[] bytes) {
+  this ICharacterEncoding enc,
+  byte[] bytes) {
       if (enc == null) {
         throw new ArgumentNullException("enc");
       }
@@ -64,10 +64,10 @@ byte[] bytes) {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[],System.Int32,System.Int32)"]/*'/>
     public static string DecodeToString(
-this ICharacterEncoding enc,
-byte[] bytes,
-int offset,
-int length) {
+  this ICharacterEncoding enc,
+  byte[] bytes,
+  int offset,
+  int length) {
       if (enc == null) {
         throw new ArgumentNullException("enc");
       }
@@ -76,7 +76,7 @@ int length) {
       }
       if (offset < 0) {
         throw new ArgumentException("offset (" + offset +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (offset > bytes.Length) {
         throw new ArgumentException("offset (" + offset +
@@ -84,7 +84,7 @@ int length) {
       }
       if (length < 0) {
         throw new ArgumentException("length (" + length +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (length > bytes.Length) {
         throw new ArgumentException("length (" + length +
@@ -137,8 +137,8 @@ int length) {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding)"]/*'/>
     public static byte[] EncodeToBytes(
-this string str,
-ICharacterEncoding enc) {
+  this string str,
+  ICharacterEncoding enc) {
       if (str == null) {
         throw new ArgumentNullException("str");
       }
@@ -191,9 +191,9 @@ ICharacterEncoding enc) {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
-this string str,
-ICharacterEncoding enc,
-IWriter writer) {
+  this string str,
+  ICharacterEncoding enc,
+  IWriter writer) {
       if (str == null) {
         throw new ArgumentNullException("str");
       }
@@ -228,9 +228,9 @@ IWriter writer) {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
-this string str,
-ICharacterEncoding enc,
-Stream output) {
+  this string str,
+  ICharacterEncoding enc,
+  Stream output) {
       if (str == null) {
         throw new ArgumentNullException("str");
       }
@@ -238,9 +238,9 @@ Stream output) {
         throw new ArgumentNullException("enc");
       }
    EncodeToWriter(
-new CharacterReader(str),
-enc,
-DataIO.ToWriter(output));
+  new CharacterReader(str),
+  enc,
+  DataIO.ToWriter(output));
     }
 
     /// <include file='../../docs.xml'
@@ -296,9 +296,9 @@ DataIO.ToWriter(output));
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]/*'/>
     public static ICharacterEncoding GetEncoding(
-string name,
-bool forEmail,
-bool allowReplacement) {
+  string name,
+  bool forEmail,
+  bool allowReplacement) {
       if (String.IsNullOrEmpty(name)) {
         return null;
       }
@@ -837,15 +837,15 @@ bool allowReplacement) {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String,System.Int32,System.Int32)"]/*'/>
     public static ICharacterInput StringToInput(
-this string str,
-int offset,
-int length) {
+  this string str,
+  int offset,
+  int length) {
       if (str == null) {
         throw new ArgumentNullException("str");
       }
       if (offset < 0) {
         throw new ArgumentException("offset (" + offset +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (offset > str.Length) {
         throw new ArgumentException("offset (" + offset +
@@ -853,7 +853,7 @@ int length) {
       }
       if (length < 0) {
         throw new ArgumentException("length (" + length +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (length > str.Length) {
         throw new ArgumentException("length (" + length +
@@ -1177,7 +1177,7 @@ int length) {
         }
         if (offset < 0) {
           throw new ArgumentException("offset (" + offset +
-            ") is less than " + 0);
+            ") is less than 0");
         }
         if (offset > buffer.Length) {
           throw new ArgumentException("offset (" + offset + ") is more than " +
@@ -1185,7 +1185,7 @@ int length) {
         }
         if (length < 0) {
           throw new ArgumentException("length (" + length +
-            ") is less than " + 0);
+            ") is less than 0");
         }
         if (length > buffer.Length) {
           throw new ArgumentException("length (" + length + ") is more than " +

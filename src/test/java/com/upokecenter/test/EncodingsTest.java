@@ -16,7 +16,7 @@ import com.upokecenter.text.*;
         Encodings.EncodeToBytes(ici, Encodings.UTF8);
         Assert.fail("Should have failed");
       } catch (NullPointerException ex) {
-        System.out.print("");
+        new Object();
       } catch (Exception ex) {
         Assert.fail(ex.toString());
         throw new IllegalStateException("", ex);
@@ -25,7 +25,7 @@ import com.upokecenter.text.*;
         Encodings.EncodeToBytes("test", null);
         Assert.fail("Should have failed");
       } catch (NullPointerException ex) {
-        System.out.print("");
+        new Object();
       } catch (Exception ex) {
         Assert.fail(ex.toString());
         throw new IllegalStateException("", ex);
@@ -49,32 +49,32 @@ input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 String stringTemp = Encodings.InputToString(input);
 Assert.assertEquals(
-"ABC",
-stringTemp);
+  "ABC",
+  stringTemp);
 }
 reader = DataIO.ToReader(new byte[] { (byte)0xff, (byte)0xfe, 0x41, 0, 0x42, 0, 0x43, 0  });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 String stringTemp = Encodings.InputToString(input);
 Assert.assertEquals(
-"ABC",
-stringTemp);
+  "ABC",
+  stringTemp);
 }
 reader = DataIO.ToReader(new byte[] { (byte)0xfe, (byte)0xff, 0, 0x41, 0, 0x42, 0, 0x43  });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 String stringTemp = Encodings.InputToString(input);
 Assert.assertEquals(
-"ABC",
-stringTemp);
+  "ABC",
+  stringTemp);
 }
 reader = DataIO.ToReader(new byte[] { 0x41, 0x42, 0x43  });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 String stringTemp = Encodings.InputToString(input);
 Assert.assertEquals(
-"ABC",
-stringTemp);
+  "ABC",
+  stringTemp);
 }
     }
     @Test
@@ -216,7 +216,7 @@ Assert.assertEquals(objectTemp, objectTemp2);
         Encodings.StringToInput(null, 0, 0);
         Assert.fail("Should have failed");
       } catch (NullPointerException ex) {
-        System.out.print("");
+        new Object();
       } catch (Exception ex) {
         Assert.fail(ex.toString());
         throw new IllegalStateException("", ex);
@@ -225,7 +225,7 @@ Assert.assertEquals(objectTemp, objectTemp2);
         Encodings.StringToInput("t", -1, 1);
         Assert.fail("Should have failed");
       } catch (IllegalArgumentException ex) {
-        System.out.print("");
+        new Object();
       } catch (Exception ex) {
         Assert.fail(ex.toString());
         throw new IllegalStateException("", ex);
@@ -234,7 +234,7 @@ Assert.assertEquals(objectTemp, objectTemp2);
         Encodings.StringToInput("t", 5, 1);
         Assert.fail("Should have failed");
       } catch (IllegalArgumentException ex) {
-        System.out.print("");
+        new Object();
       } catch (Exception ex) {
         Assert.fail(ex.toString());
         throw new IllegalStateException("", ex);
@@ -243,7 +243,7 @@ Assert.assertEquals(objectTemp, objectTemp2);
         Encodings.StringToInput("t", 0, -1);
         Assert.fail("Should have failed");
       } catch (IllegalArgumentException ex) {
-        System.out.print("");
+        new Object();
       } catch (Exception ex) {
         Assert.fail(ex.toString());
         throw new IllegalStateException("", ex);
@@ -252,7 +252,7 @@ Assert.assertEquals(objectTemp, objectTemp2);
         Encodings.StringToInput("t", 0, 5);
         Assert.fail("Should have failed");
       } catch (IllegalArgumentException ex) {
-        System.out.print("");
+        new Object();
       } catch (Exception ex) {
         Assert.fail(ex.toString());
         throw new IllegalStateException("", ex);
@@ -261,7 +261,7 @@ Assert.assertEquals(objectTemp, objectTemp2);
         Encodings.StringToInput("tt", 1, 2);
         Assert.fail("Should have failed");
       } catch (IllegalArgumentException ex) {
-        System.out.print("");
+        new Object();
       } catch (Exception ex) {
         Assert.fail(ex.toString());
         throw new IllegalStateException("", ex);

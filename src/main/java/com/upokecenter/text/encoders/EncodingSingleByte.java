@@ -55,7 +55,7 @@ import com.upokecenter.text.*;
 }
         if (codepoints.length != 128) {
   throw new IllegalArgumentException("codepoints.length (" + codepoints.length +
-    ") is not equal to " + 128);
+    ") is not equal to 128");
 }
 this.encoder = new Encoder(codepoints);
 this.decoder = new Decoder(codepoints);

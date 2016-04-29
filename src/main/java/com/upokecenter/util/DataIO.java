@@ -54,15 +54,15 @@ private DataIO() {
      * ' s length minus {@code offset} is less than {@code length}.
      */
     public static IReader ToReader(
-byte[] bytes,
-int offset,
-int length) {
+  byte[] bytes,
+  int offset,
+  int length) {
       if (bytes == null) {
         throw new NullPointerException("bytes");
       }
       if (offset < 0) {
         throw new IllegalArgumentException("offset (" + offset +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (offset > bytes.length) {
         throw new IllegalArgumentException("offset (" + offset + ") is more than " +
@@ -70,7 +70,7 @@ int length) {
       }
       if (length < 0) {
         throw new IllegalArgumentException("length (" + length +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (length > bytes.length) {
         throw new IllegalArgumentException("length (" + length + ") is more than " +
@@ -123,9 +123,9 @@ int length) {
  */
 @Deprecated
     public static IByteReader ToByteReader(
-byte[] bytes,
-int offset,
-int length) {
+  byte[] bytes,
+  int offset,
+  int length) {
   return (IByteReader)ToReader(bytes, offset, length);
 }
 
@@ -242,7 +242,7 @@ int length) {
 }
 if (offset < 0) {
   throw new IllegalArgumentException("offset (" + offset +
-    ") is less than " + 0);
+    ") is less than 0");
 }
 if (offset > bytes.length) {
   throw new IllegalArgumentException("offset (" + offset +
@@ -250,7 +250,7 @@ if (offset > bytes.length) {
 }
 if (length < 0) {
   throw new IllegalArgumentException("length (" + length +
-    ") is less than " + 0);
+    ") is less than 0");
 }
 if (length > bytes.length) {
   throw new IllegalArgumentException("length (" + length +
@@ -347,7 +347,7 @@ if (bytes.length - offset < length) {
         }
         if (offset < 0) {
           throw new IllegalArgumentException("offset (" + offset +
-            ") is less than " + 0);
+            ") is less than 0");
         }
         if (offset > bytes.length) {
           throw new IllegalArgumentException("offset (" + offset + ") is more than " +
@@ -355,7 +355,7 @@ if (bytes.length - offset < length) {
         }
         if (length < 0) {
           throw new IllegalArgumentException("length (" + length +
-            ") is less than " + 0);
+            ") is less than 0");
         }
         if (length > bytes.length) {
           throw new IllegalArgumentException("length (" + length + ") is more than " +

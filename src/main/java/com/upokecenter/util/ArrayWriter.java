@@ -24,16 +24,16 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
     }
 
     /**
-     * Initializes a new instance of the {@link PeterO.ArrayWriter} class with a
-     * default buffer size.
+     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
+     * with a default buffer size.
      */
     public ArrayWriter() {
  this(16);
     }
 
     /**
-     * Initializes a new instance of the {@link PeterO.ArrayWriter} class with the
-     * given initial buffer size.
+     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
+     * with the given initial buffer size.
      * @param initialSize A 32-bit signed integer.
      */
     public ArrayWriter(int initialSize) {
@@ -109,8 +109,8 @@ at: http://upokecenter.dreamhosters.com/articles/donate-now-2/
       if (this.retval.length - this.retvalPos < length) {
         // Array too small, make it grow
         int newLength = Math.max(
-this.retvalPos + length + 1000,
-this.retval.length * 2);
+  this.retvalPos + length + 1000,
+  this.retval.length * 2);
         byte[] newArray = new byte[newLength];
         System.arraycopy(this.retval, 0, newArray, 0, this.retvalPos);
         this.retval = newArray;

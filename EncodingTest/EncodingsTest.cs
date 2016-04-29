@@ -17,7 +17,7 @@ namespace MailLibTest {
         Encodings.EncodeToBytes(ici, Encodings.UTF8);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-        Console.Write(String.Empty);
+        new Object();
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -26,7 +26,7 @@ namespace MailLibTest {
         Encodings.EncodeToBytes("test", null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-        Console.Write(String.Empty);
+        new Object();
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -50,32 +50,32 @@ input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 string stringTemp = Encodings.InputToString(input);
 Assert.AreEqual(
-"ABC",
-stringTemp);
+  "ABC",
+  stringTemp);
 }
 reader = DataIO.ToReader(new byte[] { 0xff, 0xfe, 0x41, 0, 0x42, 0, 0x43, 0 });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 string stringTemp = Encodings.InputToString(input);
 Assert.AreEqual(
-"ABC",
-stringTemp);
+  "ABC",
+  stringTemp);
 }
 reader = DataIO.ToReader(new byte[] { 0xfe, 0xff, 0, 0x41, 0, 0x42, 0, 0x43 });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 string stringTemp = Encodings.InputToString(input);
 Assert.AreEqual(
-"ABC",
-stringTemp);
+  "ABC",
+  stringTemp);
 }
 reader = DataIO.ToReader(new byte[] { 0x41, 0x42, 0x43 });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 string stringTemp = Encodings.InputToString(input);
 Assert.AreEqual(
-"ABC",
-stringTemp);
+  "ABC",
+  stringTemp);
 }
     }
     [Test]
@@ -217,7 +217,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput(null, 0, 0);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-        Console.Write(String.Empty);
+        new Object();
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -226,7 +226,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("t", -1, 1);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        Console.Write(String.Empty);
+        new Object();
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -235,7 +235,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("t", 5, 1);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        Console.Write(String.Empty);
+        new Object();
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -244,7 +244,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("t", 0, -1);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        Console.Write(String.Empty);
+        new Object();
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -253,7 +253,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("t", 0, 5);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        Console.Write(String.Empty);
+        new Object();
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -262,7 +262,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("tt", 1, 2);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        Console.Write(String.Empty);
+        new Object();
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);

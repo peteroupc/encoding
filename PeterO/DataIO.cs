@@ -24,15 +24,15 @@ namespace PeterO {
     /// <include file='../docs.xml'
     /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.Byte[],System.Int32,System.Int32)"]/*'/>
     public static IReader ToReader(
-this byte[] bytes,
-int offset,
-int length) {
+  this byte[] bytes,
+  int offset,
+  int length) {
       if (bytes == null) {
         throw new ArgumentNullException("bytes");
       }
       if (offset < 0) {
         throw new ArgumentException("offset (" + offset +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (offset > bytes.Length) {
         throw new ArgumentException("offset (" + offset + ") is more than " +
@@ -40,7 +40,7 @@ int length) {
       }
       if (length < 0) {
         throw new ArgumentException("length (" + length +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (length > bytes.Length) {
         throw new ArgumentException("length (" + length + ") is more than " +
@@ -66,9 +66,9 @@ int length) {
     /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.Byte[],System.Int32,System.Int32)"]/*'/>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
-this byte[] bytes,
-int offset,
-int length) {
+  this byte[] bytes,
+  int offset,
+  int length) {
   return (IByteReader)ToReader(bytes, offset, length);
 }
 
@@ -134,7 +134,7 @@ int length) {
 }
 if (offset < 0) {
   throw new ArgumentException("offset (" + offset +
-    ") is less than " + 0);
+    ") is less than 0");
 }
 if (offset > bytes.Length) {
   throw new ArgumentException("offset (" + offset +
@@ -142,7 +142,7 @@ if (offset > bytes.Length) {
 }
 if (length < 0) {
   throw new ArgumentException("length (" + length +
-    ") is less than " + 0);
+    ") is less than 0");
 }
 if (length > bytes.Length) {
   throw new ArgumentException("length (" + length +
@@ -215,7 +215,7 @@ if (bytes.Length - offset < length) {
         }
         if (offset < 0) {
           throw new ArgumentException("offset (" + offset +
-            ") is less than " + 0);
+            ") is less than 0");
         }
         if (offset > bytes.Length) {
           throw new ArgumentException("offset (" + offset + ") is more than " +
@@ -223,7 +223,7 @@ if (bytes.Length - offset < length) {
         }
         if (length < 0) {
           throw new ArgumentException("length (" + length +
-            ") is less than " + 0);
+            ") is less than 0");
         }
         if (length > bytes.Length) {
           throw new ArgumentException("length (" + length + ") is more than " +

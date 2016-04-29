@@ -179,8 +179,8 @@ private Encodings() {
      * bytes} is null.
      */
     public static String DecodeToString(
-ICharacterEncoding enc,
-byte[] bytes) {
+  ICharacterEncoding enc,
+  byte[] bytes) {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
@@ -215,10 +215,10 @@ byte[] bytes) {
      * ' s length minus {@code offset} is less than {@code length}.
      */
     public static String DecodeToString(
-ICharacterEncoding enc,
-byte[] bytes,
-int offset,
-int length) {
+  ICharacterEncoding enc,
+  byte[] bytes,
+  int offset,
+  int length) {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
@@ -227,7 +227,7 @@ int length) {
       }
       if (offset < 0) {
         throw new IllegalArgumentException("offset (" + offset +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (offset > bytes.length) {
         throw new IllegalArgumentException("offset (" + offset +
@@ -235,7 +235,7 @@ int length) {
       }
       if (length < 0) {
         throw new IllegalArgumentException("length (" + length +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (length > bytes.length) {
         throw new IllegalArgumentException("length (" + length +
@@ -331,8 +331,8 @@ int length) {
      * enc} is null.
      */
     public static byte[] EncodeToBytes(
-String str,
-ICharacterEncoding enc) {
+  String str,
+  ICharacterEncoding enc) {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -428,9 +428,9 @@ ICharacterEncoding enc) {
      * enc} is null.
      */
     public static void EncodeToWriter(
-String str,
-ICharacterEncoding enc,
-IWriter writer) {
+  String str,
+  ICharacterEncoding enc,
+  IWriter writer) {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -508,9 +508,9 @@ IWriter writer) {
      * enc} is null.
      */
     public static void EncodeToWriter(
-String str,
-ICharacterEncoding enc,
-OutputStream output) throws java.io.IOException {
+  String str,
+  ICharacterEncoding enc,
+  OutputStream output) throws java.io.IOException {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -518,9 +518,9 @@ OutputStream output) throws java.io.IOException {
         throw new NullPointerException("enc");
       }
    EncodeToWriter(
-new CharacterReader(str),
-enc,
-DataIO.ToWriter(output));
+  new CharacterReader(str),
+  enc,
+  DataIO.ToWriter(output));
     }
 
     /**
@@ -664,9 +664,9 @@ DataIO.ToWriter(output));
      * it names an unrecognized or unsupported encoding.
      */
     public static ICharacterEncoding GetEncoding(
-String name,
-boolean forEmail,
-boolean allowReplacement) {
+  String name,
+  boolean forEmail,
+  boolean allowReplacement) {
       if (((name) == null || (name).length() == 0)) {
         return null;
       }
@@ -1346,15 +1346,15 @@ boolean allowReplacement) {
      * length minus {@code offset} is less than {@code length}.
      */
     public static ICharacterInput StringToInput(
-String str,
-int offset,
-int length) {
+  String str,
+  int offset,
+  int length) {
       if (str == null) {
         throw new NullPointerException("str");
       }
       if (offset < 0) {
         throw new IllegalArgumentException("offset (" + offset +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (offset > str.length()) {
         throw new IllegalArgumentException("offset (" + offset +
@@ -1362,7 +1362,7 @@ int length) {
       }
       if (length < 0) {
         throw new IllegalArgumentException("length (" + length +
-          ") is less than " + 0);
+          ") is less than 0");
       }
       if (length > str.length()) {
         throw new IllegalArgumentException("length (" + length +
@@ -1703,7 +1703,7 @@ int length) {
         }
         if (offset < 0) {
           throw new IllegalArgumentException("offset (" + offset +
-            ") is less than " + 0);
+            ") is less than 0");
         }
         if (offset > buffer.length) {
           throw new IllegalArgumentException("offset (" + offset + ") is more than " +
@@ -1711,7 +1711,7 @@ int length) {
         }
         if (length < 0) {
           throw new IllegalArgumentException("length (" + length +
-            ") is less than " + 0);
+            ") is less than 0");
         }
         if (length > buffer.length) {
           throw new IllegalArgumentException("length (" + length + ") is more than " +

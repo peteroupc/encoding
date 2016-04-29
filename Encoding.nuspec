@@ -18,9 +18,9 @@ A portable library for .NET that implements character encodings used in Web page
     <copyright>Written by Peter O. in 2015.  Any copyright is released to the Public Domain.</copyright>
   </metadata>
   <files>
-    <file src="bin/Release/Encoding.dll" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp80" />
-    <file src="bin/Release/Encoding.xml" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp80" />
-    <file src="bin/ReleaseNet40/Encoding.dll" target="lib/portable-net40+sl50+win+wpa81+wp80" />
-    <file src="bin/ReleaseNet40/Encoding.xml" target="lib/portable-net40+sl50+win+wpa81+wp80" />
+    <file src="bin/Release/Encoding.dll" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp8" />
+    <file src="bin/Release/Encoding.xml" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp8" />
+    <file src="bin/ReleaseNet40/Encoding.dll" target="lib/portable-net40+sl5+win+wpa81+wp8" />
+    <file src="bin/ReleaseNet40/Encoding.xml" target="lib/portable-net40+sl5+win+wpa81+wp8" />
   </files>
 </package>

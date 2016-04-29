@@ -145,8 +145,8 @@ import com.upokecenter.text.*;
       }
       BomBufferedTransform bomTransform = new BomBufferedTransform(transform);
       return Encodings.GetDecoderInput(
-Encodings.UTF8,
-bomTransform);
+  Encodings.UTF8,
+  bomTransform);
     }
 
     public static int Utf8EncodeAlgorithm(
@@ -211,8 +211,8 @@ bomTransform);
         throw new NullPointerException("transform");
       }
       return Encodings.GetDecoderInput(
-Encodings.UTF8,
-transform);
+  Encodings.UTF8,
+  transform);
     }
 
     public static ICharacterInput DecodeAlgorithmInput(

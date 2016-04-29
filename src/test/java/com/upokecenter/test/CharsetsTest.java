@@ -60,8 +60,8 @@ import java.util.*;
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-" Aa\\",
-stringTemp);
+  " Aa\\",
+  stringTemp);
 }
       // Illegal byte in escape middle state
       bytes = new byte[] { 0x1b, 0x28, 0x47, 0x21, 0x41, 0x31, 0x5c  };
@@ -195,65 +195,65 @@ stringTemp);
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-"\ufffd",
-stringTemp);
+  "\ufffd",
+  stringTemp);
 }
       bytes = new byte[] { (byte)0x8f, 0x21  };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-"\ufffd!",
-stringTemp);
+  "\ufffd!",
+  stringTemp);
 }
       bytes = new byte[] { (byte)0x8f, (byte)0xa1  };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-"\ufffd",
-stringTemp);
+  "\ufffd",
+  stringTemp);
 }
       bytes = new byte[] { (byte)0x8f, (byte)0xa1, 0x21  };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-"\ufffd!",
-stringTemp);
+  "\ufffd!",
+  stringTemp);
 }
       bytes = new byte[] { (byte)0x90  };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-"\ufffd",
-stringTemp);
+  "\ufffd",
+  stringTemp);
 }
       bytes = new byte[] { (byte)0x90, 0x21  };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-"\ufffd!",
-stringTemp);
+  "\ufffd!",
+  stringTemp);
 }
       bytes = new byte[] { (byte)0xa1  };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-"\ufffd",
-stringTemp);
+  "\ufffd",
+  stringTemp);
 }
       bytes = new byte[] { (byte)0xa1, (byte)0xa1  };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-"\u3000",
-stringTemp);
+  "\u3000",
+  stringTemp);
 }
       bytes = new byte[] { (byte)0x90, (byte)0xa1, (byte)0xa1  };
       {
 String stringTemp = Encodings.DecodeToString(charset,
           bytes);
 Assert.assertEquals(
-"\ufffd\u3000",
-stringTemp);
+  "\ufffd\u3000",
+  stringTemp);
 }
       bytes = new byte[] { (byte)0x90, (byte)0xa1, (byte)0xa1, (byte)0xa1  };
       {
@@ -266,8 +266,8 @@ stringTemp);
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
-"\ufffd!",
-stringTemp);
+  "\ufffd!",
+  stringTemp);
 }
       String result;
       bytes = new byte[] { 0x15, (byte)0xf2, (byte)0xbf, (byte)0xdd, (byte)0xd7, 0x13, (byte)0xeb, (byte)0xcf,

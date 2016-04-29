@@ -62,8 +62,8 @@ namespace MailLibTest {
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-" Aa\\",
-stringTemp);
+  " Aa\\",
+  stringTemp);
 }
       // Illegal byte in escape middle state
       bytes = new byte[] { 0x1b, 0x28, 0x47, 0x21, 0x41, 0x31, 0x5c };
@@ -197,65 +197,65 @@ stringTemp);
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-"\ufffd",
-stringTemp);
+  "\ufffd",
+  stringTemp);
 }
       bytes = new byte[] { 0x8f, 0x21 };
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-"\ufffd!",
-stringTemp);
+  "\ufffd!",
+  stringTemp);
 }
       bytes = new byte[] { 0x8f, 0xa1 };
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-"\ufffd",
-stringTemp);
+  "\ufffd",
+  stringTemp);
 }
       bytes = new byte[] { 0x8f, 0xa1, 0x21 };
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-"\ufffd!",
-stringTemp);
+  "\ufffd!",
+  stringTemp);
 }
       bytes = new byte[] { 0x90 };
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-"\ufffd",
-stringTemp);
+  "\ufffd",
+  stringTemp);
 }
       bytes = new byte[] { 0x90, 0x21 };
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-"\ufffd!",
-stringTemp);
+  "\ufffd!",
+  stringTemp);
 }
       bytes = new byte[] { 0xa1 };
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-"\ufffd",
-stringTemp);
+  "\ufffd",
+  stringTemp);
 }
       bytes = new byte[] { 0xa1, 0xa1 };
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-"\u3000",
-stringTemp);
+  "\u3000",
+  stringTemp);
 }
       bytes = new byte[] { 0x90, 0xa1, 0xa1 };
       {
 string stringTemp = Encodings.DecodeToString(charset,
           bytes);
 Assert.AreEqual(
-"\ufffd\u3000",
-stringTemp);
+  "\ufffd\u3000",
+  stringTemp);
 }
       bytes = new byte[] { 0x90, 0xa1, 0xa1, 0xa1 };
       {
@@ -268,8 +268,8 @@ stringTemp);
       {
 string stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.AreEqual(
-"\ufffd!",
-stringTemp);
+  "\ufffd!",
+  stringTemp);
 }
       string result;
       bytes = new byte[] { 0x15, 0xf2, 0xbf, 0xdd, 0xd7, 0x13, 0xeb, 0xcf,

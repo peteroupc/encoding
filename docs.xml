@@ -492,16 +492,18 @@
             of 256 code points. For example:</item>
             <item>(a) ISO 8859 encodings and <c>windows-1252</c>.</item>
             <item>(b) ASCII is usually used as a single-byte encoding where
-            each code point fits in the lower 7 bits of an eight-bit byte. In
+            each code point fits in the lower 7 bits of an eight-bit byte (in that case,
+            the encoding is often called <c>us-ascii</c>). In
             the Encoding Standard, all single-byte encodings use the ASCII
             characters as the first 128 code points of their character
             sets.</item>
             <item><b>Multi-byte encodings</b> include code points from one or
             more character sets and assign some or all code points to several
             bytes. For example:</item>
-            <item>(a) UTF-16 uses 2 bytes for the most common Unicode code
-            points and 4 bytes for supplementary code points.</item>
-            <item>(b) <c>utf-8</c> uses 1 byte for ASCII and 2 to 4 bytes for
+            <item>(a) <c>utf-16le</c> and  <c>utf-16be</c> are two encodings defined in the Unicode Standard.  They use
+            2 bytes for the most common code
+            points, and 4 bytes for supplementary code points.</item>
+            <item>(b) <c>utf-8</c> is another encoding defined in the Unicode Standard.  It uses 1 byte for ASCII and 2 to 4 bytes for
             the other Unicode code points.</item>
             <item>(c) Most legacy East Asian encodings, such as
             <c>shift_jis</c>, <c>gbk</c>, and <c>big5</c> use 1 byte for
@@ -517,8 +519,8 @@
             <item>(a) <c>iso-2022-jp</c> supports several escape sequences that
             shift into different encodings, including a Katakana, a Kanji, and
             an ASCII encoding (with ASCII as the default).</item>
-            <item>(b) UTF-7 (not included in the Encoding Standard) is a
-            Unicode encoding that uses a limited subset of ASCII. The plus
+            <item>(b) UTF-7 (not included in the Encoding Standard) is an encoding that
+            uses the Unicode Standard's character set, which is encoded using a limited subset of ASCII. The plus
             symbol is used to shift into a modified version of base-64 to
             encode other Unicode code points.</item>
             <item>The Encoding Standard also defines a <b>replacement

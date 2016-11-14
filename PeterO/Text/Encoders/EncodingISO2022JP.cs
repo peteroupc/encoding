@@ -116,7 +116,7 @@ namespace PeterO.Text.Encoders {
                 this.machineState = 1;
               } else if (b >= 0x21 && b <= 0x5f) {
                 output = 0;
-                return 0xff61 + b - 0x21;
+                return 0xff40 + b;
               } else if (b < 0) {
                 return -1;
               } else {
@@ -173,6 +173,12 @@ namespace PeterO.Text.Encoders {
             }
           }
           if (c <= 0x7f) {
+      if ((this.encoderState == 0 || this.encoderState == 3) &&
+    (c == 0x0e || c == 0x0f || c == 0x1b)) {
+         // TODO: Find a way to convey errors with
+         // a different code point, in this case, U + FFFD
+         return -2;
+      }
             if (this.encoderState == 0) {
               output.WriteByte((byte)c);
               return 1 + count;

@@ -472,7 +472,8 @@
             <para><b>Encoding Terms</b></para>
             <list>
             <item>A <b>code point</b> is a number that identifies a single text
-            character, such as a letter, digit, or symbol.</item>
+            character, such as a letter, digit, or symbol. (A collection of such characters 
+            is also called an <i>abstract character repertoire</i>.)</item>
             <item>A <b>character set</b> is a set of code points which are each
             assigned to a single text character. (This may also be called a
             <i>coded character set</i>.) As used here, character sets don't
@@ -483,7 +484,7 @@
             <item><b>ASCII</b> is a 128-code-point character set that includes
             the English letters and digits, common punctuation and symbols, and
             control characters. As used here, its code points match the code
-            points within the Basic Latin range (0-127 or U+0000 to U+007F)
+            points within the Basic Latin block (0-127 or U+0000 to U+007F)
             of the Unicode Standard.</item></list>
             <para>There are several kinds of character encodings:</para>
             <list>
@@ -493,36 +494,36 @@
             <item>(a) ISO 8859 encodings and <c>windows-1252</c>.</item>
             <item>(b) ASCII is usually used as a single-byte encoding where
             each code point fits in the lower 7 bits of an eight-bit byte (in that case,
-            the encoding is often called <c>us-ascii</c>). In
+            the encoding is often called <c>US-ASCII</c>). In
             the Encoding Standard, all single-byte encodings use the ASCII
             characters as the first 128 code points of their character
             sets.</item>
             <item><b>Multi-byte encodings</b> include code points from one or
             more character sets and assign some or all code points to several
             bytes. For example:</item>
-            <item>(a) <c>utf-16le</c> and  <c>utf-16be</c> are two encodings defined in the Unicode Standard.  They use
+            <item>(a) <c>UTF-16LE</c> and  <c>UTF-16BE</c> are two encodings defined in the Unicode Standard.  They use
             2 bytes for the most common code
             points, and 4 bytes for supplementary code points.</item>
-            <item>(b) <c>utf-8</c> is another encoding defined in the Unicode Standard.  It uses 1 byte for ASCII and 2 to 4 bytes for
+            <item>(b) <c>UTF-8</c> is another encoding defined in the Unicode Standard.  It uses 1 byte for ASCII and 2 to 4 bytes for
             the other Unicode code points.</item>
             <item>(c) Most legacy East Asian encodings, such as
-            <c>shift_jis</c>, <c>gbk</c>, and <c>big5</c> use 1 byte for
+            <c>Shift_JIS</c>, <c>GBK</c>, and <c>Big5</c> use 1 byte for
             ASCII (or a slightly modified version) and, usually, 2 or more
             bytes for national standard character sets. In many of these
-            encodings, notably <c>shift_jis</c>, characters whose code points
+            encodings, notably <c>Shift_JIS</c>, characters whose code points
             use one byte traditionally take half the space of characters whose
             code points use two bytes.</item>
             <item><b>Escape-based encodings</b> are combinations of single-
             and/or multi-byte encodings, and use escape sequences and/or shift
             codes to change which encoding to use for the bytes that follow.
             For example:</item>
-            <item>(a) <c>iso-2022-jp</c> supports several escape sequences that
+            <item>(a) <c>ISO-2022-JP</c> supports several escape sequences that
             shift into different encodings, including a Katakana, a Kanji, and
             an ASCII encoding (with ASCII as the default).</item>
             <item>(b) UTF-7 (not included in the Encoding Standard) is an encoding that
             uses the Unicode Standard's character set, which is encoded using a limited subset of ASCII. The plus
-            symbol is used to shift into a modified version of base-64 to
-            encode other Unicode code points.</item>
+            symbol (U+002B) is used to shift into a UTF-16BE multi-byte encoding (converted
+            to a modified version of base-64) to encode other Unicode code points.</item>
             <item>The Encoding Standard also defines a <b>replacement
             encoding</b>, which causes a decoding error and is used to alias a
             few problematic or unsupported encoding names, such as
@@ -984,7 +985,7 @@
 <summary>Resolves a character encoding's name to a standard form.
             This involves changing aliases of a character encoding to a
             standardized name.
-            <para>In several Internet standards, this name is known as a
+            <para>In several Internet specifications, this name is known as a
             "charset" parameter. In HTML and HTTP, for example, the "charset"
             parameter indicates the encoding used to represent text in the HTML
             page, text file, etc.</para></summary>
@@ -992,13 +993,13 @@
             Can be null. Any leading and trailing whitespace is removed and the
             name converted to lowercase before resolving the encoding&#x27;s
             name. The Encoding Standard supports only the following encodings
-            (and defines aliases for most of them):.
+            (and defines aliases for most of them).
             <list type='bullet'>
-            <item><c>utf-8</c> - UTF-8 (8-bit encoding of the universal
+            <item><c>UTF-8</c> - UTF-8 (8-bit encoding of the universal
             character set, the encoding recommended by the Encoding Standard
             for new data formats)</item>
-            <item><c>utf-16le</c> - UTF-16 little-endian (16-bit UCS)</item>
-            <item><c>utf-16be</c> - UTF-16 big-endian (16-bit UCS)</item>
+            <item><c>UTF-16LE</c> - UTF-16 little-endian (16-bit UCS)</item>
+            <item><c>UTF-16BE</c> - UTF-16 big-endian (16-bit UCS)</item>
             <item>The special-purpose encoding <c>x-user-defined</c></item>
             <item>The special-purpose encoding <c>replacement</c>, which this
             function returns only if one of several aliases are passed to it,
@@ -1006,44 +1007,44 @@
             <item>28 legacy single-byte encodings:
             <list type='bullet'>
             <item><c>windows-1252</c> : Western Europe (Note: The Encoding
-            Standard aliases the names <c>us-ascii</c> and <c>iso-8859-1</c> to
+            Standard aliases the names <c>US-ASCII</c> and <c>ISO-8859-1</c> to
             <c>windows-1252</c>, which uses a different character set from
-            either; it differs from <c>iso-8859-1</c> by assigning different
+            either; it differs from <c>ISO-8859-1</c> by assigning different
             characters to some bytes from 0x80 to 0x9F. The Encoding Standard
             does this for compatibility with existing Web pages.)</item>
-            <item><c>iso-8859-2</c>, <c>windows-1250</c> : Central
+            <item><c>ISO-8859-2</c>, <c>windows-1250</c> : Central
             Europe</item>
-            <item><c>iso-8859-10</c> : Northern Europe</item>
-            <item><c>iso-8859-4</c>, <c>windows-1257</c> : Baltic</item>
-            <item><c>iso-8859-13</c> : Estonian</item>
-            <item><c>iso-8859-14</c> : Celtic</item>
-            <item><c>iso-8859-16</c> : Romanian</item>
-            <item><c>iso-8859-5</c>, <c>ibm866</c>, <c>koi8-r</c>,
+            <item><c>ISO-8859-10</c> : Northern Europe</item>
+            <item><c>ISO-8859-4</c>, <c>windows-1257</c> : Baltic</item>
+            <item><c>ISO-8859-13</c> : Estonian</item>
+            <item><c>ISO-8859-14</c> : Celtic</item>
+            <item><c>ISO-8859-16</c> : Romanian</item>
+            <item><c>ISO-8859-5</c>, <c>IBM-866</c>, <c>KOI8-R</c>,
             <c>windows-1251</c>, <c>x-mac-cyrillic</c> : Cyrillic</item>
-            <item><c>koi8-u</c> : Ukrainian</item>
-            <item><c>iso-8859-7</c>, <c>windows-1253</c> : Greek</item>
-            <item><c>iso-8859-6</c>, <c>windows-1256</c> : Arabic</item>
-            <item><c>iso-8859-8</c>, <c>iso-8859-8-i</c>, <c>windows-1255</c>
+            <item><c>KOI8-U</c> : Ukrainian</item>
+            <item><c>ISO-8859-7</c>, <c>windows-1253</c> : Greek</item>
+            <item><c>ISO-8859-6</c>, <c>windows-1256</c> : Arabic</item>
+            <item><c>ISO-8859-8</c>, <c>ISO-8859-8-I</c>, <c>windows-1255</c>
             : Hebrew</item>
-            <item><c>iso-8859-3</c> : Latin 3</item>
-            <item><c>iso-8859-15</c> : Latin 9</item>
+            <item><c>ISO-8859-3</c> : Latin 3</item>
+            <item><c>ISO-8859-15</c> : Latin 9</item>
             <item><c>windows-1254</c> : Turkish</item>
             <item><c>windows-874</c> : Thai</item>
             <item><c>windows-1258</c> : Vietnamese</item>
             <item><c>macintosh</c> : Mac Roman</item></list></item>
-            <item>Three legacy Japanese encodings: <c>shift_jis</c>,
-            <c>euc-jp</c>, <c>iso-2022-jp</c></item>
-            <item>Two legacy simplified Chinese encodings: <c>gbk</c> and
+            <item>Three legacy Japanese encodings: <c>Shift_JIS</c>,
+            <c>EUC-JP</c>, <c>ISO-2022-JP</c></item>
+            <item>Two legacy simplified Chinese encodings: <c>GBK</c> and
             <c>gb18030</c></item>
-            <item><c>big5</c> : legacy traditional Chinese encoding</item>
-            <item><c>euc-kr</c> : legacy Korean encoding</item></list>
-            <para>The <c>utf-8</c>, <c>utf-16le</c>, and <c>utf-16be</c>
+            <item><c>Big5</c> : legacy traditional Chinese encoding</item>
+            <item><c>EUC-KR</c> : legacy Korean encoding</item></list>
+            <para>The <c>UTF-8</c>, <c>UTF-16LE</c>, and <c>UTF-16BE</c>
             encodings don't encode a byte-order mark at the start of the text
-            (doing so is not recommended for <c>utf-8</c>, while in
-            <c>utf-16le</c> and <c>utf-16be</c>, the byte-order mark character
-            U+FEFF is treated as an ordinary character, unlike in to the
-            UTF-16 encoding form). The Encoding Standard aliases <c>utf-16</c>
-            to <c>utf-16le</c> "to deal with deployed content".</para>
+            (doing so is not recommended for <c>UTF-8</c>, while in
+            <c>UTF-16LE</c> and <c>UTF-16BE</c>, the byte-order mark character
+            U+FEFF is treated as an ordinary character, unlike in the
+            UTF-16 encoding form). The Encoding Standard aliases <c>UTF-16</c>
+            to <c>UTF-16LE</c> "to deal with deployed content".</para>
             .</param>
             <returns>A standardized name for the encoding. Returns the empty
             string if <paramref name='name'/> is null or empty, or if the
@@ -1058,13 +1059,15 @@
             addition to the encodings mentioned in ResolveAlias, the following
             additional encodings are supported:.
             <list type='bullet'>
-            <item><c>us-ascii</c> - ASCII single-byte encoding, rather than an
-            alias to <c>windows-1252</c>, as specified in the Encoding
-            Standard.</item>
-            <item><c>iso-8859-1</c> - Latin-1 single-byte encoding, rather than
-            an alias to <c>windows-1252</c>, as specified in the Encoding
-            Standard.</item>
-            <item><c>utf-7</c> - UTF-7 (7-bit universal character
+            <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an
+            alias to <c>windows-1252</c> as specified in the Encoding
+            Standard.  The character set's code points match those in the Unicode
+            Standard's Basic Latin block (0-127 or U+0000 to U+007F).</item>
+            <item><c>ISO-8859-1</c> - Latin-1 single-byte encoding, rather than
+            an alias to <c>windows-1252</c> as specified in the Encoding
+            Standard.  The character set's code points match those in the Unicode
+            Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U+0000 to U+00FF).</item>
+            <item><c>UTF-7</c> - UTF-7 (7-bit universal character
             set).</item></list>.</param>
             <returns>A standardized name for the encoding. Returns the empty
             string if <paramref name='name'/> is null or empty, or if the

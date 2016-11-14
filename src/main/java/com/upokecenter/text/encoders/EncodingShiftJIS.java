@@ -34,7 +34,7 @@ import com.upokecenter.text.*;
             }
             this.lead = 0;
             int c = (cp < 0) ? -1 : Jis0208.IndexToCodePoint(cp);
-            if (c < 0 && cp >= 8836 && cp <= 10528) {
+            if (c < 0 && cp >= 8836 && cp <= 10715) {
               return 0xe000 + cp - 8836;
             }
             if (c < 0) {
@@ -49,7 +49,7 @@ import com.upokecenter.text.*;
             return b;
           } else if (b >= 0xa1 && b <= 0xdf) {
             return 0xff61 + b - 0xa1;
-          } else if (b >= 0x81 && b <= 0xfc) {
+          } else if ((b >= 0x81 && b <= 0xfc) && b != 0xa0) {
             this.lead = b;
             continue;
           } else {

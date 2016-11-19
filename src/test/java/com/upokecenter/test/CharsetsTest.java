@@ -520,7 +520,6 @@ Assert.assertEquals(
     @Test
     public void TestSingleByteEncodings() {
       for (int i = 0; i < SingleByteNames.length; ++i) {
-         System.System.out.println (SingleByteNames [i]);
         TestSingleByteRoundTrip(SingleByteNames[i]);
       }
     }

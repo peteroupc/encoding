@@ -522,7 +522,6 @@ Assert.AreEqual(
     [Test]
     public void TestSingleByteEncodings() {
       for (var i = 0; i < SingleByteNames.Length; ++i) {
-         System.Console.WriteLine (SingleByteNames [i]);
         TestSingleByteRoundTrip(SingleByteNames[i]);
       }
     }

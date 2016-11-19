@@ -216,8 +216,9 @@ namespace MailLibTest {
             int ch = input.ReadChar();
             for (var i = 0;i<words.Length; ++i) {
               int index = wordIndices[i];
+              string wordStr = words[i];
               if (isPossible[i]) {
-                if (index >= words[i].Length) {
+                if (index >= wordStr.Length) {
                   if (IsWordEndChar(ch)) {
                     input.Unget();
                     return i;
@@ -227,14 +228,14 @@ namespace MailLibTest {
                   if (possibleCount == 0) {
                     if (words.Length == 1) {
                     throw new
-  ArgumentException("Expected non-word character after '" + words[0] + "'");
+  ArgumentException("Expected non-word character after '" + wordStr + "'");
                     } else {
                     throw new ArgumentException("unexpected word found");
                     }
                   }
                   }
                 }
-                string str = words[i];
+                string str = wordStr;
                 int c = str[index];
                 ++index;
                 if ((c & 0xfc00) == 0xd800 && index + 1 < str.Length &&
@@ -253,7 +254,7 @@ namespace MailLibTest {
                   --possibleCount;
                   if (possibleCount == 0) {
                     if (words.Length == 1) {
-               throw new ArgumentException("word '" + words[0] +
+               throw new ArgumentException("word '" + wordStr +
                     "' expected");
                     } else {
                     throw new ArgumentException("unexpected word found");

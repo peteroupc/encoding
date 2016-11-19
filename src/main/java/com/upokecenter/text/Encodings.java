@@ -1133,21 +1133,20 @@ if (name.equals("ISO-8859-13")) {
      * : Greek</li> <li> {@code ISO-8859-6}, {@code windows-1256} :
      * Arabic</li> <li> {@code ISO-8859-8}, {@code ISO-8859-8-I}, {@code
      * windows-1255} : Hebrew</li> <li> {@code ISO-8859-3} : Latin 3</li>
-     * <li> {@code ISO-8859-15} : Latin 9</li> <li> {@code windows-1254} :
-     * Turkish</li> <li> {@code windows-874} : Thai</li> <li> {@code
-     * windows-1258} : Vietnamese</li> <li> {@code macintosh} : Mac
-     * Roman</li></ul></li> <li>Three legacy Japanese encodings: {@code
-     * Shift_JIS}, {@code EUC-JP}, {@code ISO-2022-JP}</li> <li>Two legacy
-     * simplified Chinese encodings: {@code GBK} and {@code gb18030}</li>
-     * <li> {@code Big5} : legacy traditional Chinese encoding</li>
-     * <li> {@code EUC-KR} : legacy Korean encoding</li></ul> <p>The {@code
-     * UTF-8}, {@code UTF-16LE}, and {@code UTF-16BE} encodings don't encode
-     * a byte-order mark at the start of the text (doing so is not
-     * recommended for {@code UTF-8}, while in {@code UTF-16LE} and {@code
-     * UTF-16BE}, the byte-order mark character U + FEFF is treated as an
-     * ordinary character, unlike in the UTF-16 encoding form). The Encoding
-     * Standard aliases {@code UTF-16} to {@code UTF-16LE} "to deal with
-     * deployed content".</p> .
+     * <li> {@code ISO-8859-15}, {@code windows-1254} : Turkish</li>
+     * <li> {@code windows-874} : Thai</li> <li> {@code windows-1258} :
+     * Vietnamese</li> <li> {@code macintosh} : Mac Roman</li></ul></li>
+     * <li>Three legacy Japanese encodings: {@code Shift_JIS}, {@code
+     * EUC-JP}, {@code ISO-2022-JP}</li> <li>Two legacy simplified Chinese
+     * encodings: {@code GBK} and {@code gb18030}</li> <li> {@code Big5} :
+     * legacy traditional Chinese encoding</li> <li> {@code EUC-KR} : legacy
+     * Korean encoding</li></ul> <p>The {@code UTF-8}, {@code UTF-16LE}, and
+     * {@code UTF-16BE} encodings don't encode a byte-order mark at the
+     * start of the text (doing so is not recommended for {@code UTF-8},
+     * while in {@code UTF-16LE} and {@code UTF-16BE}, the byte-order mark
+     * character U + FEFF is treated as an ordinary character, unlike in the
+     * UTF-16 encoding form). The Encoding Standard aliases {@code UTF-16}
+     * to {@code UTF-16LE} "to deal with deployed content".</p> .
      * @return A standardized name for the encoding. Returns the empty string if
      * {@code name} is null or empty, or if the encoding name is
      * unsupported.

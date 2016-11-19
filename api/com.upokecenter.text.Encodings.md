@@ -770,17 +770,19 @@ Resolves a character encoding's name to a standard form. This involves
  <li> <code>ISO-8859-5</code>, <code>IBM-866</code>, <code>KOI8-R</code>, <code>windows-1251</code>, <code>x-mac-cyrillic</code> : Cyrillic</li> <li> <code>KOI8-U</code> : Ukrainian</li> <li> <code>ISO-8859-7</code>, <code>windows-1253</code>
  : Greek</li> <li> <code>ISO-8859-6</code>, <code>windows-1256</code> :
  Arabic</li> <li> <code>ISO-8859-8</code>, <code>ISO-8859-8-I</code>, <code>windows-1255</code> : Hebrew</li> <li> <code>ISO-8859-3</code> : Latin 3</li>
- <li> <code>ISO-8859-15</code> : Latin 9</li> <li> <code>windows-1254</code> :
- Turkish</li> <li> <code>windows-874</code> : Thai</li> <li> <code>windows-1258</code> : Vietnamese</li> <li> <code>macintosh</code> : Mac
- Roman</li></ul></li> <li>Three legacy Japanese encodings: <code>Shift_JIS</code>, <code>EUC-JP</code>, <code>ISO-2022-JP</code></li> <li>Two legacy
- simplified Chinese encodings: <code>GBK</code> and <code>gb18030</code></li>
- <li> <code>Big5</code> : legacy traditional Chinese encoding</li>
- <li> <code>EUC-KR</code> : legacy Korean encoding</li></ul> <p>The <code>UTF-8</code>, <code>UTF-16LE</code>, and <code>UTF-16BE</code> encodings don't encode
- a byte-order mark at the start of the text (doing so is not
- recommended for <code>UTF-8</code>, while in <code>UTF-16LE</code> and <code>UTF-16BE</code>, the byte-order mark character U + FEFF is treated as an
- ordinary character, unlike in the UTF-16 encoding form). The Encoding
- Standard aliases <code>UTF-16</code> to <code>UTF-16LE</code> "to deal with
- deployed content".</p> .
+ <li> <code>ISO-8859-15</code>, <code>windows-1254</code> : Turkish</li>
+ <li> <code>windows-874</code> : Thai</li> <li> <code>windows-1258</code> :
+ Vietnamese</li> <li> <code>macintosh</code> : Mac Roman</li></ul></li>
+ <li>Three legacy Japanese encodings: <code>Shift_JIS</code>, <code>EUC-JP</code>, <code>ISO-2022-JP</code></li> <li>Two legacy simplified Chinese
+ encodings: <code>GBK</code> and <code>gb18030</code></li> <li> <code>Big5</code> :
+ legacy traditional Chinese encoding</li> <li> <code>EUC-KR</code> : legacy
+ Korean encoding</li></ul> <p>The <code>UTF-8</code>, <code>UTF-16LE</code>, and
+ <code>UTF-16BE</code> encodings don't encode a byte-order mark at the
+ start of the text (doing so is not recommended for <code>UTF-8</code>,
+ while in <code>UTF-16LE</code> and <code>UTF-16BE</code>, the byte-order mark
+ character U + FEFF is treated as an ordinary character, unlike in the
+ UTF-16 encoding form). The Encoding Standard aliases <code>UTF-16</code>
+ to <code>UTF-16LE</code> "to deal with deployed content".</p> .
 
 **Returns:**
 

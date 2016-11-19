@@ -91,7 +91,7 @@ Wraps a portion of a byte array into a byte reader object. <p>In the .NET
  ' s length minus <code>offset</code> is less than <code>length</code>.
 
 ### ToReader
-    public static IReader ToReader(InputStream input) throws IOException
+    public static IReader ToReader(InputStream input)
 Wraps an input stream into a reader object. If an IOException is thrown by
  the input stream, the reader object throws InvalidOperationException
  instead. <p>In the .NET implementation, this method is implemented as
@@ -111,8 +111,6 @@ Wraps an input stream into a reader object. If an IOException is thrown by
 **Throws:**
 
 * <code>NullPointerException</code> - The parameter <code>input</code> is null.
-
-* <code>IOException</code>
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader(byte[] bytes, int offset, int length)

@@ -215,8 +215,9 @@ import com.upokecenter.text.*;
             int ch = input.ReadChar();
             for (int i = 0;i<words.length; ++i) {
               int index = wordIndices[i];
+              String wordStr = words[i];
               if (isPossible[i]) {
-                if (index >= words[i].length) {
+                if (index >= wordStr.length()) {
                   if (IsWordEndChar(ch)) {
                     input.Unget();
                     return i;
@@ -226,14 +227,14 @@ import com.upokecenter.text.*;
                   if (possibleCount == 0) {
                     if (words.length == 1) {
                     throw new
-  IllegalArgumentException("Expected non-word character after '" + words[0] + "'");
+  IllegalArgumentException("Expected non-word character after '" + wordStr + "'");
                     } else {
                     throw new IllegalArgumentException("unexpected word found");
                     }
                   }
                   }
                 }
-                String str = words[i];
+                String str = wordStr;
                 int c = str.charAt(index);
                 ++index;
                 if ((c & 0xfc00) == 0xd800 && index + 1 < str.length() &&
@@ -252,7 +253,7 @@ import com.upokecenter.text.*;
                   --possibleCount;
                   if (possibleCount == 0) {
                     if (words.length == 1) {
-               throw new IllegalArgumentException("word '" + words[0] +
+               throw new IllegalArgumentException("word '" + wordStr +
                     "' expected");
                     } else {
                     throw new IllegalArgumentException("unexpected word found");

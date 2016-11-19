@@ -472,7 +472,7 @@
             <para><b>Encoding Terms</b></para>
             <list>
             <item>A <b>code point</b> is a number that identifies a single text
-            character, such as a letter, digit, or symbol. (A collection of such characters 
+            character, such as a letter, digit, or symbol. (A collection of such characters
             is also called an <i>abstract character repertoire</i>.)</item>
             <item>A <b>character set</b> is a set of code points which are each
             assigned to a single text character. (This may also be called a
@@ -1027,8 +1027,7 @@
             <item><c>ISO-8859-8</c>, <c>ISO-8859-8-I</c>, <c>windows-1255</c>
             : Hebrew</item>
             <item><c>ISO-8859-3</c> : Latin 3</item>
-            <item><c>ISO-8859-15</c> : Latin 9</item>
-            <item><c>windows-1254</c> : Turkish</item>
+            <item><c>ISO-8859-15</c>, <c>windows-1254</c> : Turkish</item>
             <item><c>windows-874</c> : Thai</item>
             <item><c>windows-1258</c> : Vietnamese</item>
             <item><c>macintosh</c> : Mac Roman</item></list></item>

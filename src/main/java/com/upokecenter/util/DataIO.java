@@ -95,7 +95,7 @@ private DataIO() {
      * @return A byte reader wrapping the input stream.
      * @throws java.lang.NullPointerException The parameter {@code input} is null.
      */
-    public static IReader ToReader(InputStream input) throws java.io.IOException {
+    public static IReader ToReader(InputStream input) {
       if (input == null) {
         throw new NullPointerException("input");
       }

@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: AssemblyCompany("Peter Occil")]
 [assembly:
 AssemblyCopyright(
-  "Written by Peter O. in 2015. Any copyright is " +
+  "Written by Peter O. in 2015-2016. Any copyright is " +
   "released to the Public Domain. " +
   "<http://creativecommons.org/publicdomain/zero/1.0/>")]
 [assembly: AssemblyProduct("Encoding")]

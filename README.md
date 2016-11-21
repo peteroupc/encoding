@@ -73,6 +73,23 @@ In C#.
       }
 ```
 
+History
+-----------
+
+Version 0.2.0:
+
+- Update implementation to latest candidate recommendation of Encoding Standard
+- ResolveAlias may return a mixed-case encoding name (as opposed to a lower-case one).
+- Add overloads to CharacterReader constructor
+- Add IReader interface
+- Deprecated some methods of DataIO
+- Add a few overloads in Encodings class, especially EncodeToWriter
+- Bug fixes
+
+Version 0.1.0:
+
+- First release
+
 About
 -----------
 

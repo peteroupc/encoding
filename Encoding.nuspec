@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>PeterO.Encoding</id>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <title>Encoding Library</title>
     <authors>Peter Occil</authors>
     <owners>Peter Occil</owners>
@@ -13,14 +13,22 @@
 A portable library for .NET that implements character encodings used in Web pages and email.
     </description>
     <releaseNotes>
-    Version 0.1.0: First release
+Version 0.2.0:
+
+- Update implementation to latest candidate recommendation of Encoding Standard
+- ResolveAlias may return a mixed-case encoding name (as opposed to a lower-case one).
+- Add overloads to CharacterReader constructor
+- Add IReader interface
+- Deprecated some methods of DataIO
+- Add a few overloads in Encodings class, especially EncodeToWriter
+- Bug fixes
     </releaseNotes>
-    <copyright>Written by Peter O. in 2015.  Any copyright is released to the Public Domain.</copyright>
+    <copyright>Written by Peter O. in 2015-2016.  Any copyright is released to the Public Domain.</copyright>
   </metadata>
   <files>
-    <file src="bin/Release/Encoding.dll" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp8" />
-    <file src="bin/Release/Encoding.xml" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp8" />
-    <file src="bin/ReleaseNet40/Encoding.dll" target="lib/portable-net40+sl5+win+wpa81+wp8" />
-    <file src="bin/ReleaseNet40/Encoding.xml" target="lib/portable-net40+sl5+win+wpa81+wp8" />
+    <file src="bin/Release/Encoding.dll" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp80" />
+    <file src="bin/Release/Encoding.xml" target="lib/portable-net45+dnxcore50+netcore45+win+wpa81+wp80" />
+    <file src="bin/ReleaseNet40/Encoding.dll" target="lib/portable-net40+sl5+win+wpa81+wp80" />
+    <file src="bin/ReleaseNet40/Encoding.xml" target="lib/portable-net40+sl5+win+wpa81+wp80" />
   </files>
 </package>

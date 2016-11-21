@@ -1,8 +1,8 @@
 ## PeterO.ArrayWriter
 
     public sealed class ArrayWriter :
-        PeterO.IWriter,
-        PeterO.IByteWriter
+        PeterO.IByteWriter,
+        PeterO.IWriter
 
 An array of bytes that grows as needed.
 

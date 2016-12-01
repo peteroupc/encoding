@@ -4,12 +4,14 @@
 *.class
 *.jar
 *.log
+*.map
 *.nupkg
 *.sdsettings
 *.shf*
 *.suo
 *.userprefs
 .classpath
+.nuget/
 .pmd
 .project
 .settings/

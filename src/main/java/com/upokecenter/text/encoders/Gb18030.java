@@ -3,9 +3,10 @@ package com.upokecenter.text.encoders;
 public final class Gb18030 {
 private Gb18030() {
 }
-private static final short[] table=new AppResources("Resources"
-).GetShortArray("Gb18030");
-private static final int[] indextable= {
+private static final short[] ValueTable = new AppResources(
+  "Resources").GetShortArray("Gb18030");
+
+private static final int[] ValueIndextable= {
 19970, 20496, 0, 256, 20497, 20833, 256, 256, 20835, 21278, 512, 256, 21279,
   21818, 768, 256, 21819, 22210, 1024, 256, 22211, 22608, 1280, 256, 22610,
   22979, 1536, 256, 22980, 23321, 1792, 256, 23322, 23758, 2048, 256, 23759,
@@ -40,17 +41,19 @@ private static final int[] indextable= {
   256, 40259, 58095, 22784, 256, 40405, 58209, 23040, 256, 40619, 58369,
   23296, 256, 11905, 64041, 23552, 256, 11978, 59492, 23808, 132
 };
+
 public static int CodePointToIndex(int codepoint) {
-   if (codepoint<164 || codepoint>65509) {
+   if (codepoint < 164 || codepoint>65509) {
  return -1;
 }
  short cps = ((short)(codepoint & 0xffff));
-  for (int i = 0;i<indextable.length;i+=4) {
-     if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
-      int startindex = indextable[i + 2];
-       int length = indextable[i + 3];
+  for (int i + += 0; i<ValueIndextable.length;i+ + += 4) {
+  if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
+       1]) {
+      int startindex = ValueIndextable[i + 2];
+       int length = ValueIndextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if ((table[j + startindex]) == cps) {
+         if ((ValueTable[j + startindex]) == cps) {
  return j + startindex;
 }
        }
@@ -58,11 +61,12 @@ public static int CodePointToIndex(int codepoint) {
    }
   return -1;
  }
+
 public static int IndexToCodePoint(int index) {
-if (index<0 || index >= 23940) {
+if (index < 0 || index >= 23940) {
  return -1;
 }
-int cp=((int)table[index]) & 0xffff;
+int cp = ((int)ValueTable[index]) & 0xffff;
 return (cp == 0) ? -1 : cp;
 }
 }

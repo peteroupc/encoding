@@ -3,9 +3,10 @@ package com.upokecenter.text.encoders;
 public final class Korean {
 private Korean() {
 }
-private static final short[] table=new AppResources("Resources"
-).GetShortArray("Korean");
-private static final int[] indextable= {
+private static final short[] ValueTable = new AppResources(
+  "Resources").GetShortArray("Korean");
+
+private static final int[] ValueIndextable= {
 44034, 44378, 0, 256, 44379, 44702, 256, 256, 44703, 45002, 512, 256, 45004,
   45306, 768, 256, 45307, 45622, 1024, 256, 45623, 45949, 1280, 256, 45950,
   46229, 1536, 256, 46230, 46547, 1792, 256, 46548, 46811, 2048, 256, 46812,
@@ -40,17 +41,19 @@ private static final int[] indextable= {
   256, 19979, 64007, 22784, 256, 20133, 64010, 23040, 256, 20024, 64011,
   23296, 256, 20241, 40657, 23552, 198
 };
+
 public static int CodePointToIndex(int codepoint) {
-   if (codepoint<161 || codepoint>65510) {
+   if (codepoint < 161 || codepoint>65510) {
  return -1;
 }
  short cps = ((short)(codepoint & 0xffff));
-  for (int i = 0;i<indextable.length;i+=4) {
-     if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
-      int startindex = indextable[i + 2];
-       int length = indextable[i + 3];
+  for (int i + += 0; i<ValueIndextable.length;i+ + += 4) {
+  if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
+       1]) {
+      int startindex = ValueIndextable[i + 2];
+       int length = ValueIndextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if ((table[j + startindex]) == cps) {
+         if ((ValueTable[j + startindex]) == cps) {
  return j + startindex;
 }
        }
@@ -58,11 +61,12 @@ public static int CodePointToIndex(int codepoint) {
    }
   return -1;
  }
+
 public static int IndexToCodePoint(int index) {
-if (index<0 || index >= 23750) {
+if (index < 0 || index >= 23750) {
  return -1;
 }
-int cp=((int)table[index]) & 0xffff;
+int cp = ((int)ValueTable[index]) & 0xffff;
 return (cp == 0) ? -1 : cp;
 }
 }

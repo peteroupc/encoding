@@ -1,4 +1,5 @@
 package com.upokecenter.test; import com.upokecenter.util.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 import com.upokecenter.util.*;
@@ -43,7 +44,7 @@ import com.upokecenter.text.*;
     public void TestGetDecoderInputSkipBom() {
 ICharacterInput input;
 IByteReader reader;
-ICharacterEncoding wenc=Encodings.GetEncoding("windows-1252");
+ICharacterEncoding wenc = Encodings.GetEncoding("windows-1252");
 reader = DataIO.ToReader(new byte[] { (byte)0xef, (byte)0xbb, (byte)0xbf, 0x41, 0x42, 0x43  });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
@@ -79,52 +80,52 @@ Assert.assertEquals(
     }
     @Test
     public void TestGetEncoding() {
-      if ((Encodings.GetEncoding("utf-8")) == null) {
+      if (Encodings.GetEncoding("utf-8") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("Utf-8")) == null) {
+      if (Encodings.GetEncoding("Utf-8") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("uTf-8")) == null) {
+      if (Encodings.GetEncoding("uTf-8") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("utF-8")) == null) {
+      if (Encodings.GetEncoding("utF-8") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("UTF-8")) == null) {
+      if (Encodings.GetEncoding("UTF-8") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("utg-8")) != null) {
+      if (Encodings.GetEncoding("utg-8") != null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("utf-9")) != null) {
+      if (Encodings.GetEncoding("utf-9") != null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("   utf-8    ")) == null) {
+      if (Encodings.GetEncoding(" utf-8 ") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("   utf-8")) == null) {
+      if (Encodings.GetEncoding(" utf-8") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("utf-8    ")) == null) {
+      if (Encodings.GetEncoding("utf-8 ") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("\t\tutf-8\t\t")) == null) {
+      if (Encodings.GetEncoding("\t\tutf-8\t\t") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding(" \r\n utf-8 \r ")) == null) {
+      if (Encodings.GetEncoding(" \r\n utf-8 \r ") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("\nutf-8\n")) == null) {
+      if (Encodings.GetEncoding("\nutf-8\n") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("\tutf-8\t")) == null) {
+      if (Encodings.GetEncoding("\tutf-8\t") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("\rutf-8\r")) == null) {
+      if (Encodings.GetEncoding("\rutf-8\r") == null) {
         Assert.fail();
       }
-      if ((Encodings.GetEncoding("\futf-8\f")) == null) {
+      if (Encodings.GetEncoding("\futf-8\f") == null) {
         Assert.fail();
       }
     }
@@ -2753,8 +2754,8 @@ Assert.assertEquals(
         stringTemp);
       }
             {
-                String stringTemp = Encodings.ResolveAlias ("big5");
-                Assert.assertEquals (
+                String stringTemp = Encodings.ResolveAlias("big5");
+                Assert.assertEquals(
                 "Big5",
                 stringTemp);
             }
@@ -2782,8 +2783,9 @@ Assert.assertEquals(
     @Test
     public void TestResolveAliasForEmail() {
       Assert.assertEquals("", Encodings.ResolveAliasForEmail(null));
-      Assert.assertEquals("",
-           Encodings.ResolveAliasForEmail(""));
+      Assert.assertEquals(
+  "",
+  Encodings.ResolveAliasForEmail(""));
       {
         String stringTemp = Encodings.ResolveAliasForEmail("iso-8859-1");
         Assert.assertEquals(

@@ -5,7 +5,7 @@ internal static class Big5 {
 private static readonly int[] ValueTable = new AppResources(
   "Resources").GetIntArray("Big5");
 
-private static readonly int[] ValueIndextable= {
+private static readonly int[] ValueIndextable = {
 167, 65509, 5024, 256, 711, 65370, 5280, 256, 19981, 31435, 5536, 256,
   20018, 38433, 5792, 256, 20006, 38450, 6048, 256, 22369, 33459, 6304, 256,
   20127, 38750, 6560, 256, 20056, 39321, 6816, 256, 22466, 32607, 7072, 256,
@@ -30,7 +30,7 @@ private static readonly int[] ValueIndextable= {
 };
 
 public static int CodePointToIndex(int codepoint) {
-   if (codepoint < 167 || codepoint>194726) {
+   if (codepoint < 167 || codepoint > 194726) {
  return -1;
 }
    if (codepoint == 9552) {
@@ -51,13 +51,13 @@ public static int CodePointToIndex(int codepoint) {
    if (codepoint == 21317) {
  return 5599;
 }
-  for (int i + += 0; i<ValueIndextable.Length;i+ + += 4) {
+  for (int i = 0; i < ValueIndextable.Length; i += 4) {
   if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
        1]) {
       int startindex = ValueIndextable[i + 2];
        int length = ValueIndextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if ((ValueTable[j + startindex]) == codepoint) {
+         if (ValueTable[j + startindex] == codepoint) {
  return j + startindex;
 }
        }

@@ -5,7 +5,7 @@ internal static class Jis0208 {
 private static readonly short[] ValueTable = new AppResources(
   "Resources").GetShortArray("Jis0208");
 
-private static readonly int[] ValueIndextable= {
+private static readonly int[] ValueIndextable = {
 167, 65509, 0, 256, 913, 65370, 256, 256, 955, 9547, 512, 256, 8470, 13261,
   1024, 256, 19968, 40284, 1280, 256, 19979, 40644, 1536, 256, 19992, 40653,
   1792, 256, 20018, 40723, 2048, 256, 19977, 40658, 2304, 256, 19971, 39423,
@@ -21,17 +21,17 @@ private static readonly int[] ValueIndextable= {
 };
 
 public static int CodePointToIndex(int codepoint) {
-   if (codepoint < 167 || codepoint>65509) {
+   if (codepoint < 167 || codepoint > 65509) {
  return -1;
 }
  short cps = unchecked((short)(codepoint & 0xffff));
-  for (int i + += 0; i<ValueIndextable.Length;i+ + += 4) {
+  for (int i = 0; i < ValueIndextable.Length; i += 4) {
   if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
        1]) {
       int startindex = ValueIndextable[i + 2];
        int length = ValueIndextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if ((ValueTable[j + startindex]) == cps) {
+         if (ValueTable[j + startindex] == cps) {
  return j + startindex;
 }
        }
@@ -40,7 +40,7 @@ public static int CodePointToIndex(int codepoint) {
   return -1;
  }
 
-private static readonly int[] ValueIndextable2= {
+private static readonly int[] ValueIndextable2 = {
 167, 65509, 0, 256, 913, 65370, 256, 256, 955, 9547, 512, 256, 8470, 13261,
   1024, 256, 19968, 40284, 1280, 256, 19979, 40644, 1536, 256, 19992, 40653,
   1792, 256, 20018, 40723, 2048, 256, 19977, 40658, 2304, 256, 19971, 39423,
@@ -55,11 +55,11 @@ private static readonly int[] ValueIndextable2= {
 };
 
 public static int ShiftJISCodePointToIndex(int codepoint) {
-   if (codepoint < 167 || codepoint>65509) {
+   if (codepoint < 167 || codepoint > 65509) {
  return -1;
 }
  short cps = unchecked((short)(codepoint & 0xffff));
-  for (int i + += 0; i<ValueIndextable2.Length;i+ + += 4) {
+  for (int i = 0; i < ValueIndextable2.Length; i += 4) {
 if (codepoint >= ValueIndextable2[i] && codepoint <= ValueIndextable2[i +
        1]) {
       int startindex = ValueIndextable2[i + 2];

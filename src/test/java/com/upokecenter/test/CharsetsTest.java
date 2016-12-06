@@ -28,15 +28,17 @@ import java.util.*;
         (byte)0x82, (byte)0xa0, (byte)0x82, 0x51, (byte)0x93, (byte)0xfa, (byte)0x82, 0x51,
         0x3a, 0x3c, (byte)0x82, 0x51, (byte)0x81, (byte)0x80, (byte)0x81, (byte)0x8e,
         (byte)0x82, 0x51  };
-      String expected =
+      String valueExpected =
 
   "\uFF19\u0033\u0041\u0061\u0033\uFF21\uFF41\u0033\uFF71\uFF6F\u0033\u30A2\u30F6\u0033\u3042\u0033\u65E5\u0033\u003A\u003C\u0033\u00F7\u2103\u0033\u0031\uFF12\u0041\u0061\uFF12\uFF21\uFF41\uFF12\uFF71\uFF6F\uFF12\u30A2\u30F6\uFF12\u3042\uFF12\u65E5\uFF12\u003A\u003C\uFF12\u00F7\u2103\uFF12"
-        ;
-      Assert.assertEquals(expected, Encodings.DecodeToString(charset, bytes));
+  ;
+
+      Assert.assertEquals(valueExpected, Encodings.DecodeToString(charset, bytes));
     }
 
-    private static void TestEncodingRoundTrip(String str, ICharacterEncoding
-      encoding) {
+    private static void TestEncodingRoundTrip(
+  String str,
+  ICharacterEncoding encoding) {
       byte[] bytes;
       String str2;
       bytes = Encodings.EncodeToBytes(str, encoding);
@@ -249,8 +251,9 @@ Assert.assertEquals(
 }
       bytes = new byte[] { (byte)0x90, (byte)0xa1, (byte)0xa1  };
       {
-String stringTemp = Encodings.DecodeToString(charset,
-          bytes);
+String stringTemp = Encodings.DecodeToString(
+  charset,
+  bytes);
 Assert.assertEquals(
   "\ufffd\u3000",
   stringTemp);
@@ -286,9 +289,11 @@ Assert.assertEquals(
         +
 
   "{\u0005\u8004\u001d\u5fd1\u60bd\uff83\u6595\u5a9a\u65fa\u731bB\uff62\u8f33\u5948\u8ec1\uff98\u978d\u0384\u56fd\uff70\u62c8\u0013"
-          ;
-      Assert.assertEquals(result, (Encodings.DecodeToString(charset, bytes)));
+  ;
+
+      Assert.assertEquals(result, Encodings.DecodeToString(charset, bytes));
     }
+
     public static void TestSingleByteRoundTrip(String name) {
       TestSingleByteRoundTrip(Encodings.GetEncoding(name, true));
     }
@@ -301,7 +306,7 @@ Assert.assertEquals(
       int codetotal = 0;
       byte[] bytes = new byte[256];
       for (int i = 0; i < 256; ++i) {
-        bytes[i] = (byte)(i);
+        bytes[i] = (byte)i;
       }
       IByteReader ib = DataIO.ToReader(bytes);
       for (int i = 0; i < 256; ++i) {
@@ -333,8 +338,8 @@ Assert.assertEquals(
 
     @Test
     public void TestCodePages() {
-      for (int j = 0; j < SingleByteNames.length; ++j) {
-        ICharacterEncoding enc = Encodings.GetEncoding(SingleByteNames[j]);
+      for (int j = 0; j < this.valueSingleByteNames.length; ++j) {
+  ICharacterEncoding enc = Encodings.GetEncoding(this.valueSingleByteNames[j]);
         ICharacterDecoder dec = enc.GetDecoder();
         byte[] bytes = new byte[256];
         int[] ints = new int[256];
@@ -354,7 +359,7 @@ Assert.assertEquals(
 }
         StringBuilder builder = new StringBuilder();
      builder.append("CODEPAGE 1\nCPINFO 1 0x3f 0x3f\nMBTABLE " +
-          TestCommon.IntToString(count)+ "\n");
+          TestCommon.IntToString(count) + "\n");
         for (int i = 0; i < 256; ++i) {
           if (ints[i] >= 0) {
             builder.append(TestCommon.IntToString(i) + " " +
@@ -374,7 +379,7 @@ Assert.assertEquals(
       }
     }
 
-    private final String[] SingleByteNames = new String[] {
+    private final String[] valueSingleByteNames = new String[] {
       "windows-1252",
       "us-ascii",
       "x-user-defined",
@@ -464,11 +469,11 @@ Assert.assertEquals(
       while (encoder.Encode(-1, aw) >= 0) {
       }
       IReader reader = DataIO.ToReader(aw.ToArray());
-      for (int i = 0;i<list.size(); ++i) {
+      for (int i = 0; i < list.size(); ++i) {
         int ch = list.get(i);
         int c = decoder.ReadChar(reader);
         if (c != ch) {
-          Assert.fail(name + ": expected " + ch + ", was " + c);
+          Assert.fail(name + ": valueExpected " + ch + ", was " + c);
         }
       }
     }
@@ -503,7 +508,7 @@ Assert.assertEquals(
 
     @Test
     public void TestReplacementEncoding() {
-      if ((Encodings.GetEncoding("replacement")) != null) {
+      if (Encodings.GetEncoding("replacement") != null) {
  Assert.fail();
  }
       ICharacterEncoding enc = Encodings.GetEncoding("hz-gb-2312", true);
@@ -519,8 +524,8 @@ Assert.assertEquals(
 
     @Test
     public void TestSingleByteEncodings() {
-      for (int i = 0; i < SingleByteNames.length; ++i) {
-        TestSingleByteRoundTrip(SingleByteNames[i]);
+      for (int i = 0; i < this.valueSingleByteNames.length; ++i) {
+        TestSingleByteRoundTrip(this.valueSingleByteNames[i]);
       }
     }
 
@@ -590,10 +595,10 @@ Assert.assertEquals(
 
     @Test
     public void TestUtf8IllegalBytes() {
-      for (byte[] seq : GenerateIllegalUtf8Sequences()) {
+       for (byte[] seq : GenerateIllegalUtf8Sequences()) {
         String str = Encodings.DecodeToString(Encodings.UTF8, seq);
-        if (!(str.length()>0))Assert.fail();
-        if (!(str.indexOf('\ufffd')==0))Assert.fail();
+        if (!(str.length() > 0))Assert.fail();
+        if (!(str.indexOf('\ufffd') == 0))Assert.fail();
       }
     }
 
@@ -607,9 +612,9 @@ Assert.assertEquals(
       TestUtfRoundTrip(Encodings.GetEncoding("utf-16be", true));
     }
 
-    public static void TestUtf7One(String input, String expected) {
+    public static void TestUtf7One(String input, String valueExpected) {
       {
-Object objectTemp = expected;
+Object objectTemp = valueExpected;
 Object objectTemp2 = Encodings.DecodeToString(
         Encodings.GetEncoding("utf-7", true),
         Encodings.EncodeToBytes(input, Encodings.UTF8));
@@ -621,10 +626,12 @@ Assert.assertEquals(objectTemp, objectTemp2);
     public void TestUtf7() {
       TestUtf7One("\\", "\ufffd");
       TestUtf7One("~", "\ufffd");
+            TestUtf7One(",", ",");
       TestUtf7One("\u0001", "\ufffd");
       TestUtf7One("\u007f", "\ufffd");
-      TestUtf7One("\r\n\t '!\"#'(),$-%@[]^&=<>;*_`{}./:|?",
-        "\r\n\t '!\"#'(),$-%@[]^&=<>;*_`{}./:|?");
+      TestUtf7One(
+  "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?",
+  "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?");
       TestUtf7One("x+--", "x+-");
       TestUtf7One("x+-y", "x+y");
       // Illegal byte after plus

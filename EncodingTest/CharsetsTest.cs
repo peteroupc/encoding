@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Text;
 using Test;
 
-namespace MailLibTest {
+namespace EncodingTest {
   [TestFixture]
   public class CharsetsTest {
     [Test]
@@ -30,15 +30,17 @@ namespace MailLibTest {
         0x82, 0xa0, 0x82, 0x51, 0x93, 0xfa, 0x82, 0x51,
         0x3a, 0x3c, 0x82, 0x51, 0x81, 0x80, 0x81, 0x8e,
         0x82, 0x51 };
-      const string expected =
+      const string valueExpected =
 
   "\uFF19\u0033\u0041\u0061\u0033\uFF21\uFF41\u0033\uFF71\uFF6F\u0033\u30A2\u30F6\u0033\u3042\u0033\u65E5\u0033\u003A\u003C\u0033\u00F7\u2103\u0033\u0031\uFF12\u0041\u0061\uFF12\uFF21\uFF41\uFF12\uFF71\uFF6F\uFF12\u30A2\u30F6\uFF12\u3042\uFF12\u65E5\uFF12\u003A\u003C\uFF12\u00F7\u2103\uFF12"
-        ;
-      Assert.AreEqual(expected, Encodings.DecodeToString(charset, bytes));
+  ;
+
+      Assert.AreEqual(valueExpected, Encodings.DecodeToString(charset, bytes));
     }
 
-    private static void TestEncodingRoundTrip(string str, ICharacterEncoding
-      encoding) {
+    private static void TestEncodingRoundTrip(
+  string str,
+  ICharacterEncoding encoding) {
       byte[] bytes;
       string str2;
       bytes = Encodings.EncodeToBytes(str, encoding);
@@ -251,8 +253,9 @@ Assert.AreEqual(
 }
       bytes = new byte[] { 0x90, 0xa1, 0xa1 };
       {
-string stringTemp = Encodings.DecodeToString(charset,
-          bytes);
+string stringTemp = Encodings.DecodeToString(
+  charset,
+  bytes);
 Assert.AreEqual(
   "\ufffd\u3000",
   stringTemp);
@@ -288,9 +291,11 @@ Assert.AreEqual(
         +
 
   "{\u0005\u8004\u001d\u5fd1\u60bd\uff83\u6595\u5a9a\u65fa\u731bB\uff62\u8f33\u5948\u8ec1\uff98\u978d\u0384\u56fd\uff70\u62c8\u0013"
-          ;
-      Assert.AreEqual(result, (Encodings.DecodeToString(charset, bytes)));
+  ;
+
+      Assert.AreEqual(result, Encodings.DecodeToString(charset, bytes));
     }
+
     public static void TestSingleByteRoundTrip(string name) {
       TestSingleByteRoundTrip(Encodings.GetEncoding(name, true));
     }
@@ -303,7 +308,7 @@ Assert.AreEqual(
       var codetotal = 0;
       var bytes = new byte[256];
       for (var i = 0; i < 256; ++i) {
-        bytes[i] = (byte)(i);
+        bytes[i] = (byte)i;
       }
       IByteReader ib = DataIO.ToReader(bytes);
       for (var i = 0; i < 256; ++i) {
@@ -335,8 +340,8 @@ Assert.AreEqual(
 
     [Test]
     public void TestCodePages() {
-      for (var j = 0; j < SingleByteNames.Length; ++j) {
-        ICharacterEncoding enc = Encodings.GetEncoding(SingleByteNames[j]);
+      for (var j = 0; j < this.valueSingleByteNames.Length; ++j) {
+  ICharacterEncoding enc = Encodings.GetEncoding(this.valueSingleByteNames[j]);
         ICharacterDecoder dec = enc.GetDecoder();
         var bytes = new byte[256];
         var ints = new int[256];
@@ -356,7 +361,7 @@ Assert.AreEqual(
 }
         var builder = new StringBuilder();
      builder.Append("CODEPAGE 1\nCPINFO 1 0x3f 0x3f\nMBTABLE " +
-          TestCommon.IntToString(count)+ "\n");
+          TestCommon.IntToString(count) + "\n");
         for (var i = 0; i < 256; ++i) {
           if (ints[i] >= 0) {
             builder.Append(TestCommon.IntToString(i) + " " +
@@ -376,7 +381,7 @@ Assert.AreEqual(
       }
     }
 
-    private readonly string[] SingleByteNames = new string[] {
+    private readonly string[] valueSingleByteNames = new string[] {
       "windows-1252",
       "us-ascii",
       "x-user-defined",
@@ -466,11 +471,11 @@ Assert.AreEqual(
       while (encoder.Encode(-1, aw) >= 0) {
       }
       IReader reader = DataIO.ToReader(aw.ToArray());
-      for (var i = 0;i<list.Count; ++i) {
+      for (var i = 0; i < list.Count; ++i) {
         int ch = list[i];
         int c = decoder.ReadChar(reader);
         if (c != ch) {
-          Assert.Fail(name + ": expected " + ch + ", was " + c);
+          Assert.Fail(name + ": valueExpected " + ch + ", was " + c);
         }
       }
     }
@@ -505,7 +510,7 @@ Assert.AreEqual(
 
     [Test]
     public void TestReplacementEncoding() {
-      if ((Encodings.GetEncoding("replacement")) != null) {
+      if (Encodings.GetEncoding("replacement") != null) {
  Assert.Fail();
  }
       ICharacterEncoding enc = Encodings.GetEncoding("hz-gb-2312", true);
@@ -521,8 +526,8 @@ Assert.AreEqual(
 
     [Test]
     public void TestSingleByteEncodings() {
-      for (var i = 0; i < SingleByteNames.Length; ++i) {
-        TestSingleByteRoundTrip(SingleByteNames[i]);
+      for (var i = 0; i < this.valueSingleByteNames.Length; ++i) {
+        TestSingleByteRoundTrip(this.valueSingleByteNames[i]);
       }
     }
 
@@ -592,10 +597,10 @@ Assert.AreEqual(
 
     [Test]
     public void TestUtf8IllegalBytes() {
-      foreach(byte[] seq in GenerateIllegalUtf8Sequences()) {
+       foreach (byte[] seq in GenerateIllegalUtf8Sequences()) {
         string str = Encodings.DecodeToString(Encodings.UTF8, seq);
-        Assert.IsTrue(str.Length>0);
-        Assert.IsTrue(str.IndexOf('\ufffd')==0);
+        Assert.IsTrue(str.Length > 0);
+        Assert.IsTrue(str.IndexOf('\ufffd') == 0);
       }
     }
 
@@ -609,9 +614,9 @@ Assert.AreEqual(
       TestUtfRoundTrip(Encodings.GetEncoding("utf-16be", true));
     }
 
-    public static void TestUtf7One(string input, string expected) {
+    public static void TestUtf7One(string input, string valueExpected) {
       {
-object objectTemp = expected;
+object objectTemp = valueExpected;
 object objectTemp2 = Encodings.DecodeToString(
         Encodings.GetEncoding("utf-7", true),
         Encodings.EncodeToBytes(input, Encodings.UTF8));
@@ -623,10 +628,12 @@ Assert.AreEqual(objectTemp, objectTemp2);
     public void TestUtf7() {
       TestUtf7One("\\", "\ufffd");
       TestUtf7One("~", "\ufffd");
+            TestUtf7One(",", ",");
       TestUtf7One("\u0001", "\ufffd");
       TestUtf7One("\u007f", "\ufffd");
-      TestUtf7One("\r\n\t '!\"#'(),$-%@[]^&=<>;*_`{}./:|?",
-        "\r\n\t '!\"#'(),$-%@[]^&=<>;*_`{}./:|?");
+      TestUtf7One(
+  "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?",
+  "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?");
       TestUtf7One("x+--", "x+-");
       TestUtf7One("x+-y", "x+y");
       // Illegal byte after plus

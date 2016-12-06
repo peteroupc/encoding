@@ -5,7 +5,7 @@ internal static class Jis0212 {
 private static readonly short[] ValueTable = new AppResources(
   "Resources").GetShortArray("Jis0212");
 
-private static readonly int[] ValueIndextable= {
+private static readonly int[] ValueIndextable = {
 161, 65374, 0, 256, 198, 1119, 512, 256, 192, 501, 768, 256, 378, 382, 1024,
   256, 19970, 20434, 1280, 256, 20444, 21276, 1536, 256, 21278, 22213, 1792,
   256, 22217, 34369, 2048, 256, 23058, 24150, 2304, 256, 24152, 25057, 2560,
@@ -19,17 +19,17 @@ private static readonly int[] ValueIndextable= {
 };
 
 public static int CodePointToIndex(int codepoint) {
-   if (codepoint < 161 || codepoint>65374) {
+   if (codepoint < 161 || codepoint > 65374) {
  return -1;
 }
  short cps = unchecked((short)(codepoint & 0xffff));
-  for (int i + += 0; i<ValueIndextable.Length;i+ + += 4) {
+  for (int i = 0; i < ValueIndextable.Length; i += 4) {
   if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
        1]) {
       int startindex = ValueIndextable[i + 2];
        int length = ValueIndextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if ((ValueTable[j + startindex]) == cps) {
+         if (ValueTable[j + startindex] == cps) {
  return j + startindex;
 }
        }

@@ -1,9 +1,9 @@
+using System;
 using NUnit.Framework;
 using PeterO;
 using PeterO.Text;
-using System;
 
-namespace MailLibTest {
+namespace EncodingTest {
   [TestFixture]
   public partial class EncodingsTest {
     [Test]
@@ -44,7 +44,7 @@ namespace MailLibTest {
     public void TestGetDecoderInputSkipBom() {
 ICharacterInput input;
 IByteReader reader;
-ICharacterEncoding wenc=Encodings.GetEncoding("windows-1252");
+ICharacterEncoding wenc = Encodings.GetEncoding("windows-1252");
 reader = DataIO.ToReader(new byte[] { 0xef, 0xbb, 0xbf, 0x41, 0x42, 0x43 });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
@@ -80,52 +80,52 @@ Assert.AreEqual(
     }
     [Test]
     public void TestGetEncoding() {
-      if ((Encodings.GetEncoding("utf-8")) == null) {
+      if (Encodings.GetEncoding("utf-8") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("Utf-8")) == null) {
+      if (Encodings.GetEncoding("Utf-8") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("uTf-8")) == null) {
+      if (Encodings.GetEncoding("uTf-8") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("utF-8")) == null) {
+      if (Encodings.GetEncoding("utF-8") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("UTF-8")) == null) {
+      if (Encodings.GetEncoding("UTF-8") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("utg-8")) != null) {
+      if (Encodings.GetEncoding("utg-8") != null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("utf-9")) != null) {
+      if (Encodings.GetEncoding("utf-9") != null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("   utf-8    ")) == null) {
+      if (Encodings.GetEncoding(" utf-8 ") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("   utf-8")) == null) {
+      if (Encodings.GetEncoding(" utf-8") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("utf-8    ")) == null) {
+      if (Encodings.GetEncoding("utf-8 ") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("\t\tutf-8\t\t")) == null) {
+      if (Encodings.GetEncoding("\t\tutf-8\t\t") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding(" \r\n utf-8 \r ")) == null) {
+      if (Encodings.GetEncoding(" \r\n utf-8 \r ") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("\nutf-8\n")) == null) {
+      if (Encodings.GetEncoding("\nutf-8\n") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("\tutf-8\t")) == null) {
+      if (Encodings.GetEncoding("\tutf-8\t") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("\rutf-8\r")) == null) {
+      if (Encodings.GetEncoding("\rutf-8\r") == null) {
         Assert.Fail();
       }
-      if ((Encodings.GetEncoding("\futf-8\f")) == null) {
+      if (Encodings.GetEncoding("\futf-8\f") == null) {
         Assert.Fail();
       }
     }
@@ -2754,8 +2754,8 @@ Assert.AreEqual(
         stringTemp);
       }
             {
-                string stringTemp = Encodings.ResolveAlias ("big5");
-                Assert.AreEqual (
+                string stringTemp = Encodings.ResolveAlias("big5");
+                Assert.AreEqual(
                 "Big5",
                 stringTemp);
             }
@@ -2783,8 +2783,9 @@ Assert.AreEqual(
     [Test]
     public void TestResolveAliasForEmail() {
       Assert.AreEqual(String.Empty, Encodings.ResolveAliasForEmail(null));
-      Assert.AreEqual(String.Empty,
-           Encodings.ResolveAliasForEmail(String.Empty));
+      Assert.AreEqual(
+  String.Empty,
+  Encodings.ResolveAliasForEmail(String.Empty));
       {
         string stringTemp = Encodings.ResolveAliasForEmail("iso-8859-1");
         Assert.AreEqual(

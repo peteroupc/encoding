@@ -5,7 +5,7 @@ internal static class Korean {
 private static readonly short[] ValueTable = new AppResources(
   "Resources").GetShortArray("Korean");
 
-private static readonly int[] ValueIndextable= {
+private static readonly int[] ValueIndextable = {
 44034, 44378, 0, 256, 44379, 44702, 256, 256, 44703, 45002, 512, 256, 45004,
   45306, 768, 256, 45307, 45622, 1024, 256, 45623, 45949, 1280, 256, 45950,
   46229, 1536, 256, 46230, 46547, 1792, 256, 46548, 46811, 2048, 256, 46812,
@@ -42,17 +42,17 @@ private static readonly int[] ValueIndextable= {
 };
 
 public static int CodePointToIndex(int codepoint) {
-   if (codepoint < 161 || codepoint>65510) {
+   if (codepoint < 161 || codepoint > 65510) {
  return -1;
 }
  short cps = unchecked((short)(codepoint & 0xffff));
-  for (int i + += 0; i<ValueIndextable.Length;i+ + += 4) {
+  for (int i = 0; i < ValueIndextable.Length; i += 4) {
   if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
        1]) {
       int startindex = ValueIndextable[i + 2];
        int length = ValueIndextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if ((ValueTable[j + startindex]) == cps) {
+         if (ValueTable[j + startindex] == cps) {
  return j + startindex;
 }
        }

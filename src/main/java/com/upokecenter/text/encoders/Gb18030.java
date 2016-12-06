@@ -6,7 +6,7 @@ private Gb18030() {
 private static final short[] ValueTable = new AppResources(
   "Resources").GetShortArray("Gb18030");
 
-private static final int[] ValueIndextable= {
+private static final int[] ValueIndextable = {
 19970, 20496, 0, 256, 20497, 20833, 256, 256, 20835, 21278, 512, 256, 21279,
   21818, 768, 256, 21819, 22210, 1024, 256, 22211, 22608, 1280, 256, 22610,
   22979, 1536, 256, 22980, 23321, 1792, 256, 23322, 23758, 2048, 256, 23759,
@@ -43,17 +43,17 @@ private static final int[] ValueIndextable= {
 };
 
 public static int CodePointToIndex(int codepoint) {
-   if (codepoint < 164 || codepoint>65509) {
+   if (codepoint < 164 || codepoint > 65509) {
  return -1;
 }
  short cps = ((short)(codepoint & 0xffff));
-  for (int i + += 0; i<ValueIndextable.length;i+ + += 4) {
+  for (int i = 0; i < ValueIndextable.length; i += 4) {
   if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
        1]) {
       int startindex = ValueIndextable[i + 2];
        int length = ValueIndextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if ((ValueTable[j + startindex]) == cps) {
+         if (ValueTable[j + startindex] == cps) {
  return j + startindex;
 }
        }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 
 namespace EncodingTest {
-  class Program {
-    static void Main(string[] args) {
+  internal class Program {
+    internal static void Main(string[] args) {
     }
   }
 }

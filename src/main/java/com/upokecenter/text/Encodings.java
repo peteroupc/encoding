@@ -111,7 +111,20 @@ private Encodings() {
         CreateAliasMap();
 
     /**
-     *
+     * Reads bytes from a data source and converts the bytes from a given encoding
+     * to a text string. <p>In the .NET implementation, this method is
+     * implemented as an extension method to any object implementing
+     * ICharacterEncoding and can be called as follows:
+     * "encoding.DecodeString(input)". If the object's class already has a
+     * DecodeToString method with the same parameters, that method takes
+     * precedence over this extension method.</p>
+     * @param encoding An object that implements a given character encoding. Any
+     * bytes that can't be decoded are converted to the replacement
+     * character (U + FFFD).
+     * @param input An object that implements a byte stream.
+     * @return The converted string.
+     * @throws java.lang.NullPointerException The parameter {@code encoding} or
+     * {@code input} is null.
      */
     public static String DecodeToString(
      ICharacterEncoding encoding,
@@ -516,7 +529,21 @@ private Encodings() {
     }
 
     /**
-     *
+     * Converts a character encoding into a character input stream, given a
+     * streamable source of bytes. The input stream doesn't check the first
+     * few bytes for a byte-order mark indicating a Unicode encoding such as
+     * UTF-8 before using the character encoding's decoder. <p>In the .NET
+     * implementation, this method is implemented as an extension method to
+     * any object implementing ICharacterEncoding and can be called as
+     * follows: "encoding.GetDecoderInput(input)". If the object's class
+     * already has a GetDecoderInput method with the same parameters, that
+     * method takes precedence over this extension method.</p>
+     * @param encoding Encoding that exposes a decoder to be converted into a
+     * character input stream. If the decoder returns -2 (indicating a
+     * decode error), the character input stream handles the error by
+     * returning a replacement character in its place.
+     * @param stream Byte stream to convert into Unicode characters.
+     * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInput(
       ICharacterEncoding encoding,
@@ -549,7 +576,24 @@ private Encodings() {
     }
 
     /**
-     *
+     * Converts a character encoding into a character input stream, given a
+     * streamable source of bytes. But if the input stream starts with a
+     * UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or
+     * UTF-16, as the case may be, rather than the given character encoding.
+     * <p>This method implements the "decode" algorithm specified in the
+     * Encoding standard.</p> <p>In the .NET implementation, this method is
+     * implemented as an extension method to any object implementing
+     * ICharacterEncoding and can be called as follows:
+     * <code>encoding.GetDecoderInputSkipBom(input)</code>. If the object's class
+     * already has a <code>GetDecoderInputSkipBom</code> method with the same
+     * parameters, that method takes precedence over this extension
+     * method.</p>
+     * @param encoding Encoding object that exposes a decoder to be converted into
+     * a character input stream. If the decoder returns -2 (indicating a
+     * decode error), the character input stream handles the error by
+     * returning a replacement character in its place.
+     * @param stream Byte stream to convert into Unicode characters.
+     * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInputSkipBom(
       ICharacterEncoding encoding,

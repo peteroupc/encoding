@@ -113,6 +113,8 @@ Contains methods for converting text from one character encoding to another.
  from a given encoding to a text string.
 * `static String DecodeToString(ICharacterEncoding encoding,
               IByteReader input)`<br>
+ Reads bytes from a data source and converts the bytes from a given encoding
+ to a text string.
 * `static String DecodeToString(ICharacterEncoding enc,
               InputStream input)`<br>
  Not documented yet.
@@ -160,11 +162,15 @@ Contains methods for converting text from one character encoding to another.
  stream.
 * `static ICharacterInput GetDecoderInput(ICharacterEncoding encoding,
                IByteReader stream)`<br>
+ Converts a character encoding into a character input stream, given a
+ streamable source of bytes.
 * `static ICharacterInput GetDecoderInput(ICharacterEncoding encoding,
                InputStream input)`<br>
  Not documented yet.
 * `static ICharacterInput GetDecoderInputSkipBom(ICharacterEncoding encoding,
                       IByteReader stream)`<br>
+ Converts a character encoding into a character input stream, given a
+ streamable source of bytes.
 * `static ICharacterInput GetDecoderInputSkipBom(ICharacterEncoding encoding,
                       InputStream input)`<br>
  Converts a character encoding into a character input stream, given a
@@ -210,6 +216,31 @@ Character encoding object for the UTF-8 character encoding, which represents
 
 ### DecodeToString
     public static String DecodeToString(ICharacterEncoding encoding, IByteReader input)
+Reads bytes from a data source and converts the bytes from a given encoding
+ to a text string. <p>In the .NET implementation, this method is
+ implemented as an extension method to any object implementing
+ ICharacterEncoding and can be called as follows:
+ "encoding.DecodeString(input)". If the object's class already has a
+ DecodeToString method with the same parameters, that method takes
+ precedence over this extension method.</p>
+
+**Parameters:**
+
+* <code>encoding</code> - An object that implements a given character encoding. Any
+ bytes that can't be decoded are converted to the replacement
+ character (U + FFFD).
+
+* <code>input</code> - An object that implements a byte stream.
+
+**Returns:**
+
+* The converted string.
+
+**Throws:**
+
+* <code>NullPointerException</code> - The parameter <code>encoding</code> or
+ <code>input</code> is null.
+
 ### DecodeToString
     public static String DecodeToString(ICharacterEncoding enc, InputStream input)
 Not documented yet. <p>In the .NET implementation, this method is
@@ -533,6 +564,29 @@ Converts a text string to bytes and writes the bytes to an output data
 
 ### GetDecoderInput
     public static ICharacterInput GetDecoderInput(ICharacterEncoding encoding, IByteReader stream)
+Converts a character encoding into a character input stream, given a
+ streamable source of bytes. The input stream doesn't check the first
+ few bytes for a byte-order mark indicating a Unicode encoding such as
+ UTF-8 before using the character encoding's decoder. <p>In the .NET
+ implementation, this method is implemented as an extension method to
+ any object implementing ICharacterEncoding and can be called as
+ follows: "encoding.GetDecoderInput(input)". If the object's class
+ already has a GetDecoderInput method with the same parameters, that
+ method takes precedence over this extension method.</p>
+
+**Parameters:**
+
+* <code>encoding</code> - Encoding that exposes a decoder to be converted into a
+ character input stream. If the decoder returns -2 (indicating a
+ decode error), the character input stream handles the error by
+ returning a replacement character in its place.
+
+* <code>stream</code> - Byte stream to convert into Unicode characters.
+
+**Returns:**
+
+* An ICharacterInput object.
+
 ### GetDecoderInput
     public static ICharacterInput GetDecoderInput(ICharacterEncoding encoding, InputStream input)
 Not documented yet. <p>In the .NET implementation, this method is
@@ -557,6 +611,32 @@ Not documented yet. <p>In the .NET implementation, this method is
 
 ### GetDecoderInputSkipBom
     public static ICharacterInput GetDecoderInputSkipBom(ICharacterEncoding encoding, IByteReader stream)
+Converts a character encoding into a character input stream, given a
+ streamable source of bytes. But if the input stream starts with a
+ UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or
+ UTF-16, as the case may be, rather than the given character encoding.
+ <p>This method implements the "decode" algorithm specified in the
+ Encoding standard.</p> <p>In the .NET implementation, this method is
+ implemented as an extension method to any object implementing
+ ICharacterEncoding and can be called as follows:
+ <code>encoding.GetDecoderInputSkipBom(input)</code>. If the object's class
+ already has a <code>GetDecoderInputSkipBom</code> method with the same
+ parameters, that method takes precedence over this extension
+ method.</p>
+
+**Parameters:**
+
+* <code>encoding</code> - Encoding object that exposes a decoder to be converted into
+ a character input stream. If the decoder returns -2 (indicating a
+ decode error), the character input stream handles the error by
+ returning a replacement character in its place.
+
+* <code>stream</code> - Byte stream to convert into Unicode characters.
+
+**Returns:**
+
+* An ICharacterInput object.
+
 ### GetDecoderInputSkipBom
     public static ICharacterInput GetDecoderInputSkipBom(ICharacterEncoding encoding, InputStream input)
 Converts a character encoding into a character input stream, given a

@@ -20,7 +20,8 @@ A general-purpose character input for reading text from byte streams and
 * [com.upokecenter.text.Encodings](wiki/com.upokecenter.text.Encodings) -
 Contains methods for converting text from one character encoding to another.
 
-* [com.upokecenter.util.IByteReader](wiki/com.upokecenter.util.IByteReader) - &nbsp;
+* [com.upokecenter.util.IByteReader](wiki/com.upokecenter.util.IByteReader) -
+A generic interface for reading data one byte at a time.
 
 * [com.upokecenter.util.IByteWriter](wiki/com.upokecenter.util.IByteWriter) -
 A generic interface for writing bytes of data.

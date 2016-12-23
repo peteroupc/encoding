@@ -751,7 +751,7 @@ if (name.Equals("ISO-8859-13")) {
       }
       if (name.Equals("iso-2022-jp-2")) {
         // NOTE: Treat as the same as iso-2022-jp
-        return "ISO-2022-jp";
+        return "ISO-2022-JP";
       }
       if (name.Equals("utf-7") || name.Equals("unicode-1-1-utf-7")) {
         return "UTF-7";

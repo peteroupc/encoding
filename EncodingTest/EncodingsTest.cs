@@ -2736,6 +2736,12 @@ Assert.AreEqual(
   stringTemp);
 }
 {
+string stringTemp = Encodings.ResolveAlias("iso-2022-jp-2");
+Assert.AreEqual(
+  String.Empty,
+  stringTemp);
+}
+{
 string stringTemp = Encodings.ResolveAlias("x-user-defined");
 Assert.AreEqual(
   "x-user-defined",
@@ -2793,6 +2799,24 @@ Assert.AreEqual(
         stringTemp);
       }
       {
+        string stringTemp = Encodings.ResolveAliasForEmail("iso-2022-jp");
+        Assert.AreEqual(
+        "ISO-2022-JP",
+        stringTemp);
+      }
+      {
+        string stringTemp = Encodings.ResolveAliasForEmail("iso-2022-jp-2");
+        Assert.AreEqual(
+        "ISO-2022-JP",
+        stringTemp);
+      }
+       {
+        string stringTemp = Encodings.ResolveAliasForEmail("iso-2022-JP-2");
+        Assert.AreEqual(
+        "ISO-2022-JP",
+        stringTemp);
+      }
+     {
         string stringTemp = Encodings.ResolveAliasForEmail("windows-1252");
         Assert.AreEqual(
         "windows-1252",

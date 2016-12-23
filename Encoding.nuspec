@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>PeterO.Encoding</id>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <title>Encoding Library</title>
     <authors>Peter Occil</authors>
     <owners>Peter Occil</owners>
@@ -13,6 +13,11 @@
 A portable library for .NET that implements character encodings used in Web pages and email.
     </description>
     <releaseNotes>
+Version 0.2.1:
+
+- Fix ResolveAliasForEmail method to conform to new behavior
+in version 0.2.0
+
 Version 0.2.0:
 
 - Update implementation to latest candidate recommendation of Encoding Standard

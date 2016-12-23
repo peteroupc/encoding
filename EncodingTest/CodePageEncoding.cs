@@ -450,7 +450,8 @@ namespace EncodingTest {
   newarray,
   0,
   this.array.Length);
-            for (var i = this.array.Length; i < newarray.Length; ++i) {
+      int i;
+            for (i = this.array.Length; i < newarray.Length; ++i) {
               newarray[i] = -2;
             }
             this.array = newarray;

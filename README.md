@@ -76,6 +76,11 @@ In C#.
 History
 -----------
 
+Version 0.2.1:
+
+- Fix ResolveAliasForEmail method to conform to new behavior
+in version 0.2.0
+
 Version 0.2.0:
 
 - Update implementation to latest candidate recommendation of Encoding Standard

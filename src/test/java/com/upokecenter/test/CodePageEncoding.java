@@ -455,7 +455,8 @@ import com.upokecenter.text.*;
   newarray,
   0,
   this.array.length);
-            for (var i = this.array.length; i < newarray.length; ++i) {
+      int i;
+            for (i = this.array.length; i < newarray.length; ++i) {
               newarray[i] = -2;
             }
             this.array = newarray;

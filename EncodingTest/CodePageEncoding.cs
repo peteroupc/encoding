@@ -404,8 +404,8 @@ namespace EncodingTest {
         }
 
         private static bool IsWordEndChar(int c) {
-          return (c == -1 || c == 0x0d || c == 0x0a ||
-                  c == 0x09 || c == 0x20 || c == (int)';');
+          return c == -1 || c == 0x0d || c == 0x0a || c == 0x09 || c ==
+            0x20 || c == (int)';';
         }
       }
 

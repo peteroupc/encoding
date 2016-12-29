@@ -6,11 +6,12 @@ http://creativecommons.org/publicdomain/zero/1.0/
 If you like this, you should donate to Peter O.
 at: http://peteroupc.github.io/
  */
+import java.util.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 import com.upokecenter.util.*;
 import com.upokecenter.text.*;
-import java.util.*;
 
   public class CharsetsTest {
     @Test
@@ -28,11 +29,11 @@ import java.util.*;
         (byte)0x82, (byte)0xa0, (byte)0x82, 0x51, (byte)0x93, (byte)0xfa, (byte)0x82, 0x51,
         0x3a, 0x3c, (byte)0x82, 0x51, (byte)0x81, (byte)0x80, (byte)0x81, (byte)0x8e,
         (byte)0x82, 0x51  };
-      String valueExpected =
+      String ValueExpected =
 
   "\uFF19\u0033\u0041\u0061\u0033\uFF21\uFF41\u0033\uFF71\uFF6F\u0033\u30A2\u30F6\u0033\u3042\u0033\u65E5\u0033\u003A\u003C\u0033\u00F7\u2103\u0033\u0031\uFF12\u0041\u0061\uFF12\uFF21\uFF41\uFF12\uFF71\uFF6F\uFF12\u30A2\u30F6\uFF12\u3042\uFF12\u65E5\uFF12\u003A\u003C\uFF12\u00F7\u2103\uFF12";
 
-      Assert.assertEquals(valueExpected, Encodings.DecodeToString(charset, bytes));
+      Assert.assertEquals(ValueExpected, Encodings.DecodeToString(charset, bytes));
     }
 
     private static void TestEncodingRoundTrip(
@@ -471,7 +472,7 @@ Assert.assertEquals(
         int ch = list.get(i);
         int c = decoder.ReadChar(reader);
         if (c != ch) {
-          Assert.fail(name + ": valueExpected " + ch + ", was " + c);
+          Assert.fail(name + ": ValueExpected " + ch + ", was " + c);
         }
       }
     }
@@ -595,8 +596,12 @@ Assert.assertEquals(
     public void TestUtf8IllegalBytes() {
        for (byte[] seq : GenerateIllegalUtf8Sequences()) {
         String str = Encodings.DecodeToString(Encodings.UTF8, seq);
-        if (!(str.length() > 0))Assert.fail();
-        if (!(str.indexOf('\ufffd') == 0))Assert.fail();
+        if (!(str.length() > 0)) {
+ Assert.fail();
+ }
+        if (!(str.indexOf('\ufffd') == 0)) {
+ Assert.fail();
+ }
       }
     }
 
@@ -610,9 +615,9 @@ Assert.assertEquals(
       TestUtfRoundTrip(Encodings.GetEncoding("utf-16be", true));
     }
 
-    public static void TestUtf7One(String input, String valueExpected) {
+    public static void TestUtf7One(String input, String expect) {
       {
-Object objectTemp = valueExpected;
+Object objectTemp = expect;
 Object objectTemp2 = Encodings.DecodeToString(
         Encodings.GetEncoding("utf-7", true),
         Encodings.EncodeToBytes(input, Encodings.UTF8));

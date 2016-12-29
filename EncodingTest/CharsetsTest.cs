@@ -5,11 +5,11 @@ http://creativecommons.org/publicdomain/zero/1.0/
 If you like this, you should donate to Peter O.
 at: http://peteroupc.github.io/
  */
+using System.Collections.Generic;
+using System.Text;
 using NUnit.Framework;
 using PeterO;
 using PeterO.Text;
-using System.Collections.Generic;
-using System.Text;
 using Test;
 
 namespace EncodingTest {
@@ -30,11 +30,11 @@ namespace EncodingTest {
         0x82, 0xa0, 0x82, 0x51, 0x93, 0xfa, 0x82, 0x51,
         0x3a, 0x3c, 0x82, 0x51, 0x81, 0x80, 0x81, 0x8e,
         0x82, 0x51 };
-      const string valueExpected =
+      const string ValueExpected =
 
   "\uFF19\u0033\u0041\u0061\u0033\uFF21\uFF41\u0033\uFF71\uFF6F\u0033\u30A2\u30F6\u0033\u3042\u0033\u65E5\u0033\u003A\u003C\u0033\u00F7\u2103\u0033\u0031\uFF12\u0041\u0061\uFF12\uFF21\uFF41\uFF12\uFF71\uFF6F\uFF12\u30A2\u30F6\uFF12\u3042\uFF12\u65E5\uFF12\u003A\u003C\uFF12\u00F7\u2103\uFF12";
 
-      Assert.AreEqual(valueExpected, Encodings.DecodeToString(charset, bytes));
+      Assert.AreEqual(ValueExpected, Encodings.DecodeToString(charset, bytes));
     }
 
     private static void TestEncodingRoundTrip(
@@ -473,7 +473,7 @@ Assert.AreEqual(
         int ch = list[i];
         int c = decoder.ReadChar(reader);
         if (c != ch) {
-          Assert.Fail(name + ": valueExpected " + ch + ", was " + c);
+          Assert.Fail(name + ": ValueExpected " + ch + ", was " + c);
         }
       }
     }
@@ -612,9 +612,9 @@ Assert.AreEqual(
       TestUtfRoundTrip(Encodings.GetEncoding("utf-16be", true));
     }
 
-    public static void TestUtf7One(string input, string valueExpected) {
+    public static void TestUtf7One(string input, string expect) {
       {
-object objectTemp = valueExpected;
+object objectTemp = expect;
 object objectTemp2 = Encodings.DecodeToString(
         Encodings.GetEncoding("utf-7", true),
         Encodings.EncodeToBytes(input, Encodings.UTF8));

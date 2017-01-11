@@ -28,7 +28,7 @@ import com.upokecenter.text.*;
         (byte)0x82, 0x51, (byte)0x83, 0x41, (byte)0x83, (byte)0x96, (byte)0x82, 0x51,
         (byte)0x82, (byte)0xa0, (byte)0x82, 0x51, (byte)0x93, (byte)0xfa, (byte)0x82, 0x51,
         0x3a, 0x3c, (byte)0x82, 0x51, (byte)0x81, (byte)0x80, (byte)0x81, (byte)0x8e,
-        (byte)0x82, 0x51  };
+        (byte)0x82, 0x51 };
       String ValueExpected =
 
   "\uFF19\u0033\u0041\u0061\u0033\uFF21\uFF41\u0033\uFF71\uFF6F\u0033\u30A2\u30F6\u0033\u3042\u0033\u65E5\u0033\u003A\u003C\u0033\u00F7\u2103\u0033\u0031\uFF12\u0041\u0061\uFF12\uFF21\uFF41\uFF12\uFF71\uFF6F\uFF12\u30A2\u30F6\uFF12\u3042\uFF12\u65E5\uFF12\u003A\u003C\uFF12\u00F7\u2103\uFF12";
@@ -58,7 +58,7 @@ import com.upokecenter.text.*;
     public void TestIso2022JP() {
       byte[] bytes;
       ICharacterEncoding charset = Encodings.GetEncoding("iso-2022-jp");
-      bytes = new byte[] { 0x20, 0x41, 0x61, 0x5c  };
+      bytes = new byte[] { 0x20, 0x41, 0x61, 0x5c };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
@@ -66,7 +66,7 @@ Assert.assertEquals(
   stringTemp);
 }
       // Illegal byte in escape middle state
-      bytes = new byte[] { 0x1b, 0x28, 0x47, 0x21, 0x41, 0x31, 0x5c  };
+      bytes = new byte[] { 0x1b, 0x28, 0x47, 0x21, 0x41, 0x31, 0x5c };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
@@ -74,14 +74,14 @@ Assert.assertEquals(
         stringTemp);
       }
       // Katakana
-      bytes = new byte[] { 0x1b, 0x28, 0x49, 0x21, 0x41, 0x31, 0x5c  };
+      bytes = new byte[] { 0x1b, 0x28, 0x49, 0x21, 0x41, 0x31, 0x5c };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         "\uff61\uff81\uff71\uff9c",
         stringTemp);
       }
-      bytes = new byte[] { 0x1b, 0x28, 0x49, 0x20, 0x41, 0x61, 0x5c  };
+      bytes = new byte[] { 0x1b, 0x28, 0x49, 0x20, 0x41, 0x61, 0x5c };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
@@ -89,14 +89,14 @@ Assert.assertEquals(
         stringTemp);
       }
       // ASCII state via escape
-      bytes = new byte[] { 0x1b, 0x28, 0x42, 0x20, 0x41, 0x61, 0x5c  };
+      bytes = new byte[] { 0x1b, 0x28, 0x42, 0x20, 0x41, 0x61, 0x5c };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         " Aa\\",
         stringTemp);
       }
-      bytes = new byte[] { 0x1b, 0x28, 0x4a, 0x20, 0x41, 0x61, 0x5c  };
+      bytes = new byte[] { 0x1b, 0x28, 0x4a, 0x20, 0x41, 0x61, 0x5c };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
@@ -104,14 +104,14 @@ Assert.assertEquals(
         stringTemp);
       }
       // JIS0208 state
-   bytes = new byte[] { 0x1b, 0x24, 0x40, 0x21, 0x21, 0x21, 0x22, 0x21, 0x23  };
+   bytes = new byte[] { 0x1b, 0x24, 0x40, 0x21, 0x21, 0x21, 0x22, 0x21, 0x23 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         "\u3000\u3001\u3002",
         stringTemp);
       }
-   bytes = new byte[] { 0x1b, 0x24, 0x42, 0x21, 0x21, 0x21, 0x22, 0x21, 0x23  };
+   bytes = new byte[] { 0x1b, 0x24, 0x42, 0x21, 0x21, 0x21, 0x22, 0x21, 0x23 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
@@ -119,9 +119,9 @@ Assert.assertEquals(
         stringTemp);
       }
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x21, 0x21, 0x21, 0x22, 0x0a,
-        0x21, 0x23  };
+        0x21, 0x23 };
       // Illegal state
-   bytes = new byte[] { 0x1b, 0x24, 0x4f, 0x21, 0x21, 0x21, 0x23, 0x21, 0x23  };
+   bytes = new byte[] { 0x1b, 0x24, 0x4f, 0x21, 0x21, 0x21, 0x23, 0x21, 0x23 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
@@ -130,7 +130,7 @@ Assert.assertEquals(
       }
       // Illegal state
       bytes = new byte[] { 0x1b, 0x24, 0x28, 0x4f, 0x21, 0x21, 0x21, 0x23,
-        0x21, 0x23  };
+        0x21, 0x23 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
@@ -138,28 +138,28 @@ Assert.assertEquals(
         stringTemp);
       }
       // Illegal state at end
-      bytes = new byte[] { 0x41, 0x1b  };
+      bytes = new byte[] { 0x41, 0x1b };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         "A\ufffd",
         stringTemp);
       }
-      bytes = new byte[] { 0x41, 0x1b, 0x27  };
+      bytes = new byte[] { 0x41, 0x1b, 0x27 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         "A\ufffd'",
         stringTemp);
       }
-      bytes = new byte[] { 0x41, 0x1b, 0x24  };
+      bytes = new byte[] { 0x41, 0x1b, 0x24 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         "A\ufffd$",
         stringTemp);
       }
-      bytes = new byte[] { 0x41, 0x1b, 0x24, 0x28  };
+      bytes = new byte[] { 0x41, 0x1b, 0x24, 0x28 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
@@ -172,84 +172,84 @@ Assert.assertEquals(
     public void TestEucJP() {
       byte[] bytes;
       ICharacterEncoding charset = Encodings.GetEncoding("euc-jp");
-      bytes = new byte[] { (byte)0x8e  };
+      bytes = new byte[] { (byte)0x8e };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         "\ufffd",
         stringTemp);
       }
-      bytes = new byte[] { (byte)0x8e, 0x21  };
+      bytes = new byte[] { (byte)0x8e, 0x21 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         "\ufffd!",
         stringTemp);
       }
-      bytes = new byte[] { (byte)0x8e, (byte)0x8e, (byte)0xa1  };
+      bytes = new byte[] { (byte)0x8e, (byte)0x8e, (byte)0xa1 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         "\ufffd\uff61",
         stringTemp);
       }
-      bytes = new byte[] { (byte)0x8f  };
+      bytes = new byte[] { (byte)0x8f };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
   "\ufffd",
   stringTemp);
 }
-      bytes = new byte[] { (byte)0x8f, 0x21  };
+      bytes = new byte[] { (byte)0x8f, 0x21 };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
   "\ufffd!",
   stringTemp);
 }
-      bytes = new byte[] { (byte)0x8f, (byte)0xa1  };
+      bytes = new byte[] { (byte)0x8f, (byte)0xa1 };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
   "\ufffd",
   stringTemp);
 }
-      bytes = new byte[] { (byte)0x8f, (byte)0xa1, 0x21  };
+      bytes = new byte[] { (byte)0x8f, (byte)0xa1, 0x21 };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
   "\ufffd!",
   stringTemp);
 }
-      bytes = new byte[] { (byte)0x90  };
+      bytes = new byte[] { (byte)0x90 };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
   "\ufffd",
   stringTemp);
 }
-      bytes = new byte[] { (byte)0x90, 0x21  };
+      bytes = new byte[] { (byte)0x90, 0x21 };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
   "\ufffd!",
   stringTemp);
 }
-      bytes = new byte[] { (byte)0xa1  };
+      bytes = new byte[] { (byte)0xa1 };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
   "\ufffd",
   stringTemp);
 }
-      bytes = new byte[] { (byte)0xa1, (byte)0xa1  };
+      bytes = new byte[] { (byte)0xa1, (byte)0xa1 };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
   "\u3000",
   stringTemp);
 }
-      bytes = new byte[] { (byte)0x90, (byte)0xa1, (byte)0xa1  };
+      bytes = new byte[] { (byte)0x90, (byte)0xa1, (byte)0xa1 };
       {
 String stringTemp = Encodings.DecodeToString(
   charset,
@@ -258,14 +258,14 @@ Assert.assertEquals(
   "\ufffd\u3000",
   stringTemp);
 }
-      bytes = new byte[] { (byte)0x90, (byte)0xa1, (byte)0xa1, (byte)0xa1  };
+      bytes = new byte[] { (byte)0x90, (byte)0xa1, (byte)0xa1, (byte)0xa1 };
       {
         String stringTemp = Encodings.DecodeToString(charset, bytes);
         Assert.assertEquals(
         "\ufffd\u3000\ufffd",
         stringTemp);
       }
-      bytes = new byte[] { (byte)0xa1, 0x21  };
+      bytes = new byte[] { (byte)0xa1, 0x21 };
       {
 String stringTemp = Encodings.DecodeToString(charset, bytes);
 Assert.assertEquals(
@@ -282,7 +282,7 @@ Assert.assertEquals(
         (byte)0xc3, (byte)0x8f, (byte)0xc1, (byte)0xda, (byte)0xd5, (byte)0xbb, (byte)0xb2, (byte)0xa2, (byte)0xcc, (byte)0xd4, 0x42,
         (byte)0x8e, (byte)0xa2, (byte)0xed, (byte)0xd4, (byte)0xc6, (byte)0xe0, (byte)0x8f, (byte)0xe0, (byte)0xd5, (byte)0x8e, (byte)0xd8,
         (byte)0xb0, (byte)0xc8, (byte)0x8f, (byte)0xa2, (byte)0xb8, (byte)0xb9, (byte)0xf1, (byte)0x8e, (byte)0xb0, (byte)0xd9, (byte)0xc0,
-        0x13  };
+        0x13 };
       result =
 
   "\u0015\u9ba8\u6bbc\u0013\u8a85\uff96\u9ea8\u81f2\u7c67\uff94f\u5aba\uff70\u9b8a)\uff8a\uff94\u8b2c\u001e\u0009\uff6b\u59a5\uff67\uff76=\u75ca\u834a"
@@ -513,7 +513,7 @@ Assert.assertEquals(
       ICharacterEncoding enc = Encodings.GetEncoding("hz-gb-2312", true);
       ICharacterEncoder encoder = enc.GetEncoder();
       ICharacterDecoder decoder = enc.GetDecoder();
-      IByteReader reader = DataIO.ToReader(new byte[] { 0, 0, 0, 0  });
+      IByteReader reader = DataIO.ToReader(new byte[] { 0, 0, 0, 0 });
       Assert.assertEquals(-2, decoder.ReadChar(reader));
       Assert.assertEquals(-1, decoder.ReadChar(reader));
       TestUtfRoundTrip(
@@ -543,50 +543,50 @@ Assert.assertEquals(
       // Generate illegal single bytes
       for (int i = 0x80; i <= 0xff; ++i) {
         if (i < 0xc2 || i > 0xf4) {
-          list.add(new byte[] { (byte)i, (byte)0x80  });
+          list.add(new byte[] { (byte)i, (byte)0x80 });
         }
-        list.add(new byte[] { (byte)i  });
+        list.add(new byte[] { (byte)i });
       }
-      list.add(new byte[] { (byte)0xe0, (byte)0xa0  });
-      list.add(new byte[] { (byte)0xe1, (byte)0x80  });
-      list.add(new byte[] { (byte)0xef, (byte)0x80  });
-      list.add(new byte[] { (byte)0xf0, (byte)0x90  });
-      list.add(new byte[] { (byte)0xf1, (byte)0x80  });
-      list.add(new byte[] { (byte)0xf3, (byte)0x80  });
-      list.add(new byte[] { (byte)0xf4, (byte)0x80  });
-      list.add(new byte[] { (byte)0xf0, (byte)0x90, (byte)0x80  });
-      list.add(new byte[] { (byte)0xf1, (byte)0x80, (byte)0x80  });
-      list.add(new byte[] { (byte)0xf3, (byte)0x80, (byte)0x80  });
-      list.add(new byte[] { (byte)0xf4, (byte)0x80, (byte)0x80  });
+      list.add(new byte[] { (byte)0xe0, (byte)0xa0 });
+      list.add(new byte[] { (byte)0xe1, (byte)0x80 });
+      list.add(new byte[] { (byte)0xef, (byte)0x80 });
+      list.add(new byte[] { (byte)0xf0, (byte)0x90 });
+      list.add(new byte[] { (byte)0xf1, (byte)0x80 });
+      list.add(new byte[] { (byte)0xf3, (byte)0x80 });
+      list.add(new byte[] { (byte)0xf4, (byte)0x80 });
+      list.add(new byte[] { (byte)0xf0, (byte)0x90, (byte)0x80 });
+      list.add(new byte[] { (byte)0xf1, (byte)0x80, (byte)0x80 });
+      list.add(new byte[] { (byte)0xf3, (byte)0x80, (byte)0x80 });
+      list.add(new byte[] { (byte)0xf4, (byte)0x80, (byte)0x80 });
       // Generate illegal multibyte sequences
       for (int i = 0x00; i <= 0xff; ++i) {
         if (i < 0x80 || i > 0xbf) {
-          list.add(new byte[] { (byte)0xc2, (byte)i  });
-          list.add(new byte[] { (byte)0xdf, (byte)i  });
-          list.add(new byte[] { (byte)0xe1, (byte)i, (byte)0x80  });
-          list.add(new byte[] { (byte)0xef, (byte)i, (byte)0x80  });
-          list.add(new byte[] { (byte)0xf1, (byte)i, (byte)0x80, (byte)0x80  });
-          list.add(new byte[] { (byte)0xf3, (byte)i, (byte)0x80, (byte)0x80  });
-          list.add(new byte[] { (byte)0xe0, (byte)0xa0, (byte)i  });
-          list.add(new byte[] { (byte)0xe1, (byte)0x80, (byte)i  });
-          list.add(new byte[] { (byte)0xef, (byte)0x80, (byte)i  });
-          list.add(new byte[] { (byte)0xf0, (byte)0x90, (byte)i, (byte)0x80  });
-          list.add(new byte[] { (byte)0xf1, (byte)0x80, (byte)i, (byte)0x80  });
-          list.add(new byte[] { (byte)0xf3, (byte)0x80, (byte)i, (byte)0x80  });
-          list.add(new byte[] { (byte)0xf4, (byte)0x80, (byte)i, (byte)0x80  });
-          list.add(new byte[] { (byte)0xf0, (byte)0x90, (byte)0x80, (byte)i  });
-          list.add(new byte[] { (byte)0xf1, (byte)0x80, (byte)0x80, (byte)i  });
-          list.add(new byte[] { (byte)0xf3, (byte)0x80, (byte)0x80, (byte)i  });
-          list.add(new byte[] { (byte)0xf4, (byte)0x80, (byte)0x80, (byte)i  });
+          list.add(new byte[] { (byte)0xc2, (byte)i });
+          list.add(new byte[] { (byte)0xdf, (byte)i });
+          list.add(new byte[] { (byte)0xe1, (byte)i, (byte)0x80 });
+          list.add(new byte[] { (byte)0xef, (byte)i, (byte)0x80 });
+          list.add(new byte[] { (byte)0xf1, (byte)i, (byte)0x80, (byte)0x80 });
+          list.add(new byte[] { (byte)0xf3, (byte)i, (byte)0x80, (byte)0x80 });
+          list.add(new byte[] { (byte)0xe0, (byte)0xa0, (byte)i });
+          list.add(new byte[] { (byte)0xe1, (byte)0x80, (byte)i });
+          list.add(new byte[] { (byte)0xef, (byte)0x80, (byte)i });
+          list.add(new byte[] { (byte)0xf0, (byte)0x90, (byte)i, (byte)0x80 });
+          list.add(new byte[] { (byte)0xf1, (byte)0x80, (byte)i, (byte)0x80 });
+          list.add(new byte[] { (byte)0xf3, (byte)0x80, (byte)i, (byte)0x80 });
+          list.add(new byte[] { (byte)0xf4, (byte)0x80, (byte)i, (byte)0x80 });
+          list.add(new byte[] { (byte)0xf0, (byte)0x90, (byte)0x80, (byte)i });
+          list.add(new byte[] { (byte)0xf1, (byte)0x80, (byte)0x80, (byte)i });
+          list.add(new byte[] { (byte)0xf3, (byte)0x80, (byte)0x80, (byte)i });
+          list.add(new byte[] { (byte)0xf4, (byte)0x80, (byte)0x80, (byte)i });
         }
         if (i < 0xa0 || i > 0xbf) {
-          list.add(new byte[] { (byte)0xe0, (byte)i, (byte)0x80  });
+          list.add(new byte[] { (byte)0xe0, (byte)i, (byte)0x80 });
         }
         if (i < 0x90 || i > 0xbf) {
-          list.add(new byte[] { (byte)0xf0, (byte)i, (byte)0x80, (byte)0x80  });
+          list.add(new byte[] { (byte)0xf0, (byte)i, (byte)0x80, (byte)0x80 });
         }
         if (i < 0x80 || i > 0x8f) {
-          list.add(new byte[] { (byte)0xf4, (byte)i, (byte)0x80, (byte)0x80  });
+          list.add(new byte[] { (byte)0xf4, (byte)i, (byte)0x80, (byte)0x80 });
         }
       }
       return list;

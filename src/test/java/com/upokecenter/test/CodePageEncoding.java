@@ -389,7 +389,7 @@ import com.upokecenter.text.*;
               this.type = TokenType.End;
               break;
             } else if (c == 0x20 || c == 0x09) {
-              continue;  // whitespace
+              continue; // whitespace
             } else if (c == (int)';') {
               // comment
               while (true) {

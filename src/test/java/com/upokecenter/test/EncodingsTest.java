@@ -45,7 +45,7 @@ import com.upokecenter.text.*;
 ICharacterInput input;
 IByteReader reader;
 ICharacterEncoding wenc = Encodings.GetEncoding("windows-1252");
-reader = DataIO.ToReader(new byte[] { (byte)0xef, (byte)0xbb, (byte)0xbf, 0x41, 0x42, 0x43  });
+reader = DataIO.ToReader(new byte[] { (byte)0xef, (byte)0xbb, (byte)0xbf, 0x41, 0x42, 0x43 });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 String stringTemp = Encodings.InputToString(input);
@@ -53,7 +53,7 @@ Assert.assertEquals(
   "ABC",
   stringTemp);
 }
-reader = DataIO.ToReader(new byte[] { (byte)0xff, (byte)0xfe, 0x41, 0, 0x42, 0, 0x43, 0  });
+reader = DataIO.ToReader(new byte[] { (byte)0xff, (byte)0xfe, 0x41, 0, 0x42, 0, 0x43, 0 });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 String stringTemp = Encodings.InputToString(input);
@@ -61,7 +61,7 @@ Assert.assertEquals(
   "ABC",
   stringTemp);
 }
-reader = DataIO.ToReader(new byte[] { (byte)0xfe, (byte)0xff, 0, 0x41, 0, 0x42, 0, 0x43  });
+reader = DataIO.ToReader(new byte[] { (byte)0xfe, (byte)0xff, 0, 0x41, 0, 0x42, 0, 0x43 });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 String stringTemp = Encodings.InputToString(input);
@@ -69,7 +69,7 @@ Assert.assertEquals(
   "ABC",
   stringTemp);
 }
-reader = DataIO.ToReader(new byte[] { 0x41, 0x42, 0x43  });
+reader = DataIO.ToReader(new byte[] { 0x41, 0x42, 0x43 });
 input = Encodings.GetDecoderInputSkipBom(wenc, reader);
 {
 String stringTemp = Encodings.InputToString(input);

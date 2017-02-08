@@ -2,7 +2,6 @@ package com.upokecenter.text.encoders;
 
 import java.io.*;
 import com.upokecenter.util.*;
-
 import com.upokecenter.text.*;
 
   public class EncodingReplacement implements ICharacterEncoding {

@@ -98,7 +98,7 @@ Version 0.1.0:
 About
 -----------
 
-Written in 2015 by Peter O.
+Written by Peter O. in 2015.
 
 Any copyright is dedicated to the Public Domain.
 [http://creativecommons.org/publicdomain/zero/1.0/](http://creativecommons.org/publicdomain/zero/1.0/)

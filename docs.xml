@@ -9,7 +9,7 @@
 <doc name="M:PeterO.ArrayWriter.#ctor(System.Int32)">
 <summary>Initializes a new instance of the <see cref='T:PeterO.ArrayWriter'/> class with the given initial
             buffer size.</summary>
-            <param name='initialSize'>A 32-bit signed integer.</param>
+            <param name='initialSize'>The parameter <paramref name='initialSize'/> is a 32-bit signed integer.</param>
 </doc>
 <doc name="M:PeterO.ArrayWriter.Clear">
 <summary>Offers a fast way to reset the length of the array
@@ -201,7 +201,7 @@
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStream.WriteByte(System.Int32)">
 <summary>This is an internal method.</summary>
-            <param name='byteValue'>A 32-bit signed integer.</param>
+            <param name='byteValue'>The parameter <paramref name='byteValue'/> is a 32-bit signed integer.</param>
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.Write(System.Byte[],System.Int32,System.Int32)">
 <summary>This is an internal method.</summary>
@@ -218,7 +218,7 @@
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.WriteByte(System.Int32)">
 <summary>This is an internal method.</summary>
-            <param name='byteValue'>A 32-bit signed integer.</param>
+            <param name='byteValue'>The parameter <paramref name='byteValue'/> is a 32-bit signed integer.</param>
 </doc>
 <doc name="M:PeterO.DataIO.WrappedStream.ReadByte">
 <summary>This is an internal method.</summary>
@@ -408,7 +408,7 @@
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32)">
 <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
-            <param name='str'>A text string.</param>
+            <param name='str'>The parameter <paramref name='str'/> is a text string.</param>
             <param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='str'/> begins.</param>
             <param name='length'>The number of elements in the desired portion
@@ -417,7 +417,7 @@
 </doc>
 <doc name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)">
 <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
-            <param name='str'>A text string.</param>
+            <param name='str'>The parameter <paramref name='str'/> is a text string.</param>
             <param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='str'/> begins.</param>
             <param name='length'>The number of elements in the desired portion
@@ -718,7 +718,7 @@
             <c>str.EncodeToBytes(enc)</c>. If the object's class already has a
             EncodeToBytes method with the same parameters, that method takes
             precedence over this extension method.</para></summary>
-            <param name='str'>A text string.</param>
+            <param name='str'>The parameter <paramref name='str'/> is a text string.</param>
             <param name='enc'>An object implementing a character encoding
             (gives access to an encoder and a decoder).</param>
             <returns>A byte array.</returns>
@@ -1127,7 +1127,7 @@
             already has a StringToInput method with the same parameters, that
             method takes precedence over this extension
             method.</para></summary>
-            <param name='str'>A text string.</param>
+            <param name='str'>The parameter <paramref name='str'/> is a text string.</param>
             <returns>An ICharacterInput object.</returns>
             <exception cref='T:System.ArgumentNullException'>The parameter
             <paramref name='str'/> is null.</exception>
@@ -1144,7 +1144,7 @@
             already has a StringToInput method with the same parameters, that
             method takes precedence over this extension
             method.</para></summary>
-            <param name='str'>A text string.</param>
+            <param name='str'>The parameter <paramref name='str'/> is a text string.</param>
             <param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='str'/> begins.</param>
             <param name='length'>The length, in code units, of the desired

@@ -328,7 +328,7 @@ private Encodings() {
      * called as follows: <code>str.EncodeToBytes(enc)</code>. If the object's
      * class already has a EncodeToBytes method with the same parameters,
      * that method takes precedence over this extension method.</p>
-     * @param str A text string.
+     * @param str The parameter {@code str} is a text string.
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @return A byte array.
@@ -1286,7 +1286,7 @@ if (name.equals("ISO-8859-13")) {
      * follows: <code>str.StringToInput(offset, length)</code>. If the object's
      * class already has a StringToInput method with the same parameters,
      * that method takes precedence over this extension method.</p>
-     * @param str A text string.
+     * @param str The parameter {@code str} is a text string.
      * @return An ICharacterInput object.
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
@@ -1308,7 +1308,7 @@ if (name.equals("ISO-8859-13")) {
      * If the object's class already has a StringToInput method with the
      * same parameters, that method takes precedence over this extension
      * method.</p>
-     * @param str A text string.
+     * @param str The parameter {@code str} is a text string.
      * @param offset A zero-based index showing where the desired portion of {@code
      * str} begins.
      * @param length The length, in code units, of the desired portion of {@code

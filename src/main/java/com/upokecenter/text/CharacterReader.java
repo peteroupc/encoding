@@ -87,7 +87,7 @@ import java.io.*;
     /**
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class.
-     * @param str A text string.
+     * @param str The parameter {@code str} is a text string.
      * @param offset A zero-based index showing where the desired portion of {@code
      * str} begins.
      * @param length The number of elements in the desired portion of {@code str}
@@ -100,7 +100,7 @@ import java.io.*;
     /**
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class.
-     * @param str A text string.
+     * @param str The parameter {@code str} is a text string.
      * @param offset A zero-based index showing where the desired portion of {@code
      * str} begins.
      * @param length The number of elements in the desired portion of {@code str}

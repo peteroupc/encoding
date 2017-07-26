@@ -34,7 +34,8 @@ at: http://peteroupc.github.io/
     /**
      * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
      * with the given initial buffer size.
-     * @param initialSize A 32-bit signed integer.
+     * @param initialSize The parameter {@code initialSize} is a 32-bit signed
+     * integer.
      */
     public ArrayWriter(int initialSize) {
       this.retval = new byte[initialSize];

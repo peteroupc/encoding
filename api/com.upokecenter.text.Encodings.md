@@ -395,7 +395,7 @@ Reads Unicode characters from a text string and writes them to a byte array
 
 **Parameters:**
 
-* <code>str</code> - A text string.
+* <code>str</code> - The parameter <code>str</code> is a text string.
 
 * <code>enc</code> - An object implementing a character encoding (gives access to an
  encoder and a decoder).
@@ -888,7 +888,7 @@ Converts a text string to a character input. The resulting input can then be
 
 **Parameters:**
 
-* <code>str</code> - A text string.
+* <code>str</code> - The parameter <code>str</code> is a text string.
 
 **Returns:**
 
@@ -913,7 +913,7 @@ Converts a portion of a text string to a character input. The resulting
 
 **Parameters:**
 
-* <code>str</code> - A text string.
+* <code>str</code> - The parameter <code>str</code> is a text string.
 
 * <code>offset</code> - A zero-based index showing where the desired portion of <code>str</code> begins.
 

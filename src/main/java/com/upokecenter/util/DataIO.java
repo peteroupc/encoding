@@ -283,7 +283,7 @@ if (bytes.length - offset < length) {
 
     /**
      * This is an internal method.
-     * @param byteValue A 32-bit signed integer.
+     * @param byteValue The parameter {@code byteValue} is a 32-bit signed integer.
      */
       public void write(int byteValue) {
         try {
@@ -323,7 +323,7 @@ if (bytes.length - offset < length) {
 
     /**
      * This is an internal method.
-     * @param byteValue A 32-bit signed integer.
+     * @param byteValue The parameter {@code byteValue} is a 32-bit signed integer.
      */
       public void write(int byteValue) {
         this.output.write((byte)byteValue);

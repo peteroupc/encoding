@@ -173,7 +173,7 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 **Parameters:**
 
-* <code>str</code> - A text string.
+* <code>str</code> - The parameter <code>str</code> is a text string.
 
 * <code>offset</code> - A zero-based index showing where the desired portion of <code>str</code> begins.
 
@@ -186,7 +186,7 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 **Parameters:**
 
-* <code>str</code> - A text string.
+* <code>str</code> - The parameter <code>str</code> is a text string.
 
 * <code>offset</code> - A zero-based index showing where the desired portion of <code>str</code> begins.
 

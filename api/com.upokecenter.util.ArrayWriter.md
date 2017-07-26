@@ -45,7 +45,8 @@ Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class
 
 **Parameters:**
 
-* <code>initialSize</code> - A 32-bit signed integer.
+* <code>initialSize</code> - The parameter <code>initialSize</code> is a 32-bit signed
+ integer.
 
 ### Clear
     public void Clear()

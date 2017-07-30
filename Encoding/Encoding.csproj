@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>PeterO.Encoding</PackageId>
+    <Version>0.2.1</Version>
+    <Title>Encoding Library</Title>
+    <Company>Peter Occil</Company>
+    <Authors>Peter Occil</Authors>
+    <PackageLicenseUrl>http://creativecommons.org/publicdomain/zero/1.0/</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/peteroupc/Encoding</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>
+A portable library for .NET that implements character encodings used in Web pages and email.
+    </Description>
+    <PackageReleaseNotes>
+Version 0.2.1:
+
+- Fix ResolveAliasForEmail method to conform to new behavior
+in version 0.2.0
+
+Version 0.2.0:
+
+- Update implementation to latest candidate recommendation of Encoding Standard
+- ResolveAlias may return a mixed-case encoding name (as opposed to a lower-case one).
+- Add overloads to CharacterReader constructor
+- Add IReader interface
+- Deprecated some methods of DataIO
+- Add a few overloads in Encodings class, especially EncodeToWriter
+- Bug fixes
+    </PackageReleaseNotes>
+    <Copyright>Written by Peter O. in 2015-2016.  Any copyright is released to the Public Domain.</Copyright>
+  </PropertyGroup>
+
+</Project>

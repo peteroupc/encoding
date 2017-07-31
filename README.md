@@ -29,7 +29,7 @@ project, add the following to the `dependencies` section in your `pom.xml` file:
     <dependency>
       <groupId>com.github.peteroupc</groupId>
       <artifactId>encoding</artifactId>
-      <version>0.1.0</version>
+      <version>0.3.0</version>
     </dependency>
 
 In other Java-based environments, the library can be referred to by its
@@ -75,6 +75,10 @@ In C#.
 
 History
 -----------
+
+Version 0.3:
+
+- Converted project to .NET Standard
 
 Version 0.2.1:
 

@@ -249,7 +249,8 @@ Reads Unicode characters from a text string and writes them to a byte array enco
 
 <b>Parameters:</b>
 
- * <i>str</i>: A text string.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
  * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
@@ -705,7 +706,8 @@ Converts a text string to a character input. The resulting input can then be use
 
 <b>Parameters:</b>
 
- * <i>str</i>: A text string.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
 <b>Return Value:</b>
 
@@ -728,7 +730,8 @@ Converts a portion of a text string to a character input. The resulting input ca
 
 <b>Parameters:</b>
 
- * <i>str</i>: A text string.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
  * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
  begins.

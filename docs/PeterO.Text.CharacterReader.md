@@ -76,7 +76,8 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
 <b>Parameters:</b>
 
- * <i>str</i>: A text string.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
  * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
  begins.
@@ -98,7 +99,8 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
 <b>Parameters:</b>
 
- * <i>str</i>: A text string.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
  * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
  begins.

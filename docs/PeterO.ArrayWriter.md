@@ -15,7 +15,8 @@ Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) cl
 
 <b>Parameters:</b>
 
- * <i>initialSize</i>: A 32-bit signed integer.
+ * <i>initialSize</i>: The parameter  <i>initialSize</i>
+ is a 32-bit signed integer.
 
 ### ArrayWriter Constructor
 

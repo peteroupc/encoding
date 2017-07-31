@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>PeterO.Encoding</id>
+    <version>0.3</version>
+    <title>Encoding Library</title>
+    <authors>Peter Occil</authors>
+    <owners>Peter Occil</owners>
+    <licenseUrl>http://creativecommons.org/publicdomain/zero/1.0/</licenseUrl>
+    <projectUrl>https://github.com/peteroupc/Encoding</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+A portable library for .NET that implements character encodings used in Web pages and email.
+    </description>
+    <releaseNotes>Version 0.3:
+
+- Converted project to .NET Standard</releaseNotes>
+    <copyright>Written by Peter O. in 2015-2017.  Any copyright is released to the Public Domain.</copyright>
+  </metadata>
+  <files>
+    <file src="Encoding/bin/Release/netstandard1.0/Encoding.dll" target="lib/netstandard1.0" />
+    <file src="Encoding/bin/Release/netstandard1.0/Encoding.xml" target="lib/netstandard1.0" />
+  </files>
+</package>

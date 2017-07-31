@@ -8,13 +8,11 @@ at: http://peteroupc.github.io/
  */
 
     /**
-     * A generic interface for writing bytes of data.
+     *
      */
   public interface IByteWriter {
     /**
-     * Writes an 8-bit byte to a data source.
-     * @param b Byte to write to the data source. Only the lower 8 bits of this
-     * value are used.
+     *
      */
     void write(int b);
   }

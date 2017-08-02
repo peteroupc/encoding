@@ -12,7 +12,11 @@
     <description>
 A portable library for .NET that implements character encodings used in Web pages and email.
     </description>
-    <releaseNotes>Version 0.3:
+    <releaseNotes>Version 0.3.1:
+
+- Signed the assembly
+
+  Version 0.3:
 
 - Converted project to .NET Standard</releaseNotes>
     <copyright>Written by Peter O. in 2015-2017.  Any copyright is released to the Public Domain.</copyright>

@@ -4,7 +4,6 @@
     <TargetFramework>netstandard1.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>PeterO.Encoding</PackageId>
-    <Version>0.3</Version>
     <Title>Encoding Library</Title>
     <Company>Peter Occil</Company>
     <Authors>Peter Occil</Authors>
@@ -21,6 +20,8 @@ A portable library for .NET that implements character encodings used in Web page
     <PackageVersion>0.3</PackageVersion>
     <Summary>A portable library for .NET that implements character encodings used in Web pages and email.</Summary>
     <PackageTags>text, encoding, strings</PackageTags>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\MailLib\MailLib\PeterO.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

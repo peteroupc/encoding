@@ -17,11 +17,11 @@ A portable library for .NET that implements character encodings used in Web page
 - Converted project to .NET Standard</PackageReleaseNotes>
     <Copyright>Written by Peter O. in 2015-2017.  Any copyright is released to the Public Domain.</Copyright>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>0.3</PackageVersion>
+    <PackageVersion>0.4</PackageVersion>
     <Summary>A portable library for .NET that implements character encodings used in Web pages and email.</Summary>
     <PackageTags>text, encoding, strings</PackageTags>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\MailLib\MailLib\PeterO.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>PeterO.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

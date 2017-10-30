@@ -8,7 +8,7 @@ at: http://peteroupc.github.io/
  */
 
     /**
-     *
+     * An array of bytes that grows as needed.
      */
   public final class ArrayWriter implements IWriter {
     private int retvalPos;
@@ -16,7 +16,7 @@ at: http://peteroupc.github.io/
     private byte[] retval;
 
     /**
-     *
+     * Offers a fast way to reset the length of the array writer's data to 0.
      */
     public void Clear() {
       this.retvalPos = 0;
@@ -24,21 +24,26 @@ at: http://peteroupc.github.io/
     }
 
     /**
-     *
+     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
+     * with a default buffer size.
      */
     public ArrayWriter() {
  this(16);
     }
 
     /**
-     *
+     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
+     * with the given initial buffer size.
+     * @param initialSize The parameter {@code initialSize} is a 32-bit signed
+     * integer.
      */
     public ArrayWriter(int initialSize) {
       this.retval = new byte[initialSize];
     }
 
     /**
-     *
+     * Generates an array of all bytes written so far to it.
+     * @return A byte array.
      */
     public byte[] ToArray() {
       byte[] ret = new byte[this.retvalMax];
@@ -47,7 +52,9 @@ at: http://peteroupc.github.io/
     }
 
     /**
-     *
+     * Writes an 8-bit byte to the array.
+     * @param byteValue An integer containing the byte to write. Only the lower 8
+     * bits of this value will be used.
      */
     public void write(int byteValue) {
       if (this.retval.length <= this.retvalPos) {
@@ -65,7 +72,16 @@ at: http://peteroupc.github.io/
     }
 
     /**
-     *
+     * Writes a series of bytes to the array.
+     * @param src Byte array containing the data to write.
+     * @param offset A zero-based index showing where the desired portion of {@code
+     * src} begins.
+     * @param length The number of elements in the desired portion of {@code src}
+     * (but not more than {@code src} 's length).
+     * @throws java.lang.NullPointerException The parameter {@code src} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code src} 's length, or {@code src} ' s
+     * length minus {@code offset} is less than {@code length}.
      */
     public void write(byte[] src, int offset, int length) {
       if (src == null) {

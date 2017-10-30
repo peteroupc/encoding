@@ -10,13 +10,23 @@ at: http://peteroupc.github.io/
 import java.io.*;
 
     /**
-     *
+     * Convenience class that contains static methods for wrapping byte arrays and
+     * streams into byte readers and byte writers.
      */
   public final class DataIO {
 private DataIO() {
 }
     /**
-     *
+     * Wraps a byte array into a byte reader. The reader will start at the
+     * beginning of the byte array. <p>In the .NET implementation, this
+     * method is implemented as an extension method to any byte array object
+     * and can be called as follows: <code>bytes.ToByteReader()</code>. If the
+     * object's class already has a ToByteReader method with the same
+     * parameters, that method takes precedence over this extension
+     * method.</p>
+     * @param bytes The byte array to wrap.
+     * @return A byte reader wrapping the byte array.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(byte[] bytes) {
       if (bytes == null) {
@@ -26,7 +36,22 @@ private DataIO() {
     }
 
     /**
-     *
+     * Wraps a portion of a byte array into a byte reader object. <p>In the .NET
+     * implementation, this method is implemented as an extension method to
+     * any byte array object and can be called as follows:
+     * <code>bytes.ToByteReader(offset, length)</code>. If the object's class
+     * already has a ToByteReader method with the same parameters, that
+     * method takes precedence over this extension method.</p>
+     * @param bytes The byte array to wrap.
+     * @param offset A zero-based index showing where the desired portion of
+     * "bytes" begins.
+     * @param length The length, in bytes, of the desired portion of "bytes" (but
+     * not more than "bytes" 's length).
+     * @return A byte reader wrapping the byte array.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * ' s length minus {@code offset} is less than {@code length}.
      */
     public static IReader ToReader(
   byte[] bytes,
@@ -59,7 +84,16 @@ private DataIO() {
     }
 
     /**
-     *
+     * Wraps an input stream into a reader object. If an IOException is thrown by
+     * the input stream, the reader object throws InvalidOperationException
+     * instead. <p>In the .NET implementation, this method is implemented as
+     * an extension method to any object implementing InputStream and can be
+     * called as follows: <code>input.ToByteReader()</code>. If the object's class
+     * already has a ToByteReader method with the same parameters, that
+     * method takes precedence over this extension method.</p>
+     * @param input The input stream to wrap.
+     * @return A byte reader wrapping the input stream.
+     * @throws java.lang.NullPointerException The parameter {@code input} is null.
      */
     public static IReader ToReader(InputStream input) {
       if (input == null) {
@@ -69,7 +103,22 @@ private DataIO() {
     }
 
     /**
-     *
+     * Not documented yet. <p>In the .NET implementation, this method is
+     * implemented as an extension method to any object implementing byte[]
+     * and can be called as follows: <code>bytes.ToByteReader(offset,
+     * length)</code>. If the object's class already has a ToByteReader method
+     * with the same parameters, that method takes precedence over this
+     * extension method.</p>
+     * @param bytes The parameter {@code bytes} is not documented yet.
+     * @param offset A zero-based index showing where the desired portion of {@code
+     * bytes} begins.
+     * @param length The length, in bytes, of the desired portion of {@code bytes}
+     * (but not more than {@code bytes} 's length).
+     * @return An IByteReader object.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * ' s length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      * @deprecated Use ToReader instead.
  */
 @Deprecated
@@ -81,7 +130,14 @@ private DataIO() {
 }
 
     /**
-     *
+     * Not documented yet. <p>In the .NET implementation, this method is
+     * implemented as an extension method to any object implementing InputStream
+     * and can be called as follows: <code>input.ToByteReader()</code>. If the
+     * object's class already has a ToByteReader method with the same
+     * parameters, that method takes precedence over this extension
+     * method.</p>
+     * @param input The parameter {@code input} is not documented yet.
+     * @return An IByteReader object.
      * @deprecated Use ToReader instead.
  */
 @Deprecated
@@ -90,7 +146,14 @@ private DataIO() {
     }
 
     /**
-     *
+     * Not documented yet. <p>In the .NET implementation, this method is
+     * implemented as an extension method to any object implementing byte[]
+     * and can be called as follows: <code>bytes.ToByteReader()</code>. If the
+     * object's class already has a ToByteReader method with the same
+     * parameters, that method takes precedence over this extension
+     * method.</p>
+     * @param bytes The parameter {@code bytes} is not documented yet.
+     * @return An IByteReader object.
      * @deprecated Use ToReader instead.
  */
 @Deprecated
@@ -99,7 +162,16 @@ private DataIO() {
     }
 
     /**
-     *
+     * Wraps an output stream into a writer object. If an IOException is thrown by
+     * the input stream, the writer object throws InvalidOperationException
+     * instead. <p>In the .NET implementation, this method is implemented as
+     * an extension method to any object implementing InputStream and can be
+     * called as follows: <code>output.ToWriter()</code>. If the object's class
+     * already has a ToWriter method with the same parameters, that method
+     * takes precedence over this extension method.</p>
+     * @param output Output stream to wrap.
+     * @return A byte writer that wraps the given output stream.
+     * @throws java.lang.NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(OutputStream output) {
       if (output == null) {
@@ -109,7 +181,16 @@ private DataIO() {
     }
 
     /**
-     *
+     * Wraps a byte writer (one that only implements a ReadByte method) to a writer
+     * (one that also implements a three-parameter Read method.) <p>In the
+     * .NET implementation, this method is implemented as an extension
+     * method to any object implementing IByteWriter and can be called as
+     * follows: <code>output.ToWriter()</code>. If the object's class already has
+     * a ToWriter method with the same parameters, that method takes
+     * precedence over this extension method.</p>
+     * @param output A byte stream.
+     * @return A writer that wraps the given stream.
+     * @throws java.lang.NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(IByteWriter output) {
       if (output == null) {
@@ -130,7 +211,8 @@ private DataIO() {
       }
 
     /**
-     *
+     * This is an internal method.
+     * @return A 32-bit signed integer.
      */
       public int read() {
         if (this.offset >= this.endOffset) {
@@ -142,7 +224,17 @@ private DataIO() {
       }
 
     /**
-     *
+     * This is an internal method.
+     * @param bytes The parameter {@code bytes} is not documented yet.
+     * @param offset A zero-based index showing where the desired portion of {@code
+     * bytes} begins.
+     * @param length The length, in bytes, of the desired portion of {@code bytes}
+     * (but not more than {@code bytes} 's length).
+     * @return A 32-bit signed integer.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * ' s length minus {@code offset} is less than {@code length}.
      */
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
@@ -190,7 +282,8 @@ if (bytes.length - offset < length) {
       }
 
     /**
-     *
+     * This is an internal method.
+     * @param byteValue The parameter {@code byteValue} is a 32-bit signed integer.
      */
       public void write(int byteValue) {
         try {
@@ -201,7 +294,16 @@ if (bytes.length - offset < length) {
       }
 
     /**
-     *
+     * This is an internal method.
+     * @param bytes A byte array.
+     * @param offset A zero-based index showing where the desired portion of
+     * "bytes" begins.
+     * @param length The length, in bytes, of the desired portion of "bytes" (but
+     * not more than "bytes" 's length).
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * ' s length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      */
       public void write(byte[] bytes, int offset, int length) {
         try {
@@ -220,14 +322,24 @@ if (bytes.length - offset < length) {
       }
 
     /**
-     *
+     * This is an internal method.
+     * @param byteValue The parameter {@code byteValue} is a 32-bit signed integer.
      */
       public void write(int byteValue) {
         this.output.write((byte)byteValue);
       }
 
     /**
-     *
+     * This is an internal method.
+     * @param bytes A byte array.
+     * @param offset A zero-based index showing where the desired portion of
+     * "bytes" begins.
+     * @param length The length, in bytes, of the desired portion of "bytes" (but
+     * not more than "bytes" 's length).
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
+     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
+     * ' s length minus {@code offset} is less than {@code length}.
      */
       public void write(byte[] bytes, int offset, int length) {
         if (bytes == null) {
@@ -267,7 +379,8 @@ if (bytes.length - offset < length) {
       }
 
     /**
-     *
+     * This is an internal method.
+     * @return A 32-bit signed integer.
      */
       public int read() {
         try {

@@ -17,7 +17,7 @@ namespace EncodingTest {
         Encodings.EncodeToBytes(ici, Encodings.UTF8);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-        new Object();
+        // NOTE: Intentionally empty
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -26,7 +26,7 @@ namespace EncodingTest {
         Encodings.EncodeToBytes("test", null);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-        new Object();
+        // NOTE: Intentionally empty
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -2858,7 +2858,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput(null, 0, 0);
         Assert.Fail("Should have failed");
       } catch (ArgumentNullException) {
-        new Object();
+        // NOTE: Intentionally empty
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -2867,7 +2867,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("t", -1, 1);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        new Object();
+        // NOTE: Intentionally empty
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -2876,7 +2876,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("t", 5, 1);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        new Object();
+        // NOTE: Intentionally empty
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -2885,7 +2885,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("t", 0, -1);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        new Object();
+        // NOTE: Intentionally empty
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -2894,7 +2894,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("t", 0, 5);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        new Object();
+        // NOTE: Intentionally empty
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);
@@ -2903,7 +2903,7 @@ Assert.AreEqual(objectTemp, objectTemp2);
         Encodings.StringToInput("tt", 1, 2);
         Assert.Fail("Should have failed");
       } catch (ArgumentException) {
-        new Object();
+        // NOTE: Intentionally empty
       } catch (Exception ex) {
         Assert.Fail(ex.ToString());
         throw new InvalidOperationException(String.Empty, ex);

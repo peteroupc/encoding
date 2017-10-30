@@ -13,6 +13,10 @@
 A portable library for .NET that implements character encodings used in Web pages and email.
     </Description>
     <PackageReleaseNotes>
+    Version 0.3.2:
+    
+    Version change needed to properly refer to version.
+
     Version 0.3.1:
     
     Marked assembly as CLS-compliant.
@@ -22,7 +26,7 @@ A portable library for .NET that implements character encodings used in Web page
 - Converted project to .NET Standard</PackageReleaseNotes>
     <Copyright>Written by Peter O. in 2015-2017.  Any copyright is released to the Public Domain.</Copyright>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>0.3.1</PackageVersion>
+    <Version>0.3.2</Version>
     <Summary>A portable library for .NET that implements character encodings used in Web pages and email.</Summary>
     <PackageTags>text, encoding, strings</PackageTags>
     <SignAssembly>true</SignAssembly>

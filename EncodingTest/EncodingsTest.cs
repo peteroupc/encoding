@@ -137,7 +137,7 @@ Assert.AreEqual(
     public void TestResolveAlias() {
       Assert.AreEqual(String.Empty, Encodings.ResolveAlias(null));
       Assert.AreEqual(String.Empty, Encodings.ResolveAlias(String.Empty));
-      {
+{
 string stringTemp = Encodings.ResolveAlias("unicode-1-1-utf-8");
 Assert.AreEqual(
   "UTF-8",
@@ -2700,6 +2700,18 @@ Assert.AreEqual(
   stringTemp);
 }
 {
+string stringTemp = Encodings.ResolveAlias("replacement");
+Assert.AreEqual(
+  "replacement",
+  stringTemp);
+}
+{
+string stringTemp = Encodings.ResolveAlias("REPLACEMENT");
+Assert.AreEqual(
+  "replacement",
+  stringTemp);
+}
+{
 string stringTemp = Encodings.ResolveAlias("utf-16be");
 Assert.AreEqual(
   "UTF-16BE",
@@ -2736,12 +2748,6 @@ Assert.AreEqual(
   stringTemp);
 }
 {
-string stringTemp = Encodings.ResolveAlias("iso-2022-jp-2");
-Assert.AreEqual(
-  String.Empty,
-  stringTemp);
-}
-{
 string stringTemp = Encodings.ResolveAlias("x-user-defined");
 Assert.AreEqual(
   "x-user-defined",
@@ -2753,6 +2759,7 @@ Assert.AreEqual(
   "x-user-defined",
   stringTemp);
 }
+
       {
         string stringTemp = Encodings.ResolveAlias("iso-8859-1");
         Assert.AreEqual(
@@ -2846,6 +2853,13 @@ Assert.AreEqual(objectTemp, objectTemp2);
         "replacement",
         stringTemp);
       }
+
+ {
+String stringTemp = Encodings.ResolveAlias("iso-2022-jp-2");
+Assert.AreEqual(
+  String.Empty,
+  stringTemp);
+}
     }
 
     [Test]

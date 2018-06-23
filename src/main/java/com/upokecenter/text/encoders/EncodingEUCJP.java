@@ -43,7 +43,7 @@ import com.upokecenter.text.*;
             }
             this.lead = 0;
             this.jis0212 = false;
-            if (b < 0xa1 || b == 0xff) {
+            if (b <= 0x7f) {
               this.state.PrependOne(b);
             }
             return c < 0 ? -2 : c;

@@ -833,7 +833,7 @@ if (name.Equals("ISO-8859-13")) {
 
     private static IDictionary<string, string> CreateAliasMap() {
       var aliases = new Dictionary<string, string>();
-  aliases["unicode-1-1-utf-8"] = "UTF-8";
+aliases["unicode-1-1-utf-8"] = "UTF-8";
 aliases["utf-8"] = "UTF-8";
 aliases["utf8"] = "UTF-8";
 aliases["866"] = "IBM866";
@@ -1047,6 +1047,7 @@ aliases["hz-gb-2312"] = "replacement";
 aliases["iso-2022-cn"] = "replacement";
 aliases["iso-2022-cn-ext"] = "replacement";
 aliases["iso-2022-kr"] = "replacement";
+aliases["replacement"] = "replacement";
 aliases["utf-16be"] = "UTF-16BE";
 aliases["utf-16"] = "UTF-16LE";
 aliases["utf-16le"] = "UTF-16LE";

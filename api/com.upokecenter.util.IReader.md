@@ -6,7 +6,7 @@ A generic interface for reading bytes of data from a data source.
 
 ## Methods
 
-* `int Read(byte[] bytes,
+* `int Read​(byte[] bytes,
     int offset,
     int length)`<br>
  Reads a portion of a byte array from the data source.
@@ -14,7 +14,7 @@ A generic interface for reading bytes of data from a data source.
 ## Method Details
 
 ### Read
-    int Read(byte[] bytes, int offset, int length)
+    int Read​(byte[] bytes, int offset, int length)
 Reads a portion of a byte array from the data source.
 
 **Parameters:**
@@ -22,7 +22,8 @@ Reads a portion of a byte array from the data source.
 * <code>bytes</code> - A byte array which will contain the data that was read from the
  data source.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>bytes</code> begins.
+* <code>offset</code> - A zero-based index showing where the desired portion of <code>
+ bytes</code> begins.
 
 * <code>length</code> - The number of elements in the desired portion of <code>bytes</code>
  (but not more than <code>bytes</code> 's length).
@@ -42,7 +43,7 @@ Reads a portion of a byte array from the data source.
  's length minus "offset" is less than "length".
 
 ### Read
-    int Read(byte[] bytes, int offset, int length)
+    int Read​(byte[] bytes, int offset, int length)
 Reads a portion of a byte array from the data source.
 
 **Parameters:**
@@ -50,7 +51,8 @@ Reads a portion of a byte array from the data source.
 * <code>bytes</code> - A byte array which will contain the data that was read from the
  data source.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>bytes</code> begins.
+* <code>offset</code> - A zero-based index showing where the desired portion of <code>
+ bytes</code> begins.
 
 * <code>length</code> - The number of elements in the desired portion of <code>bytes</code>
  (but not more than <code>bytes</code> 's length).

@@ -7,14 +7,14 @@ Defines a method that can be implemented by classes that convert a stream of
 
 ## Methods
 
-* `int ReadChar(IByteReader input)`<br>
+* `int ReadChar​(IByteReader input)`<br>
  Reads bytes from an input transform until a Unicode code point is decoded or
  until the end of the stream is reached.
 
 ## Method Details
 
 ### ReadChar
-    int ReadChar(IByteReader input)
+    int ReadChar​(IByteReader input)
 Reads bytes from an input transform until a Unicode code point is decoded or
  until the end of the stream is reached. <p>If this method returns -2,
  indicating an error, the caller of this method can take one of a
@@ -40,7 +40,7 @@ Reads bytes from an input transform until a Unicode code point is decoded or
  decoder error occurs.
 
 ### ReadChar
-    int ReadChar(IByteReader input)
+    int ReadChar​(IByteReader input)
 Reads bytes from an input transform until a Unicode code point is decoded or
  until the end of the stream is reached. <p>If this method returns -2,
  indicating an error, the caller of this method can take one of a

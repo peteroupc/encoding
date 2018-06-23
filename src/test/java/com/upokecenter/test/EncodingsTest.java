@@ -137,7 +137,7 @@ Assert.assertEquals(
     public void TestResolveAlias() {
       Assert.assertEquals("", Encodings.ResolveAlias(null));
       Assert.assertEquals("", Encodings.ResolveAlias(""));
-      {
+{
 String stringTemp = Encodings.ResolveAlias("unicode-1-1-utf-8");
 Assert.assertEquals(
   "UTF-8",
@@ -2700,6 +2700,18 @@ Assert.assertEquals(
   stringTemp);
 }
 {
+String stringTemp = Encodings.ResolveAlias("replacement");
+Assert.assertEquals(
+  "replacement",
+  stringTemp);
+}
+{
+String stringTemp = Encodings.ResolveAlias("REPLACEMENT");
+Assert.assertEquals(
+  "replacement",
+  stringTemp);
+}
+{
 String stringTemp = Encodings.ResolveAlias("utf-16be");
 Assert.assertEquals(
   "UTF-16BE",
@@ -2736,12 +2748,6 @@ Assert.assertEquals(
   stringTemp);
 }
 {
-String stringTemp = Encodings.ResolveAlias("iso-2022-jp-2");
-Assert.assertEquals(
-  "",
-  stringTemp);
-}
-{
 String stringTemp = Encodings.ResolveAlias("x-user-defined");
 Assert.assertEquals(
   "x-user-defined",
@@ -2753,6 +2759,7 @@ Assert.assertEquals(
   "x-user-defined",
   stringTemp);
 }
+
       {
         String stringTemp = Encodings.ResolveAlias("iso-8859-1");
         Assert.assertEquals(
@@ -2846,6 +2853,13 @@ Assert.assertEquals(objectTemp, objectTemp2);
         "replacement",
         stringTemp);
       }
+
+ {
+String stringTemp = Encodings.ResolveAlias("iso-2022-jp-2");
+Assert.assertEquals(
+  "",
+  stringTemp);
+}
     }
 
     @Test

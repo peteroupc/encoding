@@ -6,13 +6,13 @@ A generic interface for writing bytes of data.
 
 ## Methods
 
-* `void write(int b)`<br>
+* `void write​(int b)`<br>
  Writes an 8-bit byte to a data source.
 
 ## Method Details
 
 ### write
-    void write(int b)
+    void write​(int b)
 Writes an 8-bit byte to a data source.
 
 **Parameters:**
@@ -21,7 +21,7 @@ Writes an 8-bit byte to a data source.
  value are used.
 
 ### write
-    void write(int b)
+    void write​(int b)
 Writes an 8-bit byte to a data source.
 
 **Parameters:**

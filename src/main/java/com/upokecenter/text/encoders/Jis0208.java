@@ -3,10 +3,9 @@ package com.upokecenter.text.encoders;
 public final class Jis0208 {
 private Jis0208() {
 }
-private static final short[] ValueTable = new AppResources(
-  "Resources").GetShortArray("Jis0208");
-
-private static final int[] ValueIndextable = {
+private static final short[] table=new AppResources("Resources")
+.GetShortArray("Jis0208");
+private static final int[] indextable= {
 167, 65509, 0, 256, 913, 65370, 256, 256, 955, 9547, 512, 256, 8470, 13261,
   1024, 256, 19968, 40284, 1280, 256, 19979, 40644, 1536, 256, 19992, 40653,
   1792, 256, 20018, 40723, 2048, 256, 19977, 40658, 2304, 256, 19971, 39423,
@@ -20,19 +19,17 @@ private static final int[] ValueIndextable = {
   8192, 256, 8560, 65508, 8448, 256, 8470, 65508, 10496, 256, 20008, 64033,
   10752, 256, 35574, 64045, 11008, 96
 };
-
 public static int CodePointToIndex(int codepoint) {
-   if (codepoint < 167 || codepoint > 65509) {
+   if (codepoint<167 || codepoint>65509) {
  return -1;
 }
  short cps = ((short)(codepoint & 0xffff));
-  for (int i = 0; i < ValueIndextable.length; i += 4) {
-  if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
-       1]) {
-      int startindex = ValueIndextable[i + 2];
-       int length = ValueIndextable[i + 3];
+  for (int i = 0;i<indextable.length;i+=4) {
+     if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
+      int startindex = indextable[i + 2];
+       int length = indextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if (ValueTable[j + startindex] == cps) {
+         if ((table[j + startindex]) == cps) {
  return j + startindex;
 }
        }
@@ -40,8 +37,7 @@ public static int CodePointToIndex(int codepoint) {
    }
   return -1;
  }
-
-private static final int[] ValueIndextable2 = {
+private static final int[] indextable2= {
 167, 65509, 0, 256, 913, 65370, 256, 256, 955, 9547, 512, 256, 8470, 13261,
   1024, 256, 19968, 40284, 1280, 256, 19979, 40644, 1536, 256, 19992, 40653,
   1792, 256, 20018, 40723, 2048, 256, 19977, 40658, 2304, 256, 19971, 39423,
@@ -54,19 +50,17 @@ private static final int[] ValueIndextable2 = {
   7168, 256, 21202, 40783, 7424, 256, 20956, 40864, 7680, 256, 8470, 65508,
   10496, 256, 20008, 64033, 10752, 256, 35574, 64045, 11008, 96
 };
-
 public static int ShiftJISCodePointToIndex(int codepoint) {
-   if (codepoint < 167 || codepoint > 65509) {
+   if (codepoint<167 || codepoint>65509) {
  return -1;
 }
  short cps = ((short)(codepoint & 0xffff));
-  for (int i = 0; i < ValueIndextable2.length; i += 4) {
-if (codepoint >= ValueIndextable2[i] && codepoint <= ValueIndextable2[i +
-       1]) {
-      int startindex = ValueIndextable2[i + 2];
-       int length = ValueIndextable2[i + 3];
+  for (int i = 0;i<indextable2.length;i+=4) {
+     if (codepoint >= indextable2[i] && codepoint <= indextable2[i + 1]) {
+      int startindex = indextable2[i + 2];
+       int length = indextable2[i + 3];
       for (int j = 0; j < length; ++j) {
-         if (ValueTable[j + startindex] == cps) {
+         if (table[j + startindex]==cps) {
  return j + startindex;
 }
        }
@@ -74,12 +68,11 @@ if (codepoint >= ValueIndextable2[i] && codepoint <= ValueIndextable2[i +
    }
   return -1;
  }
-
 public static int IndexToCodePoint(int index) {
-if (index < 0 || index >= 11104) {
+if (index<0 || index >= 11104) {
  return -1;
 }
-int cp = ((int)ValueTable[index]) & 0xffff;
+int cp=((int)table[index]) & 0xffff;
 return (cp == 0) ? -1 : cp;
 }
 }

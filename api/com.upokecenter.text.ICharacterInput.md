@@ -6,7 +6,7 @@ An interface for reading Unicode code points from a data source.
 
 ## Methods
 
-* `int Read(int[] chars,
+* `int Read​(int[] chars,
     int index,
     int length)`<br>
  Reads a sequence of Unicode code points from a data source.
@@ -25,14 +25,15 @@ Reads a Unicode code point from a data source.
  0x10ffff), or the value -1 indicating the end of the source.
 
 ### Read
-    int Read(int[] chars, int index, int length)
+    int Read​(int[] chars, int index, int length)
 Reads a sequence of Unicode code points from a data source.
 
 **Parameters:**
 
 * <code>chars</code> - Output buffer.
 
-* <code>index</code> - A zero-based index showing where the desired portion of <code>chars</code> begins.
+* <code>index</code> - A zero-based index showing where the desired portion of <code>
+ chars</code> begins.
 
 * <code>length</code> - The number of elements in the desired portion of <code>chars</code>
  (but not more than <code>chars</code> 's length).

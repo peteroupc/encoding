@@ -7,7 +7,7 @@ Defines a method that can be implemented by classes that convert Unicode
 
 ## Methods
 
-* `int Encode(int c,
+* `int Encode​(int c,
       IWriter output)`<br>
  Converts a Unicode code point to bytes and writes the bytes to an output
  stream.
@@ -15,7 +15,7 @@ Defines a method that can be implemented by classes that convert Unicode
 ## Method Details
 
 ### Encode
-    int Encode(int c, IWriter output)
+    int Encode​(int c, IWriter output)
 Converts a Unicode code point to bytes and writes the bytes to an output
  stream. <p>If this method returns -2, indicating an error, the caller
  of this method can take one of a variety of actions to handle the
@@ -48,7 +48,7 @@ Converts a Unicode code point to bytes and writes the bytes to an output
  should not write any bytes to the output stream.
 
 ### Encode
-    int Encode(int c, IWriter output)
+    int Encode​(int c, IWriter output)
 Converts a Unicode code point to bytes and writes the bytes to an output
  stream. <p>If this method returns -2, indicating an error, the caller
  of this method can take one of a variety of actions to handle the

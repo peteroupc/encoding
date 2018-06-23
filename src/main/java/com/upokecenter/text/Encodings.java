@@ -1351,7 +1351,7 @@ if (name.equals("ISO-8859-13")) {
 
     private static Map<String, String> CreateAliasMap() {
       HashMap<String, String> aliases = new HashMap<String, String>();
-  aliases.put("unicode-1-1-utf-8","UTF-8");
+aliases.put("unicode-1-1-utf-8","UTF-8");
 aliases.put("utf-8","UTF-8");
 aliases.put("utf8","UTF-8");
 aliases.put("866","IBM866");
@@ -1565,6 +1565,7 @@ aliases.put("hz-gb-2312","replacement");
 aliases.put("iso-2022-cn","replacement");
 aliases.put("iso-2022-cn-ext","replacement");
 aliases.put("iso-2022-kr","replacement");
+aliases.put("replacement","replacement");
 aliases.put("utf-16be","UTF-16BE");
 aliases.put("utf-16","UTF-16LE");
 aliases.put("utf-16le","UTF-16LE");

@@ -9,53 +9,53 @@ A general-purpose character input for reading text from byte streams and
 
 ## Methods
 
-* `CharacterReader(InputStream stream) CharacterReader`<br>
+* `CharacterReader​(InputStream stream) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class; will read the stream as
  UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
  stream, and replace invalid byte sequences with replacement
  characters (U + FFFD).
-* `CharacterReader(InputStream stream,
+* `CharacterReader​(InputStream stream,
                int mode) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class; will skip the byte-order
  mark (U + FEFF) if it appears first in the stream and replace invalid
  byte sequences with replacement characters (U + FFFD).
-* `CharacterReader(InputStream stream,
+* `CharacterReader​(InputStream stream,
                int mode,
                boolean errorThrow) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class; will skip the byte-order
  mark (U + FEFF) if it appears first in the stream.
-* `CharacterReader(InputStream stream,
+* `CharacterReader​(InputStream stream,
                int mode,
                boolean errorThrow,
                boolean dontSkipUtf8Bom) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class.
-* `CharacterReader(String str) CharacterReader`<br>
+* `CharacterReader​(String str) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class using a Unicode 16-bit
  string; if the string begins with a byte-order mark (U + FEFF), it
  won't be skipped, and any unpaired surrogate code points (U+D800 to
  U + DFFF) in the string are replaced with replacement characters
  (U + FFFD).
-* `CharacterReader(String str,
+* `CharacterReader​(String str,
                boolean skipByteOrderMark) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class using a Unicode 16-bit
  string; any unpaired surrogate code points (U + D800 to U + DFFF) in the
  string are replaced with replacement characters (U + FFFD).
-* `CharacterReader(String str,
+* `CharacterReader​(String str,
                boolean skipByteOrderMark,
                boolean errorThrow) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class using a Unicode 16-bit
  string.
-* `CharacterReader(String str,
+* `CharacterReader​(String str,
                int offset,
                int length) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class.
-* `CharacterReader(String str,
+* `CharacterReader​(String str,
                int offset,
                int length,
                boolean skipByteOrderMark,
                boolean errorThrow) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class.
-* `int Read(int[] chars,
+* `int Read​(int[] chars,
     int index,
     int length)`<br>
  Reads a series of code points from a Unicode stream or a string.
@@ -64,47 +64,47 @@ A general-purpose character input for reading text from byte streams and
 
 ## Constructors
 
-* `CharacterReader(InputStream stream) CharacterReader`<br>
+* `CharacterReader​(InputStream stream) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class; will read the stream as
  UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
  stream, and replace invalid byte sequences with replacement
  characters (U + FFFD).
-* `CharacterReader(InputStream stream,
+* `CharacterReader​(InputStream stream,
                int mode) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class; will skip the byte-order
  mark (U + FEFF) if it appears first in the stream and replace invalid
  byte sequences with replacement characters (U + FFFD).
-* `CharacterReader(InputStream stream,
+* `CharacterReader​(InputStream stream,
                int mode,
                boolean errorThrow) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class; will skip the byte-order
  mark (U + FEFF) if it appears first in the stream.
-* `CharacterReader(InputStream stream,
+* `CharacterReader​(InputStream stream,
                int mode,
                boolean errorThrow,
                boolean dontSkipUtf8Bom) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class.
-* `CharacterReader(String str) CharacterReader`<br>
+* `CharacterReader​(String str) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class using a Unicode 16-bit
  string; if the string begins with a byte-order mark (U + FEFF), it
  won't be skipped, and any unpaired surrogate code points (U+D800 to
  U + DFFF) in the string are replaced with replacement characters
  (U + FFFD).
-* `CharacterReader(String str,
+* `CharacterReader​(String str,
                boolean skipByteOrderMark) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class using a Unicode 16-bit
  string; any unpaired surrogate code points (U + D800 to U + DFFF) in the
  string are replaced with replacement characters (U + FFFD).
-* `CharacterReader(String str,
+* `CharacterReader​(String str,
                boolean skipByteOrderMark,
                boolean errorThrow) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class using a Unicode 16-bit
  string.
-* `CharacterReader(String str,
+* `CharacterReader​(String str,
                int offset,
                int length) CharacterReader`<br>
  Initializes a new instance of the CharacterReader class.
-* `CharacterReader(String str,
+* `CharacterReader​(String str,
                int offset,
                int length,
                boolean skipByteOrderMark,
@@ -114,7 +114,7 @@ A general-purpose character input for reading text from byte streams and
 ## Method Details
 
 ### CharacterReader
-    public CharacterReader(String str)
+    public CharacterReader​(String str)
 Initializes a new instance of the <code>CharacterReader</code> class using a Unicode 16-bit
  string; if the string begins with a byte-order mark (U + FEFF), it
  won't be skipped, and any unpaired surrogate code points (U+D800 to
@@ -130,7 +130,7 @@ Initializes a new instance of the <code>CharacterReader</code> class using a Uni
 * <code>NullPointerException</code> - The parameter <code>str</code> is null.
 
 ### CharacterReader
-    public CharacterReader(String str, boolean skipByteOrderMark)
+    public CharacterReader​(String str, boolean skipByteOrderMark)
 Initializes a new instance of the <code>CharacterReader</code> class using a Unicode 16-bit
  string; any unpaired surrogate code points (U + D800 to U + DFFF) in the
  string are replaced with replacement characters (U + FFFD).
@@ -147,7 +147,7 @@ Initializes a new instance of the <code>CharacterReader</code> class using a Uni
 * <code>NullPointerException</code> - The parameter <code>str</code> is null.
 
 ### CharacterReader
-    public CharacterReader(String str, boolean skipByteOrderMark, boolean errorThrow)
+    public CharacterReader​(String str, boolean skipByteOrderMark, boolean errorThrow)
 Initializes a new instance of the <code>CharacterReader</code> class using a Unicode 16-bit
  string.
 
@@ -168,27 +168,29 @@ Initializes a new instance of the <code>CharacterReader</code> class using a Uni
 * <code>NullPointerException</code> - The parameter <code>str</code> is null.
 
 ### CharacterReader
-    public CharacterReader(String str, int offset, int length)
+    public CharacterReader​(String str, int offset, int length)
 Initializes a new instance of the <code>CharacterReader</code> class.
 
 **Parameters:**
 
 * <code>str</code> - The parameter <code>str</code> is a text string.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>str</code> begins.
+* <code>offset</code> - A zero-based index showing where the desired portion of <code>
+ str</code> begins.
 
 * <code>length</code> - The number of elements in the desired portion of <code>str</code>
  (but not more than <code>str</code> 's length).
 
 ### CharacterReader
-    public CharacterReader(String str, int offset, int length, boolean skipByteOrderMark, boolean errorThrow)
+    public CharacterReader​(String str, int offset, int length, boolean skipByteOrderMark, boolean errorThrow)
 Initializes a new instance of the <code>CharacterReader</code> class.
 
 **Parameters:**
 
 * <code>str</code> - The parameter <code>str</code> is a text string.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>str</code> begins.
+* <code>offset</code> - A zero-based index showing where the desired portion of <code>
+ str</code> begins.
 
 * <code>length</code> - The number of elements in the desired portion of <code>str</code>
  (but not more than <code>str</code> 's length).
@@ -206,7 +208,7 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 * <code>NullPointerException</code> - The parameter <code>str</code> is null.
 
 ### CharacterReader
-    public CharacterReader(InputStream stream)
+    public CharacterReader​(InputStream stream)
 Initializes a new instance of the <code>CharacterReader</code> class; will read the stream as
  UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
  stream, and replace invalid byte sequences with replacement
@@ -221,7 +223,7 @@ Initializes a new instance of the <code>CharacterReader</code> class; will read 
 * <code>NullPointerException</code> - The parameter <code>stream</code> is null.
 
 ### CharacterReader
-    public CharacterReader(InputStream stream, int mode, boolean errorThrow)
+    public CharacterReader​(InputStream stream, int mode, boolean errorThrow)
 Initializes a new instance of the <code>CharacterReader</code> class; will skip the byte-order
  mark (U + FEFF) if it appears first in the stream.
 
@@ -250,7 +252,7 @@ Initializes a new instance of the <code>CharacterReader</code> class; will skip 
 * <code>NullPointerException</code> - The parameter <code>stream</code> is null.
 
 ### CharacterReader
-    public CharacterReader(InputStream stream, int mode)
+    public CharacterReader​(InputStream stream, int mode)
 Initializes a new instance of the <code>CharacterReader</code> class; will skip the byte-order
  mark (U + FEFF) if it appears first in the stream and replace invalid
  byte sequences with replacement characters (U + FFFD).
@@ -275,7 +277,7 @@ Initializes a new instance of the <code>CharacterReader</code> class; will skip 
 * <code>NullPointerException</code> - The parameter <code>stream</code> is null.
 
 ### CharacterReader
-    public CharacterReader(InputStream stream, int mode, boolean errorThrow, boolean dontSkipUtf8Bom)
+    public CharacterReader​(InputStream stream, int mode, boolean errorThrow, boolean dontSkipUtf8Bom)
 Initializes a new instance of the <code>CharacterReader</code> class.
 
 **Parameters:**
@@ -307,7 +309,7 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 * <code>NullPointerException</code> - The parameter <code>stream</code> is null.
 
 ### Read
-    public int Read(int[] chars, int index, int length)
+    public int Read​(int[] chars, int index, int length)
 Reads a series of code points from a Unicode stream or a string.
 
 **Specified by:**
@@ -318,7 +320,8 @@ Reads a series of code points from a Unicode stream or a string.
 
 * <code>chars</code> - An array where the code points that were read will be stored.
 
-* <code>index</code> - A zero-based index showing where the desired portion of <code>chars</code> begins.
+* <code>index</code> - A zero-based index showing where the desired portion of <code>
+ chars</code> begins.
 
 * <code>length</code> - The number of elements in the desired portion of <code>chars</code>
  (but not more than <code>chars</code> 's length).

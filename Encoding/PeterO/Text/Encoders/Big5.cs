@@ -1,11 +1,9 @@
 using System;
-
 namespace PeterO.Text.Encoders {
 internal static class Big5 {
-private static readonly int[] ValueTable = new AppResources(
-  "Resources").GetIntArray("Big5");
-
-private static readonly int[] ValueIndextable = {
+private static readonly int[] table=new AppResources("Resources")
+.GetIntArray("Big5");
+private static readonly int[] indextable= {
 167, 65509, 5024, 256, 711, 65370, 5280, 256, 19981, 31435, 5536, 256,
   20018, 38433, 5792, 256, 20006, 38450, 6048, 256, 22369, 33459, 6304, 256,
   20127, 38750, 6560, 256, 20056, 39321, 6816, 256, 22466, 32607, 7072, 256,
@@ -28,9 +26,8 @@ private static readonly int[] ValueIndextable = {
   9552, 166622, 18848, 256, 13665, 194708, 19104, 256, 14053, 194726, 19360,
   256, 14021, 168205, 19616, 166
 };
-
 public static int CodePointToIndex(int codepoint) {
-   if (codepoint < 167 || codepoint > 194726) {
+   if (codepoint<167 || codepoint>194726) {
  return -1;
 }
    if (codepoint == 9552) {
@@ -51,13 +48,12 @@ public static int CodePointToIndex(int codepoint) {
    if (codepoint == 21317) {
  return 5599;
 }
-  for (int i = 0; i < ValueIndextable.Length; i += 4) {
-  if (codepoint >= ValueIndextable[i] && codepoint <= ValueIndextable[i +
-       1]) {
-      int startindex = ValueIndextable[i + 2];
-       int length = ValueIndextable[i + 3];
+  for (int i = 0;i<indextable.Length;i+=4) {
+     if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
+      int startindex = indextable[i + 2];
+       int length = indextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if (ValueTable[j + startindex] == codepoint) {
+         if ((table[j + startindex]) == codepoint) {
  return j + startindex;
 }
        }
@@ -65,12 +61,11 @@ public static int CodePointToIndex(int codepoint) {
    }
   return -1;
  }
-
 public static int IndexToCodePoint(int index) {
-if (index < 0 || index >= 19782) {
+if (index<0 || index >= 19782) {
  return -1;
 }
-int cp = ValueTable[index];
+int cp = table[index];
 return (cp == 0) ? -1 : cp;
 }
 }

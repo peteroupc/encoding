@@ -101,107 +101,107 @@ Contains methods for converting text from one character encoding to another.
 
 ## Methods
 
-* `static String DecodeToString(ICharacterEncoding enc,
+* `static String DecodeToString​(ICharacterEncoding enc,
               byte[] bytes)`<br>
  Reads a byte array from a data source and converts the bytes from a given
  encoding to a text string.
-* `static String DecodeToString(ICharacterEncoding enc,
+* `static String DecodeToString​(ICharacterEncoding enc,
               byte[] bytes,
               int offset,
               int length)`<br>
  Reads a portion of a byte array from a data source and converts the bytes
  from a given encoding to a text string.
-* `static String DecodeToString(ICharacterEncoding encoding,
+* `static String DecodeToString​(ICharacterEncoding encoding,
               IByteReader input)`<br>
  Reads bytes from a data source and converts the bytes from a given encoding
  to a text string.
-* `static String DecodeToString(ICharacterEncoding enc,
+* `static String DecodeToString​(ICharacterEncoding enc,
               InputStream input)`<br>
  Not documented yet.
-* `static byte[] EncodeToBytes(ICharacterInput input,
+* `static byte[] EncodeToBytes​(ICharacterInput input,
              ICharacterEncoder encoder)`<br>
  Reads Unicode characters from a character input and writes them to a byte
  array encoded using a given character encoding.
-* `static byte[] EncodeToBytes(ICharacterInput input,
+* `static byte[] EncodeToBytes​(ICharacterInput input,
              ICharacterEncoding encoding)`<br>
  Reads Unicode characters from a character input and writes them to a byte
  array encoded using the given character encoder.
-* `static byte[] EncodeToBytes(String str,
+* `static byte[] EncodeToBytes​(String str,
              ICharacterEncoding enc)`<br>
  Reads Unicode characters from a text string and writes them to a byte array
  encoded in a given character encoding.
-* `static void EncodeToWriter(ICharacterInput input,
+* `static void EncodeToWriter​(ICharacterInput input,
               ICharacterEncoder encoder,
               IWriter writer)`<br>
  Reads Unicode characters from a character input and writes them to a byte
  array encoded in a given character encoding.
-* `static void EncodeToWriter(ICharacterInput input,
+* `static void EncodeToWriter​(ICharacterInput input,
               ICharacterEncoder encoder,
               OutputStream output)`<br>
  Reads Unicode characters from a character input and writes them to a byte
  array encoded in a given character encoding.
-* `static void EncodeToWriter(ICharacterInput input,
+* `static void EncodeToWriter​(ICharacterInput input,
               ICharacterEncoding encoding,
               IWriter writer)`<br>
  Reads Unicode characters from a character input and writes them to a byte
  array encoded using the given character encoder.
-* `static void EncodeToWriter(ICharacterInput input,
+* `static void EncodeToWriter​(ICharacterInput input,
               ICharacterEncoding encoding,
               OutputStream output)`<br>
  Reads Unicode characters from a character input and writes them to a byte
  array encoded using the given character encoder.
-* `static void EncodeToWriter(String str,
+* `static void EncodeToWriter​(String str,
               ICharacterEncoding enc,
               IWriter writer)`<br>
  Converts a text string to bytes and writes the bytes to an output byte
  writer.
-* `static void EncodeToWriter(String str,
+* `static void EncodeToWriter​(String str,
               ICharacterEncoding enc,
               OutputStream output)`<br>
  Converts a text string to bytes and writes the bytes to an output data
  stream.
-* `static ICharacterInput GetDecoderInput(ICharacterEncoding encoding,
+* `static ICharacterInput GetDecoderInput​(ICharacterEncoding encoding,
                IByteReader stream)`<br>
  Converts a character encoding into a character input stream, given a
  streamable source of bytes.
-* `static ICharacterInput GetDecoderInput(ICharacterEncoding encoding,
+* `static ICharacterInput GetDecoderInput​(ICharacterEncoding encoding,
                InputStream input)`<br>
  Not documented yet.
-* `static ICharacterInput GetDecoderInputSkipBom(ICharacterEncoding encoding,
+* `static ICharacterInput GetDecoderInputSkipBom​(ICharacterEncoding encoding,
                       IByteReader stream)`<br>
  Converts a character encoding into a character input stream, given a
  streamable source of bytes.
-* `static ICharacterInput GetDecoderInputSkipBom(ICharacterEncoding encoding,
+* `static ICharacterInput GetDecoderInputSkipBom​(ICharacterEncoding encoding,
                       InputStream input)`<br>
  Converts a character encoding into a character input stream, given a
  readable data stream.
-* `static ICharacterEncoding GetEncoding(String name)`<br>
+* `static ICharacterEncoding GetEncoding​(String name)`<br>
  Returns a character encoding from the given name.
-* `static ICharacterEncoding GetEncoding(String name,
+* `static ICharacterEncoding GetEncoding​(String name,
            boolean forEmail)`<br>
  Returns a character encoding from the given name.
-* `static ICharacterEncoding GetEncoding(String name,
+* `static ICharacterEncoding GetEncoding​(String name,
            boolean forEmail,
            boolean allowReplacement)`<br>
  Returns a character encoding from the given name.
-* `static String InputToString(ICharacterInput reader)`<br>
+* `static String InputToString​(ICharacterInput reader)`<br>
  Reads Unicode characters from a character input and converts them to a text
  string.
-* `static String ResolveAlias(String name)`<br>
+* `static String ResolveAlias​(String name)`<br>
  Resolves a character encoding's name to a standard form.
-* `static String ResolveAliasForEmail(String name)`<br>
+* `static String ResolveAliasForEmail​(String name)`<br>
  Resolves a character encoding's name to a canonical form, using rules more
  suitable for email.
-* `static byte[] StringToBytes(ICharacterEncoder encoder,
+* `static byte[] StringToBytes​(ICharacterEncoder encoder,
              String str)`<br>
  Converts a text string to a byte array using the given character encoder.
-* `static byte[] StringToBytes(ICharacterEncoding encoding,
+* `static byte[] StringToBytes​(ICharacterEncoding encoding,
              String str)`<br>
  Converts a text string to a byte array encoded in a given character
  encoding.
-* `static ICharacterInput StringToInput(String str)`<br>
+* `static ICharacterInput StringToInput​(String str)`<br>
  Converts a text string to a character input.
-* `static ICharacterInput StringToInput(String str,
+* `static ICharacterInput StringToInput​(String str,
              int offset,
              int length)`<br>
  Converts a portion of a text string to a character input.
@@ -215,7 +215,7 @@ Character encoding object for the UTF-8 character encoding, which represents
 ## Method Details
 
 ### DecodeToString
-    public static String DecodeToString(ICharacterEncoding encoding, IByteReader input)
+    public static String DecodeToString​(ICharacterEncoding encoding, IByteReader input)
 Reads bytes from a data source and converts the bytes from a given encoding
  to a text string. <p>In the .NET implementation, this method is
  implemented as an extension method to any object implementing
@@ -242,7 +242,7 @@ Reads bytes from a data source and converts the bytes from a given encoding
  <code>input</code> is null.
 
 ### DecodeToString
-    public static String DecodeToString(ICharacterEncoding enc, InputStream input)
+    public static String DecodeToString​(ICharacterEncoding enc, InputStream input)
 Not documented yet. <p>In the .NET implementation, this method is
  implemented as an extension method to any object implementing
  ICharacterEncoding and can be called as follows:
@@ -263,10 +263,11 @@ Not documented yet. <p>In the .NET implementation, this method is
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter "encoding" or <code>input</code> is null.
+* <code>NullPointerException</code> - The parameter "encoding" or <code>
+ input</code> is null.
 
 ### DecodeToString
-    public static String DecodeToString(ICharacterEncoding enc, byte[] bytes)
+    public static String DecodeToString​(ICharacterEncoding enc, byte[] bytes)
 Reads a byte array from a data source and converts the bytes from a given
  encoding to a text string. Errors in decoding are handled by
  replacing erroneous bytes with the replacement character (U + FFFD).
@@ -290,10 +291,11 @@ Reads a byte array from a data source and converts the bytes from a given
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>enc</code> or <code>bytes</code> is null.
+* <code>NullPointerException</code> - The parameter <code>enc</code> or <code>
+ bytes</code> is null.
 
 ### DecodeToString
-    public static String DecodeToString(ICharacterEncoding enc, byte[] bytes, int offset, int length)
+    public static String DecodeToString​(ICharacterEncoding enc, byte[] bytes, int offset, int length)
 Reads a portion of a byte array from a data source and converts the bytes
  from a given encoding to a text string. Errors in decoding are
  handled by replacing erroneous bytes with the replacement character
@@ -311,7 +313,8 @@ Reads a portion of a byte array from a data source and converts the bytes
 
 * <code>bytes</code> - A byte array containing the desired portion to read.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>bytes</code> begins.
+* <code>offset</code> - A zero-based index showing where the desired portion of <code>
+ bytes</code> begins.
 
 * <code>length</code> - The length, in bytes, of the desired portion of <code>bytes</code>
  (but not more than <code>bytes</code> 's length).
@@ -322,14 +325,15 @@ Reads a portion of a byte array from a data source and converts the bytes
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>enc</code> or <code>bytes</code> is null.
+* <code>NullPointerException</code> - The parameter <code>enc</code> or <code>
+ bytes</code> is null.
 
 * <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
  less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
  ' s length minus <code>offset</code> is less than <code>length</code>.
 
 ### EncodeToBytes
-    public static byte[] EncodeToBytes(ICharacterInput input, ICharacterEncoding encoding)
+    public static byte[] EncodeToBytes​(ICharacterInput input, ICharacterEncoding encoding)
 Reads Unicode characters from a character input and writes them to a byte
  array encoded using the given character encoder. When writing to the
  byte array, any characters that can't be encoded are replaced with
@@ -355,7 +359,7 @@ Reads Unicode characters from a character input and writes them to a byte
 * <code>NullPointerException</code> - The parameter <code>encoding</code> is null.
 
 ### EncodeToBytes
-    public static byte[] EncodeToBytes(ICharacterInput input, ICharacterEncoder encoder)
+    public static byte[] EncodeToBytes​(ICharacterInput input, ICharacterEncoder encoder)
 Reads Unicode characters from a character input and writes them to a byte
  array encoded using a given character encoding. When writing to the
  byte array, any characters that can't be encoded are replaced with
@@ -378,10 +382,11 @@ Reads Unicode characters from a character input and writes them to a byte
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>encoder</code> or <code>input</code> is null.
+* <code>NullPointerException</code> - The parameter <code>encoder</code> or <code>
+ input</code> is null.
 
 ### EncodeToBytes
-    public static byte[] EncodeToBytes(String str, ICharacterEncoding enc)
+    public static byte[] EncodeToBytes​(String str, ICharacterEncoding enc)
 Reads Unicode characters from a text string and writes them to a byte array
  encoded in a given character encoding. When reading the string, any
  unpaired surrogate characters are replaced with the replacement
@@ -406,10 +411,11 @@ Reads Unicode characters from a text string and writes them to a byte array
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>str</code> or <code>enc</code> is null.
+* <code>NullPointerException</code> - The parameter <code>str</code> or <code>
+ enc</code> is null.
 
 ### EncodeToWriter
-    public static void EncodeToWriter(ICharacterInput input, ICharacterEncoding encoding, IWriter writer)
+    public static void EncodeToWriter​(ICharacterInput input, ICharacterEncoding encoding, IWriter writer)
 Reads Unicode characters from a character input and writes them to a byte
  array encoded using the given character encoder. When writing to the
  byte array, any characters that can't be encoded are replaced with
@@ -433,7 +439,7 @@ Reads Unicode characters from a character input and writes them to a byte
 * <code>NullPointerException</code> - The parameter <code>encoding</code> is null.
 
 ### EncodeToWriter
-    public static void EncodeToWriter(ICharacterInput input, ICharacterEncoder encoder, IWriter writer)
+    public static void EncodeToWriter​(ICharacterInput input, ICharacterEncoder encoder, IWriter writer)
 Reads Unicode characters from a character input and writes them to a byte
  array encoded in a given character encoding. When writing to the byte
  array, any characters that can't be encoded are replaced with the
@@ -454,10 +460,11 @@ Reads Unicode characters from a character input and writes them to a byte
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>encoder</code> or <code>input</code> is null.
+* <code>NullPointerException</code> - The parameter <code>encoder</code> or <code>
+ input</code> is null.
 
 ### EncodeToWriter
-    public static void EncodeToWriter(String str, ICharacterEncoding enc, IWriter writer)
+    public static void EncodeToWriter​(String str, ICharacterEncoding enc, IWriter writer)
 Converts a text string to bytes and writes the bytes to an output byte
  writer. When reading the string, any unpaired surrogate characters
  are replaced with the replacement character (U + FFFD), and when
@@ -480,10 +487,11 @@ Converts a text string to bytes and writes the bytes to an output byte
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>str</code> or <code>enc</code> is null.
+* <code>NullPointerException</code> - The parameter <code>str</code> or <code>
+ enc</code> is null.
 
 ### EncodeToWriter
-    public static void EncodeToWriter(ICharacterInput input, ICharacterEncoding encoding, OutputStream output) throws IOException
+    public static void EncodeToWriter​(ICharacterInput input, ICharacterEncoding encoding, OutputStream output) throws IOException
 Reads Unicode characters from a character input and writes them to a byte
  array encoded using the given character encoder. When writing to the
  byte array, any characters that can't be encoded are replaced with
@@ -509,7 +517,7 @@ Reads Unicode characters from a character input and writes them to a byte
 * <code>IOException</code>
 
 ### EncodeToWriter
-    public static void EncodeToWriter(ICharacterInput input, ICharacterEncoder encoder, OutputStream output) throws IOException
+    public static void EncodeToWriter​(ICharacterInput input, ICharacterEncoder encoder, OutputStream output) throws IOException
 Reads Unicode characters from a character input and writes them to a byte
  array encoded in a given character encoding. When writing to the byte
  array, any characters that can't be encoded are replaced with the
@@ -530,12 +538,13 @@ Reads Unicode characters from a character input and writes them to a byte
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>encoder</code> or <code>input</code> is null.
+* <code>NullPointerException</code> - The parameter <code>encoder</code> or <code>
+ input</code> is null.
 
 * <code>IOException</code>
 
 ### EncodeToWriter
-    public static void EncodeToWriter(String str, ICharacterEncoding enc, OutputStream output) throws IOException
+    public static void EncodeToWriter​(String str, ICharacterEncoding enc, OutputStream output) throws IOException
 Converts a text string to bytes and writes the bytes to an output data
  stream. When reading the string, any unpaired surrogate characters
  are replaced with the replacement character (U + FFFD), and when
@@ -558,12 +567,13 @@ Converts a text string to bytes and writes the bytes to an output data
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>str</code> or <code>enc</code> is null.
+* <code>NullPointerException</code> - The parameter <code>str</code> or <code>
+ enc</code> is null.
 
 * <code>IOException</code>
 
 ### GetDecoderInput
-    public static ICharacterInput GetDecoderInput(ICharacterEncoding encoding, IByteReader stream)
+    public static ICharacterInput GetDecoderInput​(ICharacterEncoding encoding, IByteReader stream)
 Converts a character encoding into a character input stream, given a
  streamable source of bytes. The input stream doesn't check the first
  few bytes for a byte-order mark indicating a Unicode encoding such as
@@ -588,7 +598,7 @@ Converts a character encoding into a character input stream, given a
 * An ICharacterInput object.
 
 ### GetDecoderInput
-    public static ICharacterInput GetDecoderInput(ICharacterEncoding encoding, InputStream input)
+    public static ICharacterInput GetDecoderInput​(ICharacterEncoding encoding, InputStream input)
 Not documented yet. <p>In the .NET implementation, this method is
  implemented as an extension method to any object implementing
  ICharacterEncoding and can be called as follows:
@@ -610,7 +620,7 @@ Not documented yet. <p>In the .NET implementation, this method is
 * An ICharacterInput object.
 
 ### GetDecoderInputSkipBom
-    public static ICharacterInput GetDecoderInputSkipBom(ICharacterEncoding encoding, IByteReader stream)
+    public static ICharacterInput GetDecoderInputSkipBom​(ICharacterEncoding encoding, IByteReader stream)
 Converts a character encoding into a character input stream, given a
  streamable source of bytes. But if the input stream starts with a
  UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or
@@ -638,7 +648,7 @@ Converts a character encoding into a character input stream, given a
 * An ICharacterInput object.
 
 ### GetDecoderInputSkipBom
-    public static ICharacterInput GetDecoderInputSkipBom(ICharacterEncoding encoding, InputStream input)
+    public static ICharacterInput GetDecoderInputSkipBom​(ICharacterEncoding encoding, InputStream input)
 Converts a character encoding into a character input stream, given a
  readable data stream. But if the input stream starts with a UTF-8 or
  UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as
@@ -666,7 +676,7 @@ Converts a character encoding into a character input stream, given a
 * An ICharacterInput object.
 
 ### GetEncoding
-    public static ICharacterEncoding GetEncoding(String name)
+    public static ICharacterEncoding GetEncoding​(String name)
 Returns a character encoding from the given name.
 
 **Parameters:**
@@ -680,7 +690,7 @@ Returns a character encoding from the given name.
  encoder and a decoder).
 
 ### GetEncoding
-    public static ICharacterEncoding GetEncoding(String name, boolean forEmail)
+    public static ICharacterEncoding GetEncoding​(String name, boolean forEmail)
 Returns a character encoding from the given name.
 
 **Parameters:**
@@ -699,7 +709,7 @@ Returns a character encoding from the given name.
  it names an unrecognized or unsupported encoding.
 
 ### GetEncoding
-    public static ICharacterEncoding GetEncoding(String name, boolean forEmail, boolean allowReplacement)
+    public static ICharacterEncoding GetEncoding​(String name, boolean forEmail, boolean allowReplacement)
 Returns a character encoding from the given name.
 
 **Parameters:**
@@ -721,7 +731,7 @@ Returns a character encoding from the given name.
  it names an unrecognized or unsupported encoding.
 
 ### InputToString
-    public static String InputToString(ICharacterInput reader)
+    public static String InputToString​(ICharacterInput reader)
 Reads Unicode characters from a character input and converts them to a text
  string. <p>In the .NET implementation, this method is implemented as
  an extension method to any object implementing ICharacterInput and
@@ -740,7 +750,7 @@ Reads Unicode characters from a character input and converts them to a text
 * A text string containing the characters read.
 
 ### ResolveAlias
-    public static String ResolveAlias(String name)
+    public static String ResolveAlias​(String name)
 Resolves a character encoding's name to a standard form. This involves
  changing aliases of a character encoding to a standardized name.
  <p>In several Internet specifications, this name is known as a
@@ -758,22 +768,32 @@ Resolves a character encoding's name to a standard form. This involves
  the universal character set, the encoding recommended by the Encoding
  Standard for new data formats)</li> <li> <code>UTF-16LE</code> - UTF-16
  little-endian (16-bit UCS)</li> <li> <code>UTF-16BE</code> - UTF-16
- big-endian (16-bit UCS)</li> <li>The special-purpose encoding <code>x-user-defined</code></li> <li>The special-purpose encoding <code>replacement</code>, which this function returns only if one of several
+ big-endian (16-bit UCS)</li> <li>The special-purpose encoding <code>
+ x-user-defined</code></li> <li>The special-purpose encoding <code>
+ replacement</code>, which this function returns only if one of several
  aliases are passed to it, as defined in the Encoding Standard.</li>
  <li>28 legacy single-byte encodings: <ul> <li> <code>windows-1252</code> :
- Western Europe (Note: The Encoding Standard aliases the names <code>US-ASCII</code> and <code>ISO-8859-1</code> to <code>windows-1252</code>, which uses
- a different character set from either; it differs from <code>ISO-8859-1</code> by assigning different characters to some bytes from 0x80
+ Western Europe (Note: The Encoding Standard aliases the names <code>
+ US-ASCII</code> and <code>ISO-8859-1</code> to <code>windows-1252</code>, which uses
+ a different character set from either; it differs from <code>
+ ISO-8859-1</code> by assigning different characters to some bytes from 0x80
  to 0x9F. The Encoding Standard does this for compatibility with
- existing Web pages.)</li> <li> <code>ISO-8859-2</code>, <code>windows-1250</code> : Central Europe</li> <li> <code>ISO-8859-10</code> :
+ existing Web pages.)</li> <li> <code>ISO-8859-2</code>, <code>
+ windows-1250</code> : Central Europe</li> <li> <code>ISO-8859-10</code> :
  Northern Europe</li> <li> <code>ISO-8859-4</code>, <code>windows-1257</code> :
- Baltic</li> <li> <code>ISO-8859-13</code> : Estonian</li> <li> <code>ISO-8859-14</code> : Celtic</li> <li> <code>ISO-8859-16</code> : Romanian</li>
- <li> <code>ISO-8859-5</code>, <code>IBM-866</code>, <code>KOI8-R</code>, <code>windows-1251</code>, <code>x-mac-cyrillic</code> : Cyrillic</li> <li> <code>KOI8-U</code> : Ukrainian</li> <li> <code>ISO-8859-7</code>, <code>windows-1253</code>
+ Baltic</li> <li> <code>ISO-8859-13</code> : Estonian</li> <li> <code>
+ ISO-8859-14</code> : Celtic</li> <li> <code>ISO-8859-16</code> : Romanian</li>
+ <li> <code>ISO-8859-5</code>, <code>IBM-866</code>, <code>KOI8-R</code>, <code>
+ windows-1251</code>, <code>x-mac-cyrillic</code> : Cyrillic</li> <li> <code>
+ KOI8-U</code> : Ukrainian</li> <li> <code>ISO-8859-7</code>, <code>windows-1253</code>
  : Greek</li> <li> <code>ISO-8859-6</code>, <code>windows-1256</code> :
- Arabic</li> <li> <code>ISO-8859-8</code>, <code>ISO-8859-8-I</code>, <code>windows-1255</code> : Hebrew</li> <li> <code>ISO-8859-3</code> : Latin 3</li>
+ Arabic</li> <li> <code>ISO-8859-8</code>, <code>ISO-8859-8-I</code>, <code>
+ windows-1255</code> : Hebrew</li> <li> <code>ISO-8859-3</code> : Latin 3</li>
  <li> <code>ISO-8859-15</code>, <code>windows-1254</code> : Turkish</li>
  <li> <code>windows-874</code> : Thai</li> <li> <code>windows-1258</code> :
  Vietnamese</li> <li> <code>macintosh</code> : Mac Roman</li></ul></li>
- <li>Three legacy Japanese encodings: <code>Shift_JIS</code>, <code>EUC-JP</code>, <code>ISO-2022-JP</code></li> <li>Two legacy simplified Chinese
+ <li>Three legacy Japanese encodings: <code>Shift_JIS</code>, <code>
+ EUC-JP</code>, <code>ISO-2022-JP</code></li> <li>Two legacy simplified Chinese
  encodings: <code>GBK</code> and <code>gb18030</code></li> <li> <code>Big5</code> :
  legacy traditional Chinese encoding</li> <li> <code>EUC-KR</code> : legacy
  Korean encoding</li></ul> <p>The <code>UTF-8</code>, <code>UTF-16LE</code>, and
@@ -791,7 +811,7 @@ Resolves a character encoding's name to a standard form. This involves
  unsupported.
 
 ### ResolveAliasForEmail
-    public static String ResolveAliasForEmail(String name)
+    public static String ResolveAliasForEmail​(String name)
 Resolves a character encoding's name to a canonical form, using rules more
  suitable for email.
 
@@ -819,7 +839,7 @@ Resolves a character encoding's name to a canonical form, using rules more
  unsupported.
 
 ### StringToBytes
-    public static byte[] StringToBytes(ICharacterEncoding encoding, String str)
+    public static byte[] StringToBytes​(ICharacterEncoding encoding, String str)
 Converts a text string to a byte array encoded in a given character
  encoding. When reading the string, any unpaired surrogate characters
  are replaced with the replacement character (U + FFFD), and when
@@ -848,7 +868,7 @@ Converts a text string to a byte array encoded in a given character
 * <code>NullPointerException</code> - The parameter <code>encoding</code> is null.
 
 ### StringToBytes
-    public static byte[] StringToBytes(ICharacterEncoder encoder, String str)
+    public static byte[] StringToBytes​(ICharacterEncoder encoder, String str)
 Converts a text string to a byte array using the given character encoder.
  When reading the string, any unpaired surrogate characters are
  replaced with the replacement character (U + FFFD), and when writing to
@@ -872,10 +892,11 @@ Converts a text string to a byte array using the given character encoder.
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>encoder</code> or <code>str</code> is null.
+* <code>NullPointerException</code> - The parameter <code>encoder</code> or <code>
+ str</code> is null.
 
 ### StringToInput
-    public static ICharacterInput StringToInput(String str)
+    public static ICharacterInput StringToInput​(String str)
 Converts a text string to a character input. The resulting input can then be
  used to encode the text to bytes, or to read the string code point by
  code point, among other things. When reading the string, any unpaired
@@ -899,7 +920,7 @@ Converts a text string to a character input. The resulting input can then be
 * <code>NullPointerException</code> - The parameter <code>str</code> is null.
 
 ### StringToInput
-    public static ICharacterInput StringToInput(String str, int offset, int length)
+    public static ICharacterInput StringToInput​(String str, int offset, int length)
 Converts a portion of a text string to a character input. The resulting
  input can then be used to encode the text to bytes, or to read the
  string code point by code point, among other things. When reading the
@@ -915,9 +936,11 @@ Converts a portion of a text string to a character input. The resulting
 
 * <code>str</code> - The parameter <code>str</code> is a text string.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>str</code> begins.
+* <code>offset</code> - A zero-based index showing where the desired portion of <code>
+ str</code> begins.
 
-* <code>length</code> - The length, in code units, of the desired portion of <code>str</code> (but not more than <code>str</code> 's length).
+* <code>length</code> - The length, in code units, of the desired portion of <code>
+ str</code> (but not more than <code>str</code> 's length).
 
 **Returns:**
 

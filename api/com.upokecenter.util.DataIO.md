@@ -7,38 +7,38 @@ Convenience class that contains static methods for wrapping byte arrays and
 
 ## Methods
 
-* `static IByteReader ToByteReader(byte[] bytes)`<br>
+* `static IByteReader ToByteReader​(byte[] bytes)`<br>
  Deprecated.
 Use ToReader instead.
  Use ToReader instead.
-* `static IByteReader ToByteReader(byte[] bytes,
+* `static IByteReader ToByteReader​(byte[] bytes,
             int offset,
             int length)`<br>
  Deprecated.
 Use ToReader instead.
  Use ToReader instead.
-* `static IByteReader ToByteReader(InputStream input)`<br>
+* `static IByteReader ToByteReader​(InputStream input)`<br>
  Deprecated.
 Use ToReader instead.
  Use ToReader instead.
-* `static IReader ToReader(byte[] bytes)`<br>
+* `static IReader ToReader​(byte[] bytes)`<br>
  Wraps a byte array into a byte reader.
-* `static IReader ToReader(byte[] bytes,
+* `static IReader ToReader​(byte[] bytes,
         int offset,
         int length)`<br>
  Wraps a portion of a byte array into a byte reader object.
-* `static IReader ToReader(InputStream input)`<br>
+* `static IReader ToReader​(InputStream input)`<br>
  Wraps an input stream into a reader object.
-* `static IWriter ToWriter(IByteWriter output)`<br>
+* `static IWriter ToWriter​(IByteWriter output)`<br>
  Wraps a byte writer (one that only implements a ReadByte method) to a writer
  (one that also implements a three-parameter Read method.)
-* `static IWriter ToWriter(OutputStream output)`<br>
+* `static IWriter ToWriter​(OutputStream output)`<br>
  Wraps an output stream into a writer object.
 
 ## Method Details
 
 ### ToReader
-    public static IReader ToReader(byte[] bytes)
+    public static IReader ToReader​(byte[] bytes)
 Wraps a byte array into a byte reader. The reader will start at the
  beginning of the byte array. <p>In the .NET implementation, this
  method is implemented as an extension method to any byte array object
@@ -60,7 +60,7 @@ Wraps a byte array into a byte reader. The reader will start at the
 * <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
 
 ### ToReader
-    public static IReader ToReader(byte[] bytes, int offset, int length)
+    public static IReader ToReader​(byte[] bytes, int offset, int length)
 Wraps a portion of a byte array into a byte reader object. <p>In the .NET
  implementation, this method is implemented as an extension method to
  any byte array object and can be called as follows:
@@ -91,7 +91,7 @@ Wraps a portion of a byte array into a byte reader object. <p>In the .NET
  ' s length minus <code>offset</code> is less than <code>length</code>.
 
 ### ToReader
-    public static IReader ToReader(InputStream input)
+    public static IReader ToReader​(InputStream input)
 Wraps an input stream into a reader object. If an IOException is thrown by
  the input stream, the reader object throws InvalidOperationException
  instead. <p>In the .NET implementation, this method is implemented as
@@ -113,14 +113,16 @@ Wraps an input stream into a reader object. If an IOException is thrown by
 * <code>NullPointerException</code> - The parameter <code>input</code> is null.
 
 ### ToByteReader
-    @Deprecated public static IByteReader ToByteReader(byte[] bytes, int offset, int length)
-Deprecated.&nbsp;Use ToReader instead.
+    @Deprecated public static IByteReader ToByteReader​(byte[] bytes, int offset, int length)
+Deprecated.
+<div class='deprecationComment'>Use ToReader instead.</div>
 
 **Parameters:**
 
 * <code>bytes</code> - The parameter <code>bytes</code> is not documented yet.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>bytes</code> begins.
+* <code>offset</code> - A zero-based index showing where the desired portion of <code>
+ bytes</code> begins.
 
 * <code>length</code> - The length, in bytes, of the desired portion of <code>bytes</code>
  (but not more than <code>bytes</code> 's length).
@@ -138,8 +140,9 @@ Deprecated.&nbsp;Use ToReader instead.
 * <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
 
 ### ToByteReader
-    @Deprecated public static IByteReader ToByteReader(InputStream input)
-Deprecated.&nbsp;Use ToReader instead.
+    @Deprecated public static IByteReader ToByteReader​(InputStream input)
+Deprecated.
+<div class='deprecationComment'>Use ToReader instead.</div>
 
 **Parameters:**
 
@@ -150,8 +153,9 @@ Deprecated.&nbsp;Use ToReader instead.
 * An IByteReader object.
 
 ### ToByteReader
-    @Deprecated public static IByteReader ToByteReader(byte[] bytes)
-Deprecated.&nbsp;Use ToReader instead.
+    @Deprecated public static IByteReader ToByteReader​(byte[] bytes)
+Deprecated.
+<div class='deprecationComment'>Use ToReader instead.</div>
 
 **Parameters:**
 
@@ -162,7 +166,7 @@ Deprecated.&nbsp;Use ToReader instead.
 * An IByteReader object.
 
 ### ToWriter
-    public static IWriter ToWriter(OutputStream output)
+    public static IWriter ToWriter​(OutputStream output)
 Wraps an output stream into a writer object. If an IOException is thrown by
  the input stream, the writer object throws InvalidOperationException
  instead. <p>In the .NET implementation, this method is implemented as
@@ -184,7 +188,7 @@ Wraps an output stream into a writer object. If an IOException is thrown by
 * <code>NullPointerException</code> - The parameter <code>output</code> is null.
 
 ### ToWriter
-    public static IWriter ToWriter(IByteWriter output)
+    public static IWriter ToWriter​(IByteWriter output)
 Wraps a byte writer (one that only implements a ReadByte method) to a writer
  (one that also implements a three-parameter Read method.) <p>In the
  .NET implementation, this method is implemented as an extension

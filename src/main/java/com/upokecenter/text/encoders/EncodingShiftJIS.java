@@ -32,10 +32,10 @@ import com.upokecenter.text.*;
               cp = ((this.lead - leadoffset) * 188) + (b - offset);
             }
             this.lead = 0;
-            int c = (cp < 0) ? -1 : Jis0208.IndexToCodePoint(cp);
-            if (c < 0 && cp >= 8836 && cp <= 10715) {
+            if (cp >= 8836 && cp <= 10715) {
               return 0xe000 + cp - 8836;
             }
+            int c = (cp < 0) ? -1 : Jis0208.IndexToCodePoint(cp);
             if (c < 0) {
               if (b < 0) {
                 this.state.PrependOne(b);
@@ -47,8 +47,8 @@ import com.upokecenter.text.*;
           if (b <= 0x80) {
             return b;
           } else if (b >= 0xa1 && b <= 0xdf) {
-            return 0xff61 + b - 0xa1;
-          } else if ((b >= 0x81 && b <= 0xfc) && b != 0xa0) {
+            return 0xfec0 + b;
+          } else if ((b >= 0x81 && b <= 0x9f) || (b >= 0xe0 && b <= 0xfc)) {
             this.lead = b;
             continue;
           } else {

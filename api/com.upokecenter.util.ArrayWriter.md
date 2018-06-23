@@ -9,18 +9,18 @@ An array of bytes that grows as needed.
 * `ArrayWriter() com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
  with a default buffer size.
-* `ArrayWriter(int initialSize) com.upokecenter.ArrayWriter`<br>
+* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
  with the given initial buffer size.
 * `void Clear()`<br>
  Offers a fast way to reset the length of the array writer's data to 0.
 * `byte[] ToArray()`<br>
  Generates an array of all bytes written so far to it.
-* `void write(byte[] src,
+* `void write​(byte[] src,
      int offset,
      int length)`<br>
  Writes a series of bytes to the array.
-* `void write(int byteValue)`<br>
+* `void write​(int byteValue)`<br>
  Writes an 8-bit byte to the array.
 
 ## Constructors
@@ -28,7 +28,7 @@ An array of bytes that grows as needed.
 * `ArrayWriter() com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
  with a default buffer size.
-* `ArrayWriter(int initialSize) com.upokecenter.ArrayWriter`<br>
+* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
  with the given initial buffer size.
 
@@ -39,7 +39,7 @@ An array of bytes that grows as needed.
 Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class
  with a default buffer size.
 ### ArrayWriter
-    public ArrayWriter(int initialSize)
+    public ArrayWriter​(int initialSize)
 Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class
  with the given initial buffer size.
 
@@ -60,7 +60,7 @@ Generates an array of all bytes written so far to it.
 * A byte array.
 
 ### write
-    public void write(int byteValue)
+    public void write​(int byteValue)
 Writes an 8-bit byte to the array.
 
 **Specified by:**
@@ -73,7 +73,7 @@ Writes an 8-bit byte to the array.
  bits of this value will be used.
 
 ### write
-    public void write(byte[] src, int offset, int length)
+    public void write​(byte[] src, int offset, int length)
 Writes a series of bytes to the array.
 
 **Specified by:**
@@ -84,7 +84,8 @@ Writes a series of bytes to the array.
 
 * <code>src</code> - Byte array containing the data to write.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>src</code> begins.
+* <code>offset</code> - A zero-based index showing where the desired portion of <code>
+ src</code> begins.
 
 * <code>length</code> - The number of elements in the desired portion of <code>src</code>
  (but not more than <code>src</code> 's length).

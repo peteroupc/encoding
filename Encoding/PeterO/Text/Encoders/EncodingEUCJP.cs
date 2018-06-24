@@ -43,7 +43,9 @@ namespace PeterO.Text.Encoders {
             }
             this.lead = 0;
             this.jis0212 = false;
-            if (c>=0) return c;
+            if (c >= 0) {
+ return c;
+}
             if (b <= 0x7f) {
               this.state.PrependOne(b);
             }

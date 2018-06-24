@@ -183,7 +183,11 @@ Contains methods for converting text from one character encoding to another.
 * `static ICharacterEncoding GetEncoding​(String name,
            boolean forEmail,
            boolean allowReplacement)`<br>
- Returns a character encoding from the given name.
+ Deprecated.
+The latest draft of the Encoding Standard includes 'replacement' as an alias
+ for itself, making this overload unnecessary.
+ The latest draft of the Encoding Standard includes 'replacement' as an alias
+ for itself, making this overload unnecessary.
 * `static String InputToString​(ICharacterInput reader)`<br>
  Reads Unicode characters from a character input and converts them to a text
  string.
@@ -709,8 +713,10 @@ Returns a character encoding from the given name.
  it names an unrecognized or unsupported encoding.
 
 ### GetEncoding
-    public static ICharacterEncoding GetEncoding​(String name, boolean forEmail, boolean allowReplacement)
-Returns a character encoding from the given name.
+    @Deprecated public static ICharacterEncoding GetEncoding​(String name, boolean forEmail, boolean allowReplacement)
+Deprecated.
+<div class='deprecationComment'>The latest draft of the Encoding Standard includes 'replacement' as an alias
+ for itself, making this overload unnecessary.</div>
 
 **Parameters:**
 
@@ -721,8 +727,7 @@ Returns a character encoding from the given name.
  Standard. If true, uses modified rules as described in the
  ResolveAliasForEmail method.
 
-* <code>allowReplacement</code> - If true, allows the label <code>replacement</code> to
- return the replacement encoding.
+* <code>allowReplacement</code> - Has no effect.
 
 **Returns:**
 
@@ -770,39 +775,38 @@ Resolves a character encoding's name to a standard form. This involves
  little-endian (16-bit UCS)</li> <li> <code>UTF-16BE</code> - UTF-16
  big-endian (16-bit UCS)</li> <li>The special-purpose encoding <code>
  x-user-defined</code></li> <li>The special-purpose encoding <code>
- replacement</code>, which this function returns only if one of several
- aliases are passed to it, as defined in the Encoding Standard.</li>
- <li>28 legacy single-byte encodings: <ul> <li> <code>windows-1252</code> :
- Western Europe (Note: The Encoding Standard aliases the names <code>
- US-ASCII</code> and <code>ISO-8859-1</code> to <code>windows-1252</code>, which uses
- a different character set from either; it differs from <code>
- ISO-8859-1</code> by assigning different characters to some bytes from 0x80
- to 0x9F. The Encoding Standard does this for compatibility with
- existing Web pages.)</li> <li> <code>ISO-8859-2</code>, <code>
- windows-1250</code> : Central Europe</li> <li> <code>ISO-8859-10</code> :
- Northern Europe</li> <li> <code>ISO-8859-4</code>, <code>windows-1257</code> :
- Baltic</li> <li> <code>ISO-8859-13</code> : Estonian</li> <li> <code>
- ISO-8859-14</code> : Celtic</li> <li> <code>ISO-8859-16</code> : Romanian</li>
- <li> <code>ISO-8859-5</code>, <code>IBM-866</code>, <code>KOI8-R</code>, <code>
- windows-1251</code>, <code>x-mac-cyrillic</code> : Cyrillic</li> <li> <code>
- KOI8-U</code> : Ukrainian</li> <li> <code>ISO-8859-7</code>, <code>windows-1253</code>
- : Greek</li> <li> <code>ISO-8859-6</code>, <code>windows-1256</code> :
- Arabic</li> <li> <code>ISO-8859-8</code>, <code>ISO-8859-8-I</code>, <code>
- windows-1255</code> : Hebrew</li> <li> <code>ISO-8859-3</code> : Latin 3</li>
- <li> <code>ISO-8859-15</code>, <code>windows-1254</code> : Turkish</li>
- <li> <code>windows-874</code> : Thai</li> <li> <code>windows-1258</code> :
- Vietnamese</li> <li> <code>macintosh</code> : Mac Roman</li></ul></li>
- <li>Three legacy Japanese encodings: <code>Shift_JIS</code>, <code>
- EUC-JP</code>, <code>ISO-2022-JP</code></li> <li>Two legacy simplified Chinese
- encodings: <code>GBK</code> and <code>gb18030</code></li> <li> <code>Big5</code> :
- legacy traditional Chinese encoding</li> <li> <code>EUC-KR</code> : legacy
- Korean encoding</li></ul> <p>The <code>UTF-8</code>, <code>UTF-16LE</code>, and
- <code>UTF-16BE</code> encodings don't encode a byte-order mark at the
- start of the text (doing so is not recommended for <code>UTF-8</code>,
- while in <code>UTF-16LE</code> and <code>UTF-16BE</code>, the byte-order mark
- character U + FEFF is treated as an ordinary character, unlike in the
- UTF-16 encoding form). The Encoding Standard aliases <code>UTF-16</code>
- to <code>UTF-16LE</code> "to deal with deployed content".</p> .
+ replacement</code>.</li> <li>28 legacy single-byte encodings: <ul>
+ <li> <code>windows-1252</code> : Western Europe (Note: The Encoding
+ Standard aliases the names <code>US-ASCII</code> and <code>ISO-8859-1</code> to
+ <code>windows-1252</code>, which uses a different character set from
+ either; it differs from <code>ISO-8859-1</code> by assigning different
+ characters to some bytes from 0x80 to 0x9F. The Encoding Standard
+ does this for compatibility with existing Web pages.)</li> <li> <code>
+ ISO-8859-2</code>, <code>windows-1250</code> : Central Europe</li> <li> <code>
+ ISO-8859-10</code> : Northern Europe</li> <li> <code>ISO-8859-4</code>, <code>
+ windows-1257</code> : Baltic</li> <li> <code>ISO-8859-13</code> : Estonian</li>
+ <li> <code>ISO-8859-14</code> : Celtic</li> <li> <code>ISO-8859-16</code> :
+ Romanian</li> <li> <code>ISO-8859-5</code>, <code>IBM-866</code>, <code>
+ KOI8-R</code>, <code>windows-1251</code>, <code>x-mac-cyrillic</code> : Cyrillic</li>
+ <li> <code>KOI8-U</code> : Ukrainian</li> <li> <code>ISO-8859-7</code>, <code>
+ windows-1253</code> : Greek</li> <li> <code>ISO-8859-6</code>, <code>
+ windows-1256</code> : Arabic</li> <li> <code>ISO-8859-8</code>, <code>
+ ISO-8859-8-I</code>, <code>windows-1255</code> : Hebrew</li> <li> <code>
+ ISO-8859-3</code> : Latin 3</li> <li> <code>ISO-8859-15</code>, <code>
+ windows-1254</code> : Turkish</li> <li> <code>windows-874</code> : Thai</li>
+ <li> <code>windows-1258</code> : Vietnamese</li> <li> <code>macintosh</code> :
+ Mac Roman</li></ul></li> <li>Three legacy Japanese encodings: <code>
+ Shift_JIS</code>, <code>EUC-JP</code>, <code>ISO-2022-JP</code></li> <li>Two legacy
+ simplified Chinese encodings: <code>GBK</code> and <code>gb18030</code></li>
+ <li> <code>Big5</code> : legacy traditional Chinese encoding</li>
+ <li> <code>EUC-KR</code> : legacy Korean encoding</li></ul> <p>The <code>
+ UTF-8</code>, <code>UTF-16LE</code>, and <code>UTF-16BE</code> encodings don't encode
+ a byte-order mark at the start of the text (doing so is not
+ recommended for <code>UTF-8</code>, while in <code>UTF-16LE</code> and <code>
+ UTF-16BE</code>, the byte-order mark character U + FEFF is treated as an
+ ordinary character, unlike in the UTF-16 encoding form). The Encoding
+ Standard aliases <code>UTF-16</code> to <code>UTF-16LE</code> "to deal with
+ deployed content".</p> .
 
 **Returns:**
 

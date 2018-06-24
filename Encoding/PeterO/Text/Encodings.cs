@@ -283,22 +283,21 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String)"]/*'/>
     public static ICharacterEncoding GetEncoding(string name) {
-      return GetEncoding(name, false, false);
+      return GetEncoding(name, false);
     }
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean)"]/*'/>
-    public static ICharacterEncoding GetEncoding(string name, bool forEmail) {
-      return GetEncoding(name, forEmail, false);
+        /// <include file='../../docs.xml'
+        /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]/*'/>
+        [Obsolete ("The latest draft of the Encoding Standard includes 'replacement' as an alias for itself, making this overload unnecessary.")]
+        public static ICharacterEncoding GetEncoding(string name, bool forEmail, bool allowReplacement) {
+      return GetEncoding(name, forEmail);
     }
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]/*'/>
-    [Obsolete("The latest draft of the Encoding Standard includes 'replacement' as an alias for itself, making this overload unnecessary.")]
-    public static ICharacterEncoding GetEncoding(
+        /// <include file='../../docs.xml'
+        /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean)"]/*'/>
+        public static ICharacterEncoding GetEncoding(
   string name,
-  bool forEmail,
-  bool allowReplacement) {
+  bool forEmail) {
       if (String.IsNullOrEmpty(name)) {
         return null;
       }

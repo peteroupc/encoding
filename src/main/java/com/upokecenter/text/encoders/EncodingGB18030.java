@@ -234,9 +234,14 @@ import com.upokecenter.text.*;
       if (v >= ValueGb18030table.length) {
         return -1;
       }
-      int cpoffset = ValueGb18030table[v + 1];
-      int offset = ValueGb18030table[v];
-      return cpoffset + pointer - offset;
+      try {
+        int cpoffset = ValueGb18030table [v + 1];
+        int offset = ValueGb18030table [v];
+                return cpoffset + pointer - offset;
+     } catch (Exception ex) {
+        throw new IllegalStateException (
+          ex.getMessage() + " " + ex.getStackTrace() + "\n" + "\npointer=" + pointer + "\noffset=" + v + " of " + ValueGb18030table.length);
+      }
     }
 
   private static int GB18030Pointer(int codepoint) {

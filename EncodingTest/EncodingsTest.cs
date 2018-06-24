@@ -2785,7 +2785,12 @@ Assert.AreEqual(
         stringTemp);
       }
       Assert.AreEqual(String.Empty, Encodings.ResolveAlias("utf-7"));
-      Assert.AreEqual("replacement", Encodings.ResolveAlias("replacement"));
+      {
+string stringTemp = Encodings.ResolveAlias("replacement");
+Assert.AreEqual(
+  "replacement",
+  stringTemp);
+}
       {
         string stringTemp = Encodings.ResolveAlias("hz-gb-2312");
         Assert.AreEqual(

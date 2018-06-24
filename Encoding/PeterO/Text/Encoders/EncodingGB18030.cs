@@ -214,6 +214,7 @@ namespace PeterO.Text.Encoders {
  39419, 0xffff };
 
     private static int GB18030CodePoint(int pointer) {
+      // ArgumentAssert.GreaterOrEqual(pointer, 0);
       if ((pointer > 39419 && pointer < 189000) || pointer > 1237575) {
         return -1;
       }
@@ -240,10 +241,7 @@ namespace PeterO.Text.Encoders {
                 return cpoffset + pointer - offset;
      } catch (Exception ex) {
         throw new InvalidOperationException (
-          ex.Message + " " + ex.StackTrace + "\n" +
-                                            "\npointer=" + pointer +
-                                            "\noffset=" + v +
-                                            " of " + ValueGb18030table.Length);
+          ex.Message + " " + ex.StackTrace + "\n" + "\npointer=" + pointer + "\noffset=" + v + " of " + ValueGb18030table.Length);
       }
     }
 

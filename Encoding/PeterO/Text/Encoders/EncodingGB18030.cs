@@ -234,9 +234,17 @@ namespace PeterO.Text.Encoders {
       if (v >= ValueGb18030table.Length) {
         return -1;
       }
-      int cpoffset = ValueGb18030table[v + 1];
-      int offset = ValueGb18030table[v];
-      return cpoffset + pointer - offset;
+      try {
+        int cpoffset = ValueGb18030table [v + 1];
+        int offset = ValueGb18030table [v];
+                return cpoffset + pointer - offset;
+     } catch (Exception ex) {
+        throw new InvalidOperationException (
+          ex.Message + " " + ex.StackTrace + "\n" +
+                                            "\npointer=" + pointer +
+                                            "\noffset=" + v +
+                                            " of " + ValueGb18030table.Length);
+      }
     }
 
   private static int GB18030Pointer(int codepoint) {

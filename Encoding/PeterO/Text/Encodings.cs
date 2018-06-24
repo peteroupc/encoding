@@ -294,19 +294,13 @@ namespace PeterO.Text {
 
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]/*'/>
+    [Obsolete("The latest draft of the Encoding Standard includes 'replacement' as an alias for itself, making this overload unnecessary.")]
     public static ICharacterEncoding GetEncoding(
   string name,
   bool forEmail,
   bool allowReplacement) {
       if (String.IsNullOrEmpty(name)) {
         return null;
-      }
-      if (allowReplacement) {
-        name = TrimAsciiWhite(name);
-        name = ToLowerCaseAscii(name);
-        if (name.Equals("replacement")) {
-          return new EncodingReplacement();
-        }
       }
       name = forEmail ? ResolveAliasForEmail(name) :
         ResolveAlias(name);

@@ -961,8 +961,7 @@
             <param name='forEmail'>If false, uses the encoding resolution rules
             in the Encoding Standard. If true, uses modified rules as described
             in the ResolveAliasForEmail method.</param>
-            <param name='allowReplacement'>If true, allows the label
-            <c>replacement</c> to return the replacement encoding.</param>
+            <param name='allowReplacement'>Has no effect.</param>
             <returns>An object that enables encoding and decoding text in the
             given character encoding. Returns null if the name is null or
             empty, or if it names an unrecognized or unsupported
@@ -1001,9 +1000,7 @@
             <item><c>UTF-16LE</c> - UTF-16 little-endian (16-bit UCS)</item>
             <item><c>UTF-16BE</c> - UTF-16 big-endian (16-bit UCS)</item>
             <item>The special-purpose encoding <c>x-user-defined</c></item>
-            <item>The special-purpose encoding <c>replacement</c>, which this
-            function returns only if one of several aliases are passed to it,
-            as defined in the Encoding Standard.</item>
+            <item>The special-purpose encoding <c>replacement</c>.</item>
             <item>28 legacy single-byte encodings:
             <list type='bullet'>
             <item><c>windows-1252</c> : Western Europe (Note: The Encoding

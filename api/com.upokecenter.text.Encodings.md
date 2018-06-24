@@ -694,25 +694,6 @@ Returns a character encoding from the given name.
  encoder and a decoder).
 
 ### GetEncoding
-    public static ICharacterEncoding GetEncoding​(String name, boolean forEmail)
-Returns a character encoding from the given name.
-
-**Parameters:**
-
-* <code>name</code> - A string naming a character encoding. See the ResolveAlias
- method. Can be null.
-
-* <code>forEmail</code> - If false, uses the encoding resolution rules in the Encoding
- Standard. If true, uses modified rules as described in the
- ResolveAliasForEmail method.
-
-**Returns:**
-
-* An object that enables encoding and decoding text in the given
- character encoding. Returns null if the name is null or empty, or if
- it names an unrecognized or unsupported encoding.
-
-### GetEncoding
     @Deprecated public static ICharacterEncoding GetEncoding​(String name, boolean forEmail, boolean allowReplacement)
 Deprecated.
 <div class='deprecationComment'>The latest draft of the Encoding Standard includes 'replacement' as an alias
@@ -728,6 +709,25 @@ Deprecated.
  ResolveAliasForEmail method.
 
 * <code>allowReplacement</code> - Has no effect.
+
+**Returns:**
+
+* An object that enables encoding and decoding text in the given
+ character encoding. Returns null if the name is null or empty, or if
+ it names an unrecognized or unsupported encoding.
+
+### GetEncoding
+    public static ICharacterEncoding GetEncoding​(String name, boolean forEmail)
+Returns a character encoding from the given name.
+
+**Parameters:**
+
+* <code>name</code> - A string naming a character encoding. See the ResolveAlias
+ method. Can be null.
+
+* <code>forEmail</code> - If false, uses the encoding resolution rules in the Encoding
+ Standard. If true, uses modified rules as described in the
+ ResolveAliasForEmail method.
 
 **Returns:**
 

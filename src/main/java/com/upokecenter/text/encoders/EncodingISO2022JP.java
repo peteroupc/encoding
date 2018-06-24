@@ -199,6 +199,7 @@ import com.upokecenter.text.*;
               output.write((byte)0x28);
               output.write((byte)0x42);
               count += 3;
+              continue;
             }
           }
           if (this.encoderState == 3 && c == 0xa5) {
@@ -217,7 +218,7 @@ import com.upokecenter.text.*;
             count += 3;
             continue;
           }
-          if (c >= 0xff61 && c <0xffa0) {
+          if (c >= 0xff61 && c < 0xffa0) {
             c = katakana[c - 0xff61];
           }
           if (c == 0x2212) {

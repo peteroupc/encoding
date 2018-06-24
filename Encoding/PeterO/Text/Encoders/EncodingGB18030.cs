@@ -214,7 +214,10 @@ namespace PeterO.Text.Encoders {
  39419, 0xffff };
 
     private static int GB18030CodePoint(int pointer) {
-      // ArgumentAssert.GreaterOrEqual(pointer, 0);
+      if (pointer < 0) {
+  throw new ArgumentException("pointer (" + pointer +
+    ") is less than 0");
+}
       if ((pointer > 39419 && pointer < 189000) || pointer > 1237575) {
         return -1;
       }

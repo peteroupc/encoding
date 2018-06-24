@@ -637,22 +637,7 @@ private Encodings() {
      * encoder and a decoder).
      */
     public static ICharacterEncoding GetEncoding(String name) {
-      return GetEncoding(name, false, false);
-    }
-
-    /**
-     * Returns a character encoding from the given name.
-     * @param name A string naming a character encoding. See the ResolveAlias
-     * method. Can be null.
-     * @param forEmail If false, uses the encoding resolution rules in the Encoding
-     * Standard. If true, uses modified rules as described in the
-     * ResolveAliasForEmail method.
-     * @return An object that enables encoding and decoding text in the given
-     * character encoding. Returns null if the name is null or empty, or if
-     * it names an unrecognized or unsupported encoding.
-     */
-    public static ICharacterEncoding GetEncoding(String name, boolean forEmail) {
-      return GetEncoding(name, forEmail, false);
+      return GetEncoding(name, false);
     }
 
     /**
@@ -670,19 +655,27 @@ private Encodings() {
 * for itself, making this overload unnecessary.
  */
 @Deprecated
-    public static ICharacterEncoding GetEncoding(
+        public static ICharacterEncoding GetEncoding(String name, boolean
+          forEmail, boolean allowReplacement) {
+      return GetEncoding(name, forEmail);
+    }
+
+    /**
+     * Returns a character encoding from the given name.
+     * @param name A string naming a character encoding. See the ResolveAlias
+     * method. Can be null.
+     * @param forEmail If false, uses the encoding resolution rules in the Encoding
+     * Standard. If true, uses modified rules as described in the
+     * ResolveAliasForEmail method.
+     * @return An object that enables encoding and decoding text in the given
+     * character encoding. Returns null if the name is null or empty, or if
+     * it names an unrecognized or unsupported encoding.
+     */
+        public static ICharacterEncoding GetEncoding(
   String name,
-  boolean forEmail,
-  boolean allowReplacement) {
+  boolean forEmail) {
       if (((name) == null || (name).length() == 0)) {
         return null;
-      }
-      if (allowReplacement) {
-        name = TrimAsciiWhite(name);
-        name = ToLowerCaseAscii(name);
-        if (name.equals("replacement")) {
-          return new EncodingReplacement();
-        }
       }
       name = forEmail ? ResolveAliasForEmail(name) :
         ResolveAlias(name);

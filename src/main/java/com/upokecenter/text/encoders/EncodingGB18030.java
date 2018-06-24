@@ -214,6 +214,10 @@ import com.upokecenter.text.*;
  39419, 0xffff };
 
     private static int GB18030CodePoint(int pointer) {
+      if (pointer < 0) {
+  throw new IllegalArgumentException("pointer (" + pointer +
+    ") is less than 0");
+}
       if ((pointer > 39419 && pointer < 189000) || pointer > 1237575) {
         return -1;
       }

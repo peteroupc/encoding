@@ -51,6 +51,10 @@
     <Compile Include="EncodingsTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TestCommon.cs" />
+    <Compile Include="KoreanEUCTest.cs" />
+    <Compile Include="ShiftJISTest.cs" />
+    <Compile Include="Iso2022JPTest.cs" />
+    <Compile Include="EucJPTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

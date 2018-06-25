@@ -55,6 +55,7 @@
     <Compile Include="ShiftJISTest.cs" />
     <Compile Include="Iso2022JPTest.cs" />
     <Compile Include="EucJPTest.cs" />
+    <Compile Include="Big5Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

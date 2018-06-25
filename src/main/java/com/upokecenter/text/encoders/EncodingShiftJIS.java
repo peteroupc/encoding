@@ -33,11 +33,11 @@ import com.upokecenter.text.*;
             }
             this.lead = 0;
             if (cp >= 8836 && cp <= 10715) {
-              return 0xe000 + cp - 8836;
+              return 48508 + cp;
             }
             int c = (cp < 0) ? -1 : Jis0208.IndexToCodePoint(cp);
             if (c < 0) {
-              if (b < 0) {
+              if (b < 0x80) {
                 this.state.PrependOne(b);
               }
               return -2;

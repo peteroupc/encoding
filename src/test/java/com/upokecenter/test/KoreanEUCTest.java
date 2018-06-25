@@ -1,59 +1,58 @@
-using System;
-using NUnit.Framework;
-using PeterO;
-using PeterO.Text;
-using Test;
+package com.upokecenter.test; import com.upokecenter.util.*;
 
-namespace EncodingTest {
-[TestFixture]
+import org.junit.Assert;
+import org.junit.Test;
+import com.upokecenter.util.*;
+import com.upokecenter.text.*;
+
 public class KoreanEUCTest {
-[Test]
+@Test
 public void TestKoreanEUCDecoder() {
 byte[] bytes;
-string str;
+String str;
 ICharacterEncoding charset = Encodings.GetEncoding("euc-kr");
 bytes = new byte[] { (byte)0xc0, (byte)0xdf, 0x1e, 0x33, 0x20, (byte)0xac,
   (byte)0xc3, 0x7d, 0x57 };
 str = "\uc798\u001e3 \ufffd}W";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x03, 0x5d, 0x06, 0x75, (byte)0x86, 0x21, (byte)0xc9,
   (byte)0x98, 0x13, 0x4a, 0x7e, (byte)0xa2, 0x49, 0x52, (byte)0x84, 0x3f };
 str = "\u0003]\u0006u\ufffd!\ufffd\u0013J~\uc91aR\ufffd?";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x2a, 0x1c, 0x5f, (byte)0x81, 0x51, (byte)0xb8, 0x51,
   0x6f };
 str = "*\u001c_\uac26\ud1e1o";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xfc, 0x48, (byte)0xb2, (byte)0xa8, 0x1c, 0x56,
   0x4c, 0x54, 0x67, 0x7f, 0x79, (byte)0x8a, 0x3a, 0x45, 0x6e, 0x4b,
   (byte)0x83, (byte)0xe8 };
 str = "\ufffdH\uaebc\u001cVLTg\u007fy\ufffd:EnK\uaec7";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xc2, 0x77, 0x2a, 0x4d, (byte)0xeb, 0x5f, 0x4c,
   0x55, (byte)0xef, 0x28, (byte)0xa7, (byte)0xd7, (byte)0x96, 0x31 };
 str = "\ud60d*M\ufffd_LU\ufffd(\u3393\ufffd1";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x61, 0x67, 0x29, 0x7e, 0x3d, 0x65, (byte)0xb3, 0x1e,
   0x73, 0x7f, (byte)0xa7, (byte)0xc9 };
 str = "ag)~=e\ufffd\u001es\u007f\u3380";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x55, 0x6f, (byte)0xad, 0x42, 0x5d, 0x17, (byte)0xc5,
   0x19, 0x65, 0x6e, 0x03, 0x16, 0x1f, 0x71, (byte)0x9b, (byte)0xe1, 0x40,
   0x40, 0x3a, 0x62, (byte)0xc2, (byte)0xa3 };
 str = "Uo\ucd62]\u0017\ufffd\u0019en\u0003\u0016\u001fq\uc3ba@@:b\uc9d9";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x38, (byte)0xf6, 0x00, (byte)0x81, 0x4e, 0x18, 0x48,
@@ -63,24 +62,24 @@ bytes = new byte[] { 0x38, (byte)0xf6, 0x00, (byte)0x81, 0x4e, 0x18, 0x48,
 str =
 
   "8\ufffd\u0000\uac22\u0018Hpf~R\ubf84\ufffd5\ub597\ufffd}\u54ab=Z\ucf75\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xba, (byte)0xc7, 0x36, (byte)0xc2, 0x21, 0x2d,
   0x77, (byte)0xc1, 0x01, (byte)0xf3, (byte)0xf7, 0x6b, (byte)0xc2, 0x4f,
   (byte)0xca, 0x64, (byte)0x8c, (byte)0xd0, (byte)0xe6, 0x43, (byte)0xd0 };
 str = "\ubd496\ufffd!-w\ufffd\u0001\u7db5k\ud5df\ufffdd\ub68d\ufffdC\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x06, (byte)0xc8, 0x61 };
 str = "\u0006\ufffda";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x70, (byte)0xb5, 0x16, 0x34 };
 str = "p\ufffd\u00164";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xf4, 0x5f, 0x5b, 0x2a, (byte)0xb3, 0x42,
@@ -88,36 +87,36 @@ bytes = new byte[] { (byte)0xf4, 0x5f, 0x5b, 0x2a, (byte)0xb3, 0x42,
   (byte)0xfb, (byte)0xd4, (byte)0x87, (byte)0xaa, 0x28, (byte)0xdf, 0x64,
   0x65 };
 str = "\ufffd_[*\ucfcd\ufffd\ufffdA\ucfd3\ufffd\ufffd\ufffd(\ufffdde";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x73, (byte)0xb3, 0x2d };
 str = "s\ufffd-";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xfc, 0x67, 0x43, 0x2b, (byte)0xe4, (byte)0xe6,
   (byte)0xde, (byte)0xe3, (byte)0x95, (byte)0xc8, (byte)0x9c, 0x2f, 0x74,
   0x35, 0x44, 0x39, 0x5d, 0x22, 0x5f, 0x39, (byte)0xe9, 0x07, (byte)0xd1 };
 str = "\ufffdgC+\u4ef0\u7802\ube6f\ufffd/t5D9]\"_9\ufffd\u0007\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xa0, 0x6f };
 str = "\uc7ef";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x52, 0x70, 0x3f, 0x78, 0x75, 0x74, (byte)0xa1, 0x5f,
   0x7f };
 str = "Rp?xut\ufffd_\u007f";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xb1, 0x34, 0x40, 0x7a, 0x12, (byte)0xfa, 0x3c,
   0x1f, (byte)0x85, 0x69, 0x29 };
 str = "\ufffd4@z\u0012\ufffd<\u001f\uafec)";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0x99, 0x7b, 0x22, (byte)0xe7, (byte)0xf0, 0x71,
@@ -127,12 +126,12 @@ bytes = new byte[] { (byte)0x99, 0x7b, 0x22, (byte)0xe7, (byte)0xf0, 0x71,
 str =
 
   "\ufffd\u007b\"\u55daq\u76d6\ubbf6t\ucd2b\ud463=D\\\u9b1a\u001b\ufffd\u6e38\uac5a";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x28, (byte)0x9e, 0x63, (byte)0xa6, 0x0a, (byte)0xfe };
 str = "(\uc5bf\ufffd\u000a\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x1a, (byte)0x8c, (byte)0xcb, (byte)0x8b, 0x65,
@@ -142,47 +141,47 @@ bytes = new byte[] { 0x1a, (byte)0x8c, (byte)0xcb, (byte)0x8b, 0x65,
 str =
 
   "\u001a\ub688\ub54e\ub005\u3163Zyn/\ucd56\ufffd;\ufffd#4\ufffd\\\u001c&\u0410(";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x41, 0x10, (byte)0xdf, 0x6e, 0x42, 0x0f };
 str = "A\u0010\ufffdnB\u000f";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0x90, 0x11, 0x33, (byte)0x83 };
 str = "\ufffd\u00113\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x48, (byte)0xb9, (byte)0xd3, 0x2b, 0x5b, 0x32,
   (byte)0xc8, 0x1f, 0x25, 0x64, (byte)0xf5, 0x17, (byte)0xd4, 0x1d, 0x2c,
   0x51, 0x27, (byte)0x8e, (byte)0xee };
 str = "H\ubc09+[2\ufffd\u001f%d\ufffd\u0017\ufffd\u001d\u002cQ'\ub872";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xc8, (byte)0xbe, 0x3b, (byte)0xb8, (byte)0x92 };
 str = "\ud6a1;\ud21b";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x66, (byte)0xef, 0x37, 0x2f, 0x1f, 0x6e, 0x40, 0x24,
   0x54, 0x5e, 0x6f, (byte)0xef, (byte)0xf0, (byte)0xe0 };
 str = "f\ufffd7/\u001fn@$T^o\u7a7d\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xe9, 0x56, (byte)0xc4, (byte)0xec, 0x23, 0x01,
   0x2c, 0x36, 0x6d, 0x48 };
 str = "\ufffdV\ucfc4#\u0001\u002c6mH";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x74, (byte)0xce, 0x34, 0x2b, 0x42, 0x6b, (byte)0x88,
   0x79, 0x70 };
 str = "t\ufffd4+Bk\ub2b6p";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0x93, (byte)0x89, 0x26, (byte)0xb7, (byte)0xc0,
@@ -190,83 +189,83 @@ bytes = new byte[] { (byte)0x93, (byte)0x89, 0x26, (byte)0xb7, (byte)0xc0,
   (byte)0xb3, 0x6b, (byte)0xf1, (byte)0xab, (byte)0xa0, (byte)0xc0, 0x6d,
   (byte)0x9e };
 str = "\ubc63&\ub81dxZ\ufffd4\ufffd \"8CT\ucff8\u4e3b\uc853m\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x07 };
 str = "\u0007";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xbe };
 str = "\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0x9a, 0x26, 0x3c, (byte)0xa5, (byte)0xce, 0x59,
   (byte)0xf3, 0x5b, (byte)0x90, (byte)0x92, (byte)0x8f, (byte)0xef, 0x29,
   0x33 };
 str = "\ufffd&<\u039eY\ufffd[\ub9b3\ub945)3";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x02, 0x6c, (byte)0xdb };
 str = "\u0002l\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xd1, (byte)0xc8, 0x40, 0x77, (byte)0xf7 };
 str = "\u9a0e@w\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x7d, (byte)0xa3, 0x18, 0x22, (byte)0xf5, (byte)0xb1 };
 str = "}\ufffd\u0018\"\u8d85";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x5d, 0x3a, (byte)0xcb, (byte)0xc9, 0x0b, 0x5d,
   (byte)0x93, 0x66, 0x53, (byte)0x87, (byte)0xc0, (byte)0xa2, 0x55, 0x63,
   0x55, (byte)0xde, (byte)0xe5, (byte)0x8a, (byte)0x80 };
 str = "]:\u6f11\u000b]\ubc3cS\ub229\uc926cU\u7940\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xc5, 0x4b, (byte)0xf0, (byte)0xcb, (byte)0xed,
   (byte)0xfa, (byte)0xdc, (byte)0x97, 0x0a, 0x22, 0x16, 0x42, 0x49,
   (byte)0xd8, 0x0b, 0x32, 0x72, 0x30 };
 str = "\ud723\u69fd\u85cf\ufffd\u000a\"\u0016BI\ufffd\u000b2r0";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xc0, (byte)0xa3, 0x29, 0x44 };
 str = "\uc6f0)D";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x21, 0x21, 0x6d, (byte)0xa6, 0x69, 0x66, 0x36, 0x3b,
   (byte)0xeb, 0x67, 0x2c, 0x63, (byte)0xc9, 0x5e, 0x4f, 0x30, (byte)0xef,
   (byte)0xac, 0x66, (byte)0xfc, 0x44, (byte)0xc6, (byte)0xdc };
 str = "!!m\ucad2f6;\ufffdg\u002cc\ufffd^O0\u8a6ef\ufffdD\ud37d";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x58, 0x7d, 0x2f, (byte)0xdd, 0x51, (byte)0xe3,
   (byte)0xae, 0x34, 0x1c, 0x38, (byte)0xde, (byte)0x85, (byte)0xf2, 0x4d,
   0x23, 0x70, 0x72, 0x73, (byte)0xf8, (byte)0xab, 0x0d };
 str = "X}/\ufffdQ\u53474\u001c8\ufffd\ufffdM#prs\u724c\u000d";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x3a, (byte)0xcf, (byte)0xd1, 0x6e, 0x78 };
 str = ":\u5c40nx";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xe7, 0x36, 0x20, 0x7d, 0x67, 0x2c, 0x23, 0x72,
   0x56, 0x66, (byte)0xbd };
 str = "\ufffd6 }g\u002c#rVf\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x37, (byte)0xfb, 0x2c, (byte)0xb6, 0x4f, 0x58, 0x4f,
@@ -274,7 +273,7 @@ bytes = new byte[] { 0x37, (byte)0xfb, 0x2c, (byte)0xb6, 0x4f, 0x58, 0x4f,
   (byte)0xb1, 0x5b, 0x35, (byte)0xb1, 0x20, 0x48, (byte)0xcf, 0x75, 0x7d };
 str =
   "7\ufffd\u002c\ud114XO\"\ufffdM\u001b\ufffdV\ufffd\ufffd[5\ufffd H\ufffdu}";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x3f, (byte)0xbe, (byte)0xe1, 0x38, (byte)0xe8,
@@ -285,23 +284,23 @@ bytes = new byte[] { 0x3f, (byte)0xbe, (byte)0xe1, 0x38, (byte)0xe8,
 str =
 
   "?\uc5808\u7a69\ufffd\u0009|Z\uff0c\uc21c\ufffd]\ufffd1\ufffdV\ufffd*Hn\uc075\uac82y|";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x35, (byte)0x99, 0x76, (byte)0x8e, (byte)0x85, 0x01,
   0x7e, (byte)0xe6, 0x76, 0x5c, 0x27, 0x25, 0x02 };
 str = "5\uc176\ub7e2\u0001~\ufffdv\\'%\u0002";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x44 };
 str = "D";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x43, 0x04, (byte)0xf3, (byte)0xf7, 0x4f, 0x77, 0x22 };
 str = "C\u0004\u7db5Ow\"";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xb2, (byte)0xd0, (byte)0xe0, 0x2b, (byte)0xc6,
@@ -309,67 +308,67 @@ bytes = new byte[] { (byte)0xb2, (byte)0xd0, (byte)0xe0, 0x2b, (byte)0xc6,
   0x26, (byte)0xd8, 0x68, (byte)0xb2, (byte)0xf8, 0x12, (byte)0x89, 0x4c,
   0x2d };
 str = "\uaf65\ufffd+\ufffd<\uc419=R\ufffd=M[?&\ufffdh\ub04c\u0012\ub379-";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x22, (byte)0xa1, (byte)0xa4, (byte)0xcd, (byte)0xa8,
   (byte)0xe5, 0x6b, 0x0c, (byte)0xad, (byte)0xc6, 0x2e, 0x58, 0x3c,
   (byte)0x8c };
 str = "\"\u00b7\u7e6b\ufffdk\u000c\ufffd.X<\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xf0, 0x2e, (byte)0xed, 0x5c, (byte)0xed };
 str = "\ufffd.\ufffd\\\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x6b, (byte)0xc4, 0x73, 0x55, 0x06, 0x7b, 0x22, 0x12,
   0x67, (byte)0x89, 0x24, 0x2f, (byte)0xe3, 0x38, 0x22, 0x5d, 0x42,
   (byte)0xd2, 0x7c, 0x36, 0x46 };
 str = "k\ud6e5U\u0006\u007b\"\u0012g\ufffd$/\ufffd8\"]B\ufffd|6F";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x3d, (byte)0xb9, (byte)0xa0, 0x21, (byte)0xef,
   (byte)0xdb, (byte)0xc5 };
 str = "=\ud28c!\u65cc\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0x83, (byte)0x92, 0x2f };
 str = "\uae5a/";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xb4, 0x62, 0x69, 0x6a, 0x11, (byte)0x9b,
   (byte)0xe6, (byte)0xcc, 0x28, (byte)0xbf, 0x68, (byte)0xe4, 0x06, 0x3b,
   (byte)0xc2, (byte)0xae, 0x6e };
 str = "\ud052ij\u0011\uc3bf\ufffd(\ud4c0\ufffd\u0006;\uc9f0n";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x29 };
 str = ")";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xc5, (byte)0xe5, (byte)0xc5, 0x02, 0x21,
   (byte)0xdb, 0x66 };
 str = "\ud1a1\ufffd\u0002!\ufffdf";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x1e, 0x5e, 0x28, (byte)0x92, 0x7f, (byte)0x9d, 0x57,
   (byte)0xd4, 0x45, (byte)0xcd, (byte)0xc6, 0x30, (byte)0xa9, (byte)0x8c,
   0x1c, (byte)0xdc, 0x3b, 0x64, 0x07, 0x73, 0x72, 0x5a };
 str = "\u001e^(\ufffd\u007f\uc4c2\ufffdE\u80a10\ucc08\u001c\ufffd;d\u0007srZ";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x1b, 0x2a, (byte)0xbb, 0x40, (byte)0x8f, (byte)0xab };
 str = "\u001b*\ufffd@\ub8f6";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xbe, 0x6f, 0x76, 0x3a, (byte)0xee, (byte)0xe8,
@@ -379,18 +378,18 @@ bytes = new byte[] { (byte)0xbe, 0x6f, 0x76, 0x3a, (byte)0xee, (byte)0xe8,
 str =
 
   "\ud465v:\u8fea\ud45fU\ufffd^<\u822a\ucde2\ufffd?\ufffd\u0011\ufffd\ufffd%\ufffd^";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xb2, 0x6b, (byte)0x9a, 0x3a, 0x4e, 0x47 };
 str = "\ucf98\ufffd:NG";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x76, (byte)0xe3, 0x04, 0x06, 0x40, 0x13, 0x28, 0x1d,
   (byte)0xf0, 0x5f, 0x21, (byte)0xec };
 str = "v\ufffd\u0004\u0006@\u0013(\u001d\ufffd_!\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x67, 0x06, (byte)0xbf, (byte)0xb0, (byte)0x9d, 0x0d,
@@ -400,82 +399,82 @@ bytes = new byte[] { 0x67, 0x06, (byte)0xbf, (byte)0xb0, (byte)0x9d, 0x0d,
 str =
 
   "g\u0006\uc5fc\ufffd\u000d\ufffd#\ufffd\u0002\u0002\uc520\ufffd\u0018m-?Ia\u9296\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x32, 0x30, 0x25, 0x43 };
 str = "20%C";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xe5, (byte)0xc6, 0x54, (byte)0xd3, (byte)0xde };
 str = "\u6a23T\u5927";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xaa, 0x2d, 0x3e, (byte)0xfe, 0x09, 0x14,
   (byte)0xd0, 0x4a, (byte)0xd8, 0x68, 0x43, 0x48, 0x0b, 0x1d };
 str = "\ufffd->\ufffd\u0009\u0014\ufffdJ\ufffdhCH\u000b\u001d";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x0e, 0x4e, 0x67, 0x4f };
 str = "\u000eNgO";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x64, 0x4a, 0x59, 0x30, (byte)0xb6, 0x06, 0x3a,
   (byte)0xc2, 0x40, 0x75 };
 str = "dJY0\ufffd\u0006:\ufffd@u";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xbb, (byte)0xce, (byte)0xfb, (byte)0x8d,
   (byte)0xb5, 0x69, (byte)0xf7, (byte)0xb5, (byte)0xd7 };
 str = "\ubf94\ufffd\ud0bf\u5b95\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x7d, 0x26, 0x01, (byte)0xb4, (byte)0x9c, (byte)0x9c,
   0x2b };
 str = "}&\u0001\ud090\ufffd+";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x00, 0x4e, 0x0b, 0x56, 0x20, 0x3f, 0x3e, 0x0b, 0x47,
   (byte)0xc7, (byte)0xc5, 0x26, 0x5f };
 str = "\u0000N\u000bV ?>\u000bG\ud515&_";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x07, 0x50, (byte)0xeb, 0x01, (byte)0xe7, 0x28,
   (byte)0xbd, (byte)0x8e, (byte)0x93, 0x39, 0x24 };
 str = "\u0007P\ufffd\u0001\ufffd(\ud425\ufffd9$";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xc6, 0x48, 0x64, 0x55, 0x35 };
 str = "\ud795dU5";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xbd, 0x58, (byte)0xf6, 0x13, 0x2e };
 str = "\ud3f5\ufffd\u0013.";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x78, (byte)0xae, (byte)0xef, (byte)0xf0, 0x40,
   (byte)0xa0, 0x3e, (byte)0xdf, 0x5f, (byte)0x91, (byte)0xdc, (byte)0xa3,
   0x3c, (byte)0xd7, (byte)0x90, 0x35, 0x70, 0x30, 0x61, 0x66, 0x35 };
 str = "x\ufffd\ufffd@\ufffd>\ufffd_\ubafd\ufffd<\ufffd5p0af5";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0x87, (byte)0x8e, 0x66, 0x36, 0x6d, 0x79, 0x1a,
   0x49, 0x53, (byte)0xd8, (byte)0xb4, (byte)0xa0, (byte)0xe0, 0x19, 0x34,
   (byte)0xc0, (byte)0x85, (byte)0xe4 };
 str = "\ub1e6f6my\u001aIS\u5a29\uc877\u00194\ud53e\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x37, 0x20, (byte)0x9c, 0x4c, 0x3c, (byte)0x91, 0x64,
@@ -483,54 +482,54 @@ bytes = new byte[] { 0x37, 0x20, (byte)0x9c, 0x4c, 0x3c, (byte)0x91, 0x64,
   0x70, 0x5c, 0x4a, (byte)0xcf, 0x24, (byte)0xdc, (byte)0xcc, 0x73, 0x5e,
   (byte)0xe3, 0x4a, 0x37 };
 str = "7 \uc3ec<\uba76zR \ufffd!:?\ufffdL\u000bp\\J\ufffd$\u83e9s^\ufffdJ7";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xe2, 0x51, 0x46, 0x4d, (byte)0xa0, (byte)0xfc,
   0x7e };
 str = "\ufffdQFM\uc8a2~";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0x8e, 0x08, 0x64, 0x0b, 0x42 };
 str = "\ufffd\u0008d\u000bB";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xa4, 0x42, 0x7a, (byte)0xa0, (byte)0x97, 0x19,
   0x33, 0x3a };
 str = "\uc9dfz\uc81b\u00193:";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0x8e, 0x54, 0x10, 0x6e, 0x28, 0x29, (byte)0xbe,
   0x0e, (byte)0xd3, (byte)0xef, (byte)0xe3, (byte)0xf6, 0x28, (byte)0xa5,
   0x71, (byte)0x90, 0x04, (byte)0xfe, 0x35 };
 str = "\ub7bb\u0010n()\ufffd\u000e\u5200\u8fc5(\uca7b\ufffd\u0004\ufffd5";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xd8, (byte)0x93, 0x51, (byte)0xab, 0x62,
   (byte)0xae, (byte)0xcc, (byte)0xe5, (byte)0xab, 0x61, 0x26, (byte)0x86,
   (byte)0x9d };
 str = "\ufffdQ\uccbb\ufffd\u6930a&\ub114";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x48 };
 str = "H";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x24, 0x68, (byte)0xf2, 0x3e, (byte)0xae, (byte)0xb8,
   (byte)0x9b };
 str = "$h\ufffd>\ufffd\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x1d, 0x35, 0x2b, 0x72, 0x75, (byte)0xce, (byte)0xb0 };
 str = "\u001d5+ru\u5bec";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x54, 0x45, 0x40, 0x72, (byte)0xc9, 0x3d, 0x63,
@@ -539,14 +538,14 @@ bytes = new byte[] { 0x54, 0x45, 0x40, 0x72, (byte)0xc9, 0x3d, 0x63,
   (byte)0xd4, 0x75, (byte)0xdf, (byte)0xa5 };
 str =
   "TE@r\ufffd=c\ub917u\uf9ca\ufffd`d?y\ub46c\u001bC\ufffd\u000e\ufffdu\u6c55";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0x84, 0x0e, (byte)0xf2, 0x1f, 0x0b, 0x06, 0x2a,
   0x39, (byte)0xff, 0x3f, 0x3d, 0x03, (byte)0xc7, 0x6e, (byte)0xc8,
   (byte)0xa3, (byte)0xc9 };
 str = "\ufffd\u000e\ufffd\u001f\u000b\u0006*9\ufffd?=\u0003\ufffdn\ud638\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xad, (byte)0xba, 0x38, 0x1a, (byte)0xcd,
@@ -556,42 +555,42 @@ bytes = new byte[] { (byte)0xad, (byte)0xba, 0x38, 0x1a, (byte)0xcd,
 str =
 
   "\ufffd8\u001a\u63a7QXN4\u59ff\ubcdd\ufffd7\uaf44\u001a\u0018\u000f\ub820\uad60E!6";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x6c, 0x03, (byte)0x9c, 0x78, (byte)0xbc, 0x69, 0x0a,
   (byte)0xbc, (byte)0xfe, 0x73, (byte)0xfa, 0x5a, 0x50, (byte)0xbd,
   (byte)0x96, (byte)0xf2 };
 str = "l\u0003\uc418\ud395\u000a\uc22ds\ufffdZP\ud42d\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xfc, 0x4f, 0x6d, 0x7c, (byte)0xf0, (byte)0x9c,
   (byte)0xf9, (byte)0xf6, (byte)0x99, 0x64, (byte)0x8e, 0x54 };
 str = "\ufffdOm|\ufffd\u6052\uc15d\ub7bb";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x4e, (byte)0xef, 0x13, (byte)0xec };
 str = "N\ufffd\u0013\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x7c, 0x30, 0x51, (byte)0xbb, 0x32, 0x12, 0x03, 0x71,
   (byte)0xac };
 str = "|0Q\ufffd2\u0012\u0003q\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xfb, 0x7d, 0x67, 0x2c };
 str = "\ufffd}g\u002c";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x3f, 0x4c, (byte)0x8d, (byte)0x8e, 0x5b, 0x0d,
   (byte)0xc1, (byte)0xea, (byte)0x9e };
 str = "?L\ub70b[\u000d\uc96c\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x53, 0x64, 0x71, (byte)0xf1, (byte)0xf1, 0x22,
@@ -600,7 +599,7 @@ bytes = new byte[] { 0x53, 0x64, 0x71, (byte)0xf1, (byte)0xf1, 0x22,
   (byte)0xbc, (byte)0x8c, 0x11, 0x4e, (byte)0xfa };
 str =
   "Sdq\u847a\"\ufffd)A'y\uca82\ud1a8\ud459h\ubf84O\u6d88\ufffd\u0011N\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xf6, (byte)0xa4, 0x6d, (byte)0xdc, (byte)0xcb,
@@ -608,7 +607,7 @@ bytes = new byte[] { (byte)0xf6, (byte)0xa4, 0x6d, (byte)0xdc, (byte)0xcb,
   0x4d, 0x09, 0x0d, (byte)0xea, (byte)0x81, 0x44, (byte)0xca, 0x7e,
   (byte)0xe2, (byte)0xb7, (byte)0x95 };
 str = "\u5634m\u752b\u905d*=3\ufffdNM\u0009\u000d\ufffdD\ufffd~\u7d8f\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xbc, 0x09, 0x3c, (byte)0xfc, 0x4b, 0x06, 0x74,
@@ -617,44 +616,44 @@ bytes = new byte[] { (byte)0xbc, 0x09, 0x3c, (byte)0xfc, 0x4b, 0x06, 0x74,
 str =
 
   "\ufffd\u0009<\ufffdK\u0006te\\\uc321\ub633\u30e2>\ufffdr\ufffd\u001cm!K\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xa0, 0x05, (byte)0x86, 0x65, (byte)0xe7,
   (byte)0xa1, 0x50, 0x3f, 0x02, (byte)0x9d, 0x67, (byte)0x9e, (byte)0xf0,
   0x35, 0x23 };
 str = "\ufffd\u0005\ub0d9\uf9a6P?\u0002\uc4cc\uc6925#";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x1f, (byte)0xb9 };
 str = "\u001f\ufffd";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { (byte)0xe9, 0x2a, 0x2c, (byte)0xb6, (byte)0xa8,
   (byte)0xfa, (byte)0x82, (byte)0xc7, 0x3d, (byte)0xc5, 0x1a, 0x43, 0x54,
   (byte)0xf9, (byte)0x9a, (byte)0xba, 0x20 };
 str = "\ufffd*\u002c\ub54d\ufffd\ufffd=\ufffd\u001aCT\ufffd\ufffd ";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x51, 0x7a, (byte)0x95, 0x17, (byte)0xa9, (byte)0x82,
   0x62, 0x5f, (byte)0xe2, 0x14, 0x68, 0x48 };
 str = "Qz\ufffd\u0017\ucbfeb_\ufffd\u0014hH";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
 bytes = new byte[] { 0x53, (byte)0x94, 0x19, 0x24, 0x52, 0x1c, (byte)0x91,
   0x02 };
 str = "S\ufffd\u0019$R\u001c\ufffd\u0002";
-Assert.AreEqual(
+Assert.assertEquals(
  str,
  Encodings.DecodeToString(charset, bytes));
-}[Test]
+}@Test
 public void TestKoreanEUCEncoder() {
 byte[] bytes;
-string str;
+String str;
 ICharacterEncoding charset = Encodings.GetEncoding("euc-kr");
 str = "\u61f2";
 bytes = new byte[] { (byte)0xf3, (byte)0xa4 };
@@ -1208,6 +1207,5 @@ bytes = new byte[] { (byte)0x91, (byte)0xac, (byte)0xa3, (byte)0xa8,
 TestCommon.AssertByteArraysEqual(
   bytes,
   Encodings.EncodeToBytes(str, charset));
-}
 }
 }

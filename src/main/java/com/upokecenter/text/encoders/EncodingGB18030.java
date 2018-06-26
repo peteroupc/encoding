@@ -299,12 +299,16 @@ import com.upokecenter.text.*;
           }
           if (this.gbk3 != 0) {
             c = -1;
-            if (b >= 0x30 && b <= 0x39) {
-            int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
+
+                    if (b >= 0x30 && b <= 0x39) {
+                    int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
                 126) + this.gbk3 - 0x81) * 10) + b - 0x30;
               c = GB18030CodePoint(ap);
               if (c< 0) {
- return -2;
+                // TODO: This step may possibly be missing
+                // from the current Encoding Standard
+                    this.gbk1 = this.gbk2 = this.gbk3 = 0;
+                    return -2;
 }
             } else {
               this.state.PrependThree(this.gbk2, this.gbk3, b);

@@ -521,6 +521,8 @@ An object that enables encoding and decoding text in the given character encodin
         bool forEmail,
         bool allowReplacement);
 
+<b>Deprecated.</b> The latest draft of the Encoding Standard includes 'replacement' as an alias for itself, making this overload unnecessary.
+
 Returns a character encoding from the given name.
 
 <b>Parameters:</b>
@@ -529,7 +531,7 @@ Returns a character encoding from the given name.
 
  * <i>forEmail</i>: If false, uses the encoding resolution rules in the Encoding Standard. If true, uses modified rules as described in the ResolveAliasForEmail method.
 
- * <i>allowReplacement</i>: If true, allows the label `replacement`  to return the replacement encoding.
+ * <i>allowReplacement</i>: Has no effect.
 
 <b>Return Value:</b>
 
@@ -569,7 +571,7 @@ Resolves a character encoding's name to a standard form. This involves changing 
 
  * The special-purpose encoding  `x-user-defined`
 
- * The special-purpose encoding  `replacement` , which this function returns only if one of several aliases are passed to it, as defined in the Encoding Standard.
+ * The special-purpose encoding  `replacement` .
 
  * 28 legacy single-byte encodings:
 

@@ -464,8 +464,8 @@ CodePageEncoding cpe = new CodePageEncoding(Encodings.StringToInput(builder.toSt
                 if (i >= 0xd800 && i < 0xe000) {
                     continue;
                 }
-         if (i == 0xa5 || i == 0x203e || i == 0x0e || i == 0x0f || i == 0x1b ||
-                i == 0x2212 || i == 0xe5e5) {
+        if (i == 0xa5 || i == 0x203e || i == 0x0e || i == 0x0f || i == 0x1b ||
+            i == 0x2212 || i == 0xe5e5 || (i >= 0xff61 && i <= 0xff9f)) {
                     // ignore certain characters that intentionally
                     // don't round trip in certain encodings
                     continue;

@@ -521,8 +521,6 @@ An object that enables encoding and decoding text in the given character encodin
         bool forEmail,
         bool allowReplacement);
 
-<b>Deprecated.</b> The latest draft of the Encoding Standard includes 'replacement' as an alias for itself, making this overload unnecessary.
-
 Returns a character encoding from the given name.
 
 <b>Parameters:</b>

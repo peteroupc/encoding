@@ -283,19 +283,16 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String)"]/*'/>
     public static ICharacterEncoding GetEncoding(string name) {
-      return GetEncoding(name, false);
+      return GetEncoding(name, false, true);
     }
 
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]/*'/>
-        [Obsolete
-
-  ("The latest draft of the Encoding Standard includes 'replacement' as an alias for itself, making this overload unnecessary.")]
         public static ICharacterEncoding GetEncoding(string name, bool
           forEmail, bool allowReplacement) {
-       // TODO: Reconsider obsolete declaration and reject "replacement"
-       // if allowReplacement = true
-      return GetEncoding(name, forEmail);
+      return (!allowReplacement && name != null &&
+        ToLowerCaseAscii(name).Equals("replacement")) ? (null) :
+        (GetEncoding(name, forEmail));
     }
 
     /// <include file='../../docs.xml'

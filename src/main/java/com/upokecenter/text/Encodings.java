@@ -637,7 +637,7 @@ private Encodings() {
      * encoder and a decoder).
      */
     public static ICharacterEncoding GetEncoding(String name) {
-      return GetEncoding(name, false);
+      return GetEncoding(name, false, true);
     }
 
     /**
@@ -651,15 +651,12 @@ private Encodings() {
      * @return An object that enables encoding and decoding text in the given
      * character encoding. Returns null if the name is null or empty, or if
      * it names an unrecognized or unsupported encoding.
-     * @deprecated The latest draft of the Encoding Standard includes 'replacement' as an alias
-* for itself, making this overload unnecessary.
- */
-@Deprecated
+     */
         public static ICharacterEncoding GetEncoding(String name, boolean
           forEmail, boolean allowReplacement) {
-       // TODO: Reconsider obsolete declaration and reject "replacement"
-       // if allowReplacement = true
-      return GetEncoding(name, forEmail);
+      return (!allowReplacement && name != null &&
+        ToLowerCaseAscii(name).equals("replacement")) ? (null) :
+        (GetEncoding(name, forEmail));
     }
 
     /**

@@ -289,9 +289,12 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]/*'/>
         [Obsolete
+
   ("The latest draft of the Encoding Standard includes 'replacement' as an alias for itself, making this overload unnecessary.")]
         public static ICharacterEncoding GetEncoding(string name, bool
           forEmail, bool allowReplacement) {
+       // TODO: Reconsider obsolete declaration and reject "replacement"
+       // if allowReplacement = true
       return GetEncoding(name, forEmail);
     }
 

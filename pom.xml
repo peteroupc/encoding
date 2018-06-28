@@ -4,7 +4,7 @@
   <groupId>com.github.peteroupc</groupId>
   <artifactId>encoding</artifactId>
   <packaging>jar</packaging>
-  <version>0.4.0-SNAPSHOT</version>
+  <version>0.3.2-SNAPSHOT</version>
   <name>Encoding</name>
   <description>A Java library that implements character encodings used in Web pages and email.</description>
   <url>https://github.com/peteroupc/Encoding</url>

@@ -3,11 +3,11 @@ using System.IO;
 using PeterO;
 using PeterO.Text;
 
-namespace PeterO.Text.Encoders
-{
+namespace PeterO.Text.Encoders {
     internal class EncodingGB18030 : ICharacterEncoding
     {
-        private static readonly int [] ValueGb18030table = new int [] { 0, 0x0080,
+      private static readonly int[] ValueGb18030table = new int [] { 0,
+          0x0080,
     36, 0x00a5,
     38, 0x00a9,
     45, 0x00b2,
@@ -215,8 +215,7 @@ namespace PeterO.Text.Encoders
  39394, 0xffe6,
  39419, 0xffff };
 
-        private static int GB18030CodePoint (int pointer)
-        {
+        private static int GB18030CodePoint (int pointer) {
             if (pointer < 0) {
                 throw new ArgumentException ("pointer (" + pointer +
                   ") is less than 0");
@@ -238,7 +237,9 @@ namespace PeterO.Text.Encoders
                     break;
                 }
             }
-            if (v < 0) throw new InvalidOperationException ("Internal error");
+            if (v < 0) {
+ throw new InvalidOperationException ("Internal error");
+}
             if (v >= ValueGb18030table.Length) {
                 return -1;
             }
@@ -252,8 +253,7 @@ namespace PeterO.Text.Encoders
             }
         }
 
-        private static int GB18030Pointer (int codepoint)
-        {
+        private static int GB18030Pointer (int codepoint) {
             if (codepoint < 0x80 || codepoint >= 0x110000) {
                 return -1;
             }
@@ -287,104 +287,99 @@ namespace PeterO.Text.Encoders
             private readonly DecoderState state;
             private int gbk1, gbk2, gbk3;
 
-            public Decoder ()
-            {
+            public Decoder () {
                 this.state = new DecoderState (3);
             }
 
-            public int ReadChar (IByteReader stream)
-            {
+            public int ReadChar (IByteReader stream) {
                 int c;
                 while (true) {
                     int b;
                     b = this.state.ReadInputByte (stream);
                     if (b < 0) {
-                        if ((this.gbk1 | this.gbk2 | this.gbk3) == 0) {
-                            return -1;
-                        }
-                        this.gbk1 = this.gbk2 = this.gbk3 = 0;
-                        return -2;
+                    if ((this.gbk1 | this.gbk2 | this.gbk3) == 0) {
+                    return -1;
+                    }
+                    this.gbk1 = this.gbk2 = this.gbk3 = 0;
+                    return -2;
                     }
                     if (this.gbk3 != 0) {
-                        c = -1;
+                    c = -1;
 #if DEBUG
-                        if (this.gbk1 < 0x81) {
-                            throw new ArgumentException ("this.gbk1 (" + this.gbk1 +
-                              ") is less than " + 0x81);
-                        }
-                        if (this.gbk2 < 0x30) {
-                            throw new ArgumentException ("this.gbk2 (" + this.gbk2 +
-                              ") is less than " + 0x30);
-                        }
-                        if (this.gbk3 < 0x81) {
-                            throw new ArgumentException ("this.gbk3 (" + this.gbk3 +
-                              ") is less than " + 0x81);
-                        }
+                    if (this.gbk1 < 0x81) {
+                    throw new ArgumentException ("this.gbk1 (" + this.gbk1 +
+                    ") is less than " + 0x81);
+                    }
+                    if (this.gbk2 < 0x30) {
+                    throw new ArgumentException ("this.gbk2 (" + this.gbk2 +
+                    ") is less than " + 0x30);
+                    }
+                    if (this.gbk3 < 0x81) {
+                    throw new ArgumentException ("this.gbk3 (" + this.gbk3 +
+                    ") is less than " + 0x81);
+                    }
 #endif
 
-                        if (b >= 0x30 && b <= 0x39) {
+                    if (b >= 0x30 && b <= 0x39) {
 #if DEBUG
-                            if (b < 0x30) {
-                                throw new ArgumentException ("b (" + b + ") is less than " +
-                                  0x30);
-                            }
+                    if (b < 0x30) {
+                    throw new ArgumentException ("b (" + b + ") is less than " +
+                    0x30);
+                    }
 #endif
 
-                            int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
-                        126) + this.gbk3 - 0x81) * 10) + b - 0x30;
-                            c = GB18030CodePoint (ap);
-                            // TODO: This step may possibly be missing
-                            // from the current Encoding Standard
-                            this.gbk1 = this.gbk2 = this.gbk3 = 0;
-                            if (c < 0) {
-                                return -2;
-                            }
-                            return c;
-                        } else {
-                            this.state.PrependThree (this.gbk2, this.gbk3, b);
-                            this.gbk1 = this.gbk2 = this.gbk3 = 0;
-                            return -2;
-                        }
+                    int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
+                    126) + this.gbk3 - 0x81) * 10) + b - 0x30;
+                    c = GB18030CodePoint (ap);
+                    // TODO: This step may possibly be missing
+                    // from the current Encoding Standard
+                    this.gbk1 = this.gbk2 = this.gbk3 = 0;
+                    return (c < 0) ? (-2) : (c);
+                    } else {
+                    this.state.PrependThree (this.gbk2, this.gbk3, b);
+                    this.gbk1 = this.gbk2 = this.gbk3 = 0;
+                    return -2;
+                    }
                     }
                     if (this.gbk2 != 0) {
-                        if (b >= 0x81 && b <= 0xfe) {
-                            this.gbk3 = b;
-                            continue;
-                        }
-                        this.state.PrependTwo (this.gbk2, b);
-                        this.gbk1 = this.gbk2 = 0;
-                        return -2;
+                    if (b >= 0x81 && b <= 0xfe) {
+                    this.gbk3 = b;
+                    continue;
+                    }
+                    this.state.PrependTwo (this.gbk2, b);
+                    this.gbk1 = this.gbk2 = 0;
+                    return -2;
                     }
                     if (this.gbk1 != 0) {
-                        if (b >= 0x30 && b <= 0x39) {
-                            this.gbk2 = b;
-                            continue;
-                        }
-                        int a1 = this.gbk1;
-                        var ap = -1;
-                        this.gbk1 = 0;
-                        c = -1;
-                        int a2 = (b < 0x7f) ? 0x40 : 0x41;
-                        if ((b >= 0x40 && b <= 0x7e) || (b >= 0x80 && b <= 0xfe)) {
-                            ap = ((a1 - 0x81) * 190) + (b - a2);
-                            c = Gb18030.IndexToCodePoint (ap);
-                        }
-                        if (c < 0) {
-                            if (b < 0x80) {
-                                this.state.PrependOne (b);
-                            }
-                            return -2;
-                        }
-                        return c;
+                    if (b >= 0x30 && b <= 0x39) {
+                    this.gbk2 = b;
+                    continue;
+                    }
+                    int a1 = this.gbk1;
+                    var ap = -1;
+                    this.gbk1 = 0;
+                    c = -1;
+                    int a2 = (b < 0x7f) ? 0x40 : 0x41;
+                    if ((b >= 0x40 && b <= 0x7e) || (b >= 0x80 && b <= 0xfe)) {
+                    ap = ((a1 - 0x81) * 190) + (b - a2);
+                    c = Gb18030.IndexToCodePoint (ap);
+                    }
+                    if (c < 0) {
+                    if (b < 0x80) {
+                    this.state.PrependOne (b);
+                    }
+                    return -2;
+                    }
+                    return c;
                     }
                     if (b < 0x80) {
-                        return b;
+                    return b;
                     } else if (b == 0x80) {
-                        return 0x20ac;
+                    return 0x20ac;
                     } else if (b == 0xff) {
-                        return -2;
+                    return -2;
                     } else {
-                        this.gbk1 = b;
+                    this.gbk1 = b;
                     }
                 }
             }
@@ -394,15 +389,13 @@ namespace PeterO.Text.Encoders
         {
             private readonly bool gbk;
 
-            public Encoder (bool gbk)
-            {
+            public Encoder (bool gbk) {
                 this.gbk = gbk;
             }
 
             public int Encode (
              int c,
-             IWriter output)
-            {
+             IWriter output) {
                 if (c < 0) {
                     return -1;
                 }
@@ -451,25 +444,21 @@ namespace PeterO.Text.Encoders
             }
         }
 
-        internal static ICharacterDecoder GetDecoder2 ()
-        {
-            return new Decoder ();
+        internal static ICharacterDecoder GetDecoder2 () {
+            return new Decoder();
         }
 
-        internal static ICharacterEncoder GetEncoder2 (bool gbk)
-        {
+        internal static ICharacterEncoder GetEncoder2 (bool gbk) {
             return new Encoder (gbk);
         }
 
         private readonly ICharacterEncoder enc = GetEncoder2 (false);
 
-        public ICharacterDecoder GetDecoder ()
-        {
-            return EncodingGB18030.GetDecoder2 ();
+        public ICharacterDecoder GetDecoder () {
+            return EncodingGB18030.GetDecoder2();
         }
 
-        public ICharacterEncoder GetEncoder ()
-        {
+        public ICharacterEncoder GetEncoder () {
             return this.enc;
         }
     }

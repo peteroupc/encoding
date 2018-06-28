@@ -657,6 +657,8 @@ private Encodings() {
 @Deprecated
         public static ICharacterEncoding GetEncoding(String name, boolean
           forEmail, boolean allowReplacement) {
+       // TODO: Reconsider obsolete declaration and reject "replacement"
+       // if allowReplacement = true
       return GetEncoding(name, forEmail);
     }
 

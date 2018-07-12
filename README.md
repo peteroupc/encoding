@@ -76,6 +76,10 @@ In C#.
 History
 -----------
 
+Version 0.4.0:
+
+- Updated to latest Encoding Standard draft as of Jun. 28, 2018, except for a bug fix in one encoding.
+
 Version 0.3.2:
 
 - Version change needed to properly refer to version.

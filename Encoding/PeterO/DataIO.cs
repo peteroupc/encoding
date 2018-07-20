@@ -16,7 +16,7 @@ namespace PeterO {
     /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.Byte[])"]/*'/>
     public static IReader ToReader(this byte[] bytes) {
       if (bytes == null) {
-        throw new ArgumentNullException("bytes");
+        throw new ArgumentNullException(nameof(bytes));
       }
       return new ByteArrayTransform(bytes, 0, bytes.Length);
     }
@@ -28,7 +28,7 @@ namespace PeterO {
   int offset,
   int length) {
       if (bytes == null) {
-        throw new ArgumentNullException("bytes");
+        throw new ArgumentNullException(nameof(bytes));
       }
       if (offset < 0) {
         throw new ArgumentException("offset (" + offset +
@@ -57,7 +57,7 @@ namespace PeterO {
     /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.IO.Stream)"]/*'/>
     public static IReader ToReader(this Stream input) {
       if (input == null) {
-        throw new ArgumentNullException("input");
+        throw new ArgumentNullException(nameof(input));
       }
       return new WrappedStream(input);
     }
@@ -90,7 +90,7 @@ namespace PeterO {
     /// path='docs/doc[@name="M:PeterO.DataIO.ToWriter(System.IO.Stream)"]/*'/>
     public static IWriter ToWriter(this Stream output) {
       if (output == null) {
-        throw new ArgumentNullException("output");
+        throw new ArgumentNullException(nameof(output));
       }
       return new WrappedOutputStream(output);
     }
@@ -99,7 +99,7 @@ namespace PeterO {
     /// path='docs/doc[@name="M:PeterO.DataIO.ToWriter(PeterO.IByteWriter)"]/*'/>
     public static IWriter ToWriter(this IByteWriter output) {
       if (output == null) {
-        throw new ArgumentNullException("output");
+        throw new ArgumentNullException(nameof(output));
       }
       return new WrappedOutputStreamFromByteWriter(output);
     }
@@ -130,7 +130,7 @@ namespace PeterO {
     /// path='docs/doc[@name="M:PeterO.DataIO.ByteArrayTransform.Read(System.Byte[],System.Int32,System.Int32)"]/*'/>
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
-  throw new ArgumentNullException("bytes");
+  throw new ArgumentNullException(nameof(bytes));
 }
 if (offset < 0) {
   throw new ArgumentException("offset (" + offset +
@@ -211,7 +211,7 @@ if (bytes.Length - offset < length) {
     /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.Write(System.Byte[],System.Int32,System.Int32)"]/*'/>
       public void Write(byte[] bytes, int offset, int length) {
         if (bytes == null) {
-          throw new ArgumentNullException("bytes");
+          throw new ArgumentNullException(nameof(bytes));
         }
         if (offset < 0) {
           throw new ArgumentException("offset (" + offset +

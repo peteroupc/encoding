@@ -22,10 +22,10 @@ namespace PeterO.Text {
      this ICharacterEncoding encoding,
      IByteReader input) {
       if (encoding == null) {
-        throw new ArgumentNullException("encoding");
+        throw new ArgumentNullException(nameof(encoding));
       }
       if (input == null) {
-        throw new ArgumentNullException("input");
+        throw new ArgumentNullException(nameof(input));
       }
       return InputToString(
          GetDecoderInput(encoding, input));
@@ -37,10 +37,10 @@ namespace PeterO.Text {
      this ICharacterEncoding enc,
      Stream input) {
       if (enc == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
       if (input == null) {
-        throw new ArgumentNullException("input");
+        throw new ArgumentNullException(nameof(input));
       }
       return InputToString(
          GetDecoderInput(enc, DataIO.ToReader(input)));
@@ -52,10 +52,10 @@ namespace PeterO.Text {
   this ICharacterEncoding enc,
   byte[] bytes) {
       if (enc == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
       if (bytes == null) {
-        throw new ArgumentNullException("bytes");
+        throw new ArgumentNullException(nameof(bytes));
       }
       return DecodeToString(enc, DataIO.ToReader(bytes));
     }
@@ -68,10 +68,10 @@ namespace PeterO.Text {
   int offset,
   int length) {
       if (enc == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
       if (bytes == null) {
-        throw new ArgumentNullException("bytes");
+        throw new ArgumentNullException(nameof(bytes));
       }
       if (offset < 0) {
         throw new ArgumentException("offset (" + offset +
@@ -102,7 +102,7 @@ namespace PeterO.Text {
       this ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
       return EncodeToBytes(input, encoding.GetEncoder());
     }
@@ -113,10 +113,10 @@ namespace PeterO.Text {
       this ICharacterInput input,
       ICharacterEncoder encoder) {
       if (encoder == null) {
-        throw new ArgumentNullException("encoder");
+        throw new ArgumentNullException(nameof(encoder));
       }
       if (input == null) {
-        throw new ArgumentNullException("input");
+        throw new ArgumentNullException(nameof(input));
       }
       var writer = new ArrayWriter();
       while (true) {
@@ -139,10 +139,10 @@ namespace PeterO.Text {
   this string str,
   ICharacterEncoding enc) {
       if (str == null) {
-        throw new ArgumentNullException("str");
+        throw new ArgumentNullException(nameof(str));
       }
       if (enc == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
       return EncodeToBytes(new CharacterReader(str), enc);
     }
@@ -154,7 +154,7 @@ namespace PeterO.Text {
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
       EncodeToWriter(input, encoding.GetEncoder(), writer);
     }
@@ -166,13 +166,13 @@ namespace PeterO.Text {
       ICharacterEncoder encoder,
       IWriter writer) {
       if (encoder == null) {
-        throw new ArgumentNullException("encoder");
+        throw new ArgumentNullException(nameof(encoder));
       }
       if (input == null) {
-        throw new ArgumentNullException("input");
+        throw new ArgumentNullException(nameof(input));
       }
       if (writer == null) {
-        throw new ArgumentNullException("writer");
+        throw new ArgumentNullException(nameof(writer));
       }
       while (true) {
         int cp = input.ReadChar();
@@ -194,10 +194,10 @@ namespace PeterO.Text {
   ICharacterEncoding enc,
   IWriter writer) {
       if (str == null) {
-        throw new ArgumentNullException("str");
+        throw new ArgumentNullException(nameof(str));
       }
       if (enc == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
       EncodeToWriter(new CharacterReader(str), enc, writer);
     }
@@ -209,7 +209,7 @@ namespace PeterO.Text {
       ICharacterEncoding encoding,
       Stream output) {
       if (encoding == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
       EncodeToWriter(input, encoding.GetEncoder(), DataIO.ToWriter(output));
     }
@@ -231,10 +231,10 @@ namespace PeterO.Text {
   ICharacterEncoding enc,
   Stream output) {
       if (str == null) {
-        throw new ArgumentNullException("str");
+        throw new ArgumentNullException(nameof(str));
       }
       if (enc == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
    EncodeToWriter(
   new CharacterReader(str),
@@ -764,7 +764,7 @@ if (name.Equals("ISO-8859-13")) {
       this ICharacterEncoding encoding,
       string str) {
       if (encoding == null) {
-        throw new ArgumentNullException("enc");
+        throw new ArgumentNullException(nameof(enc));
       }
       return StringToBytes(encoding.GetEncoder(), str);
     }
@@ -775,10 +775,10 @@ if (name.Equals("ISO-8859-13")) {
       this ICharacterEncoder encoder,
       string str) {
       if (encoder == null) {
-        throw new ArgumentNullException("encoder");
+        throw new ArgumentNullException(nameof(encoder));
       }
       if (str == null) {
-        throw new ArgumentNullException("str");
+        throw new ArgumentNullException(nameof(str));
       }
       return EncodeToBytes(
           new CharacterReader(str),
@@ -789,7 +789,7 @@ if (name.Equals("ISO-8859-13")) {
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String)"]/*'/>
     public static ICharacterInput StringToInput(this string str) {
       if (str == null) {
-        throw new ArgumentNullException("str");
+        throw new ArgumentNullException(nameof(str));
       }
       return StringToInput(str, 0, str.Length);
     }
@@ -801,7 +801,7 @@ if (name.Equals("ISO-8859-13")) {
   int offset,
   int length) {
       if (str == null) {
-        throw new ArgumentNullException("str");
+        throw new ArgumentNullException(nameof(str));
       }
       if (offset < 0) {
         throw new ArgumentException("offset (" + offset +
@@ -1134,7 +1134,7 @@ aliases["x-user-defined"] = "x-user-defined";
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.Read(System.Int32[],System.Int32,System.Int32)"]/*'/>
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {
-          throw new ArgumentNullException("buffer");
+          throw new ArgumentNullException(nameof(buffer));
         }
         if (offset < 0) {
           throw new ArgumentException("offset (" + offset +

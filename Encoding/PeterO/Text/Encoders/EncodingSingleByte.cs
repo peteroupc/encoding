@@ -50,7 +50,7 @@ namespace PeterO.Text.Encoders {
 
     public EncodingSingleByte(int[] codepoints) {
         if (codepoints == null) {
-  throw new ArgumentNullException("codepoints");
+  throw new ArgumentNullException(nameof(codepoints));
 }
         if (codepoints.Length != 128) {
   throw new ArgumentException("codepoints.Length (" + codepoints.Length +

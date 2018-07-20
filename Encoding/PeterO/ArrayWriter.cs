@@ -62,7 +62,7 @@ namespace PeterO {
     /// path='docs/doc[@name="M:PeterO.ArrayWriter.Write(System.Byte[],System.Int32,System.Int32)"]/*'/>
     public void Write(byte[] src, int offset, int length) {
       if (src == null) {
-        throw new ArgumentNullException("src");
+        throw new ArgumentNullException(nameof(src));
       }
       if (offset < 0) {
         throw new ArgumentException("offset (" + offset + ") is less than " +

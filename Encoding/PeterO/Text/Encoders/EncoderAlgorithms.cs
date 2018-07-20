@@ -21,7 +21,7 @@ namespace PeterO.Text.Encoders {
 
       public int ReadChar(IByteReader input) {
         if (input == null) {
-          throw new ArgumentNullException("input");
+          throw new ArgumentNullException(nameof(input));
         }
         if (this.useOriginal) {
           return this.decoder.ReadChar(input);
@@ -140,7 +140,7 @@ namespace PeterO.Text.Encoders {
       // Implements the "utf-8 decode" algorithm in the Encoding
       // Standard
       if (transform == null) {
-        throw new ArgumentNullException("transform");
+        throw new ArgumentNullException(nameof(transform));
       }
       var bomTransform = new BomBufferedTransform(transform);
       return Encodings.GetDecoderInput(
@@ -165,10 +165,10 @@ namespace PeterO.Text.Encoders {
       // Implements the "encode" algorithm
       // in the Encoding Standard
       if (stream == null) {
-        throw new ArgumentNullException("stream");
+        throw new ArgumentNullException(nameof(stream));
       }
       if (output == null) {
-        throw new ArgumentNullException("output");
+        throw new ArgumentNullException(nameof(output));
       }
       var state = new DecoderState(1);
       while (true) {
@@ -207,7 +207,7 @@ namespace PeterO.Text.Encoders {
       // Implements the "utf-8 decode without BOM" algorithm
       // in the Encoding Standard
       if (transform == null) {
-        throw new ArgumentNullException("transform");
+        throw new ArgumentNullException(nameof(transform));
       }
       return Encodings.GetDecoderInput(
   Encodings.UTF8,
@@ -220,10 +220,10 @@ namespace PeterO.Text.Encoders {
       // Implements the "decode" algorithm in the Encoding
       // Standard
       if (transform == null) {
-        throw new ArgumentNullException("transform");
+        throw new ArgumentNullException(nameof(transform));
       }
       if (fallbackEncoding == null) {
-        throw new ArgumentNullException("fallbackEncoding");
+        throw new ArgumentNullException(nameof(fallbackEncoding));
       }
       var decoder = new DecodeWithFallbackDecoder(
         fallbackEncoding);

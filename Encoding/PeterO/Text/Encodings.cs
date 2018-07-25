@@ -16,6 +16,9 @@ namespace PeterO.Text {
     private static readonly IDictionary<string, string> ValueCharsetAliases =
         CreateAliasMap();
 
+    private static readonly IDictionary<string, string> EmailAliases =
+        CreateEmailAliasMap();
+
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static string DecodeToString(
@@ -102,7 +105,7 @@ namespace PeterO.Text {
       this ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
-        throw new ArgumentNullException(nameof(enc));
+        throw new ArgumentNullException(nameof(encoding));
       }
       return EncodeToBytes(input, encoding.GetEncoder());
     }
@@ -154,7 +157,7 @@ namespace PeterO.Text {
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
-        throw new ArgumentNullException(nameof(enc));
+        throw new ArgumentNullException(nameof(encoding));
       }
       EncodeToWriter(input, encoding.GetEncoder(), writer);
     }
@@ -209,7 +212,7 @@ namespace PeterO.Text {
       ICharacterEncoding encoding,
       Stream output) {
       if (encoding == null) {
-        throw new ArgumentNullException(nameof(enc));
+        throw new ArgumentNullException(nameof(encoding));
       }
       EncodeToWriter(input, encoding.GetEncoder(), DataIO.ToWriter(output));
     }
@@ -728,7 +731,7 @@ if (name.Equals("ISO-8859-13")) {
       }
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
-      if (name.Equals("utf-8")) {
+      if (name.Equals("utf-8") || name.Equals("utf8")) {
         return "UTF-8";
       }
       if (name.Equals("iso-8859-1")) {
@@ -737,21 +740,17 @@ if (name.Equals("ISO-8859-13")) {
       if (name.Equals("us-ascii") || name.Equals("ascii") ||
         name.Equals("ansi_x3.4-1968")) {
         // DEVIATION: "ascii" is not an IANA-registered name,
-        // but occurs quite frequently
+        // but occurs not rarely
         return "US-ASCII";
       }
-      if (ValueCharsetAliases.ContainsKey(name)) {
-        return ValueCharsetAliases[name];
-      }
-      if (name.Equals("iso-2022-jp-2")) {
-        // NOTE: Treat as the same as iso-2022-jp
-        return "ISO-2022-JP";
+      if (EmailAliases.ContainsKey(name)) {
+        return EmailAliases[name];
       }
       if (name.Equals("utf-7") || name.Equals("unicode-1-1-utf-7")) {
         return "UTF-7";
       }
       if (name.Length > 9 && name.Substring(0, 9).Equals("iso-8859-")) {
-        // NOTE: For conformance to MIME, treat unknown iso-8859-* encodings
+        // NOTE: For conformance to RFC 2049, treat unknown iso-8859-* encodings
         // as ASCII
         return "US-ASCII";
       }
@@ -764,7 +763,7 @@ if (name.Equals("ISO-8859-13")) {
       this ICharacterEncoding encoding,
       string str) {
       if (encoding == null) {
-        throw new ArgumentNullException(nameof(enc));
+        throw new ArgumentNullException(nameof(encoding));
       }
       return StringToBytes(encoding.GetEncoder(), str);
     }
@@ -826,8 +825,9 @@ if (name.Equals("ISO-8859-13")) {
       return new CharacterReader(str, offset, length);
     }
 
-    private static IDictionary<string, string> CreateAliasMap() {
-      var aliases = new Dictionary<string, string>();
+#region CreateAliasMap
+private static IDictionary<string, string> CreateAliasMap() {
+var aliases = new Dictionary<string, string>();
 aliases["unicode-1-1-utf-8"] = "UTF-8";
 aliases["utf-8"] = "UTF-8";
 aliases["utf8"] = "UTF-8";
@@ -1047,11 +1047,163 @@ aliases["utf-16be"] = "UTF-16BE";
 aliases["utf-16"] = "UTF-16LE";
 aliases["utf-16le"] = "UTF-16LE";
 aliases["x-user-defined"] = "x-user-defined";
-   return aliases;
-    }
+return aliases;
+}
+#endregion
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.ToLowerCaseAscii(System.String)"]/*'/>
+#region CreateEmailAliasMap
+private static IDictionary<string, string> CreateEmailAliasMap() {
+var aliases = new Dictionary<string, string>();
+aliases["utf-8"] = "UTF-8";
+aliases["utf8"] = "UTF-8";
+aliases["866"] = "IBM866";
+aliases["cp866"] = "IBM866";
+aliases["csibm866"] = "IBM866";
+aliases["ibm866"] = "IBM866";
+aliases["csisolatin2"] = "ISO-8859-2";
+aliases["iso-8859-2"] = "ISO-8859-2";
+aliases["iso-ir-101"] = "ISO-8859-2";
+aliases["iso_8859-2"] = "ISO-8859-2";
+aliases["iso_8859-2:1987"] = "ISO-8859-2";
+aliases["l2"] = "ISO-8859-2";
+aliases["latin2"] = "ISO-8859-2";
+aliases["csisolatin3"] = "ISO-8859-3";
+aliases["iso-8859-3"] = "ISO-8859-3";
+aliases["iso-ir-109"] = "ISO-8859-3";
+aliases["iso_8859-3"] = "ISO-8859-3";
+aliases["iso_8859-3:1988"] = "ISO-8859-3";
+aliases["l3"] = "ISO-8859-3";
+aliases["latin3"] = "ISO-8859-3";
+aliases["csisolatin4"] = "ISO-8859-4";
+aliases["iso-8859-4"] = "ISO-8859-4";
+aliases["iso-ir-110"] = "ISO-8859-4";
+aliases["iso_8859-4"] = "ISO-8859-4";
+aliases["iso_8859-4:1988"] = "ISO-8859-4";
+aliases["l4"] = "ISO-8859-4";
+aliases["latin4"] = "ISO-8859-4";
+aliases["csisolatincyrillic"] = "ISO-8859-5";
+aliases["cyrillic"] = "ISO-8859-5";
+aliases["iso-8859-5"] = "ISO-8859-5";
+aliases["iso-ir-144"] = "ISO-8859-5";
+aliases["iso_8859-5"] = "ISO-8859-5";
+aliases["iso_8859-5:1988"] = "ISO-8859-5";
+aliases["arabic"] = "ISO-8859-6";
+aliases["asmo-708"] = "ISO-8859-6";
+aliases["csiso88596e"] = "ISO-8859-6";
+aliases["csiso88596i"] = "ISO-8859-6";
+aliases["csisolatinarabic"] = "ISO-8859-6";
+aliases["ecma-114"] = "ISO-8859-6";
+aliases["iso-8859-6"] = "ISO-8859-6";
+aliases["iso-8859-6-e"] = "ISO-8859-6";
+aliases["iso-8859-6-i"] = "ISO-8859-6";
+aliases["iso-ir-127"] = "ISO-8859-6";
+aliases["iso_8859-6"] = "ISO-8859-6";
+aliases["iso_8859-6:1987"] = "ISO-8859-6";
+aliases["csisolatingreek"] = "ISO-8859-7";
+aliases["ecma-118"] = "ISO-8859-7";
+aliases["elot_928"] = "ISO-8859-7";
+aliases["greek"] = "ISO-8859-7";
+aliases["greek8"] = "ISO-8859-7";
+aliases["iso-8859-7"] = "ISO-8859-7";
+aliases["iso-ir-126"] = "ISO-8859-7";
+aliases["iso_8859-7"] = "ISO-8859-7";
+aliases["iso_8859-7:1987"] = "ISO-8859-7";
+aliases["csiso88598e"] = "ISO-8859-8";
+aliases["csisolatinhebrew"] = "ISO-8859-8";
+aliases["hebrew"] = "ISO-8859-8";
+aliases["iso-8859-8"] = "ISO-8859-8";
+aliases["iso-8859-8-e"] = "ISO-8859-8";
+aliases["iso-ir-138"] = "ISO-8859-8";
+aliases["iso_8859-8"] = "ISO-8859-8";
+aliases["iso_8859-8:1988"] = "ISO-8859-8";
+aliases["csiso88598i"] = "ISO-8859-8-I";
+aliases["iso-8859-8-i"] = "ISO-8859-8-I";
+aliases["csisolatin6"] = "ISO-8859-10";
+aliases["iso-8859-10"] = "ISO-8859-10";
+aliases["iso-ir-157"] = "ISO-8859-10";
+aliases["l6"] = "ISO-8859-10";
+aliases["latin6"] = "ISO-8859-10";
+aliases["iso-8859-13"] = "ISO-8859-13";
+aliases["iso-8859-14"] = "ISO-8859-14";
+aliases["iso-8859-15"] = "ISO-8859-15";
+aliases["iso_8859-15"] = "ISO-8859-15";
+aliases["iso-8859-16"] = "ISO-8859-16";
+aliases["cskoi8r"] = "KOI8-R";
+aliases["koi8-r"] = "KOI8-R";
+aliases["koi8-u"] = "KOI8-U";
+aliases["csmacintosh"] = "macintosh";
+aliases["mac"] = "macintosh";
+aliases["macintosh"] = "macintosh";
+aliases["iso-8859-11"] = "windows-874";
+aliases["tis-620"] = "windows-874";
+aliases["windows-874"] = "windows-874";
+aliases["windows-1250"] = "windows-1250";
+aliases["windows-1251"] = "windows-1251";
+aliases["ansi_x3.4-1968"] = "windows-1252";
+aliases["cp1252"] = "windows-1252";
+aliases["cp819"] = "windows-1252";
+aliases["csisolatin1"] = "windows-1252";
+aliases["ibm819"] = "windows-1252";
+aliases["iso-8859-1"] = "windows-1252";
+aliases["iso-ir-100"] = "windows-1252";
+aliases["iso_8859-1"] = "windows-1252";
+aliases["iso_8859-1:1987"] = "windows-1252";
+aliases["l1"] = "windows-1252";
+aliases["latin1"] = "windows-1252";
+aliases["us-ascii"] = "windows-1252";
+aliases["windows-1252"] = "windows-1252";
+aliases["windows-1253"] = "windows-1253";
+aliases["csisolatin5"] = "windows-1254";
+aliases["iso-8859-9"] = "windows-1254";
+aliases["iso-ir-148"] = "windows-1254";
+aliases["iso_8859-9"] = "windows-1254";
+aliases["iso_8859-9:1989"] = "windows-1254";
+aliases["l5"] = "windows-1254";
+aliases["latin5"] = "windows-1254";
+aliases["windows-1254"] = "windows-1254";
+aliases["windows-1255"] = "windows-1255";
+aliases["windows-1256"] = "windows-1256";
+aliases["windows-1257"] = "windows-1257";
+aliases["windows-1258"] = "windows-1258";
+aliases["chinese"] = "GBK";
+aliases["csgb2312"] = "GBK";
+aliases["csiso58gb231280"] = "GBK";
+aliases["gb2312"] = "GBK";
+aliases["gb_2312-80"] = "GBK";
+aliases["gbk"] = "GBK";
+aliases["iso-ir-58"] = "GBK";
+aliases["gb18030"] = "gb18030";
+aliases["big5"] = "Big5";
+aliases["big5-hkscs"] = "Big5";
+aliases["csbig5"] = "Big5";
+aliases["cseucpkdfmtjapanese"] = "EUC-JP";
+aliases["euc-jp"] = "EUC-JP";
+aliases["csiso2022jp"] = "ISO-2022-JP";
+aliases["iso-2022-jp"] = "ISO-2022-JP";
+aliases["csshiftjis"] = "Shift_JIS";
+aliases["ms_kanji"] = "Shift_JIS";
+aliases["shift_jis"] = "Shift_JIS";
+aliases["windows-31j"] = "Shift_JIS";
+aliases["cseuckr"] = "EUC-KR";
+aliases["csksc56011987"] = "EUC-KR";
+aliases["euc-kr"] = "EUC-KR";
+aliases["iso-ir-149"] = "EUC-KR";
+aliases["korean"] = "EUC-KR";
+aliases["ks_c_5601-1987"] = "EUC-KR";
+aliases["ks_c_5601-1989"] = "EUC-KR";
+aliases["ksc_5601"] = "EUC-KR";
+aliases["csiso2022kr"] = "replacement";
+aliases["hz-gb-2312"] = "replacement";
+aliases["iso-2022-cn"] = "replacement";
+aliases["iso-2022-cn-ext"] = "replacement";
+aliases["iso-2022-kr"] = "replacement";
+aliases["utf-16be"] = "UTF-16BE";
+aliases["utf-16"] = "UTF-16LE";
+aliases["utf-16le"] = "UTF-16LE";
+return aliases;
+}
+#endregion
+
     private static string ToLowerCaseAscii(string str) {
       if (str == null) {
         return null;

@@ -110,6 +110,9 @@ private Encodings() {
     private static final Map<String, String> ValueCharsetAliases =
         CreateAliasMap();
 
+    private static final Map<String, String> EmailAliases =
+        CreateEmailAliasMap();
+
     /**
      * Reads bytes from a data source and converts the bytes from a given encoding
      * to a text string. <p>In the .NET implementation, this method is
@@ -272,7 +275,7 @@ private Encodings() {
       ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
-        throw new NullPointerException("enc");
+        throw new NullPointerException("encoding");
       }
       return EncodeToBytes(input, encoding.GetEncoder());
     }
@@ -367,7 +370,7 @@ private Encodings() {
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
-        throw new NullPointerException("enc");
+        throw new NullPointerException("encoding");
       }
       EncodeToWriter(input, encoding.GetEncoder(), writer);
     }
@@ -465,7 +468,7 @@ private Encodings() {
       ICharacterEncoding encoding,
       OutputStream output) throws java.io.IOException {
       if (encoding == null) {
-        throw new NullPointerException("enc");
+        throw new NullPointerException("encoding");
       }
       EncodeToWriter(input, encoding.GetEncoder(), DataIO.ToWriter(output));
     }
@@ -1159,18 +1162,28 @@ if (name.equals("ISO-8859-13")) {
      * suitable for email.
      * @param name A string naming a character encoding. Can be null. Uses a
      * modified version of the rules in the Encoding Standard to better
-     * conform, in some cases, to email standards like MIME. In addition to
-     * the encodings mentioned in ResolveAlias, the following additional
-     * encodings are supported:. <ul> <li> {@code US-ASCII} - ASCII
+     * conform, in some cases, to email standards like MIME. Encoding names
+     * and aliases not registered with the Internet Assigned Numbers
+     * Authority (IANA) are not supported, with the exception of {@code
+     * ascii}, {@code utf8}, {@code cp1252}, and names 10 characters or
+     * longer starting with {@code iso-8859-}. Also, the following
+     * additional encodings are supported. <ul> <li> {@code US-ASCII} - ASCII
      * single-byte encoding, rather than an alias to {@code windows-1252} as
      * specified in the Encoding Standard. The character set's code points
      * match those in the Unicode Standard's Basic Latin block (0-127 or
-     * U + 0000 to U + 007F).</li> <li> {@code ISO-8859-1} - Latin-1 single-byte
-     * encoding, rather than an alias to {@code windows-1252} as specified
-     * in the Encoding Standard. The character set's code points match those
-     * in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks
-     * (0-255 or U + 0000 to U + 00FF).</li> <li> {@code UTF-7} - UTF-7 (7-bit
-     * universal character set).</li></ul>.
+     * U + 0000 to U + 007F). The name {@code ascii} is an alias.</li>
+     * <li> {@code ISO-8859-1} - Latin-1 single-byte encoding, rather than an
+     * alias to {@code windows-1252} as specified in the Encoding Standard.
+     * The character set's code points match those in the Unicode Standard's
+     * Basic Latin and Latin-1 Supplement blocks (0-255 or U + 0000 to
+     * U + 00FF).</li> <li> {@code UTF-7} - UTF-7 (7-bit universal character
+     * set). The name {@code unicode-1-1-utf-7} is an alias to {@code
+     * UTF-7}, even though both encodings are defined in different RFCs
+     * (1642 and 2152, respectively), and even though they are linked to
+     * Unicode versions with nonoverlapping character repertoires (1.1 and
+     * 2.0, respectively).</li></ul>. In previous versions of this method,
+     * the name {@code iso-2022-jp-2} was also aliased to {@code
+     * ISO-2022-JP}, which is no longer the case.
      * @return A standardized name for the encoding. Returns the empty string if
      * {@code name} is null or empty, or if the encoding name is
      * unsupported.
@@ -1181,7 +1194,7 @@ if (name.equals("ISO-8859-13")) {
       }
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
-      if (name.equals("utf-8")) {
+      if (name.equals("utf-8") || name.equals("utf8")) {
         return "UTF-8";
       }
       if (name.equals("iso-8859-1")) {
@@ -1190,21 +1203,17 @@ if (name.equals("ISO-8859-13")) {
       if (name.equals("us-ascii") || name.equals("ascii") ||
         name.equals("ansi_x3.4-1968")) {
         // DEVIATION: "ascii" is not an IANA-registered name,
-        // but occurs quite frequently
+        // but occurs not rarely
         return "US-ASCII";
       }
-      if (ValueCharsetAliases.containsKey(name)) {
-        return ValueCharsetAliases.get(name);
-      }
-      if (name.equals("iso-2022-jp-2")) {
-        // NOTE: Treat as the same as iso-2022-jp
-        return "ISO-2022-JP";
+      if (EmailAliases.containsKey(name)) {
+        return EmailAliases.get(name);
       }
       if (name.equals("utf-7") || name.equals("unicode-1-1-utf-7")) {
         return "UTF-7";
       }
       if (name.length() > 9 && name.substring(0,9).equals("iso-8859-")) {
-        // NOTE: For conformance to MIME, treat unknown iso-8859-* encodings
+        // NOTE: For conformance to RFC 2049, treat unknown iso-8859-* encodings
         // as ASCII
         return "US-ASCII";
       }
@@ -1233,7 +1242,7 @@ if (name.equals("ISO-8859-13")) {
       ICharacterEncoding encoding,
       String str) {
       if (encoding == null) {
-        throw new NullPointerException("enc");
+        throw new NullPointerException("encoding");
       }
       return StringToBytes(encoding.GetEncoder(), str);
     }
@@ -1342,8 +1351,8 @@ if (name.equals("ISO-8859-13")) {
       return new CharacterReader(str, offset, length);
     }
 
-    private static Map<String, String> CreateAliasMap() {
-      HashMap<String, String> aliases = new HashMap<String, String>();
+private static Map<String, String> CreateAliasMap() {
+HashMap<String, String> aliases = new HashMap<String, String>();
 aliases.put("unicode-1-1-utf-8","UTF-8");
 aliases.put("utf-8","UTF-8");
 aliases.put("utf8","UTF-8");
@@ -1563,15 +1572,160 @@ aliases.put("utf-16be","UTF-16BE");
 aliases.put("utf-16","UTF-16LE");
 aliases.put("utf-16le","UTF-16LE");
 aliases.put("x-user-defined","x-user-defined");
-   return aliases;
-    }
+return aliases;
+}
 
-    /**
-     * Returns a string with the basic upper-case letters A to Z (U + 0041 to U + 005A)
-     * converted to lower-case. Other characters remain unchanged.
-     * @param str A string.
-     * @return The converted string, or null if {@code str} is null.
-     */
+private static Map<String, String> CreateEmailAliasMap() {
+HashMap<String, String> aliases = new HashMap<String, String>();
+aliases.put("utf-8","UTF-8");
+aliases.put("utf8","UTF-8");
+aliases.put("866","IBM866");
+aliases.put("cp866","IBM866");
+aliases.put("csibm866","IBM866");
+aliases.put("ibm866","IBM866");
+aliases.put("csisolatin2","ISO-8859-2");
+aliases.put("iso-8859-2","ISO-8859-2");
+aliases.put("iso-ir-101","ISO-8859-2");
+aliases.put("iso_8859-2","ISO-8859-2");
+aliases.put("iso_8859-2:1987","ISO-8859-2");
+aliases.put("l2","ISO-8859-2");
+aliases.put("latin2","ISO-8859-2");
+aliases.put("csisolatin3","ISO-8859-3");
+aliases.put("iso-8859-3","ISO-8859-3");
+aliases.put("iso-ir-109","ISO-8859-3");
+aliases.put("iso_8859-3","ISO-8859-3");
+aliases.put("iso_8859-3:1988","ISO-8859-3");
+aliases.put("l3","ISO-8859-3");
+aliases.put("latin3","ISO-8859-3");
+aliases.put("csisolatin4","ISO-8859-4");
+aliases.put("iso-8859-4","ISO-8859-4");
+aliases.put("iso-ir-110","ISO-8859-4");
+aliases.put("iso_8859-4","ISO-8859-4");
+aliases.put("iso_8859-4:1988","ISO-8859-4");
+aliases.put("l4","ISO-8859-4");
+aliases.put("latin4","ISO-8859-4");
+aliases.put("csisolatincyrillic","ISO-8859-5");
+aliases.put("cyrillic","ISO-8859-5");
+aliases.put("iso-8859-5","ISO-8859-5");
+aliases.put("iso-ir-144","ISO-8859-5");
+aliases.put("iso_8859-5","ISO-8859-5");
+aliases.put("iso_8859-5:1988","ISO-8859-5");
+aliases.put("arabic","ISO-8859-6");
+aliases.put("asmo-708","ISO-8859-6");
+aliases.put("csiso88596e","ISO-8859-6");
+aliases.put("csiso88596i","ISO-8859-6");
+aliases.put("csisolatinarabic","ISO-8859-6");
+aliases.put("ecma-114","ISO-8859-6");
+aliases.put("iso-8859-6","ISO-8859-6");
+aliases.put("iso-8859-6-e","ISO-8859-6");
+aliases.put("iso-8859-6-i","ISO-8859-6");
+aliases.put("iso-ir-127","ISO-8859-6");
+aliases.put("iso_8859-6","ISO-8859-6");
+aliases.put("iso_8859-6:1987","ISO-8859-6");
+aliases.put("csisolatingreek","ISO-8859-7");
+aliases.put("ecma-118","ISO-8859-7");
+aliases.put("elot_928","ISO-8859-7");
+aliases.put("greek","ISO-8859-7");
+aliases.put("greek8","ISO-8859-7");
+aliases.put("iso-8859-7","ISO-8859-7");
+aliases.put("iso-ir-126","ISO-8859-7");
+aliases.put("iso_8859-7","ISO-8859-7");
+aliases.put("iso_8859-7:1987","ISO-8859-7");
+aliases.put("csiso88598e","ISO-8859-8");
+aliases.put("csisolatinhebrew","ISO-8859-8");
+aliases.put("hebrew","ISO-8859-8");
+aliases.put("iso-8859-8","ISO-8859-8");
+aliases.put("iso-8859-8-e","ISO-8859-8");
+aliases.put("iso-ir-138","ISO-8859-8");
+aliases.put("iso_8859-8","ISO-8859-8");
+aliases.put("iso_8859-8:1988","ISO-8859-8");
+aliases.put("csiso88598i","ISO-8859-8-I");
+aliases.put("iso-8859-8-i","ISO-8859-8-I");
+aliases.put("csisolatin6","ISO-8859-10");
+aliases.put("iso-8859-10","ISO-8859-10");
+aliases.put("iso-ir-157","ISO-8859-10");
+aliases.put("l6","ISO-8859-10");
+aliases.put("latin6","ISO-8859-10");
+aliases.put("iso-8859-13","ISO-8859-13");
+aliases.put("iso-8859-14","ISO-8859-14");
+aliases.put("iso-8859-15","ISO-8859-15");
+aliases.put("iso_8859-15","ISO-8859-15");
+aliases.put("iso-8859-16","ISO-8859-16");
+aliases.put("cskoi8r","KOI8-R");
+aliases.put("koi8-r","KOI8-R");
+aliases.put("koi8-u","KOI8-U");
+aliases.put("csmacintosh","macintosh");
+aliases.put("mac","macintosh");
+aliases.put("macintosh","macintosh");
+aliases.put("iso-8859-11","windows-874");
+aliases.put("tis-620","windows-874");
+aliases.put("windows-874","windows-874");
+aliases.put("windows-1250","windows-1250");
+aliases.put("windows-1251","windows-1251");
+aliases.put("ansi_x3.4-1968","windows-1252");
+aliases.put("cp1252","windows-1252");
+aliases.put("cp819","windows-1252");
+aliases.put("csisolatin1","windows-1252");
+aliases.put("ibm819","windows-1252");
+aliases.put("iso-8859-1","windows-1252");
+aliases.put("iso-ir-100","windows-1252");
+aliases.put("iso_8859-1","windows-1252");
+aliases.put("iso_8859-1:1987","windows-1252");
+aliases.put("l1","windows-1252");
+aliases.put("latin1","windows-1252");
+aliases.put("us-ascii","windows-1252");
+aliases.put("windows-1252","windows-1252");
+aliases.put("windows-1253","windows-1253");
+aliases.put("csisolatin5","windows-1254");
+aliases.put("iso-8859-9","windows-1254");
+aliases.put("iso-ir-148","windows-1254");
+aliases.put("iso_8859-9","windows-1254");
+aliases.put("iso_8859-9:1989","windows-1254");
+aliases.put("l5","windows-1254");
+aliases.put("latin5","windows-1254");
+aliases.put("windows-1254","windows-1254");
+aliases.put("windows-1255","windows-1255");
+aliases.put("windows-1256","windows-1256");
+aliases.put("windows-1257","windows-1257");
+aliases.put("windows-1258","windows-1258");
+aliases.put("chinese","GBK");
+aliases.put("csgb2312","GBK");
+aliases.put("csiso58gb231280","GBK");
+aliases.put("gb2312","GBK");
+aliases.put("gb_2312-80","GBK");
+aliases.put("gbk","GBK");
+aliases.put("iso-ir-58","GBK");
+aliases.put("gb18030","gb18030");
+aliases.put("big5","Big5");
+aliases.put("big5-hkscs","Big5");
+aliases.put("csbig5","Big5");
+aliases.put("cseucpkdfmtjapanese","EUC-JP");
+aliases.put("euc-jp","EUC-JP");
+aliases.put("csiso2022jp","ISO-2022-JP");
+aliases.put("iso-2022-jp","ISO-2022-JP");
+aliases.put("csshiftjis","Shift_JIS");
+aliases.put("ms_kanji","Shift_JIS");
+aliases.put("shift_jis","Shift_JIS");
+aliases.put("windows-31j","Shift_JIS");
+aliases.put("cseuckr","EUC-KR");
+aliases.put("csksc56011987","EUC-KR");
+aliases.put("euc-kr","EUC-KR");
+aliases.put("iso-ir-149","EUC-KR");
+aliases.put("korean","EUC-KR");
+aliases.put("ks_c_5601-1987","EUC-KR");
+aliases.put("ks_c_5601-1989","EUC-KR");
+aliases.put("ksc_5601","EUC-KR");
+aliases.put("csiso2022kr","replacement");
+aliases.put("hz-gb-2312","replacement");
+aliases.put("iso-2022-cn","replacement");
+aliases.put("iso-2022-cn-ext","replacement");
+aliases.put("iso-2022-kr","replacement");
+aliases.put("utf-16be","UTF-16BE");
+aliases.put("utf-16","UTF-16LE");
+aliases.put("utf-16le","UTF-16LE");
+return aliases;
+}
+
     private static String ToLowerCaseAscii(String str) {
       if (str == null) {
         return null;

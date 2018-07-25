@@ -1051,20 +1051,21 @@
             using rules more suitable for email.</summary>
             <param name='name'>A string naming a character encoding. Can be
             null. Uses a modified version of the rules in the Encoding Standard
-            to better conform, in some cases, to email standards like MIME. In
-            addition to the encodings mentioned in ResolveAlias, the following
-            additional encodings are supported:.
+            to better conform, in some cases, to email standards like MIME. Encoding names and aliases not registered with the Internet Assigned Numbers Authority (IANA) are not supported, with the exception of <c>ascii</c>, <c>utf8</c>, <c>cp1252</c>, and names 10 characters or longer starting with <c>iso-8859-</c>.  Also, the following
+            additional encodings are supported.
             <list type='bullet'>
             <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an
             alias to <c>windows-1252</c> as specified in the Encoding
             Standard.  The character set's code points match those in the Unicode
-            Standard's Basic Latin block (0-127 or U+0000 to U+007F).</item>
+            Standard's Basic Latin block (0-127 or U+0000 to U+007F).  The name <c>ascii</c> is an alias.</item>
             <item><c>ISO-8859-1</c> - Latin-1 single-byte encoding, rather than
             an alias to <c>windows-1252</c> as specified in the Encoding
             Standard.  The character set's code points match those in the Unicode
             Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U+0000 to U+00FF).</item>
             <item><c>UTF-7</c> - UTF-7 (7-bit universal character
-            set).</item></list>.</param>
+            set). The name <c>unicode-1-1-utf-7</c> is an alias to <c>UTF-7</c>, even though both encodings are defined in different RFCs (1642 and 2152, respectively), and even though they are linked to Unicode versions with nonoverlapping character repertoires (1.1 and 2.0, respectively).</item></list>.
+            In previous versions of this method, the name <c>iso-2022-jp-2</c> was also
+           aliased to <c>ISO-2022-JP</c>, which is no longer the case.</param>
             <returns>A standardized name for the encoding. Returns the empty
             string if <paramref name='name'/> is null or empty, or if the
             encoding name is unsupported.</returns>

@@ -13,6 +13,16 @@
       <id>release</id>
       <build>
         <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.7.0</version>
+            <configuration>
+                <compilerArgs>
+                   <arg>-Xlint:all</arg>
+                </compilerArgs>
+            </configuration>
+        </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
@@ -35,6 +45,10 @@
               <bottom>Encoding for Java documentation, generated in {currentYear}.</bottom>
               <!-- Exclude certain packages whose classes are only public for convenience -->
               <excludePackageNames>com.upokecenter.text.encoders</excludePackageNames>
+              <additionalJOptions>
+              <additionalJOption>-html5</additionalJOption>
+              </additionalJOptions>
+
             </configuration>
             <executions>
               <execution>

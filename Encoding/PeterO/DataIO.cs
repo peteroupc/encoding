@@ -9,12 +9,16 @@ using System;
 using System.IO;
 
 namespace PeterO {
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="T:PeterO.DataIO"]/*'/>
+  /// <include file='../docs.xml'
+  /// path='docs/doc[@name="T:PeterO.DataIO"]/*'/>
   public static class DataIO {
     /// <include file='../docs.xml'
     /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.Byte[])"]/*'/>
-    public static IReader ToReader(this byte[] bytes) {
+    public static IReader ToReader(
+#if !NET20
+this
+#endif
+byte[] bytes) {
       if (bytes == null) {
         throw new ArgumentNullException(nameof(bytes));
       }
@@ -24,7 +28,10 @@ namespace PeterO {
     /// <include file='../docs.xml'
     /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.Byte[],System.Int32,System.Int32)"]/*'/>
     public static IReader ToReader(
-  this byte[] bytes,
+#if !NET20
+this
+#endif
+byte[] bytes,
   int offset,
   int length) {
       if (bytes == null) {
@@ -55,7 +62,11 @@ namespace PeterO {
 
     /// <include file='../docs.xml'
     /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.IO.Stream)"]/*'/>
-    public static IReader ToReader(this Stream input) {
+    public static IReader ToReader(
+#if !NET20
+this
+#endif
+Stream input) {
       if (input == null) {
         throw new ArgumentNullException(nameof(input));
       }
@@ -66,29 +77,44 @@ namespace PeterO {
     /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.Byte[],System.Int32,System.Int32)"]/*'/>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
-  this byte[] bytes,
+#if !NET20
+this
+#endif
+      byte[] bytes,
   int offset,
   int length) {
-  return (IByteReader)ToReader(bytes, offset, length);
-}
+      return (IByteReader)ToReader(bytes, offset, length);
+    }
 
     /// <include file='../docs.xml'
     /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.IO.Stream)"]/*'/>
     [Obsolete("Use ToReader instead.")]
-    public static IByteReader ToByteReader(this Stream input) {
-  return (IByteReader)ToReader(input);
+    public static IByteReader ToByteReader(
+#if !NET20
+this
+#endif
+Stream input) {
+      return (IByteReader)ToReader(input);
     }
 
     /// <include file='../docs.xml'
     /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.Byte[])"]/*'/>
     [Obsolete("Use ToReader instead.")]
-    public static IByteReader ToByteReader(this byte[] bytes) {
-  return (IByteReader)ToReader(bytes);
+    public static IByteReader ToByteReader(
+#if !NET20
+this
+#endif
+byte[] bytes) {
+      return (IByteReader)ToReader(bytes);
     }
 
     /// <include file='../docs.xml'
     /// path='docs/doc[@name="M:PeterO.DataIO.ToWriter(System.IO.Stream)"]/*'/>
-    public static IWriter ToWriter(this Stream output) {
+    public static IWriter ToWriter(
+#if !NET20
+this
+#endif
+Stream output) {
       if (output == null) {
         throw new ArgumentNullException(nameof(output));
       }
@@ -97,7 +123,11 @@ namespace PeterO {
 
     /// <include file='../docs.xml'
     /// path='docs/doc[@name="M:PeterO.DataIO.ToWriter(PeterO.IByteWriter)"]/*'/>
-    public static IWriter ToWriter(this IByteWriter output) {
+    public static IWriter ToWriter(
+#if !NET20
+this
+#endif
+IByteWriter output) {
       if (output == null) {
         throw new ArgumentNullException(nameof(output));
       }
@@ -115,8 +145,8 @@ namespace PeterO {
         this.endOffset = offset + length;
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ByteArrayTransform.ReadByte"]/*'/>
+      /// <include file='../docs.xml'
+      /// path='docs/doc[@name="M:PeterO.DataIO.ByteArrayTransform.ReadByte"]/*'/>
       public int ReadByte() {
         if (this.offset >= this.endOffset) {
           return -1;
@@ -126,32 +156,32 @@ namespace PeterO {
         return ((int)b) & 0xff;
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ByteArrayTransform.Read(System.Byte[],System.Int32,System.Int32)"]/*'/>
+      /// <include file='../docs.xml'
+      /// path='docs/doc[@name="M:PeterO.DataIO.ByteArrayTransform.Read(System.Byte[],System.Int32,System.Int32)"]/*'/>
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
-  throw new ArgumentNullException(nameof(bytes));
-}
-if (offset < 0) {
-  throw new ArgumentException("offset (" + offset +
-    ") is less than 0");
-}
-if (offset > bytes.Length) {
-  throw new ArgumentException("offset (" + offset +
-    ") is more than " + bytes.Length);
-}
-if (length < 0) {
-  throw new ArgumentException("length (" + length +
-    ") is less than 0");
-}
-if (length > bytes.Length) {
-  throw new ArgumentException("length (" + length +
-    ") is more than " + bytes.Length);
-}
-if (bytes.Length - offset < length) {
-  throw new ArgumentException("bytes's length minus " + offset + " (" +
-    (bytes.Length - offset) + ") is less than " + length);
-}
+          throw new ArgumentNullException(nameof(bytes));
+        }
+        if (offset < 0) {
+          throw new ArgumentException("offset (" + offset +
+            ") is less than 0");
+        }
+        if (offset > bytes.Length) {
+          throw new ArgumentException("offset (" + offset +
+            ") is more than " + bytes.Length);
+        }
+        if (length < 0) {
+          throw new ArgumentException("length (" + length +
+            ") is less than 0");
+        }
+        if (length > bytes.Length) {
+          throw new ArgumentException("length (" + length +
+            ") is more than " + bytes.Length);
+        }
+        if (bytes.Length - offset < length) {
+          throw new ArgumentException("bytes's length minus " + offset + " (" +
+            (bytes.Length - offset) + ") is less than " + length);
+        }
         var count = 0;
         for (var i = 0; i < length; ++i) {
           int c = this.ReadByte();
@@ -173,8 +203,8 @@ if (bytes.Length - offset < length) {
         this.output = output;
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStream.WriteByte(System.Int32)"]/*'/>
+      /// <include file='../docs.xml'
+      /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStream.WriteByte(System.Int32)"]/*'/>
       public void WriteByte(int byteValue) {
         try {
           this.output.WriteByte((byte)byteValue);
@@ -183,8 +213,8 @@ if (bytes.Length - offset < length) {
         }
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStream.Write(System.Byte[],System.Int32,System.Int32)"]/*'/>
+      /// <include file='../docs.xml'
+      /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStream.Write(System.Byte[],System.Int32,System.Int32)"]/*'/>
       public void Write(byte[] bytes, int offset, int length) {
         try {
           this.output.Write(bytes, offset, length);
@@ -201,14 +231,14 @@ if (bytes.Length - offset < length) {
         this.output = output;
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.WriteByte(System.Int32)"]/*'/>
+      /// <include file='../docs.xml'
+      /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.WriteByte(System.Int32)"]/*'/>
       public void WriteByte(int byteValue) {
         this.output.WriteByte((byte)byteValue);
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.Write(System.Byte[],System.Int32,System.Int32)"]/*'/>
+      /// <include file='../docs.xml'
+      /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.Write(System.Byte[],System.Int32,System.Int32)"]/*'/>
       public void Write(byte[] bytes, int offset, int length) {
         if (bytes == null) {
           throw new ArgumentNullException(nameof(bytes));
@@ -246,8 +276,8 @@ if (bytes.Length - offset < length) {
         this.stream = stream;
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.WrappedStream.ReadByte"]/*'/>
+      /// <include file='../docs.xml'
+      /// path='docs/doc[@name="M:PeterO.DataIO.WrappedStream.ReadByte"]/*'/>
       public int ReadByte() {
         try {
           return this.stream.ReadByte();

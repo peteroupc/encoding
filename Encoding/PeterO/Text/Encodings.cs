@@ -6,8 +6,8 @@ using PeterO;
 using PeterO.Text.Encoders;
 
 namespace PeterO.Text {
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="T:PeterO.Text.Encodings"]/*'/>
+  /// <include file='../../docs.xml'
+  /// path='docs/doc[@name="T:PeterO.Text.Encodings"]/*'/>
   public static class Encodings {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="F:PeterO.Text.Encodings.UTF8"]/*'/>
@@ -22,7 +22,10 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static string DecodeToString(
-     this ICharacterEncoding encoding,
+#if !NET20
+this
+#endif
+ ICharacterEncoding encoding,
      IByteReader input) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -37,7 +40,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static string DecodeToString(
-     this ICharacterEncoding enc,
+
+#if !NET20
+this
+#endif
+ ICharacterEncoding enc,
      Stream input) {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
@@ -52,7 +59,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[])"]/*'/>
     public static string DecodeToString(
-  this ICharacterEncoding enc,
+
+#if !NET20
+this
+#endif
+ ICharacterEncoding enc,
   byte[] bytes) {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
@@ -66,7 +77,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[],System.Int32,System.Int32)"]/*'/>
     public static string DecodeToString(
-  this ICharacterEncoding enc,
+
+#if !NET20
+this
+#endif
+ ICharacterEncoding enc,
   byte[] bytes,
   int offset,
   int length) {
@@ -102,7 +117,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding)"]/*'/>
     public static byte[] EncodeToBytes(
-      this ICharacterInput input,
+
+#if !NET20
+this
+#endif
+ ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -113,7 +132,10 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder)"]/*'/>
     public static byte[] EncodeToBytes(
-      this ICharacterInput input,
+#if !NET20
+this
+#endif
+      ICharacterInput input,
       ICharacterEncoder encoder) {
       if (encoder == null) {
         throw new ArgumentNullException(nameof(encoder));
@@ -139,7 +161,10 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding)"]/*'/>
     public static byte[] EncodeToBytes(
-  this string str,
+#if !NET20
+this
+#endif
+ string str,
   ICharacterEncoding enc) {
       if (str == null) {
         throw new ArgumentNullException(nameof(str));
@@ -153,7 +178,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
-      this ICharacterInput input,
+
+#if !NET20
+this
+#endif
+ ICharacterInput input,
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
@@ -165,7 +194,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
-      this ICharacterInput input,
+
+#if !NET20
+this
+#endif
+ ICharacterInput input,
       ICharacterEncoder encoder,
       IWriter writer) {
       if (encoder == null) {
@@ -193,7 +226,10 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
-  this string str,
+#if !NET20
+this
+#endif
+ string str,
   ICharacterEncoding enc,
   IWriter writer) {
       if (str == null) {
@@ -208,7 +244,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
-      this ICharacterInput input,
+
+#if !NET20
+this
+#endif
+ ICharacterInput input,
       ICharacterEncoding encoding,
       Stream output) {
       if (encoding == null) {
@@ -220,17 +260,24 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
-      this ICharacterInput input,
+
+#if !NET20
+this
+#endif
+ ICharacterInput input,
       ICharacterEncoder encoder,
       Stream output) {
       IWriter writer = DataIO.ToWriter(output);
-        EncodeToWriter(input, encoder, writer);
+      EncodeToWriter(input, encoder, writer);
     }
 
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
-  this string str,
+#if !NET20
+this
+#endif
+ string str,
   ICharacterEncoding enc,
   Stream output) {
       if (str == null) {
@@ -239,16 +286,20 @@ namespace PeterO.Text {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
       }
-   EncodeToWriter(
-  new CharacterReader(str),
-  enc,
-  DataIO.ToWriter(output));
+      EncodeToWriter(
+     new CharacterReader(str),
+     enc,
+     DataIO.ToWriter(output));
     }
 
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static ICharacterInput GetDecoderInput(
-      this ICharacterEncoding encoding,
+
+#if !NET20
+this
+#endif
+ ICharacterEncoding encoding,
       IByteReader stream) {
       return new DecoderToInputClass(
         encoding.GetDecoder(),
@@ -258,7 +309,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static ICharacterInput GetDecoderInput(
-      this ICharacterEncoding encoding,
+
+#if !NET20
+this
+#endif
+ ICharacterEncoding encoding,
       Stream input) {
       return new DecoderToInputClass(
         encoding.GetDecoder(),
@@ -268,7 +323,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static ICharacterInput GetDecoderInputSkipBom(
-      this ICharacterEncoding encoding,
+
+#if !NET20
+this
+#endif
+ ICharacterEncoding encoding,
       IByteReader stream) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
@@ -276,7 +335,11 @@ namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static ICharacterInput GetDecoderInputSkipBom(
-      this ICharacterEncoding encoding,
+
+#if !NET20
+this
+#endif
+ ICharacterEncoding encoding,
       Stream input) {
       return EncoderAlgorithms.DecodeAlgorithmInput(
         DataIO.ToReader(input),
@@ -291,8 +354,8 @@ namespace PeterO.Text {
 
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]/*'/>
-        public static ICharacterEncoding GetEncoding(string name, bool
-          forEmail, bool allowReplacement) {
+    public static ICharacterEncoding GetEncoding(string name, bool
+      forEmail, bool allowReplacement) {
       return (!allowReplacement && name != null &&
         ToLowerCaseAscii(name).Equals("replacement")) ? (null) :
         (GetEncoding(name, forEmail));
@@ -300,9 +363,9 @@ namespace PeterO.Text {
 
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean)"]/*'/>
-        public static ICharacterEncoding GetEncoding(
-  string name,
-  bool forEmail) {
+    public static ICharacterEncoding GetEncoding(
+string name,
+bool forEmail) {
       if (String.IsNullOrEmpty(name)) {
         return null;
       }
@@ -320,8 +383,8 @@ namespace PeterO.Text {
       if (name.Equals("UTF-7")) {
         return (ICharacterEncoding)(new EncodingUtf7());
       }
-if (name.Equals("windows-1252")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
+      if (name.Equals("windows-1252")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
     402, 8222, 8230, 8224, 8225, 710, 8240, 352, 8249, 338, 141, 381, 143,
     144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 353, 8250,
     339, 157, 382, 376, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169,
@@ -332,9 +395,9 @@ if (name.Equals("windows-1252")) {
     226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
     240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253,
     254, 255 });
-}
-if (name.Equals("windows-1253")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
+      }
+      if (name.Equals("windows-1253")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
     402, 8222, 8230, 8224, 8225, 136, 8240, 138, 8249, 140, 141, 142, 143,
     144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482, 154, 8250,
     156, 157, 158, 159, 160, 901, 902, 163, 164, 165, 166, 167, 168, 169,
@@ -345,9 +408,9 @@ if (name.Equals("windows-1253")) {
     946, 947, 948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959,
     960, 961, 962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973,
     974, -2 });
-}
-if (name.Equals("ISO-8859-15")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-15")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 161, 162, 163, 8364, 165, 352, 167, 353, 169, 170, 171, 172,
@@ -357,9 +420,9 @@ if (name.Equals("ISO-8859-15")) {
     215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228,
     229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242,
     243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255 });
-}
-if (name.Equals("ISO-8859-3")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-3")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 294, 728, 163, 164, -2, 292, 167, 168, 304, 350, 286, 308,
@@ -369,9 +432,9 @@ if (name.Equals("ISO-8859-3")) {
     284, 217, 218, 219, 220, 364, 348, 223, 224, 225, 226, -2, 228, 267,
     265, 231, 232, 233, 234, 235, 236, 237, 238, 239, -2, 241, 242, 243,
     244, 289, 246, 247, 285, 249, 250, 251, 252, 365, 349, 729 });
-}
-if (name.Equals("windows-1258")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
+      }
+      if (name.Equals("windows-1258")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
     402, 8222, 8230, 8224, 8225, 710, 8240, 138, 8249, 338, 141, 142, 143,
     144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 154, 8250,
     339, 157, 158, 376, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169,
@@ -382,9 +445,9 @@ if (name.Equals("windows-1258")) {
     226, 259, 228, 229, 230, 231, 232, 233, 234, 235, 769, 237, 238, 239,
     273, 241, 803, 243, 244, 417, 246, 247, 248, 249, 250, 251, 252, 432,
     8363, 255 });
-}
-if (name.Equals("ISO-8859-2")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-2")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 260, 728, 321, 164, 317, 346, 167, 168, 352, 350, 356, 377,
@@ -394,9 +457,9 @@ if (name.Equals("ISO-8859-2")) {
     215, 344, 366, 218, 368, 220, 221, 354, 223, 341, 225, 226, 259, 228,
     314, 263, 231, 269, 233, 281, 235, 283, 237, 238, 271, 273, 324, 328,
     243, 244, 337, 246, 247, 345, 367, 250, 369, 252, 253, 355, 729 });
-}
-if (name.Equals("ISO-8859-5")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-5")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034,
@@ -408,9 +471,9 @@ if (name.Equals("ISO-8859-5")) {
     1095, 1096, 1097, 1098, 1099, 1100, 1101, 1102, 1103, 8470, 1105, 1106,
     1107, 1108, 1109, 1110, 1111, 1112, 1113, 1114, 1115, 1116, 167, 1118,
     1119 });
-}
-if (name.Equals("windows-874")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 130,
+      }
+      if (name.Equals("windows-874")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 130,
     131, 132, 8230, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 153, 154, 155, 156, 157,
     158, 159, 160, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593,
@@ -421,9 +484,9 @@ if (name.Equals("windows-874")) {
     3642, -2, -2, -2, -2, 3647, 3648, 3649, 3650, 3651, 3652, 3653, 3654,
     3655, 3656, 3657, 3658, 3659, 3660, 3661, 3662, 3663, 3664, 3665, 3666,
     3667, 3668, 3669, 3670, 3671, 3672, 3673, 3674, 3675, -2, -2, -2, -2 });
-}
-if (name.Equals("macintosh")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 196, 197, 199,
+      }
+      if (name.Equals("macintosh")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 196, 197, 199,
     201, 209, 214, 220, 225, 224, 226, 228, 227, 229, 231, 233, 232, 234,
     235, 237, 236, 238, 239, 241, 243, 242, 244, 246, 245, 250, 249, 251,
     252, 8224, 176, 162, 163, 167, 8226, 182, 223, 174, 169, 8482, 180, 168,
@@ -434,9 +497,9 @@ if (name.Equals("macintosh")) {
     8225, 183, 8218, 8222, 8240, 194, 202, 193, 203, 200, 205, 206, 207,
     204, 211, 212, 63743, 210, 218, 219, 217, 305, 710, 732, 175, 728, 729,
     730, 184, 733, 731, 711 });
-}
-if (name.Equals("ISO-8859-10")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-10")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 260, 274, 290, 298, 296, 310, 167, 315, 272, 352, 358, 381,
@@ -446,9 +509,9 @@ if (name.Equals("ISO-8859-10")) {
     360, 216, 370, 218, 219, 220, 221, 222, 223, 257, 225, 226, 227, 228,
     229, 230, 303, 269, 233, 281, 235, 279, 237, 238, 239, 240, 326, 333,
     243, 244, 245, 246, 361, 248, 371, 250, 251, 252, 253, 254, 312 });
-}
-if (name.Equals("windows-1257")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
+      }
+      if (name.Equals("windows-1257")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
     131, 8222, 8230, 8224, 8225, 136, 8240, 138, 8249, 140, 168, 711, 184,
     144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482, 154, 8250,
     156, 175, 731, 159, 160, -2, 162, 163, 164, -2, 166, 167, 216, 169, 342,
@@ -459,9 +522,9 @@ if (name.Equals("windows-1257")) {
     263, 228, 229, 281, 275, 269, 233, 378, 279, 291, 311, 299, 316, 353,
     324, 326, 243, 333, 245, 246, 247, 371, 322, 347, 363, 252, 380, 382,
     729 });
-}
-if (name.Equals("windows-1250")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
+      }
+      if (name.Equals("windows-1250")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
     131, 8222, 8230, 8224, 8225, 136, 8240, 352, 8249, 346, 356, 381, 377,
     144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482, 353, 8250,
     347, 357, 382, 378, 160, 711, 728, 321, 164, 260, 166, 167, 168, 169,
@@ -472,9 +535,9 @@ if (name.Equals("windows-1250")) {
     226, 259, 228, 314, 263, 231, 269, 233, 281, 235, 283, 237, 238, 271,
     273, 324, 328, 243, 244, 337, 246, 247, 345, 367, 250, 369, 252, 253,
     355, 729 });
-}
-if (name.Equals("ISO-8859-14")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-14")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 7682, 7683, 163, 266, 267, 7690, 167, 7808, 169, 7810, 7691,
@@ -485,9 +548,9 @@ if (name.Equals("ISO-8859-14")) {
     226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
     373, 241, 242, 243, 244, 245, 246, 7787, 248, 249, 250, 251, 252, 253,
     375, 255 });
-}
-if (name.Equals("ISO-8859-4")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-4")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 260, 312, 342, 164, 296, 315, 167, 168, 352, 274, 290, 358,
@@ -497,9 +560,9 @@ if (name.Equals("ISO-8859-4")) {
     215, 216, 370, 218, 219, 220, 360, 362, 223, 257, 225, 226, 227, 228,
     229, 230, 303, 269, 233, 281, 235, 279, 237, 238, 299, 273, 326, 333,
     311, 244, 245, 246, 247, 248, 371, 250, 251, 252, 361, 363, 729 });
-}
-if (name.Equals("ISO-8859-8") || name.Equals("ISO-8859-8-I")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-8") || name.Equals("ISO-8859-8-I")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, -2, 162, 163, 164, 165, 166, 167, 168, 169, 215, 171, 172,
@@ -509,9 +572,9 @@ if (name.Equals("ISO-8859-8") || name.Equals("ISO-8859-8-I")) {
     -2, 8215, 1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497,
     1498, 1499, 1500, 1501, 1502, 1503, 1504, 1505, 1506, 1507, 1508, 1509,
     1510, 1511, 1512, 1513, 1514, -2, -2, 8206, 8207, -2 });
-}
-if (name.Equals("KOI8-R")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 9472, 9474,
+      }
+      if (name.Equals("KOI8-R")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 9472, 9474,
     9484, 9488, 9492, 9496, 9500, 9508, 9516, 9524, 9532, 9600, 9604, 9608,
     9612, 9616, 9617, 9618, 9619, 8992, 9632, 8729, 8730, 8776, 8804, 8805,
     160, 8993, 176, 178, 183, 247, 9552, 9553, 9554, 1105, 9555, 9556, 9557,
@@ -523,9 +586,9 @@ if (name.Equals("KOI8-R")) {
     1062, 1044, 1045, 1060, 1043, 1061, 1048, 1049, 1050, 1051, 1052, 1053,
     1054, 1055, 1071, 1056, 1057, 1058, 1059, 1046, 1042, 1068, 1067, 1047,
     1064, 1069, 1065, 1063, 1066 });
-}
-if (name.Equals("ISO-8859-6")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-6")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, -2, -2, -2, 164, -2, -2, -2, -2, -2, -2, -2, 1548, 173, -2,
@@ -535,9 +598,9 @@ if (name.Equals("ISO-8859-6")) {
     1592, 1593, 1594, -2, -2, -2, -2, -2, 1600, 1601, 1602, 1603, 1604,
     1605, 1606, 1607, 1608, 1609, 1610, 1611, 1612, 1613, 1614, 1615, 1616,
     1617, 1618, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2 });
-}
-if (name.Equals("windows-1254")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
+      }
+      if (name.Equals("windows-1254")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
     402, 8222, 8230, 8224, 8225, 710, 8240, 352, 8249, 338, 141, 142, 143,
     144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 353, 8250,
     339, 157, 158, 376, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169,
@@ -548,9 +611,9 @@ if (name.Equals("windows-1254")) {
     226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
     287, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 305,
     351, 255 });
-}
-if (name.Equals("windows-1255")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
+      }
+      if (name.Equals("windows-1255")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129, 8218,
     402, 8222, 8230, 8224, 8225, 710, 8240, 138, 8249, 140, 141, 142, 143,
     144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 154, 8250,
     156, 157, 158, 159, 160, 161, 162, 163, 8362, 165, 166, 167, 168, 169,
@@ -561,9 +624,9 @@ if (name.Equals("windows-1255")) {
     -2, 1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497, 1498,
     1499, 1500, 1501, 1502, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510,
     1511, 1512, 1513, 1514, -2, -2, 8206, 8207, -2 });
-}
-if (name.Equals("ISO-8859-16")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-16")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 260, 261, 321, 8364, 8222, 352, 167, 353, 169, 536, 171, 377,
@@ -573,9 +636,9 @@ if (name.Equals("ISO-8859-16")) {
     346, 368, 217, 218, 219, 220, 280, 538, 223, 224, 225, 226, 259, 228,
     263, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 273, 324, 242,
     243, 244, 337, 246, 347, 369, 249, 250, 251, 252, 281, 539, 255 });
-}
-if (name.Equals("IBM866")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 1040, 1041,
+      }
+      if (name.Equals("IBM866")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 1040, 1041,
     1042, 1043, 1044, 1045, 1046, 1047, 1048, 1049, 1050, 1051, 1052, 1053,
     1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062, 1063, 1064, 1065,
     1066, 1067, 1068, 1069, 1070, 1071, 1072, 1073, 1074, 1075, 1076, 1077,
@@ -587,9 +650,9 @@ if (name.Equals("IBM866")) {
     1090, 1091, 1092, 1093, 1094, 1095, 1096, 1097, 1098, 1099, 1100, 1101,
     1102, 1103, 1025, 1105, 1028, 1108, 1031, 1111, 1038, 1118, 176, 8729,
     183, 8730, 8470, 164, 9632, 160 });
-}
-if (name.Equals("x-mac-cyrillic")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 1040, 1041,
+      }
+      if (name.Equals("x-mac-cyrillic")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 1040, 1041,
     1042, 1043, 1044, 1045, 1046, 1047, 1048, 1049, 1050, 1051, 1052, 1053,
     1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062, 1063, 1064, 1065,
     1066, 1067, 1068, 1069, 1070, 1071, 8224, 176, 1168, 163, 167, 8226,
@@ -601,9 +664,9 @@ if (name.Equals("x-mac-cyrillic")) {
     1075, 1076, 1077, 1078, 1079, 1080, 1081, 1082, 1083, 1084, 1085, 1086,
     1087, 1088, 1089, 1090, 1091, 1092, 1093, 1094, 1095, 1096, 1097, 1098,
     1099, 1100, 1101, 1102, 8364 });
-}
-if (name.Equals("windows-1251")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 1026, 1027,
+      }
+      if (name.Equals("windows-1251")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 1026, 1027,
     8218, 1107, 8222, 8230, 8224, 8225, 8364, 8240, 1033, 8249, 1034, 1036,
     1035, 1039, 1106, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482,
     1113, 8250, 1114, 1116, 1115, 1119, 160, 1038, 1118, 1032, 164, 1168,
@@ -615,9 +678,9 @@ if (name.Equals("windows-1251")) {
     1075, 1076, 1077, 1078, 1079, 1080, 1081, 1082, 1083, 1084, 1085, 1086,
     1087, 1088, 1089, 1090, 1091, 1092, 1093, 1094, 1095, 1096, 1097, 1098,
     1099, 1100, 1101, 1102, 1103 });
-}
-if (name.Equals("windows-1256")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 1662,
+      }
+      if (name.Equals("windows-1256")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 1662,
     8218, 402, 8222, 8230, 8224, 8225, 710, 8240, 1657, 8249, 338, 1670,
     1688, 1672, 1711, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 1705, 8482,
     1681, 8250, 339, 8204, 8205, 1722, 160, 1548, 162, 163, 164, 165, 166,
@@ -629,9 +692,9 @@ if (name.Equals("windows-1256")) {
     1608, 231, 232, 233, 234, 235, 1609, 1610, 238, 239, 1611, 1612, 1613,
     1614, 244, 1615, 1616, 247, 1617, 249, 1618, 251, 252, 8206, 8207, 1746
     });
-}
-if (name.Equals("KOI8-U")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 9472, 9474,
+      }
+      if (name.Equals("KOI8-U")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 9472, 9474,
     9484, 9488, 9492, 9496, 9500, 9508, 9516, 9524, 9532, 9600, 9604, 9608,
     9612, 9616, 9617, 9618, 9619, 8992, 9632, 8729, 8730, 8776, 8804, 8805,
     160, 8993, 176, 178, 183, 247, 9552, 9553, 9554, 1105, 1108, 9556, 1110,
@@ -643,9 +706,9 @@ if (name.Equals("KOI8-U")) {
     1062, 1044, 1045, 1060, 1043, 1061, 1048, 1049, 1050, 1051, 1052, 1053,
     1054, 1055, 1071, 1056, 1057, 1058, 1059, 1046, 1042, 1068, 1067, 1047,
     1064, 1069, 1065, 1063, 1066 });
-}
-if (name.Equals("ISO-8859-7")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-7")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 8216, 8217, 163, 8364, 8367, 166, 167, 168, 169, 890, 171,
@@ -655,9 +718,9 @@ if (name.Equals("ISO-8859-7")) {
     934, 935, 936, 937, 938, 939, 940, 941, 942, 943, 944, 945, 946, 947,
     948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959, 960, 961,
     962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973, 974, -2 });
-}
-if (name.Equals("ISO-8859-13")) {
-  return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
+      }
+      if (name.Equals("ISO-8859-13")) {
+        return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
     131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
     145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
     159, 160, 8221, 162, 163, 164, 8222, 166, 167, 216, 169, 342, 171, 172,
@@ -667,7 +730,7 @@ if (name.Equals("ISO-8859-13")) {
     215, 370, 321, 346, 362, 220, 379, 381, 223, 261, 303, 257, 263, 228,
     229, 281, 275, 269, 233, 378, 279, 291, 311, 299, 316, 353, 324, 326,
     243, 333, 245, 246, 247, 371, 322, 347, 363, 252, 380, 382, 8217 });
-     } else if (name.Equals("EUC-JP")) {
+      } else if (name.Equals("EUC-JP")) {
         return (ICharacterEncoding)(new EncodingEUCJP());
       } else if (name.Equals("EUC-KR")) {
         return (ICharacterEncoding)(new EncodingKoreanEUC());
@@ -694,7 +757,11 @@ if (name.Equals("ISO-8859-13")) {
 
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.InputToString(PeterO.Text.ICharacterInput)"]/*'/>
-    public static string InputToString(this ICharacterInput reader) {
+    public static string InputToString(
+#if !NET20
+this
+#endif
+ICharacterInput reader) {
       var builder = new StringBuilder();
       while (true) {
         int c = reader.ReadChar();
@@ -760,7 +827,11 @@ if (name.Equals("ISO-8859-13")) {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoding,System.String)"]/*'/>
     public static byte[] StringToBytes(
-      this ICharacterEncoding encoding,
+
+#if !NET20
+this
+#endif
+ ICharacterEncoding encoding,
       string str) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -771,7 +842,11 @@ if (name.Equals("ISO-8859-13")) {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoder,System.String)"]/*'/>
     public static byte[] StringToBytes(
-      this ICharacterEncoder encoder,
+
+#if !NET20
+this
+#endif
+ ICharacterEncoder encoder,
       string str) {
       if (encoder == null) {
         throw new ArgumentNullException(nameof(encoder));
@@ -786,7 +861,11 @@ if (name.Equals("ISO-8859-13")) {
 
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String)"]/*'/>
-    public static ICharacterInput StringToInput(this string str) {
+    public static ICharacterInput StringToInput(
+#if !NET20
+this
+#endif
+string str) {
       if (str == null) {
         throw new ArgumentNullException(nameof(str));
       }
@@ -796,7 +875,10 @@ if (name.Equals("ISO-8859-13")) {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String,System.Int32,System.Int32)"]/*'/>
     public static ICharacterInput StringToInput(
-  this string str,
+#if !NET20
+this
+#endif
+ string str,
   int offset,
   int length) {
       if (str == null) {
@@ -825,384 +907,384 @@ if (name.Equals("ISO-8859-13")) {
       return new CharacterReader(str, offset, length);
     }
 
-#region CreateAliasMap
-private static IDictionary<string, string> CreateAliasMap() {
-var aliases = new Dictionary<string, string>();
-aliases["unicode-1-1-utf-8"] = "UTF-8";
-aliases["utf-8"] = "UTF-8";
-aliases["utf8"] = "UTF-8";
-aliases["866"] = "IBM866";
-aliases["cp866"] = "IBM866";
-aliases["csibm866"] = "IBM866";
-aliases["ibm866"] = "IBM866";
-aliases["csisolatin2"] = "ISO-8859-2";
-aliases["iso-8859-2"] = "ISO-8859-2";
-aliases["iso-ir-101"] = "ISO-8859-2";
-aliases["iso8859-2"] = "ISO-8859-2";
-aliases["iso88592"] = "ISO-8859-2";
-aliases["iso_8859-2"] = "ISO-8859-2";
-aliases["iso_8859-2:1987"] = "ISO-8859-2";
-aliases["l2"] = "ISO-8859-2";
-aliases["latin2"] = "ISO-8859-2";
-aliases["csisolatin3"] = "ISO-8859-3";
-aliases["iso-8859-3"] = "ISO-8859-3";
-aliases["iso-ir-109"] = "ISO-8859-3";
-aliases["iso8859-3"] = "ISO-8859-3";
-aliases["iso88593"] = "ISO-8859-3";
-aliases["iso_8859-3"] = "ISO-8859-3";
-aliases["iso_8859-3:1988"] = "ISO-8859-3";
-aliases["l3"] = "ISO-8859-3";
-aliases["latin3"] = "ISO-8859-3";
-aliases["csisolatin4"] = "ISO-8859-4";
-aliases["iso-8859-4"] = "ISO-8859-4";
-aliases["iso-ir-110"] = "ISO-8859-4";
-aliases["iso8859-4"] = "ISO-8859-4";
-aliases["iso88594"] = "ISO-8859-4";
-aliases["iso_8859-4"] = "ISO-8859-4";
-aliases["iso_8859-4:1988"] = "ISO-8859-4";
-aliases["l4"] = "ISO-8859-4";
-aliases["latin4"] = "ISO-8859-4";
-aliases["csisolatincyrillic"] = "ISO-8859-5";
-aliases["cyrillic"] = "ISO-8859-5";
-aliases["iso-8859-5"] = "ISO-8859-5";
-aliases["iso-ir-144"] = "ISO-8859-5";
-aliases["iso8859-5"] = "ISO-8859-5";
-aliases["iso88595"] = "ISO-8859-5";
-aliases["iso_8859-5"] = "ISO-8859-5";
-aliases["iso_8859-5:1988"] = "ISO-8859-5";
-aliases["arabic"] = "ISO-8859-6";
-aliases["asmo-708"] = "ISO-8859-6";
-aliases["csiso88596e"] = "ISO-8859-6";
-aliases["csiso88596i"] = "ISO-8859-6";
-aliases["csisolatinarabic"] = "ISO-8859-6";
-aliases["ecma-114"] = "ISO-8859-6";
-aliases["iso-8859-6"] = "ISO-8859-6";
-aliases["iso-8859-6-e"] = "ISO-8859-6";
-aliases["iso-8859-6-i"] = "ISO-8859-6";
-aliases["iso-ir-127"] = "ISO-8859-6";
-aliases["iso8859-6"] = "ISO-8859-6";
-aliases["iso88596"] = "ISO-8859-6";
-aliases["iso_8859-6"] = "ISO-8859-6";
-aliases["iso_8859-6:1987"] = "ISO-8859-6";
-aliases["csisolatingreek"] = "ISO-8859-7";
-aliases["ecma-118"] = "ISO-8859-7";
-aliases["elot_928"] = "ISO-8859-7";
-aliases["greek"] = "ISO-8859-7";
-aliases["greek8"] = "ISO-8859-7";
-aliases["iso-8859-7"] = "ISO-8859-7";
-aliases["iso-ir-126"] = "ISO-8859-7";
-aliases["iso8859-7"] = "ISO-8859-7";
-aliases["iso88597"] = "ISO-8859-7";
-aliases["iso_8859-7"] = "ISO-8859-7";
-aliases["iso_8859-7:1987"] = "ISO-8859-7";
-aliases["sun_eu_greek"] = "ISO-8859-7";
-aliases["csiso88598e"] = "ISO-8859-8";
-aliases["csisolatinhebrew"] = "ISO-8859-8";
-aliases["hebrew"] = "ISO-8859-8";
-aliases["iso-8859-8"] = "ISO-8859-8";
-aliases["iso-8859-8-e"] = "ISO-8859-8";
-aliases["iso-ir-138"] = "ISO-8859-8";
-aliases["iso8859-8"] = "ISO-8859-8";
-aliases["iso88598"] = "ISO-8859-8";
-aliases["iso_8859-8"] = "ISO-8859-8";
-aliases["iso_8859-8:1988"] = "ISO-8859-8";
-aliases["visual"] = "ISO-8859-8";
-aliases["csiso88598i"] = "ISO-8859-8-I";
-aliases["iso-8859-8-i"] = "ISO-8859-8-I";
-aliases["logical"] = "ISO-8859-8-I";
-aliases["csisolatin6"] = "ISO-8859-10";
-aliases["iso-8859-10"] = "ISO-8859-10";
-aliases["iso-ir-157"] = "ISO-8859-10";
-aliases["iso8859-10"] = "ISO-8859-10";
-aliases["iso885910"] = "ISO-8859-10";
-aliases["l6"] = "ISO-8859-10";
-aliases["latin6"] = "ISO-8859-10";
-aliases["iso-8859-13"] = "ISO-8859-13";
-aliases["iso8859-13"] = "ISO-8859-13";
-aliases["iso885913"] = "ISO-8859-13";
-aliases["iso-8859-14"] = "ISO-8859-14";
-aliases["iso8859-14"] = "ISO-8859-14";
-aliases["iso885914"] = "ISO-8859-14";
-aliases["csisolatin9"] = "ISO-8859-15";
-aliases["iso-8859-15"] = "ISO-8859-15";
-aliases["iso8859-15"] = "ISO-8859-15";
-aliases["iso885915"] = "ISO-8859-15";
-aliases["iso_8859-15"] = "ISO-8859-15";
-aliases["l9"] = "ISO-8859-15";
-aliases["iso-8859-16"] = "ISO-8859-16";
-aliases["cskoi8r"] = "KOI8-R";
-aliases["koi"] = "KOI8-R";
-aliases["koi8"] = "KOI8-R";
-aliases["koi8-r"] = "KOI8-R";
-aliases["koi8_r"] = "KOI8-R";
-aliases["koi8-ru"] = "KOI8-U";
-aliases["koi8-u"] = "KOI8-U";
-aliases["csmacintosh"] = "macintosh";
-aliases["mac"] = "macintosh";
-aliases["macintosh"] = "macintosh";
-aliases["x-mac-roman"] = "macintosh";
-aliases["dos-874"] = "windows-874";
-aliases["iso-8859-11"] = "windows-874";
-aliases["iso8859-11"] = "windows-874";
-aliases["iso885911"] = "windows-874";
-aliases["tis-620"] = "windows-874";
-aliases["windows-874"] = "windows-874";
-aliases["cp1250"] = "windows-1250";
-aliases["windows-1250"] = "windows-1250";
-aliases["x-cp1250"] = "windows-1250";
-aliases["cp1251"] = "windows-1251";
-aliases["windows-1251"] = "windows-1251";
-aliases["x-cp1251"] = "windows-1251";
-aliases["ansi_x3.4-1968"] = "windows-1252";
-aliases["ascii"] = "windows-1252";
-aliases["cp1252"] = "windows-1252";
-aliases["cp819"] = "windows-1252";
-aliases["csisolatin1"] = "windows-1252";
-aliases["ibm819"] = "windows-1252";
-aliases["iso-8859-1"] = "windows-1252";
-aliases["iso-ir-100"] = "windows-1252";
-aliases["iso8859-1"] = "windows-1252";
-aliases["iso88591"] = "windows-1252";
-aliases["iso_8859-1"] = "windows-1252";
-aliases["iso_8859-1:1987"] = "windows-1252";
-aliases["l1"] = "windows-1252";
-aliases["latin1"] = "windows-1252";
-aliases["us-ascii"] = "windows-1252";
-aliases["windows-1252"] = "windows-1252";
-aliases["x-cp1252"] = "windows-1252";
-aliases["cp1253"] = "windows-1253";
-aliases["windows-1253"] = "windows-1253";
-aliases["x-cp1253"] = "windows-1253";
-aliases["cp1254"] = "windows-1254";
-aliases["csisolatin5"] = "windows-1254";
-aliases["iso-8859-9"] = "windows-1254";
-aliases["iso-ir-148"] = "windows-1254";
-aliases["iso8859-9"] = "windows-1254";
-aliases["iso88599"] = "windows-1254";
-aliases["iso_8859-9"] = "windows-1254";
-aliases["iso_8859-9:1989"] = "windows-1254";
-aliases["l5"] = "windows-1254";
-aliases["latin5"] = "windows-1254";
-aliases["windows-1254"] = "windows-1254";
-aliases["x-cp1254"] = "windows-1254";
-aliases["cp1255"] = "windows-1255";
-aliases["windows-1255"] = "windows-1255";
-aliases["x-cp1255"] = "windows-1255";
-aliases["cp1256"] = "windows-1256";
-aliases["windows-1256"] = "windows-1256";
-aliases["x-cp1256"] = "windows-1256";
-aliases["cp1257"] = "windows-1257";
-aliases["windows-1257"] = "windows-1257";
-aliases["x-cp1257"] = "windows-1257";
-aliases["cp1258"] = "windows-1258";
-aliases["windows-1258"] = "windows-1258";
-aliases["x-cp1258"] = "windows-1258";
-aliases["x-mac-cyrillic"] = "x-mac-cyrillic";
-aliases["x-mac-ukrainian"] = "x-mac-cyrillic";
-aliases["chinese"] = "GBK";
-aliases["csgb2312"] = "GBK";
-aliases["csiso58gb231280"] = "GBK";
-aliases["gb2312"] = "GBK";
-aliases["gb_2312"] = "GBK";
-aliases["gb_2312-80"] = "GBK";
-aliases["gbk"] = "GBK";
-aliases["iso-ir-58"] = "GBK";
-aliases["x-gbk"] = "GBK";
-aliases["gb18030"] = "gb18030";
-aliases["big5"] = "Big5";
-aliases["big5-hkscs"] = "Big5";
-aliases["cn-big5"] = "Big5";
-aliases["csbig5"] = "Big5";
-aliases["x-x-big5"] = "Big5";
-aliases["cseucpkdfmtjapanese"] = "EUC-JP";
-aliases["euc-jp"] = "EUC-JP";
-aliases["x-euc-jp"] = "EUC-JP";
-aliases["csiso2022jp"] = "ISO-2022-JP";
-aliases["iso-2022-jp"] = "ISO-2022-JP";
-aliases["csshiftjis"] = "Shift_JIS";
-aliases["ms932"] = "Shift_JIS";
-aliases["ms_kanji"] = "Shift_JIS";
-aliases["shift-jis"] = "Shift_JIS";
-aliases["shift_jis"] = "Shift_JIS";
-aliases["sjis"] = "Shift_JIS";
-aliases["windows-31j"] = "Shift_JIS";
-aliases["x-sjis"] = "Shift_JIS";
-aliases["cseuckr"] = "EUC-KR";
-aliases["csksc56011987"] = "EUC-KR";
-aliases["euc-kr"] = "EUC-KR";
-aliases["iso-ir-149"] = "EUC-KR";
-aliases["korean"] = "EUC-KR";
-aliases["ks_c_5601-1987"] = "EUC-KR";
-aliases["ks_c_5601-1989"] = "EUC-KR";
-aliases["ksc5601"] = "EUC-KR";
-aliases["ksc_5601"] = "EUC-KR";
-aliases["windows-949"] = "EUC-KR";
-aliases["csiso2022kr"] = "replacement";
-aliases["hz-gb-2312"] = "replacement";
-aliases["iso-2022-cn"] = "replacement";
-aliases["iso-2022-cn-ext"] = "replacement";
-aliases["iso-2022-kr"] = "replacement";
-aliases["replacement"] = "replacement";
-aliases["utf-16be"] = "UTF-16BE";
-aliases["utf-16"] = "UTF-16LE";
-aliases["utf-16le"] = "UTF-16LE";
-aliases["x-user-defined"] = "x-user-defined";
-return aliases;
-}
-#endregion
+    #region CreateAliasMap
+    private static IDictionary<string, string> CreateAliasMap() {
+      var aliases = new Dictionary<string, string>();
+      aliases["unicode-1-1-utf-8"] = "UTF-8";
+      aliases["utf-8"] = "UTF-8";
+      aliases["utf8"] = "UTF-8";
+      aliases["866"] = "IBM866";
+      aliases["cp866"] = "IBM866";
+      aliases["csibm866"] = "IBM866";
+      aliases["ibm866"] = "IBM866";
+      aliases["csisolatin2"] = "ISO-8859-2";
+      aliases["iso-8859-2"] = "ISO-8859-2";
+      aliases["iso-ir-101"] = "ISO-8859-2";
+      aliases["iso8859-2"] = "ISO-8859-2";
+      aliases["iso88592"] = "ISO-8859-2";
+      aliases["iso_8859-2"] = "ISO-8859-2";
+      aliases["iso_8859-2:1987"] = "ISO-8859-2";
+      aliases["l2"] = "ISO-8859-2";
+      aliases["latin2"] = "ISO-8859-2";
+      aliases["csisolatin3"] = "ISO-8859-3";
+      aliases["iso-8859-3"] = "ISO-8859-3";
+      aliases["iso-ir-109"] = "ISO-8859-3";
+      aliases["iso8859-3"] = "ISO-8859-3";
+      aliases["iso88593"] = "ISO-8859-3";
+      aliases["iso_8859-3"] = "ISO-8859-3";
+      aliases["iso_8859-3:1988"] = "ISO-8859-3";
+      aliases["l3"] = "ISO-8859-3";
+      aliases["latin3"] = "ISO-8859-3";
+      aliases["csisolatin4"] = "ISO-8859-4";
+      aliases["iso-8859-4"] = "ISO-8859-4";
+      aliases["iso-ir-110"] = "ISO-8859-4";
+      aliases["iso8859-4"] = "ISO-8859-4";
+      aliases["iso88594"] = "ISO-8859-4";
+      aliases["iso_8859-4"] = "ISO-8859-4";
+      aliases["iso_8859-4:1988"] = "ISO-8859-4";
+      aliases["l4"] = "ISO-8859-4";
+      aliases["latin4"] = "ISO-8859-4";
+      aliases["csisolatincyrillic"] = "ISO-8859-5";
+      aliases["cyrillic"] = "ISO-8859-5";
+      aliases["iso-8859-5"] = "ISO-8859-5";
+      aliases["iso-ir-144"] = "ISO-8859-5";
+      aliases["iso8859-5"] = "ISO-8859-5";
+      aliases["iso88595"] = "ISO-8859-5";
+      aliases["iso_8859-5"] = "ISO-8859-5";
+      aliases["iso_8859-5:1988"] = "ISO-8859-5";
+      aliases["arabic"] = "ISO-8859-6";
+      aliases["asmo-708"] = "ISO-8859-6";
+      aliases["csiso88596e"] = "ISO-8859-6";
+      aliases["csiso88596i"] = "ISO-8859-6";
+      aliases["csisolatinarabic"] = "ISO-8859-6";
+      aliases["ecma-114"] = "ISO-8859-6";
+      aliases["iso-8859-6"] = "ISO-8859-6";
+      aliases["iso-8859-6-e"] = "ISO-8859-6";
+      aliases["iso-8859-6-i"] = "ISO-8859-6";
+      aliases["iso-ir-127"] = "ISO-8859-6";
+      aliases["iso8859-6"] = "ISO-8859-6";
+      aliases["iso88596"] = "ISO-8859-6";
+      aliases["iso_8859-6"] = "ISO-8859-6";
+      aliases["iso_8859-6:1987"] = "ISO-8859-6";
+      aliases["csisolatingreek"] = "ISO-8859-7";
+      aliases["ecma-118"] = "ISO-8859-7";
+      aliases["elot_928"] = "ISO-8859-7";
+      aliases["greek"] = "ISO-8859-7";
+      aliases["greek8"] = "ISO-8859-7";
+      aliases["iso-8859-7"] = "ISO-8859-7";
+      aliases["iso-ir-126"] = "ISO-8859-7";
+      aliases["iso8859-7"] = "ISO-8859-7";
+      aliases["iso88597"] = "ISO-8859-7";
+      aliases["iso_8859-7"] = "ISO-8859-7";
+      aliases["iso_8859-7:1987"] = "ISO-8859-7";
+      aliases["sun_eu_greek"] = "ISO-8859-7";
+      aliases["csiso88598e"] = "ISO-8859-8";
+      aliases["csisolatinhebrew"] = "ISO-8859-8";
+      aliases["hebrew"] = "ISO-8859-8";
+      aliases["iso-8859-8"] = "ISO-8859-8";
+      aliases["iso-8859-8-e"] = "ISO-8859-8";
+      aliases["iso-ir-138"] = "ISO-8859-8";
+      aliases["iso8859-8"] = "ISO-8859-8";
+      aliases["iso88598"] = "ISO-8859-8";
+      aliases["iso_8859-8"] = "ISO-8859-8";
+      aliases["iso_8859-8:1988"] = "ISO-8859-8";
+      aliases["visual"] = "ISO-8859-8";
+      aliases["csiso88598i"] = "ISO-8859-8-I";
+      aliases["iso-8859-8-i"] = "ISO-8859-8-I";
+      aliases["logical"] = "ISO-8859-8-I";
+      aliases["csisolatin6"] = "ISO-8859-10";
+      aliases["iso-8859-10"] = "ISO-8859-10";
+      aliases["iso-ir-157"] = "ISO-8859-10";
+      aliases["iso8859-10"] = "ISO-8859-10";
+      aliases["iso885910"] = "ISO-8859-10";
+      aliases["l6"] = "ISO-8859-10";
+      aliases["latin6"] = "ISO-8859-10";
+      aliases["iso-8859-13"] = "ISO-8859-13";
+      aliases["iso8859-13"] = "ISO-8859-13";
+      aliases["iso885913"] = "ISO-8859-13";
+      aliases["iso-8859-14"] = "ISO-8859-14";
+      aliases["iso8859-14"] = "ISO-8859-14";
+      aliases["iso885914"] = "ISO-8859-14";
+      aliases["csisolatin9"] = "ISO-8859-15";
+      aliases["iso-8859-15"] = "ISO-8859-15";
+      aliases["iso8859-15"] = "ISO-8859-15";
+      aliases["iso885915"] = "ISO-8859-15";
+      aliases["iso_8859-15"] = "ISO-8859-15";
+      aliases["l9"] = "ISO-8859-15";
+      aliases["iso-8859-16"] = "ISO-8859-16";
+      aliases["cskoi8r"] = "KOI8-R";
+      aliases["koi"] = "KOI8-R";
+      aliases["koi8"] = "KOI8-R";
+      aliases["koi8-r"] = "KOI8-R";
+      aliases["koi8_r"] = "KOI8-R";
+      aliases["koi8-ru"] = "KOI8-U";
+      aliases["koi8-u"] = "KOI8-U";
+      aliases["csmacintosh"] = "macintosh";
+      aliases["mac"] = "macintosh";
+      aliases["macintosh"] = "macintosh";
+      aliases["x-mac-roman"] = "macintosh";
+      aliases["dos-874"] = "windows-874";
+      aliases["iso-8859-11"] = "windows-874";
+      aliases["iso8859-11"] = "windows-874";
+      aliases["iso885911"] = "windows-874";
+      aliases["tis-620"] = "windows-874";
+      aliases["windows-874"] = "windows-874";
+      aliases["cp1250"] = "windows-1250";
+      aliases["windows-1250"] = "windows-1250";
+      aliases["x-cp1250"] = "windows-1250";
+      aliases["cp1251"] = "windows-1251";
+      aliases["windows-1251"] = "windows-1251";
+      aliases["x-cp1251"] = "windows-1251";
+      aliases["ansi_x3.4-1968"] = "windows-1252";
+      aliases["ascii"] = "windows-1252";
+      aliases["cp1252"] = "windows-1252";
+      aliases["cp819"] = "windows-1252";
+      aliases["csisolatin1"] = "windows-1252";
+      aliases["ibm819"] = "windows-1252";
+      aliases["iso-8859-1"] = "windows-1252";
+      aliases["iso-ir-100"] = "windows-1252";
+      aliases["iso8859-1"] = "windows-1252";
+      aliases["iso88591"] = "windows-1252";
+      aliases["iso_8859-1"] = "windows-1252";
+      aliases["iso_8859-1:1987"] = "windows-1252";
+      aliases["l1"] = "windows-1252";
+      aliases["latin1"] = "windows-1252";
+      aliases["us-ascii"] = "windows-1252";
+      aliases["windows-1252"] = "windows-1252";
+      aliases["x-cp1252"] = "windows-1252";
+      aliases["cp1253"] = "windows-1253";
+      aliases["windows-1253"] = "windows-1253";
+      aliases["x-cp1253"] = "windows-1253";
+      aliases["cp1254"] = "windows-1254";
+      aliases["csisolatin5"] = "windows-1254";
+      aliases["iso-8859-9"] = "windows-1254";
+      aliases["iso-ir-148"] = "windows-1254";
+      aliases["iso8859-9"] = "windows-1254";
+      aliases["iso88599"] = "windows-1254";
+      aliases["iso_8859-9"] = "windows-1254";
+      aliases["iso_8859-9:1989"] = "windows-1254";
+      aliases["l5"] = "windows-1254";
+      aliases["latin5"] = "windows-1254";
+      aliases["windows-1254"] = "windows-1254";
+      aliases["x-cp1254"] = "windows-1254";
+      aliases["cp1255"] = "windows-1255";
+      aliases["windows-1255"] = "windows-1255";
+      aliases["x-cp1255"] = "windows-1255";
+      aliases["cp1256"] = "windows-1256";
+      aliases["windows-1256"] = "windows-1256";
+      aliases["x-cp1256"] = "windows-1256";
+      aliases["cp1257"] = "windows-1257";
+      aliases["windows-1257"] = "windows-1257";
+      aliases["x-cp1257"] = "windows-1257";
+      aliases["cp1258"] = "windows-1258";
+      aliases["windows-1258"] = "windows-1258";
+      aliases["x-cp1258"] = "windows-1258";
+      aliases["x-mac-cyrillic"] = "x-mac-cyrillic";
+      aliases["x-mac-ukrainian"] = "x-mac-cyrillic";
+      aliases["chinese"] = "GBK";
+      aliases["csgb2312"] = "GBK";
+      aliases["csiso58gb231280"] = "GBK";
+      aliases["gb2312"] = "GBK";
+      aliases["gb_2312"] = "GBK";
+      aliases["gb_2312-80"] = "GBK";
+      aliases["gbk"] = "GBK";
+      aliases["iso-ir-58"] = "GBK";
+      aliases["x-gbk"] = "GBK";
+      aliases["gb18030"] = "gb18030";
+      aliases["big5"] = "Big5";
+      aliases["big5-hkscs"] = "Big5";
+      aliases["cn-big5"] = "Big5";
+      aliases["csbig5"] = "Big5";
+      aliases["x-x-big5"] = "Big5";
+      aliases["cseucpkdfmtjapanese"] = "EUC-JP";
+      aliases["euc-jp"] = "EUC-JP";
+      aliases["x-euc-jp"] = "EUC-JP";
+      aliases["csiso2022jp"] = "ISO-2022-JP";
+      aliases["iso-2022-jp"] = "ISO-2022-JP";
+      aliases["csshiftjis"] = "Shift_JIS";
+      aliases["ms932"] = "Shift_JIS";
+      aliases["ms_kanji"] = "Shift_JIS";
+      aliases["shift-jis"] = "Shift_JIS";
+      aliases["shift_jis"] = "Shift_JIS";
+      aliases["sjis"] = "Shift_JIS";
+      aliases["windows-31j"] = "Shift_JIS";
+      aliases["x-sjis"] = "Shift_JIS";
+      aliases["cseuckr"] = "EUC-KR";
+      aliases["csksc56011987"] = "EUC-KR";
+      aliases["euc-kr"] = "EUC-KR";
+      aliases["iso-ir-149"] = "EUC-KR";
+      aliases["korean"] = "EUC-KR";
+      aliases["ks_c_5601-1987"] = "EUC-KR";
+      aliases["ks_c_5601-1989"] = "EUC-KR";
+      aliases["ksc5601"] = "EUC-KR";
+      aliases["ksc_5601"] = "EUC-KR";
+      aliases["windows-949"] = "EUC-KR";
+      aliases["csiso2022kr"] = "replacement";
+      aliases["hz-gb-2312"] = "replacement";
+      aliases["iso-2022-cn"] = "replacement";
+      aliases["iso-2022-cn-ext"] = "replacement";
+      aliases["iso-2022-kr"] = "replacement";
+      aliases["replacement"] = "replacement";
+      aliases["utf-16be"] = "UTF-16BE";
+      aliases["utf-16"] = "UTF-16LE";
+      aliases["utf-16le"] = "UTF-16LE";
+      aliases["x-user-defined"] = "x-user-defined";
+      return aliases;
+    }
+    #endregion
 
-#region CreateEmailAliasMap
-private static IDictionary<string, string> CreateEmailAliasMap() {
-var aliases = new Dictionary<string, string>();
-aliases["utf-8"] = "UTF-8";
-aliases["utf8"] = "UTF-8";
-aliases["866"] = "IBM866";
-aliases["cp866"] = "IBM866";
-aliases["csibm866"] = "IBM866";
-aliases["ibm866"] = "IBM866";
-aliases["csisolatin2"] = "ISO-8859-2";
-aliases["iso-8859-2"] = "ISO-8859-2";
-aliases["iso-ir-101"] = "ISO-8859-2";
-aliases["iso_8859-2"] = "ISO-8859-2";
-aliases["iso_8859-2:1987"] = "ISO-8859-2";
-aliases["l2"] = "ISO-8859-2";
-aliases["latin2"] = "ISO-8859-2";
-aliases["csisolatin3"] = "ISO-8859-3";
-aliases["iso-8859-3"] = "ISO-8859-3";
-aliases["iso-ir-109"] = "ISO-8859-3";
-aliases["iso_8859-3"] = "ISO-8859-3";
-aliases["iso_8859-3:1988"] = "ISO-8859-3";
-aliases["l3"] = "ISO-8859-3";
-aliases["latin3"] = "ISO-8859-3";
-aliases["csisolatin4"] = "ISO-8859-4";
-aliases["iso-8859-4"] = "ISO-8859-4";
-aliases["iso-ir-110"] = "ISO-8859-4";
-aliases["iso_8859-4"] = "ISO-8859-4";
-aliases["iso_8859-4:1988"] = "ISO-8859-4";
-aliases["l4"] = "ISO-8859-4";
-aliases["latin4"] = "ISO-8859-4";
-aliases["csisolatincyrillic"] = "ISO-8859-5";
-aliases["cyrillic"] = "ISO-8859-5";
-aliases["iso-8859-5"] = "ISO-8859-5";
-aliases["iso-ir-144"] = "ISO-8859-5";
-aliases["iso_8859-5"] = "ISO-8859-5";
-aliases["iso_8859-5:1988"] = "ISO-8859-5";
-aliases["arabic"] = "ISO-8859-6";
-aliases["asmo-708"] = "ISO-8859-6";
-aliases["csiso88596e"] = "ISO-8859-6";
-aliases["csiso88596i"] = "ISO-8859-6";
-aliases["csisolatinarabic"] = "ISO-8859-6";
-aliases["ecma-114"] = "ISO-8859-6";
-aliases["iso-8859-6"] = "ISO-8859-6";
-aliases["iso-8859-6-e"] = "ISO-8859-6";
-aliases["iso-8859-6-i"] = "ISO-8859-6";
-aliases["iso-ir-127"] = "ISO-8859-6";
-aliases["iso_8859-6"] = "ISO-8859-6";
-aliases["iso_8859-6:1987"] = "ISO-8859-6";
-aliases["csisolatingreek"] = "ISO-8859-7";
-aliases["ecma-118"] = "ISO-8859-7";
-aliases["elot_928"] = "ISO-8859-7";
-aliases["greek"] = "ISO-8859-7";
-aliases["greek8"] = "ISO-8859-7";
-aliases["iso-8859-7"] = "ISO-8859-7";
-aliases["iso-ir-126"] = "ISO-8859-7";
-aliases["iso_8859-7"] = "ISO-8859-7";
-aliases["iso_8859-7:1987"] = "ISO-8859-7";
-aliases["csiso88598e"] = "ISO-8859-8";
-aliases["csisolatinhebrew"] = "ISO-8859-8";
-aliases["hebrew"] = "ISO-8859-8";
-aliases["iso-8859-8"] = "ISO-8859-8";
-aliases["iso-8859-8-e"] = "ISO-8859-8";
-aliases["iso-ir-138"] = "ISO-8859-8";
-aliases["iso_8859-8"] = "ISO-8859-8";
-aliases["iso_8859-8:1988"] = "ISO-8859-8";
-aliases["csiso88598i"] = "ISO-8859-8-I";
-aliases["iso-8859-8-i"] = "ISO-8859-8-I";
-aliases["csisolatin6"] = "ISO-8859-10";
-aliases["iso-8859-10"] = "ISO-8859-10";
-aliases["iso-ir-157"] = "ISO-8859-10";
-aliases["l6"] = "ISO-8859-10";
-aliases["latin6"] = "ISO-8859-10";
-aliases["iso-8859-13"] = "ISO-8859-13";
-aliases["iso-8859-14"] = "ISO-8859-14";
-aliases["iso-8859-15"] = "ISO-8859-15";
-aliases["iso_8859-15"] = "ISO-8859-15";
-aliases["iso-8859-16"] = "ISO-8859-16";
-aliases["cskoi8r"] = "KOI8-R";
-aliases["koi8-r"] = "KOI8-R";
-aliases["koi8-u"] = "KOI8-U";
-aliases["csmacintosh"] = "macintosh";
-aliases["mac"] = "macintosh";
-aliases["macintosh"] = "macintosh";
-aliases["iso-8859-11"] = "windows-874";
-aliases["tis-620"] = "windows-874";
-aliases["windows-874"] = "windows-874";
-aliases["windows-1250"] = "windows-1250";
-aliases["windows-1251"] = "windows-1251";
-aliases["ansi_x3.4-1968"] = "windows-1252";
-aliases["cp1252"] = "windows-1252";
-aliases["cp819"] = "windows-1252";
-aliases["csisolatin1"] = "windows-1252";
-aliases["ibm819"] = "windows-1252";
-aliases["iso-8859-1"] = "windows-1252";
-aliases["iso-ir-100"] = "windows-1252";
-aliases["iso_8859-1"] = "windows-1252";
-aliases["iso_8859-1:1987"] = "windows-1252";
-aliases["l1"] = "windows-1252";
-aliases["latin1"] = "windows-1252";
-aliases["us-ascii"] = "windows-1252";
-aliases["windows-1252"] = "windows-1252";
-aliases["windows-1253"] = "windows-1253";
-aliases["csisolatin5"] = "windows-1254";
-aliases["iso-8859-9"] = "windows-1254";
-aliases["iso-ir-148"] = "windows-1254";
-aliases["iso_8859-9"] = "windows-1254";
-aliases["iso_8859-9:1989"] = "windows-1254";
-aliases["l5"] = "windows-1254";
-aliases["latin5"] = "windows-1254";
-aliases["windows-1254"] = "windows-1254";
-aliases["windows-1255"] = "windows-1255";
-aliases["windows-1256"] = "windows-1256";
-aliases["windows-1257"] = "windows-1257";
-aliases["windows-1258"] = "windows-1258";
-aliases["chinese"] = "GBK";
-aliases["csgb2312"] = "GBK";
-aliases["csiso58gb231280"] = "GBK";
-aliases["gb2312"] = "GBK";
-aliases["gb_2312-80"] = "GBK";
-aliases["gbk"] = "GBK";
-aliases["iso-ir-58"] = "GBK";
-aliases["gb18030"] = "gb18030";
-aliases["big5"] = "Big5";
-aliases["big5-hkscs"] = "Big5";
-aliases["csbig5"] = "Big5";
-aliases["cseucpkdfmtjapanese"] = "EUC-JP";
-aliases["euc-jp"] = "EUC-JP";
-aliases["csiso2022jp"] = "ISO-2022-JP";
-aliases["iso-2022-jp"] = "ISO-2022-JP";
-aliases["csshiftjis"] = "Shift_JIS";
-aliases["ms_kanji"] = "Shift_JIS";
-aliases["shift_jis"] = "Shift_JIS";
-aliases["windows-31j"] = "Shift_JIS";
-aliases["cseuckr"] = "EUC-KR";
-aliases["csksc56011987"] = "EUC-KR";
-aliases["euc-kr"] = "EUC-KR";
-aliases["iso-ir-149"] = "EUC-KR";
-aliases["korean"] = "EUC-KR";
-aliases["ks_c_5601-1987"] = "EUC-KR";
-aliases["ks_c_5601-1989"] = "EUC-KR";
-aliases["ksc_5601"] = "EUC-KR";
-aliases["csiso2022kr"] = "replacement";
-aliases["hz-gb-2312"] = "replacement";
-aliases["iso-2022-cn"] = "replacement";
-aliases["iso-2022-cn-ext"] = "replacement";
-aliases["iso-2022-kr"] = "replacement";
-aliases["utf-16be"] = "UTF-16BE";
-aliases["utf-16"] = "UTF-16LE";
-aliases["utf-16le"] = "UTF-16LE";
-return aliases;
-}
-#endregion
+    #region CreateEmailAliasMap
+    private static IDictionary<string, string> CreateEmailAliasMap() {
+      var aliases = new Dictionary<string, string>();
+      aliases["utf-8"] = "UTF-8";
+      aliases["utf8"] = "UTF-8";
+      aliases["866"] = "IBM866";
+      aliases["cp866"] = "IBM866";
+      aliases["csibm866"] = "IBM866";
+      aliases["ibm866"] = "IBM866";
+      aliases["csisolatin2"] = "ISO-8859-2";
+      aliases["iso-8859-2"] = "ISO-8859-2";
+      aliases["iso-ir-101"] = "ISO-8859-2";
+      aliases["iso_8859-2"] = "ISO-8859-2";
+      aliases["iso_8859-2:1987"] = "ISO-8859-2";
+      aliases["l2"] = "ISO-8859-2";
+      aliases["latin2"] = "ISO-8859-2";
+      aliases["csisolatin3"] = "ISO-8859-3";
+      aliases["iso-8859-3"] = "ISO-8859-3";
+      aliases["iso-ir-109"] = "ISO-8859-3";
+      aliases["iso_8859-3"] = "ISO-8859-3";
+      aliases["iso_8859-3:1988"] = "ISO-8859-3";
+      aliases["l3"] = "ISO-8859-3";
+      aliases["latin3"] = "ISO-8859-3";
+      aliases["csisolatin4"] = "ISO-8859-4";
+      aliases["iso-8859-4"] = "ISO-8859-4";
+      aliases["iso-ir-110"] = "ISO-8859-4";
+      aliases["iso_8859-4"] = "ISO-8859-4";
+      aliases["iso_8859-4:1988"] = "ISO-8859-4";
+      aliases["l4"] = "ISO-8859-4";
+      aliases["latin4"] = "ISO-8859-4";
+      aliases["csisolatincyrillic"] = "ISO-8859-5";
+      aliases["cyrillic"] = "ISO-8859-5";
+      aliases["iso-8859-5"] = "ISO-8859-5";
+      aliases["iso-ir-144"] = "ISO-8859-5";
+      aliases["iso_8859-5"] = "ISO-8859-5";
+      aliases["iso_8859-5:1988"] = "ISO-8859-5";
+      aliases["arabic"] = "ISO-8859-6";
+      aliases["asmo-708"] = "ISO-8859-6";
+      aliases["csiso88596e"] = "ISO-8859-6";
+      aliases["csiso88596i"] = "ISO-8859-6";
+      aliases["csisolatinarabic"] = "ISO-8859-6";
+      aliases["ecma-114"] = "ISO-8859-6";
+      aliases["iso-8859-6"] = "ISO-8859-6";
+      aliases["iso-8859-6-e"] = "ISO-8859-6";
+      aliases["iso-8859-6-i"] = "ISO-8859-6";
+      aliases["iso-ir-127"] = "ISO-8859-6";
+      aliases["iso_8859-6"] = "ISO-8859-6";
+      aliases["iso_8859-6:1987"] = "ISO-8859-6";
+      aliases["csisolatingreek"] = "ISO-8859-7";
+      aliases["ecma-118"] = "ISO-8859-7";
+      aliases["elot_928"] = "ISO-8859-7";
+      aliases["greek"] = "ISO-8859-7";
+      aliases["greek8"] = "ISO-8859-7";
+      aliases["iso-8859-7"] = "ISO-8859-7";
+      aliases["iso-ir-126"] = "ISO-8859-7";
+      aliases["iso_8859-7"] = "ISO-8859-7";
+      aliases["iso_8859-7:1987"] = "ISO-8859-7";
+      aliases["csiso88598e"] = "ISO-8859-8";
+      aliases["csisolatinhebrew"] = "ISO-8859-8";
+      aliases["hebrew"] = "ISO-8859-8";
+      aliases["iso-8859-8"] = "ISO-8859-8";
+      aliases["iso-8859-8-e"] = "ISO-8859-8";
+      aliases["iso-ir-138"] = "ISO-8859-8";
+      aliases["iso_8859-8"] = "ISO-8859-8";
+      aliases["iso_8859-8:1988"] = "ISO-8859-8";
+      aliases["csiso88598i"] = "ISO-8859-8-I";
+      aliases["iso-8859-8-i"] = "ISO-8859-8-I";
+      aliases["csisolatin6"] = "ISO-8859-10";
+      aliases["iso-8859-10"] = "ISO-8859-10";
+      aliases["iso-ir-157"] = "ISO-8859-10";
+      aliases["l6"] = "ISO-8859-10";
+      aliases["latin6"] = "ISO-8859-10";
+      aliases["iso-8859-13"] = "ISO-8859-13";
+      aliases["iso-8859-14"] = "ISO-8859-14";
+      aliases["iso-8859-15"] = "ISO-8859-15";
+      aliases["iso_8859-15"] = "ISO-8859-15";
+      aliases["iso-8859-16"] = "ISO-8859-16";
+      aliases["cskoi8r"] = "KOI8-R";
+      aliases["koi8-r"] = "KOI8-R";
+      aliases["koi8-u"] = "KOI8-U";
+      aliases["csmacintosh"] = "macintosh";
+      aliases["mac"] = "macintosh";
+      aliases["macintosh"] = "macintosh";
+      aliases["iso-8859-11"] = "windows-874";
+      aliases["tis-620"] = "windows-874";
+      aliases["windows-874"] = "windows-874";
+      aliases["windows-1250"] = "windows-1250";
+      aliases["windows-1251"] = "windows-1251";
+      aliases["ansi_x3.4-1968"] = "windows-1252";
+      aliases["cp1252"] = "windows-1252";
+      aliases["cp819"] = "windows-1252";
+      aliases["csisolatin1"] = "windows-1252";
+      aliases["ibm819"] = "windows-1252";
+      aliases["iso-8859-1"] = "windows-1252";
+      aliases["iso-ir-100"] = "windows-1252";
+      aliases["iso_8859-1"] = "windows-1252";
+      aliases["iso_8859-1:1987"] = "windows-1252";
+      aliases["l1"] = "windows-1252";
+      aliases["latin1"] = "windows-1252";
+      aliases["us-ascii"] = "windows-1252";
+      aliases["windows-1252"] = "windows-1252";
+      aliases["windows-1253"] = "windows-1253";
+      aliases["csisolatin5"] = "windows-1254";
+      aliases["iso-8859-9"] = "windows-1254";
+      aliases["iso-ir-148"] = "windows-1254";
+      aliases["iso_8859-9"] = "windows-1254";
+      aliases["iso_8859-9:1989"] = "windows-1254";
+      aliases["l5"] = "windows-1254";
+      aliases["latin5"] = "windows-1254";
+      aliases["windows-1254"] = "windows-1254";
+      aliases["windows-1255"] = "windows-1255";
+      aliases["windows-1256"] = "windows-1256";
+      aliases["windows-1257"] = "windows-1257";
+      aliases["windows-1258"] = "windows-1258";
+      aliases["chinese"] = "GBK";
+      aliases["csgb2312"] = "GBK";
+      aliases["csiso58gb231280"] = "GBK";
+      aliases["gb2312"] = "GBK";
+      aliases["gb_2312-80"] = "GBK";
+      aliases["gbk"] = "GBK";
+      aliases["iso-ir-58"] = "GBK";
+      aliases["gb18030"] = "gb18030";
+      aliases["big5"] = "Big5";
+      aliases["big5-hkscs"] = "Big5";
+      aliases["csbig5"] = "Big5";
+      aliases["cseucpkdfmtjapanese"] = "EUC-JP";
+      aliases["euc-jp"] = "EUC-JP";
+      aliases["csiso2022jp"] = "ISO-2022-JP";
+      aliases["iso-2022-jp"] = "ISO-2022-JP";
+      aliases["csshiftjis"] = "Shift_JIS";
+      aliases["ms_kanji"] = "Shift_JIS";
+      aliases["shift_jis"] = "Shift_JIS";
+      aliases["windows-31j"] = "Shift_JIS";
+      aliases["cseuckr"] = "EUC-KR";
+      aliases["csksc56011987"] = "EUC-KR";
+      aliases["euc-kr"] = "EUC-KR";
+      aliases["iso-ir-149"] = "EUC-KR";
+      aliases["korean"] = "EUC-KR";
+      aliases["ks_c_5601-1987"] = "EUC-KR";
+      aliases["ks_c_5601-1989"] = "EUC-KR";
+      aliases["ksc_5601"] = "EUC-KR";
+      aliases["csiso2022kr"] = "replacement";
+      aliases["hz-gb-2312"] = "replacement";
+      aliases["iso-2022-cn"] = "replacement";
+      aliases["iso-2022-cn-ext"] = "replacement";
+      aliases["iso-2022-kr"] = "replacement";
+      aliases["utf-16be"] = "UTF-16BE";
+      aliases["utf-16"] = "UTF-16LE";
+      aliases["utf-16le"] = "UTF-16LE";
+      return aliases;
+    }
+    #endregion
 
     private static string ToLowerCaseAscii(string str) {
       if (str == null) {
@@ -1247,8 +1329,8 @@ return aliases;
         ++index;
       }
       if (index == valueSLength) {
- return String.Empty;
-}
+        return String.Empty;
+      }
       int indexStart = index;
       index = str.Length - 1;
       while (index >= 0) {
@@ -1256,8 +1338,8 @@ return aliases;
         if (c != 0x09 && c != 0x20 && c != 0x0c && c != 0x0d && c != 0x0a) {
           int indexEnd = index + 1;
           if (indexEnd == indexStart) {
- return String.Empty;
-}
+            return String.Empty;
+          }
           return (indexEnd == str.Length && indexStart == 0) ? str :
             str.Substring(indexStart, indexEnd - indexStart);
         }
@@ -1275,15 +1357,15 @@ return aliases;
         this.stream = stream;
       }
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar"]/*'/>
+      /// <include file='../../docs.xml'
+      /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar"]/*'/>
       public int ReadChar() {
         int c = this.reader.ReadChar(this.stream);
         return (c == -2) ? 0xfffd : c;
       }
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.Read(System.Int32[],System.Int32,System.Int32)"]/*'/>
+      /// <include file='../../docs.xml'
+      /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.Read(System.Int32[],System.Int32,System.Int32)"]/*'/>
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {
           throw new ArgumentNullException(nameof(buffer));

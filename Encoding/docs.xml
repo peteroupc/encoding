@@ -474,21 +474,21 @@
             <item>A <b>code point</b> is a number that identifies a single text
             character, such as a letter, digit, or symbol. (A collection of such characters
             is also called an <i>abstract character repertoire</i>.)</item>
-            <item>A <b>character set</b> is a set of code points which are each
-            assigned to a single text character. (This may also be called a
-            <i>coded character set</i>.) As used here, character sets don't
+            <item>A <b>coded character set</b> is a set of code points which are each
+            assigned to a single text character. As used here, coded character sets don't
             define how code points are laid out in memory.</item>
             <item>A <b>character encoding</b> is a mapping from a sequence of
-            code points, in one or more specific character sets, to a sequence
-            of bytes and vice versa.</item>
-            <item><b>ASCII</b> is a 128-code-point character set that includes
+            code points, in one or more specific coded character sets, to a sequence
+            of bytes and vice versa. (For brevity, the rest of this documentation 
+            may use the term <i>encoding</i> instead.  RFC 6365 uses the analogous term <i>charset</i> instead; in this documentation, however, <i>charset</i> is used only to refer to the names that identify a character encoding.)</item>
+            <item><b>ASCII</b> is a 128-code-point coded character set that includes
             the English letters and digits, common punctuation and symbols, and
             control characters. As used here, its code points match the code
             points within the Basic Latin block (0-127 or U+0000 to U+007F)
             of the Unicode Standard.</item></list>
             <para>There are several kinds of character encodings:</para>
             <list>
-            <item><b>Single-byte encodings</b> define a character set that
+            <item><b>Single-byte encodings</b> define a coded character set that
             assigns one code point to one byte. Thus, they can have a maximum
             of 256 code points. For example:</item>
             <item>(a) ISO 8859 encodings and <c>windows-1252</c>.</item>
@@ -496,10 +496,10 @@
             each code point fits in the lower 7 bits of an eight-bit byte (in that case,
             the encoding is often called <c>US-ASCII</c>). In
             the Encoding Standard, all single-byte encodings use the ASCII
-            characters as the first 128 code points of their character
+            characters as the first 128 code points of their coded character
             sets.</item>
             <item><b>Multi-byte encodings</b> include code points from one or
-            more character sets and assign some or all code points to several
+            more coded character sets and assign some or all code points to several
             bytes. For example:</item>
             <item>(a) <c>UTF-16LE</c> and  <c>UTF-16BE</c> are two encodings defined in the Unicode Standard.  They use
             2 bytes for the most common code
@@ -509,7 +509,7 @@
             <item>(c) Most legacy East Asian encodings, such as
             <c>Shift_JIS</c>, <c>GBK</c>, and <c>Big5</c> use 1 byte for
             ASCII (or a slightly modified version) and, usually, 2 or more
-            bytes for national standard character sets. In many of these
+            bytes for national standard coded character sets. In many of these
             encodings, notably <c>Shift_JIS</c>, characters whose code points
             use one byte traditionally take half the space of characters whose
             code points use two bytes.</item>
@@ -521,7 +521,7 @@
             shift into different encodings, including a Katakana, a Kanji, and
             an ASCII encoding (with ASCII as the default).</item>
             <item>(b) UTF-7 (not included in the Encoding Standard) is an encoding that
-            uses the Unicode Standard's character set, which is encoded using a limited subset of ASCII. The plus
+            uses the Unicode Standard's coded character set, which is encoded using a limited subset of ASCII. The plus
             symbol (U+002B) is used to shift into a UTF-16BE multi-byte encoding (converted
             to a modified version of base-64) to encode other Unicode code points.</item>
             <item>The Encoding Standard also defines a <b>replacement
@@ -995,7 +995,7 @@
             (and defines aliases for most of them).
             <list type='bullet'>
             <item><c>UTF-8</c> - UTF-8 (8-bit encoding of the universal
-            character set, the encoding recommended by the Encoding Standard
+            coded character set, the encoding recommended by the Encoding Standard
             for new data formats)</item>
             <item><c>UTF-16LE</c> - UTF-16 little-endian (16-bit UCS)</item>
             <item><c>UTF-16BE</c> - UTF-16 big-endian (16-bit UCS)</item>
@@ -1005,7 +1005,7 @@
             <list type='bullet'>
             <item><c>windows-1252</c> : Western Europe (Note: The Encoding
             Standard aliases the names <c>US-ASCII</c> and <c>ISO-8859-1</c> to
-            <c>windows-1252</c>, which uses a different character set from
+            <c>windows-1252</c>, which uses a different coded character set from
             either; it differs from <c>ISO-8859-1</c> by assigning different
             characters to some bytes from 0x80 to 0x9F. The Encoding Standard
             does this for compatibility with existing Web pages.)</item>
@@ -1056,13 +1056,13 @@
             <list type='bullet'>
             <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an
             alias to <c>windows-1252</c> as specified in the Encoding
-            Standard.  The character set's code points match those in the Unicode
+            Standard.  The coded character set's code points match those in the Unicode
             Standard's Basic Latin block (0-127 or U+0000 to U+007F).  The name <c>ascii</c> is an alias.</item>
             <item><c>ISO-8859-1</c> - Latin-1 single-byte encoding, rather than
             an alias to <c>windows-1252</c> as specified in the Encoding
-            Standard.  The character set's code points match those in the Unicode
+            Standard.  The coded character set's code points match those in the Unicode
             Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U+0000 to U+00FF).</item>
-            <item><c>UTF-7</c> - UTF-7 (7-bit universal character
+            <item><c>UTF-7</c> - UTF-7 (7-bit universal coded character
             set). The name <c>unicode-1-1-utf-7</c> is an alias to <c>UTF-7</c>, even though both encodings are defined in different RFCs (1642 and 2152, respectively), and even though they are linked to Unicode versions with nonoverlapping character repertoires (1.1 and 2.0, respectively).</item></list>.
             In previous versions of this method, the name <c>iso-2022-jp-2</c> was also
            aliased to <c>ISO-2022-JP</c>, which is no longer the case.</param>
@@ -1165,7 +1165,7 @@
 <doc name="F:PeterO.Text.Encodings.UTF8">
 <summary>Character encoding object for the UTF-8 character
             encoding, which represents each code point in the universal
-            character set using 1 to 4 bytes.</summary>
+            coded character set using 1 to 4 bytes.</summary>
 </doc>
 <doc name="T:PeterO.Text.ICharacterDecoder">
 <summary>Defines a method that can be implemented by classes that

@@ -6,7 +6,7 @@ import com.upokecenter.text.*;
 
     public class EncodingGB18030 implements ICharacterEncoding
     {
-      private static final int[] ValueGb18030table = new int [] { 0,
+      private static final int[] ValueGb18030table = new int[] { 0,
           0x0080,
     36, 0x00a5,
     38, 0x00a9,
@@ -217,7 +217,7 @@ import com.upokecenter.text.*;
 
         private static int GB18030CodePoint(int pointer) {
             if (pointer < 0) {
-                throw new IllegalArgumentException ("pointer (" + pointer +
+                throw new IllegalArgumentException("pointer(" + pointer +
                   ") is less than 0");
             }
             if ((pointer > 39419 && pointer < 189000) || pointer > 1237575) {
@@ -231,24 +231,24 @@ import com.upokecenter.text.*;
             }
             int v = -1;
             for (int i = 0; i < ValueGb18030table.length; i += 2) {
-                if (ValueGb18030table [i] <= pointer) {
+                if (ValueGb18030table[i] <= pointer) {
                     v = i;
                 } else {
                     break;
                 }
             }
             if (v < 0) {
- throw new IllegalStateException ("Internal error");
+ throw new IllegalStateException("Internal error");
 }
             if (v >= ValueGb18030table.length) {
                 return -1;
             }
             try {
-                int cpoffset = ValueGb18030table [v + 1];
-                int offset = ValueGb18030table [v];
+                int cpoffset = ValueGb18030table[v + 1];
+                int offset = ValueGb18030table[v];
                 return cpoffset + pointer - offset;
             } catch (Exception ex) {
-                throw new IllegalStateException (
+                throw new IllegalStateException(
                   ex.getMessage() + " " + ex.getStackTrace() + "\n" + "\npointer=" + pointer + "\noffset=" + v + " of " + ValueGb18030table.length);
             }
         }
@@ -268,7 +268,7 @@ import com.upokecenter.text.*;
             }
             int v = -1;
             for (int i = 0; i < ValueGb18030table.length; i += 2) {
-                if (ValueGb18030table [i + 1] <= codepoint) {
+                if (ValueGb18030table[i + 1] <= codepoint) {
                     v = i;
                 } else {
                     break;
@@ -277,8 +277,8 @@ import com.upokecenter.text.*;
             if (v >= ValueGb18030table.length) {
                 return -1;
             }
-            int cpoffset = ValueGb18030table [v + 1];
-            int offset = ValueGb18030table [v];
+            int cpoffset = ValueGb18030table[v + 1];
+            int offset = ValueGb18030table[v];
             return offset + codepoint - cpoffset;
         }
 
@@ -288,14 +288,14 @@ import com.upokecenter.text.*;
             private int gbk1, gbk2, gbk3;
 
             public Decoder() {
-                this.state = new DecoderState (3);
+                this.state = new DecoderState(3);
             }
 
             public int ReadChar(IByteReader stream) {
                 int c;
                 while (true) {
                     int b;
-                    b = this.state.ReadInputByte (stream);
+                    b = this.state.ReadInputByte(stream);
                     if (b < 0) {
                     if ((this.gbk1 | this.gbk2 | this.gbk3) == 0) {
                     return -1;
@@ -309,13 +309,13 @@ import com.upokecenter.text.*;
                     if (b >= 0x30 && b <= 0x39) {
                     int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
                     126) + this.gbk3 - 0x81) * 10) + b - 0x30;
-                    c = GB18030CodePoint (ap);
+                    c = GB18030CodePoint(ap);
                     // TODO: This step may possibly be missing
                     // from the current Encoding Standard
                     this.gbk1 = this.gbk2 = this.gbk3 = 0;
-                    return (c < 0) ? (-2) : (c);
+                    return (c < 0) ? (-2) : c;
                     } else {
-                    this.state.PrependThree (this.gbk2, this.gbk3, b);
+                    this.state.PrependThree(this.gbk2, this.gbk3, b);
                     this.gbk1 = this.gbk2 = this.gbk3 = 0;
                     return -2;
                     }
@@ -325,7 +325,7 @@ import com.upokecenter.text.*;
                     this.gbk3 = b;
                     continue;
                     }
-                    this.state.PrependTwo (this.gbk2, b);
+                    this.state.PrependTwo(this.gbk2, b);
                     this.gbk1 = this.gbk2 = 0;
                     return -2;
                     }
@@ -341,11 +341,11 @@ import com.upokecenter.text.*;
                     int a2 = (b < 0x7f) ? 0x40 : 0x41;
                     if ((b >= 0x40 && b <= 0x7e) || (b >= 0x80 && b <= 0xfe)) {
                     ap = ((a1 - 0x81) * 190) + (b - a2);
-                    c = Gb18030.IndexToCodePoint (ap);
+                    c = Gb18030.IndexToCodePoint(ap);
                     }
                     if (c < 0) {
                     if (b < 0x80) {
-                    this.state.PrependOne (b);
+                    this.state.PrependOne(b);
                     }
                     return -2;
                     }
@@ -379,7 +379,7 @@ import com.upokecenter.text.*;
                     return -1;
                 }
                 if (c < 0x80) {
-                    output.write ((byte)c);
+                    output.write((byte)c);
                     return 1;
                 } else if (c == 0xe5e5) {
                     // Can't round trip under current WHATWG version
@@ -387,22 +387,22 @@ import com.upokecenter.text.*;
                     // to map to U + 3000 instead
                     return -2;
                 } else if (c == 0x20ac && this.gbk) {
-                    output.write ((byte)0x80);
+                    output.write((byte)0x80);
                     return 1;
                 }
-                int cp = Gb18030.CodePointToIndex (c);
+                int cp = Gb18030.CodePointToIndex(c);
                 if (cp >= 0) {
                     int a = cp / 190;
                     int b = cp % 190;
                     int cc = (b < 0x3f) ? 0x40 : 0x41;
-                    output.write ((byte)(a + 0x81));
-                    output.write ((byte)(b + cc));
+                    output.write((byte)(a + 0x81));
+                    output.write((byte)(b + cc));
                     return 2;
                 }
                 if (this.gbk) {
                     return -2;
                 }
-                cp = GB18030Pointer (c);
+                cp = GB18030Pointer(c);
                 int m = 10 * 126 * 10;
                 int b1 = cp / m;
                 cp -= b1 * m;
@@ -415,10 +415,10 @@ import com.upokecenter.text.*;
                 b2 += 0x30;
                 b3 += 0x81;
                 b4 += 0x30;
-                output.write ((byte)b1);
-                output.write ((byte)b2);
-                output.write ((byte)b3);
-                output.write ((byte)b4);
+                output.write((byte)b1);
+                output.write((byte)b2);
+                output.write((byte)b3);
+                output.write((byte)b4);
                 return 4;
             }
         }
@@ -428,10 +428,10 @@ import com.upokecenter.text.*;
         }
 
         public static ICharacterEncoder GetEncoder2(boolean gbk) {
-            return new Encoder (gbk);
+            return new Encoder(gbk);
         }
 
-        private final ICharacterEncoder enc = GetEncoder2 (false);
+        private final ICharacterEncoder enc = GetEncoder2(false);
 
         public ICharacterDecoder GetDecoder() {
             return EncodingGB18030.GetDecoder2();

@@ -479,7 +479,7 @@
             define how code points are laid out in memory.</item>
             <item>A <b>character encoding</b> is a mapping from a sequence of
             code points, in one or more specific coded character sets, to a sequence
-            of bytes and vice versa. (For brevity, the rest of this documentation 
+            of bytes and vice versa. (For brevity, the rest of this documentation
             may use the term <i>encoding</i> instead.  RFC 6365 uses the analogous term <i>charset</i> instead; in this documentation, however, <i>charset</i> is used only to refer to the names that identify a character encoding.)</item>
             <item><b>ASCII</b> is a 128-code-point coded character set that includes
             the English letters and digits, common punctuation and symbols, and

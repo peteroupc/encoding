@@ -10,33 +10,33 @@ Now let's define some terms.
 
  * A <b>code point</b> is a number that identifies a single text character, such as a letter, digit, or symbol. (A collection of such characters is also called an <i>abstract character repertoire</i>.)
 
- * A <b>character set</b> is a set of code points which are each assigned to a single text character. (This may also be called a<i>coded character set</i>.) As used here, character sets don't define how code points are laid out in memory.
+ * A <b>coded character set</b> is a set of code points which are each assigned to a single text character. As used here, coded character sets don't define how code points are laid out in memory.
 
- * A <b>character encoding</b> is a mapping from a sequence of code points, in one or more specific character sets, to a sequence of bytes and vice versa.
+ * A <b>character encoding</b> is a mapping from a sequence of code points, in one or more specific coded character sets, to a sequence of bytes and vice versa. (For brevity, the rest of this documentation may use the term <i>encoding</i> instead. RFC 6365 uses the analogous term <i>charset</i> instead; in this documentation, however, <i>charset</i> is used only to refer to the names that identify a character encoding.)
 
- * <b>ASCII</b> is a 128-code-point character set that includes the English letters and digits, common punctuation and symbols, and control characters. As used here, its code points match the code points within the Basic Latin block (0-127 or U+0000 to U+007F) of the Unicode Standard.
+ * <b>ASCII</b> is a 128-code-point coded character set that includes the English letters and digits, common punctuation and symbols, and control characters. As used here, its code points match the code points within the Basic Latin block (0-127 or U+0000 to U+007F) of the Unicode Standard.
 
 There are several kinds of character encodings:
 
- * <b>Single-byte encodings</b> define a character set that assigns one code point to one byte. Thus, they can have a maximum of 256 code points. For example:
+ * <b>Single-byte encodings</b> define a coded character set that assigns one code point to one byte. Thus, they can have a maximum of 256 code points. For example:
 
  * (a) ISO 8859 encodings and  `windows-1252` .
 
- * (b) ASCII is usually used as a single-byte encoding where each code point fits in the lower 7 bits of an eight-bit byte (in that case, the encoding is often called  `US-ASCII` ). In the Encoding Standard, all single-byte encodings use the ASCII characters as the first 128 code points of their character sets.
+ * (b) ASCII is usually used as a single-byte encoding where each code point fits in the lower 7 bits of an eight-bit byte (in that case, the encoding is often called  `US-ASCII` ). In the Encoding Standard, all single-byte encodings use the ASCII characters as the first 128 code points of their coded character sets.
 
- * <b>Multi-byte encodings</b> include code points from one or more character sets and assign some or all code points to several bytes. For example:
+ * <b>Multi-byte encodings</b> include code points from one or more coded character sets and assign some or all code points to several bytes. For example:
 
  * (a)  `UTF-16LE`  and  `UTF-16BE`  are two encodings defined in the Unicode Standard. They use 2 bytes for the most common code points, and 4 bytes for supplementary code points.
 
  * (b)  `UTF-8`  is another encoding defined in the Unicode Standard. It uses 1 byte for ASCII and 2 to 4 bytes for the other Unicode code points.
 
- * (c) Most legacy East Asian encodings, such as `Shift_JIS` ,  `GBK` , and  `Big5`  use 1 byte for ASCII (or a slightly modified version) and, usually, 2 or more bytes for national standard character sets. In many of these encodings, notably  `Shift_JIS` , characters whose code points use one byte traditionally take half the space of characters whose code points use two bytes.
+ * (c) Most legacy East Asian encodings, such as `Shift_JIS` ,  `GBK` , and  `Big5`  use 1 byte for ASCII (or a slightly modified version) and, usually, 2 or more bytes for national standard coded character sets. In many of these encodings, notably  `Shift_JIS` , characters whose code points use one byte traditionally take half the space of characters whose code points use two bytes.
 
  * <b>Escape-based encodings</b> are combinations of single- and/or multi-byte encodings, and use escape sequences and/or shift codes to change which encoding to use for the bytes that follow. For example:
 
  * (a)  `ISO-2022-JP`  supports several escape sequences that shift into different encodings, including a Katakana, a Kanji, and an ASCII encoding (with ASCII as the default).
 
- * (b) UTF-7 (not included in the Encoding Standard) is an encoding that uses the Unicode Standard's character set, which is encoded using a limited subset of ASCII. The plus symbol (U+002B) is used to shift into a UTF-16BE multi-byte encoding (converted to a modified version of base-64) to encode other Unicode code points.
+ * (b) UTF-7 (not included in the Encoding Standard) is an encoding that uses the Unicode Standard's coded character set, which is encoded using a limited subset of ASCII. The plus symbol (U+002B) is used to shift into a UTF-16BE multi-byte encoding (converted to a modified version of base-64) to encode other Unicode code points.
 
  * The Encoding Standard also defines a <b>replacement encoding</b>, which causes a decoding error and is used to alias a few problematic or unsupported encoding names, such as `hz-gb-2312` .
 
@@ -70,7 +70,7 @@ Classes that implement the ICharacterEncoding interface can provide additional c
 
     public static readonly PeterO.Text.ICharacterEncoding UTF8;
 
-Character encoding object for the UTF-8 character encoding, which represents each code point in the universal character set using 1 to 4 bytes.
+Character encoding object for the UTF-8 character encoding, which represents each code point in the universal coded character set using 1 to 4 bytes.
 
 ### DecodeToString
 
@@ -561,7 +561,7 @@ Resolves a character encoding's name to a standard form. This involves changing 
 
  * <i>name</i>: A string that names a given character encoding. Can be null. Any leading and trailing whitespace is removed and the name converted to lowercase before resolving the encoding's name. The Encoding Standard supports only the following encodings (and defines aliases for most of them).
 
- *  `UTF-8`  - UTF-8 (8-bit encoding of the universal character set, the encoding recommended by the Encoding Standard for new data formats)
+ *  `UTF-8`  - UTF-8 (8-bit encoding of the universal coded character set, the encoding recommended by the Encoding Standard for new data formats)
 
  *  `UTF-16LE`  - UTF-16 little-endian (16-bit UCS)
 
@@ -573,7 +573,7 @@ Resolves a character encoding's name to a standard form. This involves changing 
 
  * 28 legacy single-byte encodings:
 
- *  `windows-1252`  : Western Europe (Note: The Encoding Standard aliases the names  `US-ASCII`  and  `ISO-8859-1`  to `windows-1252` , which uses a different character set from either; it differs from  `ISO-8859-1`  by assigning different characters to some bytes from 0x80 to 0x9F. The Encoding Standard does this for compatibility with existing Web pages.)
+ *  `windows-1252`  : Western Europe (Note: The Encoding Standard aliases the names  `US-ASCII`  and  `ISO-8859-1`  to `windows-1252` , which uses a different coded character set from either; it differs from  `ISO-8859-1`  by assigning different characters to some bytes from 0x80 to 0x9F. The Encoding Standard does this for compatibility with existing Web pages.)
 
  *  `ISO-8859-2` ,  `windows-1250`  : Central Europe
 
@@ -633,15 +633,15 @@ Resolves a character encoding's name to a canonical form, using rules more suita
 
 <b>Parameters:</b>
 
- * <i>name</i>: A string naming a character encoding. Can be null. Uses a modified version of the rules in the Encoding Standard to better conform, in some cases, to email standards like MIME. In addition to the encodings mentioned in ResolveAlias, the following additional encodings are supported:.
+ * <i>name</i>: A string naming a character encoding. Can be null. Uses a modified version of the rules in the Encoding Standard to better conform, in some cases, to email standards like MIME. Encoding names and aliases not registered with the Internet Assigned Numbers Authority (IANA) are not supported, with the exception of  `ascii` ,  `utf8` ,  `cp1252` , and names 10 characters or longer starting with  `iso-8859-` . Also, the following additional encodings are supported.
 
- *  `US-ASCII`  - ASCII single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The character set's code points match those in the Unicode Standard's Basic Latin block (0-127 or U+0000 to U+007F).
+ *  `US-ASCII`  - ASCII single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The coded character set's code points match those in the Unicode Standard's Basic Latin block (0-127 or U+0000 to U+007F). The name  `ascii`  is an alias.
 
- *  `ISO-8859-1`  - Latin-1 single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The character set's code points match those in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U+0000 to U+00FF).
+ *  `ISO-8859-1`  - Latin-1 single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The coded character set's code points match those in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U+0000 to U+00FF).
 
- *  `UTF-7`  - UTF-7 (7-bit universal character set).
+ *  `UTF-7`  - UTF-7 (7-bit universal coded character set). The name  `unicode-1-1-utf-7`  is an alias to  `UTF-7` , even though both encodings are defined in different RFCs (1642 and 2152, respectively), and even though they are linked to Unicode versions with nonoverlapping character repertoires (1.1 and 2.0, respectively).
 
-.
+. In previous versions of this method, the name  `iso-2022-jp-2`  was also aliased to  `ISO-2022-JP` , which is no longer the case.
 
 <b>Return Value:</b>
 

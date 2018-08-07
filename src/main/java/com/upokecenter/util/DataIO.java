@@ -28,7 +28,8 @@ private DataIO() {
      * @return A byte reader wrapping the byte array.
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      */
-    public static IReader ToReader(byte[] bytes) {
+    public static IReader ToReader(
+byte[] bytes) {
       if (bytes == null) {
         throw new NullPointerException("bytes");
       }
@@ -54,7 +55,7 @@ private DataIO() {
      * ' s length minus {@code offset} is less than {@code length}.
      */
     public static IReader ToReader(
-  byte[] bytes,
+byte[] bytes,
   int offset,
   int length) {
       if (bytes == null) {
@@ -95,7 +96,8 @@ private DataIO() {
      * @return A byte reader wrapping the input stream.
      * @throws java.lang.NullPointerException The parameter {@code input} is null.
      */
-    public static IReader ToReader(InputStream input) {
+    public static IReader ToReader(
+InputStream input) {
       if (input == null) {
         throw new NullPointerException("input");
       }
@@ -123,11 +125,11 @@ private DataIO() {
  */
 @Deprecated
     public static IByteReader ToByteReader(
-  byte[] bytes,
+byte[] bytes,
   int offset,
   int length) {
-  return (IByteReader)ToReader(bytes, offset, length);
-}
+      return (IByteReader)ToReader(bytes, offset, length);
+    }
 
     /**
      * Not documented yet. <p>In the .NET implementation, this method is
@@ -141,8 +143,9 @@ private DataIO() {
      * @deprecated Use ToReader instead.
  */
 @Deprecated
-    public static IByteReader ToByteReader(InputStream input) {
-  return (IByteReader)ToReader(input);
+    public static IByteReader ToByteReader(
+InputStream input) {
+      return (IByteReader)ToReader(input);
     }
 
     /**
@@ -157,8 +160,9 @@ private DataIO() {
      * @deprecated Use ToReader instead.
  */
 @Deprecated
-    public static IByteReader ToByteReader(byte[] bytes) {
-  return (IByteReader)ToReader(bytes);
+    public static IByteReader ToByteReader(
+byte[] bytes) {
+      return (IByteReader)ToReader(bytes);
     }
 
     /**
@@ -173,7 +177,8 @@ private DataIO() {
      * @return A byte writer that wraps the given output stream.
      * @throws java.lang.NullPointerException The parameter {@code output} is null.
      */
-    public static IWriter ToWriter(OutputStream output) {
+    public static IWriter ToWriter(
+OutputStream output) {
       if (output == null) {
         throw new NullPointerException("output");
       }
@@ -192,7 +197,8 @@ private DataIO() {
      * @return A writer that wraps the given stream.
      * @throws java.lang.NullPointerException The parameter {@code output} is null.
      */
-    public static IWriter ToWriter(IByteWriter output) {
+    public static IWriter ToWriter(
+IByteWriter output) {
       if (output == null) {
         throw new NullPointerException("output");
       }
@@ -238,28 +244,28 @@ private DataIO() {
      */
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
-  throw new NullPointerException("bytes");
-}
-if (offset < 0) {
-  throw new IllegalArgumentException("offset (" + offset +
-    ") is less than 0");
-}
-if (offset > bytes.length) {
-  throw new IllegalArgumentException("offset (" + offset +
-    ") is more than " + bytes.length);
-}
-if (length < 0) {
-  throw new IllegalArgumentException("length (" + length +
-    ") is less than 0");
-}
-if (length > bytes.length) {
-  throw new IllegalArgumentException("length (" + length +
-    ") is more than " + bytes.length);
-}
-if (bytes.length - offset < length) {
-  throw new IllegalArgumentException("bytes's length minus " + offset + " (" +
-    (bytes.length - offset) + ") is less than " + length);
-}
+          throw new NullPointerException("bytes");
+        }
+        if (offset < 0) {
+          throw new IllegalArgumentException("offset (" + offset +
+            ") is less than 0");
+        }
+        if (offset > bytes.length) {
+          throw new IllegalArgumentException("offset (" + offset +
+            ") is more than " + bytes.length);
+        }
+        if (length < 0) {
+          throw new IllegalArgumentException("length (" + length +
+            ") is less than 0");
+        }
+        if (length > bytes.length) {
+          throw new IllegalArgumentException("length (" + length +
+            ") is more than " + bytes.length);
+        }
+        if (bytes.length - offset < length) {
+          throw new IllegalArgumentException("bytes's length minus " + offset + " (" +
+            (bytes.length - offset) + ") is less than " + length);
+        }
         int count = 0;
         for (int i = 0; i < length; ++i) {
           int c = this.read();

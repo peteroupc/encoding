@@ -8,7 +8,7 @@ Defines methods that can be implemented by classes that convert to and from byte
 
     PeterO.Text.ICharacterDecoder GetDecoder();
 
-Creates a decoder for this character encoding with initial state. If the decoder is stateless, multiple calls of this method can return the same decoder.
+Creates a decoder for this character encoding with initial state. If the ecoder is stateless, multiple calls of this method can return the same ecoder.
 
 <b>Return Value:</b>
 
@@ -18,7 +18,7 @@ A character decoder object.
 
     PeterO.Text.ICharacterEncoder GetEncoder();
 
-Creates an encoder for this character encoding with initial state. If the encoder is stateless, multiple calls of this method can return the same encoder.
+Creates an encoder for this character encoding with initial state. If the ncoder is stateless, multiple calls of this method can return the same ncoder.
 
 <b>Return Value:</b>
 

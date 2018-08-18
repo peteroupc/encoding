@@ -3,7 +3,7 @@
     public sealed class CharacterReader :
         PeterO.Text.ICharacterInput
 
-A general-purpose character input for reading text from byte streams and text strings. When reading byte streams, this class supports the UTF-8 character encoding by default, but can be configured to support UTF-16 and UTF-32 as well.
+A general-purpose character input for reading text from byte streams and ext strings. When reading byte streams, this class supports the UTF-8 haracter encoding by default, but can be configured to support UTF-16 and TF-32 as well.
 
 ### CharacterReader Constructor
 
@@ -19,8 +19,8 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>str</i>
- is null.
+The parameter  <i>str</i>
+is null.
 
 ### CharacterReader Constructor
 
@@ -34,13 +34,13 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>str</i>: The string to read.
 
- * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip that code point as it reads the string.
+ * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip hat code point as it reads the string.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>str</i>
- is null.
+The parameter  <i>str</i>
+is null.
 
 ### CharacterReader Constructor
 
@@ -55,15 +55,15 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>str</i>: The string to read.
 
- * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip that code point as it reads the string.
+ * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip hat code point as it reads the string.
 
- * <i>errorThrow</i>: If true, will throw an exception if unpaired surrogate code points (U+D800 to U+DFFF) are found in the string. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
+ * <i>errorThrow</i>: If true, will throw an exception if unpaired surrogate code points U+D800 to U+DFFF) are found in the string. If false, replaces those byte equences with replacement characters (U+FFFD) as the stream is read.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>str</i>
- is null.
+The parameter  <i>str</i>
+is null.
 
 ### CharacterReader Constructor
 
@@ -77,13 +77,13 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Parameters:</b>
 
  * <i>str</i>: The parameter  <i>str</i>
- is a text string.
+is a text string.
 
  * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
- begins.
+begins.
 
  * <i>length</i>: The number of elements in the desired portion of  <i>str</i>
- (but not more than  <i>str</i>
+(but not more than  <i>str</i>
 's length).
 
 ### CharacterReader Constructor
@@ -100,24 +100,24 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Parameters:</b>
 
  * <i>str</i>: The parameter  <i>str</i>
- is a text string.
+is a text string.
 
  * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
- begins.
+begins.
 
  * <i>length</i>: The number of elements in the desired portion of  <i>str</i>
- (but not more than  <i>str</i>
+(but not more than  <i>str</i>
 's length).
 
- * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip that code point as it reads the string.
+ * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip hat code point as it reads the string.
 
- * <i>errorThrow</i>: If true, will throw an exception if unpaired surrogate code points (U+D800 to U+DFFF) are found in the string. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
+ * <i>errorThrow</i>: If true, will throw an exception if unpaired surrogate code points U+D800 to U+DFFF) are found in the string. If false, replaces those byte equences with replacement characters (U+FFFD) as the stream is read.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>str</i>
- is null.
+The parameter  <i>str</i>
+is null.
 
 ### CharacterReader Constructor
 
@@ -133,8 +133,8 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>stream</i>
- is null.
+The parameter  <i>stream</i>
+is null.
 
 ### CharacterReader Constructor
 
@@ -148,25 +148,25 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (NZB, U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte tream. This usually involves checking whether the stream begins with a yte-order mark (BOM, U+FEFF) or a non-zero basic code point (NZB, U+0001 o U+007F) before reading the rest of the stream. This value can be one of he following:
 
  * 0: UTF-8 only.
 
  * 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8.
 
- * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to detect UTF-32 first.)
+ * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to etect UTF-32 first.)
 
  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
 
- * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
+ * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect TF-32 first.)
 
 .
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>stream</i>
- is null.
+The parameter  <i>stream</i>
+is null.
 
 ### CharacterReader Constructor
 
@@ -181,27 +181,27 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (NZB, U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte tream. This usually involves checking whether the stream begins with a yte-order mark (BOM, U+FEFF) or a non-zero basic code point (NZB, U+0001 o U+007F) before reading the rest of the stream. This value can be one of he following:
 
  * 0: UTF-8 only.
 
  * 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8.
 
- * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to detect UTF-32 first.)
+ * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to etect UTF-32 first.)
 
  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
 
- * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
+ * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect TF-32 first.)
 
 .
 
- * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
+ * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the etected encoding) are found in the byte stream. If false, replaces those yte sequences with replacement characters (U+FFFD) as the stream is read.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>stream</i>
- is null.
+The parameter  <i>stream</i>
+is null.
 
 ### CharacterReader Constructor
 
@@ -217,29 +217,29 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (NZB, U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte tream. This usually involves checking whether the stream begins with a yte-order mark (BOM, U+FEFF) or a non-zero basic code point (NZB, U+0001 o U+007F) before reading the rest of the stream. This value can be one of he following:
 
  * 0: UTF-8 only.
 
  * 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8.
 
- * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to detect UTF-32 first.)
+ * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to etect UTF-32 first.)
 
  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
 
- * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
+ * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect TF-32 first.)
 
 .
 
- * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
+ * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the etected encoding) are found in the byte stream. If false, replaces those yte sequences with replacement characters (U+FFFD) as the stream is read.
 
  * <i>dontSkipUtf8Bom</i>: If the stream is detected as UTF-8 and this parameter is  `true` , won't skip the BOM character if it occurs at the start of the stream.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>stream</i>
- is null.
+The parameter  <i>stream</i>
+is null.
 
 ### Read
 
@@ -255,30 +255,30 @@ Reads a series of code points from a Unicode stream or a string.
  * <i>chars</i>: An array where the code points that were read will be stored.
 
  * <i>index</i>: A zero-based index showing where the desired portion of  <i>chars</i>
- begins.
+begins.
 
  * <i>length</i>: The number of elements in the desired portion of  <i>chars</i>
- (but not more than  <i>chars</i>
- 's length).
+(but not more than  <i>chars</i>
+'s length).
 
 <b>Return Value:</b>
 
 The number of code points read from the stream. This can be less than the  <i>length</i>
- parameter if the end of the stream is reached.
+parameter if the end of the stream is reached.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>chars</i>
- is null.
+The parameter  <i>chars</i>
+is null.
 
  * System.ArgumentException:
 Either  <i>index</i>
- or  <i>length</i>
- is less than 0 or greater than  <i>chars</i>
- 's length, or  <i>chars</i>
- 's length minus  <i>index</i>
- is less than  <i>length</i>
+or  <i>length</i>
+is less than 0 or greater than  <i>chars</i>
+'s length, or  <i>chars</i>
+'s length minus  <i>index</i>
+is less than  <i>length</i>
 .
 
 ### ReadChar

@@ -166,7 +166,7 @@ import com.upokecenter.text.*;
                 // Non-ASCII byte, illegal
                 machineState = 0;
                 state.AppendChar(-2);  // for the illegal plus
-             state.AppendChar(-2);  // for the illegal non-ASCII byte
+                state.AppendChar(-2);  // for the illegal non-ASCII byte
                 ch = state.GetChar();
                 if (ch != -1) {
                   return ch;
@@ -209,8 +209,10 @@ import com.upokecenter.text.*;
                 ++this.base64count;
                 if (this.base64count == 4) {
                   // Generate UTF-16 bytes
-         this.appender.AppendByte((this.base64value >> 16) & 0xff, this.state);
-          this.appender.AppendByte((this.base64value >> 8) & 0xff, this.state);
+         this.appender.AppendByte((this.base64value >> 16) & 0xff,
+                    this.state);
+          this.appender.AppendByte((this.base64value >> 8) & 0xff,
+                    this.state);
                   this.appender.AppendByte(this.base64value & 0xff, this.state);
                   this.base64count = 0;
                 }
@@ -271,19 +273,79 @@ import com.upokecenter.text.*;
     }
 
     private static class Encoder implements ICharacterEncoder {
-      private static int Base64Char(int c, IWriter output) {
+      private int[] state = { 0, 0, 0 };
+      private boolean inBase64 = false;
+      private boolean storeError = false;
+      private int Base64Start(IWriter output) {
+        state[0] = 0;
+        state[1] = 0;
+        state[2] = 0;
+        output.write((byte)0x2b);
+        return 1;
+      }
+      private int AppendBase64(byte[] bytes, IWriter output) {
+        int b1 = state[0];
+        int b2 = state[1];
+        int quantumCount = state[2];
+        int ret = 0;
+        for (int i = 0; i < bytes.length; ++i) {
+          int value = ((int)bytes[i]) & 0xff;
+          switch (quantumCount) {
+            case 2:
+              output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
+              output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
+                15)]);
+              output.write((byte)ToAlphabet[((b2 & 15) << 2) + ((value >>
+                6) & 3)]);
+              output.write((byte)ToAlphabet[value & 63]);
+              ret += 4;
+              quantumCount = 0;
+              break;
+            case 1:
+              b2 = value;
+              quantumCount = 2;
+              break;
+            case 0:
+              b1 = value;
+              quantumCount = 1;
+              break;
+          }
+        }
+        state[0] = b1;
+        state[1] = b2;
+        state[2] = quantumCount;
+        return ret;
+      }
+      private int AppendBase64Final(IWriter output) {
+        int b1 = state[0];
+        int b2 = state[1];
+        int quantumCount = state[2];
+        int ret = 1;
+        if (quantumCount == 2) {
+          output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
+          output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
+            15)]);
+          output.write((byte)ToAlphabet[((b2 & 15) << 2)]);
+          ret += 3;
+        } else if (quantumCount == 1) {
+          output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
+          output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
+            15)]);
+          ret += 2;
+        }
+        output.write((byte)0x2d);
+        state[0] = b1;
+        state[1] = b2;
+        state[2] = quantumCount;
+        return ret;
+      }
+      private int Base64Char(int c, IWriter output) {
+        int ret = (inBase64) ? 0 : Base64Start(output);
+        inBase64 = true;
         if (c <= 0xffff) {
           int byte1 = (c >> 8) & 0xff;
           int byte2 = c & 0xff;
-          int c1 = ToAlphabet[(byte1 >> 2) & 63];
-          int c2 = ToAlphabet[((byte1 & 3) << 4) + ((byte2 >> 4) & 15)];
-          int c3 = ToAlphabet[((byte2 & 15) << 2)];
-          output.write((byte)0x2b);
-          output.write((byte)c1);
-          output.write((byte)c2);
-          output.write((byte)c3);
-          output.write((byte)0x2d);
-          return 5;
+          ret += AppendBase64(new byte[] { (byte)byte1, (byte)byte2 }, output);
         } else {
           int cc1 = (((c - 0x10000) >> 10) & 0x3ff) + 0xd800;
           int cc2 = ((c - 0x10000) & 0x3ff) + 0xdc00;
@@ -291,37 +353,35 @@ import com.upokecenter.text.*;
           int byte2 = cc1 & 0xff;
           int byte3 = (cc2 >> 8) & 0xff;
           int byte4 = cc2 & 0xff;
-          int c1 = ToAlphabet[(byte1 >> 2) & 63];
-          int c2 = ToAlphabet[((byte1 & 3) << 4) + ((byte2 >> 4) & 15)];
-          int c3 = ToAlphabet[((byte2 & 15) << 2) + ((byte3 >> 6) & 3)];
-          int c4 = ToAlphabet[byte3 & 63];
-          int c5 = ToAlphabet[(byte4 >> 2) & 63];
-          int c6 = ToAlphabet[((byte4 & 3) << 4)];
-          output.write((byte)0x2b);
-          output.write((byte)c1);
-          output.write((byte)c2);
-          output.write((byte)c3);
-          output.write((byte)c4);
-          output.write((byte)c5);
-          output.write((byte)c6);
-          output.write((byte)0x2d);
-          return 8;
+          ret += AppendBase64(new byte[] { (byte)byte1,
+  (byte)byte2, (byte)byte3, (byte)byte4 },
+            output);
         }
+        return ret;
       }
 
       public int Encode(int c, IWriter output) {
         if (c < 0) {
- return -1;
-}
+          if (inBase64) {
+            inBase64 = false;
+            return AppendBase64Final(output);
+          }
+          return -1;
+        }
         if (c == 0x2b) {
           output.write((byte)0x2b);
           output.write((byte)0x2d);
           return 2;
         }
-     if (c == 0x09 || c == 0x0a || c == 0x0d || (c >= 0x20 && c < 0x7e && c !=
+      if (c == 0x09 || c == 0x0a || c == 0x0d || (c >= 0x20 && c < 0x7e && c!=
           0x5c)) {
+          int ret = 1;
+          if (inBase64) {
+            inBase64 = false;
+            ret += AppendBase64Final(output);
+          }
           output.write((byte)c);
-          return 2;
+          return ret;
         }
         return (c >= 0x110000 || (c >= 0xd800 && c < 0xe000)) ? (-2) :
           Base64Char(c, output);

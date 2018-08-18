@@ -160,8 +160,14 @@ import com.upokecenter.text.*;
       ICharacterInput stream,
       ICharacterEncoding encoding,
       IWriter output) {
+return EncodeAlgorithm(stream, encoding.GetEncoder(), output);
+    }
+
+    public static int EncodeAlgorithm(
+      ICharacterInput stream,
+      ICharacterEncoder encoder,
+      IWriter output) {
       int total = 0;
-      ICharacterEncoder encoder = encoding.GetEncoder();
       // Implements the "encode" algorithm
       // in the Encoding Standard
       if (stream == null) {

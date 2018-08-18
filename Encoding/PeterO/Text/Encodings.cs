@@ -133,6 +133,20 @@ this
 #endif
 ICharacterInput input,
   ICharacterEncoder encoder) {
+      return EncodeToBytes(input, encoder, false);
+    }
+
+    /// <param name='input'>Not documented yet.</param>
+    /// <param name='encoder'>Not documented yet.</param>
+    /// <param name='htmlFallback'>Not documented yet. (3).</param>
+    /// <returns>A byte array.</returns>
+    public static byte[] EncodeToBytes(
+  #if !NET20
+this
+#endif
+ICharacterInput input,
+  ICharacterEncoder encoder,
+  bool htmlFallback) {
       if (encoder == null) {
         throw new ArgumentNullException(nameof(encoder));
       }
@@ -140,6 +154,9 @@ ICharacterInput input,
         throw new ArgumentNullException(nameof(input));
       }
       var writer = new ArrayWriter();
+if (htmlFallback) {
+EncoderAlgorithms.EncodeAlgorithm(input, encoder, writer);
+} else {
       while (true) {
         int cp = input.ReadChar();
         int enc = encoder.Encode(cp, writer);
@@ -151,6 +168,7 @@ ICharacterInput input,
           break;
         }
       }
+}
       return writer.ToArray();
     }
 
@@ -168,7 +186,31 @@ string str,
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
       }
-      return EncodeToBytes(new CharacterReader(str), enc);
+      return EncodeToBytes(new CharacterReader(str),
+                    enc.GetEncoder(), false);
+    }
+
+    /// <param name='str'>Not documented yet.</param>
+    /// <param name='enc'>Not documented yet.</param>
+    /// <param name='htmlFallback'>Not documented yet. (3).</param>
+    /// <returns>A byte array.</returns>
+    public static byte[] EncodeToBytes(
+  #if !NET20
+this
+#endif
+string str,
+  ICharacterEncoding enc,
+  bool htmlFallback) {
+      if (str == null) {
+        throw new ArgumentNullException(nameof(str));
+      }
+      if (enc == null) {
+        throw new ArgumentNullException(nameof(enc));
+      }
+      return EncodeToBytes(
+        new CharacterReader(str),
+        enc.GetEncoder(),
+        htmlFallback);
     }
 
     /// <include file='../../docs.xml'

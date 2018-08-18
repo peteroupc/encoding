@@ -2819,13 +2819,13 @@ Assert.AreEqual(
       {
         string stringTemp = Encodings.ResolveAliasForEmail("iso-2022-jp-2");
         Assert.AreEqual(
-        "ISO-2022-JP",
+        String.Empty,
         stringTemp);
       }
        {
         string stringTemp = Encodings.ResolveAliasForEmail("iso-2022-JP-2");
         Assert.AreEqual(
-        "ISO-2022-JP",
+        String.Empty,
         stringTemp);
       }
      {
@@ -2849,13 +2849,13 @@ Assert.AreEqual(
       {
 object objectTemp = "replacement";
 object objectTemp2 = Encodings.ResolveAliasForEmail(
-    "replacement");
+    String.Empty);
 Assert.AreEqual(objectTemp, objectTemp2);
 }
       {
         string stringTemp = Encodings.ResolveAliasForEmail("hz-gb-2312");
         Assert.AreEqual(
-        "replacement",
+        String.Empty,
         stringTemp);
       }
 

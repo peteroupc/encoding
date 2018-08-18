@@ -303,7 +303,9 @@ public void TestEucJP() {
         }
 
         public static void TestSingleByteRoundTrip(string name) {
-            TestSingleByteRoundTrip(Encodings.GetEncoding(name, true));
+      ICharacterEncoding enc = Encodings.GetEncoding(name, true);
+      Assert.NotNull(enc, name);
+            TestSingleByteRoundTrip(enc);
         }
 
         public static void TestSingleByteRoundTrip(ICharacterEncoding enc) {
@@ -456,6 +458,7 @@ var cpe = new CodePageEncoding(Encodings.StringToInput(builder.ToString()));
 
         public static void TestCJKRoundTrip(string name) {
             ICharacterEncoding enc = Encodings.GetEncoding(name, true);
+      Assert.NotNull(enc, name);
             ICharacterEncoder encoder = enc.GetEncoder();
             ICharacterDecoder decoder = enc.GetDecoder();
             var list = new List<int>();

@@ -14,9 +14,9 @@ Converts a Unicode code point to bytes and writes the bytes to an output tream.I
 
 <b>Parameters:</b>
 
- * <i>c</i>: Either a Unicode code point (from 0-0xd7ff or from 0xe000 to 0x10ffff), r the value -1 indicating the end of the stream.
+ * <i>c</i>: Either a Unicode code point (from 0-0xd7ff or from 0xe000 to 0x10ffff), or the value -1 indicating the end of the stream.
 
- * <i>output</i>: Output stream where the converted bytes will be written. The decoder can aintain internal state, including data on code points already passed as nput, so this parameter should not change when using the same character ncoder object.
+ * <i>output</i>: Output stream where the converted bytes will be written. The decoder can maintain internal state, including data on code points already passed as input, so this parameter should not change when using the same character encoder object.
 
 <b>Return Value:</b>
 

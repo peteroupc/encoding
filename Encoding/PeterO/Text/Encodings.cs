@@ -136,10 +136,8 @@ ICharacterInput input,
       return EncodeToBytes(input, encoder, false);
     }
 
-    /// <param name='input'>Not documented yet.</param>
-    /// <param name='encoder'>Not documented yet.</param>
-    /// <param name='htmlFallback'>Not documented yet. (3).</param>
-    /// <returns>A byte array.</returns>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,System.Boolean)"]/*'/>
     public static byte[] EncodeToBytes(
   #if !NET20
 this
@@ -190,10 +188,8 @@ string str,
                     enc.GetEncoder(), false);
     }
 
-    /// <param name='str'>Not documented yet.</param>
-    /// <param name='enc'>Not documented yet.</param>
-    /// <param name='htmlFallback'>Not documented yet. (3).</param>
-    /// <returns>A byte array.</returns>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding,System.Boolean)"]/*'/>
     public static byte[] EncodeToBytes(
   #if !NET20
 this

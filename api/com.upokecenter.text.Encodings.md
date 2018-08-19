@@ -404,11 +404,12 @@ Reads Unicode characters from a character input and writes them to a byte
 
 **Parameters:**
 
-* <code>input</code> - Not documented yet.
+* <code>input</code> - The parameter <code>input</code> is not documented yet.
 
-* <code>encoder</code> - Not documented yet.
+* <code>encoder</code> - The parameter <code>encoder</code> is not documented yet.
 
-* <code>htmlFallback</code> - Not documented yet. (3).
+* <code>htmlFallback</code> - The parameter <code>htmlFallback</code> is not documented
+ yet.
 
 **Returns:**
 
@@ -448,11 +449,12 @@ Reads Unicode characters from a text string and writes them to a byte array
 
 **Parameters:**
 
-* <code>str</code> - Not documented yet.
+* <code>str</code> - The parameter <code>str</code> is not documented yet.
 
-* <code>enc</code> - Not documented yet.
+* <code>enc</code> - The parameter <code>enc</code> is not documented yet.
 
-* <code>htmlFallback</code> - Not documented yet. (3).
+* <code>htmlFallback</code> - The parameter <code>htmlFallback</code> is not documented
+ yet.
 
 **Returns:**
 

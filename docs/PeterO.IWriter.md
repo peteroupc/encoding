@@ -31,4 +31,4 @@ begins.
 Should be thrown if the parameter "bytes" is null.
 
  * System.ArgumentException:
-Should be thrown if either "offset" or "length" is less than 0 or greater han "bytes" 's length, or "bytes" 's length minus "offset" is less than length".
+Should be thrown if either "offset" or "length" is less than 0 or greater than "bytes" 's length, or "bytes" 's length minus "offset" is less than "length".

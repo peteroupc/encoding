@@ -311,9 +311,10 @@ ICharacterInput input,
 
     /**
      *
-     * @param input Not documented yet.
-     * @param encoder Not documented yet.
-     * @param htmlFallback Not documented yet. (3).
+     * @param input The parameter {@code input} is not documented yet.
+     * @param encoder The parameter {@code encoder} is not documented yet.
+     * @param htmlFallback The parameter {@code htmlFallback} is not documented
+     * yet.
      * @return A byte array.
      */
     public static byte[] EncodeToBytes(
@@ -378,9 +379,10 @@ String str,
 
     /**
      *
-     * @param str Not documented yet.
-     * @param enc Not documented yet.
-     * @param htmlFallback Not documented yet. (3).
+     * @param str The parameter {@code str} is not documented yet.
+     * @param enc The parameter {@code enc} is not documented yet.
+     * @param htmlFallback The parameter {@code htmlFallback} is not documented
+     * yet.
      * @return A byte array.
      */
     public static byte[] EncodeToBytes(

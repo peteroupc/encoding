@@ -81,6 +81,388 @@
       value will be used.
     </param>
 </doc>
+<doc name="T:PeterO.Cbor.CBORDataUtilities">
+<summary>
+       Contains methods useful for reading and writing data, with a focus on
+      CBOR.
+    </summary>
+</doc>
+<doc name="M:PeterO.Cbor.CBORDataUtilities.ParseJSONNumber(System.String)">
+<summary>
+       Parses a number whose format follows the JSON specification. See
+      #ParseJSONNumber(String, integersOnly, parseOnly) for more information.
+    </summary>
+    <param name='str'>
+       A string to parse. The string is not allowed to contain white space
+      characters, including spaces.
+    </param>
+    <returns>
+       A CBOR object that represents the parsed number. Returns positive zero if
+      the number is a zero that starts with a minus sign (such as "-0" or
+      "-0.0"). Returns null if the parsing fails, including if the string is
+      null or empty.
+    </returns>
+</doc>
+<doc name="M:PeterO.Cbor.CBORDataUtilities.ParseJSONNumber(System.String,System.Boolean,System.Boolean)">
+<summary>
+       Parses a number whose format follows the JSON specification (RFC 8259).
+      Roughly speaking, a valid number consists of an optional minus sign, one
+      or more basic digits (starting with 1 to 9 unless the only digit is 0), an
+      optional decimal point (".", full stop) with one or more basic digits, and
+      an optional letter E or e with an optional plus or minus sign and one or
+      more basic digits (the exponent).
+    </summary>
+    <param name='str'>
+       A string to parse. The string is not allowed to contain white space
+      characters, including spaces.
+    </param>
+    <param name='integersOnly'>
+       If true, no decimal points or exponents are allowed in the string.
+    </param>
+    <param name='positiveOnly'>
+       If true, only positive numbers are allowed (the leading minus is
+      disallowed).
+    </param>
+    <returns>
+       A CBOR object that represents the parsed number. Returns positive zero if
+      the number is a zero that starts with a minus sign (such as "-0" or
+      "-0.0"). Returns null if the parsing fails, including if the string is
+      null or empty.
+    </returns>
+</doc>
+<doc name="M:PeterO.Cbor.CBORDataUtilities.ParseJSONNumber(System.String,System.Boolean,System.Boolean,System.Boolean)">
+<summary>
+       Parses a number whose format follows the JSON specification (RFC 8259).
+      Roughly speaking, a valid number consists of an optional minus sign, one
+      or more basic digits (starting with 1 to 9 unless the only digit is 0), an
+      optional decimal point (".", full stop) with one or more basic digits, and
+      an optional letter E or e with an optional plus or minus sign and one or
+      more basic digits (the exponent).
+    </summary>
+    <param name='str'>
+       A string to parse. The string is not allowed to contain white space
+      characters, including spaces.
+    </param>
+    <param name='integersOnly'>
+       If true, no decimal points or exponents are allowed in the string.
+    </param>
+    <param name='positiveOnly'>
+       If true, only positive numbers are allowed (the leading minus is
+      disallowed).
+    </param>
+    <param name='preserveNegativeZero'>
+       If true, returns positive zero if the number is a zero that starts with a
+      minus sign (such as "-0" or "-0.0"). Otherwise, returns negative zero in
+      this case.
+    </param>
+    <returns>
+       A CBOR object that represents the parsed number. Returns null if the
+      parsing fails, including if the string is null or empty.
+    </returns>
+</doc>
+<doc name="T:PeterO.Cbor.URIUtility">
+<summary>
+       Contains utility methods for processing Uniform Resource Identifiers
+      (URIs) and Internationalized Resource Identifiers (IRIs) under RFC3986 and
+      RFC3987, respectively. In the following documentation, URIs and IRIs
+      include URI references and IRI references, for convenience.
+    </summary>
+</doc>
+<doc name="T:PeterO.Cbor.URIUtility.ParseMode">
+<summary>
+       Specifies whether certain characters are allowed when parsing IRIs and
+      URIs.
+    </summary>
+</doc>
+<doc name="F:PeterO.Cbor.URIUtility.ParseMode.IRILenient">
+<summary>
+       The rules only check for the appropriate delimiters when splitting the
+      path, without checking if all the characters in each component are valid.
+      Even with this mode, strings with unpaired surrogate code points are
+      considered invalid.
+    </summary>
+</doc>
+<doc name="F:PeterO.Cbor.URIUtility.ParseMode.IRIStrict">
+<summary>
+       The rules follow the syntax for parsing IRIs. In particular, many code
+      points outside the Basic Latin range (U+0000 to U+007F) are allowed.
+      Strings with unpaired surrogate code points are considered invalid.
+    </summary>
+</doc>
+<doc name="F:PeterO.Cbor.URIUtility.ParseMode.IRISurrogateLenient">
+<summary>
+       The rules only check for the appropriate delimiters when splitting the
+      path, without checking if all the characters in each component are valid.
+      Unpaired surrogate code points are treated as though they were replacement
+      characters instead for the purposes of these rules, so that strings with
+      those code points are not considered invalid strings.
+    </summary>
+</doc>
+<doc name="F:PeterO.Cbor.URIUtility.ParseMode.URILenient">
+<summary>
+       The rules only check for the appropriate delimiters when splitting the
+      path, without checking if all the characters in each component are valid.
+      Code points outside the Basic Latin range (U+0000 to U+007F) are not
+      allowed.
+    </summary>
+</doc>
+<doc name="F:PeterO.Cbor.URIUtility.ParseMode.URIStrict">
+<summary>
+       The rules follow the syntax for parsing IRIs, except that code points
+      outside the Basic Latin range (U+0000 to U+007F) are not allowed.
+    </summary>
+</doc>
+<doc name="M:PeterO.Cbor.URIUtility.escapeURI(System.String,System.Int32)">
+<summary>
+       Escapes characters that can't appear in URIs or IRIs. The function is
+      idempotent; that is, calling the function again on the result with the
+      same mode doesn't change the result.
+    </summary>
+    <param name='s'>
+       A string to escape.
+    </param>
+    <param name='mode'>
+       The parameter
+      <paramref name='mode'/>
+       is a 32-bit signed integer.
+    </param>
+    <returns>
+       A string possibly containing escaped characters, or null if s is null.
+    </returns>
+</doc>
+<doc name="M:PeterO.Cbor.URIUtility.hasScheme(System.String)">
+<summary>
+       Determines whether the string is a valid IRI with a scheme component.
+      This can be used to check for relative IRI references.
+      <para>
+         The following cases return true:
+      </para>
+      <code>
+         xx-x:mm example:/ww
+      </code>
+       The following cases return false:
+      <code>
+         x@y:/z /x/y/z example.xyz
+      </code>
+    </summary>
+    <param name='refValue'>
+       A string representing an IRI to check.
+    </param>
+    <returns>
+      <c>true</c>
+       if the string is a valid IRI with a scheme component; otherwise, <c>false</c>
+       .
+    </returns>
+</doc>
+<doc name="M:PeterO.Cbor.URIUtility.hasSchemeForURI(System.String)">
+<summary>
+       Determines whether the string is a valid URI with a scheme component.
+      This can be used to check for relative URI references. The following cases
+      return true:
+      <code>
+         http://example/z xx-x:mm example:/ww
+      </code>
+       The following cases return false:
+      <code>
+         x@y:/z /x/y/z example.xyz
+      </code>
+    </summary>
+    <param name='refValue'>
+       A string representing an IRI to check.
+    </param>
+    <returns>
+      <c>true</c>
+       if the string is a valid URI with a scheme component; otherwise, <c>false</c>
+       .
+    </returns>
+</doc>
+<doc name="M:PeterO.Cbor.URIUtility.isValidCurieReference(System.String,System.Int32,System.Int32)">
+<summary>
+       Determines whether the substring is a valid CURIE reference under RDFA
+      1.1. (The CURIE reference is the part after the colon.).
+    </summary>
+    <param name='s'>
+       A string containing a CURIE reference. Can be null.
+    </param>
+    <param name='offset'>
+       A zero-based index showing where the desired portion of "s" begins.
+    </param>
+    <param name='length'>
+       The number of elements in the desired portion of "s" (but not more than
+      "s" 's length).
+    </param>
+    <returns>
+      <c>true</c>
+       if the substring is a valid CURIE reference under RDFA 1; otherwise, <c>false</c>
+       . Returns false if
+      <paramref name='s'/>
+       is null.
+    </returns>
+    <exception cref='T:System.ArgumentException'>
+       Either
+      <paramref name='offset'/>
+       or
+      <paramref name='length'/>
+       is less than 0 or greater than
+      <paramref name='s'/>
+       's length, or
+      <paramref name='s'/>
+       ' s length minus
+      <paramref name='offset'/>
+       is less than
+      <paramref name='length'/>
+       .
+    </exception>
+</doc>
+<doc name="M:PeterO.Cbor.URIUtility.relativeResolve(System.String,System.String)">
+<summary>
+       Resolves a URI or IRI relative to another URI or IRI.
+    </summary>
+    <param name='refValue'>
+       A string representing a URI or IRI reference. Example:
+      <c>dir/file.txt</c>
+       .
+    </param>
+    <param name='baseURI'>
+       A string representing an absolute URI reference. Example:
+      <c>http://example.com/my/path/</c>
+       .
+    </param>
+    <returns>
+       The resolved IRI, or null if
+      <paramref name='refValue'/>
+       is null or is not a valid IRI. If
+      <paramref name='baseURI'/>
+       is null or is not a valid IRI, returns refValue. Example:
+      <c>http://example.com/my/path/dir/file.txt</c>
+       .
+    </returns>
+</doc>
+<doc name="M:PeterO.Cbor.URIUtility.relativeResolve(System.String,System.String,PeterO.Cbor.URIUtility.ParseMode)">
+<summary>
+       Resolves a URI or IRI relative to another URI or IRI.
+    </summary>
+    <param name='refValue'>
+       A string representing a URI or IRI reference. Example:
+      <c>dir/file.txt</c>
+       . Can be null.
+    </param>
+    <param name='baseURI'>
+       A string representing an absolute URI reference. Example:
+      <c>http://example.com/my/path/</c>
+       .
+    </param>
+    <param name='parseMode'>
+       Parse mode that specifies whether certain characters are allowed when
+      parsing IRIs and URIs.
+    </param>
+    <returns>
+       The resolved IRI, or null if
+      <paramref name='refValue'/>
+       is null or is not a valid IRI. If
+      <paramref name='baseURI'/>
+       is null or is not a valid IRI, returns refValue.
+    </returns>
+</doc>
+<doc name="M:PeterO.Cbor.URIUtility.splitIRI(System.String)">
+<summary>
+       Parses an Internationalized Resource Identifier (IRI) reference under
+      RFC3987. If the IRI reference is syntactically valid, splits the string
+      into its components and returns an array containing the indices into the
+      components.
+    </summary>
+    <param name='s'>
+       A string that contains an IRI. Can be null.
+    </param>
+    <returns>
+       If the string is a valid IRI reference, returns an array of 10 integers.
+      Each of the five pairs corresponds to the start and end index of the IRI's
+      scheme, authority, path, query, or fragment component, respectively. The
+      scheme, authority, query, and fragment components, if present, will each
+      be given without the ending colon, the starting "//", the starting "?",
+      and the starting "#", respectively. If a component is absent, both indices
+      in that pair will be -1. If the string is null or is not a valid IRI,
+      returns null.
+    </returns>
+</doc>
+<doc name="M:PeterO.Cbor.URIUtility.splitIRI(System.String,PeterO.Cbor.URIUtility.ParseMode)">
+<summary>
+       Parses an Internationalized Resource Identifier (IRI) reference under
+      RFC3987. If the IRI is syntactically valid, splits the string into its
+      components and returns an array containing the indices into the
+      components.
+    </summary>
+    <param name='s'>
+       A string representing an IRI. Can be null.
+    </param>
+    <param name='parseMode'>
+       The parameter
+      <paramref name='parseMode'/>
+       is a ParseMode object.
+    </param>
+    <returns>
+       If the string is a valid IRI reference, returns an array of 10 integers.
+      Each of the five pairs corresponds to the start and end index of the IRI's
+      scheme, authority, path, query, or fragment component, respectively. The
+      scheme, authority, query, and fragment components, if present, will each
+      be given without the ending colon, the starting "//", the starting "?",
+      and the starting "#", respectively. If a component is absent, both indices
+      in that pair will be -1. If the string is null or is not a valid IRI,
+      returns null.
+    </returns>
+</doc>
+<doc name="M:PeterO.Cbor.URIUtility.splitIRI(System.String,System.Int32,System.Int32,PeterO.Cbor.URIUtility.ParseMode)">
+<summary>
+       Parses a substring that represents an Internationalized Resource
+      Identifier (IRI) under RFC3987. If the IRI is syntactically valid, splits
+      the string into its components and returns an array containing the indices
+      into the components.
+    </summary>
+    <param name='s'>
+       A string that contains an IRI. Can be null.
+    </param>
+    <param name='offset'>
+       A zero-based index showing where the desired portion of "s" begins.
+    </param>
+    <param name='length'>
+       The length of the desired portion of "s" (but not more than "s" 's
+      length).
+    </param>
+    <param name='parseMode'>
+       Parse mode that specifies whether certain characters are allowed when
+      parsing IRIs and URIs.
+    </param>
+    <returns>
+       If the string is a valid IRI, returns an array of 10 integers. Each of
+      the five pairs corresponds to the start and end index of the IRI's scheme,
+      authority, path, query, or fragment component, respectively. The scheme,
+      authority, query, and fragment components, if present, will each be given
+      without the ending colon, the starting "//", the starting "?", and the
+      starting "#", respectively. If a component is absent, both indices in that
+      pair will be -1 (an index won't be less than 0 in any other case). If the
+      string is null or is not a valid IRI, returns null.
+    </returns>
+    <exception cref='T:System.ArgumentException'>
+       Either
+      <paramref name='offset'/>
+       or
+      <paramref name='length'/>
+       is less than 0 or greater than
+      <paramref name='s'/>
+       's length, or
+      <paramref name='s'/>
+       ' s length minus
+      <paramref name='offset'/>
+       is less than
+      <paramref name='length'/>
+       .
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='s'/>
+       is null.
+    </exception>
+</doc>
 <doc name="T:PeterO.DataIO">
 <summary>
        Convenience class that contains static methods for wrapping byte arrays
@@ -90,29 +472,29 @@
 <doc name="M:PeterO.DataIO.ByteArrayTransform.Read(System.Byte[],System.Int32,System.Int32)">
 
             <summary>
-      This is an internal method.
+       This is an internal method.
     </summary><param name='bytes'>
-      The parameter
+       The parameter
       <paramref name='bytes'/>
        is not documented yet.
     </param><param name='offset'>
-      A zero-based index showing where the desired portion of
+       A zero-based index showing where the desired portion of
       <paramref name='bytes'/>
        begins.
     </param><param name='length'>
-      The length, in bytes, of the desired portion of
+       The length, in bytes, of the desired portion of
       <paramref name='bytes'/>
        (but not more than
       <paramref name='bytes'/>
        's length).
     </param><returns>
-      A 32-bit signed integer.
+       A 32-bit signed integer.
     </returns><exception cref='T:System.ArgumentNullException'>
-      The parameter
+       The parameter
       <paramref name='bytes'/>
        is null.
     </exception><exception cref='T:System.ArgumentException'>
-      Either
+       Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -124,7 +506,7 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-      .
+       .
     </exception>
 
 </doc>
@@ -139,52 +521,52 @@
 <doc name="M:PeterO.DataIO.ToByteReader(System.Byte[])">
 
             <summary>
-      Not documented yet.
+       Not documented yet.
       <para>
-        In the .NET implementation, this method is implemented as an extension
+         In the .NET implementation, this method is implemented as an extension
         method to any object implementing byte[] and can be called as follows:
         <c>bytes.ToByteReader()</c>
-        . If the object's class already has a ToByteReader method with the same
+         . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary><param name='bytes'>
-      The parameter
+       The parameter
       <paramref name='bytes'/>
        is not documented yet.
     </param><returns>
-      An IByteReader object.
+       An IByteReader object.
     </returns>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToByteReader(System.Byte[],System.Int32,System.Int32)">
 
             <summary>
-      Not documented yet.
+       Not documented yet.
       <para>
-        In the .NET implementation, this method is implemented as an extension
+         In the .NET implementation, this method is implemented as an extension
         method to any object implementing byte[] and can be called as follows:
         <c>bytes.ToByteReader(offset, length)</c>
-        . If the object's class already has a ToByteReader method with the same
+         . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary><param name='bytes'>
-      The parameter
+       The parameter
       <paramref name='bytes'/>
        is not documented yet.
     </param><param name='offset'>
-      A zero-based index showing where the desired portion of
+       A zero-based index showing where the desired portion of
       <paramref name='bytes'/>
        begins.
     </param><param name='length'>
-      The length, in bytes, of the desired portion of
+       The length, in bytes, of the desired portion of
       <paramref name='bytes'/>
        (but not more than
       <paramref name='bytes'/>
        's length).
     </param><returns>
-      An IByteReader object.
+       An IByteReader object.
     </returns><exception cref='T:System.ArgumentException'>
-      Either
+       Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -196,9 +578,9 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-      .
+       .
     </exception><exception cref='T:System.ArgumentNullException'>
-      The parameter
+       The parameter
       <paramref name='bytes'/>
        is null.
     </exception>
@@ -207,20 +589,20 @@
 <doc name="M:PeterO.DataIO.ToByteReader(System.IO.Stream)">
 
             <summary>
-      Not documented yet.
+       Not documented yet.
       <para>
-        In the .NET implementation, this method is implemented as an extension
+         In the .NET implementation, this method is implemented as an extension
         method to any object implementing Stream and can be called as follows:
         <c>input.ToByteReader()</c>
-        . If the object's class already has a ToByteReader method with the same
+         . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary><param name='input'>
-      The parameter
+       The parameter
       <paramref name='input'/>
        is not documented yet.
     </param><returns>
-      An IByteReader object.
+       An IByteReader object.
     </returns>
 
 </doc>
@@ -466,6 +848,618 @@
        A 32-bit signed integer.
     </returns>
 </doc>
+<doc name="T:PeterO.DataUtilities">
+<summary>
+       Contains methods useful for reading and writing strings. It is designed
+      to have no dependencies other than the basic runtime class library.
+      <para>
+         Many of these methods work with text encoded in UTF-8, an encoding form
+        of the Unicode Standard which uses one byte to encode the most basic
+        characters and two to four bytes to encode other characters. For
+        example, the
+        <c>GetUtf8</c>
+         method converts a text string to an array of bytes in UTF-8.
+      </para>
+      <para>
+         In C# and Java, text strings are represented as sequences of 16-bit
+        values called
+        <c>char</c>
+         s. These sequences are well-formed under UTF-16, a 16-bit encoding form
+        of Unicode, except if they contain unpaired surrogate code points. (A
+        surrogate code point is used to encode supplementary characters, those
+        with code points U+10000 or higher, in UTF-16. A surrogate pair is a
+        high surrogate [U+D800 to U+DBFF] followed by a low surrogate [U+DC00 to
+        U+DFFF]. An unpaired surrogate code point is a surrogate not appearing
+        in a surrogate pair.) Many of the methods in this class allow setting
+        the behavior to follow when unpaired surrogate code points are found in
+        text strings, such as throwing an error or treating the unpaired
+        surrogate as a replacement character (U+FFFD).
+      </para>
+    </summary>
+</doc>
+<doc name="M:PeterO.DataUtilities.CodePointAt(System.String,System.Int32)">
+<summary>
+       Gets the Unicode code point at the given index of the string.
+    </summary>
+    <param name='str'>
+       The parameter
+      <paramref name='str'/>
+       is a text string.
+    </param>
+    <param name='index'>
+       Index of the current position into the string.
+    </param>
+    <returns>
+       The Unicode code point at the given position. Returns -1 if
+      <paramref name='index'/>
+       is less than 0, or is the string's length or greater. Returns the
+      replacement character (U+FFFD) if the current character is an unpaired
+      surrogate code point.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.CodePointAt(System.String,System.Int32,System.Int32)">
+<summary>
+       Gets the Unicode code point at the given index of the string.
+    </summary>
+    <param name='str'>
+       The parameter
+      <paramref name='str'/>
+       is a text string.
+    </param>
+    <param name='index'>
+       Index of the current position into the string.
+    </param>
+    <param name='surrogateBehavior'>
+       Specifies what kind of value to return if the previous character is an
+      unpaired surrogate code point: if 0, return the replacement character
+      (U+FFFD); if 1, return the value of the surrogate code point; if neither 0
+      nor 1, return -1.
+    </param>
+    <returns>
+       The Unicode code point at the current position. Returns -1 if
+      <paramref name='index'/>
+       is less than 0, or is the string's length or greater. Returns a value as
+      specified under
+      <paramref name='surrogateBehavior'/>
+       if the previous character is an unpaired surrogate code point.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.CodePointBefore(System.String,System.Int32)">
+<summary>
+       Gets the Unicode code point just before the given index of the string.
+    </summary>
+    <param name='str'>
+       The parameter
+      <paramref name='str'/>
+       is a text string.
+    </param>
+    <param name='index'>
+       Index of the current position into the string.
+    </param>
+    <returns>
+       The Unicode code point at the previous position. Returns -1 if
+      <paramref name='index'/>
+       is 0 or less, or is greater than the string's length. Returns the
+      replacement character (U+FFFD) if the previous character is an unpaired
+      surrogate code point.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.CodePointBefore(System.String,System.Int32,System.Int32)">
+<summary>
+       Gets the Unicode code point just before the given index of the string.
+    </summary>
+    <param name='str'>
+       The parameter
+      <paramref name='str'/>
+       is a text string.
+    </param>
+    <param name='index'>
+       Index of the current position into the string.
+    </param>
+    <param name='surrogateBehavior'>
+       Specifies what kind of value to return if the previous character is an
+      unpaired surrogate code point: if 0, return the replacement character
+      (U+FFFD); if 1, return the value of the surrogate code point; if neither 0
+      nor 1, return -1.
+    </param>
+    <returns>
+       The Unicode code point at the previous position. Returns -1 if
+      <paramref name='index'/>
+       is 0 or less, or is greater than the string's length. Returns a value as
+      specified under
+      <paramref name='surrogateBehavior'/>
+       if the previous character is an unpaired surrogate code point.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.CodePointCompare(System.String,System.String)">
+<summary>
+       Compares two strings in Unicode code point order. Unpaired surrogate code
+      points are treated as individual code points.
+    </summary>
+    <param name='strA'>
+       The first string. Can be null.
+    </param>
+    <param name='strB'>
+       The second string. Can be null.
+    </param>
+    <returns>
+       A value indicating which string is " less" or " greater" . 0: Both
+      strings are equal or null. Less than 0: a is null and b isn't; or the
+      first code point that's different is less in A than in B; or b starts with
+      a and is longer than a. Greater than 0: b is null and a isn't; or the
+      first code point that's different is greater in A than in B; or a starts
+      with b and is longer than b.
+    </returns>
+</doc>
+<doc name="M:PeterO.DataUtilities.GetUtf8Bytes(System.String,System.Boolean)">
+<summary>
+       Encodes a string in UTF-8 as a byte array.
+    </summary>
+    <param name='str'>
+       The parameter
+      <paramref name='str'/>
+       is a text string.
+    </param>
+    <param name='replace'>
+       If true, replaces unpaired surrogate code points with the replacement
+      character (U+FFFD). If false, stops processing when an unpaired surrogate
+      code point is seen.
+    </param>
+    <returns>
+       The string encoded in UTF-8.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>
+       The string contains an unpaired surrogate code point and
+      <paramref name='replace'/>
+       is false, or an internal error occurred.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.GetUtf8Bytes(System.String,System.Boolean,System.Boolean)">
+<summary>
+       Encodes a string in UTF-8 as a byte array.
+    </summary>
+    <param name='str'>
+       The parameter
+      <paramref name='str'/>
+       is a text string.
+    </param>
+    <param name='replace'>
+       If true, replaces unpaired surrogate code points with the replacement
+      character (U+FFFD). If false, stops processing when an unpaired surrogate
+      code point is seen.
+    </param>
+    <param name='lenientLineBreaks'>
+       If true, replaces carriage return (CR) not followed by line feed (LF) and
+      LF not preceded by CR with CR-LF pairs.
+    </param>
+    <returns>
+       The string encoded in UTF-8.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>
+       The string contains an unpaired surrogate code point and
+      <paramref name='replace'/>
+       is false, or an internal error occurred.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.GetUtf8Length(System.String,System.Boolean)">
+<summary>
+       Calculates the number of bytes needed to encode a string in UTF-8.
+    </summary>
+    <param name='str'>
+       The parameter
+      <paramref name='str'/>
+       is a text string.
+    </param>
+    <param name='replace'>
+       If true, treats unpaired surrogate code points as having 3 UTF-8 bytes
+      (the UTF-8 length of the replacement character U+FFFD).
+    </param>
+    <returns>
+       The number of bytes needed to encode the given string in UTF-8, or -1 if
+      the string contains an unpaired surrogate code point and
+      <paramref name='replace'/>
+       is false.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.GetUtf8String(System.Byte[],System.Boolean)">
+<summary>
+       Generates a text string from a UTF-8 byte array.
+    </summary>
+    <param name='bytes'>
+       A byte array containing text encoded in UTF-8.
+    </param>
+    <param name='replace'>
+       If true, replaces invalid encoding with the replacement character
+      (U+FFFD). If false, stops processing when invalid UTF-8 is seen.
+    </param>
+    <returns>
+       A string represented by the UTF-8 byte array.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='bytes'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>
+       The string is not valid UTF-8 and
+      <paramref name='replace'/>
+       is false.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.GetUtf8String(System.Byte[],System.Int32,System.Int32,System.Boolean)">
+<summary>
+       Generates a text string from a portion of a UTF-8 byte array.
+    </summary>
+    <param name='bytes'>
+       A byte array containing text encoded in UTF-8.
+    </param>
+    <param name='offset'>
+       Offset into the byte array to start reading.
+    </param>
+    <param name='bytesCount'>
+       Length, in bytes, of the UTF-8 string.
+    </param>
+    <param name='replace'>
+       If true, replaces invalid encoding with the replacement character
+      (U+FFFD). If false, stops processing when invalid UTF-8 is seen.
+    </param>
+    <returns>
+       A string represented by the UTF-8 byte array.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='bytes'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>
+       The portion of the byte array is not valid UTF-8 and
+      <paramref name='replace'/>
+       is false.
+    </exception>
+    <exception cref='T:System.ArgumentException'>
+       The parameter
+      <paramref name='offset'/>
+       is less than 0,
+      <paramref name='bytesCount'/>
+       is less than 0, or offset plus bytesCount is greater than the length of
+      "data" .
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.ReadUtf8(System.IO.Stream,System.Int32,System.Text.StringBuilder,System.Boolean)">
+<summary>
+       Reads a string in UTF-8 encoding from a data stream.
+    </summary>
+    <param name='stream'>
+       A readable data stream.
+    </param>
+    <param name='bytesCount'>
+       The length, in bytes, of the string. If this is less than 0, this
+      function will read until the end of the stream.
+    </param>
+    <param name='builder'>
+       A string builder object where the resulting string will be stored.
+    </param>
+    <param name='replace'>
+       If true, replaces invalid encoding with the replacement character
+      (U+FFFD). If false, stops processing when an unpaired surrogate code point
+      is seen.
+    </param>
+    <returns>
+       0 if the entire string was read without errors, -1 if the string is not
+      valid UTF-8 and
+      <paramref name='replace'/>
+       is false, or -2 if the end of the stream was reached before the last
+      character was read completely (which is only the case if
+      <paramref name='bytesCount'/>
+       is 0 or greater).
+    </returns>
+    <exception cref='T:System.IO.IOException'>
+       An I/O error occurred.
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='stream'/>
+       is null or
+      <paramref name='builder'/>
+       is null.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.ReadUtf8FromBytes(System.Byte[],System.Int32,System.Int32,System.Text.StringBuilder,System.Boolean)">
+<summary>
+       Reads a string in UTF-8 encoding from a byte array.
+    </summary>
+    <param name='data'>
+       A byte array containing a UTF-8 string.
+    </param>
+    <param name='offset'>
+       Offset into the byte array to start reading.
+    </param>
+    <param name='bytesCount'>
+       Length, in bytes, of the UTF-8 string.
+    </param>
+    <param name='builder'>
+       A string builder object where the resulting string will be stored.
+    </param>
+    <param name='replace'>
+       If true, replaces invalid encoding with the replacement character
+      (U+FFFD). If false, stops processing when invalid UTF-8 is seen.
+    </param>
+    <returns>
+       0 if the entire string was read without errors, or -1 if the string is
+      not valid UTF-8 and
+      <paramref name='replace'/>
+       is false.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='data'/>
+       is null or
+      <paramref name='builder'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>
+       The parameter
+      <paramref name='offset'/>
+       is less than 0,
+      <paramref name='bytesCount'/>
+       is less than 0, or offset plus bytesCount is greater than the length of
+      <paramref name='data'/>
+       .
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.ReadUtf8ToString(System.IO.Stream)">
+<summary>
+       Reads a string in UTF-8 encoding from a data stream in full and returns
+      that string. Replaces invalid encoding with the replacement character
+      (U+FFFD).
+    </summary>
+    <param name='stream'>
+       A readable data stream.
+    </param>
+    <returns>
+       The string read.
+    </returns>
+    <exception cref='T:System.IO.IOException'>
+       An I/O error occurred.
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='stream'/>
+       is null.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.ReadUtf8ToString(System.IO.Stream,System.Int32,System.Boolean)">
+<summary>
+       Reads a string in UTF-8 encoding from a data stream and returns that
+      string.
+    </summary>
+    <param name='stream'>
+       A readable data stream.
+    </param>
+    <param name='bytesCount'>
+       The length, in bytes, of the string. If this is less than 0, this
+      function will read until the end of the stream.
+    </param>
+    <param name='replace'>
+       If true, replaces invalid encoding with the replacement character
+      (U+FFFD). If false, throws an error if an unpaired surrogate code point is
+      seen.
+    </param>
+    <returns>
+       The string read.
+    </returns>
+    <exception cref='T:System.IO.IOException'>
+       An I/O error occurred; or, the string is not valid UTF-8 and
+      <paramref name='replace'/>
+       is false.
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='stream'/>
+       is null.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.ToLowerCaseAscii(System.String)">
+<summary>
+       Returns a string with the basic upper-case letters A to Z (U+0041 to
+      U+005A) converted to lower-case. Other characters remain unchanged.
+    </summary>
+    <param name='str'>
+       The parameter
+      <paramref name='str'/>
+       is a text string.
+    </param>
+    <returns>
+       The converted string, or null if
+      <paramref name='str'/>
+       is null.
+    </returns>
+</doc>
+<doc name="M:PeterO.DataUtilities.ToUpperCaseAscii(System.String)">
+<summary>
+       Returns a string with the basic lower-case letters A to Z (U+0061 to
+      U+007A) converted to upper-case. Other characters remain unchanged.
+    </summary>
+    <param name='str'>
+       The parameter
+      <paramref name='str'/>
+       is a text string.
+    </param>
+    <returns>
+       The converted string, or null if
+      <paramref name='str'/>
+       is null.
+    </returns>
+</doc>
+<doc name="M:PeterO.DataUtilities.WriteUtf8(System.String,System.IO.Stream,System.Boolean)">
+<summary>
+       Writes a string in UTF-8 encoding to a data stream.
+    </summary>
+    <param name='str'>
+       A string to write.
+    </param>
+    <param name='stream'>
+       A writable data stream.
+    </param>
+    <param name='replace'>
+       If true, replaces unpaired surrogate code points with the replacement
+      character (U+FFFD). If false, stops processing when an unpaired surrogate
+      code point is seen.
+    </param>
+    <returns>
+       0 if the entire string was written; or -1 if the string contains an
+      unpaired surrogate code point and
+      <paramref name='replace'/>
+       is false.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null or
+      <paramref name='stream'/>
+       is null.
+    </exception>
+    <exception cref='T:System.IO.IOException'>
+       An I/O error occurred.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.WriteUtf8(System.String,System.Int32,System.Int32,System.IO.Stream,System.Boolean)">
+<summary>
+       Writes a portion of a string in UTF-8 encoding to a data stream.
+    </summary>
+    <param name='str'>
+       A string to write.
+    </param>
+    <param name='offset'>
+       The zero-based index where the string portion to write begins.
+    </param>
+    <param name='length'>
+       The length of the string portion to write.
+    </param>
+    <param name='stream'>
+       A writable data stream.
+    </param>
+    <param name='replace'>
+       If true, replaces unpaired surrogate code points with the replacement
+      character (U+FFFD). If false, stops processing when an unpaired surrogate
+      code point is seen.
+    </param>
+    <returns>
+       0 if the entire string portion was written; or -1 if the string portion
+      contains an unpaired surrogate code point and
+      <paramref name='replace'/>
+       is false.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null or
+      <paramref name='stream'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>
+       The parameter
+      <paramref name='offset'/>
+       is less than 0,
+      <paramref name='length'/>
+       is less than 0, or
+      <paramref name='offset'/>
+       plus
+      <paramref name='length'/>
+       is greater than the string's length.
+    </exception>
+    <exception cref='T:System.IO.IOException'>
+       An I/O error occurred.
+    </exception>
+</doc>
+<doc name="M:PeterO.DataUtilities.WriteUtf8(System.String,System.Int32,System.Int32,System.IO.Stream,System.Boolean,System.Boolean)">
+<summary>
+       Writes a portion of a string in UTF-8 encoding to a data stream.
+    </summary>
+    <param name='str'>
+       A string to write.
+    </param>
+    <param name='offset'>
+       The zero-based index where the string portion to write begins.
+    </param>
+    <param name='length'>
+       The length of the string portion to write.
+    </param>
+    <param name='stream'>
+       A writable data stream.
+    </param>
+    <param name='replace'>
+       If true, replaces unpaired surrogate code points with the replacement
+      character (U+FFFD). If false, stops processing when an unpaired surrogate
+      code point is seen.
+    </param>
+    <param name='lenientLineBreaks'>
+       If true, replaces carriage return (CR) not followed by line feed (LF) and
+      LF not preceded by CR with CR-LF pairs.
+    </param>
+    <returns>
+       0 if the entire string portion was written; or -1 if the string portion
+      contains an unpaired surrogate code point and
+      <paramref name='replace'/>
+       is false.
+    </returns>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='str'/>
+       is null or
+      <paramref name='stream'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>
+       The parameter
+      <paramref name='offset'/>
+       is less than 0,
+      <paramref name='length'/>
+       is less than 0, or
+      <paramref name='offset'/>
+       plus
+      <paramref name='length'/>
+       is greater than the string's length.
+    </exception>
+    <exception cref='T:System.IO.IOException'>
+       An I/O error occurred.
+    </exception>
+</doc>
 <doc name="T:PeterO.IByteReader">
 <summary>
        A generic interface for reading data one byte at a time.
@@ -563,6 +1557,297 @@
        Should be thrown if either "offset" or "length" is less than 0 or greater
       than "bytes" 's length, or "bytes" 's length minus "offset" is less than
       "length".
+    </exception>
+</doc>
+<doc name="T:PeterO.Rdf.URIUtility">
+<summary>
+       Contains utility methods for processing Uniform Resource Identifiers
+      (URIs) and Internationalized Resource Identifiers (IRIs) under RFC3986 and
+      RFC3987, respectively. In the following documentation, URIs and IRIs
+      include URI references and IRI references, for convenience.
+    </summary>
+</doc>
+<doc name="T:PeterO.Rdf.URIUtility.ParseMode">
+<summary>
+       Specifies whether certain characters are allowed when parsing IRIs and
+      URIs.
+    </summary>
+</doc>
+<doc name="F:PeterO.Rdf.URIUtility.ParseMode.IRILenient">
+<summary>
+       The rules only check for the appropriate delimiters when splitting the
+      path, without checking if all the characters in each component are valid.
+      Even with this mode, strings with unpaired surrogate code points are
+      considered invalid.
+    </summary>
+</doc>
+<doc name="F:PeterO.Rdf.URIUtility.ParseMode.IRIStrict">
+<summary>
+       The rules follow the syntax for parsing IRIs. In particular, many code
+      points outside the Basic Latin range (U+0000 to U+007F) are allowed.
+      Strings with unpaired surrogate code points are considered invalid.
+    </summary>
+</doc>
+<doc name="F:PeterO.Rdf.URIUtility.ParseMode.IRISurrogateLenient">
+<summary>
+       The rules only check for the appropriate delimiters when splitting the
+      path, without checking if all the characters in each component are valid.
+      Unpaired surrogate code points are treated as though they were replacement
+      characters instead for the purposes of these rules, so that strings with
+      those code points are not considered invalid strings.
+    </summary>
+</doc>
+<doc name="F:PeterO.Rdf.URIUtility.ParseMode.URILenient">
+<summary>
+       The rules only check for the appropriate delimiters when splitting the
+      path, without checking if all the characters in each component are valid.
+      Code points outside the Basic Latin range (U+0000 to U+007F) are not
+      allowed.
+    </summary>
+</doc>
+<doc name="F:PeterO.Rdf.URIUtility.ParseMode.URIStrict">
+<summary>
+       The rules follow the syntax for parsing IRIs, except that code points
+      outside the Basic Latin range (U+0000 to U+007F) are not allowed.
+    </summary>
+</doc>
+<doc name="M:PeterO.Rdf.URIUtility.escapeURI(System.String,System.Int32)">
+<returns>
+       A string possibly containing escaped characters, or null if s is null.
+    </returns>
+    <summary>
+       Escapes characters that cannot appear in URIs or IRIs. The function is
+      idempotent; that is, calling the function again on the result with the
+      same mode doesn't change the result.
+    </summary>
+    <param name='s'>
+       A string to escape.
+    </param>
+    <param name='mode'>
+       The parameter
+      <paramref name='mode'/>
+       is a 32-bit signed integer.
+    </param>
+</doc>
+<doc name="M:PeterO.Rdf.URIUtility.hasScheme(System.String)">
+<summary>
+       Determines whether the string is a valid IRI with a scheme component.
+      This can be used to check for relative IRI references.
+      <para>
+         The following cases return true:
+      </para>
+      <code>
+         xx-x:mm example:/ww
+      </code>
+       The following cases return false:
+      <code>
+         x@y:/z /x/y/z example.xyz
+      </code>
+    </summary>
+    <param name='refValue'>
+       A string representing an IRI to check.
+    </param>
+    <returns>
+      <c>true</c>
+       if the string is a valid IRI with a scheme component; otherwise, <c>false</c>
+       .
+    </returns>
+</doc>
+<doc name="M:PeterO.Rdf.URIUtility.hasSchemeForURI(System.String)">
+<summary>
+       Determines whether the string is a valid URI with a scheme component.
+      This can be used to check for relative URI references. The following cases
+      return true:
+      <code>
+         http://example/z xx-x:mm example:/ww
+      </code>
+       The following cases return false:
+      <code>
+         x@y:/z /x/y/z example.xyz
+      </code>
+    </summary>
+    <param name='refValue'>
+       A string representing an IRI to check.
+    </param>
+    <returns>
+      <c>true</c>
+       if the string is a valid URI with a scheme component; otherwise, <c>false</c>
+       .
+    </returns>
+</doc>
+<doc name="M:PeterO.Rdf.URIUtility.isValidCurieReference(System.String,System.Int32,System.Int32)">
+<summary>
+       Determines whether the substring is a valid CURIE reference under RDFA
+      1.1. (The CURIE reference is the part after the colon.).
+    </summary>
+    <param name='s'>
+       A string containing a CURIE reference. Can be null.
+    </param>
+    <param name='offset'>
+       A zero-based index showing where the desired portion of "s" begins.
+    </param>
+    <param name='length'>
+       The number of elements in the desired portion of "s" (but not more than
+      "s" 's length).
+    </param>
+    <returns>
+      <c>true</c>
+       if the substring is a valid CURIE reference under RDFA 1; otherwise, <c>false</c>
+       . Returns false if
+      <paramref name='s'/>
+       is null.
+    </returns>
+    <exception cref='T:System.ArgumentException'>
+       Either
+      <paramref name='offset'/>
+       or
+      <paramref name='length'/>
+       is less than 0 or greater than
+      <paramref name='s'/>
+       's length, or
+      <paramref name='s'/>
+       's length minus
+      <paramref name='offset'/>
+       is less than
+      <paramref name='length'/>
+       .
+    </exception>
+</doc>
+<doc name="M:PeterO.Rdf.URIUtility.relativeResolve(System.String,System.String)">
+<summary>
+       Resolves a URI or IRI relative to another URI or IRI.
+    </summary>
+    <param name='refValue'>
+       A string representing a URI or IRI reference. Example:
+      <c>dir/file.txt</c>
+       .
+    </param>
+    <param name='baseURI'>
+       A string representing an absolute URI reference. Example:
+      <c>http://example.com/my/path/</c>
+       .
+    </param>
+    <returns>
+       The resolved IRI, or null if
+      <paramref name='refValue'/>
+       is null or is not a valid IRI. If base is null or is not a valid IRI,
+      returns refValue. Example: http://example.com/my/path/dir/file.txt.
+    </returns>
+</doc>
+<doc name="M:PeterO.Rdf.URIUtility.relativeResolve(System.String,System.String,PeterO.Rdf.URIUtility.ParseMode)">
+<summary>
+       Resolves a URI or IRI relative to another URI or IRI.
+    </summary>
+    <param name='refValue'>
+       A string representing a URI or IRI reference. Example:
+      <c>dir/file.txt</c>
+       .
+    </param>
+    <param name='baseURI'>
+       A string representing an absolute URI reference. Example:
+      <c>http://example.com/my/path/</c>
+       .
+    </param>
+    <param name='parseMode'>
+       Parse mode that specifies whether certain characters are allowed when
+      parsing IRIs and URIs.
+    </param>
+    <returns>
+       The resolved IRI, or null if
+      <paramref name='refValue'/>
+       is null or is not a valid IRI. If base is null or is not a valid IRI,
+      returns refValue.
+    </returns>
+</doc>
+<doc name="M:PeterO.Rdf.URIUtility.splitIRI(System.String)">
+<summary>
+       Parses an Internationalized Resource Identifier (IRI) reference under
+      RFC3987. If the IRI reference is syntactically valid, splits the string
+      into its components and returns an array containing the indices into the
+      components.
+      <returns>
+         If the string is a valid IRI reference, returns an array of 10
+        integers. Each of the five pairs corresponds to the start and end index
+        of the IRI's scheme, authority, path, query, or fragment component,
+        respectively. If a component is absent, both indices in that pair will
+        be -1. If the string is null or is not a valid IRI, returns null.
+      </returns>
+    </summary>
+    <param name='s'>
+       A string that contains an IRI.
+    </param>
+</doc>
+<doc name="M:PeterO.Rdf.URIUtility.splitIRI(System.String,PeterO.Rdf.URIUtility.ParseMode)">
+<summary>
+       Parses an Internationalized Resource Identifier (IRI) reference under
+      RFC3987. If the IRI is syntactically valid, splits the string into its
+      components and returns an array containing the indices into the
+      components.
+    </summary>
+    <param name='s'>
+       A string representing an IRI. Can be null.
+    </param>
+    <param name='parseMode'>
+       The parameter
+      <paramref name='parseMode'/>
+       is a ParseMode object.
+    </param>
+    <returns>
+       If the string is a valid IRI reference, returns an array of 10 integers.
+      Each of the five pairs corresponds to the start and end index of the IRI's
+      scheme, authority, path, query, or fragment component, respectively. If a
+      component is absent, both indices in that pair will be -1. If the string
+      is null or is not a valid IRI, returns null.
+    </returns>
+</doc>
+<doc name="M:PeterO.Rdf.URIUtility.splitIRI(System.String,System.Int32,System.Int32,PeterO.Rdf.URIUtility.ParseMode)">
+<summary>
+       Parses a substring that represents an Internationalized Resource
+      Identifier (IRI) under RFC3987. If the IRI is syntactically valid, splits
+      the string into its components and returns an array containing the indices
+      into the components.
+    </summary>
+    <param name='s'>
+       A string that contains an IRI.
+    </param>
+    <param name='offset'>
+       A zero-based index showing where the desired portion of "s" begins.
+    </param>
+    <param name='length'>
+       The length of the desired portion of "s" (but not more than "s" 's
+      length).
+    </param>
+    <param name='parseMode'>
+       Parse mode that specifies whether certain characters are allowed when
+      parsing IRIs and URIs.
+    </param>
+    <returns>
+       If the string is a valid IRI, returns an array of 10 integers. Each of
+      the five pairs corresponds to the start and end index of the IRI's scheme,
+      authority, path, query, or fragment component, respectively. If a
+      component is absent, both indices in that pair will be -1 (an index won't
+      be less than 0 in any other case). If the string is null or is not a valid
+      IRI, returns null.
+    </returns>
+    <exception cref='T:System.ArgumentException'>
+       Either
+      <paramref name='offset'/>
+       or
+      <paramref name='length'/>
+       is less than 0 or greater than
+      <paramref name='s'/>
+       's length, or
+      <paramref name='s'/>
+       's length minus
+      <paramref name='offset'/>
+       is less than
+      <paramref name='length'/>
+       .
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>
+       The parameter
+      <paramref name='s'/>
+       is null.
     </exception>
 </doc>
 <doc name="T:PeterO.Text.CharacterReader">

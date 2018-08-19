@@ -9,7 +9,7 @@ Defines a method that can be implemented by classes that convert a stream f byte
     int ReadChar(
         PeterO.IByteReader input);
 
-Reads bytes from an input transform until a Unicode code point is decoded r until the end of the stream is reached. If this method returns -2, indicating an error, the caller of this ethod can take one of a variety of actions to handle the error. For xample, it can output one or more replacement code points instead (such s the Replacement Character 0xfffd), or it can throw an exception. In ome cases, where the error won't cause data loss or a security problem, he caller can also ignore the decoder error.
+Reads bytes from an input transform until a Unicode code point is decoded r until the end of the stream is reached.If this method returns -2, indicating an error, the caller of this ethod can take one of a variety of actions to handle the error. For xample, it can output one or more replacement code points instead (such s the Replacement Character 0xfffd), or it can throw an exception. In ome cases, where the error won't cause data loss or a security problem, he caller can also ignore the decoder error.
 
 <b>Parameters:</b>
 

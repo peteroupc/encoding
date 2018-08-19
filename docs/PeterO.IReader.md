@@ -18,11 +18,11 @@ Reads a portion of a byte array from the data source.
 
  * <i>bytes</i>: A byte array which will contain the data that was read from the data ource.
 
- * <i>offset</i>: A zero-based index showing where the desired portion of  <i>bytes</i>
+ * <i>offset</i>: A zero-based index showing where the desired portion of <i>bytes</i>
 begins.
 
- * <i>length</i>: The number of elements in the desired portion of  <i>bytes</i>
-(but not more than  <i>bytes</i>
+ * <i>length</i>: The number of elements in the desired portion of <i>bytes</i>
+(but not more than <i>bytes</i>
 's length).
 
 <b>Return Value:</b>

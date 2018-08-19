@@ -10,7 +10,7 @@ A general-purpose character input for reading text from byte streams and ext str
     public CharacterReader(
         string str);
 
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class using a Unicode 16-bit string; if the string begins with a byte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
+Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md)class using a Unicode 16-bit string; if the string begins with a yte-order mark (U+FEFF), it won't be skipped, and any unpaired surrogate ode points (U+D800 to U+DFFF) in the string are replaced with replacement haracters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -19,7 +19,7 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
 is null.
 
 ### CharacterReader Constructor
@@ -28,7 +28,7 @@ is null.
         string str,
         bool skipByteOrderMark);
 
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class using a Unicode 16-bit string; any unpaired surrogate code points (U+D800 to U+DFFF) in the string are replaced with replacement characters (U+FFFD).
+Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md)class using a Unicode 16-bit string; any unpaired surrogate code points U+D800 to U+DFFF) in the string are replaced with replacement characters U+FFFD).
 
 <b>Parameters:</b>
 
@@ -39,7 +39,7 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
 is null.
 
 ### CharacterReader Constructor
@@ -49,7 +49,7 @@ is null.
         bool skipByteOrderMark,
         bool errorThrow);
 
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class using a Unicode 16-bit string.
+Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md)class using a Unicode 16-bit string.
 
 <b>Parameters:</b>
 
@@ -62,7 +62,7 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
 is null.
 
 ### CharacterReader Constructor
@@ -72,18 +72,18 @@ is null.
         int offset,
         int length);
 
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md)class.
 
 <b>Parameters:</b>
 
- * <i>str</i>: The parameter  <i>str</i>
+ * <i>str</i>: The parameter <i>str</i>
 is a text string.
 
- * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
+ * <i>offset</i>: A zero-based index showing where the desired portion of <i>str</i>
 begins.
 
- * <i>length</i>: The number of elements in the desired portion of  <i>str</i>
-(but not more than  <i>str</i>
+ * <i>length</i>: The number of elements in the desired portion of <i>str</i>
+(but not more than <i>str</i>
 's length).
 
 ### CharacterReader Constructor
@@ -95,18 +95,18 @@ begins.
         bool skipByteOrderMark,
         bool errorThrow);
 
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md)class.
 
 <b>Parameters:</b>
 
- * <i>str</i>: The parameter  <i>str</i>
+ * <i>str</i>: The parameter <i>str</i>
 is a text string.
 
- * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
+ * <i>offset</i>: A zero-based index showing where the desired portion of <i>str</i>
 begins.
 
- * <i>length</i>: The number of elements in the desired portion of  <i>str</i>
-(but not more than  <i>str</i>
+ * <i>length</i>: The number of elements in the desired portion of <i>str</i>
+(but not more than <i>str</i>
 's length).
 
  * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip hat code point as it reads the string.
@@ -116,7 +116,7 @@ begins.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>str</i>
+The parameter <i>str</i>
 is null.
 
 ### CharacterReader Constructor
@@ -124,7 +124,7 @@ is null.
     public CharacterReader(
         System.IO.Stream stream);
 
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the stream, and replace invalid byte sequences with replacement characters (U+FFFD).
+Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md)class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) f it appears first in the stream, and replace invalid byte sequences with eplacement characters (U+FFFD).
 
 <b>Parameters:</b>
 
@@ -133,7 +133,7 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>stream</i>
+The parameter <i>stream</i>
 is null.
 
 ### CharacterReader Constructor
@@ -142,7 +142,7 @@ is null.
         System.IO.Stream stream,
         int mode);
 
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and replace invalid byte sequences with replacement characters (U+FFFD).
+Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md)class; will skip the byte-order mark (U+FEFF) if it appears first in the tream and replace invalid byte sequences with replacement characters U+FFFD).
 
 <b>Parameters:</b>
 
@@ -165,7 +165,7 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>stream</i>
+The parameter <i>stream</i>
 is null.
 
 ### CharacterReader Constructor
@@ -175,7 +175,7 @@ is null.
         int mode,
         bool errorThrow);
 
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will skip the byte-order mark (U+FEFF) if it appears first in the stream.
+Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md)class; will skip the byte-order mark (U+FEFF) if it appears first in the tream.
 
 <b>Parameters:</b>
 
@@ -200,7 +200,7 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>stream</i>
+The parameter <i>stream</i>
 is null.
 
 ### CharacterReader Constructor
@@ -211,7 +211,7 @@ is null.
         bool errorThrow,
         bool dontSkipUtf8Bom);
 
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md)class.
 
 <b>Parameters:</b>
 
@@ -233,12 +233,14 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the etected encoding) are found in the byte stream. If false, replaces those yte sequences with replacement characters (U+FFFD) as the stream is read.
 
- * <i>dontSkipUtf8Bom</i>: If the stream is detected as UTF-8 and this parameter is  `true` , won't skip the BOM character if it occurs at the start of the stream.
+ * <i>dontSkipUtf8Bom</i>: If the stream is detected as UTF-8 and this parameter is `
+        true
+      ` , won't skip the BOM character if it occurs at the start of the stream.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>stream</i>
+The parameter <i>stream</i>
 is null.
 
 ### Read
@@ -254,31 +256,31 @@ Reads a series of code points from a Unicode stream or a string.
 
  * <i>chars</i>: An array where the code points that were read will be stored.
 
- * <i>index</i>: A zero-based index showing where the desired portion of  <i>chars</i>
+ * <i>index</i>: A zero-based index showing where the desired portion of <i>chars</i>
 begins.
 
- * <i>length</i>: The number of elements in the desired portion of  <i>chars</i>
-(but not more than  <i>chars</i>
+ * <i>length</i>: The number of elements in the desired portion of <i>chars</i>
+(but not more than <i>chars</i>
 's length).
 
 <b>Return Value:</b>
 
-The number of code points read from the stream. This can be less than the  <i>length</i>
+The number of code points read from the stream. This can be less than the <i>length</i>
 parameter if the end of the stream is reached.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter  <i>chars</i>
+The parameter <i>chars</i>
 is null.
 
  * System.ArgumentException:
-Either  <i>index</i>
-or  <i>length</i>
-is less than 0 or greater than  <i>chars</i>
-'s length, or  <i>chars</i>
-'s length minus  <i>index</i>
-is less than  <i>length</i>
+Either <i>index</i>
+or <i>length</i>
+is less than 0 or greater than <i>chars</i>
+'s length, or <i>chars</i>
+'s length minus <i>index</i>
+is less than <i>length</i>
 .
 
 ### ReadChar

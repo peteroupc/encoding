@@ -207,6 +207,8 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>NullPointerException</code> - The parameter <code>str</code> is null.
 
+* <code>IllegalArgumentException</code>
+
 ### CharacterReader
     public CharacterReader​(InputStream stream)
 Initializes a new instance of the <code>CharacterReader</code> class; will read the stream as

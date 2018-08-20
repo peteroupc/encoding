@@ -9,10 +9,10 @@ using System;
 
 namespace PeterO {
     /// <include file='../docs.xml'
-  /// path='docs/doc[@name="T:PeterO.IReader"]/*'/>
+    /// path='docs/doc[@name="T:PeterO.IReader"]/*'/>
   public interface IReader : IByteReader {
     /// <include file='../docs.xml'
-  /// path='docs/doc[@name="M:PeterO.IReader.Read(System.Byte[],System.Int32,System.Int32)"]/*'/>
+    /// path='docs/doc[@name="M:PeterO.IReader.Read(System.Byte[],System.Int32,System.Int32)"]/*'/>
     int Read(byte[] bytes, int offset, int length);
   }
 }

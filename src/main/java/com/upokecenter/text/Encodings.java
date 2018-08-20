@@ -310,8 +310,12 @@ ICharacterInput input,
 
     /**
      *
+     * @param input The parameter {@code input} is not documented yet.
+     * @param encoder The parameter {@code encoder} is not documented yet.
+     * @param htmlFallback The parameter {@code htmlFallback} is not documented
+     * yet.
      * @return A byte array.
-     * @throws NullPointerException The parameter is null.
+     * @throws java.lang.NullPointerException The parameter is null.
      */
     public static byte[] EncodeToBytes(
 ICharacterInput input,
@@ -349,7 +353,7 @@ EncoderAlgorithms.EncodeAlgorithm(input, encoder, writer);
      * character (U + FFFD), and when writing to the byte array, any
      * characters that can't be encoded are replaced with the byte 0x3f (the
      * question mark character). <p>In the .NET implementation, this method
-     * is implemented as an extension method to any string object and can be
+     * is implemented as an extension method to any String object and can be
      * called as follows: <code>str.EncodeToBytes(enc)</code>. If the object's
      * class already has a EncodeToBytes method with the same parameters,
      * that method takes precedence over this extension method.</p>
@@ -375,8 +379,12 @@ String str,
 
     /**
      *
+     * @param str The parameter {@code str} is not documented yet.
+     * @param enc The parameter {@code enc} is not documented yet.
+     * @param htmlFallback The parameter {@code htmlFallback} is not documented
+     * yet.
      * @return A byte array.
-     * @throws NullPointerException The parameter is null.
+     * @throws java.lang.NullPointerException The parameter is null.
      */
     public static byte[] EncodeToBytes(
 String str,
@@ -468,7 +476,7 @@ ICharacterInput input,
      * writing to the byte stream, any characters that can't be encoded are
      * replaced with the byte 0x3f (the question mark character). <p>In the
      * .NET implementation, this method is implemented as an extension
-     * method to any string object and can be called as follows:
+     * method to any String object and can be called as follows:
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
      * takes precedence over this extension method.</p>
@@ -548,7 +556,7 @@ ICharacterInput input,
      * writing to the byte stream, any characters that can't be encoded are
      * replaced with the byte 0x3f (the question mark character). <p>In the
      * .NET implementation, this method is implemented as an extension
-     * method to any string object and can be called as follows:
+     * method to any String object and can be called as follows:
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
      * takes precedence over this extension method.</p>
@@ -1336,7 +1344,7 @@ ICharacterEncoder encoder,
      * code point, among other things. When reading the string, any unpaired
      * surrogate characters are replaced with the replacement character
      * (U + FFFD). <p>In the .NET implementation, this method is implemented
-     * as an extension method to any string object and can be called as
+     * as an extension method to any String object and can be called as
      * follows: <code>str.StringToInput(offset, length)</code>. If the object's
      * class already has a StringToInput method with the same parameters,
      * that method takes precedence over this extension method.</p>
@@ -1358,7 +1366,7 @@ String str) {
      * string code point by code point, among other things. When reading the
      * string, any unpaired surrogate characters are replaced with the
      * replacement character (U + FFFD). <p>In the .NET implementation, this
-     * method is implemented as an extension method to any string object and
+     * method is implemented as an extension method to any String object and
      * can be called as follows: <code>str.StringToInput(offset, length)</code>.
      * If the object's class already has a StringToInput method with the
      * same parameters, that method takes precedence over this extension

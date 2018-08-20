@@ -133,11 +133,11 @@ Deprecated.
 
 **Throws:**
 
+* <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
+
 * <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
  less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
- ' s length minus <code>offset</code> is less than <code>length</code>.
-
-* <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
+ 's length minus <code>offset</code> is less than <code>length</code>.
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader​(InputStream input)

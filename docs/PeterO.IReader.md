@@ -27,7 +27,7 @@ begins.
 
 <b>Return Value:</b>
 
-The number of bytes read from the data source. Can be less than "length" f the end of the stream was reached.
+The number of bytes read from the data source. Can be less than "length" if the end of the stream was reached.
 
 <b>Exceptions:</b>
 

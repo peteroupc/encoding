@@ -26,7 +26,7 @@ begins.
 
 <b>Return Value:</b>
 
-Either a Unicode code point (from 0-0xd7ff or from 0xe000 to 0x10ffff), r the value -1 indicating the end of the source.
+Either a Unicode code point (from 0-0xd7ff or from 0xe000 to 0x10ffff), or the value -1 indicating the end of the source.
 
 <b>Exceptions:</b>
 
@@ -41,4 +41,4 @@ Reads a Unicode code point from a data source.
 
 <b>Return Value:</b>
 
-Either a Unicode code point (from 0-0xd7ff or from 0xe000 to 0x10ffff), r the value -1 indicating the end of the source.
+Either a Unicode code point (from 0-0xd7ff or from 0xe000 to 0x10ffff), or the value -1 indicating the end of the source.

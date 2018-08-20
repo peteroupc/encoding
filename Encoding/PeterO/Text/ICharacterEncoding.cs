@@ -9,7 +9,7 @@ namespace PeterO.Text {
 /// </summary>
 public interface ICharacterEncoding {
     /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.ICharacterEncoding.GetEncoder"]/*'/>
+  /// path='docs/doc[@name="M:PeterO.Text.ICharacterEncoding.GetEncoder"]/*'/>
     #if CODE_ANALYSIS
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design",
       "CA1024:UsePropertiesWhereAppropriate",
@@ -19,7 +19,7 @@ public interface ICharacterEncoding {
     ICharacterEncoder GetEncoder();
 
     /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.ICharacterEncoding.GetDecoder"]/*'/>
+  /// path='docs/doc[@name="M:PeterO.Text.ICharacterEncoding.GetDecoder"]/*'/>
 #if CODE_ANALYSIS
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design",
       "CA1024:UsePropertiesWhereAppropriate",

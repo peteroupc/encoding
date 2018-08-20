@@ -2,7 +2,7 @@
 
     public interface ICharacterEncoder
 
-Defines a method that can be implemented by classes that convert Unicode ode points to bytes.
+Defines a method that can be implemented by classes that convert Unicode code points to bytes.
 
 ### Encode
 
@@ -10,7 +10,7 @@ Defines a method that can be implemented by classes that convert Unicode ode poi
         int c,
         PeterO.IWriter output);
 
-Converts a Unicode code point to bytes and writes the bytes to an output tream.If this method returns -2, indicating an error, the caller of this ethod can take one of a variety of actions to handle the error. For xample, it can write an escape sequence using the code point (such as he HTML error mode in the Encoding Standard), it can replace the code oint with a "best fit" to that code point (which can consist of one or ore bytes) and write the "best fit" instead, it can replace the code oint with an arbitrary byte or sequence of bytes, or it can throw an xception. In some cases, where the error won't cause data loss or a ecurity problem, the caller can also ignore the encoding error.
+Converts a Unicode code point to bytes and writes the bytes to an output stream.If this method returns -2, indicating an error, the caller of this method can take one of a variety of actions to handle the error. For example, it can write an escape sequence using the code point (such as the HTML error mode in the Encoding Standard), it can replace the code point with a "best fit" to that code point (which can consist of one or more bytes) and write the "best fit" instead, it can replace the code point with an arbitrary byte or sequence of bytes, or it can throw an exception. In some cases, where the error won't cause data loss or a security problem, the caller can also ignore the encoding error.
 
 <b>Parameters:</b>
 
@@ -20,4 +20,4 @@ Converts a Unicode code point to bytes and writes the bytes to an output tream.I
 
 <b>Return Value:</b>
 
-The number of bytes written to the stream; -1 if no further code points emain (for example, if _c_ is -1 indicating the end of the stream), or -2 f an encoding error occurs. (Note that it's possible for this method to eturn 0 if, for example, it can't generate new bytes yet based on the urrent input.). If this method returns -2, it should not write any bytes o the output stream.
+The number of bytes written to the stream; -1 if no further code points remain (for example, if _c_ is -1 indicating the end of the stream), or -2 if an encoding error occurs. (Note that it's possible for this method to return 0 if, for example, it can't generate new bytes yet based on the current input.). If this method returns -2, it should not write any bytes to the output stream.

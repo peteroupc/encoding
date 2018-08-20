@@ -112,6 +112,7 @@ import java.io.*;
      * replaces those byte sequences with replacement characters (U + FFFD) as
      * the stream is read.
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
+     * @throws IllegalArgumentException
      */
     public CharacterReader(
   String str,

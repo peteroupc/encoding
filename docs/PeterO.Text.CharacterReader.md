@@ -3,7 +3,7 @@
     public sealed class CharacterReader :
         PeterO.Text.ICharacterInput
 
-A general-purpose character input for reading text from byte streams and ext strings. When reading byte streams, this class supports the UTF-8 haracter encoding by default, but can be configured to support UTF-16 and TF-32 as well.
+A general-purpose character input for reading text from byte streams and text strings. When reading byte streams, this class supports the UTF-8 character encoding by default, but can be configured to support UTF-16 and UTF-32 as well.
 
 ### CharacterReader Constructor
 
@@ -119,6 +119,8 @@ begins.
 The parameter <i>str</i>
 is null.
 
+ * System.ArgumentException:
+
 ### CharacterReader Constructor
 
     public CharacterReader(
@@ -154,11 +156,11 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8.
 
- * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to etect UTF-32 first.)
+ * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to detect UTF-32 first.)
 
  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
 
- * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect TF-32 first.)
+ * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
 
 .
 
@@ -187,11 +189,11 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8.
 
- * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to etect UTF-32 first.)
+ * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to detect UTF-32 first.)
 
  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
 
- * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect TF-32 first.)
+ * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
 
 .
 
@@ -223,11 +225,11 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8.
 
- * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to etect UTF-32 first.)
+ * 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to detect UTF-32 first.)
 
  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
 
- * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect TF-32 first.)
+ * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
 
 .
 

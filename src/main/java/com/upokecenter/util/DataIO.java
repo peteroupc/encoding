@@ -86,7 +86,7 @@ byte[] bytes,
 
     /**
      * Wraps an input stream into a reader object. If an IOException is thrown by
-     * the input stream, the reader object throws InvalidOperationException
+     * the input stream, the reader object throws IllegalStateException
      * instead. <p>In the .NET implementation, this method is implemented as
      * an extension method to any object implementing InputStream and can be
      * called as follows: <code>input.ToByteReader()</code>. If the object's class
@@ -111,16 +111,11 @@ InputStream input) {
      * length)</code>. If the object's class already has a ToByteReader method
      * with the same parameters, that method takes precedence over this
      * extension method.</p>
-     * @param bytes The parameter {@code bytes} is not documented yet.
-     * @param offset A zero-based index showing where the desired portion of {@code
-     * bytes} begins.
-     * @param length The length, in bytes, of the desired portion of {@code bytes}
-     * (but not more than {@code bytes} 's length).
      * @return An IByteReader object.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
-     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * ' s length minus {@code offset} is less than {@code length}.
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either "offset" or "length" is less than 0 or
+     * greater than "bytes"'s length, or "bytes"'s length minus "offset" is
+     * less than "length".
      * @deprecated Use ToReader instead.
  */
 @Deprecated
@@ -138,7 +133,7 @@ byte[] bytes,
      * object's class already has a ToByteReader method with the same
      * parameters, that method takes precedence over this extension
      * method.</p>
-     * @param input The parameter {@code input} is not documented yet.
+     * @param input Not documented yet.
      * @return An IByteReader object.
      * @deprecated Use ToReader instead.
  */
@@ -155,7 +150,7 @@ InputStream input) {
      * object's class already has a ToByteReader method with the same
      * parameters, that method takes precedence over this extension
      * method.</p>
-     * @param bytes The parameter {@code bytes} is not documented yet.
+     * @param bytes Not documented yet.
      * @return An IByteReader object.
      * @deprecated Use ToReader instead.
  */
@@ -167,7 +162,7 @@ byte[] bytes) {
 
     /**
      * Wraps an output stream into a writer object. If an IOException is thrown by
-     * the input stream, the writer object throws InvalidOperationException
+     * the input stream, the writer object throws IllegalStateException
      * instead. <p>In the .NET implementation, this method is implemented as
      * an extension method to any object implementing InputStream and can be
      * called as follows: <code>output.ToWriter()</code>. If the object's class
@@ -231,16 +226,11 @@ IByteWriter output) {
 
     /**
      * This is an internal method.
-     * @param bytes The parameter {@code bytes} is not documented yet.
-     * @param offset A zero-based index showing where the desired portion of {@code
-     * bytes} begins.
-     * @param length The length, in bytes, of the desired portion of {@code bytes}
-     * (but not more than {@code bytes} 's length).
      * @return A 32-bit signed integer.
-     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
      * ' s length minus {@code offset} is less than {@code length}.
+     * @throws NullPointerException The parameter is null.
      */
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {

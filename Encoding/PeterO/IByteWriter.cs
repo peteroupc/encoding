@@ -9,10 +9,10 @@ using System;
 
 namespace PeterO {
     /// <include file='../docs.xml'
-    /// path='docs/doc[@name="T:PeterO.IByteWriter"]/*'/>
+  /// path='docs/doc[@name="T:PeterO.IByteWriter"]/*'/>
   public interface IByteWriter {
     /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.IByteWriter.WriteByte(System.Int32)"]/*'/>
+  /// path='docs/doc[@name="M:PeterO.IByteWriter.WriteByte(System.Int32)"]/*'/>
     void WriteByte(int b);
   }
 }

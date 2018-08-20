@@ -9,10 +9,10 @@ using System;
 
 namespace PeterO {
     /// <include file='../docs.xml'
-    /// path='docs/doc[@name="T:PeterO.IByteReader"]/*'/>
+  /// path='docs/doc[@name="T:PeterO.IByteReader"]/*'/>
   public interface IByteReader {
     /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.IByteReader.ReadByte"]/*'/>
+  /// path='docs/doc[@name="M:PeterO.IByteReader.ReadByte"]/*'/>
     int ReadByte();
   }
 }

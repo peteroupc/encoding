@@ -71,8 +71,9 @@ return this.decoder.ReadChar(stream);
     this.decoder = new Decoder(true);
 return -2;
 } else {
-// anything else
-    this.decoder = new Decoder(true);
+// anything else {
+ this.decoder = new Decoder(true);
+}
 return (c << 8)|c2;
 }
   }
@@ -200,12 +201,14 @@ return (c << 8)|c2;
 
     public static ICharacterDecoder GetDecoder2(int kind) {
   // kind: 0-little endian, 1-big endian, 2-unlabeled
-   return (kind == 2) ? ((ICharacterDecoder)new EndianFreeDecoder()) : ((ICharacterDecoder)new Decoder(kind == 1));
+   return (kind == 2) ? ((ICharacterDecoder)new EndianFreeDecoder()) :
+     ((ICharacterDecoder)new Decoder(kind == 1));
     }
 
     public static ICharacterEncoder GetEncoder2(int kind) {
   // kind: 0-little endian, 1-big endian, 2-unlabeled
-   return (kind == 2) ? ((ICharacterEncoder)new EndianFreeEncoder()) : ((ICharacterEncoder)new Encoder(kind == 1));
+   return (kind == 2) ? ((ICharacterEncoder)new EndianFreeEncoder()) :
+     ((ICharacterEncoder)new Encoder(kind == 1));
     }
 
     public ICharacterDecoder GetDecoder() {

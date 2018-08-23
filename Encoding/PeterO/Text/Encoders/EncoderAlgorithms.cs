@@ -58,7 +58,7 @@ namespace PeterO.Text.Encoders {
             } else {
               this.useOriginal = false;
             }
-            this.decoder = new EncodingUtf16().GetDecoder();
+            this.decoder = new EncodingUtf16LE().GetDecoder();
           } else {
             // No BOM found
             this.useOriginal = false;

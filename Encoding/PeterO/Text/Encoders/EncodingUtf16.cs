@@ -5,79 +5,79 @@ using PeterO.Text;
 
 namespace PeterO.Text.Encoders {
   internal class EncodingUtf16 : ICharacterEncoding {
-private class EndianFreeEncoder : ICharacterEncoder {
- private ICharacterEncoder encoder;
- private bool start;
- public EndianFreeEncoder() {
-  this.start = true;
-  this.encoder = new Encoder(false);  // little endian
- }
- public int Encode(int c, IWriter output) {
-  if (this.start) {
-   if (c< 0) {
- return -1;
-}
-   var aw = new ArrayWriter();
-   aw.WriteByte((byte)0xff);
-   aw.WriteByte((byte)0xfe);
-   int ret = this.encoder.Encode(c, aw);
-   if (ret >= 0) {
-     byte[] bytes = aw.ToArray();
-     aw.Write(bytes, 0, bytes.Length);
-     this.start = false;
-     return ret + 2;
-   }
-   return ret;
-  } else {
-   return this.encoder.Encode(c, output);
-  }
- }
-}
-private class EndianFreeDecoder : ICharacterDecoder {
- private ICharacterDecoder decoder;
- private bool start;
- public EndianFreeDecoder() {
-   this.start = true;
- }
- public int ReadChar(IByteReader stream) {
-  if (!start) {
- return this.decoder.ReadChar(stream);
-}
-  int c = stream.ReadByte();
-  if (c< 0) {
- return -1;
-}
-  int c2 = stream.ReadByte();
-  if (c2< 0) {
- return -2;  // Only one byte
-}
-  this.start = false;
-  if (c == 0xff && c2 == 0xfe) {
-    this.decoder = new Decoder(false);
-return this.decoder.ReadChar(stream);
-  } else {
-    // Anything else, including FE FF, is
-    // treated as big endian (see RFC 2781 sec. 4.3)
-if (c == 0xfe && c2 == 0xff) {
-// absorb BOM
-    this.decoder = new Decoder(true);
-return this.decoder.ReadChar(stream);
-} else if (c >= 0xd8 && c <= 0xdb) {
-// surrogate
-this.decoder = new Decoder(true, (c << 8)|c2);
-return this.decoder.ReadChar(stream);
-} else if (c >= 0xdc && c <= 0xdf) {
-// unpaired surrogate
-    this.decoder = new Decoder(true);
-return -2;
-} else {
-// anything else
-this.decoder = new Decoder(true);
-return (c << 8)|c2;
-}
-  }
- }
-}
+    private class EndianFreeEncoder : ICharacterEncoder {
+      private ICharacterEncoder encoder;
+      private bool start;
+      public EndianFreeEncoder() {
+        this.start = true;
+        this.encoder = new Encoder(false);  // little endian
+      }
+      public int Encode(int c, IWriter output) {
+        if (this.start) {
+          if (c < 0) {
+            return -1;
+          }
+          var aw = new ArrayWriter();
+          aw.WriteByte((byte)0xff);
+          aw.WriteByte((byte)0xfe);
+          int ret = this.encoder.Encode(c, aw);
+          if (ret >= 0) {
+            byte[] bytes = aw.ToArray();
+            aw.Write(bytes, 0, bytes.Length);
+            this.start = false;
+            return ret + 2;
+          }
+          return ret;
+        } else {
+          return this.encoder.Encode(c, output);
+        }
+      }
+    }
+    private class EndianFreeDecoder : ICharacterDecoder {
+      private ICharacterDecoder decoder;
+      private bool start;
+      public EndianFreeDecoder() {
+        this.start = true;
+      }
+      public int ReadChar(IByteReader stream) {
+        if (!start) {
+          return this.decoder.ReadChar(stream);
+        }
+        int c = stream.ReadByte();
+        if (c < 0) {
+          return -1;
+        }
+        int c2 = stream.ReadByte();
+        if (c2 < 0) {
+          return -2;  // Only one byte
+        }
+        this.start = false;
+        if (c == 0xff && c2 == 0xfe) {
+          this.decoder = new Decoder(false);
+          return this.decoder.ReadChar(stream);
+        } else {
+          // Anything else, including FE FF, is
+          // treated as big endian (see RFC 2781 sec. 4.3)
+          if (c == 0xfe && c2 == 0xff) {
+            // absorb BOM
+            this.decoder = new Decoder(true);
+            return this.decoder.ReadChar(stream);
+          } else if (c >= 0xd8 && c <= 0xdb) {
+            // surrogate
+            this.decoder = new Decoder(true, (c << 8) | c2);
+            return this.decoder.ReadChar(stream);
+          } else if (c >= 0xdc && c <= 0xdf) {
+            // unpaired surrogate
+            this.decoder = new Decoder(true);
+            return -2;
+          } else {
+            // anything else {
+            this.decoder = new Decoder(true);
+          }
+          return (c << 8) | c2;
+        }
+      }
+    }
 
     private class Decoder : ICharacterDecoder {
       private readonly DecoderState state;
@@ -92,11 +92,7 @@ return (c << 8)|c2;
         this.surrogate = surrogate;
       }
 
-      public Decoder(bool bigEndian) {
-        this.bigEndian = bigEndian;
-        this.state = new DecoderState(1);
-        this.lead = -1;
-        this.surrogate = -1;
+      public Decoder(bool bigEndian) : this(bigEndian, -1){
       }
 
       public int ReadChar(IByteReader stream) {
@@ -113,13 +109,13 @@ return (c << 8)|c2;
             this.lead = b;
             continue;
           }
-       int code = this.bigEndian ? b + (this.lead << 8) : this.lead + (b <<
-            8);
+          int code = this.bigEndian ? b + (this.lead << 8) : this.lead + (b <<
+               8);
           this.lead = -1;
           if (this.surrogate >= 0) {
             if ((code & 0xfc00) == 0xdc00) {
-          code = 0x10000 + (code - 0xdc00) + ((this.surrogate - 0xd800) <<
-                10);
+              code = 0x10000 + (code - 0xdc00) + ((this.surrogate - 0xd800) <<
+                    10);
               this.surrogate = -1;
               return code;
             }
@@ -137,8 +133,8 @@ return (c << 8)|c2;
           if ((code & 0xfc00) == 0xd800) {
             this.surrogate = code;
           } else {
- return (code & 0xfc00) == 0xdc00 ? -2 : code;
-}
+            return (code & 0xfc00) == 0xdc00 ? -2 : code;
+          }
         }
       }
     }
@@ -199,15 +195,15 @@ return (c << 8)|c2;
     }
 
     internal static ICharacterDecoder GetDecoder2(int kind) {
-  // kind: 0-little endian, 1-big endian, 2-unlabeled
-   return (kind == 2) ? ((ICharacterDecoder)new EndianFreeDecoder()) :
-     ((ICharacterDecoder)new Decoder(kind == 1));
+      // kind: 0-little endian, 1-big endian, 2-unlabeled
+      return (kind == 2) ? ((ICharacterDecoder)new EndianFreeDecoder()) :
+        ((ICharacterDecoder)new Decoder(kind == 1));
     }
 
     internal static ICharacterEncoder GetEncoder2(int kind) {
-  // kind: 0-little endian, 1-big endian, 2-unlabeled
-   return (kind == 2) ? ((ICharacterEncoder)new EndianFreeEncoder()) :
-     ((ICharacterEncoder)new Encoder(kind == 1));
+      // kind: 0-little endian, 1-big endian, 2-unlabeled
+      return (kind == 2) ? ((ICharacterEncoder)new EndianFreeEncoder()) :
+        ((ICharacterEncoder)new Encoder(kind == 1));
     }
 
     public ICharacterDecoder GetDecoder() {

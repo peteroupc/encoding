@@ -303,7 +303,7 @@ public void TestEucJP() {
         }
 
         public static void TestSingleByteRoundTrip(string name) {
-      ICharacterEncoding enc = Encodings.GetEncoding(name, true);
+      ICharacterEncoding enc = Encodings.GetEncoding(name, false);
       Assert.NotNull(enc, name);
             TestSingleByteRoundTrip(enc);
         }
@@ -528,11 +528,13 @@ var cpe = new CodePageEncoding(Encodings.StringToInput(builder.ToString()));
         [Test]
         public void TestGBK() {
             TestCJKRoundTrip("gbk");
-        }
+      TestCJKRoundTrip("GBK");
+    }
         [Test]
 public void TestGB18030RoundTrip() {
             TestCJKRoundTrip("gb18030");
-        }
+      TestCJKRoundTrip("GB18030");
+    }
         [Test]
 public void TestBig5() {
             TestCJKRoundTrip("big5");
@@ -543,7 +545,7 @@ public void TestKoreanEUC() {
         }
         [Test]
 public void TestShiftJISRoundTrip() {
-            TestCJKRoundTrip("shift-jis");
+            TestCJKRoundTrip("shift_jis");
         }
         [Test]
 public void TestEucJPRoundTrip() {
@@ -559,7 +561,7 @@ public void TestReplacementEncoding() {
             if (Encodings.GetEncoding("replacement") == null) {
  Assert.Fail();
  }
-            ICharacterEncoding enc = Encodings.GetEncoding("hz-gb-2312", true);
+            ICharacterEncoding enc = Encodings.GetEncoding("hz-gb-2312", false);
             ICharacterEncoder encoder = enc.GetEncoder();
             ICharacterDecoder decoder = enc.GetDecoder();
             IByteReader reader = DataIO.ToReader(new byte[] { 0, 0, 0, 0 });
@@ -660,8 +662,53 @@ public void TestUtf16LERoundTrip() {
 public void TestUtf16BERoundTrip() {
             TestUtfRoundTrip(Encodings.GetEncoding("utf-16be", true));
         }
+    [Test]
+    public void TestUtf16() {
+      ICharacterEncoding enc = Encodings.GetEncoding("utf-16", true);
+      byte[] bytes;
+      bytes = new byte[] { 0xff, 0xfe, 0x41, 0, 0x42, 0, 0x43, 0 };
+      Assert.AreEqual(
+        "ABC",
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0xfe, 0xff, 0, 0x41, 0, 0x42, 0, 0x43 };
+      Assert.AreEqual(
+        "ABC",
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0xfe, 0xff, 0, 0x41, 0, 0x42, 0, 0x43 };
+      Assert.AreEqual(
+        "ABC",
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0xfe, 0xff, 0, 0x41, 0};
+      Assert.AreEqual(
+        "A\ufffd",
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0xfe, 0xff };
+      Assert.AreEqual(
+        String.Empty,
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0xff, 0xfe };
+      Assert.AreEqual(
+        String.Empty,
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0, 0x41 };
+      Assert.AreEqual(
+        "A",
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0xfe, 0xff, 0 };
+      Assert.AreEqual(
+        "\ufffd",
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0xfe };
+      Assert.AreEqual(
+        "\ufffd",
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0xdc, 0 };
+      Assert.AreEqual(
+        "\ufffd",
+        Encodings.DecodeToString(enc, bytes));
+    }
 
-        public static void TestUtf7One(string input, string expect) {
+    public static void TestUtf7One(string input, string expect) {
             {
                 object objectTemp = expect;
                 object objectTemp2 = Encodings.DecodeToString(

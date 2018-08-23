@@ -209,10 +209,12 @@ import com.upokecenter.text.*;
                 ++this.base64count;
                 if (this.base64count == 4) {
                   // Generate UTF-16 bytes
-         this.appender.AppendByte((this.base64value >> 16) & 0xff,
-                    this.state);
-          this.appender.AppendByte((this.base64value >> 8) & 0xff,
-                    this.state);
+         this.appender.AppendByte(
+  (this.base64value >> 16) & 0xff,
+  this.state);
+          this.appender.AppendByte(
+  (this.base64value >> 8) & 0xff,
+  this.state);
                   this.appender.AppendByte(this.base64value & 0xff, this.state);
                   this.base64count = 0;
                 }
@@ -274,19 +276,20 @@ import com.upokecenter.text.*;
 
     private static class Encoder implements ICharacterEncoder {
       private int[] state = { 0, 0, 0 };
-      private boolean inBase64 = false;
-      private boolean storeError = false;
+      private boolean inBase64;
       private int Base64Start(IWriter output) {
-        state[0] = 0;
-        state[1] = 0;
-        state[2] = 0;
+        this.state[0] = 0;
+        this.state[1] = 0;
+        this.state[2] = 0;
+        this.inBase64 = false;
         output.write((byte)0x2b);
         return 1;
       }
+
       private int AppendBase64(byte[] bytes, IWriter output) {
-        int b1 = state[0];
-        int b2 = state[1];
-        int quantumCount = state[2];
+        int b1 = this.state[0];
+        int b2 = this.state[1];
+        int quantumCount = this.state[2];
         int ret = 0;
         for (int i = 0; i < bytes.length; ++i) {
           int value = ((int)bytes[i]) & 0xff;
@@ -311,15 +314,16 @@ import com.upokecenter.text.*;
               break;
           }
         }
-        state[0] = b1;
-        state[1] = b2;
-        state[2] = quantumCount;
+        this.state[0] = b1;
+        this.state[1] = b2;
+        this.state[2] = quantumCount;
         return ret;
       }
+
       private int AppendBase64Final(IWriter output) {
-        int b1 = state[0];
-        int b2 = state[1];
-        int quantumCount = state[2];
+        int b1 = this.state[0];
+        int b2 = this.state[1];
+        int quantumCount = this.state[2];
         int ret = 1;
         if (quantumCount == 2) {
           output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
@@ -334,18 +338,21 @@ import com.upokecenter.text.*;
           ret += 2;
         }
         output.write((byte)0x2d);
-        state[0] = b1;
-        state[1] = b2;
-        state[2] = quantumCount;
+        this.state[0] = b1;
+        this.state[1] = b2;
+        this.state[2] = quantumCount;
         return ret;
       }
+
       private int Base64Char(int c, IWriter output) {
-        int ret = (inBase64) ? 0 : Base64Start(output);
-        inBase64 = true;
+        int ret = this.inBase64 ? 0 : this.Base64Start(output);
+        this.inBase64 = true;
         if (c <= 0xffff) {
           int byte1 = (c >> 8) & 0xff;
           int byte2 = c & 0xff;
-          ret += AppendBase64(new byte[] { (byte)byte1, (byte)byte2 }, output);
+ret += this.AppendBase64(
+  new byte[] { (byte)byte1, (byte)byte2 },
+            output);
         } else {
           int cc1 = (((c - 0x10000) >> 10) & 0x3ff) + 0xd800;
           int cc2 = ((c - 0x10000) & 0x3ff) + 0xdc00;
@@ -353,7 +360,8 @@ import com.upokecenter.text.*;
           int byte2 = cc1 & 0xff;
           int byte3 = (cc2 >> 8) & 0xff;
           int byte4 = cc2 & 0xff;
-          ret += AppendBase64(new byte[] { (byte)byte1,
+          ret += this.AppendBase64(
+  new byte[] { (byte)byte1,
   (byte)byte2, (byte)byte3, (byte)byte4 },
             output);
         }
@@ -362,9 +370,9 @@ import com.upokecenter.text.*;
 
       public int Encode(int c, IWriter output) {
         if (c < 0) {
-          if (inBase64) {
-            inBase64 = false;
-            return AppendBase64Final(output);
+          if (this.inBase64) {
+            this.inBase64 = false;
+            return this.AppendBase64Final(output);
           }
           return -1;
         }
@@ -373,18 +381,18 @@ import com.upokecenter.text.*;
           output.write((byte)0x2d);
           return 2;
         }
-      if (c == 0x09 || c == 0x0a || c == 0x0d || (c >= 0x20 && c < 0x7e && c!=
+      if (c == 0x09 || c == 0x0a || c == 0x0d || (c >= 0x20 && c < 0x7e && c !=
           0x5c)) {
           int ret = 1;
-          if (inBase64) {
-            inBase64 = false;
-            ret += AppendBase64Final(output);
+          if (this.inBase64) {
+            this.inBase64 = false;
+            ret += this.AppendBase64Final(output);
           }
           output.write((byte)c);
           return ret;
         }
         return (c >= 0x110000 || (c >= 0xd800 && c < 0xe000)) ? (-2) :
-          Base64Char(c, output);
+          this.Base64Char(c, output);
       }
     }
 

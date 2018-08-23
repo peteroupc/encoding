@@ -6,10 +6,10 @@ import com.upokecenter.text.*;
 
   public class EncodingUtf16BE implements ICharacterEncoding {
    public ICharacterDecoder GetDecoder() {
-      return EncodingUtf16.GetDecoder2(true);
+      return EncodingUtf16.GetDecoder2(1);
     }
 
     public ICharacterEncoder GetEncoder() {
-      return EncodingUtf16.GetEncoder2(true);
+      return EncodingUtf16.GetEncoder2(1);
     }
   }

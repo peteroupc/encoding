@@ -99,14 +99,14 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
 <b>Parameters:</b>
 
- * <i>str</i>: The parameter <i>str</i>
-is a text string.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
- * <i>offset</i>: A zero-based index showing where the desired portion of <i>str</i>
-begins.
+ * <i>offset</i>: A zero-based index showing where the desired portion of  <i>str</i>
+ begins.
 
- * <i>length</i>: The number of elements in the desired portion of <i>str</i>
-(but not more than <i>str</i>
+ * <i>length</i>: The number of elements in the desired portion of  <i>str</i>
+ (but not more than  <i>str</i>
 's length).
 
  * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip that code point as it reads the string.
@@ -117,9 +117,7 @@ begins.
 
  * System.ArgumentNullException:
 The parameter <i>str</i>
-is null.
-
- * System.ArgumentException:
+ is null.
 
 ### CharacterReader Constructor
 

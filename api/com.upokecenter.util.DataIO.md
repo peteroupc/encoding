@@ -42,10 +42,10 @@ Use ToReader instead.
 Wraps a byte array into a byte reader. The reader will start at the
  beginning of the byte array. <p>In the .NET implementation, this
  method is implemented as an extension method to any byte array object
- and can be called as follows: <code>bytes.ToByteReader()</code>. If the
+ and can be called as follows: <code>bytes.ToByteReader()</code> . If the
  object's class already has a ToByteReader method with the same
- parameters, that method takes precedence over this extension
- method.</p>
+ parameters, that method takes precedence over this extension method.
+ </p>
 
 **Parameters:**
 
@@ -64,9 +64,9 @@ Wraps a byte array into a byte reader. The reader will start at the
 Wraps a portion of a byte array into a byte reader object. <p>In the .NET
  implementation, this method is implemented as an extension method to
  any byte array object and can be called as follows:
- <code>bytes.ToByteReader(offset, length)</code>. If the object's class
+ <code>bytes.ToByteReader(offset, length)</code> . If the object's class
  already has a ToByteReader method with the same parameters, that
- method takes precedence over this extension method.</p>
+ method takes precedence over this extension method. </p>
 
 **Parameters:**
 
@@ -88,7 +88,7 @@ Wraps a portion of a byte array into a byte reader object. <p>In the .NET
 
 * <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
  less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
- ' s length minus <code>offset</code> is less than <code>length</code>.
+ ' s length minus <code>offset</code> is less than <code>length</code> .
 
 ### ToReader
     public static IReader ToReader​(InputStream input)
@@ -96,9 +96,9 @@ Wraps an input stream into a reader object. If an IOException is thrown by
  the input stream, the reader object throws InvalidOperationException
  instead. <p>In the .NET implementation, this method is implemented as
  an extension method to any object implementing InputStream and can be
- called as follows: <code>input.ToByteReader()</code>. If the object's class
- already has a ToByteReader method with the same parameters, that
- method takes precedence over this extension method.</p>
+ called as follows: <code>input.ToByteReader()</code> . If the object's
+ class already has a ToByteReader method with the same parameters,
+ that method takes precedence over this extension method. </p>
 
 **Parameters:**
 
@@ -171,9 +171,9 @@ Wraps an output stream into a writer object. If an IOException is thrown by
  the input stream, the writer object throws InvalidOperationException
  instead. <p>In the .NET implementation, this method is implemented as
  an extension method to any object implementing InputStream and can be
- called as follows: <code>output.ToWriter()</code>. If the object's class
+ called as follows: <code>output.ToWriter()</code> . If the object's class
  already has a ToWriter method with the same parameters, that method
- takes precedence over this extension method.</p>
+ takes precedence over this extension method. </p>
 
 **Parameters:**
 
@@ -193,9 +193,9 @@ Wraps a byte writer (one that only implements a ReadByte method) to a writer
  (one that also implements a three-parameter Read method.) <p>In the
  .NET implementation, this method is implemented as an extension
  method to any object implementing IByteWriter and can be called as
- follows: <code>output.ToWriter()</code>. If the object's class already has
+ follows: <code>output.ToWriter()</code> . If the object's class already has
  a ToWriter method with the same parameters, that method takes
- precedence over this extension method.</p>
+ precedence over this extension method. </p>
 
 **Parameters:**
 

@@ -433,6 +433,39 @@ CodePageEncoding cpe = new CodePageEncoding(Encodings.StringToInput(builder.toSt
             TestUtfRoundTrip(encoder, decoder);
         }
 
+    private static final class ByteCounterReader implements IByteReader {
+      private final byte[] bytes;
+      private final IByteReader reader;
+
+      public ByteCounterReader(byte[] bytes) {
+        this.setPosition(0);
+        this.bytes = bytes;
+        this.reader = DataIO.ToReader(bytes);
+      }
+
+      public final int getPosition() { return propVarposition; }
+public final void setPosition(int value) { propVarposition = value; }
+private int propVarposition;
+
+      public int read() {
+        int ret = this.reader.read();
+        if (ret >= 0) {
+ ++this.getPosition();
+}
+        return ret;
+      }
+
+      public byte[] GetBytes(int count) {
+        int left = this.bytes.length - this.getPosition();
+        if (left < count) {
+ count = left;
+}
+        byte[] ret = new byte[count];
+        System.arraycopy(this.bytes, this.getPosition(), ret, 0, count);
+        return ret;
+      }
+    }
+
         public static void TestUtfRoundTrip(
            ICharacterEncoder encoder,
            ICharacterDecoder decoder) {
@@ -446,14 +479,19 @@ CodePageEncoding cpe = new CodePageEncoding(Encodings.StringToInput(builder.toSt
                     Assert.fail("Failed to encode " + i);
                 }
             }
-            IByteReader reader = DataIO.ToReader(aw.ToArray());
+      encoder.Encode(-1, aw);
+            ByteCounterReader reader = new ByteCounterReader(aw.ToArray());
             for (int i = 0; i < 0x110000; ++i) {
                 if (i >= 0xd800 && i < 0xe000) {
                     continue;
                 }
+        int pos = reader.getPosition();
                 int c = decoder.ReadChar(reader);
                 if (c != i) {
-                    Assert.assertEquals(i, c);
+          reader.setPosition(pos);
+          byte[] context = reader.GetBytes(10);
+          String bytestr = TestCommon.ToByteArrayString(context);
+                    Assert.assertEquals(bytestr, i, c);
                 }
             }
         }
@@ -545,7 +583,7 @@ public void TestSingleByteEncodings() {
             }
         }
 
-        @Test
+        @Test(timeout = 30000)
 public void TestUtf7RoundTrip() {
             TestUtfRoundTrip(Encodings.GetEncoding("utf-7", true));
         }
@@ -698,14 +736,16 @@ public void TestUtf7() {
             // Two UTF-16 code units
             TestUtf7One("+AMAA4A?", "\u00c0\u00e0?");
             TestUtf7One("+AMAA4A", "\u00c0\u00e0");
-            TestUtf7One("+AMAA4A-Next", "\u00c0\u00e0Next");
-            TestUtf7One("+AMAA4A!Next", "\u00c0\u00e0!Next");
+      TestUtf7One("+AMAA4A-Next", "\u00c0\u00e0Next");
+      TestUtf7One("+AMAA4A--Next", "\u00c0\u00e0-Next");
+      TestUtf7One("+AMAA4A!Next", "\u00c0\u00e0!Next");
             TestUtf7One("+AMAA4A\u007f", "\u00c0\u00e0\ufffd");
             // Two UTF-16 code units (redundant pad bit)
             TestUtf7One("+AMAA4B?", "\u00c0\u00e0\ufffd?");
             TestUtf7One("+AMAA4B", "\u00c0\u00e0\ufffd");
-            TestUtf7One("+AMAA4B-Next", "\u00c0\u00e0\ufffdNext");
-            TestUtf7One("+AMAA4B!Next", "\u00c0\u00e0\ufffd!Next");
+      TestUtf7One("+AMAA4B-Next", "\u00c0\u00e0\ufffdNext");
+      TestUtf7One("+AMAA4B--Next", "\u00c0\u00e0\ufffd-Next");
+      TestUtf7One("+AMAA4B!Next", "\u00c0\u00e0\ufffd!Next");
             TestUtf7One("+AMAA4B\u007f", "\u00c0\u00e0\ufffd\ufffd");
         }
     }

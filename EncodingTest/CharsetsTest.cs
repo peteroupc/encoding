@@ -431,6 +431,37 @@ var cpe = new CodePageEncoding(Encodings.StringToInput(builder.ToString()));
             TestUtfRoundTrip(encoder, decoder);
         }
 
+    private sealed class ByteCounterReader : IByteReader {
+      private readonly byte[] bytes;
+      private readonly IByteReader reader;
+
+      public ByteCounterReader(byte[] bytes) {
+        this.Position = 0;
+        this.bytes = bytes;
+        this.reader = DataIO.ToReader(bytes);
+      }
+
+      public int Position { get; set; }
+
+      public int ReadByte() {
+        int ret = this.reader.ReadByte();
+        if (ret >= 0) {
+ ++this.Position;
+}
+        return ret;
+      }
+
+      public byte[] GetBytes(int count) {
+        int left = this.bytes.Length - this.Position;
+        if (left < count) {
+ count = left;
+}
+        var ret = new byte[count];
+        Array.Copy(this.bytes, this.Position, ret, 0, count);
+        return ret;
+      }
+    }
+
         public static void TestUtfRoundTrip(
            ICharacterEncoder encoder,
            ICharacterDecoder decoder) {
@@ -444,14 +475,19 @@ var cpe = new CodePageEncoding(Encodings.StringToInput(builder.ToString()));
                     Assert.Fail("Failed to encode " + i);
                 }
             }
-            IByteReader reader = DataIO.ToReader(aw.ToArray());
+      encoder.Encode(-1, aw);
+            var reader = new ByteCounterReader(aw.ToArray());
             for (var i = 0; i < 0x110000; ++i) {
                 if (i >= 0xd800 && i < 0xe000) {
                     continue;
                 }
+        int pos = reader.Position;
                 int c = decoder.ReadChar(reader);
                 if (c != i) {
-                    Assert.AreEqual(i, c);
+          reader.Position = pos;
+          byte[] context = reader.GetBytes(10);
+          string bytestr = TestCommon.ToByteArrayString(context);
+                    Assert.AreEqual(i, c, bytestr);
                 }
             }
         }
@@ -542,6 +578,7 @@ public void TestSingleByteEncodings() {
         }
 
         [Test]
+    [Timeout(30000)]
 public void TestUtf7RoundTrip() {
             TestUtfRoundTrip(Encodings.GetEncoding("utf-7", true));
         }
@@ -690,14 +727,16 @@ public void TestUtf7() {
             // Two UTF-16 code units
             TestUtf7One("+AMAA4A?", "\u00c0\u00e0?");
             TestUtf7One("+AMAA4A", "\u00c0\u00e0");
-            TestUtf7One("+AMAA4A-Next", "\u00c0\u00e0Next");
-            TestUtf7One("+AMAA4A!Next", "\u00c0\u00e0!Next");
+      TestUtf7One("+AMAA4A-Next", "\u00c0\u00e0Next");
+      TestUtf7One("+AMAA4A--Next", "\u00c0\u00e0-Next");
+      TestUtf7One("+AMAA4A!Next", "\u00c0\u00e0!Next");
             TestUtf7One("+AMAA4A\u007f", "\u00c0\u00e0\ufffd");
             // Two UTF-16 code units (redundant pad bit)
             TestUtf7One("+AMAA4B?", "\u00c0\u00e0\ufffd?");
             TestUtf7One("+AMAA4B", "\u00c0\u00e0\ufffd");
-            TestUtf7One("+AMAA4B-Next", "\u00c0\u00e0\ufffdNext");
-            TestUtf7One("+AMAA4B!Next", "\u00c0\u00e0\ufffd!Next");
+      TestUtf7One("+AMAA4B-Next", "\u00c0\u00e0\ufffdNext");
+      TestUtf7One("+AMAA4B--Next", "\u00c0\u00e0\ufffd-Next");
+      TestUtf7One("+AMAA4B!Next", "\u00c0\u00e0\ufffd!Next");
             TestUtf7One("+AMAA4B\u007f", "\u00c0\u00e0\ufffd\ufffd");
         }
     }

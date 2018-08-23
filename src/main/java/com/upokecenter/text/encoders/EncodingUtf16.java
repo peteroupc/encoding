@@ -5,11 +5,92 @@ import com.upokecenter.util.*;
 import com.upokecenter.text.*;
 
   public class EncodingUtf16 implements ICharacterEncoding {
+private static class EndianFreeEncoder implements ICharacterEncoder {
+ private ICharacterEncoder encoder;
+ private boolean start;
+ public EndianFreeEncoder() {
+  this.start = true;
+  this.encoder = new Encoder(false);  // little endian
+ }
+ public int Encode(int c, IWriter output) {
+  if (this.start) {
+   if (c< 0) {
+ return -1;
+}
+   ArrayWriter aw = new ArrayWriter();
+   aw.write((byte)0xff);
+   aw.write((byte)0xfe);
+   int ret = this.encoder.Encode(c, aw);
+   if (ret >= 0) {
+     byte[] bytes = aw.ToArray();
+     aw.write(bytes, 0, bytes.length);
+     this.start = false;
+     return ret + 2;
+   }
+   return ret;
+  } else {
+   return this.encoder.Encode(c, output);
+  }
+ }
+}
+private static class EndianFreeDecoder implements ICharacterDecoder {
+ private ICharacterDecoder decoder;
+ private boolean start;
+ public EndianFreeDecoder() {
+   this.start = true;
+ }
+ public int ReadChar(IByteReader stream) {
+  if (!start) {
+ return this.decoder.ReadChar(stream);
+}
+  int c = stream.read();
+  if (c< 0) {
+ return -1;
+}
+  int c2 = stream.read();
+  if (c2< 0) {
+ return -2;  // Only one byte
+}
+  this.start = false;
+  if (c == 0xff && c2 == 0xfe) {
+    this.decoder = new Decoder(false);
+return this.decoder.ReadChar(stream);
+  } else {
+    // Anything else, including FE FF, is
+    // treated as big endian (see RFC 2781 sec. 4.3)
+if (c == 0xfe && c2 == 0xff) {
+// absorb BOM
+    this.decoder = new Decoder(true);
+return this.decoder.ReadChar(stream);
+} else if (c >= 0xd8 && c <= 0xdb) {
+// surrogate
+this.decoder = new Decoder(true, (c << 8)|c2);
+return this.decoder.ReadChar(stream);
+} else if (c >= 0xdc && c <= 0xdf) {
+// unpaired surrogate
+    this.decoder = new Decoder(true);
+return -2;
+} else {
+// anything else
+    this.decoder = new Decoder(true);
+return (c << 8)|c2;
+}
+  }
+ }
+}
+
     private static class Decoder implements ICharacterDecoder {
       private final DecoderState state;
       private final boolean bigEndian;
       private int lead;
       private int surrogate;
+
+      public Decoder(boolean bigEndian, int surrogate) {
+        this.bigEndian = bigEndian;
+        this.state = new DecoderState(1);
+        this.lead = -1;
+        this.surrogate = surrogate;
+      }
 
       public Decoder(boolean bigEndian) {
         this.bigEndian = bigEndian;
@@ -117,19 +198,21 @@ import com.upokecenter.text.*;
       }
     }
 
-    public static ICharacterDecoder GetDecoder2(boolean bigEndian) {
-      return new Decoder(bigEndian);
+    public static ICharacterDecoder GetDecoder2(int kind) {
+  // kind: 0-little endian, 1-big endian, 2-unlabeled
+   return (kind == 2) ? ((ICharacterDecoder)new EndianFreeDecoder()) : ((ICharacterDecoder)new Decoder(kind == 1));
     }
 
-    public static ICharacterEncoder GetEncoder2(boolean bigEndian) {
-      return new Encoder(bigEndian);
+    public static ICharacterEncoder GetEncoder2(int kind) {
+  // kind: 0-little endian, 1-big endian, 2-unlabeled
+   return (kind == 2) ? ((ICharacterEncoder)new EndianFreeEncoder()) : ((ICharacterEncoder)new Encoder(kind == 1));
     }
 
     public ICharacterDecoder GetDecoder() {
-      return GetDecoder2(false);
+      return GetDecoder2(2);
     }
 
     public ICharacterEncoder GetEncoder() {
-      return GetEncoder2(false);
+      return GetEncoder2(2);
     }
   }

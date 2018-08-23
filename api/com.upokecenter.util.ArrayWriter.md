@@ -96,4 +96,4 @@ Writes a series of bytes to the array.
 
 * <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
  less than 0 or greater than <code>src</code> 's length, or <code>src</code> ' s
- length minus <code>offset</code> is less than <code>length</code>.
+ length minus <code>offset</code> is less than <code>length</code> .

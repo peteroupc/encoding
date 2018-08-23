@@ -133,6 +133,34 @@ Assert.assertEquals(
     public void TestInputToString() {
       // not implemented yet
     }
+
+    private void TestEncodeDecodeRoundTripOne(String encoding, String str) {
+      ICharacterEncoding enc = Encodings.GetEncoding(encoding, true);
+      byte[] bytes = Encodings.EncodeToBytes(str, enc);
+      String newstr = Encodings.DecodeToString(enc, bytes);
+      Assert.assertEquals(str, newstr);
+    }
+    @Test
+    public void TestEncodeDecodeRoundTrip() {
+      this.TestEncodeDecodeRoundTripOne("utf-8", "hello world");
+      this.TestEncodeDecodeRoundTripOne("utf-8", "hello\uf0f0world");
+      this.TestEncodeDecodeRoundTripOne("utf-8", "hello\ud800\udc00world");
+   this.TestEncodeDecodeRoundTripOne(
+  "utf-8",
+  "hello\ud800\udc00world\ud800\udc00");
+      this.TestEncodeDecodeRoundTripOne(
+  "utf-8",
+  "hello\ud800\udc00world\ud800\udc00\udbff\udfff");
+      this.TestEncodeDecodeRoundTripOne("utf-7", "hello world");
+      this.TestEncodeDecodeRoundTripOne("utf-7", "hello\uf0f0world");
+      this.TestEncodeDecodeRoundTripOne("utf-7", "hello\ud800\udc00world");
+   this.TestEncodeDecodeRoundTripOne(
+  "utf-7",
+  "hello\ud800\udc00world\ud800\udc00");
+      this.TestEncodeDecodeRoundTripOne(
+  "utf-7",
+  "hello\ud800\udc00world\ud800\udc00\udbff\udfff");
+    }
     @Test
     public void TestResolveAlias() {
       Assert.assertEquals("", Encodings.ResolveAlias(null));
@@ -2847,10 +2875,9 @@ Assert.assertEquals(
         stringTemp);
       }
       {
-Object objectTemp = "replacement";
-Object objectTemp2 = Encodings.ResolveAliasForEmail(
-    "");
-Assert.assertEquals(objectTemp, objectTemp2);
+String strTemp2 = Encodings.ResolveAliasForEmail(
+    "replacement");
+Assert.assertEquals("", strTemp2);
 }
       {
         String stringTemp = Encodings.ResolveAliasForEmail("hz-gb-2312");

@@ -207,8 +207,6 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>NullPointerException</code> - The parameter <code>str</code> is null.
 
-* <code>IllegalArgumentException</code>
-
 ### CharacterReader
     public CharacterReader​(InputStream stream)
 Initializes a new instance of the <code>CharacterReader</code> class; will read the stream as
@@ -237,12 +235,12 @@ Initializes a new instance of the <code>CharacterReader</code> class; will skip 
  the byte stream. This usually involves checking whether the stream
  begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
  point (NZB, U + 0001 to U + 007F) before reading the rest of the stream.
- This value can be one of the following: <ul> <li>0: UTF-8 only.</li>
- <li>1: Detect UTF-16 using BOM or NZB, otherwise UTF-8.</li> <li>2:
+ This value can be one of the following: <ul> <li>0: UTF-8 only. </li>
+ <li>1: Detect UTF-16 using BOM or NZB, otherwise UTF-8. </li> <li>2:
  Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to
- detect UTF-32 first.)</li> <li>3: Detect UTF-16 using BOM, otherwise
- UTF-8.</li> <li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8.
- (Tries to detect UTF-32 first.)</li></ul>.
+ detect UTF-32 first.) </li> <li>3: Detect UTF-16 using BOM, otherwise
+ UTF-8. </li> <li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8.
+ (Tries to detect UTF-32 first.) </li> </ul> .
 
 * <code>errorThrow</code> - If true, will throw an exception if invalid byte sequences
  (in the detected encoding) are found in the byte stream. If false,
@@ -267,12 +265,12 @@ Initializes a new instance of the <code>CharacterReader</code> class; will skip 
  the byte stream. This usually involves checking whether the stream
  begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
  point (NZB, U + 0001 to U + 007F) before reading the rest of the stream.
- This value can be one of the following: <ul> <li>0: UTF-8 only.</li>
- <li>1: Detect UTF-16 using BOM or NZB, otherwise UTF-8.</li> <li>2:
+ This value can be one of the following: <ul> <li>0: UTF-8 only. </li>
+ <li>1: Detect UTF-16 using BOM or NZB, otherwise UTF-8. </li> <li>2:
  Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to
- detect UTF-32 first.)</li> <li>3: Detect UTF-16 using BOM, otherwise
- UTF-8.</li> <li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8.
- (Tries to detect UTF-32 first.)</li></ul>.
+ detect UTF-32 first.) </li> <li>3: Detect UTF-16 using BOM, otherwise
+ UTF-8. </li> <li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8.
+ (Tries to detect UTF-32 first.) </li> </ul> .
 
 **Throws:**
 
@@ -290,12 +288,12 @@ Initializes a new instance of the <code>CharacterReader</code> class.
  the byte stream. This usually involves checking whether the stream
  begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
  point (NZB, U + 0001 to U + 007F) before reading the rest of the stream.
- This value can be one of the following: <ul> <li>0: UTF-8 only.</li>
- <li>1: Detect UTF-16 using BOM or NZB, otherwise UTF-8.</li> <li>2:
+ This value can be one of the following: <ul> <li>0: UTF-8 only. </li>
+ <li>1: Detect UTF-16 using BOM or NZB, otherwise UTF-8. </li> <li>2:
  Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8. (Tries to
- detect UTF-32 first.)</li> <li>3: Detect UTF-16 using BOM, otherwise
- UTF-8.</li> <li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8.
- (Tries to detect UTF-32 first.)</li></ul>.
+ detect UTF-32 first.) </li> <li>3: Detect UTF-16 using BOM, otherwise
+ UTF-8. </li> <li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8.
+ (Tries to detect UTF-32 first.) </li> </ul> .
 
 * <code>errorThrow</code> - If true, will throw an exception if invalid byte sequences
  (in the detected encoding) are found in the byte stream. If false,
@@ -303,7 +301,7 @@ Initializes a new instance of the <code>CharacterReader</code> class.
  the stream is read.
 
 * <code>dontSkipUtf8Bom</code> - If the stream is detected as UTF-8 and this parameter
- is <code>true</code>, won't skip the BOM character if it occurs at the
+ is <code>true</code> , won't skip the BOM character if it occurs at the
  start of the stream.
 
 **Throws:**
@@ -340,7 +338,7 @@ Reads a series of code points from a Unicode stream or a string.
 
 * <code>IllegalArgumentException</code> - Either <code>index</code> or <code>length</code> is
  less than 0 or greater than <code>chars</code> 's length, or <code>chars</code>
- 's length minus <code>index</code> is less than <code>length</code>.
+ 's length minus <code>index</code> is less than <code>length</code> .
 
 ### ReadChar
     public int ReadChar()

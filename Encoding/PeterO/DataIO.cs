@@ -23,7 +23,7 @@ namespace PeterO {
     /// <param name='bytes'>The byte array to wrap.</param>
     /// <returns>A byte reader wrapping the byte array.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &#x22;bytes&#x22; is null. .</exception>
+    /// <paramref name='bytes'/> is null. .</exception>
     public static IReader ToReader(
   #if !NET20
 this
@@ -49,12 +49,12 @@ byte[] bytes) {
     /// of "bytes" (but not more than "bytes" 's length).</param>
     /// <returns>A byte reader wrapping the byte array.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &#x22;bytes&#x22; is null. .</exception>
-    /// <exception cref='T:System.ArgumentException'>Either
-    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; ' s length
-    /// minus &#x22;offset&#x22; is less than &#x22;length&#x22; .
-    /// .</exception>
+    /// <paramref name='bytes'/> is null. .</exception>
+    /// <exception cref='T:System.ArgumentException'>Either <paramref
+    /// name='offset'/> or <paramref name='length'/> is less than 0 or
+    /// greater than <paramref name='bytes'/> 's length, or <paramref
+    /// name='bytes'/> ' s length minus <paramref name='offset'/> is less
+    /// than <paramref name='length'/>. .</exception>
     public static IReader ToReader(
   #if !NET20
 this
@@ -100,7 +100,7 @@ byte[] bytes,
     /// <param name='input'>The input stream to wrap.</param>
     /// <returns>A byte reader wrapping the input stream.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &#x22;input&#x22; is null. .</exception>
+    /// <paramref name='input'/> is null. .</exception>
     public static IReader ToReader(
   #if !NET20
 this
@@ -112,28 +112,8 @@ Stream input) {
       return new WrappedStream(input);
     }
 
-    /// <summary>Not documented yet.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing byte[] and can be
-    /// called as follows: <c>bytes.ToByteReader(offset, length)</c>. If
-    /// the object's class already has a ToByteReader method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='bytes'>The parameter <paramref name='bytes'/> is not
-    /// documented yet.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of <paramref name='bytes'/> begins.</param>
-    /// <param name='length'>The length, in bytes, of the desired portion
-    /// of <paramref name='bytes'/> (but not more than <paramref
-    /// name='bytes'/> 's length).</param>
-    /// <returns>An IByteReader object.</returns>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &#x22;bytes&#x22; is null.</exception>
-    /// <exception cref='T:System.ArgumentException'>Either
-    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; 's length
-    /// minus &#x22;offset&#x22; is less than
-    /// &#x22;length&#x22;.</exception>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.Byte[],System.Int32,System.Int32)"]/*'/>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
   #if !NET20
@@ -145,18 +125,8 @@ byte[] bytes,
       return (IByteReader)ToReader(bytes, offset, length);
     }
 
-    /// <summary>Wraps a data stream into a byte reader.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing Stream and can be
-    /// called as follows: <c>input.ToByteReader()</c>. If the object's
-    /// class already has a ToByteReader method with the same parameters,
-    /// that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='input'>The data stream to wrap into a byte
-    /// reader.</param>
-    /// <returns>An IByteReader object.</returns>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &quot;stream&quot; is null.</exception>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.IO.Stream)"]/*'/>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
   #if !NET20
@@ -166,18 +136,8 @@ Stream input) {
       return (IByteReader)ToReader(input);
     }
 
-    /// <summary>Wraps a byte array into a byte reader.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing byte[] and can be
-    /// called as follows: <c>bytes.ToByteReader()</c>. If the object's
-    /// class already has a ToByteReader method with the same parameters,
-    /// that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='bytes'>The byte array to wrap into a byte
-    /// reader.</param>
-    /// <returns>An IByteReader object.</returns>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &quot;bytes&quot; is null.</exception>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.Byte[])"]/*'/>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
   #if !NET20
@@ -199,7 +159,7 @@ byte[] bytes) {
     /// <returns>A byte writer that wraps the given output
     /// stream.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &#x22;output&#x22; is null. .</exception>
+    /// <paramref name='output'/> is null. .</exception>
     public static IWriter ToWriter(
   #if !NET20
 this
@@ -222,7 +182,7 @@ Stream output) {
     /// <param name='output'>A byte stream.</param>
     /// <returns>A writer that wraps the given stream.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &#x22;output&#x22; is null. .</exception>
+    /// <paramref name='output'/> is null. .</exception>
     public static IWriter ToWriter(
   #if !NET20
 this
@@ -257,19 +217,19 @@ IByteWriter output) {
       }
 
     /// <summary>This is an internal method.</summary>
-    /// <param name='bytes'>The parameter <paramref name='bytes'/> is not
-    /// documented yet.</param>
+    /// <param name='bytes'>The parameter <paramref name='bytes'/> is an
+    /// internal parameter.</param>
     /// <param name='offset'>A zero-based index showing where the desired
     /// portion of <paramref name='bytes'/> begins.</param>
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of <paramref name='bytes'/> (but not more than <paramref
     /// name='bytes'/> 's length).</param>
     /// <returns>A 32-bit signed integer.</returns>
-    /// <exception cref='T:System.ArgumentException'>Either
-    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; ' s length
-    /// minus &#x22;offset&#x22; is less than
-    /// &#x22;length&#x22;.</exception>
+    /// <exception cref='T:System.ArgumentException'>Either <paramref
+    /// name='offset'/> or <paramref name='length'/> is less than 0 or
+    /// greater than <paramref name='bytes'/> 's length, or <paramref
+    /// name='bytes'/> ' s length minus <paramref name='offset'/> is less
+    /// than <paramref name='length'/>.</exception>
     /// <exception cref='ArgumentNullException'>The parameter
     /// &#x22;bytes&#x22; is null.</exception>
       public int Read(byte[] bytes, int offset, int length) {
@@ -333,13 +293,13 @@ IByteWriter output) {
     /// portion of "bytes" begins.</param>
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of "bytes" (but not more than "bytes" 's length).</param>
-    /// <exception cref='T:System.ArgumentException'>Either
-    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; ' s length
-    /// minus &#x22;offset&#x22; is less than &#x22;length&#x22; .
-    /// .</exception>
+    /// <exception cref='T:System.ArgumentException'>Either <paramref
+    /// name='offset'/> or <paramref name='length'/> is less than 0 or
+    /// greater than <paramref name='bytes'/> 's length, or <paramref
+    /// name='bytes'/> ' s length minus <paramref name='offset'/> is less
+    /// than <paramref name='length'/>. .</exception>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &#x22;bytes&#x22; is null. .</exception>
+    /// <paramref name='bytes'/> is null. .</exception>
       public void Write(byte[] bytes, int offset, int length) {
         try {
           this.output.Write(bytes, offset, length);
@@ -369,12 +329,12 @@ IByteWriter output) {
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of "bytes" (but not more than "bytes" 's length).</param>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// &#x22;bytes&#x22; is null. .</exception>
-    /// <exception cref='T:System.ArgumentException'>Either
-    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; ' s length
-    /// minus &#x22;offset&#x22; is less than &#x22;length&#x22; .
-    /// .</exception>
+    /// <paramref name='bytes'/> is null. .</exception>
+    /// <exception cref='T:System.ArgumentException'>Either <paramref
+    /// name='offset'/> or <paramref name='length'/> is less than 0 or
+    /// greater than <paramref name='bytes'/> 's length, or <paramref
+    /// name='bytes'/> ' s length minus <paramref name='offset'/> is less
+    /// than <paramref name='length'/>. .</exception>
       public void Write(byte[] bytes, int offset, int length) {
         if (bytes == null) {
           throw new ArgumentNullException(nameof(bytes));

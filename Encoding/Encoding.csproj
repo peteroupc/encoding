@@ -15,11 +15,13 @@ A portable library for .NET that implements character encodings used in Web page
     <PackageReleaseNotes>
     Version 0.4.0:
 
-    Updated to latest Encoding Standard draft as of Jun. 28, 2018, except for a bug fix in one encoding.
+- Separate aliases and encodings for email are used, for better conformance to MIME.
+- New methods added to Encodings class.
+- Endian-independent UTF-16 encoded added for email.
     </PackageReleaseNotes>
     <Copyright>Written by Peter O. in 2015-2018.  Any copyright is released to the Public Domain.</Copyright>
     <PackOnBuild>true</PackOnBuild>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
     <Summary>A portable library for .NET that implements character encodings used in Web pages and email.</Summary>
     <PackageTags>text, encoding, strings</PackageTags>
     <SignAssembly>true</SignAssembly>

@@ -24,8 +24,7 @@ An IByteReader object.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>bytes</i>
- is null.
+The parameter "bytes" is null.
 
 ### ToByteReader
 
@@ -82,8 +81,7 @@ An IByteReader object.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter <i>stream</i>
- is null.
+The parameter "stream" is null.
 
 ### ToReader
 

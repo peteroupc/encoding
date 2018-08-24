@@ -57,7 +57,7 @@ Wraps a byte array into a byte reader. The reader will start at the
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter "bytes" is null. .
+* <code>NullPointerException</code> - The parameter <code>bytes</code> is null. .
 
 ### ToReader
     public static IReader ToReader​(byte[] bytes, int offset, int length)
@@ -84,11 +84,11 @@ Wraps a portion of a byte array into a byte reader object. <p>In the .NET
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter "bytes" is null. .
+* <code>NullPointerException</code> - The parameter <code>bytes</code> is null. .
 
-* <code>IllegalArgumentException</code> - Either "offset" or "length" is less than 0
- or greater than "bytes" 's length, or "bytes" ' s length minus
- "offset" is less than "length" . .
+* <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
+ less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
+ ' s length minus <code>offset</code> is less than <code>length</code>. .
 
 ### ToReader
     public static IReader ToReader​(InputStream input)
@@ -110,7 +110,7 @@ Wraps an input stream into a reader object. If an IOException is thrown by
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter "input" is null. .
+* <code>NullPointerException</code> - The parameter <code>input</code> is null. .
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader​(byte[] bytes, int offset, int length)
@@ -119,7 +119,7 @@ Deprecated.
 
 **Parameters:**
 
-* <code>bytes</code> - The parameter <code>bytes</code> is not documented yet.
+* <code>bytes</code> - The byte array to wrap into a byte reader.
 
 * <code>offset</code> - A zero-based index showing where the desired portion of <code>
  bytes</code> begins.
@@ -133,11 +133,11 @@ Deprecated.
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter "bytes" is null.
+* <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
 
-* <code>IllegalArgumentException</code> - Either "offset" or "length" is less than 0
- or greater than "bytes" 's length, or "bytes" 's length minus
- "offset" is less than "length".
+* <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
+ less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
+ 's length minus <code>offset</code> is less than <code>length</code>.
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader​(InputStream input)
@@ -154,7 +154,7 @@ Deprecated.
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter "stream" is null.
+* <code>NullPointerException</code> - The parameter <code>stream</code> is null.
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader​(byte[] bytes)
@@ -171,7 +171,7 @@ Deprecated.
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter "bytes" is null.
+* <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
 
 ### ToWriter
     public static IWriter ToWriter​(OutputStream output)
@@ -193,7 +193,7 @@ Wraps an output stream into a writer object. If an IOException is thrown by
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter "output" is null. .
+* <code>NullPointerException</code> - The parameter <code>output</code> is null. .
 
 ### ToWriter
     public static IWriter ToWriter​(IByteWriter output)
@@ -215,4 +215,4 @@ Wraps a byte writer (one that only implements a ReadByte method) to a writer
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter "output" is null. .
+* <code>NullPointerException</code> - The parameter <code>output</code> is null. .

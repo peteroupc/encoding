@@ -277,6 +277,7 @@ namespace PeterO.Text.Encoders {
     private class Encoder : ICharacterEncoder {
       private int[] state = { 0, 0, 0 };
       private bool inBase64;
+
       private int Base64Start(IWriter output) {
         this.state[0] = 0;
         this.state[1] = 0;

@@ -277,6 +277,7 @@ import com.upokecenter.text.*;
     private static class Encoder implements ICharacterEncoder {
       private int[] state = { 0, 0, 0 };
       private boolean inBase64;
+
       private int Base64Start(IWriter output) {
         this.state[0] = 0;
         this.state[1] = 0;

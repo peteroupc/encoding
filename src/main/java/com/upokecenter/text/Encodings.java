@@ -126,14 +126,14 @@ private Encodings() {
      * ICharacterEncoding and can be called as follows:
      * "encoding.DecodeString(input)". If the object's class already has a
      * DecodeToString method with the same parameters, that method takes
-     * precedence over this extension method. </p>
+     * precedence over this extension method.</p>
      * @param encoding An object that implements a given character encoding. Any
      * bytes that can't be decoded are converted to the replacement
      * character (U + FFFD).
      * @param input An object that implements a byte stream.
      * @return The converted string.
-     * @throws java.lang.NullPointerException The parameter {@code encoding} or
-     * {@code input} is null.
+     * @throws java.lang.NullPointerException The parameter "encoding" or "input" is
+     * null. .
      */
     public static String DecodeToString(
 ICharacterEncoding encoding,
@@ -159,8 +159,8 @@ ICharacterEncoding encoding,
      * encoder and a decoder).
      * @param input A readable byte stream.
      * @return A string consisting of the decoded text.
-     * @throws java.lang.NullPointerException The parameter "encoding" or {@code
-     * input} is null.
+     * @throws java.lang.NullPointerException The parameter "encoding" or "input" is
+     * null.
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
@@ -194,8 +194,7 @@ ICharacterEncoding enc,
      * encoder and a decoder).
      * @param bytes A byte array.
      * @return A string consisting of the decoded text.
-     * @throws java.lang.NullPointerException The parameter {@code enc} or {@code
-     * bytes} is null.
+     * @throws java.lang.NullPointerException The parameter "enc" or "bytes" is null.
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
@@ -233,11 +232,10 @@ ICharacterEncoding enc,
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return A string consisting of the decoded text.
-     * @throws java.lang.NullPointerException The parameter {@code enc} or {@code
-     * bytes} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
-     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * ' s length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter "enc" or "bytes" is null.
+     * @throws IllegalArgumentException Either "offset" or "length" is less than 0
+     * or greater than "bytes" 's length, or "bytes" ' s length minus
+     * "offset" is less than "length".
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
@@ -291,7 +289,7 @@ ICharacterEncoding enc,
      * @param input An object that implements a stream of universal code points.
      * @param encoding An object that implements a given character encoding.
      * @return A byte array containing the encoded text.
-     * @throws java.lang.NullPointerException The parameter {@code encoding} is null.
+     * @throws java.lang.NullPointerException The parameter "encoding" is null.
      */
     public static byte[] EncodeToBytes(
 ICharacterInput input,
@@ -320,8 +318,8 @@ ICharacterInput input,
      * @param input An object that implements a stream of universal code points.
      * @param encoder An object that implements a character encoder.
      * @return A byte array.
-     * @throws java.lang.NullPointerException The parameter {@code encoder} or {@code
-     * input} is null.
+     * @throws java.lang.NullPointerException The parameter "encoder" or "input" is
+     * null.
      */
     public static byte[] EncodeToBytes(
 ICharacterInput input,
@@ -342,8 +340,8 @@ ICharacterInput input,
      * @param htmlFallback The parameter {@code htmlFallback} is not documented
      * yet.
      * @return A byte array.
-     * @throws java.lang.NullPointerException The parameter {@code encoder} or {@code
-     * input} is null.
+     * @throws java.lang.NullPointerException The parameter "encoder" or "input" is
+     * null.
      */
     public static byte[] EncodeToBytes(
 ICharacterInput input,
@@ -381,7 +379,7 @@ EncoderAlgorithms.EncodeAlgorithm(input, encoder, writer);
      * character (U + FFFD), and when writing to the byte array, any
      * characters that can't be encoded are replaced with the byte 0x3f (the
      * question mark character). <p>In the .NET implementation, this method
-     * is implemented as an extension method to any String object and can be
+     * is implemented as an extension method to any string object and can be
      * called as follows: <code>str.EncodeToBytes(enc)</code>. If the object's
      * class already has a EncodeToBytes method with the same parameters,
      * that method takes precedence over this extension method.</p> <p>In
@@ -394,8 +392,7 @@ EncoderAlgorithms.EncodeAlgorithm(input, encoder, writer);
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @return A byte array.
-     * @throws java.lang.NullPointerException The parameter {@code str} or {@code
-     * enc} is null.
+     * @throws java.lang.NullPointerException The parameter "str" or "enc" is null.
      */
     public static byte[] EncodeToBytes(
 String str,
@@ -424,8 +421,7 @@ String str,
      * @param htmlFallback The parameter {@code htmlFallback} is not documented
      * yet.
      * @return A byte array.
-     * @throws java.lang.NullPointerException The parameter {@code str} or {@code
-     * enc} is null.
+     * @throws java.lang.NullPointerException The parameter "str" or "enc" is null.
      */
     public static byte[] EncodeToBytes(
 String str,
@@ -461,7 +457,7 @@ String str,
      * @param input An object that implements a stream of universal code points.
      * @param encoding An object that implements a character encoding.
      * @param writer A byte writer to write the encoded bytes to.
-     * @throws java.lang.NullPointerException The parameter {@code encoding} is null.
+     * @throws java.lang.NullPointerException The parameter "encoding" is null.
      */
     public static void EncodeToWriter(
 ICharacterInput input,
@@ -491,8 +487,8 @@ ICharacterInput input,
      * @param input An object that implements a stream of universal code points.
      * @param encoder An object that implements a character encoder.
      * @param writer A byte writer to write the encoded bytes to.
-     * @throws java.lang.NullPointerException The parameter {@code encoder} or {@code
-     * input} is null.
+     * @throws java.lang.NullPointerException The parameter "encoder" or "input" is
+     * null.
      */
     public static void EncodeToWriter(
 ICharacterInput input,
@@ -527,7 +523,7 @@ ICharacterInput input,
      * writing to the byte stream, any characters that can't be encoded are
      * replaced with the byte 0x3f (the question mark character). <p>In the
      * .NET implementation, this method is implemented as an extension
-     * method to any String object and can be called as follows:
+     * method to any string object and can be called as follows:
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
      * takes precedence over this extension method.</p> <p>In the .NET
@@ -540,8 +536,7 @@ ICharacterInput input,
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @param writer A byte writer where the encoded bytes will be written to.
-     * @throws java.lang.NullPointerException The parameter {@code str} or {@code
-     * enc} is null.
+     * @throws java.lang.NullPointerException The parameter "str" or "enc" is null.
      */
     public static void EncodeToWriter(
 String str,
@@ -574,7 +569,7 @@ String str,
      * @param input An object that implements a stream of universal code points.
      * @param encoding An object that implements a character encoding.
      * @param output A writable data stream.
-     * @throws java.lang.NullPointerException The parameter {@code encoding} is null.
+     * @throws java.lang.NullPointerException The parameter "encoding" is null.
      */
     public static void EncodeToWriter(
 ICharacterInput input,
@@ -604,8 +599,8 @@ ICharacterInput input,
      * @param input An object that implements a stream of universal code points.
      * @param encoder An object that implements a character encoder.
      * @param output A writable data stream.
-     * @throws java.lang.NullPointerException The parameter {@code encoder} or {@code
-     * input} is null.
+     * @throws java.lang.NullPointerException The parameter "encoder" or "input" is
+     * null.
      */
     public static void EncodeToWriter(
 ICharacterInput input,
@@ -622,7 +617,7 @@ ICharacterInput input,
      * writing to the byte stream, any characters that can't be encoded are
      * replaced with the byte 0x3f (the question mark character). <p>In the
      * .NET implementation, this method is implemented as an extension
-     * method to any String object and can be called as follows:
+     * method to any string object and can be called as follows:
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
      * takes precedence over this extension method.</p> <p>In the .NET
@@ -635,8 +630,7 @@ ICharacterInput input,
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @param output A writable data stream.
-     * @throws java.lang.NullPointerException The parameter {@code str} or {@code
-     * enc} is null.
+     * @throws java.lang.NullPointerException The parameter "str" or "enc" is null.
      */
     public static void EncodeToWriter(
 String str,
@@ -1184,7 +1178,7 @@ ICharacterEncoding encoding,
         return (ICharacterEncoding)(new EncodingXUserDefined());
       } else if (name.equals("GBK")) {
         return (ICharacterEncoding)(new EncodingGBK());
-      } else if (name.equals("gb18030")) {
+      } else if (name.equals("gb18030") || name.equals("GB18030")) {
         return (ICharacterEncoding)(new EncodingGB18030());
       } else if (name.equals("UTF-16")) {
         return (ICharacterEncoding)(new EncodingUtf16());
@@ -1240,52 +1234,51 @@ ICharacterInput reader) {
      * <p>In several Internet specifications, this name is known as a
      * "charset" parameter. In HTML and HTTP, for example, the "charset"
      * parameter indicates the encoding used to represent text in the HTML
-     * page, text file, etc. </p>
+     * page, text file, etc.</p>
      * @param name A string that names a given character encoding. Can be null. Any
      * leading and trailing whitespace is removed and the name converted to
      * lowercase before resolving the encoding's name. The Encoding Standard
      * supports only the following encodings (and defines aliases for most
      * of them). <ul> <li> {@code UTF-8} - UTF-8 (8-bit encoding of the
      * universal coded character set, the encoding recommended by the
-     * Encoding Standard for new data formats) </li> <li> {@code UTF-16LE} -
-     * UTF-16 little-endian (16-bit UCS) </li> <li> {@code UTF-16BE} - UTF-16
-     * big-endian (16-bit UCS) </li> <li>The special-purpose encoding {@code
-     * x-user-defined} </li> <li>The special-purpose encoding {@code
-     * replacement} . </li> <li>28 legacy single-byte encodings: <ul>
+     * Encoding Standard for new data formats)</li> <li> {@code UTF-16LE} -
+     * UTF-16 little-endian (16-bit UCS)</li> <li> {@code UTF-16BE} - UTF-16
+     * big-endian (16-bit UCS)</li> <li>The special-purpose encoding {@code
+     * x-user-defined}</li> <li>The special-purpose encoding {@code
+     * replacement}.</li> <li>28 legacy single-byte encodings: <ul>
      * <li> {@code windows-1252} : Western Europe (Note: The Encoding
      * Standard aliases the names {@code US-ASCII} and {@code ISO-8859-1} to
-     * {@code windows-1252} , which uses a different coded character set
-     * from either; it differs from {@code ISO-8859-1} by assigning
-     * different characters to some bytes from 0x80 to 0x9F. The Encoding
-     * Standard does this for compatibility with existing Web pages.) </li>
-     * <li> {@code ISO-8859-2} , {@code windows-1250} : Central Europe </li>
-     * <li> {@code ISO-8859-10} : Northern Europe </li> <li> {@code
-     * ISO-8859-4} , {@code windows-1257} : Baltic </li> <li> {@code
-     * ISO-8859-13} : Estonian </li> <li> {@code ISO-8859-14} : Celtic </li>
-     * <li> {@code ISO-8859-16} : Romanian </li> <li> {@code ISO-8859-5} ,
-     * {@code IBM-866} , {@code KOI8-R} , {@code windows-1251} , {@code
-     * x-mac-cyrillic} : Cyrillic </li> <li> {@code KOI8-U} : Ukrainian </li>
-     * <li> {@code ISO-8859-7} , {@code windows-1253} : Greek </li>
-     * <li> {@code ISO-8859-6} , {@code windows-1256} : Arabic </li>
-     * <li> {@code ISO-8859-8} , {@code ISO-8859-8-I} , {@code windows-1255}
-     * : Hebrew </li> <li> {@code ISO-8859-3} : Latin 3 </li> <li> {@code
-     * ISO-8859-15} , {@code windows-1254} : Turkish </li> <li> {@code
-     * windows-874} : Thai </li> <li> {@code windows-1258} : Vietnamese </li>
-     * <li> {@code macintosh} : Mac Roman </li> </ul> </li> <li>Three legacy
-     * Japanese encodings: {@code Shift_JIS} , {@code EUC-JP} , {@code
-     * ISO-2022-JP} </li> <li>Two legacy simplified Chinese encodings:
-     * {@code GBK} and {@code gb18030} </li> <li> {@code Big5} : legacy
-     * traditional Chinese encoding </li> <li> {@code EUC-KR} : legacy Korean
-     * encoding </li> </ul> <p>The {@code UTF-8} , {@code UTF-16LE} , and
-     * {@code UTF-16BE} encodings don't encode a byte-order mark at the
-     * start of the text (doing so is not recommended for {@code UTF-8} ,
-     * while in {@code UTF-16LE} and {@code UTF-16BE} , the byte-order mark
-     * character U + FEFF is treated as an ordinary character, unlike in the
-     * UTF-16 encoding form). The Encoding Standard aliases {@code UTF-16}
-     * to {@code UTF-16LE} "to deal with deployed content". </p> .
+     * {@code windows-1252}, which uses a different coded character set from
+     * either; it differs from {@code ISO-8859-1} by assigning different
+     * characters to some bytes from 0x80 to 0x9F. The Encoding Standard
+     * does this for compatibility with existing Web pages.)</li> <li> {@code
+     * ISO-8859-2}, {@code windows-1250} : Central Europe</li> <li> {@code
+     * ISO-8859-10} : Northern Europe</li> <li> {@code ISO-8859-4}, {@code
+     * windows-1257} : Baltic</li> <li> {@code ISO-8859-13} : Estonian</li>
+     * <li> {@code ISO-8859-14} : Celtic</li> <li> {@code ISO-8859-16} :
+     * Romanian</li> <li> {@code ISO-8859-5}, {@code IBM-866}, {@code
+     * KOI8-R}, {@code windows-1251}, {@code x-mac-cyrillic} : Cyrillic</li>
+     * <li> {@code KOI8-U} : Ukrainian</li> <li> {@code ISO-8859-7}, {@code
+     * windows-1253} : Greek</li> <li> {@code ISO-8859-6}, {@code
+     * windows-1256} : Arabic</li> <li> {@code ISO-8859-8}, {@code
+     * ISO-8859-8-I}, {@code windows-1255} : Hebrew</li> <li> {@code
+     * ISO-8859-3} : Latin 3</li> <li> {@code ISO-8859-15}, {@code
+     * windows-1254} : Turkish</li> <li> {@code windows-874} : Thai</li>
+     * <li> {@code windows-1258} : Vietnamese</li> <li> {@code macintosh} :
+     * Mac Roman</li></ul></li> <li>Three legacy Japanese encodings: {@code
+     * Shift_JIS}, {@code EUC-JP}, {@code ISO-2022-JP}</li> <li>Two legacy
+     * simplified Chinese encodings: {@code GBK} and {@code gb18030}</li>
+     * <li> {@code Big5} : legacy traditional Chinese encoding</li>
+     * <li> {@code EUC-KR} : legacy Korean encoding</li></ul> <p>The {@code
+     * UTF-8}, {@code UTF-16LE}, and {@code UTF-16BE} encodings don't encode
+     * a byte-order mark at the start of the text (doing so is not
+     * recommended for {@code UTF-8}, while in {@code UTF-16LE} and {@code
+     * UTF-16BE}, the byte-order mark character U + FEFF is treated as an
+     * ordinary character, unlike in the UTF-16 encoding form). The Encoding
+     * Standard aliases {@code UTF-16} to {@code UTF-16LE} "to deal with
+     * deployed content".</p>.
      * @return A standardized name for the encoding. Returns the empty string if
-     * {@code name} is null or empty, or if the encoding name is
-     * unsupported.
+     * "name" is null or empty, or if the encoding name is unsupported.
      */
     public static String ResolveAlias(String name) {
       if (((name) == null || (name).length() == 0)) {
@@ -1305,32 +1298,36 @@ ICharacterInput reader) {
      * conform, in some cases, to email standards like MIME. Encoding names
      * and aliases not registered with the Internet Assigned Numbers
      * Authority (IANA) are not supported, with the exception of {@code
-     * ascii} , {@code utf8} , {@code cp1252} , and names 10 characters or
-     * longer starting with {@code iso-8859-} . Also, the following
-     * additional encodings are supported. <ul> <li> {@code US-ASCII} - ASCII
-     * single-byte encoding, rather than an alias to {@code windows-1252} as
-     * specified in the Encoding Standard. The coded character set's code
-     * points match those in the Unicode Standard's Basic Latin block (0-127
-     * or U + 0000 to U + 007F). The name {@code ascii} is an alias. </li>
-     * <li> {@code ISO-8859-1} - Latin-1 single-byte encoding, rather than an
-     * alias to {@code windows-1252} as specified in the Encoding Standard.
-     * The coded character set's code points match those in the Unicode
-     * Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U+0000
-     * to U + 00FF). </li> <li> {@code UTF-16} - UTF-16 without a fixed byte
-     * order, rather than alias to {@code UTF-16LE} as specified in the
-     * Encoding Standard. </li> <li> {@code UTF-7} - UTF-7 (7-bit universal
-     * coded character set). The name {@code unicode-1-1-utf-7} is not
-     * supported and is not treated an alias to {@code UTF-7}, even though
-     * it uses the same encoding as UTF-7, because RFC 1642, which defined
-     * the former UTF-7, is linked to a different Uicode version with an
-     * incompatible character repertoire (notably, the Hangul syllables have
-     * different code point assignments in Unicode 1.1 and earlier than in
-     * Unicode 2.0 and later). </li> </ul> . In previous versions of this
-     * method, the name {@code iso-2022-jp-2} was also aliased to {@code
-     * ISO-2022-JP} , which is no longer the case.
+     * ascii}, {@code utf8}, {@code cp1252}, and names 10 characters or
+     * longer starting with {@code iso-8859-}. Also, the following
+     * additional encodings are supported. Note that the case combination
+     * {@code GB18030}, the combination registered with IANA, rather than
+     * {@code gb18030} can be retured by this method. <ul> <li> {@code
+     * US-ASCII} - ASCII single-byte encoding, rather than an alias to
+     * {@code windows-1252} as specified in the Encoding Standard. The coded
+     * character set's code points match those in the Unicode Standard's
+     * Basic Latin block (0-127 or U + 0000 to U + 007F). The name {@code ascii}
+     * is an alias.</li> <li> {@code ISO-8859-1} - Latin-1 single-byte
+     * encoding, rather than an alias to {@code windows-1252} as specified
+     * in the Encoding Standard. The coded character set's code points match
+     * those in the Unicode Standard's Basic Latin and Latin-1 Supplement
+     * blocks (0-255 or U + 0000 to U + 00FF).</li> <li> {@code UTF-16} - UTF-16
+     * without a fixed byte order, rather than an alias to {@code UTF-16LE}
+     * as specified in the Encoding Standard. The byte order is little
+     * endian if the byte stream starts with 0xff 0xfe; otherwise, big
+     * endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream is
+     * skipped.</li> <li> {@code UTF-7} - UTF-7 (7-bit universal coded
+     * character set). The name {@code unicode-1-1-utf-7} is not supported
+     * and is not treated as an alias to {@code UTF-7}, even though it uses
+     * the same character encoding scheme as UTF-7, because RFC 1642, which
+     * defined the former UTF-7, is linked to a different Unicode version
+     * with an incompatible character repertoire (notably, the Hangul
+     * syllables have different code point assignments in Unicode 1.1 and
+     * earlier than in Unicode 2.0 and later).</li></ul>. In previous
+     * versions of this method, the name {@code iso-2022-jp-2} was also
+     * aliased to {@code ISO-2022-JP}, which is no longer the case.
      * @return A standardized name for the encoding. Returns the empty string if
-     * {@code name} is null or empty, or if the encoding name is
-     * unsupported.
+     * "name" is null or empty, or if the encoding name is unsupported.
      */
     public static String ResolveAliasForEmail(String name) {
       if (((name) == null || (name).length() == 0)) {
@@ -1385,7 +1382,7 @@ ICharacterInput reader) {
      * @param str A string to be encoded into a byte array.
      * @return A byte array containing the string encoded in the given text
      * encoding.
-     * @throws java.lang.NullPointerException The parameter {@code encoding} is null.
+     * @throws java.lang.NullPointerException The parameter "encoding" is null.
      */
     public static byte[] StringToBytes(
 ICharacterEncoding encoding,
@@ -1415,8 +1412,8 @@ ICharacterEncoding encoding,
      * @param encoder An object that implements a character encoder.
      * @param str A text string to encode into a byte array.
      * @return A byte array.
-     * @throws java.lang.NullPointerException The parameter {@code encoder} or {@code
-     * str} is null.
+     * @throws java.lang.NullPointerException The parameter "encoder" or "str" is
+     * null.
      */
     public static byte[] StringToBytes(
 ICharacterEncoder encoder,
@@ -1438,7 +1435,7 @@ ICharacterEncoder encoder,
      * code point, among other things. When reading the string, any unpaired
      * surrogate characters are replaced with the replacement character
      * (U + FFFD). <p>In the .NET implementation, this method is implemented
-     * as an extension method to any String object and can be called as
+     * as an extension method to any string object and can be called as
      * follows: <code>str.StringToInput(offset, length)</code>. If the object's
      * class already has a StringToInput method with the same parameters,
      * that method takes precedence over this extension method.</p> <p>In
@@ -1449,7 +1446,7 @@ ICharacterEncoder encoder,
      * method takes precedence over this extension method.</p>
      * @param str The parameter {@code str} is a text string.
      * @return An ICharacterInput object.
-     * @throws java.lang.NullPointerException The parameter {@code str} is null.
+     * @throws java.lang.NullPointerException The parameter "str" is null.
      */
     public static ICharacterInput StringToInput(
 String str) {
@@ -1465,7 +1462,7 @@ String str) {
      * string code point by code point, among other things. When reading the
      * string, any unpaired surrogate characters are replaced with the
      * replacement character (U + FFFD). <p>In the .NET implementation, this
-     * method is implemented as an extension method to any String object and
+     * method is implemented as an extension method to any string object and
      * can be called as follows: <code>str.StringToInput(offset, length)</code>.
      * If the object's class already has a StringToInput method with the
      * same parameters, that method takes precedence over this extension
@@ -1481,10 +1478,10 @@ String str) {
      * @param length The length, in code units, of the desired portion of {@code
      * str} (but not more than {@code str} 's length).
      * @return An ICharacterInput object.
-     * @throws java.lang.NullPointerException The parameter {@code str} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
-     * less than 0 or greater than {@code str} 's length, or {@code str} ' s
-     * length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter "str" is null.
+     * @throws IllegalArgumentException Either "offset" or "length" is less than 0
+     * or greater than "str" 's length, or "str" ' s length minus "offset"
+     * is less than "length".
      */
     public static ICharacterInput StringToInput(
 String str,
@@ -1742,187 +1739,186 @@ return aliases;
 
 private static Map<String, String> CreateEmailAliasMap() {
 HashMap<String, String> aliases = new HashMap<String, String>();
-aliases.put("utf-8","UTF-8");
 aliases.put("csutf8","UTF-8");
+aliases.put("utf-8","UTF-8");
 aliases.put("utf8","UTF-8");
-aliases.put("ibm866","IBM866");
-aliases.put("cp866","IBM866");
 aliases.put("866","IBM866");
+aliases.put("cp866","IBM866");
 aliases.put("csibm866","IBM866");
-aliases.put("iso_8859-2:1987","ISO-8859-2");
+aliases.put("ibm866","IBM866");
+aliases.put("csisolatin2","ISO-8859-2");
 aliases.put("iso-8859-2","ISO-8859-2");
 aliases.put("iso-ir-101","ISO-8859-2");
 aliases.put("iso_8859-2","ISO-8859-2");
-aliases.put("latin2","ISO-8859-2");
+aliases.put("iso_8859-2:1987","ISO-8859-2");
 aliases.put("l2","ISO-8859-2");
-aliases.put("csisolatin2","ISO-8859-2");
-aliases.put("iso_8859-3:1988","ISO-8859-3");
+aliases.put("latin2","ISO-8859-2");
+aliases.put("csisolatin3","ISO-8859-3");
 aliases.put("iso-8859-3","ISO-8859-3");
 aliases.put("iso-ir-109","ISO-8859-3");
 aliases.put("iso_8859-3","ISO-8859-3");
-aliases.put("latin3","ISO-8859-3");
+aliases.put("iso_8859-3:1988","ISO-8859-3");
 aliases.put("l3","ISO-8859-3");
-aliases.put("csisolatin3","ISO-8859-3");
-aliases.put("iso_8859-4:1988","ISO-8859-4");
+aliases.put("latin3","ISO-8859-3");
+aliases.put("csisolatin4","ISO-8859-4");
 aliases.put("iso-8859-4","ISO-8859-4");
 aliases.put("iso-ir-110","ISO-8859-4");
 aliases.put("iso_8859-4","ISO-8859-4");
-aliases.put("latin4","ISO-8859-4");
+aliases.put("iso_8859-4:1988","ISO-8859-4");
 aliases.put("l4","ISO-8859-4");
-aliases.put("csisolatin4","ISO-8859-4");
-aliases.put("iso_8859-5:1988","ISO-8859-5");
+aliases.put("latin4","ISO-8859-4");
+aliases.put("csisolatincyrillic","ISO-8859-5");
+aliases.put("cyrillic","ISO-8859-5");
 aliases.put("iso-8859-5","ISO-8859-5");
 aliases.put("iso-ir-144","ISO-8859-5");
 aliases.put("iso_8859-5","ISO-8859-5");
-aliases.put("cyrillic","ISO-8859-5");
-aliases.put("csisolatincyrillic","ISO-8859-5");
-aliases.put("iso_8859-6:1987","ISO-8859-6");
+aliases.put("iso_8859-5:1988","ISO-8859-5");
+aliases.put("arabic","ISO-8859-6");
+aliases.put("asmo-708","ISO-8859-6");
+aliases.put("csisolatinarabic","ISO-8859-6");
+aliases.put("ecma-114","ISO-8859-6");
 aliases.put("iso-8859-6","ISO-8859-6");
 aliases.put("iso-ir-127","ISO-8859-6");
 aliases.put("iso_8859-6","ISO-8859-6");
-aliases.put("ecma-114","ISO-8859-6");
-aliases.put("asmo-708","ISO-8859-6");
-aliases.put("arabic","ISO-8859-6");
-aliases.put("csisolatinarabic","ISO-8859-6");
-aliases.put("iso_8859-6-i","ISO-8859-6-I");
-aliases.put("iso-8859-6-i","ISO-8859-6-I");
+aliases.put("iso_8859-6:1987","ISO-8859-6");
 aliases.put("csiso88596i","ISO-8859-6-I");
-aliases.put("iso_8859-7:1987","ISO-8859-7");
+aliases.put("iso-8859-6-i","ISO-8859-6-I");
+aliases.put("iso_8859-6-i","ISO-8859-6-I");
+aliases.put("csisolatingreek","ISO-8859-7");
+aliases.put("ecma-118","ISO-8859-7");
+aliases.put("elot_928","ISO-8859-7");
+aliases.put("greek","ISO-8859-7");
+aliases.put("greek8","ISO-8859-7");
 aliases.put("iso-8859-7","ISO-8859-7");
 aliases.put("iso-ir-126","ISO-8859-7");
 aliases.put("iso_8859-7","ISO-8859-7");
-aliases.put("elot_928","ISO-8859-7");
-aliases.put("ecma-118","ISO-8859-7");
-aliases.put("greek","ISO-8859-7");
-aliases.put("greek8","ISO-8859-7");
-aliases.put("csisolatingreek","ISO-8859-7");
-aliases.put("iso_8859-8:1988","ISO-8859-8");
+aliases.put("iso_8859-7:1987","ISO-8859-7");
+aliases.put("csisolatinhebrew","ISO-8859-8");
+aliases.put("hebrew","ISO-8859-8");
 aliases.put("iso-8859-8","ISO-8859-8");
 aliases.put("iso-ir-138","ISO-8859-8");
 aliases.put("iso_8859-8","ISO-8859-8");
-aliases.put("hebrew","ISO-8859-8");
-aliases.put("csisolatinhebrew","ISO-8859-8");
-aliases.put("iso_8859-8-i","ISO-8859-8-I");
-aliases.put("iso-8859-8-i","ISO-8859-8-I");
+aliases.put("iso_8859-8:1988","ISO-8859-8");
 aliases.put("csiso88598i","ISO-8859-8-I");
+aliases.put("iso-8859-8-i","ISO-8859-8-I");
+aliases.put("iso_8859-8-i","ISO-8859-8-I");
+aliases.put("csisolatin6","ISO-8859-10");
 aliases.put("iso-8859-10","ISO-8859-10");
 aliases.put("iso-ir-157","ISO-8859-10");
-aliases.put("l6","ISO-8859-10");
 aliases.put("iso_8859-10:1992","ISO-8859-10");
-aliases.put("csisolatin6","ISO-8859-10");
+aliases.put("l6","ISO-8859-10");
 aliases.put("latin6","ISO-8859-10");
-aliases.put("iso-8859-13","ISO-8859-13");
 aliases.put("csiso885913","ISO-8859-13");
-aliases.put("iso-8859-14","ISO-8859-14");
-aliases.put("iso-ir-199","ISO-8859-14");
-aliases.put("iso_8859-14:1998","ISO-8859-14");
-aliases.put("iso_8859-14","ISO-8859-14");
-aliases.put("latin8","ISO-8859-14");
-aliases.put("iso-celtic","ISO-8859-14");
-aliases.put("l8","ISO-8859-14");
+aliases.put("iso-8859-13","ISO-8859-13");
 aliases.put("csiso885914","ISO-8859-14");
+aliases.put("iso-8859-14","ISO-8859-14");
+aliases.put("iso-celtic","ISO-8859-14");
+aliases.put("iso-ir-199","ISO-8859-14");
+aliases.put("iso_8859-14","ISO-8859-14");
+aliases.put("iso_8859-14:1998","ISO-8859-14");
+aliases.put("l8","ISO-8859-14");
+aliases.put("latin8","ISO-8859-14");
+aliases.put("csiso885915","ISO-8859-15");
 aliases.put("iso-8859-15","ISO-8859-15");
 aliases.put("iso_8859-15","ISO-8859-15");
 aliases.put("latin-9","ISO-8859-15");
-aliases.put("csiso885915","ISO-8859-15");
+aliases.put("csiso885916","ISO-8859-16");
 aliases.put("iso-8859-16","ISO-8859-16");
 aliases.put("iso-ir-226","ISO-8859-16");
-aliases.put("iso_8859-16:2001","ISO-8859-16");
 aliases.put("iso_8859-16","ISO-8859-16");
-aliases.put("latin10","ISO-8859-16");
+aliases.put("iso_8859-16:2001","ISO-8859-16");
 aliases.put("l10","ISO-8859-16");
-aliases.put("csiso885916","ISO-8859-16");
-aliases.put("koi8-r","KOI8-R");
+aliases.put("latin10","ISO-8859-16");
 aliases.put("cskoi8r","KOI8-R");
-aliases.put("koi8-u","KOI8-U");
+aliases.put("koi8-r","KOI8-R");
 aliases.put("cskoi8u","KOI8-U");
-aliases.put("macintosh","macintosh");
-aliases.put("mac","macintosh");
+aliases.put("koi8-u","KOI8-U");
 aliases.put("csmacintosh","macintosh");
-aliases.put("tis-620","TIS-620");
+aliases.put("mac","macintosh");
+aliases.put("macintosh","macintosh");
 aliases.put("cstis620","TIS-620");
 aliases.put("iso-8859-11","TIS-620");
-aliases.put("windows-874","windows-874");
+aliases.put("tis-620","TIS-620");
 aliases.put("cswindows874","windows-874");
-aliases.put("windows-1250","windows-1250");
+aliases.put("windows-874","windows-874");
 aliases.put("cswindows1250","windows-1250");
-aliases.put("windows-1251","windows-1251");
+aliases.put("windows-1250","windows-1250");
 aliases.put("cswindows1251","windows-1251");
+aliases.put("windows-1251","windows-1251");
 aliases.put("cp1252","windows-1252");
-aliases.put("iso_8859-1:1987","ISO-8859-1");
+aliases.put("cp819","ISO-8859-1");
+aliases.put("csisolatin1","ISO-8859-1");
+aliases.put("ibm819","ISO-8859-1");
 aliases.put("iso-8859-1","ISO-8859-1");
 aliases.put("iso-ir-100","ISO-8859-1");
 aliases.put("iso_8859-1","ISO-8859-1");
-aliases.put("latin1","ISO-8859-1");
+aliases.put("iso_8859-1:1987","ISO-8859-1");
 aliases.put("l1","ISO-8859-1");
-aliases.put("ibm819","ISO-8859-1");
-aliases.put("cp819","ISO-8859-1");
-aliases.put("csisolatin1","ISO-8859-1");
-aliases.put("us-ascii","US-ASCII");
-aliases.put("iso-ir-6","US-ASCII");
+aliases.put("latin1","ISO-8859-1");
 aliases.put("ansi_x3.4-1968","US-ASCII");
 aliases.put("ansi_x3.4-1986","US-ASCII");
-aliases.put("iso_646.irv:1991","US-ASCII");
-aliases.put("iso646-us","US-ASCII");
-aliases.put("us","US-ASCII");
-aliases.put("ibm367","US-ASCII");
 aliases.put("cp367","US-ASCII");
 aliases.put("csascii","US-ASCII");
-aliases.put("windows-1252","windows-1252");
+aliases.put("ibm367","US-ASCII");
+aliases.put("iso-ir-6","US-ASCII");
+aliases.put("iso646-us","US-ASCII");
+aliases.put("iso_646.irv:1991","US-ASCII");
+aliases.put("us","US-ASCII");
+aliases.put("us-ascii","US-ASCII");
 aliases.put("cswindows1252","windows-1252");
-aliases.put("windows-1253","windows-1253");
+aliases.put("windows-1252","windows-1252");
 aliases.put("cswindows1253","windows-1253");
-aliases.put("iso_8859-9:1989","ISO-8859-9");
+aliases.put("windows-1253","windows-1253");
+aliases.put("csisolatin5","ISO-8859-9");
 aliases.put("iso-8859-9","ISO-8859-9");
 aliases.put("iso-ir-148","ISO-8859-9");
 aliases.put("iso_8859-9","ISO-8859-9");
-aliases.put("latin5","ISO-8859-9");
+aliases.put("iso_8859-9:1989","ISO-8859-9");
 aliases.put("l5","ISO-8859-9");
-aliases.put("csisolatin5","ISO-8859-9");
-aliases.put("windows-1254","windows-1254");
+aliases.put("latin5","ISO-8859-9");
 aliases.put("cswindows1254","windows-1254");
-aliases.put("windows-1255","windows-1255");
+aliases.put("windows-1254","windows-1254");
 aliases.put("cswindows1255","windows-1255");
-aliases.put("windows-1256","windows-1256");
+aliases.put("windows-1255","windows-1255");
 aliases.put("cswindows1256","windows-1256");
-aliases.put("windows-1257","windows-1257");
+aliases.put("windows-1256","windows-1256");
 aliases.put("cswindows1257","windows-1257");
-aliases.put("windows-1258","windows-1258");
+aliases.put("windows-1257","windows-1257");
 aliases.put("cswindows1258","windows-1258");
-aliases.put("gb2312","GB2312");
+aliases.put("windows-1258","windows-1258");
 aliases.put("csgb2312","GB2312");
-aliases.put("gbk","GBK");
+aliases.put("gb2312","GB2312");
 aliases.put("cp936","GBK");
+aliases.put("csgbk","GBK");
+aliases.put("gbk","GBK");
 aliases.put("ms936","GBK");
 aliases.put("windows-936","GBK");
-aliases.put("csgbk","GBK");
-aliases.put("gb18030","GB18030");
 aliases.put("csgb18030","GB18030");
+aliases.put("gb18030","GB18030");
 aliases.put("big5","Big5");
 aliases.put("csbig5","Big5");
-aliases.put("extended_unix_code_packed_format_for_japanese","EUC-JP");
-aliases.put("euc-jp","EUC-JP");
 aliases.put("cseucpkdfmtjapanese","EUC-JP");
-aliases.put("iso-2022-jp","ISO-2022-JP");
+aliases.put("euc-jp","EUC-JP");
+aliases.put("extended_unix_code_packed_format_for_japanese","EUC-JP");
 aliases.put("csiso2022jp","ISO-2022-JP");
-aliases.put("shift_jis","Shift_JIS");
-aliases.put("ms_kanji","Shift_JIS");
+aliases.put("iso-2022-jp","ISO-2022-JP");
 aliases.put("csshiftjis","Shift_JIS");
-aliases.put("euc-kr","EUC-KR");
+aliases.put("ms_kanji","Shift_JIS");
+aliases.put("shift_jis","Shift_JIS");
 aliases.put("cseuckr","EUC-KR");
-aliases.put("hz-gb-2312","HZ-GB-2312");
-aliases.put("iso-2022-cn","ISO-2022-CN");
+aliases.put("euc-kr","EUC-KR");
 aliases.put("csiso2022cn","ISO-2022-CN");
-aliases.put("iso-2022-cn-ext","ISO-2022-CN-EXT");
+aliases.put("iso-2022-cn","ISO-2022-CN");
 aliases.put("csiso2022cnext","ISO-2022-CN-EXT");
-aliases.put("iso-2022-kr","ISO-2022-KR");
+aliases.put("iso-2022-cn-ext","ISO-2022-CN-EXT");
 aliases.put("csiso2022kr","ISO-2022-KR");
-aliases.put("utf-16be","UTF-16BE");
+aliases.put("iso-2022-kr","ISO-2022-KR");
 aliases.put("csutf16be","UTF-16BE");
-aliases.put("utf-16","UTF-16");
+aliases.put("utf-16be","UTF-16BE");
 aliases.put("csutf16","UTF-16");
-aliases.put("utf-16le","UTF-16LE");
+aliases.put("utf-16","UTF-16");
 aliases.put("csutf16le","UTF-16LE");
+aliases.put("utf-16le","UTF-16LE");
 return aliases;
 }
 
@@ -2014,10 +2010,10 @@ return aliases;
      * @param length The number of elements in the desired portion of {@code
      * buffer} (but not more than {@code buffer} 's length).
      * @return A 32-bit signed integer.
-     * @throws java.lang.NullPointerException The parameter {@code buffer} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
-     * less than 0 or greater than {@code buffer} 's length, or {@code
-     * buffer} ' s length minus {@code offset} is less than {@code length} .
+     * @throws java.lang.NullPointerException The parameter "buffer" is null. .
+     * @throws IllegalArgumentException Either "offset" or "length" is less than 0
+     * or greater than "buffer" 's length, or "buffer" ' s length minus
+     * "offset" is less than "length" . .
      */
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {

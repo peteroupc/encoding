@@ -14,8 +14,6 @@ import org.junit.Test;
 import com.upokecenter.util.*;
 import com.upokecenter.text.*;
 
-// TODO: Add new tests for Big5 and GBK
-
     public class CharsetsTest {
         @Test
         public void TestShiftJIS() {
@@ -303,7 +301,7 @@ public void TestEucJP() {
         }
 
         public static void TestSingleByteRoundTrip(String name) {
-      ICharacterEncoding enc = Encodings.GetEncoding(name, true);
+      ICharacterEncoding enc = Encodings.GetEncoding(name, false);
       if ((enc) == null) {
  Assert.fail(name);
  }
@@ -450,7 +448,8 @@ private int propVarposition;
       public int read() {
         int ret = this.reader.read();
         if (ret >= 0) {
- ++this.getPosition();
+int newPosition = this.getPosition() + 1;
+ this.setPosition(newPosition);
 }
         return ret;
       }
@@ -534,11 +533,13 @@ private int propVarposition;
         @Test
         public void TestGBK() {
             TestCJKRoundTrip("gbk");
-        }
+      TestCJKRoundTrip("GBK");
+    }
         @Test
 public void TestGB18030RoundTrip() {
             TestCJKRoundTrip("gb18030");
-        }
+      TestCJKRoundTrip("GB18030");
+    }
         @Test
 public void TestBig5() {
             TestCJKRoundTrip("big5");
@@ -549,7 +550,7 @@ public void TestKoreanEUC() {
         }
         @Test
 public void TestShiftJISRoundTrip() {
-            TestCJKRoundTrip("shift-jis");
+            TestCJKRoundTrip("shift_jis");
         }
         @Test
 public void TestEucJPRoundTrip() {
@@ -565,7 +566,7 @@ public void TestReplacementEncoding() {
             if (Encodings.GetEncoding("replacement") == null) {
  Assert.fail();
  }
-            ICharacterEncoding enc = Encodings.GetEncoding("hz-gb-2312", true);
+            ICharacterEncoding enc = Encodings.GetEncoding("hz-gb-2312", false);
             ICharacterEncoder encoder = enc.GetEncoder();
             ICharacterDecoder decoder = enc.GetDecoder();
             IByteReader reader = DataIO.ToReader(new byte[] { 0, 0, 0, 0 });
@@ -669,8 +670,77 @@ public void TestUtf16LERoundTrip() {
 public void TestUtf16BERoundTrip() {
             TestUtfRoundTrip(Encodings.GetEncoding("utf-16be", true));
         }
+    @Test
+    public void TestUtf16() {
+      ICharacterEncoding enc = Encodings.GetEncoding("utf-16", true);
+      byte[] bytes;
+      bytes = new byte[] { (byte)0xff, (byte)0xfe, 0x41, 0, 0x42, 0, 0x43, 0 };
+      {
+String stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.assertEquals(
+  "ABC",
+  stringTemp);
+}
+      bytes = new byte[] { (byte)0xfe, (byte)0xff, 0, 0x41, 0, 0x42, 0, 0x43 };
+      {
+String stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.assertEquals(
+  "ABC",
+  stringTemp);
+}
+      bytes = new byte[] { (byte)0xfe, (byte)0xff, 0, 0x41, 0, 0x42, 0, 0x43 };
+      {
+String stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.assertEquals(
+  "ABC",
+  stringTemp);
+}
+      bytes = new byte[] { (byte)0xfe, (byte)0xff, 0, 0x41, 0 };
+      {
+String stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.assertEquals(
+  "A\ufffd",
+  stringTemp);
+}
+      bytes = new byte[] { (byte)0xfe, (byte)0xff };
+      Assert.assertEquals(
+        "",
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { (byte)0xff, (byte)0xfe };
+      Assert.assertEquals(
+        "",
+        Encodings.DecodeToString(enc, bytes));
+      bytes = new byte[] { 0, 0x41 };
+      {
+String stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.assertEquals(
+  "A",
+  stringTemp);
+}
+      bytes = new byte[] { (byte)0xfe, (byte)0xff, 0 };
+      {
+String stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.assertEquals(
+  "\ufffd",
+  stringTemp);
+}
+      bytes = new byte[] { (byte)0xfe };
+      {
+String stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.assertEquals(
+  "\ufffd",
+  stringTemp);
+}
+      bytes = new byte[] { (byte)0xdc, 0 };
+      {
+String stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.assertEquals(
+  "\ufffd",
+  stringTemp);
+}
+    }
 
-        public static void TestUtf7One(String input, String expect) {
+    public static void TestUtf7One(String input, String expect) {
             {
                 Object objectTemp = expect;
                 Object objectTemp2 = Encodings.DecodeToString(

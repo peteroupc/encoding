@@ -42,10 +42,10 @@ Use ToReader instead.
 Wraps a byte array into a byte reader. The reader will start at the
  beginning of the byte array. <p>In the .NET implementation, this
  method is implemented as an extension method to any byte array object
- and can be called as follows: <code>bytes.ToByteReader()</code> . If the
+ and can be called as follows: <code>bytes.ToByteReader()</code>. If the
  object's class already has a ToByteReader method with the same
- parameters, that method takes precedence over this extension method.
- </p>
+ parameters, that method takes precedence over this extension
+ method.</p>
 
 **Parameters:**
 
@@ -57,16 +57,16 @@ Wraps a byte array into a byte reader. The reader will start at the
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
+* <code>NullPointerException</code> - The parameter "bytes" is null. .
 
 ### ToReader
     public static IReader ToReader​(byte[] bytes, int offset, int length)
 Wraps a portion of a byte array into a byte reader object. <p>In the .NET
  implementation, this method is implemented as an extension method to
  any byte array object and can be called as follows:
- <code>bytes.ToByteReader(offset, length)</code> . If the object's class
+ <code>bytes.ToByteReader(offset, length)</code>. If the object's class
  already has a ToByteReader method with the same parameters, that
- method takes precedence over this extension method. </p>
+ method takes precedence over this extension method.</p>
 
 **Parameters:**
 
@@ -84,21 +84,21 @@ Wraps a portion of a byte array into a byte reader object. <p>In the .NET
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
+* <code>NullPointerException</code> - The parameter "bytes" is null. .
 
-* <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
- less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
- ' s length minus <code>offset</code> is less than <code>length</code> .
+* <code>IllegalArgumentException</code> - Either "offset" or "length" is less than 0
+ or greater than "bytes" 's length, or "bytes" ' s length minus
+ "offset" is less than "length" . .
 
 ### ToReader
     public static IReader ToReader​(InputStream input)
 Wraps an input stream into a reader object. If an IOException is thrown by
- the input stream, the reader object throws InvalidOperationException
+ the input stream, the reader object throws IllegalStateException
  instead. <p>In the .NET implementation, this method is implemented as
  an extension method to any object implementing InputStream and can be
- called as follows: <code>input.ToByteReader()</code> . If the object's
- class already has a ToByteReader method with the same parameters,
- that method takes precedence over this extension method. </p>
+ called as follows: <code>input.ToByteReader()</code>. If the object's class
+ already has a ToByteReader method with the same parameters, that
+ method takes precedence over this extension method.</p>
 
 **Parameters:**
 
@@ -110,7 +110,7 @@ Wraps an input stream into a reader object. If an IOException is thrown by
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>input</code> is null.
+* <code>NullPointerException</code> - The parameter "input" is null. .
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader​(byte[] bytes, int offset, int length)
@@ -133,11 +133,11 @@ Deprecated.
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
+* <code>NullPointerException</code> - The parameter "bytes" is null.
 
-* <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
- less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
- 's length minus <code>offset</code> is less than <code>length</code>.
+* <code>IllegalArgumentException</code> - Either "offset" or "length" is less than 0
+ or greater than "bytes" 's length, or "bytes" 's length minus
+ "offset" is less than "length".
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader​(InputStream input)
@@ -146,11 +146,15 @@ Deprecated.
 
 **Parameters:**
 
-* <code>input</code> - The parameter <code>input</code> is not documented yet.
+* <code>input</code> - The data stream to wrap into a byte reader.
 
 **Returns:**
 
 * An IByteReader object.
+
+**Throws:**
+
+* <code>NullPointerException</code> - The parameter "stream" is null.
 
 ### ToByteReader
     @Deprecated public static IByteReader ToByteReader​(byte[] bytes)
@@ -159,21 +163,25 @@ Deprecated.
 
 **Parameters:**
 
-* <code>bytes</code> - The parameter <code>bytes</code> is not documented yet.
+* <code>bytes</code> - The byte array to wrap into a byte reader.
 
 **Returns:**
 
 * An IByteReader object.
 
+**Throws:**
+
+* <code>NullPointerException</code> - The parameter "bytes" is null.
+
 ### ToWriter
     public static IWriter ToWriter​(OutputStream output)
 Wraps an output stream into a writer object. If an IOException is thrown by
- the input stream, the writer object throws InvalidOperationException
+ the input stream, the writer object throws IllegalStateException
  instead. <p>In the .NET implementation, this method is implemented as
  an extension method to any object implementing InputStream and can be
- called as follows: <code>output.ToWriter()</code> . If the object's class
+ called as follows: <code>output.ToWriter()</code>. If the object's class
  already has a ToWriter method with the same parameters, that method
- takes precedence over this extension method. </p>
+ takes precedence over this extension method.</p>
 
 **Parameters:**
 
@@ -185,7 +193,7 @@ Wraps an output stream into a writer object. If an IOException is thrown by
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>output</code> is null.
+* <code>NullPointerException</code> - The parameter "output" is null. .
 
 ### ToWriter
     public static IWriter ToWriter​(IByteWriter output)
@@ -193,9 +201,9 @@ Wraps a byte writer (one that only implements a ReadByte method) to a writer
  (one that also implements a three-parameter Read method.) <p>In the
  .NET implementation, this method is implemented as an extension
  method to any object implementing IByteWriter and can be called as
- follows: <code>output.ToWriter()</code> . If the object's class already has
+ follows: <code>output.ToWriter()</code>. If the object's class already has
  a ToWriter method with the same parameters, that method takes
- precedence over this extension method. </p>
+ precedence over this extension method.</p>
 
 **Parameters:**
 
@@ -207,4 +215,4 @@ Wraps a byte writer (one that only implements a ReadByte method) to a writer
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>output</code> is null.
+* <code>NullPointerException</code> - The parameter "output" is null. .

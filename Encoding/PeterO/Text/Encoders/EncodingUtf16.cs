@@ -8,10 +8,12 @@ namespace PeterO.Text.Encoders {
     private class EndianFreeEncoder : ICharacterEncoder {
       private ICharacterEncoder encoder;
       private bool start;
+
       public EndianFreeEncoder() {
         this.start = true;
         this.encoder = new Encoder(false);  // little endian
       }
+
       public int Encode(int c, IWriter output) {
         if (this.start) {
           if (c < 0) {
@@ -33,14 +35,17 @@ namespace PeterO.Text.Encoders {
         }
       }
     }
+
     private class EndianFreeDecoder : ICharacterDecoder {
       private ICharacterDecoder decoder;
       private bool start;
+
       public EndianFreeDecoder() {
         this.start = true;
       }
+
       public int ReadChar(IByteReader stream) {
-        if (!start) {
+        if (!this.start) {
           return this.decoder.ReadChar(stream);
         }
         int c = stream.ReadByte();
@@ -92,7 +97,7 @@ namespace PeterO.Text.Encoders {
         this.surrogate = surrogate;
       }
 
-      public Decoder(bool bigEndian) : this(bigEndian, -1){
+      public Decoder(bool bigEndian) : this(bigEndian, -1) {
       }
 
       public int ReadChar(IByteReader stream) {

@@ -13,7 +13,6 @@ using PeterO;
 using PeterO.Text;
 using Test;
 
-// TODO: Add new tests for Big5 and GBK
 namespace EncodingTest {
     [TestFixture]
     public class CharsetsTest {
@@ -446,7 +445,8 @@ var cpe = new CodePageEncoding(Encodings.StringToInput(builder.ToString()));
       public int ReadByte() {
         int ret = this.reader.ReadByte();
         if (ret >= 0) {
- ++this.Position;
+int newPosition = this.Position + 1;
+ this.Position = newPosition;
 }
         return ret;
       }
@@ -667,21 +667,33 @@ public void TestUtf16BERoundTrip() {
       ICharacterEncoding enc = Encodings.GetEncoding("utf-16", true);
       byte[] bytes;
       bytes = new byte[] { 0xff, 0xfe, 0x41, 0, 0x42, 0, 0x43, 0 };
-      Assert.AreEqual(
-        "ABC",
-        Encodings.DecodeToString(enc, bytes));
+      {
+string stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.AreEqual(
+  "ABC",
+  stringTemp);
+}
       bytes = new byte[] { 0xfe, 0xff, 0, 0x41, 0, 0x42, 0, 0x43 };
-      Assert.AreEqual(
-        "ABC",
-        Encodings.DecodeToString(enc, bytes));
+      {
+string stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.AreEqual(
+  "ABC",
+  stringTemp);
+}
       bytes = new byte[] { 0xfe, 0xff, 0, 0x41, 0, 0x42, 0, 0x43 };
-      Assert.AreEqual(
-        "ABC",
-        Encodings.DecodeToString(enc, bytes));
-      bytes = new byte[] { 0xfe, 0xff, 0, 0x41, 0};
-      Assert.AreEqual(
-        "A\ufffd",
-        Encodings.DecodeToString(enc, bytes));
+      {
+string stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.AreEqual(
+  "ABC",
+  stringTemp);
+}
+      bytes = new byte[] { 0xfe, 0xff, 0, 0x41, 0 };
+      {
+string stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.AreEqual(
+  "A\ufffd",
+  stringTemp);
+}
       bytes = new byte[] { 0xfe, 0xff };
       Assert.AreEqual(
         String.Empty,
@@ -691,21 +703,33 @@ public void TestUtf16BERoundTrip() {
         String.Empty,
         Encodings.DecodeToString(enc, bytes));
       bytes = new byte[] { 0, 0x41 };
-      Assert.AreEqual(
-        "A",
-        Encodings.DecodeToString(enc, bytes));
+      {
+string stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.AreEqual(
+  "A",
+  stringTemp);
+}
       bytes = new byte[] { 0xfe, 0xff, 0 };
-      Assert.AreEqual(
-        "\ufffd",
-        Encodings.DecodeToString(enc, bytes));
+      {
+string stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.AreEqual(
+  "\ufffd",
+  stringTemp);
+}
       bytes = new byte[] { 0xfe };
-      Assert.AreEqual(
-        "\ufffd",
-        Encodings.DecodeToString(enc, bytes));
+      {
+string stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.AreEqual(
+  "\ufffd",
+  stringTemp);
+}
       bytes = new byte[] { 0xdc, 0 };
-      Assert.AreEqual(
-        "\ufffd",
-        Encodings.DecodeToString(enc, bytes));
+      {
+string stringTemp = Encodings.DecodeToString(enc, bytes);
+Assert.AreEqual(
+  "\ufffd",
+  stringTemp);
+}
     }
 
     public static void TestUtf7One(string input, string expect) {

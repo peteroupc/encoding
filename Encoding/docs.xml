@@ -396,12 +396,11 @@
 </doc>
 <doc name="M:PeterO.DataIO.ByteArrayTransform.Read(System.Byte[],System.Int32,System.Int32)">
 
-            <summary>This is an internal method.</summary><param name='bytes'>The parameter <paramref name='bytes'/> is not documented yet.</param><param name='offset'>A zero-based index showing where the desired
+            <summary>This is an internal method.</summary><param name='bytes'>The parameter <paramref name='bytes'/> is an internal parameter.</param><param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='bytes'/> begins.</param><param name='length'>The length, in bytes, of the desired portion
             of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param><returns>A 32-bit signed integer.</returns><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
             greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
-            than <paramref name='length'/>.</exception><exception cref='T:System.ArgumentNullException'>The parameter is
-            null.</exception>
+            than <paramref name='length'/>.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ByteArrayTransform.ReadByte">
@@ -413,24 +412,25 @@
 </doc>
 <doc name="M:PeterO.DataIO.ToByteReader(System.Byte[])">
 
-            <summary>Not documented yet.
+            <summary>Wraps a byte array into a byte reader.
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing byte[] and can be
             called as follows: <c>bytes.ToByteReader()</c>. If the object's
             class already has a ToByteReader method with the same parameters,
             that method takes precedence over this extension
-            method.</para></summary><param name='bytes'>The parameter <paramref name='bytes'/> is not documented yet.</param><returns>An IByteReader object.</returns>
+            method.</para></summary><param name='bytes'>The byte array to wrap into a byte reader.</param><returns>An IByteReader object.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToByteReader(System.Byte[],System.Int32,System.Int32)">
 
-            <summary>Not documented yet.
+            <summary>Wraps a portion of a byte array into a byte reader.
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing byte[] and can be
             called as follows: <c>bytes.ToByteReader(offset, length)</c>. If
             the object's class already has a ToByteReader method with the same
             parameters, that method takes precedence over this extension
-            method.</para></summary><param name='bytes'>The parameter <paramref name='bytes'/> is not documented yet.</param><param name='offset'>A zero-based index showing where the desired
+            method.</para></summary><param name='bytes'>The byte array to wrap into a byte reader.</param><param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='bytes'/> begins.</param><param name='length'>The length, in bytes, of the desired portion
             of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param><returns>An IByteReader object.</returns><exception cref='T:System.ArgumentNullException'>The parameter
             <paramref name='bytes'/> is null.</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
@@ -440,13 +440,14 @@
 </doc>
 <doc name="M:PeterO.DataIO.ToByteReader(System.IO.Stream)">
 
-            <summary>Not documented yet.
+            <summary>Wraps a data stream into a byte reader.
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing Stream and can be
             called as follows: <c>input.ToByteReader()</c>. If the object's
             class already has a ToByteReader method with the same parameters,
             that method takes precedence over this extension
-            method.</para></summary><param name='input'>The parameter <paramref name='input'/> is not documented yet.</param><returns>An IByteReader object.</returns>
+            method.</para></summary><param name='input'>The data stream to wrap into a byte reader.</param><returns>An IByteReader object.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='stream'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToReader(System.Byte[])">
@@ -1959,7 +1960,8 @@
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)">
 
-            <summary>Not documented yet.
+            <summary>Decodes data read from a data stream into a text string
+in the given character encoding.
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing ICharacterEncoding and
             can be called as follows: <c>encoding.DecodeToString(input)</c>.
@@ -2035,13 +2037,15 @@
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,System.Boolean)">
 
-            <summary>Not documented yet.
+            <summary>Reads Unicode characters from a character input and writes
+            them to a byte array encoded using the given character encoder and fallback strategy.
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing ICharacterInput and can
             be called as follows: <c>input.EncodeToBytes(encoder,
             htmlFallback)</c>. If the object's class already has a
             <c>EncodeToBytes</c> method with the same parameters, that method
-            takes precedence over this extension method.</para></summary><param name='input'>The parameter <paramref name='input'/> is not documented yet.</param><param name='encoder'>The parameter <paramref name='encoder'/> is not documented yet.</param><param name='htmlFallback'>The parameter <paramref name='htmlFallback'/> is not documented yet.</param><returns>A byte array.</returns><exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoder'/> or <paramref name='input'/> is null.</exception>
+            takes precedence over this extension method.</para></summary><param name='input'>An object that implements a stream of universal
+            code points.</param><param name='encoder'>A character encoder that takes Unicode characters and writes them into bytes.</param><param name='htmlFallback'>If true, when the encoder encounters invalid characters that can't be mapped into bytes, writes the HTML decimal escape for the invalid characters instead.  If false, writes a question mark byte (0x3f) upon encountering invalid characters.</param><returns>A byte array containing the encoded characters.</returns><exception cref='T:System.ArgumentNullException'>The parameter <paramref name='encoder'/> or <paramref name='input'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding)">
@@ -2051,12 +2055,6 @@
             When writing to the byte array, any characters that can't be
             encoded are replaced with the byte 0x3f (the question mark
             character).
-            <para>In the .NET implementation, this method is implemented as an
-            extension method to any object implementing ICharacterInput and can
-            be called as follows: <c>input.EncodeToBytes(encoding)</c>. If the
-            object's class already has an EncodeToBytes method with the same
-            parameters, that method takes precedence over this extension
-            method.</para>
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing ICharacterInput and can
             be called as follows: <c>input.EncodeToBytes(encoding)</c>. If the
@@ -2086,22 +2084,26 @@
             called as follows: <c>str.EncodeToBytes(enc)</c>. If the object's
             class already has a <c>EncodeToBytes</c> method with the same
             parameters, that method takes precedence over this extension
-            method.</para></summary><param name='str'>The parameter <paramref name='str'/> is a text
-            string.</param><param name='enc'>An object implementing a character encoding
-            (gives access to an encoder and a decoder).</param><returns>A byte array.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            method.</para></summary><param name='str'>A text string to encode to a byte array</param><param name='enc'>An object implementing a character encoding
+            (gives access to an encoder and a decoder).</param><returns>A byte array containing the encoded text string.</returns><exception cref='T:System.ArgumentNullException'>The parameter
             <paramref name='str'/> or <paramref name='enc'/> is
             null.</exception>
 
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding,System.Boolean)">
 
-            <summary>Not documented yet.
+            <summary>Reads Unicode characters from a text string and writes
+            them to a byte array encoded in a given character encoding and using
+the given encoder fallback strategy. When
+            reading the string, any unpaired surrogate characters are replaced
+            with the replacement character (U+FFFD).
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing string and can be
             called as follows: <c>str.EncodeToBytes(enc, htmlFallback)</c>. If
             the object's class already has a <c>EncodeToBytes</c> method with
             the same parameters, that method takes precedence over this
-            extension method.</para></summary><param name='str'>The parameter <paramref name='str'/> is not documented yet.</param><param name='enc'>The parameter <paramref name='enc'/> is not documented yet.</param><param name='htmlFallback'>The parameter <paramref name='htmlFallback'/> is not documented yet.</param><returns>A byte array.</returns><exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> or <paramref name='enc'/> is null.</exception>
+            extension method.</para></summary><param name='str'>A text string to encode to a byte array</param><param name='enc'>An object implementing a character encoding
+            (gives access to an encoder and a decoder).</param><param name='htmlFallback'>If true, when the encoder encounters invalid characters that can't be mapped into bytes, writes the HTML decimal escape for the invalid characters instead.  If false, writes a question mark byte (0x3f) upon encountering invalid characters.</param><returns>A byte array containing the encoded text string.</returns><exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> or <paramref name='enc'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,PeterO.IWriter)">
@@ -2274,7 +2276,9 @@
 </doc>
 <doc name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,System.IO.Stream)">
 
-            <summary>Not documented yet.
+            <summary>Converts a character encoding into a character input stream, given a data stream. The input stream doesn't check the first few
+      bytes for a byte-order mark indicating a Unicode encoding such as UTF-8
+      before using the character encoding's decoder.
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing ICharacterEncoding and
             can be called as follows: <c>encoding.GetDecoderInput(input)</c>.

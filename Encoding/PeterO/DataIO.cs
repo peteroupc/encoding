@@ -12,8 +12,18 @@ namespace PeterO {
     /// <include file='../docs.xml'
     /// path='docs/doc[@name="T:PeterO.DataIO"]/*'/>
   public static class DataIO {
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.Byte[])"]/*'/>
+    /// <summary>Wraps a byte array into a byte reader. The reader will
+    /// start at the beginning of the byte array.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any byte array object and can be called as
+    /// follows: <c>bytes.ToByteReader()</c>. If the object's class
+    /// already has a ToByteReader method with the same parameters, that
+    /// method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='bytes'>The byte array to wrap.</param>
+    /// <returns>A byte reader wrapping the byte array.</returns>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &#x22;bytes&#x22; is null. .</exception>
     public static IReader ToReader(
   #if !NET20
 this
@@ -25,8 +35,26 @@ byte[] bytes) {
       return new ByteArrayTransform(bytes, 0, bytes.Length);
     }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.Byte[],System.Int32,System.Int32)"]/*'/>
+    /// <summary>Wraps a portion of a byte array into a byte reader object.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any byte array object and can be called as
+    /// follows: <c>bytes.ToByteReader(offset, length)</c>. If the
+    /// object's class already has a ToByteReader method with the same
+    /// parameters, that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='bytes'>The byte array to wrap.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of "bytes" begins.</param>
+    /// <param name='length'>The length, in bytes, of the desired portion
+    /// of "bytes" (but not more than "bytes" 's length).</param>
+    /// <returns>A byte reader wrapping the byte array.</returns>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &#x22;bytes&#x22; is null. .</exception>
+    /// <exception cref='T:System.ArgumentException'>Either
+    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; ' s length
+    /// minus &#x22;offset&#x22; is less than &#x22;length&#x22; .
+    /// .</exception>
     public static IReader ToReader(
   #if !NET20
 this
@@ -60,8 +88,19 @@ byte[] bytes,
       return new ByteArrayTransform(bytes, offset, length);
     }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.IO.Stream)"]/*'/>
+    /// <summary>Wraps an input stream into a reader object. If an
+    /// IOException is thrown by the input stream, the reader object throws
+    /// InvalidOperationException instead.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing Stream and can be
+    /// called as follows: <c>input.ToByteReader()</c>. If the object's
+    /// class already has a ToByteReader method with the same parameters,
+    /// that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='input'>The input stream to wrap.</param>
+    /// <returns>A byte reader wrapping the input stream.</returns>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &#x22;input&#x22; is null. .</exception>
     public static IReader ToReader(
   #if !NET20
 this
@@ -73,8 +112,28 @@ Stream input) {
       return new WrappedStream(input);
     }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.Byte[],System.Int32,System.Int32)"]/*'/>
+    /// <summary>Not documented yet.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing byte[] and can be
+    /// called as follows: <c>bytes.ToByteReader(offset, length)</c>. If
+    /// the object's class already has a ToByteReader method with the same
+    /// parameters, that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='bytes'>The parameter <paramref name='bytes'/> is not
+    /// documented yet.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of <paramref name='bytes'/> begins.</param>
+    /// <param name='length'>The length, in bytes, of the desired portion
+    /// of <paramref name='bytes'/> (but not more than <paramref
+    /// name='bytes'/> 's length).</param>
+    /// <returns>An IByteReader object.</returns>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &#x22;bytes&#x22; is null.</exception>
+    /// <exception cref='T:System.ArgumentException'>Either
+    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; 's length
+    /// minus &#x22;offset&#x22; is less than
+    /// &#x22;length&#x22;.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
   #if !NET20
@@ -86,8 +145,18 @@ byte[] bytes,
       return (IByteReader)ToReader(bytes, offset, length);
     }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.IO.Stream)"]/*'/>
+    /// <summary>Wraps a data stream into a byte reader.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing Stream and can be
+    /// called as follows: <c>input.ToByteReader()</c>. If the object's
+    /// class already has a ToByteReader method with the same parameters,
+    /// that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='input'>The data stream to wrap into a byte
+    /// reader.</param>
+    /// <returns>An IByteReader object.</returns>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &quot;stream&quot; is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
   #if !NET20
@@ -97,8 +166,18 @@ Stream input) {
       return (IByteReader)ToReader(input);
     }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ToByteReader(System.Byte[])"]/*'/>
+    /// <summary>Wraps a byte array into a byte reader.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing byte[] and can be
+    /// called as follows: <c>bytes.ToByteReader()</c>. If the object's
+    /// class already has a ToByteReader method with the same parameters,
+    /// that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='bytes'>The byte array to wrap into a byte
+    /// reader.</param>
+    /// <returns>An IByteReader object.</returns>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &quot;bytes&quot; is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
   #if !NET20
@@ -108,8 +187,19 @@ byte[] bytes) {
       return (IByteReader)ToReader(bytes);
     }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ToWriter(System.IO.Stream)"]/*'/>
+    /// <summary>Wraps an output stream into a writer object. If an
+    /// IOException is thrown by the input stream, the writer object throws
+    /// InvalidOperationException instead.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing Stream and can be
+    /// called as follows: <c>output.ToWriter()</c>. If the object's class
+    /// already has a ToWriter method with the same parameters, that method
+    /// takes precedence over this extension method.</para></summary>
+    /// <param name='output'>Output stream to wrap.</param>
+    /// <returns>A byte writer that wraps the given output
+    /// stream.</returns>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &#x22;output&#x22; is null. .</exception>
     public static IWriter ToWriter(
   #if !NET20
 this
@@ -121,8 +211,18 @@ Stream output) {
       return new WrappedOutputStream(output);
     }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ToWriter(PeterO.IByteWriter)"]/*'/>
+    /// <summary>Wraps a byte writer (one that only implements a ReadByte
+    /// method) to a writer (one that also implements a three-parameter
+    /// Read method.)
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing IByteWriter and can be
+    /// called as follows: <c>output.ToWriter()</c>. If the object's class
+    /// already has a ToWriter method with the same parameters, that method
+    /// takes precedence over this extension method.</para></summary>
+    /// <param name='output'>A byte stream.</param>
+    /// <returns>A writer that wraps the given stream.</returns>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &#x22;output&#x22; is null. .</exception>
     public static IWriter ToWriter(
   #if !NET20
 this
@@ -156,8 +256,22 @@ IByteWriter output) {
         return ((int)b) & 0xff;
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.ByteArrayTransform.Read(System.Byte[],System.Int32,System.Int32)"]/*'/>
+    /// <summary>This is an internal method.</summary>
+    /// <param name='bytes'>The parameter <paramref name='bytes'/> is not
+    /// documented yet.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of <paramref name='bytes'/> begins.</param>
+    /// <param name='length'>The length, in bytes, of the desired portion
+    /// of <paramref name='bytes'/> (but not more than <paramref
+    /// name='bytes'/> 's length).</param>
+    /// <returns>A 32-bit signed integer.</returns>
+    /// <exception cref='T:System.ArgumentException'>Either
+    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; ' s length
+    /// minus &#x22;offset&#x22; is less than
+    /// &#x22;length&#x22;.</exception>
+    /// <exception cref='ArgumentNullException'>The parameter
+    /// &#x22;bytes&#x22; is null.</exception>
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
           throw new ArgumentNullException(nameof(bytes));
@@ -213,8 +327,19 @@ IByteWriter output) {
         }
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStream.Write(System.Byte[],System.Int32,System.Int32)"]/*'/>
+    /// <summary>This is an internal method.</summary>
+    /// <param name='bytes'>A byte array.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of "bytes" begins.</param>
+    /// <param name='length'>The length, in bytes, of the desired portion
+    /// of "bytes" (but not more than "bytes" 's length).</param>
+    /// <exception cref='T:System.ArgumentException'>Either
+    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; ' s length
+    /// minus &#x22;offset&#x22; is less than &#x22;length&#x22; .
+    /// .</exception>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &#x22;bytes&#x22; is null. .</exception>
       public void Write(byte[] bytes, int offset, int length) {
         try {
           this.output.Write(bytes, offset, length);
@@ -237,8 +362,19 @@ IByteWriter output) {
         this.output.WriteByte((byte)byteValue);
       }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.Write(System.Byte[],System.Int32,System.Int32)"]/*'/>
+    /// <summary>This is an internal method.</summary>
+    /// <param name='bytes'>A byte array.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of "bytes" begins.</param>
+    /// <param name='length'>The length, in bytes, of the desired portion
+    /// of "bytes" (but not more than "bytes" 's length).</param>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// &#x22;bytes&#x22; is null. .</exception>
+    /// <exception cref='T:System.ArgumentException'>Either
+    /// &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+    /// than &#x22;bytes&#x22; 's length, or &#x22;bytes&#x22; ' s length
+    /// minus &#x22;offset&#x22; is less than &#x22;length&#x22; .
+    /// .</exception>
       public void Write(byte[] bytes, int offset, int length) {
         if (bytes == null) {
           throw new ArgumentNullException(nameof(bytes));

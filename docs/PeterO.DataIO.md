@@ -24,7 +24,8 @@ An IByteReader object.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter "bytes" is null.
+The parameter <i>bytes</i>
+ is null.
 
 ### ToByteReader
 
@@ -35,12 +36,11 @@ The parameter "bytes" is null.
 
 <b>Deprecated.</b> Use ToReader instead.
 
-Not documented yet.In the .NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows:  `bytes.ToByteReader(offset, length)` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
+Wraps a portion of a byte array into a byte reader.In the .NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows:  `bytes.ToByteReader(offset, length)` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
- * <i>bytes</i>: The parameter  <i>bytes</i>
- is not documented yet.
+ * <i>bytes</i>: The byte array to wrap into a byte reader.
 
  * <i>offset</i>: A zero-based index showing where the desired portion of  <i>bytes</i>
  begins.
@@ -56,10 +56,17 @@ An IByteReader object.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter "bytes" is null.
+The parameter <i>bytes</i>
+ is null.
 
  * System.ArgumentException:
-Either "offset" or "length" is less than 0 or greater than "bytes" 's length, or "bytes" 's length minus "offset" is less than "length".
+Either  <i>offset</i>
+ or  <i>length</i>
+ is less than 0 or greater than  <i>bytes</i>
+ 's length, or  <i>bytes</i>
+ 's length minus  <i>offset</i>
+ is less than  <i>length</i>
+.
 
 ### ToByteReader
 
@@ -81,7 +88,8 @@ An IByteReader object.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter "stream" is null.
+The parameter <i>input</i>
+ is null.
 
 ### ToReader
 
@@ -101,7 +109,8 @@ A byte reader wrapping the byte array.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter "bytes" is null. .
+The parameter <i>bytes</i>
+ is null. .
 
 ### ToReader
 
@@ -127,10 +136,17 @@ A byte reader wrapping the byte array.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter "bytes" is null. .
+The parameter <i>bytes</i>
+ is null. .
 
  * System.ArgumentException:
-Either "offset" or "length" is less than 0 or greater than "bytes" 's length, or "bytes" ' s length minus "offset" is less than "length" . .
+Either  <i>offset</i>
+ or  <i>length</i>
+ is less than 0 or greater than  <i>bytes</i>
+ 's length, or  <i>bytes</i>
+ ' s length minus  <i>offset</i>
+ is less than  <i>length</i>
+. .
 
 ### ToReader
 
@@ -150,7 +166,8 @@ A byte reader wrapping the input stream.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter "input" is null. .
+The parameter <i>input</i>
+ is null. .
 
 ### ToWriter
 
@@ -170,7 +187,8 @@ A writer that wraps the given stream.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter "output" is null. .
+The parameter <i>output</i>
+ is null. .
 
 ### ToWriter
 
@@ -190,4 +208,5 @@ A byte writer that wraps the given output stream.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter "output" is null. .
+The parameter <i>output</i>
+ is null. .

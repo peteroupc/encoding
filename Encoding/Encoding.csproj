@@ -13,7 +13,7 @@
 A portable library for .NET that implements character encodings used in Web pages and email.
     </Description>
     <PackageReleaseNotes>
-    Version 0.4.0:
+Version 0.5.0:
 
 - Separate aliases and encodings for email are used, for better conformance to MIME.
 - New methods added to Encodings class.

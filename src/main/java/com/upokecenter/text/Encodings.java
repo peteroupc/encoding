@@ -133,7 +133,7 @@ private Encodings() {
      * @param input An object that implements a byte stream.
      * @return The converted string.
      * @throws java.lang.NullPointerException The parameter {@code encoding} or
-     * {@code input} is null. .
+     * {@code input} is null.
      */
     public static String DecodeToString(
 ICharacterEncoding encoding,
@@ -381,7 +381,7 @@ EncoderAlgorithms.EncodeAlgorithm(input, encoder, writer);
      * character (U + FFFD), and when writing to the byte array, any
      * characters that can't be encoded are replaced with the byte 0x3f (the
      * question mark character). <p>In the .NET implementation, this method
-     * is implemented as an extension method to any string object and can be
+     * is implemented as an extension method to any String object and can be
      * called as follows: <code>str.EncodeToBytes(enc)</code>. If the object's
      * class already has a EncodeToBytes method with the same parameters,
      * that method takes precedence over this extension method.</p> <p>In
@@ -2028,11 +2028,10 @@ return aliases;
      * @param length The number of elements in the desired portion of {@code
      * buffer} (but not more than {@code buffer} 's length).
      * @return A 32-bit signed integer.
-     * @throws java.lang.NullPointerException The parameter {@code buffer} is null. .
+     * @throws java.lang.NullPointerException The parameter {@code buffer} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code buffer} 's length, or {@code
      * buffer} ' s length minus {@code offset} is less than {@code length}.
-     * .
      */
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {

@@ -23,7 +23,7 @@ namespace PeterO {
     /// <param name='bytes'>The byte array to wrap.</param>
     /// <returns>A byte reader wrapping the byte array.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='bytes'/> is null. .</exception>
+    /// <paramref name='bytes'/> is null.</exception>
     public static IReader ToReader(
   #if !NET20
 this
@@ -49,12 +49,12 @@ byte[] bytes) {
     /// of "bytes" (but not more than "bytes" 's length).</param>
     /// <returns>A byte reader wrapping the byte array.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='bytes'/> is null. .</exception>
+    /// <paramref name='bytes'/> is null.</exception>
     /// <exception cref='T:System.ArgumentException'>Either <paramref
     /// name='offset'/> or <paramref name='length'/> is less than 0 or
     /// greater than <paramref name='bytes'/> 's length, or <paramref
     /// name='bytes'/> ' s length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>. .</exception>
+    /// than <paramref name='length'/>.</exception>
     public static IReader ToReader(
   #if !NET20
 this
@@ -100,7 +100,7 @@ byte[] bytes,
     /// <param name='input'>The input stream to wrap.</param>
     /// <returns>A byte reader wrapping the input stream.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='input'/> is null. .</exception>
+    /// <paramref name='input'/> is null.</exception>
     public static IReader ToReader(
   #if !NET20
 this
@@ -159,7 +159,7 @@ byte[] bytes) {
     /// <returns>A byte writer that wraps the given output
     /// stream.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='output'/> is null. .</exception>
+    /// <paramref name='output'/> is null.</exception>
     public static IWriter ToWriter(
   #if !NET20
 this
@@ -182,7 +182,7 @@ Stream output) {
     /// <param name='output'>A byte stream.</param>
     /// <returns>A writer that wraps the given stream.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='output'/> is null. .</exception>
+    /// <paramref name='output'/> is null.</exception>
     public static IWriter ToWriter(
   #if !NET20
 this
@@ -230,7 +230,7 @@ IByteWriter output) {
     /// greater than <paramref name='bytes'/> 's length, or <paramref
     /// name='bytes'/> ' s length minus <paramref name='offset'/> is less
     /// than <paramref name='length'/>.</exception>
-    /// <exception cref='ArgumentNullException'>The parameter
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
     /// &#x22;bytes&#x22; is null.</exception>
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
@@ -297,9 +297,9 @@ IByteWriter output) {
     /// name='offset'/> or <paramref name='length'/> is less than 0 or
     /// greater than <paramref name='bytes'/> 's length, or <paramref
     /// name='bytes'/> ' s length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>. .</exception>
+    /// than <paramref name='length'/>.</exception>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='bytes'/> is null. .</exception>
+    /// <paramref name='bytes'/> is null.</exception>
       public void Write(byte[] bytes, int offset, int length) {
         try {
           this.output.Write(bytes, offset, length);
@@ -329,12 +329,12 @@ IByteWriter output) {
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of "bytes" (but not more than "bytes" 's length).</param>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='bytes'/> is null. .</exception>
+    /// <paramref name='bytes'/> is null.</exception>
     /// <exception cref='T:System.ArgumentException'>Either <paramref
     /// name='offset'/> or <paramref name='length'/> is less than 0 or
     /// greater than <paramref name='bytes'/> 's length, or <paramref
     /// name='bytes'/> ' s length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>. .</exception>
+    /// than <paramref name='length'/>.</exception>
       public void Write(byte[] bytes, int offset, int length) {
         if (bytes == null) {
           throw new ArgumentNullException(nameof(bytes));

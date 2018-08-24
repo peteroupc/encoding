@@ -34,8 +34,8 @@ namespace PeterO.Text {
     /// stream.</param>
     /// <returns>The converted string.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='encoding'/> or <paramref name='input'/> is null.
-    /// .</exception>
+    /// <paramref name='encoding'/> or <paramref name='input'/> is
+    /// null.</exception>
     public static string DecodeToString(
   #if !NET20
 this
@@ -185,30 +185,8 @@ EncoderAlgorithms.EncodeAlgorithm(input, encoder, writer);
       return writer.ToArray();
     }
 
-    /// <summary>Reads Unicode characters from a text string and writes
-    /// them to a byte array encoded in a given character encoding. When
-    /// reading the string, any unpaired surrogate characters are replaced
-    /// with the replacement character (U + FFFD), and when writing to the
-    /// byte array, any characters that can't be encoded are replaced with
-    /// the byte 0x3f (the question mark character).
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any String object and can be called as follows:
-    /// <c>str.EncodeToBytes(enc)</c>. If the object's class already has a
-    /// EncodeToBytes method with the same parameters, that method takes
-    /// precedence over this extension method.</para>
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing string and can be
-    /// called as follows: <c>str.EncodeToBytes(enc)</c>. If the object's
-    /// class already has a <c>EncodeToBytes</c> method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='str'>A text string to encode to a byte array.</param>
-    /// <param name='enc'>An object implementing a character encoding
-    /// (gives access to an encoder and a decoder).</param>
-    /// <returns>A byte array containing the encoded text string.</returns>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='str'/> or <paramref name='enc'/> is
-    /// null.</exception>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding)"]/*'/>
     public static byte[] EncodeToBytes(
   #if !NET20
 this
@@ -227,29 +205,8 @@ string str,
   false);
     }
 
-    /// <summary>Reads Unicode characters from a text string and writes
-    /// them to a byte array encoded in a given character encoding and
-    /// using the given encoder fallback strategy. When reading the string,
-    /// any unpaired surrogate characters are replaced with the replacement
-    /// character (U + FFFD).
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing string and can be
-    /// called as follows: <c>str.EncodeToBytes(enc, htmlFallback)</c>. If
-    /// the object's class already has a <c>EncodeToBytes</c> method with
-    /// the same parameters, that method takes precedence over this
-    /// extension method.</para></summary>
-    /// <param name='str'>A text string to encode to a byte array.</param>
-    /// <param name='enc'>An object implementing a character encoding
-    /// (gives access to an encoder and a decoder).</param>
-    /// <param name='htmlFallback'>If true, when the encoder encounters
-    /// invalid characters that can't be mapped into bytes, writes the HTML
-    /// decimal escape for the invalid characters instead. If false, writes
-    /// a question mark byte (0x3f) upon encountering invalid
-    /// characters.</param>
-    /// <returns>A byte array containing the encoded text string.</returns>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='str'/> or <paramref name='enc'/> is
-    /// null.</exception>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding,System.Boolean)"]/*'/>
     public static byte[] EncodeToBytes(
   #if !NET20
 this
@@ -1502,12 +1459,12 @@ return aliases;
     /// name='buffer'/> 's length).</param>
     /// <returns>A 32-bit signed integer.</returns>
     /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='buffer'/> is null. .</exception>
+    /// <paramref name='buffer'/> is null.</exception>
     /// <exception cref='T:System.ArgumentException'>Either <paramref
     /// name='offset'/> or <paramref name='length'/> is less than 0 or
     /// greater than <paramref name='buffer'/> 's length, or <paramref
     /// name='buffer'/> ' s length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>. .</exception>
+    /// than <paramref name='length'/>.</exception>
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {
           throw new ArgumentNullException(nameof(buffer));

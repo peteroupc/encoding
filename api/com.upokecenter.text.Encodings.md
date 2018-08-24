@@ -260,7 +260,7 @@ Reads bytes from a data source and converts the bytes from a given encoding
 **Throws:**
 
 * <code>NullPointerException</code> - The parameter <code>encoding</code> or
- <code>input</code> is null. .
+ <code>input</code> is null.
 
 ### DecodeToString
     public static String DecodeToString​(ICharacterEncoding enc, InputStream input)
@@ -463,7 +463,7 @@ Reads Unicode characters from a text string and writes them to a byte array
  character (U + FFFD), and when writing to the byte array, any
  characters that can't be encoded are replaced with the byte 0x3f (the
  question mark character). <p>In the .NET implementation, this method
- is implemented as an extension method to any string object and can be
+ is implemented as an extension method to any String object and can be
  called as follows: <code>str.EncodeToBytes(enc)</code>. If the object's
  class already has a EncodeToBytes method with the same parameters,
  that method takes precedence over this extension method.</p> <p>In

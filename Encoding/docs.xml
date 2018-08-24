@@ -395,13 +395,40 @@
 
 </doc>
 <doc name="M:PeterO.DataIO.ByteArrayTransform.Read(System.Byte[],System.Int32,System.Int32)">
-
-            <summary>This is an internal method.</summary><param name='bytes'>The parameter <paramref name='bytes'/> is an internal parameter.</param><param name='offset'>A zero-based index showing where the desired
-            portion of <paramref name='bytes'/> begins.</param><param name='length'>The length, in bytes, of the desired portion
-            of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param><returns>A 32-bit signed integer.</returns><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
-            than <paramref name='length'/>.</exception>
-
+<summary>This is an internal method.
+    </summary>
+    <param name='bytes'>The parameter
+      <paramref name='bytes'/>
+       is an internal parameter.
+    </param>
+    <param name='offset'>A zero-based index showing where the desired portion of
+      <paramref name='bytes'/>
+       begins.
+    </param>
+    <param name='length'>The length, in bytes, of the desired portion of
+      <paramref name='bytes'/>
+       (but not more than
+      <paramref name='bytes'/>
+       's length).
+    </param>
+    <returns>A 32-bit signed integer.
+    </returns>
+    <exception cref='T:System.ArgumentException'>Either
+      <paramref name='offset'/>
+       or
+      <paramref name='length'/>
+       is less than 0 or greater than
+      <paramref name='bytes'/>
+       's length, or
+      <paramref name='bytes'/>
+       ' s length minus
+      <paramref name='offset'/>
+       is less than
+      <paramref name='length'/>
+      .
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>The parameter &#x22;bytes&#x22; is null.
+    </exception>
 </doc>
 <doc name="M:PeterO.DataIO.ByteArrayTransform.ReadByte">
 
@@ -447,141 +474,87 @@
             class already has a ToByteReader method with the same parameters,
             that method takes precedence over this extension
             method.</para></summary><param name='input'>The data stream to wrap into a byte reader.</param><returns>An IByteReader object.</returns><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='stream'/> is null.</exception>
+            <paramref name='input'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToReader(System.Byte[])">
 
-            <summary>Wraps a byte array into a byte reader. The reader will start at the
-      beginning of the byte array.
-      <para>In the .NET implementation, this method is implemented as an extension
-        method to any byte array object and can be called as follows:
-        <c>bytes.ToByteReader()</c>
-         . If the object's class already has a ToByteReader method with the same
-        parameters, that method takes precedence over this extension method.
-      </para>
-    </summary><param name='bytes'>The byte array to wrap.
-    </param><returns>A byte reader wrapping the byte array.
-    </returns><exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
-    </exception>
+            <summary>Wraps a byte array into a byte reader. The reader will
+            start at the beginning of the byte array.
+            <para>In the .NET implementation, this method is implemented as an
+            extension method to any byte array object and can be called as
+            follows: <c>bytes.ToByteReader()</c>. If the object's class
+            already has a ToByteReader method with the same parameters, that
+            method takes precedence over this extension
+            method.</para></summary><param name='bytes'>The byte array to wrap.</param><returns>A byte reader wrapping the byte array.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null. .</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToReader(System.Byte[],System.Int32,System.Int32)">
 
             <summary>Wraps a portion of a byte array into a byte reader object.
-      <para>In the .NET implementation, this method is implemented as an extension
-        method to any byte array object and can be called as follows:
-        <c>bytes.ToByteReader(offset, length)</c>
-         . If the object's class already has a ToByteReader method with the same
-        parameters, that method takes precedence over this extension method.
-      </para>
-    </summary><param name='bytes'>The byte array to wrap.
-    </param><param name='offset'>A zero-based index showing where the desired portion of "bytes" begins.
-    </param><param name='length'>The length, in bytes, of the desired portion of "bytes" (but not more than
-      "bytes" 's length).
-    </param><returns>A byte reader wrapping the byte array.
-    </returns><exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
-    </exception><exception cref='T:System.ArgumentException'>Either
-      <paramref name='offset'/>
-       or
-      <paramref name='length'/>
-       is less than 0 or greater than
-      <paramref name='bytes'/>
-       's length, or
-      <paramref name='bytes'/>
-       ' s length minus
-      <paramref name='offset'/>
-       is less than
-      <paramref name='length'/>
-       .
-    </exception>
+            <para>In the .NET implementation, this method is implemented as an
+            extension method to any byte array object and can be called as
+            follows: <c>bytes.ToByteReader(offset, length)</c>. If the
+            object's class already has a ToByteReader method with the same
+            parameters, that method takes precedence over this extension
+            method.</para></summary><param name='bytes'>The byte array to wrap.</param><param name='offset'>A zero-based index showing where the desired
+            portion of "bytes" begins.</param><param name='length'>The length, in bytes, of the desired portion
+            of "bytes" (but not more than "bytes" 's length).</param><returns>A byte reader wrapping the byte array.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null. .</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
+            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
+            than <paramref name='length'/>. .</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToReader(System.IO.Stream)">
 
-            <summary>Wraps an input stream into a reader object. If an IOException is thrown by
-      the input stream, the reader object throws InvalidOperationException
-      instead.
-      <para>In the .NET implementation, this method is implemented as an extension
-        method to any object implementing Stream and can be called as follows:
-        <c>input.ToByteReader()</c>
-         . If the object's class already has a ToByteReader method with the same
-        parameters, that method takes precedence over this extension method.
-      </para>
-    </summary><param name='input'>The input stream to wrap.
-    </param><returns>A byte reader wrapping the input stream.
-    </returns><exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='input'/>
-       is null.
-    </exception>
+            <summary>Wraps an input stream into a reader object. If an
+            IOException is thrown by the input stream, the reader object throws
+            InvalidOperationException instead.
+            <para>In the .NET implementation, this method is implemented as an
+            extension method to any object implementing Stream and can be
+            called as follows: <c>input.ToByteReader()</c>. If the object's
+            class already has a ToByteReader method with the same parameters,
+            that method takes precedence over this extension
+            method.</para></summary><param name='input'>The input stream to wrap.</param><returns>A byte reader wrapping the input stream.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='input'/> is null. .</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToWriter(PeterO.IByteWriter)">
 
-            <summary>Wraps a byte writer (one that only implements a ReadByte method) to a
-      writer (one that also implements a three-parameter Read method.)
-      <para>In the .NET implementation, this method is implemented as an extension
-        method to any object implementing IByteWriter and can be called as
-        follows:
-        <c>output.ToWriter()</c>
-         . If the object's class already has a ToWriter method with the same
-        parameters, that method takes precedence over this extension method.
-      </para>
-    </summary><param name='output'>A byte stream.
-    </param><returns>A writer that wraps the given stream.
-    </returns><exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='output'/>
-       is null.
-    </exception>
+            <summary>Wraps a byte writer (one that only implements a ReadByte
+            method) to a writer (one that also implements a three-parameter
+            Read method.)
+            <para>In the .NET implementation, this method is implemented as an
+            extension method to any object implementing IByteWriter and can be
+            called as follows: <c>output.ToWriter()</c>. If the object's class
+            already has a ToWriter method with the same parameters, that method
+            takes precedence over this extension method.</para></summary><param name='output'>A byte stream.</param><returns>A writer that wraps the given stream.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='output'/> is null. .</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToWriter(System.IO.Stream)">
 
-            <summary>Wraps an output stream into a writer object. If an IOException is thrown
-      by the input stream, the writer object throws InvalidOperationException
-      instead.
-      <para>In the .NET implementation, this method is implemented as an extension
-        method to any object implementing Stream and can be called as follows:
-        <c>output.ToWriter()</c>
-         . If the object's class already has a ToWriter method with the same
-        parameters, that method takes precedence over this extension method.
-      </para>
-    </summary><param name='output'>Output stream to wrap.
-    </param><returns>A byte writer that wraps the given output stream.
-    </returns><exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='output'/>
-       is null.
-    </exception>
+            <summary>Wraps an output stream into a writer object. If an
+            IOException is thrown by the input stream, the writer object throws
+            InvalidOperationException instead.
+            <para>In the .NET implementation, this method is implemented as an
+            extension method to any object implementing Stream and can be
+            called as follows: <c>output.ToWriter()</c>. If the object's class
+            already has a ToWriter method with the same parameters, that method
+            takes precedence over this extension method.</para></summary><param name='output'>Output stream to wrap.</param><returns>A byte writer that wraps the given output
+            stream.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='output'/> is null. .</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStream.Write(System.Byte[],System.Int32,System.Int32)">
 
-            <summary>This is an internal method.
-    </summary><param name='bytes'>A byte array.
-    </param><param name='offset'>A zero-based index showing where the desired portion of "bytes" begins.
-    </param><param name='length'>The length, in bytes, of the desired portion of "bytes" (but not more than
-      "bytes" 's length).
-    </param><exception cref='T:System.ArgumentException'>Either
-      <paramref name='offset'/>
-       or
-      <paramref name='length'/>
-       is less than 0 or greater than
-      <paramref name='bytes'/>
-       's length, or
-      <paramref name='bytes'/>
-       ' s length minus
-      <paramref name='offset'/>
-       is less than
-      <paramref name='length'/>
-       .
-    </exception><exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
-    </exception>
+            <summary>This is an internal method.</summary><param name='bytes'>A byte array.</param><param name='offset'>A zero-based index showing where the desired
+            portion of "bytes" begins.</param><param name='length'>The length, in bytes, of the desired portion
+            of "bytes" (but not more than "bytes" 's length).</param><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
+            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
+            than <paramref name='length'/>. .</exception><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null. .</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStream.WriteByte(System.Int32)">
@@ -595,28 +568,12 @@
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.Write(System.Byte[],System.Int32,System.Int32)">
 
-            <summary>This is an internal method.
-    </summary><param name='bytes'>A byte array.
-    </param><param name='offset'>A zero-based index showing where the desired portion of "bytes" begins.
-    </param><param name='length'>The length, in bytes, of the desired portion of "bytes" (but not more than
-      "bytes" 's length).
-    </param><exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
-    </exception><exception cref='T:System.ArgumentException'>Either
-      <paramref name='offset'/>
-       or
-      <paramref name='length'/>
-       is less than 0 or greater than
-      <paramref name='bytes'/>
-       's length, or
-      <paramref name='bytes'/>
-       ' s length minus
-      <paramref name='offset'/>
-       is less than
-      <paramref name='length'/>
-       .
-    </exception>
+            <summary>This is an internal method.</summary><param name='bytes'>A byte array.</param><param name='offset'>A zero-based index showing where the desired
+            portion of "bytes" begins.</param><param name='length'>The length, in bytes, of the desired portion
+            of "bytes" (but not more than "bytes" 's length).</param><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null. .</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
+            greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
+            than <paramref name='length'/>. .</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.WriteByte(System.Int32)">
@@ -1887,24 +1844,19 @@
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)">
 
-            <summary>Reads bytes from a data source and converts the bytes from a given
-      encoding to a text string.
-      <para>In the .NET implementation, this method is implemented as an extension
-        method to any object implementing ICharacterEncoding and can be called
-        as follows: "encoding.DecodeString(input)". If the object's class
-        already has a DecodeToString method with the same parameters, that
-        method takes precedence over this extension method.
-      </para>
-    </summary><param name='encoding'>An object that implements a given character encoding. Any bytes that can't
-      be decoded are converted to the replacement character (U+FFFD).
-    </param><param name='input'>An object that implements a byte stream.
-    </param><returns>The converted string.
-    </returns><exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='encoding'/>
-       or
-      <paramref name='input'/>
-       is null.
-    </exception>
+            <summary>Reads bytes from a data source and converts the bytes from
+            a given encoding to a text string.
+            <para>In the .NET implementation, this method is implemented as an
+            extension method to any object implementing ICharacterEncoding and
+            can be called as follows: "encoding.DecodeString(input)". If the
+            object's class already has a DecodeToString method with the same
+            parameters, that method takes precedence over this extension
+            method.</para></summary><param name='encoding'>An object that implements a given character
+            encoding. Any bytes that can't be decoded are converted to the
+            replacement character (U+FFFD).</param><param name='input'>An object that implements a byte
+            stream.</param><returns>The converted string.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='encoding'/> or <paramref name='input'/> is null.
+            .</exception>
 
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[])">
@@ -1974,34 +1926,12 @@ in the given character encoding.
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecoderToInputClass.Read(System.Int32[],System.Int32,System.Int32)">
 
-            <summary>This is an internal method.
-    </summary><param name='buffer'>An array of 32-bit unsigned integers.
-    </param><param name='offset'>A zero-based index showing where the desired portion of
-      <paramref name='buffer'/>
-       begins.
-    </param><param name='length'>The number of elements in the desired portion of
-      <paramref name='buffer'/>
-       (but not more than
-      <paramref name='buffer'/>
-       's length).
-    </param><returns>A 32-bit signed integer.
-    </returns><exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='buffer'/>
-       is null.
-    </exception><exception cref='T:System.ArgumentException'>Either
-      <paramref name='offset'/>
-       or
-      <paramref name='length'/>
-       is less than 0 or greater than
-      <paramref name='buffer'/>
-       's length, or
-      <paramref name='buffer'/>
-       ' s length minus
-      <paramref name='offset'/>
-       is less than
-      <paramref name='length'/>
-       .
-    </exception>
+            <summary>This is an internal method.</summary><param name='buffer'>An array of 32-bit unsigned integers.</param><param name='offset'>A zero-based index showing where the desired
+            portion of <paramref name='buffer'/> begins.</param><param name='length'>The number of elements in the desired portion
+            of <paramref name='buffer'/> (but not more than <paramref name='buffer'/> 's length).</param><returns>A 32-bit signed integer.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='buffer'/> is null. .</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
+            greater than <paramref name='buffer'/> 's length, or <paramref name='buffer'/> ' s length minus <paramref name='offset'/> is less
+            than <paramref name='length'/>. .</exception>
 
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar">
@@ -2084,7 +2014,7 @@ in the given character encoding.
             called as follows: <c>str.EncodeToBytes(enc)</c>. If the object's
             class already has a <c>EncodeToBytes</c> method with the same
             parameters, that method takes precedence over this extension
-            method.</para></summary><param name='str'>A text string to encode to a byte array</param><param name='enc'>An object implementing a character encoding
+            method.</para></summary><param name='str'>A text string to encode to a byte array.</param><param name='enc'>An object implementing a character encoding
             (gives access to an encoder and a decoder).</param><returns>A byte array containing the encoded text string.</returns><exception cref='T:System.ArgumentNullException'>The parameter
             <paramref name='str'/> or <paramref name='enc'/> is
             null.</exception>
@@ -2093,17 +2023,23 @@ in the given character encoding.
 <doc name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding,System.Boolean)">
 
             <summary>Reads Unicode characters from a text string and writes
-            them to a byte array encoded in a given character encoding and using
-the given encoder fallback strategy. When
-            reading the string, any unpaired surrogate characters are replaced
-            with the replacement character (U+FFFD).
+            them to a byte array encoded in a given character encoding and
+            using the given encoder fallback strategy. When reading the string,
+            any unpaired surrogate characters are replaced with the replacement
+            character (U+FFFD).
             <para>In the .NET implementation, this method is implemented as an
             extension method to any object implementing string and can be
             called as follows: <c>str.EncodeToBytes(enc, htmlFallback)</c>. If
             the object's class already has a <c>EncodeToBytes</c> method with
             the same parameters, that method takes precedence over this
-            extension method.</para></summary><param name='str'>A text string to encode to a byte array</param><param name='enc'>An object implementing a character encoding
-            (gives access to an encoder and a decoder).</param><param name='htmlFallback'>If true, when the encoder encounters invalid characters that can't be mapped into bytes, writes the HTML decimal escape for the invalid characters instead.  If false, writes a question mark byte (0x3f) upon encountering invalid characters.</param><returns>A byte array containing the encoded text string.</returns><exception cref='T:System.ArgumentNullException'>The parameter <paramref name='str'/> or <paramref name='enc'/> is null.</exception>
+            extension method.</para></summary><param name='str'>A text string to encode to a byte array.</param><param name='enc'>An object implementing a character encoding
+            (gives access to an encoder and a decoder).</param><param name='htmlFallback'>If true, when the encoder encounters
+            invalid characters that can't be mapped into bytes, writes the HTML
+            decimal escape for the invalid characters instead. If false, writes
+            a question mark byte (0x3f) upon encountering invalid
+            characters.</param><returns>A byte array containing the encoded text string.</returns><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='str'/> or <paramref name='enc'/> is
+            null.</exception>
 
 </doc>
 <doc name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,PeterO.IWriter)">

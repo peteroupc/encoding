@@ -76,6 +76,12 @@ In C#.
 History
 -----------
 
+Version 0.5.0:
+
+- Separate aliases and encodings for email are used, for better conformance to MIME.
+- New methods added to Encodings class.
+- Endian-independent UTF-16 encoded added for email.
+
 Version 0.4.0:
 
 - Updated to latest Encoding Standard draft as of Jun. 28, 2018, except for a bug fix in one encoding.

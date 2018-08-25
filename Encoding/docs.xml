@@ -395,40 +395,15 @@
 
 </doc>
 <doc name="M:PeterO.DataIO.ByteArrayTransform.Read(System.Byte[],System.Int32,System.Int32)">
-<summary>This is an internal method.
-    </summary>
-    <param name='bytes'>The parameter
-      <paramref name='bytes'/>
-       is an internal parameter.
-    </param>
-    <param name='offset'>A zero-based index showing where the desired portion of
-      <paramref name='bytes'/>
-       begins.
-    </param>
-    <param name='length'>The length, in bytes, of the desired portion of
-      <paramref name='bytes'/>
-       (but not more than
-      <paramref name='bytes'/>
-       's length).
-    </param>
-    <returns>A 32-bit signed integer.
-    </returns>
-    <exception cref='T:System.ArgumentException'>Either
-      <paramref name='offset'/>
-       or
-      <paramref name='length'/>
-       is less than 0 or greater than
-      <paramref name='bytes'/>
-       's length, or
-      <paramref name='bytes'/>
-       ' s length minus
-      <paramref name='offset'/>
-       is less than
-      <paramref name='length'/>
-      .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter &#x22;bytes&#x22; is null.
-    </exception>
+
+            <summary>This is an internal method.</summary><param name='bytes'>The parameter <paramref name='bytes'/> is an
+            internal parameter.</param><param name='offset'>A zero-based index showing where the desired
+            portion of <paramref name='bytes'/> begins.</param><param name='length'>The length, in bytes, of the desired portion
+            of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param><returns>A 32-bit signed integer.</returns><exception cref='T:System.ArgumentException'>Either or is less than
+            0 or greater than 's length, or ' s length minus is less than
+            .</exception><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null.</exception>
+
 </doc>
 <doc name="M:PeterO.DataIO.ByteArrayTransform.ReadByte">
 
@@ -487,7 +462,7 @@
             already has a ToByteReader method with the same parameters, that
             method takes precedence over this extension
             method.</para></summary><param name='bytes'>The byte array to wrap.</param><returns>A byte reader wrapping the byte array.</returns><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='bytes'/> is null. .</exception>
+            <paramref name='bytes'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToReader(System.Byte[],System.Int32,System.Int32)">
@@ -501,9 +476,9 @@
             method.</para></summary><param name='bytes'>The byte array to wrap.</param><param name='offset'>A zero-based index showing where the desired
             portion of "bytes" begins.</param><param name='length'>The length, in bytes, of the desired portion
             of "bytes" (but not more than "bytes" 's length).</param><returns>A byte reader wrapping the byte array.</returns><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='bytes'/> is null. .</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
+            <paramref name='bytes'/> is null.</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
             greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
-            than <paramref name='length'/>. .</exception>
+            than <paramref name='length'/>.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToReader(System.IO.Stream)">
@@ -517,7 +492,7 @@
             class already has a ToByteReader method with the same parameters,
             that method takes precedence over this extension
             method.</para></summary><param name='input'>The input stream to wrap.</param><returns>A byte reader wrapping the input stream.</returns><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='input'/> is null. .</exception>
+            <paramref name='input'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToWriter(PeterO.IByteWriter)">
@@ -530,7 +505,7 @@
             called as follows: <c>output.ToWriter()</c>. If the object's class
             already has a ToWriter method with the same parameters, that method
             takes precedence over this extension method.</para></summary><param name='output'>A byte stream.</param><returns>A writer that wraps the given stream.</returns><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='output'/> is null. .</exception>
+            <paramref name='output'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.ToWriter(System.IO.Stream)">
@@ -544,7 +519,7 @@
             already has a ToWriter method with the same parameters, that method
             takes precedence over this extension method.</para></summary><param name='output'>Output stream to wrap.</param><returns>A byte writer that wraps the given output
             stream.</returns><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='output'/> is null. .</exception>
+            <paramref name='output'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStream.Write(System.Byte[],System.Int32,System.Int32)">
@@ -553,8 +528,8 @@
             portion of "bytes" begins.</param><param name='length'>The length, in bytes, of the desired portion
             of "bytes" (but not more than "bytes" 's length).</param><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
             greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
-            than <paramref name='length'/>. .</exception><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='bytes'/> is null. .</exception>
+            than <paramref name='length'/>.</exception><exception cref='T:System.ArgumentNullException'>The parameter
+            <paramref name='bytes'/> is null.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStream.WriteByte(System.Int32)">
@@ -571,9 +546,9 @@
             <summary>This is an internal method.</summary><param name='bytes'>A byte array.</param><param name='offset'>A zero-based index showing where the desired
             portion of "bytes" begins.</param><param name='length'>The length, in bytes, of the desired portion
             of "bytes" (but not more than "bytes" 's length).</param><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='bytes'/> is null. .</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
+            <paramref name='bytes'/> is null.</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
             greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> ' s length minus <paramref name='offset'/> is less
-            than <paramref name='length'/>. .</exception>
+            than <paramref name='length'/>.</exception>
 
 </doc>
 <doc name="M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.WriteByte(System.Int32)">
@@ -1855,8 +1830,8 @@
             encoding. Any bytes that can't be decoded are converted to the
             replacement character (U+FFFD).</param><param name='input'>An object that implements a byte
             stream.</param><returns>The converted string.</returns><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='encoding'/> or <paramref name='input'/> is null.
-            .</exception>
+            <paramref name='encoding'/> or <paramref name='input'/> is
+            null.</exception>
 
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[])">
@@ -1929,9 +1904,9 @@ in the given character encoding.
             <summary>This is an internal method.</summary><param name='buffer'>An array of 32-bit unsigned integers.</param><param name='offset'>A zero-based index showing where the desired
             portion of <paramref name='buffer'/> begins.</param><param name='length'>The number of elements in the desired portion
             of <paramref name='buffer'/> (but not more than <paramref name='buffer'/> 's length).</param><returns>A 32-bit signed integer.</returns><exception cref='T:System.ArgumentNullException'>The parameter
-            <paramref name='buffer'/> is null. .</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
+            <paramref name='buffer'/> is null.</exception><exception cref='T:System.ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
             greater than <paramref name='buffer'/> 's length, or <paramref name='buffer'/> ' s length minus <paramref name='offset'/> is less
-            than <paramref name='length'/>. .</exception>
+            than <paramref name='length'/>.</exception>
 
 </doc>
 <doc name="M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar">
@@ -2552,12 +2527,10 @@ in the given character encoding.
   Hangul syllables have different code point assignments in Unicode 1.1 and
  earlier than in Unicode 2.0 and later).
         </item>
+        <item><c>ISO-2022-JP-2</c>
+           - similar to "ISO-2022-JP", except that the decoder supports additional character sets.
+        </item>
       </list>
-       . In previous versions of this method, the name
-      <c>iso-2022-jp-2</c>
-       was also aliased to
-      <c>ISO-2022-JP</c>
-       , which is no longer the case.
     </param><returns>A standardized name for the encoding. Returns the empty string if
       <paramref name='name'/>
        is null or empty, or if the encoding name is unsupported.

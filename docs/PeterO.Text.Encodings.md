@@ -193,7 +193,7 @@ The converted string.
  * System.ArgumentNullException:
 The parameter <i>encoding</i>
  or  <i>input</i>
- is null. .
+ is null.
 
 ### EncodeToBytes
 

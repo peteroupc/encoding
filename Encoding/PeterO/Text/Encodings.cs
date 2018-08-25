@@ -19,23 +19,8 @@ namespace PeterO.Text {
     private static readonly IDictionary<string, string> EmailAliases =
         CreateEmailAliasMap();
 
-    /// <summary>Reads bytes from a data source and converts the bytes from
-    /// a given encoding to a text string.
-    /// <para>In the .NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: "encoding.DecodeString(input)". If the
-    /// object's class already has a DecodeToString method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='encoding'>An object that implements a given character
-    /// encoding. Any bytes that can't be decoded are converted to the
-    /// replacement character (U + FFFD).</param>
-    /// <param name='input'>An object that implements a byte
-    /// stream.</param>
-    /// <returns>The converted string.</returns>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='encoding'/> or <paramref name='input'/> is
-    /// null.</exception>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static string DecodeToString(
   #if !NET20
 this
@@ -802,6 +787,8 @@ ICharacterEncoding encoding,
         return (ICharacterEncoding)(new EncodingUtf16LE());
       } else if (name.Equals("UTF-16BE")) {
         return (ICharacterEncoding)(new EncodingUtf16BE());
+      } else if (name.Equals("ISO-2022-JP-2")) {
+        return (ICharacterEncoding)(new PeterO.Text.Encoders.EncodingISO2022JP2());
       }
       return name.Equals("ISO-2022-JP") ? (ICharacterEncoding)(new
         EncodingISO2022JP()) :
@@ -1335,6 +1322,8 @@ aliases["cswindows1257"] = "windows-1257";
 aliases["windows-1257"] = "windows-1257";
 aliases["cswindows1258"] = "windows-1258";
 aliases["windows-1258"] = "windows-1258";
+aliases["csiso2022jp2"] = "ISO-2022-JP-2";
+aliases["iso-2022-jp-2"] = "ISO-2022-JP-2";
 aliases["csgb2312"] = "GB2312";
 aliases["gb2312"] = "GB2312";
 aliases["cp936"] = "GBK";
@@ -1450,21 +1439,8 @@ return aliases;
         return (c == -2) ? 0xfffd : c;
       }
 
-    /// <summary>This is an internal method.</summary>
-    /// <param name='buffer'>An array of 32-bit unsigned integers.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of <paramref name='buffer'/> begins.</param>
-    /// <param name='length'>The number of elements in the desired portion
-    /// of <paramref name='buffer'/> (but not more than <paramref
-    /// name='buffer'/> 's length).</param>
-    /// <returns>A 32-bit signed integer.</returns>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='buffer'/> is null.</exception>
-    /// <exception cref='T:System.ArgumentException'>Either <paramref
-    /// name='offset'/> or <paramref name='length'/> is less than 0 or
-    /// greater than <paramref name='buffer'/> 's length, or <paramref
-    /// name='buffer'/> ' s length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>.</exception>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.Read(System.Int32[],System.Int32,System.Int32)"]/*'/>
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {
           throw new ArgumentNullException(nameof(buffer));

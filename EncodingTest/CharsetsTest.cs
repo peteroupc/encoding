@@ -7,6 +7,7 @@ at: http://peteroupc.github.io/
  */
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using NUnit.Framework;
 using PeterO;
@@ -61,6 +62,56 @@ public void TestGB18030() {
             TestEncodingRoundTrip("\ud800\udc00", encoding);
             TestEncodingRoundTrip("\udbff\udfff", encoding);
         }
+
+    private static byte[] ISOIRTestString(string preamble) {
+      using (var ms = new MemoryStream()) {
+        for (var i = 0x21; i <= 0x7e; i++) {
+          ms.WriteByte(0x1b);
+          for (var c = 0; c < preamble.Length; c++) {
+            ms.WriteByte((byte)preamble[c]);
+          }
+          for (var j = 0x21; j <= 0x7e; j++) {
+            ms.WriteByte((byte)i);
+            ms.WriteByte((byte)j);
+          }
+          ms.WriteByte(0x1b);
+          ms.WriteByte(0x28);
+          ms.WriteByte(0x42);
+          ms.WriteByte(0x0d);
+          ms.WriteByte(0x0a);
+        }
+        return ms.ToArray();
+      }
+    }
+    private static byte[] ISOIRTestStringSB(string preamble) {
+      using (var ms = new MemoryStream()) {
+        for (var i = 0; i <= 15; i++) {
+          ms.WriteByte(0x1b);
+          for (var c = 0; c < preamble.Length; c++) {
+            ms.WriteByte((byte)preamble[c]);
+          }
+          for (var j = 2; j <= 7; j++) {
+            ms.WriteByte((byte)(j * 16 + i));
+          }
+          ms.WriteByte(0x1b);
+          ms.WriteByte(0x28);
+          ms.WriteByte(0x42);
+          ms.WriteByte(0x0d);
+          ms.WriteByte(0x0a);
+        }
+        return ms.ToArray();
+      }
+    }
+
+    [Test]
+    public static void TestIso2022JP2() {
+      byte[] bytes = ISOIRTestStringSB(".F");
+      ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-JP-2", true);
+      Assert.NotNull(enc);
+      string s = Encodings.DecodeToString(enc, bytes);
+      //Console.WriteLine(s);
+    }
+
 
         [Test]
 public void TestIso2022JP() {

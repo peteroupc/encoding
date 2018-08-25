@@ -93,7 +93,7 @@ Wraps a portion of a byte array into a byte reader object. <p>In the .NET
 ### ToReader
     public static IReader ToReader​(InputStream input)
 Wraps an input stream into a reader object. If an IOException is thrown by
- the input stream, the reader object throws IllegalStateException
+ the input stream, the reader object throws InvalidOperationException
  instead. <p>In the .NET implementation, this method is implemented as
  an extension method to any object implementing InputStream and can be
  called as follows: <code>input.ToByteReader()</code>. If the object's class
@@ -176,7 +176,7 @@ Deprecated.
 ### ToWriter
     public static IWriter ToWriter​(OutputStream output)
 Wraps an output stream into a writer object. If an IOException is thrown by
- the input stream, the writer object throws IllegalStateException
+ the input stream, the writer object throws InvalidOperationException
  instead. <p>In the .NET implementation, this method is implemented as
  an extension method to any object implementing InputStream and can be
  called as follows: <code>output.ToWriter()</code>. If the object's class

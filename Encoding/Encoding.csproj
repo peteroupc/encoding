@@ -40,9 +40,4 @@ Version 0.5.0:
       <LogicalName>PeterO.Text.Encoders.AppResources.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\..\CBOR\CBOR\PeterO\DebugUtility.cs">
-      <Link>PeterO\DebugUtility.cs</Link>
-    </Compile>
-  </ItemGroup>
 </Project>

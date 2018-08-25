@@ -110,7 +110,7 @@ A byte reader wrapping the byte array.
 
  * System.ArgumentNullException:
 The parameter <i>bytes</i>
- is null. .
+ is null.
 
 ### ToReader
 
@@ -137,7 +137,7 @@ A byte reader wrapping the byte array.
 
  * System.ArgumentNullException:
 The parameter <i>bytes</i>
- is null. .
+ is null.
 
  * System.ArgumentException:
 Either  <i>offset</i>
@@ -146,7 +146,7 @@ Either  <i>offset</i>
  's length, or  <i>bytes</i>
  ' s length minus  <i>offset</i>
  is less than  <i>length</i>
-. .
+.
 
 ### ToReader
 
@@ -167,7 +167,7 @@ A byte reader wrapping the input stream.
 
  * System.ArgumentNullException:
 The parameter <i>input</i>
- is null. .
+ is null.
 
 ### ToWriter
 
@@ -188,7 +188,7 @@ A writer that wraps the given stream.
 
  * System.ArgumentNullException:
 The parameter <i>output</i>
- is null. .
+ is null.
 
 ### ToWriter
 
@@ -209,4 +209,4 @@ A byte writer that wraps the given output stream.
 
  * System.ArgumentNullException:
 The parameter <i>output</i>
- is null. .
+ is null.

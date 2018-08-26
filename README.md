@@ -60,7 +60,7 @@ In C#.
     // Reads text from a SHIFT-JIS stream, but uses UTF-8/UTF-16
     // instead if it detects byte order marks
       using (var stream = new FileStream(filename, FileMode.Open)) {
-        return Encodings.GetEncoding("shift-jis")
+        return Encodings.GetEncoding("shift_jis")
            .GetDecoderInputSkipBom(stream).InputToString();
       }
 ```
@@ -80,7 +80,9 @@ Version 0.5.0:
 
 - Separate aliases and encodings for email are used, for better conformance to MIME.
 - New methods added to Encodings class.
-- Endian-independent UTF-16 encoded added for email.
+- Endian-independent UTF-16 encoding added for email.
+- ISO-2022-JP-2 encoding added for email.
+- .NET 2 and .NET 4 assemblies added to NuGet package.
 
 Version 0.4.0:
 

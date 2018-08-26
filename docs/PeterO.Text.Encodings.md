@@ -722,7 +722,7 @@ Resolves a character encoding's name to a canonical form, using rules more suita
 
  *  `UTF-7` - UTF-7 (7-bit universal coded character set). The name `unicode-1-1-utf-7` is not supported and is not treated as an alias to `UTF-7` , even though it uses the same character encoding scheme as UTF-7, because RFC 1642, which defined the former UTF-7, is linked to a different Unicode version with an incompatible character repertoire (notably, the Hangul syllables have different code point assignments in Unicode 1.1 and earlier than in Unicode 2.0 and later).
 
-. In previous versions of this method, the name `iso-2022-jp-2` was also aliased to `ISO-2022-JP` , which is no longer the case.
+ *  `ISO-2022-JP-2` - similar to "ISO-2022-JP", except that the decoder supports additional character sets.
 
 <b>Return Value:</b>
 

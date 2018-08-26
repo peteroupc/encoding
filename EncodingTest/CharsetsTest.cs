@@ -65,12 +65,12 @@ public void TestGB18030() {
 
     private static byte[] ISOIRTestString(string preamble) {
       using (var ms = new MemoryStream()) {
-        for (var i = 0x21; i <= 0x7e; i++) {
+        for (var i = 0x21; i <= 0x7e; ++i) {
           ms.WriteByte(0x1b);
-          for (var c = 0; c < preamble.Length; c++) {
+          for (var c = 0; c < preamble.Length; ++c) {
             ms.WriteByte((byte)preamble[c]);
           }
-          for (var j = 0x21; j <= 0x7e; j++) {
+          for (var j = 0x21; j <= 0x7e; ++j) {
             ms.WriteByte((byte)i);
             ms.WriteByte((byte)j);
           }
@@ -83,14 +83,15 @@ public void TestGB18030() {
         return ms.ToArray();
       }
     }
+
     private static byte[] ISOIRTestStringSB(string preamble) {
       using (var ms = new MemoryStream()) {
-        for (var i = 0; i <= 15; i++) {
+        for (var i = 0; i <= 15; ++i) {
           ms.WriteByte(0x1b);
-          for (var c = 0; c < preamble.Length; c++) {
+          for (var c = 0; c < preamble.Length; ++c) {
             ms.WriteByte((byte)preamble[c]);
           }
-          for (var j = 2; j <= 7; j++) {
+          for (var j = 2; j <= 7; ++j) {
             ms.WriteByte((byte)(j * 16 + i));
           }
           ms.WriteByte(0x1b);
@@ -107,11 +108,12 @@ public void TestGB18030() {
     public static void TestIso2022JP2() {
       byte[] bytes = ISOIRTestStringSB(".F");
       ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-JP-2", true);
-      Assert.NotNull(enc);
+      if (enc == null) {
+ Assert.Fail();
+ }
       string s = Encodings.DecodeToString(enc, bytes);
-      //Console.WriteLine(s);
+      // Console.WriteLine(s);
     }
-
 
         [Test]
 public void TestIso2022JP() {

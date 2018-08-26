@@ -788,7 +788,7 @@ ICharacterEncoding encoding,
       } else if (name.Equals("UTF-16BE")) {
         return (ICharacterEncoding)(new EncodingUtf16BE());
       } else if (name.Equals("ISO-2022-JP-2")) {
-        return (ICharacterEncoding)(new PeterO.Text.Encoders.EncodingISO2022JP2());
+    return (ICharacterEncoding)(new PeterO.Text.Encoders.EncodingISO2022JP2());
       }
       return name.Equals("ISO-2022-JP") ? (ICharacterEncoding)(new
         EncodingISO2022JP()) :
@@ -831,31 +831,61 @@ ICharacterInput reader) {
              String.Empty;
     }
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.ResolveAliasForEmail(System.String)"]/*'/>
+    /// <summary>Resolves a character encoding's name to a canonical form,
+    /// using rules more suitable for email.</summary>
+    /// <param name='name'>A string naming a character encoding. Can be
+    /// null. Uses a modified version of the rules in the Encoding Standard
+    /// to better conform, in some cases, to email standards like MIME.
+    /// Encoding names and aliases not registered with the Internet
+    /// Assigned Numbers Authority (IANA) are not supported, with the
+    /// exception of <c>ascii</c>, <c>utf8</c>, <c>cp1252</c>, and names
+    /// 10 characters or longer starting with <c>iso-8859-</c>. Also, the
+    /// following additional encodings are supported. Note that the case
+    /// combination <c>GB18030</c>, the combination registered with IANA,
+    /// rather than <c>gb18030</c> can be retured by this method.
+    /// <list type='bullet'>
+    /// <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an
+    /// alias to <c>windows-1252</c> as specified in the Encoding Standard.
+    /// The coded character set's code points match those in the Unicode
+    /// Standard's Basic Latin block (0-127 or U+0000 to U+007F). The name
+    /// <c>ascii</c> is an alias.</item>
+    /// <item><c>ISO-8859-1</c> - Latin-1 single-byte encoding, rather than
+    /// an alias to <c>windows-1252</c> as specified in the Encoding
+    /// Standard. The coded character set's code points match those in the
+    /// Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255
+    /// or U + 0000 to U + 00FF).</item>
+    /// <item><c>UTF-16</c> - UTF-16 without a fixed byte order, rather
+    /// than an alias to <c>UTF-16LE</c> as specified in the Encoding
+    /// Standard. The byte order is little endian if the byte stream starts
+    /// with 0xff 0xfe; otherwise, big endian. A leading 0xff 0xfe or 0xFE
+    /// 0xff in the byte stream is skipped.</item>
+    /// <item><c>UTF-7</c> - UTF-7 (7-bit universal coded character set).
+    /// The name <c>unicode-1-1-utf-7</c> is not supported and is not
+    /// treated as an alias to <c>UTF-7</c>, even though it uses the same
+    /// character encoding scheme as UTF-7, because RFC 1642, which defined
+    /// the former UTF-7, is linked to a different Unicode version with an
+    /// incompatible character repertoire (notably, the Hangul syllables
+    /// have different code point assignments in Unicode 1.1 and earlier
+    /// than in Unicode 2.0 and later).</item>
+    /// <item><c>ISO-2022-JP-2</c> - similar to "ISO-2022-JP", except that
+    /// the decoder supports additional character sets.</item></list>
+    /// .</param>
+    /// <returns>A standardized name for the encoding. Returns the empty
+    /// string if <paramref name='name'/> is null or empty, or if the
+    /// encoding name is unsupported.</returns>
     public static string ResolveAliasForEmail(string name) {
       if (String.IsNullOrEmpty(name)) {
         return String.Empty;
       }
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
-      if (name.Equals("utf-8") || name.Equals("utf8")) {
-        return "UTF-8";
-      }
-      if (name.Equals("iso-8859-1")) {
-        return "ISO-8859-1";
-      }
-      if (name.Equals("us-ascii") || name.Equals("ascii") ||
-        name.Equals("ansi_x3.4-1968")) {
+      if (name.Equals("ascii")) {
         // DEVIATION: "ascii" is not an IANA-registered name,
         // but occurs not rarely
         return "US-ASCII";
       }
       if (EmailAliases.ContainsKey(name)) {
         return EmailAliases[name];
-      }
-      if (name.Equals("utf-7")) {
-        return "UTF-7";
       }
       if (name.Length > 9 && name.Substring(0, 9).Equals("iso-8859-")) {
         // NOTE: For conformance to RFC 2049, treat unknown iso-8859-* encodings

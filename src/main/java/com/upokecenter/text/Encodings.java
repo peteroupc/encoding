@@ -1202,6 +1202,8 @@ ICharacterEncoding encoding,
         return (ICharacterEncoding)(new EncodingUtf16LE());
       } else if (name.equals("UTF-16BE")) {
         return (ICharacterEncoding)(new EncodingUtf16BE());
+      } else if (name.equals("ISO-2022-JP-2")) {
+    return (ICharacterEncoding)(new PeterO.Text.Encoders.EncodingISO2022JP2());
       }
       return name.equals("ISO-2022-JP") ? (ICharacterEncoding)(new
         EncodingISO2022JP()) :
@@ -1315,8 +1317,8 @@ ICharacterInput reader) {
      * conform, in some cases, to email standards like MIME. Encoding names
      * and aliases not registered with the Internet Assigned Numbers
      * Authority (IANA) are not supported, with the exception of {@code
-     * ascii} , {@code utf8} , {@code cp1252} , and names 10 characters or
-     * longer starting with {@code iso-8859-} . Also, the following
+     * ascii}, {@code utf8}, {@code cp1252}, and names 10 characters or
+     * longer starting with {@code iso-8859-}. Also, the following
      * additional encodings are supported. Note that the case combination
      * {@code GB18030}, the combination registered with IANA, rather than
      * {@code gb18030} can be retured by this method. <ul> <li> {@code
@@ -1324,25 +1326,25 @@ ICharacterInput reader) {
      * {@code windows-1252} as specified in the Encoding Standard. The coded
      * character set's code points match those in the Unicode Standard's
      * Basic Latin block (0-127 or U + 0000 to U + 007F). The name {@code ascii}
-     * is an alias. </li> <li> {@code ISO-8859-1} - Latin-1 single-byte
+     * is an alias.</li> <li> {@code ISO-8859-1} - Latin-1 single-byte
      * encoding, rather than an alias to {@code windows-1252} as specified
      * in the Encoding Standard. The coded character set's code points match
      * those in the Unicode Standard's Basic Latin and Latin-1 Supplement
-     * blocks (0-255 or U + 0000 to U + 00FF). </li> <li> {@code UTF-16} - UTF-16
+     * blocks (0-255 or U + 0000 to U + 00FF).</li> <li> {@code UTF-16} - UTF-16
      * without a fixed byte order, rather than an alias to {@code UTF-16LE}
      * as specified in the Encoding Standard. The byte order is little
      * endian if the byte stream starts with 0xff 0xfe; otherwise, big
      * endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream is
-     * skipped. </li> <li> {@code UTF-7} - UTF-7 (7-bit universal coded
+     * skipped.</li> <li> {@code UTF-7} - UTF-7 (7-bit universal coded
      * character set). The name {@code unicode-1-1-utf-7} is not supported
      * and is not treated as an alias to {@code UTF-7}, even though it uses
      * the same character encoding scheme as UTF-7, because RFC 1642, which
      * defined the former UTF-7, is linked to a different Unicode version
      * with an incompatible character repertoire (notably, the Hangul
      * syllables have different code point assignments in Unicode 1.1 and
-     * earlier than in Unicode 2.0 and later). </li> </ul> . In previous
-     * versions of this method, the name {@code iso-2022-jp-2} was also
-     * aliased to {@code ISO-2022-JP} , which is no longer the case.
+     * earlier than in Unicode 2.0 and later).</li> <li> {@code
+     * ISO-2022-JP-2} - similar to "ISO-2022-JP", except that the decoder
+     * supports additional character sets.</li></ul> .
      * @return A standardized name for the encoding. Returns the empty string if
      * {@code name} is null or empty, or if the encoding name is
      * unsupported.
@@ -1353,23 +1355,13 @@ ICharacterInput reader) {
       }
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
-      if (name.equals("utf-8") || name.equals("utf8")) {
-        return "UTF-8";
-      }
-      if (name.equals("iso-8859-1")) {
-        return "ISO-8859-1";
-      }
-      if (name.equals("us-ascii") || name.equals("ascii") ||
-        name.equals("ansi_x3.4-1968")) {
+      if (name.equals("ascii")) {
         // DEVIATION: "ascii" is not an IANA-registered name,
         // but occurs not rarely
         return "US-ASCII";
       }
       if (EmailAliases.containsKey(name)) {
         return EmailAliases.get(name);
-      }
-      if (name.equals("utf-7")) {
-        return "UTF-7";
       }
       if (name.length() > 9 && name.substring(0,9).equals("iso-8859-")) {
         // NOTE: For conformance to RFC 2049, treat unknown iso-8859-* encodings
@@ -1904,6 +1896,8 @@ aliases.put("cswindows1257","windows-1257");
 aliases.put("windows-1257","windows-1257");
 aliases.put("cswindows1258","windows-1258");
 aliases.put("windows-1258","windows-1258");
+aliases.put("csiso2022jp2","ISO-2022-JP-2");
+aliases.put("iso-2022-jp-2","ISO-2022-JP-2");
 aliases.put("csgb2312","GB2312");
 aliases.put("gb2312","GB2312");
 aliases.put("cp936","GBK");

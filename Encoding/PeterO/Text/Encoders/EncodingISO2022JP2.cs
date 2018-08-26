@@ -151,21 +151,21 @@ namespace PeterO.Text.Encoders {
                 return -2;
               } else if (b >= 0x21 && b <= 0x7e) {
                 machineState = 4;
-                int p = -1;
-                int c = -1;
-                if (leadTrailSet == 0) { 
+                var p = -1;
+                var c = -1;
+                if (leadTrailSet == 0) {
                   // JIS 0208
                   p = (lead - 0x21) * 94 + (b - 0x21);
                   c = Jis0208.IndexToCodePoint(p);
-                } else if (leadTrailSet == 1) { 
+                } else if (leadTrailSet == 1) {
                   // GB2312
                   p = (lead - 0x21) * 190 + (b - 0x21) + 6176;
                   c = Gb18030.IndexToCodePoint(p);
-                } else if (leadTrailSet == 2) { 
+                } else if (leadTrailSet == 2) {
                   // JIS 0212
                   p = (lead - 0x21) * 94 + (b - 0x21);
                   c = Jis0212.IndexToCodePoint(p);
-                } else if (leadTrailSet == 3) { 
+                } else if (leadTrailSet == 3) {
                   // KSC 5601
                   p = (lead - 0x21) * 190 + (b - 0x21) + 6176;
                   c = Korean.IndexToCodePoint(p);

@@ -8,6 +8,7 @@ at: http://peteroupc.github.io/
  */
 
 import java.util.*;
+import java.io.*;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -60,6 +61,74 @@ public void TestGB18030() {
             TestEncodingRoundTrip("\ud800\udc00", encoding);
             TestEncodingRoundTrip("\udbff\udfff", encoding);
         }
+
+    private static byte[] ISOIRTestString(String preamble) {
+      java.io.ByteArrayOutputStream ms = null;
+try {
+ms = new java.io.ByteArrayOutputStream();
+
+        for (int i = 0x21; i <= 0x7e; ++i) {
+          ms.write(0x1b);
+          for (int c = 0; c < preamble.length(); ++c) {
+            ms.write((byte)preamble.charAt(c));
+          }
+          for (int j = 0x21; j <= 0x7e; ++j) {
+            ms.write((byte)i);
+            ms.write((byte)j);
+          }
+          ms.write(0x1b);
+          ms.write(0x28);
+          ms.write(0x42);
+          ms.write(0x0d);
+          ms.write(0x0a);
+        }
+        return ms.toByteArray();
+}
+finally {
+try { if (ms != null) {
+ ms.close();
+ } } catch (java.io.IOException ex) {}
+}
+    }
+
+    private static byte[] ISOIRTestStringSB(String preamble) {
+      java.io.ByteArrayOutputStream ms = null;
+try {
+ms = new java.io.ByteArrayOutputStream();
+
+        for (int i = 0; i <= 15; ++i) {
+          ms.write(0x1b);
+          for (int c = 0; c < preamble.length(); ++c) {
+            ms.write((byte)preamble.charAt(c));
+          }
+          for (int j = 2; j <= 7; ++j) {
+            ms.write((byte)(j * 16 + i));
+          }
+          ms.write(0x1b);
+          ms.write(0x28);
+          ms.write(0x42);
+          ms.write(0x0d);
+          ms.write(0x0a);
+        }
+        return ms.toByteArray();
+}
+finally {
+try { if (ms != null) {
+ ms.close();
+ } } catch (java.io.IOException ex) {}
+}
+    }
+
+    @Test
+    public static void TestIso2022JP2() {
+      byte[] bytes = ISOIRTestStringSB(".F");
+      ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-JP-2", true);
+      if (enc == null) {
+ Assert.fail();
+ }
+      String s = Encodings.DecodeToString(enc, bytes);
+      // System.out.println(s);
+    }
 
         @Test
 public void TestIso2022JP() {

@@ -504,7 +504,7 @@ ICharacterEncoding encoding,
     1107, 1108, 1109, 1110, 1111, 1112, 1113, 1114, 1115, 1116, 167, 1118,
     1119 });
       }
-      if (name.Equals("windows-874")) {
+      if (name.Equals("windows-874") || name.Equals("TIS-620")) {
       return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129,
           130,
     131, 132, 8230, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
@@ -831,48 +831,8 @@ ICharacterInput reader) {
              String.Empty;
     }
 
-    /// <summary>Resolves a character encoding's name to a canonical form,
-    /// using rules more suitable for email.</summary>
-    /// <param name='name'>A string naming a character encoding. Can be
-    /// null. Uses a modified version of the rules in the Encoding Standard
-    /// to better conform, in some cases, to email standards like MIME.
-    /// Encoding names and aliases not registered with the Internet
-    /// Assigned Numbers Authority (IANA) are not supported, with the
-    /// exception of <c>ascii</c>, <c>utf8</c>, <c>cp1252</c>, and names
-    /// 10 characters or longer starting with <c>iso-8859-</c>. Also, the
-    /// following additional encodings are supported. Note that the case
-    /// combination <c>GB18030</c>, the combination registered with IANA,
-    /// rather than <c>gb18030</c> can be retured by this method.
-    /// <list type='bullet'>
-    /// <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an
-    /// alias to <c>windows-1252</c> as specified in the Encoding Standard.
-    /// The coded character set's code points match those in the Unicode
-    /// Standard's Basic Latin block (0-127 or U+0000 to U+007F). The name
-    /// <c>ascii</c> is an alias.</item>
-    /// <item><c>ISO-8859-1</c> - Latin-1 single-byte encoding, rather than
-    /// an alias to <c>windows-1252</c> as specified in the Encoding
-    /// Standard. The coded character set's code points match those in the
-    /// Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255
-    /// or U + 0000 to U + 00FF).</item>
-    /// <item><c>UTF-16</c> - UTF-16 without a fixed byte order, rather
-    /// than an alias to <c>UTF-16LE</c> as specified in the Encoding
-    /// Standard. The byte order is little endian if the byte stream starts
-    /// with 0xff 0xfe; otherwise, big endian. A leading 0xff 0xfe or 0xFE
-    /// 0xff in the byte stream is skipped.</item>
-    /// <item><c>UTF-7</c> - UTF-7 (7-bit universal coded character set).
-    /// The name <c>unicode-1-1-utf-7</c> is not supported and is not
-    /// treated as an alias to <c>UTF-7</c>, even though it uses the same
-    /// character encoding scheme as UTF-7, because RFC 1642, which defined
-    /// the former UTF-7, is linked to a different Unicode version with an
-    /// incompatible character repertoire (notably, the Hangul syllables
-    /// have different code point assignments in Unicode 1.1 and earlier
-    /// than in Unicode 2.0 and later).</item>
-    /// <item><c>ISO-2022-JP-2</c> - similar to "ISO-2022-JP", except that
-    /// the decoder supports additional character sets.</item></list>
-    /// .</param>
-    /// <returns>A standardized name for the encoding. Returns the empty
-    /// string if <paramref name='name'/> is null or empty, or if the
-    /// encoding name is unsupported.</returns>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.Encodings.ResolveAliasForEmail(System.String)"]/*'/>
     public static string ResolveAliasForEmail(string name) {
       if (String.IsNullOrEmpty(name)) {
         return String.Empty;
@@ -1188,12 +1148,6 @@ aliases["ks_c_5601-1989"] = "EUC-KR";
 aliases["ksc5601"] = "EUC-KR";
 aliases["ksc_5601"] = "EUC-KR";
 aliases["windows-949"] = "EUC-KR";
-aliases["csiso2022kr"] = "replacement";
-aliases["hz-gb-2312"] = "replacement";
-aliases["iso-2022-cn"] = "replacement";
-aliases["iso-2022-cn-ext"] = "replacement";
-aliases["iso-2022-kr"] = "replacement";
-aliases["replacement"] = "replacement";
 aliases["utf-16be"] = "UTF-16BE";
 aliases["utf-16"] = "UTF-16LE";
 aliases["utf-16le"] = "UTF-16LE";
@@ -1205,7 +1159,6 @@ return aliases;
     #region CreateEmailAliasMap
 private static IDictionary<string, string> CreateEmailAliasMap() {
 var aliases = new Dictionary<string, string>();
-aliases["csutf8"] = "UTF-8";
 aliases["utf-8"] = "UTF-8";
 aliases["utf8"] = "UTF-8";
 aliases["866"] = "IBM866";
@@ -1249,7 +1202,6 @@ aliases["iso_8859-6"] = "ISO-8859-6";
 aliases["iso_8859-6:1987"] = "ISO-8859-6";
 aliases["csiso88596i"] = "ISO-8859-6-I";
 aliases["iso-8859-6-i"] = "ISO-8859-6-I";
-aliases["iso_8859-6-i"] = "ISO-8859-6-I";
 aliases["csisolatingreek"] = "ISO-8859-7";
 aliases["ecma-118"] = "ISO-8859-7";
 aliases["elot_928"] = "ISO-8859-7";
@@ -1267,50 +1219,28 @@ aliases["iso_8859-8"] = "ISO-8859-8";
 aliases["iso_8859-8:1988"] = "ISO-8859-8";
 aliases["csiso88598i"] = "ISO-8859-8-I";
 aliases["iso-8859-8-i"] = "ISO-8859-8-I";
-aliases["iso_8859-8-i"] = "ISO-8859-8-I";
 aliases["csisolatin6"] = "ISO-8859-10";
 aliases["iso-8859-10"] = "ISO-8859-10";
 aliases["iso-ir-157"] = "ISO-8859-10";
-aliases["iso_8859-10:1992"] = "ISO-8859-10";
 aliases["l6"] = "ISO-8859-10";
 aliases["latin6"] = "ISO-8859-10";
-aliases["csiso885913"] = "ISO-8859-13";
 aliases["iso-8859-13"] = "ISO-8859-13";
-aliases["csiso885914"] = "ISO-8859-14";
 aliases["iso-8859-14"] = "ISO-8859-14";
-aliases["iso-celtic"] = "ISO-8859-14";
-aliases["iso-ir-199"] = "ISO-8859-14";
-aliases["iso_8859-14"] = "ISO-8859-14";
-aliases["iso_8859-14:1998"] = "ISO-8859-14";
-aliases["l8"] = "ISO-8859-14";
-aliases["latin8"] = "ISO-8859-14";
-aliases["csiso885915"] = "ISO-8859-15";
 aliases["iso-8859-15"] = "ISO-8859-15";
 aliases["iso_8859-15"] = "ISO-8859-15";
-aliases["latin-9"] = "ISO-8859-15";
-aliases["csiso885916"] = "ISO-8859-16";
 aliases["iso-8859-16"] = "ISO-8859-16";
-aliases["iso-ir-226"] = "ISO-8859-16";
-aliases["iso_8859-16"] = "ISO-8859-16";
-aliases["iso_8859-16:2001"] = "ISO-8859-16";
-aliases["l10"] = "ISO-8859-16";
-aliases["latin10"] = "ISO-8859-16";
 aliases["cskoi8r"] = "KOI8-R";
 aliases["koi8-r"] = "KOI8-R";
-aliases["cskoi8u"] = "KOI8-U";
 aliases["koi8-u"] = "KOI8-U";
 aliases["csmacintosh"] = "macintosh";
 aliases["mac"] = "macintosh";
 aliases["macintosh"] = "macintosh";
-aliases["cstis620"] = "TIS-620";
 aliases["iso-8859-11"] = "TIS-620";
 aliases["tis-620"] = "TIS-620";
-aliases["cswindows874"] = "windows-874";
 aliases["windows-874"] = "windows-874";
-aliases["cswindows1250"] = "windows-1250";
 aliases["windows-1250"] = "windows-1250";
-aliases["cswindows1251"] = "windows-1251";
 aliases["windows-1251"] = "windows-1251";
+aliases["ascii"] = "US-ASCII";
 aliases["cp1252"] = "windows-1252";
 aliases["cp819"] = "ISO-8859-1";
 aliases["csisolatin1"] = "ISO-8859-1";
@@ -1322,18 +1252,8 @@ aliases["iso_8859-1:1987"] = "ISO-8859-1";
 aliases["l1"] = "ISO-8859-1";
 aliases["latin1"] = "ISO-8859-1";
 aliases["ansi_x3.4-1968"] = "US-ASCII";
-aliases["ansi_x3.4-1986"] = "US-ASCII";
-aliases["cp367"] = "US-ASCII";
-aliases["csascii"] = "US-ASCII";
-aliases["ibm367"] = "US-ASCII";
-aliases["iso-ir-6"] = "US-ASCII";
-aliases["iso646-us"] = "US-ASCII";
-aliases["iso_646.irv:1991"] = "US-ASCII";
-aliases["us"] = "US-ASCII";
 aliases["us-ascii"] = "US-ASCII";
-aliases["cswindows1252"] = "windows-1252";
 aliases["windows-1252"] = "windows-1252";
-aliases["cswindows1253"] = "windows-1253";
 aliases["windows-1253"] = "windows-1253";
 aliases["csisolatin5"] = "ISO-8859-9";
 aliases["iso-8859-9"] = "ISO-8859-9";
@@ -1342,32 +1262,20 @@ aliases["iso_8859-9"] = "ISO-8859-9";
 aliases["iso_8859-9:1989"] = "ISO-8859-9";
 aliases["l5"] = "ISO-8859-9";
 aliases["latin5"] = "ISO-8859-9";
-aliases["cswindows1254"] = "windows-1254";
 aliases["windows-1254"] = "windows-1254";
-aliases["cswindows1255"] = "windows-1255";
 aliases["windows-1255"] = "windows-1255";
-aliases["cswindows1256"] = "windows-1256";
 aliases["windows-1256"] = "windows-1256";
-aliases["cswindows1257"] = "windows-1257";
 aliases["windows-1257"] = "windows-1257";
-aliases["cswindows1258"] = "windows-1258";
 aliases["windows-1258"] = "windows-1258";
-aliases["csiso2022jp2"] = "ISO-2022-JP-2";
 aliases["iso-2022-jp-2"] = "ISO-2022-JP-2";
 aliases["csgb2312"] = "GB2312";
 aliases["gb2312"] = "GB2312";
-aliases["cp936"] = "GBK";
-aliases["csgbk"] = "GBK";
 aliases["gbk"] = "GBK";
-aliases["ms936"] = "GBK";
-aliases["windows-936"] = "GBK";
-aliases["csgb18030"] = "GB18030";
 aliases["gb18030"] = "GB18030";
 aliases["big5"] = "Big5";
 aliases["csbig5"] = "Big5";
 aliases["cseucpkdfmtjapanese"] = "EUC-JP";
 aliases["euc-jp"] = "EUC-JP";
-aliases["extended_unix_code_packed_format_for_japanese"] = "EUC-JP";
 aliases["csiso2022jp"] = "ISO-2022-JP";
 aliases["iso-2022-jp"] = "ISO-2022-JP";
 aliases["csshiftjis"] = "Shift_JIS";
@@ -1375,17 +1283,8 @@ aliases["ms_kanji"] = "Shift_JIS";
 aliases["shift_jis"] = "Shift_JIS";
 aliases["cseuckr"] = "EUC-KR";
 aliases["euc-kr"] = "EUC-KR";
-aliases["csiso2022cn"] = "ISO-2022-CN";
-aliases["iso-2022-cn"] = "ISO-2022-CN";
-aliases["csiso2022cnext"] = "ISO-2022-CN-EXT";
-aliases["iso-2022-cn-ext"] = "ISO-2022-CN-EXT";
-aliases["csiso2022kr"] = "ISO-2022-KR";
-aliases["iso-2022-kr"] = "ISO-2022-KR";
-aliases["csutf16be"] = "UTF-16BE";
 aliases["utf-16be"] = "UTF-16BE";
-aliases["csutf16"] = "UTF-16";
 aliases["utf-16"] = "UTF-16";
-aliases["csutf16le"] = "UTF-16LE";
 aliases["utf-16le"] = "UTF-16LE";
 return aliases;
 }

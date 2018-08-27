@@ -712,22 +712,24 @@ Resolves a character encoding's name to a canonical form, using rules more suita
 
 <b>Parameters:</b>
 
- * <i>name</i>: A string naming a character encoding. Can be null. Uses a modified version of the rules in the Encoding Standard to better conform, in some cases, to email standards like MIME. Encoding names and aliases not registered with the Internet Assigned Numbers Authority (IANA) are not supported, with the exception of `ascii` , `utf8` , `cp1252` , and names 10 characters or longer starting with `iso-8859-` . Also, the following additional encodings are supported. Note that the case combination  `GB18030` , the combination registered with IANA, rather than  `gb18030`  can be retured by this method.
+ * <i>name</i>: A string naming a character encoding. Can be null. Uses a modified version of the rules in the Encoding Standard to better conform, in some cases, to email standards like MIME. Encoding names and aliases not registered with the Internet Assigned Numbers Authority (IANA) are not supported, with the exception of  `ascii` ,  `utf8` ,  `cp1252` , and names 10 characters or longer starting with  `iso-8859-` . Also, the following additional encodings are supported. Note that the case combination  `GB18030` , the combination registered with IANA, rather than  `gb18030`  can be retured by this method.
 
- *  `US-ASCII` - ASCII single-byte encoding, rather than an alias to `windows-1252` as specified in the Encoding Standard. The coded character set's code oints match those in the Unicode Standard's Basic Latin block (0-127 r U+0000 to U+007F). The name `ascii` is an alias.
+ *  `US-ASCII`  - ASCII single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The coded character set's code points match those in the Unicode Standard's Basic Latin block (0-127 or U+0000 to U+007F). The name `ascii`  is an alias.
 
- *  `ISO-8859-1` - Latin-1 single-byte encoding, rather than an alias to `windows-1252` as specified in the Encoding Standard. The coded character set's code oints match those in the Unicode Standard's Basic Latin and Latin-1 upplement blocks (0-255 or U+0000 to U+00FF).
+ *  `ISO-8859-1`  - Latin-1 single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The coded character set's code points match those in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U + 0000 to U + 00FF).
 
- *  `UTF-16` - UTF-16 without a fixed byte order, rather than an alias to `UTF-16LE` as specified in the Encoding Standard. The byte order is little endian if the byte stream starts with 0xFF 0xFE; otherwise, big endian. A leading 0xFF 0xFE or 0xFE 0xFF in the byte stream is skipped.
+ *  `UTF-16`  - UTF-16 without a fixed byte order, rather than an alias to  `UTF-16LE`  as specified in the Encoding Standard. The byte order is little endian if the byte stream starts with 0xff 0xfe; otherwise, big endian. A leading 0xff 0xfe or 0xFE 0xff in the byte stream is skipped.
 
- *  `UTF-7` - UTF-7 (7-bit universal coded character set). The name `unicode-1-1-utf-7` is not supported and is not treated as an alias to `UTF-7` , even though it uses the same character encoding scheme as UTF-7, because RFC 1642, which defined the former UTF-7, is linked to a different Unicode version with an incompatible character repertoire (notably, the Hangul syllables have different code point assignments in Unicode 1.1 and earlier than in Unicode 2.0 and later).
+ *  `UTF-7`  - UTF-7 (7-bit universal coded character set). The name  `unicode-1-1-utf-7`  is not supported and is not treated as an alias to  `UTF-7` , even though it uses the same character encoding scheme as UTF-7, because RFC 1642, which defined the former UTF-7, is linked to a different Unicode version with an incompatible character repertoire (notably, the Hangul syllables have different code point assignments in Unicode 1.1 and earlier than in Unicode 2.0 and later).
 
- *  `ISO-2022-JP-2` - similar to "ISO-2022-JP", except that the decoder supports additional character sets.
+ *  `ISO-2022-JP-2`  - similar to "ISO-2022-JP", except that the decoder supports additional character sets.
+
+.
 
 <b>Return Value:</b>
 
-A standardized name for the encoding. Returns the empty string if <i>name</i>
-is null or empty, or if the encoding name is unsupported.
+A standardized name for the encoding. Returns the empty string if  <i>name</i>
+ is null or empty, or if the encoding name is unsupported.
 
 ### StringToBytes
 

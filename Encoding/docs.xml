@@ -2479,9 +2479,9 @@ in the given character encoding.
 
 </doc>
 <doc name="M:PeterO.Text.Encodings.ResolveAliasForEmail(System.String)">
-<summary>Resolves a character encoding's name to a canonical form,
-            using rules more suitable for email.</summary>
-            <param name='name'>A string naming a character encoding. Can be
+
+            <summary>Resolves a character encoding's name to a canonical form,
+            using rules more suitable for email.</summary><param name='name'>A string naming a character encoding. Can be
             null. Uses a modified version of the rules in the Encoding Standard
             to better conform, in some cases, to email standards like MIME.
             Encoding names and aliases not registered with the Internet
@@ -2517,10 +2517,10 @@ in the given character encoding.
             than in Unicode 2.0 and later).</item>
             <item><c>ISO-2022-JP-2</c> - similar to "ISO-2022-JP", except that
             the decoder supports additional character sets.</item></list>
-            .</param>
-            <returns>A standardized name for the encoding. Returns the empty
+            .</param><returns>A standardized name for the encoding. Returns the empty
             string if <paramref name='name'/> is null or empty, or if the
             encoding name is unsupported.</returns>
+
 </doc>
 <doc name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoder,System.String)">
 

@@ -66,6 +66,13 @@ public void TestGB18030() {
     private static byte[] ISOIRTestString(string preamble) {
       using (var ms = new MemoryStream()) {
         for (var i = 0x21; i <= 0x7e; ++i) {
+          string intstr = TestCommon.IntToString(i - 0x20);
+      for (var j = 0; j < 2; ++j) {
+char cc = (j < intstr.Length) ? intstr[j] : ' ';
+ms.WriteByte((byte)cc);
+}
+ms.WriteByte((byte)':');
+ms.WriteByte((byte)' ');
           ms.WriteByte(0x1b);
           for (var c = 0; c < preamble.Length; ++c) {
             ms.WriteByte((byte)preamble[c]);
@@ -84,9 +91,43 @@ public void TestGB18030() {
       }
     }
 
+    private static byte[] ISOIRTestStringSISO(string preamble) {
+      using (var ms = new MemoryStream()) {
+        for (var i = 0x21; i <= 0x7e; ++i) {
+          ms.WriteByte(0x1b);
+          for (var c = 0; c < preamble.Length; ++c) {
+            ms.WriteByte((byte)preamble[c]);
+          }
+          string intstr = TestCommon.IntToString(i - 0x20);
+          for (var j = 0; j < 2; ++j) {
+            char cc = (j < intstr.Length) ? intstr[j] : ' ';
+            ms.WriteByte((byte)cc);
+          }
+          ms.WriteByte((byte)':');
+          ms.WriteByte((byte)' ');
+          ms.WriteByte(0x0e);
+          for (var j = 0x21; j <= 0x7e; ++j) {
+            ms.WriteByte((byte)i);
+            ms.WriteByte((byte)j);
+          }
+          ms.WriteByte(0x0f);
+          ms.WriteByte(0x0d);
+          ms.WriteByte(0x0a);
+        }
+        return ms.ToArray();
+      }
+    }
+
     private static byte[] ISOIRTestStringSB(string preamble) {
       using (var ms = new MemoryStream()) {
         for (var i = 0; i <= 15; ++i) {
+          string intstr = TestCommon.IntToString(i);
+          for (var j = 0; j < 2; ++j) {
+            char cc = (j < intstr.Length) ? intstr[j] : ' ';
+            ms.WriteByte((byte)cc);
+          }
+          ms.WriteByte((byte)':');
+          ms.WriteByte((byte)' ');
           ms.WriteByte(0x1b);
           for (var c = 0; c < preamble.Length; ++c) {
             ms.WriteByte((byte)preamble[c]);
@@ -106,16 +147,31 @@ public void TestGB18030() {
 
     [Test]
     public static void TestIso2022JP2() {
-      byte[] bytes = ISOIRTestStringSB(".F");
+      byte[] bytes = ISOIRTestString("$(D");
       ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-JP-2", true);
       if (enc == null) {
  Assert.Fail();
  }
       string s = Encodings.DecodeToString(enc, bytes);
-      // Console.WriteLine(s);
+       if (s == null) {
+ Assert.Fail();
+ }
     }
 
-        [Test]
+    [Test]
+    public static void TestIso2022KR() {
+      byte[] bytes = ISOIRTestStringSISO("$)C");
+      ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-KR", true);
+      if (enc == null) {
+        Assert.Fail();
+      }
+      string s = Encodings.DecodeToString(enc, bytes);
+      if (s == null) {
+ Assert.Fail();
+ }
+    }
+
+    [Test]
 public void TestIso2022JP() {
             byte[] bytes;
             ICharacterEncoding charset = Encodings.GetEncoding("iso-2022-jp");

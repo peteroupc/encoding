@@ -68,6 +68,13 @@ try {
 ms = new java.io.ByteArrayOutputStream();
 
         for (int i = 0x21; i <= 0x7e; ++i) {
+          String intstr = TestCommon.IntToString(i - 0x20);
+      for (int j = 0; j < 2; ++j) {
+char cc = (j < intstr.length()) ? intstr.charAt(j) : ' ';
+ms.write((byte)cc);
+}
+ms.write((byte)':');
+ms.write((byte)' ');
           ms.write(0x1b);
           for (int c = 0; c < preamble.length(); ++c) {
             ms.write((byte)preamble.charAt(c));
@@ -91,12 +98,54 @@ try { if (ms != null) {
 }
     }
 
+    private static byte[] ISOIRTestStringSISO(String preamble) {
+      java.io.ByteArrayOutputStream ms = null;
+try {
+ms = new java.io.ByteArrayOutputStream();
+
+        for (int i = 0x21; i <= 0x7e; ++i) {
+          ms.write(0x1b);
+          for (int c = 0; c < preamble.length(); ++c) {
+            ms.write((byte)preamble.charAt(c));
+          }
+          String intstr = TestCommon.IntToString(i - 0x20);
+          for (int j = 0; j < 2; ++j) {
+            char cc = (j < intstr.length()) ? intstr.charAt(j) : ' ';
+            ms.write((byte)cc);
+          }
+          ms.write((byte)':');
+          ms.write((byte)' ');
+          ms.write(0x0e);
+          for (int j = 0x21; j <= 0x7e; ++j) {
+            ms.write((byte)i);
+            ms.write((byte)j);
+          }
+          ms.write(0x0f);
+          ms.write(0x0d);
+          ms.write(0x0a);
+        }
+        return ms.toByteArray();
+}
+finally {
+try { if (ms != null) {
+ ms.close();
+ } } catch (java.io.IOException ex) {}
+}
+    }
+
     private static byte[] ISOIRTestStringSB(String preamble) {
       java.io.ByteArrayOutputStream ms = null;
 try {
 ms = new java.io.ByteArrayOutputStream();
 
         for (int i = 0; i <= 15; ++i) {
+          String intstr = TestCommon.IntToString(i);
+          for (int j = 0; j < 2; ++j) {
+            char cc = (j < intstr.length()) ? intstr.charAt(j) : ' ';
+            ms.write((byte)cc);
+          }
+          ms.write((byte)':');
+          ms.write((byte)' ');
           ms.write(0x1b);
           for (int c = 0; c < preamble.length(); ++c) {
             ms.write((byte)preamble.charAt(c));
@@ -121,16 +170,31 @@ try { if (ms != null) {
 
     @Test
     public static void TestIso2022JP2() {
-      byte[] bytes = ISOIRTestStringSB(".F");
+      byte[] bytes = ISOIRTestString("$(D");
       ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-JP-2", true);
       if (enc == null) {
  Assert.fail();
  }
       String s = Encodings.DecodeToString(enc, bytes);
-      // System.out.println(s);
+       if (s == null) {
+ Assert.fail();
+ }
     }
 
-        @Test
+    @Test
+    public static void TestIso2022KR() {
+      byte[] bytes = ISOIRTestStringSISO("$)C");
+      ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-KR", true);
+      if (enc == null) {
+        Assert.fail();
+      }
+      String s = Encodings.DecodeToString(enc, bytes);
+      if (s == null) {
+ Assert.fail();
+ }
+    }
+
+    @Test
 public void TestIso2022JP() {
             byte[] bytes;
             ICharacterEncoding charset = Encodings.GetEncoding("iso-2022-jp");

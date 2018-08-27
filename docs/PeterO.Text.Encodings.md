@@ -716,7 +716,7 @@ Resolves a character encoding's name to a canonical form, using rules more suita
 
  *  `US-ASCII`  - ASCII single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The coded character set's code points match those in the Unicode Standard's Basic Latin block (0-127 or U+0000 to U+007F). The name `ascii`  is an alias.
 
- *  `ISO-8859-1`  - Latin-1 single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The coded character set's code points match those in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U + 0000 to U + 00FF).
+ *  `ISO-8859-1`  - Latin-1 single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The coded character set's code points match those in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U+0000 to U+00FF).
 
  *  `UTF-16`  - UTF-16 without a fixed byte order, rather than an alias to  `UTF-16LE`  as specified in the Encoding Standard. The byte order is little endian if the byte stream starts with 0xff 0xfe; otherwise, big endian. A leading 0xff 0xfe or 0xFE 0xff in the byte stream is skipped.
 

@@ -2847,13 +2847,13 @@ Assert.assertEquals(
       {
         String stringTemp = Encodings.ResolveAliasForEmail("iso-2022-jp-2");
         Assert.assertEquals(
-        "",
+        "ISO-2022-JP-2",
         stringTemp);
       }
        {
         String stringTemp = Encodings.ResolveAliasForEmail("iso-2022-JP-2");
         Assert.assertEquals(
-        "",
+        "ISO-2022-JP-2",
         stringTemp);
       }
      {

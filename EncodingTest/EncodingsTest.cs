@@ -2847,13 +2847,13 @@ Assert.AreEqual(
       {
         string stringTemp = Encodings.ResolveAliasForEmail("iso-2022-jp-2");
         Assert.AreEqual(
-        String.Empty,
+        "ISO-2022-JP-2",
         stringTemp);
       }
        {
         string stringTemp = Encodings.ResolveAliasForEmail("iso-2022-JP-2");
         Assert.AreEqual(
-        String.Empty,
+        "ISO-2022-JP-2",
         stringTemp);
       }
      {

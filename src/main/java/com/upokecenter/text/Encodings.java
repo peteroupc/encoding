@@ -1203,7 +1203,9 @@ ICharacterEncoding encoding,
       } else if (name.equals("UTF-16BE")) {
         return (ICharacterEncoding)(new EncodingUtf16BE());
       } else if (name.equals("ISO-2022-JP-2")) {
-    return (ICharacterEncoding)(new PeterO.Text.Encoders.EncodingISO2022JP2());
+    return (ICharacterEncoding)(new EncodingISO2022JP2());
+      } else if (name.equals("ISO-2022-KR")) {
+        return (ICharacterEncoding)(new EncodingISO2022KR());
       }
       return name.equals("ISO-2022-JP") ? (ICharacterEncoding)(new
         EncodingISO2022JP()) :
@@ -1696,6 +1698,7 @@ aliases.put("windows-1258","windows-1258");
 aliases.put("x-cp1258","windows-1258");
 aliases.put("x-mac-cyrillic","x-mac-cyrillic");
 aliases.put("x-mac-ukrainian","x-mac-cyrillic");
+aliases.put("ISO-2022-KR","ISO-2022-KR");
 aliases.put("chinese","GBK");
 aliases.put("csgb2312","GBK");
 aliases.put("csiso58gb231280","GBK");
@@ -1734,6 +1737,12 @@ aliases.put("ks_c_5601-1989","EUC-KR");
 aliases.put("ksc5601","EUC-KR");
 aliases.put("ksc_5601","EUC-KR");
 aliases.put("windows-949","EUC-KR");
+aliases.put("csiso2022kr","replacement");
+aliases.put("hz-gb-2312","replacement");
+aliases.put("iso-2022-cn","replacement");
+aliases.put("iso-2022-cn-ext","replacement");
+aliases.put("iso-2022-kr","replacement");
+aliases.put("replacement","replacement");
 aliases.put("utf-16be","UTF-16BE");
 aliases.put("utf-16","UTF-16LE");
 aliases.put("utf-16le","UTF-16LE");
@@ -1743,6 +1752,7 @@ return aliases;
 
 private static Map<String, String> CreateEmailAliasMap() {
 HashMap<String, String> aliases = new HashMap<String, String>();
+aliases.put("utf-7","UTF-7");
 aliases.put("utf-8","UTF-8");
 aliases.put("utf8","UTF-8");
 aliases.put("866","IBM866");
@@ -1852,6 +1862,8 @@ aliases.put("windows-1256","windows-1256");
 aliases.put("windows-1257","windows-1257");
 aliases.put("windows-1258","windows-1258");
 aliases.put("iso-2022-jp-2","ISO-2022-JP-2");
+aliases.put("csiso2022kr","ISO-2022-KR");
+aliases.put("iso-2022-kr","ISO-2022-KR");
 aliases.put("csgb2312","GB2312");
 aliases.put("gb2312","GB2312");
 aliases.put("gbk","GBK");

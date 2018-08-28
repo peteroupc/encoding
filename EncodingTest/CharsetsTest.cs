@@ -133,7 +133,8 @@ ms.WriteByte((byte)' ');
             ms.WriteByte((byte)preamble[c]);
           }
           for (var j = 2; j <= 7; ++j) {
-            ms.WriteByte((byte)(j * 16 + i));
+            int ch = (j * 16) + 1;
+            ms.WriteByte((byte)ch);
           }
           ms.WriteByte(0x1b);
           ms.WriteByte(0x28);
@@ -146,7 +147,7 @@ ms.WriteByte((byte)' ');
     }
 
     [Test]
-    public static void TestIso2022JP2() {
+    public void TestIso2022JP2() {
       byte[] bytes = ISOIRTestString("$(D");
       ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-JP-2", true);
       if (enc == null) {
@@ -159,7 +160,7 @@ ms.WriteByte((byte)' ');
     }
 
     [Test]
-    public static void TestIso2022KR() {
+    public void TestIso2022KR() {
       byte[] bytes = ISOIRTestStringSISO("$)C");
       ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-KR", true);
       if (enc == null) {

@@ -151,7 +151,8 @@ ms = new java.io.ByteArrayOutputStream();
             ms.write((byte)preamble.charAt(c));
           }
           for (int j = 2; j <= 7; ++j) {
-            ms.write((byte)(j * 16 + i));
+            int ch = (j * 16) + 1;
+            ms.write((byte)ch);
           }
           ms.write(0x1b);
           ms.write(0x28);
@@ -169,7 +170,7 @@ try { if (ms != null) {
     }
 
     @Test
-    public static void TestIso2022JP2() {
+    public void TestIso2022JP2() {
       byte[] bytes = ISOIRTestString("$(D");
       ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-JP-2", true);
       if (enc == null) {
@@ -182,7 +183,7 @@ try { if (ms != null) {
     }
 
     @Test
-    public static void TestIso2022KR() {
+    public void TestIso2022KR() {
       byte[] bytes = ISOIRTestStringSISO("$)C");
       ICharacterEncoding enc = Encodings.GetEncoding("ISO-2022-KR", true);
       if (enc == null) {

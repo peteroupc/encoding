@@ -76,6 +76,10 @@ In C#.
 History
 -----------
 
+Version 0.5.1:
+
+- Fixed issue in .NET 2.0 and 4.0 assemblies where resources were inadvertently left out of build.
+
 Version 0.5.0:
 
 - Separate aliases and encodings for email are used, for better conformance to MIME.

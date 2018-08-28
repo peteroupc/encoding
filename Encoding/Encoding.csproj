@@ -23,7 +23,7 @@ Version 0.5.0:
     </PackageReleaseNotes>
     <Copyright>Written by Peter O. in 2015-2018.  Any copyright is released to the Public Domain.</Copyright>
     <PackOnBuild>true</PackOnBuild>
-    <Version>0.5.0</Version>
+    <Version>0.6.0</Version>
     <Summary>A portable library for .NET that implements character encodings used in Web pages and email.</Summary>
     <PackageTags>text, encoding, strings</PackageTags>
     <SignAssembly>true</SignAssembly>

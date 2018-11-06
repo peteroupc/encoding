@@ -5,6 +5,11 @@
 
 A general-purpose character input for reading text from byte streams and text strings. When reading byte streams, this class supports the UTF-8 character encoding by default, but can be configured to support UTF-16 and UTF-32 as well.
 
+### Member Summary
+* <code>[ReadChar()](#ReadChar)</code> - Reads the next character from a Unicode stream or a string.
+* <code>[Read(int[], int, int)](#Read_int_int_int)</code> - Reads a series of code points from a Unicode stream or a string.
+
+<a id="Void_ctor_String"></a>
 ### CharacterReader Constructor
 
     public CharacterReader(
@@ -20,8 +25,9 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * System.ArgumentNullException:
 The parameter <i>str</i>
-is null.
+ is null.
 
+<a id="Void_ctor_String_Boolean"></a>
 ### CharacterReader Constructor
 
     public CharacterReader(
@@ -40,8 +46,9 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * System.ArgumentNullException:
 The parameter <i>str</i>
-is null.
+ is null.
 
+<a id="Void_ctor_String_Boolean_Boolean"></a>
 ### CharacterReader Constructor
 
     public CharacterReader(
@@ -63,37 +70,15 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * System.ArgumentNullException:
 The parameter <i>str</i>
-is null.
+ is null.
 
+<a id="Void_ctor_String_Int32_Int32"></a>
 ### CharacterReader Constructor
 
     public CharacterReader(
         string str,
         int offset,
         int length);
-
-Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
-
-<b>Parameters:</b>
-
- * <i>str</i>: The parameter <i>str</i>
-is a text string.
-
- * <i>offset</i>: A zero-based index showing where the desired portion of <i>str</i>
-begins.
-
- * <i>length</i>: The number of elements in the desired portion of <i>str</i>
-(but not more than <i>str</i>
-'s length).
-
-### CharacterReader Constructor
-
-    public CharacterReader(
-        string str,
-        int offset,
-        int length,
-        bool skipByteOrderMark,
-        bool errorThrow);
 
 Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
@@ -109,9 +94,34 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
  (but not more than  <i>str</i>
 's length).
 
- * <i>skipByteOrderMark</i>: If true and the string begins with a byte-order mark (U+FEFF), will skip that code point as it reads the string.
+<a id="Void_ctor_String_Int32_Int32_Boolean_Boolean"></a>
+### CharacterReader Constructor
 
- * <i>errorThrow</i>: If true, will throw an exception if unpaired surrogate code points (U+D800 to U+DFFF) are found in the string. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
+    public CharacterReader(
+        string str,
+        int offset,
+        int length,
+        bool skipByteOrderMark,
+        bool errorThrow);
+
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+
+<b>Parameters:</b>
+
+ * <i>str</i>: The parameter  <i>str</i>
+ is not documented yet.
+
+ * <i>offset</i>: The parameter  <i>offset</i>
+ is not documented yet.
+
+ * <i>length</i>: The parameter  <i>length</i>
+ is not documented yet.
+
+ * <i>skipByteOrderMark</i>: The parameter  <i>skipByteOrderMark</i>
+ is not documented yet.
+
+ * <i>errorThrow</i>: The parameter  <i>errorThrow</i>
+ is not documented yet.
 
 <b>Exceptions:</b>
 
@@ -119,6 +129,7 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 The parameter <i>str</i>
  is null.
 
+<a id="Void_ctor_Stream"></a>
 ### CharacterReader Constructor
 
     public CharacterReader(
@@ -134,8 +145,9 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * System.ArgumentNullException:
 The parameter <i>stream</i>
-is null.
+ is null.
 
+<a id="Void_ctor_Stream_Int32"></a>
 ### CharacterReader Constructor
 
     public CharacterReader(
@@ -166,8 +178,9 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * System.ArgumentNullException:
 The parameter <i>stream</i>
-is null.
+ is null.
 
+<a id="Void_ctor_Stream_Int32_Boolean"></a>
 ### CharacterReader Constructor
 
     public CharacterReader(
@@ -201,8 +214,9 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * System.ArgumentNullException:
 The parameter <i>stream</i>
-is null.
+ is null.
 
+<a id="Void_ctor_Stream_Int32_Boolean_Boolean"></a>
 ### CharacterReader Constructor
 
     public CharacterReader(
@@ -233,14 +247,15 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
 
- * <i>dontSkipUtf8Bom</i>: If the stream is detected as UTF-8 and this parameter is `true` , won't skip the BOM character if it occurs at the start of the stream.
+ * <i>dontSkipUtf8Bom</i>: If the stream is detected as UTF-8 and this parameter is  `true` , won't skip the BOM character if it occurs at the start of the stream.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
 The parameter <i>stream</i>
-is null.
+ is null.
 
+<a id="Read_int_int_int"></a>
 ### Read
 
     public sealed int Read(
@@ -254,33 +269,34 @@ Reads a series of code points from a Unicode stream or a string.
 
  * <i>chars</i>: An array where the code points that were read will be stored.
 
- * <i>index</i>: A zero-based index showing where the desired portion of <i>chars</i>
-begins.
+ * <i>index</i>: A zero-based index showing where the desired portion of  <i>chars</i>
+ begins.
 
- * <i>length</i>: The number of elements in the desired portion of <i>chars</i>
-(but not more than <i>chars</i>
-'s length).
+ * <i>length</i>: The number of elements in the desired portion of  <i>chars</i>
+ (but not more than  <i>chars</i>
+ 's length).
 
 <b>Return Value:</b>
 
-The number of code points read from the stream. This can be less than the <i>length</i>
-parameter if the end of the stream is reached.
+The number of code points read from the stream. This can be less than the  <i>length</i>
+ parameter if the end of the stream is reached.
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
 The parameter <i>chars</i>
-is null.
+ is null.
 
  * System.ArgumentException:
-Either <i>index</i>
-or <i>length</i>
-is less than 0 or greater than <i>chars</i>
-'s length, or <i>chars</i>
-'s length minus <i>index</i>
-is less than <i>length</i>
+Either  <i>index</i>
+ or  <i>length</i>
+ is less than 0 or greater than  <i>chars</i>
+ 's length, or  <i>chars</i>
+ 's length minus  <i>index</i>
+ is less than  <i>length</i>
 .
 
+<a id="ReadChar"></a>
 ### ReadChar
 
     public sealed int ReadChar();

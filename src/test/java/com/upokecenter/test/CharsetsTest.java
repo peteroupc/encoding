@@ -54,6 +54,20 @@ Assert.assertEquals(objectTemp, objectTemp2);
             Assert.assertEquals(str, str2);
         }
 
+    @Test
+    public void TestSupportForGb2312() {
+      String chs = Encodings.ResolveAliasForEmail("gb2312");
+      Assert.assertEquals(chs, "GB2312");
+      chs = Encodings.ResolveAliasForEmail("GB2312");
+      Assert.assertEquals(chs, "GB2312");
+      if (Encodings.GetEncoding("gb2312", true) == null) {
+ Assert.fail();
+ }
+      if (Encodings.GetEncoding("GB2312", true) == null) {
+ Assert.fail();
+ }
+    }
+
         @Test
 public void TestGB18030() {
             ICharacterEncoding encoding = Encodings.GetEncoding("gb18030");

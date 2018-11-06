@@ -6,7 +6,7 @@ A generic interface for writing bytes of data.
 
 ## Methods
 
-* `void write​(int b)`<br>
+* `void write​(int b)`<br>
  Writes an 8-bit byte to a data source.
 
 ## Method Details

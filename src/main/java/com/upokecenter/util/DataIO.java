@@ -49,10 +49,11 @@ byte[] bytes) {
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      * not more than "bytes" 's length).
      * @return A byte reader wrapping the byte array.
-     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws T:java.lang.NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
      * ' s length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(
 byte[] bytes,
@@ -117,10 +118,11 @@ InputStream input) {
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return An IByteReader object.
-     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws T:java.lang.NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * 's length minus {@code offset} is less than {@code length}.
+     * ' s length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      * @deprecated Use ToReader instead.
  */
 @Deprecated
@@ -239,9 +241,12 @@ IByteWriter output) {
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return A 32-bit signed integer.
-     * @throws IllegalArgumentException Either or is less than 0 or greater than 's
-     * length, or ' s length minus is less than .
+     * @throws T:java.lang.IllegalArgumentException Either or is less than 0 or greater than
+     * 's length, or ' s length minus is less than .
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either "offset" or "length" is less than 0
+     * or greater than "bytes"'s length, or "bytes"'s length minus "offset"
+     * is less than "length".
      */
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
@@ -307,10 +312,13 @@ IByteWriter output) {
      * "bytes" begins.
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      * not more than "bytes" 's length).
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
-     * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
-     * ' s length minus {@code offset} is less than {@code length}.
+     * @throws T:java.lang.IllegalArgumentException Either {@code offset} or {@code length}
+     * is less than 0 or greater than {@code bytes} 's length, or {@code
+     * bytes} ' s length minus {@code offset} is less than {@code length} .
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws IllegalArgumentException Either "offset" or "length" is less than 0
+     * or greater than "bytes"'s length, or "bytes"'s length minus "offset"
+     * is less than "length".
      */
       public void write(byte[] bytes, int offset, int length) {
         try {
@@ -343,10 +351,11 @@ IByteWriter output) {
      * "bytes" begins.
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      * not more than "bytes" 's length).
-     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
+     * @throws T:java.lang.NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
      * ' s length minus {@code offset} is less than {@code length}.
+     * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      */
       public void write(byte[] bytes, int offset, int length) {
         if (bytes == null) {

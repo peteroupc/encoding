@@ -9,18 +9,18 @@ An array of bytes that grows as needed.
 * `ArrayWriter() com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
  with a default buffer size.
-* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
+* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
  with the given initial buffer size.
 * `void Clear()`<br>
  Offers a fast way to reset the length of the array writer's data to 0.
 * `byte[] ToArray()`<br>
  Generates an array of all bytes written so far to it.
-* `void write​(byte[] src,
-     int offset,
-     int length)`<br>
+* `void write​(byte[] src,
+     int offset,
+     int length)`<br>
  Writes a series of bytes to the array.
-* `void write​(int byteValue)`<br>
+* `void write​(int byteValue)`<br>
  Writes an 8-bit byte to the array.
 
 ## Constructors
@@ -28,7 +28,7 @@ An array of bytes that grows as needed.
 * `ArrayWriter() com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
  with a default buffer size.
-* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
+* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
  with the given initial buffer size.
 
@@ -65,7 +65,7 @@ Writes an 8-bit byte to the array.
 
 **Specified by:**
 
-* <code>write</code>&nbsp;in interface&nbsp;<code>IByteWriter</code>
+* <code>write</code> in interface <code>IByteWriter</code>
 
 **Parameters:**
 
@@ -78,7 +78,7 @@ Writes a series of bytes to the array.
 
 **Specified by:**
 
-* <code>write</code>&nbsp;in interface&nbsp;<code>IWriter</code>
+* <code>write</code> in interface <code>IWriter</code>
 
 **Parameters:**
 
@@ -96,4 +96,4 @@ Writes a series of bytes to the array.
 
 * <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
  less than 0 or greater than <code>src</code> 's length, or <code>src</code> ' s
- length minus <code>offset</code> is less than <code>length</code> .
+ length minus <code>offset</code> is less than <code>length</code>.

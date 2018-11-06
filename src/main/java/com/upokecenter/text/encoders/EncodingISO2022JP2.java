@@ -234,7 +234,6 @@ import com.upokecenter.text.*;
               }
               break;
             default: {
-                // NOTE: Escape final state is no longer used
                 throw new IllegalStateException("Unexpected state");
               }
           }

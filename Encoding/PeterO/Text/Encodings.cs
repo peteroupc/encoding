@@ -8,6 +8,12 @@ using PeterO.Text.Encoders;
 namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="T:PeterO.Text.Encodings"]/*'/>
+#if DEBUG
+[System.Diagnostics.CodeAnalysis.SuppressMessage(
+  "StyleCop.CSharp.DocumentationRules",
+  "SA1118:ParameterMustNotSpanMultipleLines",
+  Justification = "Preprocessor directives require " + "'this' parameters to span multiple lines in this class.")]
+#endif
   public static class Encodings {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="F:PeterO.Text.Encodings.UTF8"]/*'/>
@@ -778,6 +784,8 @@ ICharacterEncoding encoding,
       } else if (name.Equals("x-user-defined")) {
         return (ICharacterEncoding)(new EncodingXUserDefined());
       } else if (name.Equals("GBK")) {
+        return (ICharacterEncoding)(new EncodingGBK());
+      } else if (name.Equals("GB2312")) {
         return (ICharacterEncoding)(new EncodingGBK());
       } else if (name.Equals("gb18030") || name.Equals("GB18030")) {
         return (ICharacterEncoding)(new EncodingGB18030());

@@ -6,9 +6,9 @@ An interface for reading Unicode code points from a data source.
 
 ## Methods
 
-* `int Read​(int[] chars,
-    int index,
-    int length)`<br>
+* `int Read​(int[] chars,
+    int index,
+    int length)`<br>
  Reads a sequence of Unicode code points from a data source.
 * `int ReadChar()`<br>
  Reads a Unicode code point from a data source.

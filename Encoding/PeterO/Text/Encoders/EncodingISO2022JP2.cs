@@ -234,7 +234,6 @@ namespace PeterO.Text.Encoders {
               }
               break;
             default: {
-                // NOTE: Escape final state is no longer used
                 throw new InvalidOperationException("Unexpected state");
               }
           }

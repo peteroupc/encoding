@@ -6,9 +6,9 @@ A generic interface for writing bytes of data.
 
 ## Methods
 
-* `void write​(byte[] bytes,
-     int offset,
-     int length)`<br>
+* `void write​(byte[] bytes,
+     int offset,
+     int length)`<br>
  Writes a portion of a byte array to the data source.
 
 ## Method Details

@@ -262,7 +262,7 @@ import com.upokecenter.text.*;
                 int c = str.charAt(index);
                 ++index;
                 if ((c & 0xfc00) == 0xd800 && index + 1 < str.length() &&
-                    str.charAt(index + 1) >= 0xdc00 && str.charAt(index + 1) <= 0xdfff) {
+                    (str.charAt(index + 1) & 0xfc00) == 0xdc00) {
                   // Get the Unicode code point for the surrogate pair
                 c = 0x10000 + ((c - 0xd800) << 10) + (str.charAt(index + 1) -
                     0xdc00);

@@ -20,7 +20,7 @@ namespace EncodingTest {
     private CodePageCoder coder;
 
     /// <summary>Gets the code page's number.</summary>
-    /// <value>The code page&apos;s number.</value>
+    /// <value>The code page&#x27;s number.</value>
     public int Number {
       get {
         return this.coder.Number;
@@ -257,7 +257,7 @@ namespace EncodingTest {
                 int c = str[index];
                 ++index;
                 if ((c & 0xfc00) == 0xd800 && index + 1 < str.Length &&
-                    str[index + 1] >= 0xdc00 && str[index + 1] <= 0xdfff) {
+                    (str[index + 1] & 0xfc00) == 0xdc00) {
                   // Get the Unicode code point for the surrogate pair
                 c = 0x10000 + ((c - 0xd800) << 10) + (str[index + 1] -
                     0xdc00);

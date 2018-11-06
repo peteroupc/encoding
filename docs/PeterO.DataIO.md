@@ -4,6 +4,17 @@
 
 Convenience class that contains static methods for wrapping byte arrays and streams into byte readers and byte writers.
 
+### Member Summary
+* <code>[ToByteReader(this System.IO.Stream)](#ToByteReader_this_System_IO_Stream)</code> - Wraps a data stream into a byte reader.
+* <code>[ToByteReader(this byte[])](#ToByteReader_this_byte)</code> - Wraps a byte array into a byte reader.
+* <code>[ToByteReader(this byte[], int, int)](#ToByteReader_this_byte_int_int)</code> - Wraps a portion of a byte array into a byte reader.
+* <code>[ToReader(this System.IO.Stream)](#ToReader_this_System_IO_Stream)</code> - Wraps an input stream into a reader object.
+* <code>[ToReader(this byte[])](#ToReader_this_byte)</code> - Wraps a byte array into a byte reader.
+* <code>[ToReader(this byte[], int, int)](#ToReader_this_byte_int_int)</code> - Wraps a portion of a byte array into a byte reader object.
+* <code>[ToWriter(this PeterO.IByteWriter)](#ToWriter_this_PeterO_IByteWriter)</code> - Wraps a byte writer (one that only implements a ReadByte method) to a writer (one that also implements a three-parameter Read method.
+* <code>[ToWriter(this System.IO.Stream)](#ToWriter_this_System_IO_Stream)</code> - Wraps an output stream into a writer object.
+
+<a id="ToByteReader_this_byte"></a>
 ### ToByteReader
 
     public static PeterO.IByteReader ToByteReader(
@@ -27,6 +38,7 @@ An IByteReader object.
 The parameter <i>bytes</i>
  is null.
 
+<a id="ToByteReader_this_byte_int_int"></a>
 ### ToByteReader
 
     public static PeterO.IByteReader ToByteReader(
@@ -55,7 +67,7 @@ An IByteReader object.
 
 <b>Exceptions:</b>
 
- * System.ArgumentNullException:
+ *  T:System.ArgumentNullException:
 The parameter <i>bytes</i>
  is null.
 
@@ -63,11 +75,16 @@ The parameter <i>bytes</i>
 Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>bytes</i>
- 's length, or  <i>bytes</i>
- 's length minus  <i>offset</i>
+ 's length, or  <i> bytes</i>
+ ' s length minus  <i>offset</i>
  is less than  <i>length</i>
 .
 
+ * System.ArgumentNullException:
+The parameter  <i>bytes</i>
+ is null.
+
+<a id="ToByteReader_this_System_IO_Stream"></a>
 ### ToByteReader
 
     public static PeterO.IByteReader ToByteReader(
@@ -91,6 +108,7 @@ An IByteReader object.
 The parameter <i>input</i>
  is null.
 
+<a id="ToReader_this_byte"></a>
 ### ToReader
 
     public static PeterO.IReader ToReader(
@@ -112,6 +130,7 @@ A byte reader wrapping the byte array.
 The parameter <i>bytes</i>
  is null.
 
+<a id="ToReader_this_byte_int_int"></a>
 ### ToReader
 
     public static PeterO.IReader ToReader(
@@ -135,7 +154,7 @@ A byte reader wrapping the byte array.
 
 <b>Exceptions:</b>
 
- * System.ArgumentNullException:
+ *  T:System.ArgumentNullException:
 The parameter <i>bytes</i>
  is null.
 
@@ -143,11 +162,16 @@ The parameter <i>bytes</i>
 Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>bytes</i>
- 's length, or  <i>bytes</i>
+ 's length, or  <i> bytes</i>
  ' s length minus  <i>offset</i>
  is less than  <i>length</i>
 .
 
+ * System.ArgumentNullException:
+The parameter  <i>bytes</i>
+ is null.
+
+<a id="ToReader_this_System_IO_Stream"></a>
 ### ToReader
 
     public static PeterO.IReader ToReader(
@@ -169,6 +193,7 @@ A byte reader wrapping the input stream.
 The parameter <i>input</i>
  is null.
 
+<a id="ToWriter_this_PeterO_IByteWriter"></a>
 ### ToWriter
 
     public static PeterO.IWriter ToWriter(
@@ -190,6 +215,7 @@ A writer that wraps the given stream.
 The parameter <i>output</i>
  is null.
 
+<a id="ToWriter_this_System_IO_Stream"></a>
 ### ToWriter
 
     public static PeterO.IWriter ToWriter(

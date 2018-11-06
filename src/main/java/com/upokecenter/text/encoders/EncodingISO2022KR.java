@@ -152,7 +152,7 @@ import com.upokecenter.text.*;
             case 8:
               // In middle of line, escape, trail
               if (b >= 0x21 && b <= 0x7e) {
-                int p = (this.lead - 0x21) * 190 + (b - 0x21) + 6176;
+                int p = ((this.lead - 0x21) * 190) + (b - 0x21) + 6176;
                 int cp = Korean.IndexToCodePoint(p);
                 this.lead = 0;
                 this.machineState = 7;

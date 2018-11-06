@@ -81,7 +81,7 @@ at: http://peteroupc.github.io/
      * @throws java.lang.NullPointerException The parameter {@code src} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code src} 's length, or {@code src} ' s
-     * length minus {@code offset} is less than {@code length} .
+     * length minus {@code offset} is less than {@code length}.
      */
     public void write(byte[] src, int offset, int length) {
       if (src == null) {

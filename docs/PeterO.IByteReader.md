@@ -4,6 +4,10 @@
 
 A generic interface for reading data one byte at a time.
 
+### Member Summary
+* <code>[ReadByte()](#ReadByte)</code> - Reads a byte from the data source.
+
+<a id="ReadByte"></a>
 ### ReadByte
 
     int ReadByte();

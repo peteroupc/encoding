@@ -6,9 +6,9 @@ A generic interface for reading bytes of data from a data source.
 
 ## Methods
 
-* `int Read​(byte[] bytes,
-    int offset,
-    int length)`<br>
+* `int Read​(byte[] bytes,
+    int offset,
+    int length)`<br>
  Reads a portion of a byte array from the data source.
 
 ## Method Details

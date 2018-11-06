@@ -55,6 +55,20 @@ Assert.AreEqual(objectTemp, objectTemp2);
             Assert.AreEqual(str, str2);
         }
 
+    [Test]
+    public void TestSupportForGb2312() {
+      string chs = Encodings.ResolveAliasForEmail("gb2312");
+      Assert.AreEqual(chs, "GB2312");
+      chs = Encodings.ResolveAliasForEmail("GB2312");
+      Assert.AreEqual(chs, "GB2312");
+      if (Encodings.GetEncoding("gb2312", true) == null) {
+ Assert.Fail();
+ }
+      if (Encodings.GetEncoding("GB2312", true) == null) {
+ Assert.Fail();
+ }
+    }
+
         [Test]
 public void TestGB18030() {
             ICharacterEncoding encoding = Encodings.GetEncoding("gb18030");

@@ -43,8 +43,26 @@ ICharacterEncoding encoding,
          GetDecoderInput(encoding, input));
     }
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
+    /// <summary>Decodes data read from a data stream into a text string in
+    /// the given character encoding.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterEncoding and
+    /// can be called as follows: <c>encoding.DecodeToString(input)</c>.
+    /// If the object's class already has a DecodeToString method with the
+    /// same parameters, that method takes precedence over this extension
+    /// method.</para>
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterEncoding and
+    /// can be called as follows: <c>enc.DecodeToString(input)</c>. If the
+    /// object's class already has a <c>DecodeToString</c> method with the
+    /// same parameters, that method takes precedence over this extension
+    /// method.</para></summary>
+    /// <param name='enc'>An object implementing a character encoding
+    /// (gives access to an encoder and a decoder).</param>
+    /// <param name='input'>A readable byte stream.</param>
+    /// <returns>A string consisting of the decoded text.</returns>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// "encoding" or <paramref name='input'/> is null.</exception>
     public static string DecodeToString(
   #if !NET20
 this
@@ -343,8 +361,29 @@ ICharacterEncoding encoding,
         stream);
     }
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
+    /// <summary>Converts a character encoding into a character input
+    /// stream, given a data stream. The input stream doesn't check the
+    /// first few bytes for a byte-order mark indicating a Unicode encoding
+    /// such as UTF-8 before using the character encoding's decoder.
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterEncoding and
+    /// can be called as follows: <c>encoding.GetDecoderInput(input)</c>.
+    /// If the object's class already has a GetDecoderInput method with the
+    /// same parameters, that method takes precedence over this extension
+    /// method.</para>
+    /// <para>In the .NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterEncoding and
+    /// can be called as follows: <c>encoding.GetDecoderInput(input)</c>.
+    /// If the object's class already has a <c>GetDecoderInput</c> method
+    /// with the same parameters, that method takes precedence over this
+    /// extension method.</para></summary>
+    /// <param name='encoding'>Encoding object that exposes a decoder to be
+    /// converted into a character input stream. If the decoder returns -2
+    /// (indicating a decode error), the character input stream handles the
+    /// error by returning a replacement character in its place.</param>
+    /// <param name='input'>Byte stream to convert into Unicode
+    /// characters.</param>
+    /// <returns>An ICharacterInput object.</returns>
     public static ICharacterInput GetDecoderInput(
   #if !NET20
 this

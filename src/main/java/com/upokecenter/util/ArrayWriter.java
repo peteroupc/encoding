@@ -24,18 +24,15 @@ at: http://peteroupc.github.io/
     }
 
     /**
-     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
-     * with a default buffer size.
+     * Initializes a new instance of the ArrayWriter class.
      */
     public ArrayWriter() {
  this(16);
     }
 
     /**
-     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
-     * with the given initial buffer size.
-     * @param initialSize The parameter {@code initialSize} is a 32-bit signed
-     * integer.
+     * Initializes a new instance of the {@link ArrayWriter} class.
+     * @param initialSize A 32-bit signed integer.
      */
     public ArrayWriter(int initialSize) {
       this.retval = new byte[initialSize];
@@ -81,7 +78,7 @@ at: http://peteroupc.github.io/
      * @throws java.lang.NullPointerException The parameter {@code src} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code src} 's length, or {@code src} ' s
-     * length minus {@code offset} is less than {@code length}.
+     * length minus {@code offset} is less than {@code length} .
      */
     public void write(byte[] src, int offset, int length) {
       if (src == null) {

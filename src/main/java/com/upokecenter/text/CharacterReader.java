@@ -35,20 +35,22 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
-     * @param str A string object.
-     * @param skipByteOrderMark A Boolean object.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
+     * @param str The parameter {@code str} is a text string.
+     * @param skipByteOrderMark Either {@code true} or {@code false} .
      */
     public CharacterReader(String str, boolean skipByteOrderMark) {
  this(str, skipByteOrderMark, false);
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
-     * @param str A string object.
-     * @param skipByteOrderMark A Boolean object.
-     * @param errorThrow Another Boolean object.
-     * @throws NullPointerException The parameter {@code str} is null.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
+     * @param str The parameter {@code str} is a text string.
+     * @param skipByteOrderMark Either {@code true} or {@code false} .
+     * @param errorThrow Either {@code true} or {@code false} .
+     * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
   public CharacterReader(
   String str,
@@ -78,13 +80,14 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
-     * @param str A string object.
-     * @param offset A 32-bit signed integer.
-     * @param length Another 32-bit signed integer.
-     * @param skipByteOrderMark A Boolean object.
-     * @param errorThrow Another Boolean object.
-     * @throws NullPointerException The parameter {@code str} is null.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
+     * @param str The parameter {@code str} is a text string.
+     * @param offset The parameter {@code offset} is a 32-bit signed integer.
+     * @param length The parameter {@code length} is a 32-bit signed integer.
+     * @param skipByteOrderMark Either {@code true} or {@code false} .
+     * @param errorThrow Either {@code true} or {@code false} .
+     * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
     public CharacterReader(
   String str,
@@ -134,10 +137,11 @@ if (str.length() - offset < length) {
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable data stream.
-     * @param mode A 32-bit signed integer.
-     * @param errorThrow A Boolean object.
+     * @param mode The parameter {@code mode} is a 32-bit signed integer.
+     * @param errorThrow Either {@code true} or {@code false} .
      */
     public CharacterReader(InputStream stream, int mode, boolean errorThrow) {
  this(stream, mode, errorThrow, false);
@@ -153,12 +157,13 @@ if (str.length() - offset < length) {
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable data stream.
-     * @param mode A 32-bit signed integer.
-     * @param errorThrow A Boolean object.
-     * @param dontSkipUtf8Bom Another Boolean object.
-     * @throws NullPointerException The parameter {@code stream} is null.
+     * @param mode The parameter {@code mode} is a 32-bit signed integer.
+     * @param errorThrow Either {@code true} or {@code false} .
+     * @param dontSkipUtf8Bom Either {@code true} or {@code false} .
+     * @throws java.lang.NullPointerException The parameter {@code stream} is null.
      */
     public CharacterReader(
   InputStream stream,

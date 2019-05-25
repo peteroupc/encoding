@@ -29,20 +29,25 @@ namespace PeterO.Text {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
-    /// <param name='str'>A string object.</param>
-    /// <param name='skipByteOrderMark'>A Boolean object.</param>
+    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
+    /// <param name='str'>The parameter <paramref name='str'/> is a text
+    /// string.</param>
+    /// <param name='skipByteOrderMark'>Either <c>true</c> or <c>false</c>
+    /// .</param>
     public CharacterReader(string str, bool skipByteOrderMark) :
       this(str, skipByteOrderMark, false) {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
-    /// <param name='str'>A string object.</param>
-    /// <param name='skipByteOrderMark'>A Boolean object.</param>
-    /// <param name='errorThrow'>Another Boolean object.</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='str'/> is null.</exception>
+    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
+    /// <param name='str'>The parameter <paramref name='str'/> is a text
+    /// string.</param>
+    /// <param name='skipByteOrderMark'>Either <c>true</c> or <c>false</c>
+    /// .</param>
+    /// <param name='errorThrow'>Either <c>true</c> or <c>false</c>
+    /// .</param>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// <paramref name='str'/> is null.</exception>
   public CharacterReader(
   string str,
   bool skipByteOrderMark,
@@ -70,14 +75,19 @@ namespace PeterO.Text {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
-    /// <param name='str'>A string object.</param>
-    /// <param name='offset'>A 32-bit signed integer.</param>
-    /// <param name='length'>Another 32-bit signed integer.</param>
-    /// <param name='skipByteOrderMark'>A Boolean object.</param>
-    /// <param name='errorThrow'>Another Boolean object.</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='str'/> is null.</exception>
+    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
+    /// <param name='str'>The parameter <paramref name='str'/> is a text
+    /// string.</param>
+    /// <param name='offset'>The parameter <paramref name='offset'/> is a
+    /// 32-bit signed integer.</param>
+    /// <param name='length'>The parameter <paramref name='length'/> is a
+    /// 32-bit signed integer.</param>
+    /// <param name='skipByteOrderMark'>Either <c>true</c> or <c>false</c>
+    /// .</param>
+    /// <param name='errorThrow'>Either <c>true</c> or <c>false</c>
+    /// .</param>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// <paramref name='str'/> is null.</exception>
     public CharacterReader(
   string str,
   int offset,
@@ -124,10 +134,12 @@ if (str.Length - offset < length) {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
+    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
     /// <param name='stream'>A readable data stream.</param>
-    /// <param name='mode'>A 32-bit signed integer.</param>
-    /// <param name='errorThrow'>A Boolean object.</param>
+    /// <param name='mode'>The parameter <paramref name='mode'/> is a
+    /// 32-bit signed integer.</param>
+    /// <param name='errorThrow'>Either <c>true</c> or <c>false</c>
+    /// .</param>
     public CharacterReader(Stream stream, int mode, bool errorThrow) :
       this(stream, mode, errorThrow, false) {
     }
@@ -141,13 +153,16 @@ if (str.Length - offset < length) {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
+    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
     /// <param name='stream'>A readable data stream.</param>
-    /// <param name='mode'>A 32-bit signed integer.</param>
-    /// <param name='errorThrow'>A Boolean object.</param>
-    /// <param name='dontSkipUtf8Bom'>Another Boolean object.</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='stream'/> is null.</exception>
+    /// <param name='mode'>The parameter <paramref name='mode'/> is a
+    /// 32-bit signed integer.</param>
+    /// <param name='errorThrow'>Either <c>true</c> or <c>false</c>
+    /// .</param>
+    /// <param name='dontSkipUtf8Bom'>Either <c>true</c> or <c>false</c>
+    /// .</param>
+    /// <exception cref='T:System.ArgumentNullException'>The parameter
+    /// <paramref name='stream'/> is null.</exception>
     public CharacterReader(
   Stream stream,
   int mode,

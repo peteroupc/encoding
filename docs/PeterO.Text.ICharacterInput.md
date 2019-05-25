@@ -22,12 +22,12 @@ Reads a sequence of Unicode code points from a data source.
 
  * <i>chars</i>: Output buffer.
 
- * <i>index</i>: A zero-based index showing where the desired portion of  <i>chars</i>
- begins.
+ * <i>index</i>: A zero-based index showing where the desired portion of <i>chars</i>
+begins.
 
- * <i>length</i>: The number of elements in the desired portion of  <i>chars</i>
- (but not more than  <i>chars</i>
- 's length).
+ * <i>length</i>: The number of elements in the desired portion of <i>chars</i>
+(but not more than <i>chars</i>
+'s length).
 
 <b>Return Value:</b>
 

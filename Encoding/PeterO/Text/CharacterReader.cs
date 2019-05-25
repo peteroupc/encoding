@@ -22,32 +22,19 @@ namespace PeterO.Text {
     private int offset;
     private ICharacterInput reader;
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
-    /// <param name='str'>A string object.</param>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.#ctor(System.String)"]/*'/>
     public CharacterReader(string str) : this(str, false, false) {
     }
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
-    /// <param name='str'>The parameter <paramref name='str'/> is a text
-    /// string.</param>
-    /// <param name='skipByteOrderMark'>Either <c>true</c> or <c>false</c>
-    /// .</param>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean)"]/*'/>
     public CharacterReader(string str, bool skipByteOrderMark) :
       this(str, skipByteOrderMark, false) {
     }
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
-    /// <param name='str'>The parameter <paramref name='str'/> is a text
-    /// string.</param>
-    /// <param name='skipByteOrderMark'>Either <c>true</c> or <c>false</c>
-    /// .</param>
-    /// <param name='errorThrow'>Either <c>true</c> or <c>false</c>
-    /// .</param>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='str'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean,System.Boolean)"]/*'/>
   public CharacterReader(
   string str,
   bool skipByteOrderMark,
@@ -65,29 +52,14 @@ namespace PeterO.Text {
       this.stream = null;
     }
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
-    /// <param name='str'>A string object.</param>
-    /// <param name='offset'>A 32-bit signed integer.</param>
-    /// <param name='length'>Another 32-bit signed integer.</param>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32)"]/*'/>
     public CharacterReader(string str, int offset, int length) :
       this(str, offset, length, false, false) {
     }
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
-    /// <param name='str'>The parameter <paramref name='str'/> is a text
-    /// string.</param>
-    /// <param name='offset'>The parameter <paramref name='offset'/> is a
-    /// 32-bit signed integer.</param>
-    /// <param name='length'>The parameter <paramref name='length'/> is a
-    /// 32-bit signed integer.</param>
-    /// <param name='skipByteOrderMark'>Either <c>true</c> or <c>false</c>
-    /// .</param>
-    /// <param name='errorThrow'>Either <c>true</c> or <c>false</c>
-    /// .</param>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='str'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)"]/*'/>
     public CharacterReader(
   string str,
   int offset,
@@ -127,42 +99,25 @@ if (str.Length - offset < length) {
       this.stream = null;
     }
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
-    /// <param name='stream'>A readable data stream.</param>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream)"]/*'/>
     public CharacterReader(Stream stream) : this(stream, 0, false) {
     }
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
-    /// <param name='stream'>A readable data stream.</param>
-    /// <param name='mode'>The parameter <paramref name='mode'/> is a
-    /// 32-bit signed integer.</param>
-    /// <param name='errorThrow'>Either <c>true</c> or <c>false</c>
-    /// .</param>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)"]/*'/>
     public CharacterReader(Stream stream, int mode, bool errorThrow) :
       this(stream, mode, errorThrow, false) {
     }
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
-    /// <param name='stream'>A readable data stream.</param>
-    /// <param name='mode'>A 32-bit signed integer.</param>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32)"]/*'/>
     public CharacterReader(Stream stream, int mode) :
       this(stream, mode, false, false) {
     }
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='T:PeterO.Text.CharacterReader'/> class.</summary>
-    /// <param name='stream'>A readable data stream.</param>
-    /// <param name='mode'>The parameter <paramref name='mode'/> is a
-    /// 32-bit signed integer.</param>
-    /// <param name='errorThrow'>Either <c>true</c> or <c>false</c>
-    /// .</param>
-    /// <param name='dontSkipUtf8Bom'>Either <c>true</c> or <c>false</c>
-    /// .</param>
-    /// <exception cref='T:System.ArgumentNullException'>The parameter
-    /// <paramref name='stream'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean,System.Boolean)"]/*'/>
     public CharacterReader(
   Stream stream,
   int mode,

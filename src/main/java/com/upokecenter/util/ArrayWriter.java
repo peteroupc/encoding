@@ -24,15 +24,16 @@ at: http://peteroupc.github.io/
     }
 
     /**
-     * Initializes a new instance of the ArrayWriter class.
+     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
+     * with a default backing store size of 16.
      */
     public ArrayWriter() {
  this(16);
     }
 
     /**
-     * Initializes a new instance of the {@link ArrayWriter} class.
-     * @param initialSize A 32-bit signed integer.
+     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class.
+     * @param initialSize The initial size of the array writer's backing store.
      */
     public ArrayWriter(int initialSize) {
       this.retval = new byte[initialSize];

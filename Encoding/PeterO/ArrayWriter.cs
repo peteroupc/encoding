@@ -22,14 +22,13 @@ namespace PeterO {
       this.retvalMax = 0;
     }
 
-    /// <summary>Initializes a new instance of the ArrayWriter
-    /// class.</summary>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.ArrayWriter.#ctor"]/*'/>
     public ArrayWriter() : this(16) {
     }
 
-    /// <summary>Initializes a new instance of the
-    /// <see cref='ArrayWriter'/> class.</summary>
-    /// <param name='initialSize'>A 32-bit signed integer.</param>
+    /// <include file='../docs.xml'
+    /// path='docs/doc[@name="M:PeterO.ArrayWriter.#ctor(System.Int32)"]/*'/>
     public ArrayWriter(int initialSize) {
       this.retval = new byte[initialSize];
     }

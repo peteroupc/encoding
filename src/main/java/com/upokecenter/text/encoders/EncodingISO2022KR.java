@@ -246,8 +246,8 @@ import com.upokecenter.text.*;
           return -2;
         }
         if (pointer < (26 + 26 + 126) * (0xc7 - 0x81)) {
-          int lead = pointer / (26 + 26 + 126) + 1;
-          int trail = pointer % (26 + 26 + 126) - 26 - 26 + 1;
+          int lead = (pointer / (26 + 26 + 126)) + 1;
+          int trail = (pointer % (26 + 26 + 126)) - 26 - 26 + 1;
           if (lead < 0x21 || trail < 0x21) {
             return -2;
           }
@@ -259,7 +259,7 @@ import com.upokecenter.text.*;
         } else {
           pointer -= (26 + 26 + 126) * (0xc7 - 0x81);
           int lead = (pointer / 94) + 0x47;
-          int trail = pointer % 94 + 0x21;
+          int trail = (pointer % 94) + 0x21;
           count += this.WritePreamble(output);
           count += this.WriteShiftout(output);
           output.write(lead);

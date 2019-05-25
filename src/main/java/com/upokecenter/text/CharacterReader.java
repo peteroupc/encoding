@@ -27,8 +27,9 @@ import java.io.*;
     private ICharacterInput reader;
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
-     * @param str A string object.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
+     * @param str The parameter {@code str} is a text string.
      */
     public CharacterReader(String str) {
  this(str, false, false);
@@ -38,7 +39,7 @@ import java.io.*;
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
-     * @param skipByteOrderMark Either {@code true} or {@code false} .
+     * @param skipByteOrderMark Either {@code true } or {@code false } .
      */
     public CharacterReader(String str, boolean skipByteOrderMark) {
  this(str, skipByteOrderMark, false);
@@ -48,8 +49,8 @@ import java.io.*;
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
-     * @param skipByteOrderMark Either {@code true} or {@code false} .
-     * @param errorThrow Either {@code true} or {@code false} .
+     * @param skipByteOrderMark Either {@code true } or {@code false } .
+     * @param errorThrow Either {@code true } or {@code false } .
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
   public CharacterReader(
@@ -70,10 +71,11 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
-     * @param str A string object.
-     * @param offset A 32-bit signed integer.
-     * @param length Another 32-bit signed integer.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
+     * @param str The parameter {@code str} is a text string.
+     * @param offset The parameter {@code offset} is a 32-bit signed integer.
+     * @param length The parameter {@code length} is a 32-bit signed integer.
      */
     public CharacterReader(String str, int offset, int length) {
  this(str, offset, length, false, false);
@@ -85,8 +87,8 @@ import java.io.*;
      * @param str The parameter {@code str} is a text string.
      * @param offset The parameter {@code offset} is a 32-bit signed integer.
      * @param length The parameter {@code length} is a 32-bit signed integer.
-     * @param skipByteOrderMark Either {@code true} or {@code false} .
-     * @param errorThrow Either {@code true} or {@code false} .
+     * @param skipByteOrderMark Either {@code true } or {@code false } .
+     * @param errorThrow Either {@code true } or {@code false } .
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
     public CharacterReader(
@@ -129,7 +131,8 @@ if (str.length() - offset < length) {
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable data stream.
      */
     public CharacterReader(InputStream stream) {
@@ -141,16 +144,17 @@ if (str.length() - offset < length) {
      * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable data stream.
      * @param mode The parameter {@code mode} is a 32-bit signed integer.
-     * @param errorThrow Either {@code true} or {@code false} .
+     * @param errorThrow Either {@code true } or {@code false } .
      */
     public CharacterReader(InputStream stream, int mode, boolean errorThrow) {
  this(stream, mode, errorThrow, false);
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable data stream.
-     * @param mode A 32-bit signed integer.
+     * @param mode The parameter {@code mode} is a 32-bit signed integer.
      */
     public CharacterReader(InputStream stream, int mode) {
  this(stream, mode, false, false);
@@ -161,8 +165,8 @@ if (str.length() - offset < length) {
      * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable data stream.
      * @param mode The parameter {@code mode} is a 32-bit signed integer.
-     * @param errorThrow Either {@code true} or {@code false} .
-     * @param dontSkipUtf8Bom Either {@code true} or {@code false} .
+     * @param errorThrow Either {@code true } or {@code false } .
+     * @param dontSkipUtf8Bom Either {@code true } or {@code false } .
      * @throws java.lang.NullPointerException The parameter {@code stream} is null.
      */
     public CharacterReader(

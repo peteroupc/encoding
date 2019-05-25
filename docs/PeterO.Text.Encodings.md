@@ -2,8 +2,7 @@
 
     public static class Encodings
 
-Contains methods for converting text from one character encoding to another. This class also contains convenience methods for converting strings and other character inputs to sequences of bytes and vice versa.The Encoding Standard, which is a Candidate Recommendation as of early November 2015, defines algorithms for the most common character encodings used on Web pages and recommends the UTF-8 encoding for new specifications and Web pages. Calling the `
-          GetEncoding(name)
+Contains methods for converting text from one character encoding to another. This class also contains convenience methods for converting strings and other character inputs to sequences of bytes and vice versa.The Encoding Standard, which is a Candidate Recommendation as of early November 2015, defines algorithms for the most common character encodings used on Web pages and recommends the UTF-8 encoding for new specifications and Web pages. Calling the `GetEncoding(name)
         ` method returns one of the character encodings with the given name under he Encoding Standard.
 
 Now let's define some terms.
@@ -22,78 +21,59 @@ There are several kinds of character encodings:
 
  * <b>Single-byte encodings</b>define a coded character set that assigns one code point to one byte. hus, they can have a maximum of 256 code points. For example:
 
- * (a) ISO 8859 encodings and `
-            windows-1252
+ * (a) ISO 8859 encodings and `windows-1252
           ` .
 
- * (b) ASCII is usually used as a single-byte encoding where each code point fits in the lower 7 bits of an eight-bit byte (in that case, the encoding is often called `
-            US-ASCII
+ * (b) ASCII is usually used as a single-byte encoding where each code point fits in the lower 7 bits of an eight-bit byte (in that case, the encoding is often called `US-ASCII
           ` ). In the Encoding Standard, all single-byte encodings use the ASCII haracters as the first 128 code points of their coded character sets.
 
  * <b>Multi-byte encodings</b>include code points from one or more coded character sets and assign ome or all code points to several bytes. For example:
 
- * (a) `
-            UTF-16LE
-          ` and `
-            UTF-16BE
+ * (a) `UTF-16LE
+          ` and `UTF-16BE
           ` are two encodings defined in the Unicode Standard. They use 2 bytes or the most common code points, and 4 bytes for supplementary code oints.
 
- * (b) `
-            UTF-8
+ * (b) `UTF-8
           ` is another encoding defined in the Unicode Standard. It uses 1 byte or ASCII and 2 to 4 bytes for the other Unicode code points.
 
- * (c) Most legacy East Asian encodings, such as `
-            Shift_JIS
-          ` , `
-            GBK
-          ` , and `
-            Big5
-          ` use 1 byte for ASCII (or a slightly modified version) and, usually, 2 r more bytes for national standard coded character sets. In many of hese encodings, notably `
-            Shift_JIS
-          ` , characters whose code points use one byte traditionally take half the space of characters whose code points use two bytes.
+ * (c) Most legacy East Asian encodings, such as `Shift_JIS
+          ` , `GBK
+          ` , and `Big5
+          ` use 1 byte for ASCII (or a slightly modified version) and, usually, 2 r more bytes for national standard coded character sets. In many of hese encodings, notably `Shift_JIS
+          ` , characters whose code points use one byte traditionally take half he space of characters whose code points use two bytes.
 
  * <b>Escape-based encodings</b>are combinations of single- and/or multi-byte encodings, and use scape sequences and/or shift codes to change which encoding to use or the bytes that follow. For example:
 
- * (a) `
-            ISO-2022-JP
+ * (a) `ISO-2022-JP
           ` supports several escape sequences that shift into different ncodings, including a Katakana, a Kanji, and an ASCII encoding (with SCII as the default).
 
  * (b) UTF-7 (not included in the Encoding Standard) is an encoding that uses the Unicode Standard's coded character set, which is encoded using a limited subset of ASCII. The plus symbol (U+002B) is used to shift into a UTF-16BE multi-byte encoding (converted to a modified version of base-64) to encode other Unicode code points.
 
- * The Encoding Standard also defines a<b>replacement encoding</b>, which causes a decoding error and is used to alias a few problematic or unsupported encoding names, such as `
-            hz-gb-2312
+ * The Encoding Standard also defines a<b>replacement encoding</b>, which causes a decoding error and is used to alias a few roblematic or unsupported encoding names, such as `hz-gb-2312
           ` .
 
 <b>Getting an Encoding</b>
 
-The Encoding Standard includes UTF-8, UTF-16, and many legacy encodings, and gives each one of them a name. The `
-          GetEncoding(name)
-        ` method takes a name string and returns an ICharacterEncoding object hat implements that encoding, or `
-          null
+The Encoding Standard includes UTF-8, UTF-16, and many legacy encodings, and gives each one of them a name. The `GetEncoding(name)
+        ` method takes a name string and returns an ICharacterEncoding object hat implements that encoding, or `null
         ` if the name is unrecognized.
 
-However, the Encoding Standard is designed to include only encodings commonly used on Web pages, not in other protocols such as email. For email, the Encoding class includes an alternate function `
-          GetEncoding(name, forEmail)
-        ` . Setting `
-          forEmail
-        ` to `
-          true
+However, the Encoding Standard is designed to include only encodings commonly used on Web pages, not in other protocols such as email. For email, the Encoding class includes an alternate function `GetEncoding(name, forEmail)
+        ` . Setting `forEmail
+        ` to `true
         ` will use rules modified from the Encoding Standard to better suit ncoding and decoding text from email messages.
 
 <b>Classes for Character Encodings</b>
 
 This Encodings class provides access to common character encodings through classes as described below:
 
- * An<b>encoder class</b>is a class that converts a sequence of bytes to a sequence of code oints in the universal character set (otherwise known under the name nicode). An encoder class implements the `
-            ICharacterEncoder
+ * An<b>encoder class</b>is a class that converts a sequence of bytes to a sequence of code oints in the universal character set (otherwise known under the name nicode). An encoder class implements the `ICharacterEncoder
           ` interface.
 
- * A<b>decoder class</b>is a class that converts a sequence of Unicode code points to a equence of bytes. A decoder class implements the `
-            ICharacterDecoder
+ * A<b>decoder class</b>is a class that converts a sequence of Unicode code points to a equence of bytes. A decoder class implements the `ICharacterDecoder
           ` interface.
 
- * An<b>encoding class</b>allows access to both an encoder class and a decoder class and mplements the `
-            ICharacterEncoding
+ * An<b>encoding class</b>allows access to both an encoder class and a decoder class and mplements the `ICharacterEncoding
           ` interface. The encoder and decoder classes should implement the same haracter encoding.
 
 <b>Custom Encodings</b>
@@ -152,14 +132,11 @@ Character encoding object for the UTF-8 character encoding, which represents eac
         this PeterO.Text.ICharacterEncoding enc,
         byte[] bytes);
 
-Reads a byte array from a data source and converts the bytes from a given encoding to a text string. Errors in decoding are handled by replacing erroneous bytes with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `
-          enc.DecodeToString(bytes)
-        ` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
+Reads a byte array from a data source and converts the bytes from a given encoding to a text string. Errors in decoding are handled by replacing erroneous bytes with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `enc.DecodeToString(bytes)
+        ` . If the object's class already has a DecodeToString method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `
-          enc.DecodeToString(bytes)
-        ` . If the object's class already has a `
-          DecodeToString
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `enc.DecodeToString(bytes)
+        ` . If the object's class already has a `DecodeToString
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -188,14 +165,11 @@ is null.
         int offset,
         int length);
 
-Reads a portion of a byte array from a data source and converts the bytes from a given encoding to a text string. Errors in decoding are handled by replacing erroneous bytes with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `
-          enc.DecodeToString(bytes, offset, length)
-        ` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
+Reads a portion of a byte array from a data source and converts the bytes from a given encoding to a text string. Errors in decoding are handled by replacing erroneous bytes with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `enc.DecodeToString(bytes, offset, length)
+        ` . If the object's class already has a DecodeToString method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `
-          enc.DecodeToString(bytes, offset, length)
-        ` . If the object's class already has a `
-          DecodeToString
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `enc.DecodeToString(bytes, offset, length)
+        ` . If the object's class already has a `DecodeToString
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -243,9 +217,12 @@ is null.
         this PeterO.Text.ICharacterEncoding enc,
         System.IO.Stream input);
 
-Decodes data read from a data stream into a text string in the given character encoding.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.DecodeToString(input)` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
+Decodes data read from a data stream into a text string in the given character encoding.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.DecodeToString(input)
+        ` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(input)` . If the object's class already has a  `DecodeToString`  method with the same parameters, that method takes precedence over this extension method.
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `enc.DecodeToString(input)
+        ` . If the object's class already has a `DecodeToString
+        ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
 
@@ -260,8 +237,8 @@ A string consisting of the decoded text.
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
-The parameter "encoding" or  <i>input</i>
- is null.
+The parameter "encoding" or <i>input</i>
+is null.
 
 <a id="DecodeToString_this_PeterO_Text_ICharacterEncoding_PeterO_IByteReader"></a>
 ### DecodeToString
@@ -296,14 +273,11 @@ is null.
         this PeterO.Text.ICharacterInput input,
         PeterO.Text.ICharacterEncoder encoder);
 
-Reads Unicode characters from a character input and writes them to a byte array encoded using a given character encoding. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToBytes(encoder)
-        ` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+Reads Unicode characters from a character input and writes them to a byte array encoded using a given character encoding. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToBytes(encoder)
+        ` . If the object's class already has a EncodeToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToBytes(encoder)
-        ` . If the object's class already has a `
-          EncodeToBytes
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToBytes(encoder)
+        ` . If the object's class already has a `EncodeToBytes
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -331,10 +305,8 @@ is null.
         PeterO.Text.ICharacterEncoder encoder,
         bool htmlFallback);
 
-Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder and fallback strategy.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToBytes(encoder, htmlFallback)
-        ` . If the object's class already has a `
-          EncodeToBytes
+Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder and fallback strategy.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToBytes(encoder, htmlFallback)
+        ` . If the object's class already has a `EncodeToBytes
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -368,10 +340,8 @@ is null.
         this PeterO.Text.ICharacterInput input,
         PeterO.Text.ICharacterEncoding encoding);
 
-Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToBytes(encoding)
-        ` . If the object's class already has a `
-          EncodeToBytes
+Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToBytes(encoding)
+        ` . If the object's class already has a `EncodeToBytes
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -397,14 +367,11 @@ is null.
         this string str,
         PeterO.Text.ICharacterEncoding enc);
 
-Reads Unicode characters from a text string and writes them to a byte array encoded in a given character encoding. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `
-          str.EncodeToBytes(enc)
-        ` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+Reads Unicode characters from a text string and writes them to a byte array encoded in a given character encoding. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `str.EncodeToBytes(enc)
+        ` . If the object's class already has a EncodeToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `
-          str.EncodeToBytes(enc)
-        ` . If the object's class already has a `
-          EncodeToBytes
+In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `str.EncodeToBytes(enc)
+        ` . If the object's class already has a `EncodeToBytes
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -432,10 +399,8 @@ is null.
         PeterO.Text.ICharacterEncoding enc,
         bool htmlFallback);
 
-Reads Unicode characters from a text string and writes them to a byte array encoded in a given character encoding and using the given encoder fallback strategy. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `
-          str.EncodeToBytes(enc, htmlFallback)
-        ` . If the object's class already has a `
-          EncodeToBytes
+Reads Unicode characters from a text string and writes them to a byte array encoded in a given character encoding and using the given encoder fallback strategy. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `str.EncodeToBytes(enc, htmlFallback)
+        ` . If the object's class already has a `EncodeToBytes
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -465,14 +430,11 @@ is null.
         PeterO.Text.ICharacterEncoder encoder,
         PeterO.IWriter writer);
 
-Reads Unicode characters from a character input and writes them to a byte array encoded in a given character encoding. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToBytes(encoder)
-        ` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+Reads Unicode characters from a character input and writes them to a byte array encoded in a given character encoding. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToBytes(encoder)
+        ` . If the object's class already has a EncodeToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToWriter(encoder, writer)
-        ` . If the object's class already has a `
-          EncodeToWriter
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToWriter(encoder, writer)
+        ` . If the object's class already has a `EncodeToWriter
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -498,14 +460,11 @@ is null.
         PeterO.Text.ICharacterEncoder encoder,
         System.IO.Stream output);
 
-Reads Unicode characters from a character input and writes them to a byte array encoded in a given character encoding. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToBytes(encoder)
-        ` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+Reads Unicode characters from a character input and writes them to a byte array encoded in a given character encoding. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToBytes(encoder)
+        ` . If the object's class already has a EncodeToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToWriter(encoder, output)
-        ` . If the object's class already has a `
-          EncodeToWriter
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToWriter(encoder, output)
+        ` . If the object's class already has a `EncodeToWriter
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -531,14 +490,11 @@ is null.
         PeterO.Text.ICharacterEncoding encoding,
         PeterO.IWriter writer);
 
-Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToBytes(encoding)
-        ` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToBytes(encoding)
+        ` . If the object's class already has a EncodeToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToWriter(encoding, writer)
-        ` . If the object's class already has a `
-          EncodeToWriter
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToWriter(encoding, writer)
+        ` . If the object's class already has a `EncodeToWriter
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -563,14 +519,11 @@ is null.
         PeterO.Text.ICharacterEncoding encoding,
         System.IO.Stream output);
 
-Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToBytes(encoding)
-        ` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToBytes(encoding)
+        ` . If the object's class already has a EncodeToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          input.EncodeToWriter(encoding, output)
-        ` . If the object's class already has a `
-          EncodeToWriter
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `input.EncodeToWriter(encoding, output)
+        ` . If the object's class already has a `EncodeToWriter
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -595,14 +548,11 @@ is null.
         PeterO.Text.ICharacterEncoding enc,
         PeterO.IWriter writer);
 
-Converts a text string to bytes and writes the bytes to an output byte writer. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte stream, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `
-          str.EncodeToBytes(enc, writer)
-        ` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+Converts a text string to bytes and writes the bytes to an output byte writer. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte stream, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `str.EncodeToBytes(enc, writer)
+        ` . If the object's class already has a EncodeToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `
-          str.EncodeToWriter(enc, writer)
-        ` . If the object's class already has a `
-          EncodeToWriter
+In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `str.EncodeToWriter(enc, writer)
+        ` . If the object's class already has a `EncodeToWriter
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -628,14 +578,11 @@ is null.
         PeterO.Text.ICharacterEncoding enc,
         System.IO.Stream output);
 
-Converts a text string to bytes and writes the bytes to an output data stream. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte stream, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `
-          str.EncodeToBytes(enc, writer)
-        ` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+Converts a text string to bytes and writes the bytes to an output data stream. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte stream, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `str.EncodeToBytes(enc, writer)
+        ` . If the object's class already has a EncodeToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `
-          str.EncodeToWriter(enc, output)
-        ` . If the object's class already has a `
-          EncodeToWriter
+In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `str.EncodeToWriter(enc, output)
+        ` . If the object's class already has a `EncodeToWriter
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -679,9 +626,12 @@ An ICharacterInput object.
         this PeterO.Text.ICharacterEncoding encoding,
         System.IO.Stream input);
 
-Converts a character encoding into a character input stream, given a data stream. The input stream doesn't check the first few bytes for a byte-order mark indicating a Unicode encoding such as UTF-8 before using the character encoding's decoder.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.GetDecoderInput(input)` . If the object's class already has a GetDecoderInput method with the same parameters, that method takes precedence over this extension method.
+Converts a character encoding into a character input stream, given a data stream. The input stream doesn't check the first few bytes for a byte-order mark indicating a Unicode encoding such as UTF-8 before using the character encoding's decoder.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInput(input)
+        ` . If the object's class already has a GetDecoderInput method with the same parameters, that method takes precedence over this extension method.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.GetDecoderInput(input)` . If the object's class already has a  `GetDecoderInput`  method with the same parameters, that method takes precedence over this extension method.
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInput(input)
+        ` . If the object's class already has a `GetDecoderInput
+        ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
 
@@ -702,10 +652,8 @@ An ICharacterInput object.
 
 Converts a character encoding into a character input stream, given a streamable source of bytes. But if the input stream starts with a UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may be, rather than the given character encoding.This method implements the "decode" algorithm specified in the Encoding standard.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `
-          encoding.GetDecoderInputSkipBom(input)
-        ` . If the object's class already has a `
-          GetDecoderInputSkipBom
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInputSkipBom(input)
+        ` . If the object's class already has a `GetDecoderInputSkipBom
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -725,10 +673,8 @@ An ICharacterInput object.
         this PeterO.Text.ICharacterEncoding encoding,
         System.IO.Stream input);
 
-Converts a character encoding into a character input stream, given a readable data stream. But if the input stream starts with a UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may be, rather than the given character encoding.This method implements the "decode" algorithm specified in the Encoding standard.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `
-          encoding.GetDecoderInputSkipBom(input)
-        ` . If the object's class already has a `
-          GetDecoderInputSkipBom
+Converts a character encoding into a character input stream, given a readable data stream. But if the input stream starts with a UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may be, rather than the given character encoding.This method implements the "decode" algorithm specified in the Encoding standard.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInputSkipBom(input)
+        ` . If the object's class already has a `GetDecoderInputSkipBom
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -804,14 +750,11 @@ An object that enables encoding and decoding text in the given character encodin
     public static string InputToString(
         this PeterO.Text.ICharacterInput reader);
 
-Reads Unicode characters from a character input and converts them to a text string.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          reader.InputToString()
-        ` . If the object's class already has a InputToString method with the same parameters, that method takes precedence over this extension method.
+Reads Unicode characters from a character input and converts them to a text string.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `reader.InputToString()
+        ` . If the object's class already has a InputToString method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `
-          reader.InputToString()
-        ` . If the object's class already has a `
-          InputToString
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows: `reader.InputToString()
+        ` . If the object's class already has a `InputToString
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -834,164 +777,112 @@ Resolves a character encoding's name to a standard form. This involves changing 
 
  * <i>name</i>: A string that names a given character encoding. Can be null. Any leading and trailing whitespace is removed and the name converted to lowercase before resolving the encoding's name. The Encoding Standard supports only the following encodings (and defines aliases for most of them).
 
- *  `
-            UTF-8
+ *  `UTF-8
           ` - UTF-8 (8-bit encoding of the universal coded character set, the ncoding recommended by the Encoding Standard for new data formats)
 
- *  `
-            UTF-16LE
+ *  `UTF-16LE
           ` - UTF-16 little-endian (16-bit UCS)
 
- *  `
-            UTF-16BE
+ *  `UTF-16BE
           ` - UTF-16 big-endian (16-bit UCS)
 
- * The special-purpose encoding `
-            x-user-defined
+ * The special-purpose encoding `x-user-defined
           `
 
- * The special-purpose encoding `
-            replacement
+ * The special-purpose encoding `replacement
           ` .
 
  * 28 legacy single-byte encodings:
 
- *  `
-                windows-1252
-              ` : Western Europe (Note: The Encoding Standard aliases the names `
-                US-ASCII
-              ` and `
-                ISO-8859-1
-              ` to `
-                windows-1252
-              ` , which uses a different coded character set from either; it differs from `
-                ISO-8859-1
+ *  `windows-1252
+              ` : Western Europe (Note: The Encoding Standard aliases the names `US-ASCII
+              ` and `ISO-8859-1
+              ` to `windows-1252
+              ` , which uses a different coded character set from either; it iffers from `ISO-8859-1
               ` by assigning different characters to some bytes from 0x80 to x9F. The Encoding Standard does this for compatibility with xisting Web pages.)
 
- *  `
-                ISO-8859-2
-              ` , `
-                windows-1250
+ *  `ISO-8859-2
+              ` , `windows-1250
               ` : Central Europe
 
- *  `
-                ISO-8859-10
+ *  `ISO-8859-10
               ` : Northern Europe
 
- *  `
-                ISO-8859-4
-              ` , `
-                windows-1257
+ *  `ISO-8859-4
+              ` , `windows-1257
               ` : Baltic
 
- *  `
-                ISO-8859-13
+ *  `ISO-8859-13
               ` : Estonian
 
- *  `
-                ISO-8859-14
+ *  `ISO-8859-14
               ` : Celtic
 
- *  `
-                ISO-8859-16
+ *  `ISO-8859-16
               ` : Romanian
 
- *  `
-                ISO-8859-5
-              ` , `
-                IBM-866
-              ` , `
-                KOI8-R
-              ` , `
-                windows-1251
-              ` , `
-                x-mac-cyrillic
+ *  `ISO-8859-5
+              ` , `IBM-866
+              ` , `KOI8-R
+              ` , `windows-1251
+              ` , `x-mac-cyrillic
               ` : Cyrillic
 
- *  `
-                KOI8-U
+ *  `KOI8-U
               ` : Ukrainian
 
- *  `
-                ISO-8859-7
-              ` , `
-                windows-1253
+ *  `ISO-8859-7
+              ` , `windows-1253
               ` : Greek
 
- *  `
-                ISO-8859-6
-              ` , `
-                windows-1256
+ *  `ISO-8859-6
+              ` , `windows-1256
               ` : Arabic
 
- *  `
-                ISO-8859-8
-              ` , `
-                ISO-8859-8-I
-              ` , `
-                windows-1255
+ *  `ISO-8859-8
+              ` , `ISO-8859-8-I
+              ` , `windows-1255
               ` : Hebrew
 
- *  `
-                ISO-8859-3
+ *  `ISO-8859-3
               ` : Latin 3
 
- *  `
-                ISO-8859-15
-              ` , `
-                windows-1254
+ *  `ISO-8859-15
+              ` , `windows-1254
               ` : Turkish
 
- *  `
-                windows-874
+ *  `windows-874
               ` : Thai
 
- *  `
-                windows-1258
+ *  `windows-1258
               ` : Vietnamese
 
- *  `
-                macintosh
+ *  `macintosh
               ` : Mac Roman
 
- * Three legacy Japanese encodings: `
-            Shift_JIS
-          ` , `
-            EUC-JP
-          ` , `
-            ISO-2022-JP
+ * Three legacy Japanese encodings: `Shift_JIS
+          ` , `EUC-JP
+          ` , `ISO-2022-JP
           `
 
- * Two legacy simplified Chinese encodings: `
-            GBK
-          ` and `
-            gb18030
+ * Two legacy simplified Chinese encodings: `GBK
+          ` and `gb18030
           `
 
- *  `
-            Big5
+ *  `Big5
           ` : legacy traditional Chinese encoding
 
- *  `
-            EUC-KR
+ *  `EUC-KR
           ` : legacy Korean encoding
 
-The `
-          UTF-8
-        ` , `
-          UTF-16LE
-        ` , and `
-          UTF-16BE
-        ` encodings don't encode a byte-order mark at the start of the text doing so is not recommended for `
-          UTF-8
-        ` , while in `
-          UTF-16LE
-        ` and `
-          UTF-16BE
-        ` , the byte-order mark character U+FEFF is treated as an ordinary character, unlike in the UTF-16 encoding form). The Encoding Standard aliases `
-          UTF-16
-        ` to `
-          UTF-16LE
+The `UTF-8
+        ` , `UTF-16LE
+        ` , and `UTF-16BE
+        ` encodings don't encode a byte-order mark at the start of the text doing so is not recommended for `UTF-8
+        ` , while in `UTF-16LE
+        ` and `UTF-16BE
+        ` , the byte-order mark character U+FEFF is treated as an ordinary haracter, unlike in the UTF-16 encoding form). The Encoding Standard liases `UTF-16
+        ` to `UTF-16LE
         ` "to deal with deployed content".
 
 .
@@ -1011,50 +902,33 @@ Resolves a character encoding's name to a canonical form, using rules more suita
 
 <b>Parameters:</b>
 
- * <i>name</i>: A string naming a character encoding. Can be null. Uses a modified version of the rules in the Encoding Standard to better conform, in some cases, to email standards like MIME. Encoding names and aliases not registered with the Internet Assigned Numbers Authority (IANA) are not supported, with the exception of `
-        ascii
-      ` , `
-        utf8
-      ` , `
-        cp1252
-      ` , and names 10 characters or longer starting with `
-        iso-8859-
-      ` . Also, the following additional encodings are supported. Note that the case combination `
-        GB18030
-      ` , the combination registered with IANA, rather than `
-        gb18030
+ * <i>name</i>: A string naming a character encoding. Can be null. Uses a modified version of the rules in the Encoding Standard to better conform, in some cases, to email standards like MIME. Encoding names and aliases not registered with the Internet Assigned Numbers Authority (IANA) are not supported, with the exception of `ascii
+      ` , `utf8
+      ` , `cp1252
+      ` , and names 10 characters or longer starting with `iso-8859-
+      ` . Also, the following additional encodings are supported. Note that the ase combination `GB18030
+      ` , the combination registered with IANA, rather than `gb18030
       ` can be retured by this method.
 
- *  `
-            US-ASCII
-          ` - ASCII single-byte encoding, rather than an alias to `
-            windows-1252
-          ` as specified in the Encoding Standard. The coded character set's code oints match those in the Unicode Standard's Basic Latin block (0-127 r U+0000 to U+007F). The name `
-            ascii
+ *  `US-ASCII
+          ` - ASCII single-byte encoding, rather than an alias to `windows-1252
+          ` as specified in the Encoding Standard. The coded character set's code oints match those in the Unicode Standard's Basic Latin block (0-127 r U+0000 to U+007F). The name `ascii
           ` is an alias.
 
- *  `
-            ISO-8859-1
-          ` - Latin-1 single-byte encoding, rather than an alias to `
-            windows-1252
+ *  `ISO-8859-1
+          ` - Latin-1 single-byte encoding, rather than an alias to `windows-1252
           ` as specified in the Encoding Standard. The coded character set's code oints match those in the Unicode Standard's Basic Latin and Latin-1 upplement blocks (0-255 or U+0000 to U+00FF).
 
- *  `
-            UTF-16
-          ` - UTF-16 without a fixed byte order, rather than an alias to `
-            UTF-16LE
+ *  `UTF-16
+          ` - UTF-16 without a fixed byte order, rather than an alias to `UTF-16LE
           ` as specified in the Encoding Standard. The byte order is little ndian if the byte stream starts with 0xff 0xfe; otherwise, big ndian. A leading 0xff 0xfe or 0xFE 0xff in the byte stream is kipped.
 
- *  `
-            UTF-7
-          ` - UTF-7 (7-bit universal coded character set). The name `
-            unicode-1-1-utf-7
-          ` is not supported and is not treated as an alias to `
-            UTF-7
-          ` , even though it uses the same character encoding scheme as UTF-7, because RFC 1642, which defined the former UTF-7, is linked to a different Unicode version with an incompatible character repertoire (notably, the Hangul syllables have different code point assignments in Unicode 1.1 and earlier than in Unicode 2.0 and later).
+ *  `UTF-7
+          ` - UTF-7 (7-bit universal coded character set). The name `unicode-1-1-utf-7
+          ` is not supported and is not treated as an alias to `UTF-7
+          ` , even though it uses the same character encoding scheme as UTF-7, ecause RFC 1642, which defined the former UTF-7, is linked to a ifferent Unicode version with an incompatible character repertoire notably, the Hangul syllables have different code point assignments n Unicode 1.1 and earlier than in Unicode 2.0 and later).
 
- *  `
-            ISO-2022-JP-2
+ *  `ISO-2022-JP-2
           ` - similar to "ISO-2022-JP", except that the decoder supports dditional character sets.
 
 .
@@ -1071,14 +945,11 @@ is null or empty, or if the encoding name is unsupported.
         this PeterO.Text.ICharacterEncoder encoder,
         string str);
 
-Converts a text string to a byte array using the given character encoder. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoder and can be called as follows: `
-          encoder.StringToBytes(str)
-        ` . If the object's class already has a StringToBytes method with the same parameters, that method takes precedence over this extension method.
+Converts a text string to a byte array using the given character encoder. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoder and can be called as follows: `encoder.StringToBytes(str)
+        ` . If the object's class already has a StringToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoder and can be called as follows: `
-          encoder.StringToBytes(str)
-        ` . If the object's class already has a `
-          StringToBytes
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoder and can be called as follows: `encoder.StringToBytes(str)
+        ` . If the object's class already has a `StringToBytes
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -1105,14 +976,11 @@ is null.
         this PeterO.Text.ICharacterEncoding encoding,
         string str);
 
-Converts a text string to a byte array encoded in a given character encoding. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `
-          encoding.StringToBytes(str)
-        ` . If the object's class already has a StringToBytes method with the same parameters, that method takes precedence over this extension method.
+Converts a text string to a byte array encoded in a given character encoding. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character).In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.StringToBytes(str)
+        ` . If the object's class already has a StringToBytes method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `
-          encoding.StringToBytes(str)
-        ` . If the object's class already has a `
-          StringToBytes
+In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.StringToBytes(str)
+        ` . If the object's class already has a `StringToBytes
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -1137,14 +1005,11 @@ is null.
     public static PeterO.Text.ICharacterInput StringToInput(
         this string str);
 
-Converts a text string to a character input. The resulting input can then be used to encode the text to bytes, or to read the string code point by code point, among other things. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `
-          str.StringToInput(offset, length)
-        ` . If the object's class already has a StringToInput method with the same parameters, that method takes precedence over this extension method.
+Converts a text string to a character input. The resulting input can then be used to encode the text to bytes, or to read the string code point by code point, among other things. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `str.StringToInput(offset, length)
+        ` . If the object's class already has a StringToInput method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `
-          str.StringToInput()
-        ` . If the object's class already has a `
-          StringToInput
+In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `str.StringToInput()
+        ` . If the object's class already has a `StringToInput
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>
@@ -1170,14 +1035,11 @@ is null.
         int offset,
         int length);
 
-Converts a portion of a text string to a character input. The resulting input can then be used to encode the text to bytes, or to read the string code point by code point, among other things. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `
-          str.StringToInput(offset, length)
-        ` . If the object's class already has a StringToInput method with the same parameters, that method takes precedence over this extension method.
+Converts a portion of a text string to a character input. The resulting input can then be used to encode the text to bytes, or to read the string code point by code point, among other things. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD).In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows: `str.StringToInput(offset, length)
+        ` . If the object's class already has a StringToInput method with the ame parameters, that method takes precedence over this extension ethod.
 
-In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `
-          str.StringToInput(offset, length)
-        ` . If the object's class already has a `
-          StringToInput
+In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows: `str.StringToInput(offset, length)
+        ` . If the object's class already has a `StringToInput
         ` method with the same parameters, that method takes precedence over this xtension method.
 
 <b>Parameters:</b>

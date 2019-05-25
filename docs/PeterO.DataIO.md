@@ -22,9 +22,8 @@ Convenience class that contains static methods for wrapping byte arrays and stre
 
 <b>Deprecated.</b> Use ToReader instead.
 
-Wraps a byte array into a byte reader.In the .NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows: `
-          bytes.ToByteReader()
-        ` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
+Wraps a byte array into a byte reader.In the .NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows: `bytes.ToByteReader()
+        ` . If the object's class already has a ToByteReader method with the same arameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
@@ -50,9 +49,8 @@ is null.
 
 <b>Deprecated.</b> Use ToReader instead.
 
-Wraps a portion of a byte array into a byte reader.In the .NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows: `
-          bytes.ToByteReader(offset, length)
-        ` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
+Wraps a portion of a byte array into a byte reader.In the .NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows: `bytes.ToByteReader(offset, length)
+        ` . If the object's class already has a ToByteReader method with the same arameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
@@ -96,9 +94,8 @@ is null.
 
 <b>Deprecated.</b> Use ToReader instead.
 
-Wraps a data stream into a byte reader.In the .NET implementation, this method is implemented as an extension method to any object implementing Stream and can be called as follows: `
-          input.ToByteReader()
-        ` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
+Wraps a data stream into a byte reader.In the .NET implementation, this method is implemented as an extension method to any object implementing Stream and can be called as follows: `input.ToByteReader()
+        ` . If the object's class already has a ToByteReader method with the same arameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
@@ -120,9 +117,8 @@ is null.
     public static PeterO.IReader ToReader(
         this byte[] bytes);
 
-Wraps a byte array into a byte reader. The reader will start at the beginning of the byte array.In the .NET implementation, this method is implemented as an extension method to any byte array object and can be called as follows: `
-          bytes.ToByteReader()
-        ` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
+Wraps a byte array into a byte reader. The reader will start at the beginning of the byte array.In the .NET implementation, this method is implemented as an extension method to any byte array object and can be called as follows: `bytes.ToByteReader()
+        ` . If the object's class already has a ToByteReader method with the same arameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
@@ -146,9 +142,8 @@ is null.
         int offset,
         int length);
 
-Wraps a portion of a byte array into a byte reader object.In the .NET implementation, this method is implemented as an extension method to any byte array object and can be called as follows: `
-          bytes.ToByteReader(offset, length)
-        ` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
+Wraps a portion of a byte array into a byte reader object.In the .NET implementation, this method is implemented as an extension method to any byte array object and can be called as follows: `bytes.ToByteReader(offset, length)
+        ` . If the object's class already has a ToByteReader method with the same arameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
@@ -187,9 +182,8 @@ is null.
     public static PeterO.IReader ToReader(
         this System.IO.Stream input);
 
-Wraps an input stream into a reader object. If an IOException is thrown by the input stream, the reader object throws InvalidOperationException instead.In the .NET implementation, this method is implemented as an extension method to any object implementing Stream and can be called as follows: `
-          input.ToByteReader()
-        ` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
+Wraps an input stream into a reader object. If an IOException is thrown by the input stream, the reader object throws InvalidOperationException instead.In the .NET implementation, this method is implemented as an extension method to any object implementing Stream and can be called as follows: `input.ToByteReader()
+        ` . If the object's class already has a ToByteReader method with the same arameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
@@ -211,9 +205,8 @@ is null.
     public static PeterO.IWriter ToWriter(
         this PeterO.IByteWriter output);
 
-Wraps a byte writer (one that only implements a ReadByte method) to a writer (one that also implements a three-parameter Read method.)In the .NET implementation, this method is implemented as an extension method to any object implementing IByteWriter and can be called as follows: `
-          output.ToWriter()
-        ` . If the object's class already has a ToWriter method with the same parameters, that method takes precedence over this extension method.
+Wraps a byte writer (one that only implements a ReadByte method) to a writer (one that also implements a three-parameter Read method.)In the .NET implementation, this method is implemented as an extension method to any object implementing IByteWriter and can be called as follows: `output.ToWriter()
+        ` . If the object's class already has a ToWriter method with the same arameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 
@@ -235,9 +228,8 @@ is null.
     public static PeterO.IWriter ToWriter(
         this System.IO.Stream output);
 
-Wraps an output stream into a writer object. If an IOException is thrown by the input stream, the writer object throws InvalidOperationException instead.In the .NET implementation, this method is implemented as an extension method to any object implementing Stream and can be called as follows: `
-          output.ToWriter()
-        ` . If the object's class already has a ToWriter method with the same parameters, that method takes precedence over this extension method.
+Wraps an output stream into a writer object. If an IOException is thrown by the input stream, the writer object throws InvalidOperationException instead.In the .NET implementation, this method is implemented as an extension method to any object implementing Stream and can be called as follows: `output.ToWriter()
+        ` . If the object's class already has a ToWriter method with the same arameters, that method takes precedence over this extension method.
 
 <b>Parameters:</b>
 

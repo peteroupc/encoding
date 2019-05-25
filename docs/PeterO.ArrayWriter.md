@@ -22,14 +22,14 @@ Initializes a new instance of the[PeterO.ArrayWriter](PeterO.ArrayWriter.md) cla
 
 <b>Parameters:</b>
 
- * <i>initialSize</i>: A 32-bit signed integer.
+ * <i>initialSize</i>: The initial size of the array writer's backing store.
 
 <a id="Void_ctor"></a>
 ### ArrayWriter Constructor
 
     public ArrayWriter();
 
-Initializes a new instance of the ArrayWriter class.
+Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md)class with a default backing store size of 16.
 
 <a id="Clear"></a>
 ### Clear

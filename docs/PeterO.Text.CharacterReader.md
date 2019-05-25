@@ -15,11 +15,12 @@ A general-purpose character input for reading text from byte streams and text st
     public CharacterReader(
         string str);
 
-Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: The parameter <i>str</i>
+is a text string.
 
 <a id="Void_ctor_String_Boolean"></a>
 ### CharacterReader Constructor
@@ -28,14 +29,16 @@ Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.Chara
         string str,
         bool skipByteOrderMark);
 
-Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
- * <i>str</i>: The parameter  <i>str</i>
- is a text string.
+ * <i>str</i>: The parameter <i>str</i>
+is a text string.
 
- * <i>skipByteOrderMark</i>: Either  `true`  or  `false` .
+ * <i>skipByteOrderMark</i>: Either `true
+      ` or `false
+      ` .
 
 <a id="Void_ctor_String_Boolean_Boolean"></a>
 ### CharacterReader Constructor
@@ -45,22 +48,26 @@ Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.Chara
         bool skipByteOrderMark,
         bool errorThrow);
 
-Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
- * <i>str</i>: The parameter  <i>str</i>
- is a text string.
+ * <i>str</i>: The parameter <i>str</i>
+is a text string.
 
- * <i>skipByteOrderMark</i>: Either  `true`  or  `false` .
+ * <i>skipByteOrderMark</i>: Either `true
+      ` or `false
+      ` .
 
- * <i>errorThrow</i>: Either  `true`  or  `false` .
+ * <i>errorThrow</i>: Either `true
+      ` or `false
+      ` .
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
 The parameter <i>str</i>
- is null.
+is null.
 
 <a id="Void_ctor_String_Int32_Int32"></a>
 ### CharacterReader Constructor
@@ -70,15 +77,18 @@ The parameter <i>str</i>
         int offset,
         int length);
 
-Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: The parameter <i>str</i>
+is a text string.
 
- * <i>offset</i>: A 32-bit signed integer.
+ * <i>offset</i>: The parameter <i>offset</i>
+is a 32-bit signed integer.
 
- * <i>length</i>: Another 32-bit signed integer.
+ * <i>length</i>: The parameter <i>length</i>
+is a 32-bit signed integer.
 
 <a id="Void_ctor_String_Int32_Int32_Boolean_Boolean"></a>
 ### CharacterReader Constructor
@@ -90,28 +100,32 @@ Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.Chara
         bool skipByteOrderMark,
         bool errorThrow);
 
-Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
- * <i>str</i>: The parameter  <i>str</i>
- is a text string.
+ * <i>str</i>: The parameter <i>str</i>
+is a text string.
 
- * <i>offset</i>: The parameter  <i>offset</i>
- is a 32-bit signed integer.
+ * <i>offset</i>: The parameter <i>offset</i>
+is a 32-bit signed integer.
 
- * <i>length</i>: The parameter  <i>length</i>
- is a 32-bit signed integer.
+ * <i>length</i>: The parameter <i>length</i>
+is a 32-bit signed integer.
 
- * <i>skipByteOrderMark</i>: Either  `true`  or  `false` .
+ * <i>skipByteOrderMark</i>: Either `true
+      ` or `false
+      ` .
 
- * <i>errorThrow</i>: Either  `true`  or  `false` .
+ * <i>errorThrow</i>: Either `true
+      ` or `false
+      ` .
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
 The parameter <i>str</i>
- is null.
+is null.
 
 <a id="Void_ctor_Stream"></a>
 ### CharacterReader Constructor
@@ -119,7 +133,7 @@ The parameter <i>str</i>
     public CharacterReader(
         System.IO.Stream stream);
 
-Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
@@ -132,13 +146,14 @@ Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.Chara
         System.IO.Stream stream,
         int mode);
 
-Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
  * <i>stream</i>: A readable data stream.
 
- * <i>mode</i>: A 32-bit signed integer.
+ * <i>mode</i>: The parameter <i>mode</i>
+is a 32-bit signed integer.
 
 <a id="Void_ctor_Stream_Int32_Boolean"></a>
 ### CharacterReader Constructor
@@ -148,16 +163,18 @@ Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.Chara
         int mode,
         bool errorThrow);
 
-Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
  * <i>stream</i>: A readable data stream.
 
- * <i>mode</i>: The parameter  <i>mode</i>
- is a 32-bit signed integer.
+ * <i>mode</i>: The parameter <i>mode</i>
+is a 32-bit signed integer.
 
- * <i>errorThrow</i>: Either  `true`  or  `false` .
+ * <i>errorThrow</i>: Either `true
+      ` or `false
+      ` .
 
 <a id="Void_ctor_Stream_Int32_Boolean_Boolean"></a>
 ### CharacterReader Constructor
@@ -168,24 +185,28 @@ Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.Chara
         bool errorThrow,
         bool dontSkipUtf8Bom);
 
-Initializes a new instance of the[PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
+Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
 <b>Parameters:</b>
 
  * <i>stream</i>: A readable data stream.
 
- * <i>mode</i>: The parameter  <i>mode</i>
- is a 32-bit signed integer.
+ * <i>mode</i>: The parameter <i>mode</i>
+is a 32-bit signed integer.
 
- * <i>errorThrow</i>: Either  `true`  or  `false` .
+ * <i>errorThrow</i>: Either `true
+      ` or `false
+      ` .
 
- * <i>dontSkipUtf8Bom</i>: Either  `true`  or  `false` .
+ * <i>dontSkipUtf8Bom</i>: Either `true
+      ` or `false
+      ` .
 
 <b>Exceptions:</b>
 
  * System.ArgumentNullException:
 The parameter <i>stream</i>
- is null.
+is null.
 
 <a id="Read_int_int_int"></a>
 ### Read

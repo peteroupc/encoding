@@ -18,7 +18,7 @@ An array of bytes that grows as needed.
     public ArrayWriter(
         int initialSize);
 
-Initializes a new instance of the[PeterO.ArrayWriter](PeterO.ArrayWriter.md) class.
+Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class.
 
 <b>Parameters:</b>
 
@@ -29,7 +29,7 @@ Initializes a new instance of the[PeterO.ArrayWriter](PeterO.ArrayWriter.md) cla
 
     public ArrayWriter();
 
-Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md)class with a default backing store size of 16.
+Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class with a default backing store size of 16.
 
 <a id="Clear"></a>
 ### Clear

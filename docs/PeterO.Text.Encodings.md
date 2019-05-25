@@ -218,7 +218,7 @@ is null.
         System.IO.Stream input);
 
 Decodes data read from a data stream into a text string in the given character encoding.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.DecodeToString(input)
-        ` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
+        ` . If the object's class already has a DecodeToString method with the ame parameters, that method takes precedence over this extension ethod.
 
 In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `enc.DecodeToString(input)
         ` . If the object's class already has a `DecodeToString
@@ -627,7 +627,7 @@ An ICharacterInput object.
         System.IO.Stream input);
 
 Converts a character encoding into a character input stream, given a data stream. The input stream doesn't check the first few bytes for a byte-order mark indicating a Unicode encoding such as UTF-8 before using the character encoding's decoder.In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInput(input)
-        ` . If the object's class already has a GetDecoderInput method with the same parameters, that method takes precedence over this extension method.
+        ` . If the object's class already has a GetDecoderInput method with the ame parameters, that method takes precedence over this extension ethod.
 
 In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: `encoding.GetDecoderInput(input)
         ` . If the object's class already has a `GetDecoderInput

@@ -45,4 +45,4 @@ Reads a sequence of Unicode code points from a data source.
 
 **Throws:**
 
-* <code>NullPointerException</code> - Should be thrown if "chars" is null.
+* <code>java.lang.NullPointerException</code> - Should be thrown if "chars" is null.

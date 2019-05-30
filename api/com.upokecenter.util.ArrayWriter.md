@@ -1,6 +1,6 @@
 # com.upokecenter.util.ArrayWriter
 
-    public final class ArrayWriter extends Object implements IWriter
+    public final class ArrayWriter extends java.lang.Object implements IWriter
 
 An array of bytes that grows as needed.
 
@@ -8,10 +8,9 @@ An array of bytes that grows as needed.
 
 * `ArrayWriter() com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
- with a default buffer size.
+ with a default backing store size of 16.
 * `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
- Initializes a new instance of the com.upokecenter.ArrayWriter class
- with the given initial buffer size.
+ Initializes a new instance of the com.upokecenter.ArrayWriter class.
 * `void Clear()`<br>
  Offers a fast way to reset the length of the array writer's data to 0.
 * `byte[] ToArray()`<br>
@@ -27,26 +26,23 @@ An array of bytes that grows as needed.
 
 * `ArrayWriter() com.upokecenter.ArrayWriter`<br>
  Initializes a new instance of the com.upokecenter.ArrayWriter class
- with a default buffer size.
+ with a default backing store size of 16.
 * `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
- Initializes a new instance of the com.upokecenter.ArrayWriter class
- with the given initial buffer size.
+ Initializes a new instance of the com.upokecenter.ArrayWriter class.
 
 ## Method Details
 
 ### ArrayWriter
     public ArrayWriter()
 Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class
- with a default buffer size.
+ with a default backing store size of 16.
 ### ArrayWriter
     public ArrayWriter​(int initialSize)
-Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class
- with the given initial buffer size.
+Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class.
 
 **Parameters:**
 
-* <code>initialSize</code> - The parameter <code>initialSize</code> is a 32-bit signed
- integer.
+* <code>initialSize</code> - The initial size of the array writer's backing store.
 
 ### Clear
     public void Clear()
@@ -92,8 +88,8 @@ Writes a series of bytes to the array.
 
 **Throws:**
 
-* <code>NullPointerException</code> - The parameter <code>src</code> is null.
+* <code>java.lang.NullPointerException</code> - The parameter <code>src</code> is null.
 
-* <code>IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
+* <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
  less than 0 or greater than <code>src</code> 's length, or <code>src</code> ' s
- length minus <code>offset</code> is less than <code>length</code>.
+ length minus <code>offset</code> is less than <code>length</code> .

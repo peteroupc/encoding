@@ -29,10 +29,10 @@ Writes a portion of a byte array to the data source.
 
 **Throws:**
 
-* <code>NullPointerException</code> - Should be thrown if the parameter
+* <code>java.lang.NullPointerException</code> - Should be thrown if the parameter
  "bytes" is null.
 
-* <code>IllegalArgumentException</code> - Should be thrown if either "offset" or
+* <code>java.lang.IllegalArgumentException</code> - Should be thrown if either "offset" or
  "length" is less than 0 or greater than "bytes" 's length, or "bytes"
  's length minus "offset" is less than "length".
 
@@ -52,9 +52,9 @@ Writes a portion of a byte array to the data source.
 
 **Throws:**
 
-* <code>NullPointerException</code> - Should be thrown if the parameter
+* <code>java.lang.NullPointerException</code> - Should be thrown if the parameter
  "bytes" is null.
 
-* <code>IllegalArgumentException</code> - Should be thrown if either "offset" or
+* <code>java.lang.IllegalArgumentException</code> - Should be thrown if either "offset" or
  "length" is less than 0 or greater than "bytes" 's length, or "bytes"
  's length minus "offset" is less than "length".

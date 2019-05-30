@@ -16,7 +16,7 @@ public interface ICharacterDecoder {
      * one or more replacement code points instead (such as the Replacement
      * Character 0xfffd), or it can throw an exception. In some cases, where
      * the error won't cause data loss or a security problem, the caller can
-     * also ignore the decoder error.</p>
+     * also ignore the decoder error. </p>
      * @param input Source of bytes to decode into code points. The decoder can
      * maintain internal state, including data on bytes already read, so
      * this parameter should not change when using the same character

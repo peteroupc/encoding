@@ -192,40 +192,24 @@
       can be used to check for relative IRI references.
       <para>The following cases return true:
       </para>
-      <code>xx-x:mm example:/ww
-      </code>
-       The following cases return false:
-      <code>x@y:/z /x/y/z example.xyz
-      </code>
-    </summary>
+      <code>xx-x:mm example:/ww</code> The following cases return false:
+      <code>x@y:/z /x/y/z example.xyz</code> </summary>
     <param name='refValue'>A string representing an IRI to check.
     </param>
-    <returns><c>true
-      </c>
-       if the string is a valid IRI with a scheme component; otherwise,
-      <c>false
-      </c>
-       .
+    <returns><c>true</c> if the string is a valid IRI with a scheme component; otherwise,
+      <c>false</c> .
     </returns>
   </doc>
   <doc name='M:PeterO.Cbor.URIUtility.hasSchemeForURI(System.String)'>
     <summary>Determines whether the string is a valid URI with a scheme component. This
       can be used to check for relative URI references. The following cases
       return true:
-      <code>http://example/z xx-x:mm example:/ww
-      </code>
-       The following cases return false:
-      <code>x@y:/z /x/y/z example.xyz
-      </code>
-    </summary>
+      <code>http://example/z xx-x:mm example:/ww</code> The following cases return false:
+      <code>x@y:/z /x/y/z example.xyz</code> </summary>
     <param name='refValue'>A string representing an IRI to check.
     </param>
-    <returns><c>true
-      </c>
-       if the string is a valid URI with a scheme component; otherwise,
-      <c>false
-      </c>
-       .
+    <returns><c>true</c> if the string is a valid URI with a scheme component; otherwise,
+      <c>false</c> .
     </returns>
   </doc>
   <doc name='M:PeterO.Cbor.URIUtility.isValidCurieReference(System.String,System.Int32,System.Int32)'>
@@ -239,12 +223,8 @@
     <param name='length'>The number of elements in the desired portion of "s" (but not more than
       "s" 's length).
     </param>
-    <returns><c>true
-      </c>
-       if the substring is a valid CURIE reference under RDFA 1; otherwise,
-      <c>false
-      </c>
-       . Returns false if
+    <returns><c>true</c> if the substring is a valid CURIE reference under RDFA 1; otherwise,
+      <c>false</c> . Returns false if
       <paramref name='s'/>
        is null.
     </returns>
@@ -267,37 +247,27 @@
     <summary>Resolves a URI or IRI relative to another URI or IRI.
     </summary>
     <param name='refValue'>A string representing a URI or IRI reference. Example:
-      <c>dir/file.txt
-      </c>
-       .
+      <c>dir/file.txt</c> .
     </param>
     <param name='baseURI'>A string representing an absolute URI reference. Example:
-      <c>http://example.com/my/path/
-      </c>
-       .
+      <c>http://example.com/my/path/</c> .
     </param>
     <returns>The resolved IRI, or null if
       <paramref name='refValue'/>
        is null or is not a valid IRI. If
       <paramref name='baseURI'/>
        is null or is not a valid IRI, returns refValue. Example:
-      <c>http://example.com/my/path/dir/file.txt
-      </c>
-       .
+      <c>http://example.com/my/path/dir/file.txt</c> .
     </returns>
   </doc>
   <doc name='M:PeterO.Cbor.URIUtility.relativeResolve(System.String,System.String,PeterO.Cbor.URIUtility.ParseMode)'>
     <summary>Resolves a URI or IRI relative to another URI or IRI.
     </summary>
     <param name='refValue'>A string representing a URI or IRI reference. Example:
-      <c>dir/file.txt
-      </c>
-       . Can be null.
+      <c>dir/file.txt</c> . Can be null.
     </param>
     <param name='baseURI'>A string representing an absolute URI reference. Example:
-      <c>http://example.com/my/path/
-      </c>
-       .
+      <c>http://example.com/my/path/</c> .
     </param>
     <param name='parseMode'>Parse mode that specifies whether certain characters are allowed when
       parsing IRIs and URIs.
@@ -439,9 +409,7 @@
     <summary>Wraps a byte array into a byte reader.
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing byte[] and can be called as follows:
-        <c>bytes.ToByteReader()
-        </c>
-         . If the object's class already has a ToByteReader method with the same
+        <c>bytes.ToByteReader()</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary>
@@ -458,9 +426,7 @@
     <summary>Wraps a portion of a byte array into a byte reader.
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing byte[] and can be called as follows:
-        <c>bytes.ToByteReader(offset, length)
-        </c>
-         . If the object's class already has a ToByteReader method with the same
+        <c>bytes.ToByteReader(offset, length)</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary>
@@ -505,9 +471,7 @@
     <summary>Wraps a data stream into a byte reader.
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing Stream and can be called as follows:
-        <c>input.ToByteReader()
-        </c>
-         . If the object's class already has a ToByteReader method with the same
+        <c>input.ToByteReader()</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary>
@@ -525,9 +489,7 @@
       beginning of the byte array.
       <para>In the .NET implementation, this method is implemented as an extension
         method to any byte array object and can be called as follows:
-        <c>bytes.ToByteReader()
-        </c>
-         . If the object's class already has a ToByteReader method with the same
+        <c>bytes.ToByteReader()</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary>
@@ -544,9 +506,7 @@
     <summary>Wraps a portion of a byte array into a byte reader object.
       <para>In the .NET implementation, this method is implemented as an extension
         method to any byte array object and can be called as follows:
-        <c>bytes.ToByteReader(offset, length)
-        </c>
-         . If the object's class already has a ToByteReader method with the same
+        <c>bytes.ToByteReader(offset, length)</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary>
@@ -588,9 +548,7 @@
       instead.
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing Stream and can be called as follows:
-        <c>input.ToByteReader()
-        </c>
-         . If the object's class already has a ToByteReader method with the same
+        <c>input.ToByteReader()</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary>
@@ -609,9 +567,7 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing IByteWriter and can be called as
         follows:
-        <c>output.ToWriter()
-        </c>
-         . If the object's class already has a ToWriter method with the same
+        <c>output.ToWriter()</c> . If the object's class already has a ToWriter method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary>
@@ -630,9 +586,7 @@
       instead.
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing Stream and can be called as follows:
-        <c>output.ToWriter()
-        </c>
-         . If the object's class already has a ToWriter method with the same
+        <c>output.ToWriter()</c> . If the object's class already has a ToWriter method with the same
         parameters, that method takes precedence over this extension method.
       </para>
     </summary>
@@ -740,15 +694,11 @@
         of the Unicode Standard which uses one byte to encode the most basic
         characters and two to four bytes to encode other characters. For
         example, the
-        <c>GetUtf8
-        </c>
-         method converts a text string to an array of bytes in UTF-8.
+        <c>GetUtf8</c> method converts a text string to an array of bytes in UTF-8.
       </para>
       <para>In C# and Java, text strings are represented as sequences of 16-bit
         values called
-        <c>char
-        </c>
-         s. These sequences are well-formed under UTF-16, a 16-bit encoding form
+        <c>char</c> s. These sequences are well-formed under UTF-16, a 16-bit encoding form
         of Unicode, except if they contain unpaired surrogate code points. (A
         surrogate code point is used to encode supplementary characters, those
         with code points U+10000 or higher, in UTF-16. A surrogate pair is a
@@ -1364,40 +1314,24 @@
       can be used to check for relative IRI references.
       <para>The following cases return true:
       </para>
-      <code>xx-x:mm example:/ww
-      </code>
-       The following cases return false:
-      <code>x@y:/z /x/y/z example.xyz
-      </code>
-    </summary>
+      <code>xx-x:mm example:/ww</code> The following cases return false:
+      <code>x@y:/z /x/y/z example.xyz</code> </summary>
     <param name='refValue'>A string representing an IRI to check.
     </param>
-    <returns><c>true
-      </c>
-       if the string is a valid IRI with a scheme component; otherwise,
-      <c>false
-      </c>
-       .
+    <returns><c>true</c> if the string is a valid IRI with a scheme component; otherwise,
+      <c>false</c> .
     </returns>
   </doc>
   <doc name='M:PeterO.Rdf.URIUtility.hasSchemeForURI(System.String)'>
     <summary>Determines whether the string is a valid URI with a scheme component. This
       can be used to check for relative URI references. The following cases
       return true:
-      <code>http://example/z xx-x:mm example:/ww
-      </code>
-       The following cases return false:
-      <code>x@y:/z /x/y/z example.xyz
-      </code>
-    </summary>
+      <code>http://example/z xx-x:mm example:/ww</code> The following cases return false:
+      <code>x@y:/z /x/y/z example.xyz</code> </summary>
     <param name='refValue'>A string representing an IRI to check.
     </param>
-    <returns><c>true
-      </c>
-       if the string is a valid URI with a scheme component; otherwise,
-      <c>false
-      </c>
-       .
+    <returns><c>true</c> if the string is a valid URI with a scheme component; otherwise,
+      <c>false</c> .
     </returns>
   </doc>
   <doc name='M:PeterO.Rdf.URIUtility.isValidCurieReference(System.String,System.Int32,System.Int32)'>
@@ -1411,12 +1345,8 @@
     <param name='length'>The number of elements in the desired portion of "s" (but not more than
       "s" 's length).
     </param>
-    <returns><c>true
-      </c>
-       if the substring is a valid CURIE reference under RDFA 1; otherwise,
-      <c>false
-      </c>
-       . Returns false if
+    <returns><c>true</c> if the substring is a valid CURIE reference under RDFA 1; otherwise,
+      <c>false</c> . Returns false if
       <paramref name='s'/>
        is null.
     </returns>
@@ -1439,14 +1369,10 @@
     <summary>Resolves a URI or IRI relative to another URI or IRI.
     </summary>
     <param name='refValue'>A string representing a URI or IRI reference. Example:
-      <c>dir/file.txt
-      </c>
-       .
+      <c>dir/file.txt</c> .
     </param>
     <param name='baseURI'>A string representing an absolute URI reference. Example:
-      <c>http://example.com/my/path/
-      </c>
-       .
+      <c>http://example.com/my/path/</c> .
     </param>
     <returns>The resolved IRI, or null if
       <paramref name='refValue'/>
@@ -1458,14 +1384,10 @@
     <summary>Resolves a URI or IRI relative to another URI or IRI.
     </summary>
     <param name='refValue'>A string representing a URI or IRI reference. Example:
-      <c>dir/file.txt
-      </c>
-       .
+      <c>dir/file.txt</c> .
     </param>
     <param name='baseURI'>A string representing an absolute URI reference. Example:
-      <c>http://example.com/my/path/
-      </c>
-       .
+      <c>http://example.com/my/path/</c> .
     </param>
     <param name='parseMode'>Parse mode that specifies whether certain characters are allowed when
       parsing IRIs and URIs.
@@ -1585,12 +1507,8 @@
        is a 32-bit signed integer.
     </param>
     <param name='errorThrow'>Either
-      <c>true
-      </c>
-       or
-      <c>false
-      </c>
-       .
+      <c>true</c> or
+      <c>false</c> .
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean,System.Boolean)'>
@@ -1603,20 +1521,12 @@
        is a 32-bit signed integer.
     </param>
     <param name='errorThrow'>Either
-      <c>true
-      </c>
-       or
-      <c>false
-      </c>
-       .
+      <c>true</c> or
+      <c>false</c> .
     </param>
     <param name='dontSkipUtf8Bom'>Either
-      <c>true
-      </c>
-       or
-      <c>false
-      </c>
-       .
+      <c>true</c> or
+      <c>false</c> .
     </param>
     <exception cref='T:System.ArgumentNullException'>The parameter
       <paramref name='stream'/>
@@ -1639,12 +1549,8 @@
        is a text string.
     </param>
     <param name='skipByteOrderMark'>Either
-      <c>true
-      </c>
-       or
-      <c>false
-      </c>
-       .
+      <c>true</c> or
+      <c>false</c> .
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean,System.Boolean)'>
@@ -1655,20 +1561,12 @@
        is a text string.
     </param>
     <param name='skipByteOrderMark'>Either
-      <c>true
-      </c>
-       or
-      <c>false
-      </c>
-       .
+      <c>true</c> or
+      <c>false</c> .
     </param>
     <param name='errorThrow'>Either
-      <c>true
-      </c>
-       or
-      <c>false
-      </c>
-       .
+      <c>true</c> or
+      <c>false</c> .
     </param>
     <exception cref='T:System.ArgumentNullException'>The parameter
       <paramref name='str'/>
@@ -1707,20 +1605,12 @@
        is a 32-bit signed integer.
     </param>
     <param name='skipByteOrderMark'>Either
-      <c>true
-      </c>
-       or
-      <c>false
-      </c>
-       .
+      <c>true</c> or
+      <c>false</c> .
     </param>
     <param name='errorThrow'>Either
-      <c>true
-      </c>
-       or
-      <c>false
-      </c>
-       .
+      <c>true</c> or
+      <c>false</c> .
     </param>
     <exception cref='T:System.ArgumentNullException'>The parameter
       <paramref name='str'/>
@@ -1779,21 +1669,15 @@
         November 2015, defines algorithms for the most common character
         encodings used on Web pages and recommends the UTF-8 encoding for new
         specifications and Web pages. Calling the
-        <c>GetEncoding(name)
-        </c>
-         method returns one of the character encodings with the given name under
+        <c>GetEncoding(name)</c> method returns one of the character encodings with the given name under
         the Encoding Standard.
       </para>
       <para>Now let's define some terms.
       </para>
-      <para><b>Encoding Terms
-        </b>
-      </para>
+      <para><b>Encoding Terms</b> </para>
       <list>
         <item>A
-          <b>code point
-          </b>
-           is a number that identifies a single text character, such as a
+          <b>code point</b> is a number that identifies a single text character, such as a
           letter, digit, or symbol. (A collection of such characters is also
           called an
           <i>
@@ -1802,16 +1686,12 @@
            .)
         </item>
         <item>A
-          <b>coded character set
-          </b>
-           is a set of code points which are each assigned to a single text
+          <b>coded character set</b> is a set of code points which are each assigned to a single text
           character. As used here, coded character sets don't define how code
           points are laid out in memory.
         </item>
         <item>A
-          <b>character encoding
-          </b>
-           is a mapping from a sequence of code points, in one or more specific
+          <b>character encoding</b> is a mapping from a sequence of code points, in one or more specific
           coded character sets, to a sequence of bytes and vice versa. (For
           brevity, the rest of this documentation may use the term
           <i>
@@ -1828,9 +1708,7 @@
            is used only to refer to the names that identify a character
           encoding.)
         </item>
-        <item><b>ASCII
-          </b>
-           is a 128-code-point coded character set that includes the English
+        <item><b>ASCII</b> is a 128-code-point coded character set that includes the English
           letters and digits, common punctuation and symbols, and control
           characters. As used here, its code points match the code points within
           the Basic Latin block (0-127 or U+0000 to U+007F) of the Unicode
@@ -1840,73 +1718,47 @@
       <para>There are several kinds of character encodings:
       </para>
       <list>
-        <item><b>Single-byte encodings
-          </b>
-           define a coded character set that assigns one code point to one byte.
+        <item><b>Single-byte encodings</b> define a coded character set that assigns one code point to one byte.
           Thus, they can have a maximum of 256 code points. For example:
         </item>
         <item>(a) ISO 8859 encodings and
-          <c>windows-1252
-          </c>
-           .
+          <c>windows-1252</c> .
         </item>
         <item>(b) ASCII is usually used as a single-byte encoding where each code
           point fits in the lower 7 bits of an eight-bit byte (in that case, the
           encoding is often called
-          <c>US-ASCII
-          </c>
-           ). In the Encoding Standard, all single-byte encodings use the ASCII
+          <c>US-ASCII</c> ). In the Encoding Standard, all single-byte encodings use the ASCII
           characters as the first 128 code points of their coded character sets.
 
         </item>
-        <item><b>Multi-byte encodings
-          </b>
-           include code points from one or more coded character sets and assign
+        <item><b>Multi-byte encodings</b> include code points from one or more coded character sets and assign
           some or all code points to several bytes. For example:
         </item>
         <item>(a)
-          <c>UTF-16LE
-          </c>
-           and
-          <c>UTF-16BE
-          </c>
-           are two encodings defined in the Unicode Standard. They use 2 bytes
+          <c>UTF-16LE</c> and
+          <c>UTF-16BE</c> are two encodings defined in the Unicode Standard. They use 2 bytes
           for the most common code points, and 4 bytes for supplementary code
           points.
         </item>
         <item>(b)
-          <c>UTF-8
-          </c>
-           is another encoding defined in the Unicode Standard. It uses 1 byte
+          <c>UTF-8</c> is another encoding defined in the Unicode Standard. It uses 1 byte
           for ASCII and 2 to 4 bytes for the other Unicode code points.
         </item>
         <item>(c) Most legacy East Asian encodings, such as
-          <c>Shift_JIS
-          </c>
-           ,
-          <c>GBK
-          </c>
-           , and
-          <c>Big5
-          </c>
-           use 1 byte for ASCII (or a slightly modified version) and, usually, 2
+          <c>Shift_JIS</c> ,
+          <c>GBK</c> , and
+          <c>Big5</c> use 1 byte for ASCII (or a slightly modified version) and, usually, 2
           or more bytes for national standard coded character sets. In many of
           these encodings, notably
-          <c>Shift_JIS
-          </c>
-           , characters whose code points use one byte traditionally take half
+          <c>Shift_JIS</c> , characters whose code points use one byte traditionally take half
           the space of characters whose code points use two bytes.
         </item>
-        <item><b>Escape-based encodings
-          </b>
-           are combinations of single- and/or multi-byte encodings, and use
+        <item><b>Escape-based encodings</b> are combinations of single- and/or multi-byte encodings, and use
           escape sequences and/or shift codes to change which encoding to use
           for the bytes that follow. For example:
         </item>
         <item>(a)
-          <c>ISO-2022-JP
-          </c>
-           supports several escape sequences that shift into different
+          <c>ISO-2022-JP</c> supports several escape sequences that shift into different
           encodings, including a Katakana, a Kanji, and an ASCII encoding (with
           ASCII as the default).
         </item>
@@ -1917,82 +1769,50 @@
           version of base-64) to encode other Unicode code points.
         </item>
         <item>The Encoding Standard also defines a
-          <b>replacement encoding
-          </b>
-           , which causes a decoding error and is used to alias a few
+          <b>replacement encoding</b> , which causes a decoding error and is used to alias a few
           problematic or unsupported encoding names, such as
-          <c>hz-gb-2312
-          </c>
-           .
+          <c>hz-gb-2312</c> .
         </item>
       </list>
-      <para><b>Getting an Encoding
-        </b>
-      </para>
+      <para><b>Getting an Encoding</b> </para>
       <para>The Encoding Standard includes UTF-8, UTF-16, and many legacy encodings,
         and gives each one of them a name. The
-        <c>GetEncoding(name)
-        </c>
-         method takes a name string and returns an ICharacterEncoding object
+        <c>GetEncoding(name)</c> method takes a name string and returns an ICharacterEncoding object
         that implements that encoding, or
-        <c>null
-        </c>
-         if the name is unrecognized.
+        <c>null</c> if the name is unrecognized.
       </para>
       <para>However, the Encoding Standard is designed to include only encodings
         commonly used on Web pages, not in other protocols such as email. For
         email, the Encoding class includes an alternate function
-        <c>GetEncoding(name, forEmail)
-        </c>
-         . Setting
-        <c>forEmail
-        </c>
-         to
-        <c>true
-        </c>
-         will use rules modified from the Encoding Standard to better suit
+        <c>GetEncoding(name, forEmail)</c> . Setting
+        <c>forEmail</c> to
+        <c>true</c> will use rules modified from the Encoding Standard to better suit
         encoding and decoding text from email messages.
       </para>
-      <para><b>Classes for Character Encodings
-        </b>
-      </para>
+      <para><b>Classes for Character Encodings</b> </para>
       <para>This Encodings class provides access to common character encodings
         through classes as described below:
       </para>
       <list type=''>
         <item>An
-          <b>encoder class
-          </b>
-           is a class that converts a sequence of bytes to a sequence of code
+          <b>encoder class</b> is a class that converts a sequence of bytes to a sequence of code
           points in the universal character set (otherwise known under the name
           Unicode). An encoder class implements the
-          <c>ICharacterEncoder
-          </c>
-           interface.
+          <c>ICharacterEncoder</c> interface.
         </item>
         <item>A
-          <b>decoder class
-          </b>
-           is a class that converts a sequence of Unicode code points to a
+          <b>decoder class</b> is a class that converts a sequence of Unicode code points to a
           sequence of bytes. A decoder class implements the
-          <c>ICharacterDecoder
-          </c>
-           interface.
+          <c>ICharacterDecoder</c> interface.
         </item>
         <item>An
-          <b>encoding class
-          </b>
-           allows access to both an encoder class and a decoder class and
+          <b>encoding class</b> allows access to both an encoder class and a decoder class and
           implements the
-          <c>ICharacterEncoding
-          </c>
-           interface. The encoder and decoder classes should implement the same
+          <c>ICharacterEncoding</c> interface. The encoder and decoder classes should implement the same
           character encoding.
         </item>
       </list>
-      <para><b>Custom Encodings
-        </b>
-      </para>
+      <para><b>Custom Encodings</b> </para>
       <para>Classes that implement the ICharacterEncoding interface can provide
         additional character encodings not included in the Encoding Standard.
         Some examples of these include the following:
@@ -2038,21 +1858,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>enc.DecodeToString(bytes)
-        </c>
-         . If the object's class already has a DecodeToString method with the
+        <c>enc.DecodeToString(bytes)</c> . If the object's class already has a DecodeToString method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>enc.DecodeToString(bytes)
-        </c>
-         . If the object's class already has a
-        <c>DecodeToString
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>enc.DecodeToString(bytes)</c> . If the object's class already has a
+        <c>DecodeToString</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2077,21 +1891,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>enc.DecodeToString(bytes, offset, length)
-        </c>
-         . If the object's class already has a DecodeToString method with the
+        <c>enc.DecodeToString(bytes, offset, length)</c> . If the object's class already has a DecodeToString method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>enc.DecodeToString(bytes, offset, length)
-        </c>
-         . If the object's class already has a
-        <c>DecodeToString
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>enc.DecodeToString(bytes, offset, length)</c> . If the object's class already has a
+        <c>DecodeToString</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2145,21 +1953,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>encoding.DecodeToString(input)
-        </c>
-         . If the object's class already has a DecodeToString method with the
+        <c>encoding.DecodeToString(input)</c> . If the object's class already has a DecodeToString method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>enc.DecodeToString(input)
-        </c>
-         . If the object's class already has a
-        <c>DecodeToString
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>enc.DecodeToString(input)</c> . If the object's class already has a
+        <c>DecodeToString</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2229,21 +2031,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoder)
-        </c>
-         . If the object's class already has a EncodeToBytes method with the
+        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a EncodeToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoder)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToBytes
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a
+        <c>EncodeToBytes</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2266,12 +2062,8 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoder, htmlFallback)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToBytes
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>input.EncodeToBytes(encoder, htmlFallback)</c> . If the object's class already has a
+        <c>EncodeToBytes</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2308,12 +2100,8 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoding)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToBytes
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>input.EncodeToBytes(encoding)</c> . If the object's class already has a
+        <c>EncodeToBytes</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2336,20 +2124,14 @@
       encoded are replaced with the byte 0x3f (the question mark character).
       <para>In the .NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.EncodeToBytes(enc)
-        </c>
-         . If the object's class already has a EncodeToBytes method with the
+        <c>str.EncodeToBytes(enc)</c> . If the object's class already has a EncodeToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
-        <c>str.EncodeToBytes(enc)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToBytes
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>str.EncodeToBytes(enc)</c> . If the object's class already has a
+        <c>EncodeToBytes</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2374,12 +2156,8 @@
       characters are replaced with the replacement character (U+FFFD).
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
-        <c>str.EncodeToBytes(enc, htmlFallback)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToBytes
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>str.EncodeToBytes(enc, htmlFallback)</c> . If the object's class already has a
+        <c>EncodeToBytes</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2410,21 +2188,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoder)
-        </c>
-         . If the object's class already has a EncodeToBytes method with the
+        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a EncodeToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToWriter(encoder, writer)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToWriter
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>input.EncodeToWriter(encoder, writer)</c> . If the object's class already has a
+        <c>EncodeToWriter</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2449,21 +2221,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoder)
-        </c>
-         . If the object's class already has a EncodeToBytes method with the
+        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a EncodeToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToWriter(encoder, output)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToWriter
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>input.EncodeToWriter(encoder, output)</c> . If the object's class already has a
+        <c>EncodeToWriter</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2488,21 +2254,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoding)
-        </c>
-         . If the object's class already has a EncodeToBytes method with the
+        <c>input.EncodeToBytes(encoding)</c> . If the object's class already has a EncodeToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToWriter(encoding, writer)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToWriter
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>input.EncodeToWriter(encoding, writer)</c> . If the object's class already has a
+        <c>EncodeToWriter</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2525,21 +2285,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoding)
-        </c>
-         . If the object's class already has a EncodeToBytes method with the
+        <c>input.EncodeToBytes(encoding)</c> . If the object's class already has a EncodeToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToWriter(encoding, output)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToWriter
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>input.EncodeToWriter(encoding, output)</c> . If the object's class already has a
+        <c>EncodeToWriter</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2562,20 +2316,14 @@
       byte 0x3f (the question mark character).
       <para>In the .NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.EncodeToBytes(enc, writer)
-        </c>
-         . If the object's class already has a EncodeToBytes method with the
+        <c>str.EncodeToBytes(enc, writer)</c> . If the object's class already has a EncodeToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
-        <c>str.EncodeToWriter(enc, writer)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToWriter
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>str.EncodeToWriter(enc, writer)</c> . If the object's class already has a
+        <c>EncodeToWriter</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2601,20 +2349,14 @@
       byte 0x3f (the question mark character).
       <para>In the .NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.EncodeToBytes(enc, writer)
-        </c>
-         . If the object's class already has a EncodeToBytes method with the
+        <c>str.EncodeToBytes(enc, writer)</c> . If the object's class already has a EncodeToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
-        <c>str.EncodeToWriter(enc, output)
-        </c>
-         . If the object's class already has a
-        <c>EncodeToWriter
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>str.EncodeToWriter(enc, output)</c> . If the object's class already has a
+        <c>EncodeToWriter</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2662,21 +2404,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>encoding.GetDecoderInput(input)
-        </c>
-         . If the object's class already has a GetDecoderInput method with the
+        <c>encoding.GetDecoderInput(input)</c> . If the object's class already has a GetDecoderInput method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>encoding.GetDecoderInput(input)
-        </c>
-         . If the object's class already has a
-        <c>GetDecoderInput
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>encoding.GetDecoderInput(input)</c> . If the object's class already has a
+        <c>GetDecoderInput</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2701,12 +2437,8 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>encoding.GetDecoderInputSkipBom(input)
-        </c>
-         . If the object's class already has a
-        <c>GetDecoderInputSkipBom
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>encoding.GetDecoderInputSkipBom(input)</c> . If the object's class already has a
+        <c>GetDecoderInputSkipBom</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2729,12 +2461,8 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>encoding.GetDecoderInputSkipBom(input)
-        </c>
-         . If the object's class already has a
-        <c>GetDecoderInputSkipBom
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>encoding.GetDecoderInputSkipBom(input)</c> . If the object's class already has a
+        <c>GetDecoderInputSkipBom</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2796,21 +2524,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>reader.InputToString()
-        </c>
-         . If the object's class already has a InputToString method with the
+        <c>reader.InputToString()</c> . If the object's class already has a InputToString method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>reader.InputToString()
-        </c>
-         . If the object's class already has a
-        <c>InputToString
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>reader.InputToString()</c> . If the object's class already has a
+        <c>InputToString</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -2833,202 +2555,98 @@
       before resolving the encoding's name. The Encoding Standard supports only
       the following encodings (and defines aliases for most of them).
       <list type='bullet'>
-        <item><c>UTF-8
-          </c>
-           - UTF-8 (8-bit encoding of the universal coded character set, the
+        <item><c>UTF-8</c> - UTF-8 (8-bit encoding of the universal coded character set, the
           encoding recommended by the Encoding Standard for new data formats)
         </item>
-        <item><c>UTF-16LE
-          </c>
-           - UTF-16 little-endian (16-bit UCS)
+        <item><c>UTF-16LE</c> - UTF-16 little-endian (16-bit UCS)
         </item>
-        <item><c>UTF-16BE
-          </c>
-           - UTF-16 big-endian (16-bit UCS)
+        <item><c>UTF-16BE</c> - UTF-16 big-endian (16-bit UCS)
         </item>
         <item>The special-purpose encoding
-          <c>x-user-defined
-          </c>
-        </item>
+          <c>x-user-defined</c> </item>
         <item>The special-purpose encoding
-          <c>replacement
-          </c>
-           .
+          <c>replacement</c> .
         </item>
         <item>28 legacy single-byte encodings:
           <list type='bullet'>
-            <item><c>windows-1252
-              </c>
-               : Western Europe (Note: The Encoding Standard aliases the names
-              <c>US-ASCII
-              </c>
-               and
-              <c>ISO-8859-1
-              </c>
-               to
-              <c>windows-1252
-              </c>
-               , which uses a different coded character set from either; it
+            <item><c>windows-1252</c> : Western Europe (Note: The Encoding Standard aliases the names
+              <c>US-ASCII</c> and
+              <c>ISO-8859-1</c> to
+              <c>windows-1252</c> , which uses a different coded character set from either; it
               differs from
-              <c>ISO-8859-1
-              </c>
-               by assigning different characters to some bytes from 0x80 to
+              <c>ISO-8859-1</c> by assigning different characters to some bytes from 0x80 to
               0x9F. The Encoding Standard does this for compatibility with
               existing Web pages.)
             </item>
-            <item><c>ISO-8859-2
-              </c>
-               ,
-              <c>windows-1250
-              </c>
-               : Central Europe
+            <item><c>ISO-8859-2</c> ,
+              <c>windows-1250</c> : Central Europe
             </item>
-            <item><c>ISO-8859-10
-              </c>
-               : Northern Europe
+            <item><c>ISO-8859-10</c> : Northern Europe
             </item>
-            <item><c>ISO-8859-4
-              </c>
-               ,
-              <c>windows-1257
-              </c>
-               : Baltic
+            <item><c>ISO-8859-4</c> ,
+              <c>windows-1257</c> : Baltic
             </item>
-            <item><c>ISO-8859-13
-              </c>
-               : Estonian
+            <item><c>ISO-8859-13</c> : Estonian
             </item>
-            <item><c>ISO-8859-14
-              </c>
-               : Celtic
+            <item><c>ISO-8859-14</c> : Celtic
             </item>
-            <item><c>ISO-8859-16
-              </c>
-               : Romanian
+            <item><c>ISO-8859-16</c> : Romanian
             </item>
-            <item><c>ISO-8859-5
-              </c>
-               ,
-              <c>IBM-866
-              </c>
-               ,
-              <c>KOI8-R
-              </c>
-               ,
-              <c>windows-1251
-              </c>
-               ,
-              <c>x-mac-cyrillic
-              </c>
-               : Cyrillic
+            <item><c>ISO-8859-5</c> ,
+              <c>IBM-866</c> ,
+              <c>KOI8-R</c> ,
+              <c>windows-1251</c> ,
+              <c>x-mac-cyrillic</c> : Cyrillic
             </item>
-            <item><c>KOI8-U
-              </c>
-               : Ukrainian
+            <item><c>KOI8-U</c> : Ukrainian
             </item>
-            <item><c>ISO-8859-7
-              </c>
-               ,
-              <c>windows-1253
-              </c>
-               : Greek
+            <item><c>ISO-8859-7</c> ,
+              <c>windows-1253</c> : Greek
             </item>
-            <item><c>ISO-8859-6
-              </c>
-               ,
-              <c>windows-1256
-              </c>
-               : Arabic
+            <item><c>ISO-8859-6</c> ,
+              <c>windows-1256</c> : Arabic
             </item>
-            <item><c>ISO-8859-8
-              </c>
-               ,
-              <c>ISO-8859-8-I
-              </c>
-               ,
-              <c>windows-1255
-              </c>
-               : Hebrew
+            <item><c>ISO-8859-8</c> ,
+              <c>ISO-8859-8-I</c> ,
+              <c>windows-1255</c> : Hebrew
             </item>
-            <item><c>ISO-8859-3
-              </c>
-               : Latin 3
+            <item><c>ISO-8859-3</c> : Latin 3
             </item>
-            <item><c>ISO-8859-15
-              </c>
-               ,
-              <c>windows-1254
-              </c>
-               : Turkish
+            <item><c>ISO-8859-15</c> ,
+              <c>windows-1254</c> : Turkish
             </item>
-            <item><c>windows-874
-              </c>
-               : Thai
+            <item><c>windows-874</c> : Thai
             </item>
-            <item><c>windows-1258
-              </c>
-               : Vietnamese
+            <item><c>windows-1258</c> : Vietnamese
             </item>
-            <item><c>macintosh
-              </c>
-               : Mac Roman
+            <item><c>macintosh</c> : Mac Roman
             </item>
           </list>
         </item>
         <item>Three legacy Japanese encodings:
-          <c>Shift_JIS
-          </c>
-           ,
-          <c>EUC-JP
-          </c>
-           ,
-          <c>ISO-2022-JP
-          </c>
-        </item>
+          <c>Shift_JIS</c> ,
+          <c>EUC-JP</c> ,
+          <c>ISO-2022-JP</c> </item>
         <item>Two legacy simplified Chinese encodings:
-          <c>GBK
-          </c>
-           and
-          <c>gb18030
-          </c>
+          <c>GBK</c> and
+          <c>gb18030</c> </item>
+        <item><c>Big5</c> : legacy traditional Chinese encoding
         </item>
-        <item><c>Big5
-          </c>
-           : legacy traditional Chinese encoding
-        </item>
-        <item><c>EUC-KR
-          </c>
-           : legacy Korean encoding
+        <item><c>EUC-KR</c> : legacy Korean encoding
         </item>
       </list>
       <para>The
-        <c>UTF-8
-        </c>
-         ,
-        <c>UTF-16LE
-        </c>
-         , and
-        <c>UTF-16BE
-        </c>
-         encodings don't encode a byte-order mark at the start of the text
+        <c>UTF-8</c> ,
+        <c>UTF-16LE</c> , and
+        <c>UTF-16BE</c> encodings don't encode a byte-order mark at the start of the text
         (doing so is not recommended for
-        <c>UTF-8
-        </c>
-         , while in
-        <c>UTF-16LE
-        </c>
-         and
-        <c>UTF-16BE
-        </c>
-         , the byte-order mark character U+FEFF is treated as an ordinary
+        <c>UTF-8</c> , while in
+        <c>UTF-16LE</c> and
+        <c>UTF-16BE</c> , the byte-order mark character U+FEFF is treated as an ordinary
         character, unlike in the UTF-16 encoding form). The Encoding Standard
         aliases
-        <c>UTF-16
-        </c>
-         to
-        <c>UTF-16LE
-        </c>
-         "to deal with deployed content".
+        <c>UTF-16</c> to
+        <c>UTF-16LE</c> "to deal with deployed content".
       </para>
        .
     </param>
@@ -3046,74 +2664,40 @@
       email standards like MIME. Encoding names and aliases not registered with
       the Internet Assigned Numbers Authority (IANA) are not supported, with the
       exception of
-      <c>ascii
-      </c>
-       ,
-      <c>utf8
-      </c>
-       ,
-      <c>cp1252
-      </c>
-       , and names 10 characters or longer starting with
-      <c>iso-8859-
-      </c>
-       . Also, the following additional encodings are supported. Note that the
+      <c>ascii</c> ,
+      <c>utf8</c> ,
+      <c>cp1252</c> , and names 10 characters or longer starting with
+      <c>iso-8859-</c> . Also, the following additional encodings are supported. Note that the
       case combination
-      <c>GB18030
-      </c>
-       , the combination registered with IANA, rather than
-      <c>gb18030
-      </c>
-       can be retured by this method.
+      <c>GB18030</c> , the combination registered with IANA, rather than
+      <c>gb18030</c> can be retured by this method.
       <list type='bullet'>
-        <item><c>US-ASCII
-          </c>
-           - ASCII single-byte encoding, rather than an alias to
-          <c>windows-1252
-          </c>
-           as specified in the Encoding Standard. The coded character set's code
+        <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an alias to
+          <c>windows-1252</c> as specified in the Encoding Standard. The coded character set's code
           points match those in the Unicode Standard's Basic Latin block (0-127
           or U+0000 to U+007F). The name
-          <c>ascii
-          </c>
-           is an alias.
+          <c>ascii</c> is an alias.
         </item>
-        <item><c>ISO-8859-1
-          </c>
-           - Latin-1 single-byte encoding, rather than an alias to
-          <c>windows-1252
-          </c>
-           as specified in the Encoding Standard. The coded character set's code
+        <item><c>ISO-8859-1</c> - Latin-1 single-byte encoding, rather than an alias to
+          <c>windows-1252</c> as specified in the Encoding Standard. The coded character set's code
           points match those in the Unicode Standard's Basic Latin and Latin-1
           Supplement blocks (0-255 or U+0000 to U+00FF).
         </item>
-        <item><c>UTF-16
-          </c>
-           - UTF-16 without a fixed byte order, rather than an alias to
-          <c>UTF-16LE
-          </c>
-           as specified in the Encoding Standard. The byte order is little
+        <item><c>UTF-16</c> - UTF-16 without a fixed byte order, rather than an alias to
+          <c>UTF-16LE</c> as specified in the Encoding Standard. The byte order is little
           endian if the byte stream starts with 0xff 0xfe; otherwise, big
           endian. A leading 0xff 0xfe or 0xFE 0xff in the byte stream is
           skipped.
         </item>
-        <item><c>UTF-7
-          </c>
-           - UTF-7 (7-bit universal coded character set). The name
-          <c>unicode-1-1-utf-7
-          </c>
-           is not supported and is not treated as an alias to
-          <c>UTF-7
-          </c>
-           , even though it uses the same character encoding scheme as UTF-7,
+        <item><c>UTF-7</c> - UTF-7 (7-bit universal coded character set). The name
+          <c>unicode-1-1-utf-7</c> is not supported and is not treated as an alias to
+          <c>UTF-7</c> , even though it uses the same character encoding scheme as UTF-7,
           because RFC 1642, which defined the former UTF-7, is linked to a
           different Unicode version with an incompatible character repertoire
           (notably, the Hangul syllables have different code point assignments
           in Unicode 1.1 and earlier than in Unicode 2.0 and later).
         </item>
-        <item><c>ISO-2022-JP-2
-          </c>
-           - similar to "ISO-2022-JP", except that the decoder supports
+        <item><c>ISO-2022-JP-2</c> - similar to "ISO-2022-JP", except that the decoder supports
           additional character sets.
         </item>
       </list>
@@ -3133,21 +2717,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoder and can be called as
         follows:
-        <c>encoder.StringToBytes(str)
-        </c>
-         . If the object's class already has a StringToBytes method with the
+        <c>encoder.StringToBytes(str)</c> . If the object's class already has a StringToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoder and can be called as
         follows:
-        <c>encoder.StringToBytes(str)
-        </c>
-         . If the object's class already has a
-        <c>StringToBytes
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>encoder.StringToBytes(str)</c> . If the object's class already has a
+        <c>StringToBytes</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -3173,21 +2751,15 @@
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>encoding.StringToBytes(str)
-        </c>
-         . If the object's class already has a StringToBytes method with the
+        <c>encoding.StringToBytes(str)</c> . If the object's class already has a StringToBytes method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>encoding.StringToBytes(str)
-        </c>
-         . If the object's class already has a
-        <c>StringToBytes
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>encoding.StringToBytes(str)</c> . If the object's class already has a
+        <c>StringToBytes</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -3210,20 +2782,14 @@
 
       <para>In the .NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.StringToInput(offset, length)
-        </c>
-         . If the object's class already has a StringToInput method with the
+        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
-        <c>str.StringToInput()
-        </c>
-         . If the object's class already has a
-        <c>StringToInput
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>str.StringToInput()</c> . If the object's class already has a
+        <c>StringToInput</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>
@@ -3246,20 +2812,14 @@
       (U+FFFD).
       <para>In the .NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.StringToInput(offset, length)
-        </c>
-         . If the object's class already has a StringToInput method with the
+        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
       <para>In the .NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
-        <c>str.StringToInput(offset, length)
-        </c>
-         . If the object's class already has a
-        <c>StringToInput
-        </c>
-         method with the same parameters, that method takes precedence over this
+        <c>str.StringToInput(offset, length)</c> . If the object's class already has a
+        <c>StringToInput</c> method with the same parameters, that method takes precedence over this
         extension method.
       </para>
     </summary>

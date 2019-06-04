@@ -1,3 +1,4 @@
+#pragma warning disable SA1118
 /*
 Written by Peter O. in 2014.
 Any copyright is dedicated to the Public Domain.

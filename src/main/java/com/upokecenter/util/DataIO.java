@@ -1,4 +1,5 @@
 package com.upokecenter.util;
+
 /*
 Written by Peter O. in 2014.
 Any copyright is dedicated to the Public Domain.
@@ -20,7 +21,7 @@ private DataIO() {
      * Wraps a byte array into a byte reader. The reader will start at the
      * beginning of the byte array. <p>In the .NET implementation, this
      * method is implemented as an extension method to any byte array object
-     * and can be called as follows: <code>bytes.ToByteReader() </code> . If the
+     * and can be called as follows: <code>bytes.ToByteReader()</code> . If the
      * object's class already has a ToByteReader method with the same
      * parameters, that method takes precedence over this extension method.
      * </p>
@@ -40,7 +41,7 @@ byte[] bytes) {
      * Wraps a portion of a byte array into a byte reader object. <p>In the .NET
      * implementation, this method is implemented as an extension method to
      * any byte array object and can be called as follows:
-     * <code>bytes.ToByteReader(offset, length) </code> . If the object's class
+     * <code>bytes.ToByteReader(offset, length)</code> . If the object's class
      * already has a ToByteReader method with the same parameters, that
      * method takes precedence over this extension method. </p>
      * @param bytes The byte array to wrap.
@@ -90,7 +91,7 @@ byte[] bytes,
      * the input stream, the reader object throws InvalidOperationException
      * instead. <p>In the .NET implementation, this method is implemented as
      * an extension method to any object implementing InputStream and can be
-     * called as follows: <code>input.ToByteReader() </code> . If the object's
+     * called as follows: <code>input.ToByteReader()</code> . If the object's
      * class already has a ToByteReader method with the same parameters,
      * that method takes precedence over this extension method. </p>
      * @param input The input stream to wrap.
@@ -109,7 +110,7 @@ InputStream input) {
      * Wraps a portion of a byte array into a byte reader. <p>In the .NET
      * implementation, this method is implemented as an extension method to
      * any object implementing byte[] and can be called as follows:
-     * <code>bytes.ToByteReader(offset, length) </code> . If the object's class
+     * <code>bytes.ToByteReader(offset, length)</code> . If the object's class
      * already has a ToByteReader method with the same parameters, that
      * method takes precedence over this extension method. </p>
      * @param bytes The byte array to wrap into a byte reader.
@@ -137,7 +138,7 @@ byte[] bytes,
      * Wraps a data stream into a byte reader. <p>In the .NET implementation, this
      * method is implemented as an extension method to any object
      * implementing InputStream and can be called as follows:
-     * <code>input.ToByteReader() </code> . If the object's class already has a
+     * <code>input.ToByteReader()</code> . If the object's class already has a
      * ToByteReader method with the same parameters, that method takes
      * precedence over this extension method. </p>
      * @param input The data stream to wrap into a byte reader.
@@ -155,7 +156,7 @@ InputStream input) {
      * Wraps a byte array into a byte reader. <p>In the .NET implementation, this
      * method is implemented as an extension method to any object
      * implementing byte[] and can be called as follows:
-     * <code>bytes.ToByteReader() </code> . If the object's class already has a
+     * <code>bytes.ToByteReader()</code> . If the object's class already has a
      * ToByteReader method with the same parameters, that method takes
      * precedence over this extension method. </p>
      * @param bytes The byte array to wrap into a byte reader.
@@ -174,7 +175,7 @@ byte[] bytes) {
      * the input stream, the writer object throws InvalidOperationException
      * instead. <p>In the .NET implementation, this method is implemented as
      * an extension method to any object implementing InputStream and can be
-     * called as follows: <code>output.ToWriter() </code> . If the object's class
+     * called as follows: <code>output.ToWriter()</code> . If the object's class
      * already has a ToWriter method with the same parameters, that method
      * takes precedence over this extension method. </p>
      * @param output Output stream to wrap.
@@ -194,8 +195,8 @@ OutputStream output) {
      * (one that also implements a three-parameter Read method.) <p>In the
      * .NET implementation, this method is implemented as an extension
      * method to any object implementing IByteWriter and can be called as
-     * follows: <code>output.ToWriter() </code> . If the object's class already
-     * has a ToWriter method with the same parameters, that method takes
+     * follows: <code>output.ToWriter()</code> . If the object's class already has
+     * a ToWriter method with the same parameters, that method takes
      * precedence over this extension method. </p>
      * @param output A byte stream.
      * @return A writer that wraps the given stream.

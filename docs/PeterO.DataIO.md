@@ -5,14 +5,14 @@
 Convenience class that contains static methods for wrapping byte arrays and streams into byte readers and byte writers.
 
 ### Member Summary
-* <code>[ToByteReader_this_byte](#ToByteReader_this_byte)</code> - Wraps a byte array into a byte reader.
-* <code>[ToByteReader_this_byte_int_int](#ToByteReader_this_byte_int_int)</code> - Wraps a portion of a byte array into a byte reader.
-* <code>[ToByteReader_this_System_IO_Stream](#ToByteReader_this_System_IO_Stream)</code> - Wraps a data stream into a byte reader.
-* <code>[ToReader_this_byte](#ToReader_this_byte)</code> - Wraps a byte array into a byte reader.
-* <code>[ToReader_this_byte_int_int](#ToReader_this_byte_int_int)</code> - Wraps a portion of a byte array into a byte reader object.
-* <code>[ToReader_this_System_IO_Stream](#ToReader_this_System_IO_Stream)</code> - Wraps an input stream into a reader object.
-* <code>[ToWriter_this_PeterO_IByteWriter](#ToWriter_this_PeterO_IByteWriter)</code> - Wraps a byte writer (one that only implements a ReadByte method) to a writer (one that also implements a three-parameter Read method.
-* <code>[ToWriter_this_System_IO_Stream](#ToWriter_this_System_IO_Stream)</code> - Wraps an output stream into a writer object.
+* <code>[ToByteReader(this byte[])](#ToByteReader_this_byte)</code> - Wraps a byte array into a byte reader.
+* <code>[ToByteReader(this byte[], int, int)](#ToByteReader_this_byte_int_int)</code> - Wraps a portion of a byte array into a byte reader.
+* <code>[ToByteReader(this System.IO.Stream)](#ToByteReader_this_System_IO_Stream)</code> - Wraps a data stream into a byte reader.
+* <code>[ToReader(this byte[])](#ToReader_this_byte)</code> - Wraps a byte array into a byte reader.
+* <code>[ToReader(this byte[], int, int)](#ToReader_this_byte_int_int)</code> - Wraps a portion of a byte array into a byte reader object.
+* <code>[ToReader(this System.IO.Stream)](#ToReader_this_System_IO_Stream)</code> - Wraps an input stream into a reader object.
+* <code>[ToWriter(this PeterO.IByteWriter)](#ToWriter_this_PeterO_IByteWriter)</code> - Wraps a byte writer (one that only implements a ReadByte method) to a writer (one that also implements a three-parameter Read method.
+* <code>[ToWriter(this System.IO.Stream)](#ToWriter_this_System_IO_Stream)</code> - Wraps an output stream into a writer object.
 
 <a id="ToByteReader_this_byte"></a>
 ### ToByteReader

@@ -7,10 +7,10 @@
 An array of bytes that grows as needed.
 
 ### Member Summary
-* <code>[Clear](#Clear)</code> - Offers a fast way to reset the length of the array writer's data to 0.
-* <code>[ToArray](#ToArray)</code> - Generates an array of all bytes written so far to it.
-* <code>[Write_byte_int_int](#Write_byte_int_int)</code> - Writes a series of bytes to the array.
-* <code>[WriteByte_int](#WriteByte_int)</code> - Writes an 8-bit byte to the array.
+* <code>[Clear()](#Clear)</code> - Offers a fast way to reset the length of the array writer's data to 0.
+* <code>[ToArray()](#ToArray)</code> - Generates an array of all bytes written so far to it.
+* <code>[Write(byte[], int, int)](#Write_byte_int_int)</code> - Writes a series of bytes to the array.
+* <code>[WriteByte(int)](#WriteByte_int)</code> - Writes an 8-bit byte to the array.
 
 <a id="Void_ctor_Int32"></a>
 ### ArrayWriter Constructor

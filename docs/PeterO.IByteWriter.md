@@ -5,7 +5,7 @@
 A generic interface for writing bytes of data.
 
 ### Member Summary
-* <code>[WriteByte_int](#WriteByte_int)</code> - Writes an 8-bit byte to a data source.
+* <code>[WriteByte(int)](#WriteByte_int)</code> - Writes an 8-bit byte to a data source.
 
 <a id="WriteByte_int"></a>
 ### WriteByte

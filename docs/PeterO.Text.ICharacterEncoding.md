@@ -5,8 +5,8 @@
 Defines methods that can be implemented by classes that convert to and from bytes and character code points.
 
 ### Member Summary
-* <code>[GetDecoder](#GetDecoder)</code> - Creates a decoder for this character encoding with initial state.
-* <code>[GetEncoder](#GetEncoder)</code> - Creates an encoder for this character encoding with initial state.
+* <code>[GetDecoder()](#GetDecoder)</code> - Creates a decoder for this character encoding with initial state.
+* <code>[GetEncoder()](#GetEncoder)</code> - Creates an encoder for this character encoding with initial state.
 
 <a id="GetDecoder"></a>
 ### GetDecoder

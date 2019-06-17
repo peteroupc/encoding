@@ -6,7 +6,7 @@
 A generic interface for reading bytes of data from a data source.
 
 ### Member Summary
-* <code>[Read_byte_int_int](#Read_byte_int_int)</code> - Reads a portion of a byte array from the data source.
+* <code>[Read(byte[], int, int)](#Read_byte_int_int)</code> - Reads a portion of a byte array from the data source.
 
 <a id="Read_byte_int_int"></a>
 ### Read

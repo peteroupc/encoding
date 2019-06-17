@@ -5,7 +5,7 @@
 Defines a method that can be implemented by classes that convert Unicode code points to bytes.
 
 ### Member Summary
-* <code>[Encode_int_PeterO_IWriter](#Encode_int_PeterO_IWriter)</code> - Converts a Unicode code point to bytes and writes the bytes to an output stream.
+* <code>[Encode(int, PeterO.IWriter)](#Encode_int_PeterO_IWriter)</code> - Converts a Unicode code point to bytes and writes the bytes to an output stream.
 
 <a id="Encode_int_PeterO_IWriter"></a>
 ### Encode

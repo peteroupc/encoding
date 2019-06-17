@@ -6,8 +6,8 @@
 A general-purpose character input for reading text from byte streams and text strings. When reading byte streams, this class supports the UTF-8 character encoding by default, but can be configured to support UTF-16 and UTF-32 as well.
 
 ### Member Summary
-* <code>[Read_int_int_int](#Read_int_int_int)</code> - Reads a series of code points from a Unicode stream or a string.
-* <code>[ReadChar](#ReadChar)</code> - Reads the next character from a Unicode stream or a string.
+* <code>[Read(int[], int, int)](#Read_int_int_int)</code> - Reads a series of code points from a Unicode stream or a string.
+* <code>[ReadChar()](#ReadChar)</code> - Reads the next character from a Unicode stream or a string.
 
 <a id="Void_ctor_String"></a>
 ### CharacterReader Constructor

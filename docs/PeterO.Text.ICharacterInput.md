@@ -5,8 +5,8 @@
 An interface for reading Unicode code points from a data source.
 
 ### Member Summary
-* <code>[ReadChar()](#ReadChar)</code> - Reads a Unicode code point from a data source.
-* <code>[Read(int[], int, int)](#Read_int_int_int)</code> - Reads a sequence of Unicode code points from a data source.
+* <code>[Read_int_int_int](#Read_int_int_int)</code> - Reads a sequence of Unicode code points from a data source.
+* <code>[ReadChar](#ReadChar)</code> - Reads a Unicode code point from a data source.
 
 <a id="Read_int_int_int"></a>
 ### Read

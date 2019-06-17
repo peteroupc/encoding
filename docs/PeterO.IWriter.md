@@ -6,7 +6,7 @@
 A generic interface for writing bytes of data.
 
 ### Member Summary
-* <code>[Write(byte[], int, int)](#Write_byte_int_int)</code> - Writes a portion of a byte array to the data source.
+* <code>[Write_byte_int_int](#Write_byte_int_int)</code> - Writes a portion of a byte array to the data source.
 
 <a id="Write_byte_int_int"></a>
 ### Write

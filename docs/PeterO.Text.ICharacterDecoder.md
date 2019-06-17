@@ -5,7 +5,7 @@
 Defines a method that can be implemented by classes that convert a stream of bytes to Unicode code points.
 
 ### Member Summary
-* <code>[ReadChar(PeterO.IByteReader)](#ReadChar_PeterO_IByteReader)</code> - Reads bytes from an input transform until a Unicode code point is decoded or until the end of the stream is reached.
+* <code>[ReadChar_PeterO_IByteReader](#ReadChar_PeterO_IByteReader)</code> - Reads bytes from an input transform until a Unicode code point is decoded or until the end of the stream is reached.
 
 <a id="ReadChar_PeterO_IByteReader"></a>
 ### ReadChar

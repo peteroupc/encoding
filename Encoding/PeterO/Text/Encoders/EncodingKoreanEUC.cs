@@ -35,9 +35,9 @@ namespace PeterO.Text.Encoders {
               if (b < 0x80) {
  this.state.PrependOne(b);
 }
-                return -2;
+return -2;
             }
-              return c;
+            return c;
           }
           if (b <= 0x7f) {
             return b;

@@ -31,7 +31,7 @@ namespace PeterO.Text.Encoders {
        if (c < 0) {
  return -1;
 }
-         if (c < 0x80) {
+if (c < 0x80) {
            output.WriteByte((byte)c);
            return 1;
          }

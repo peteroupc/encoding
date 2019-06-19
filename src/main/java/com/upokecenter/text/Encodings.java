@@ -138,7 +138,7 @@ private Encodings() {
      */
     public static String DecodeToString(
 ICharacterEncoding encoding,
-  IByteReader input) {
+IByteReader input) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
       }
@@ -171,7 +171,7 @@ ICharacterEncoding encoding,
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
-  InputStream input) {
+InputStream input) {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
@@ -206,7 +206,7 @@ ICharacterEncoding enc,
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
-  byte[] bytes) {
+byte[] bytes) {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
@@ -250,9 +250,9 @@ ICharacterEncoding enc,
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
-  byte[] bytes,
-  int offset,
-  int length) {
+byte[] bytes,
+int offset,
+int length) {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
@@ -299,7 +299,7 @@ ICharacterEncoding enc,
      */
     public static byte[] EncodeToBytes(
 ICharacterInput input,
-  ICharacterEncoding encoding) {
+ICharacterEncoding encoding) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
       }
@@ -329,7 +329,7 @@ ICharacterInput input,
      */
     public static byte[] EncodeToBytes(
 ICharacterInput input,
-  ICharacterEncoder encoder) {
+ICharacterEncoder encoder) {
       return EncodeToBytes(input, encoder, false);
     }
 
@@ -357,8 +357,8 @@ ICharacterInput input,
      */
     public static byte[] EncodeToBytes(
 ICharacterInput input,
-  ICharacterEncoder encoder,
-  boolean htmlFallback) {
+ICharacterEncoder encoder,
+boolean htmlFallback) {
       if (encoder == null) {
         throw new NullPointerException("encoder");
       }
@@ -366,7 +366,7 @@ ICharacterInput input,
         throw new NullPointerException("input");
       }
       ArrayWriter writer = new ArrayWriter();
-if (htmlFallback) {
+      if (htmlFallback) {
 EncoderAlgorithms.EncodeAlgorithm(input, encoder, writer);
 } else {
       while (true) {
@@ -409,7 +409,7 @@ EncoderAlgorithms.EncodeAlgorithm(input, encoder, writer);
      */
     public static byte[] EncodeToBytes(
 String str,
-  ICharacterEncoding enc) {
+ICharacterEncoding enc) {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -446,8 +446,8 @@ String str,
      */
     public static byte[] EncodeToBytes(
 String str,
-  ICharacterEncoding enc,
-  boolean htmlFallback) {
+ICharacterEncoding enc,
+boolean htmlFallback) {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -482,8 +482,8 @@ String str,
      */
     public static void EncodeToWriter(
 ICharacterInput input,
-  ICharacterEncoding encoding,
-  IWriter writer) {
+ICharacterEncoding encoding,
+IWriter writer) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
       }
@@ -513,8 +513,8 @@ ICharacterInput input,
      */
     public static void EncodeToWriter(
 ICharacterInput input,
-  ICharacterEncoder encoder,
-  IWriter writer) {
+ICharacterEncoder encoder,
+IWriter writer) {
       if (encoder == null) {
         throw new NullPointerException("encoder");
       }
@@ -562,8 +562,8 @@ ICharacterInput input,
      */
     public static void EncodeToWriter(
 String str,
-  ICharacterEncoding enc,
-  IWriter writer) {
+ICharacterEncoding enc,
+IWriter writer) {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -595,8 +595,8 @@ String str,
      */
     public static void EncodeToWriter(
 ICharacterInput input,
-  ICharacterEncoding encoding,
-  OutputStream output) throws java.io.IOException {
+ICharacterEncoding encoding,
+OutputStream output) throws java.io.IOException {
       if (encoding == null) {
         throw new NullPointerException("encoding");
       }
@@ -626,8 +626,8 @@ ICharacterInput input,
      */
     public static void EncodeToWriter(
 ICharacterInput input,
-  ICharacterEncoder encoder,
-  OutputStream output) throws java.io.IOException {
+ICharacterEncoder encoder,
+OutputStream output) throws java.io.IOException {
       IWriter writer = DataIO.ToWriter(output);
       EncodeToWriter(input, encoder, writer);
     }
@@ -657,8 +657,8 @@ ICharacterInput input,
      */
     public static void EncodeToWriter(
 String str,
-  ICharacterEncoding enc,
-  OutputStream output) throws java.io.IOException {
+ICharacterEncoding enc,
+OutputStream output) throws java.io.IOException {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -690,7 +690,7 @@ String str,
      */
     public static ICharacterInput GetDecoderInput(
 ICharacterEncoding encoding,
-  IByteReader stream) {
+IByteReader stream) {
       return new DecoderToInputClass(
         encoding.GetDecoder(),
         stream);
@@ -721,7 +721,7 @@ ICharacterEncoding encoding,
      */
     public static ICharacterInput GetDecoderInput(
 ICharacterEncoding encoding,
-  InputStream input) {
+InputStream input) {
       return new DecoderToInputClass(
         encoding.GetDecoder(),
         DataIO.ToReader(input));
@@ -749,7 +749,7 @@ ICharacterEncoding encoding,
      */
     public static ICharacterInput GetDecoderInputSkipBom(
 ICharacterEncoding encoding,
-  IByteReader stream) {
+IByteReader stream) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
 
@@ -775,7 +775,7 @@ ICharacterEncoding encoding,
      */
     public static ICharacterInput GetDecoderInputSkipBom(
 ICharacterEncoding encoding,
-  InputStream input) {
+InputStream input) {
       return EncoderAlgorithms.DecodeAlgorithmInput(
         DataIO.ToReader(input),
         encoding);
@@ -846,30 +846,30 @@ ICharacterEncoding encoding,
       if (name.equals("windows-1252")) {
      return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
           8218,
-    402, 8222, 8230, 8224, 8225, 710, 8240, 352, 8249, 338, 141, 381, 143,
-    144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 353, 8250,
-    339, 157, 382, 376, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169,
-    170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183,
-    184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197,
-    198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211,
-    212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225,
-    226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
-    240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253,
-    254, 255 });
+          402, 8222, 8230, 8224, 8225, 710, 8240, 352, 8249, 338, 141, 381, 143,
+          144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 353, 8250,
+          339, 157, 382, 376, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169,
+          170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183,
+          184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197,
+          198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211,
+          212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225,
+          226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
+          240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253,
+          254, 255 });
       }
       if (name.equals("windows-1253")) {
      return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
           8218,
-    402, 8222, 8230, 8224, 8225, 136, 8240, 138, 8249, 140, 141, 142, 143,
-    144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482, 154, 8250,
-    156, 157, 158, 159, 160, 901, 902, 163, 164, 165, 166, 167, 168, 169,
-    -2, 171, 172, 173, 174, 8213, 176, 177, 178, 179, 900, 181, 182, 183,
-    904, 905, 906, 187, 908, 189, 910, 911, 912, 913, 914, 915, 916, 917,
-    918, 919, 920, 921, 922, 923, 924, 925, 926, 927, 928, 929, -2, 931,
-    932, 933, 934, 935, 936, 937, 938, 939, 940, 941, 942, 943, 944, 945,
-    946, 947, 948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959,
-    960, 961, 962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973,
-    974, -2 });
+          402, 8222, 8230, 8224, 8225, 136, 8240, 138, 8249, 140, 141, 142, 143,
+          144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482, 154, 8250,
+          156, 157, 158, 159, 160, 901, 902, 163, 164, 165, 166, 167, 168, 169,
+          -2, 171, 172, 173, 174, 8213, 176, 177, 178, 179, 900, 181, 182, 183,
+          904, 905, 906, 187, 908, 189, 910, 911, 912, 913, 914, 915, 916, 917,
+          918, 919, 920, 921, 922, 923, 924, 925, 926, 927, 928, 929, -2, 931,
+          932, 933, 934, 935, 936, 937, 938, 939, 940, 941, 942, 943, 944, 945,
+          946, 947, 948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959,
+          960, 961, 962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973,
+          974, -2 });
       }
       if (name.equals("ISO-8859-15")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -881,7 +881,7 @@ ICharacterEncoding encoding,
     201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214,
     215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228,
     229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242,
-    243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255 });
+    243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, });
       }
       if (name.equals("ISO-8859-3")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -893,21 +893,21 @@ ICharacterEncoding encoding,
     202, 203, 204, 205, 206, 207, -2, 209, 210, 211, 212, 288, 214, 215,
     284, 217, 218, 219, 220, 364, 348, 223, 224, 225, 226, -2, 228, 267,
     265, 231, 232, 233, 234, 235, 236, 237, 238, 239, -2, 241, 242, 243,
-    244, 289, 246, 247, 285, 249, 250, 251, 252, 365, 349, 729 });
+    244, 289, 246, 247, 285, 249, 250, 251, 252, 365, 349, 729, });
       }
       if (name.equals("windows-1258")) {
      return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
           8218,
-    402, 8222, 8230, 8224, 8225, 710, 8240, 138, 8249, 338, 141, 142, 143,
-    144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 154, 8250,
-    339, 157, 158, 376, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169,
-    170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183,
-    184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 258, 196, 197,
-    198, 199, 200, 201, 202, 203, 768, 205, 206, 207, 272, 209, 777, 211,
-    212, 416, 214, 215, 216, 217, 218, 219, 220, 431, 771, 223, 224, 225,
-    226, 259, 228, 229, 230, 231, 232, 233, 234, 235, 769, 237, 238, 239,
-    273, 241, 803, 243, 244, 417, 246, 247, 248, 249, 250, 251, 252, 432,
-    8363, 255 });
+          402, 8222, 8230, 8224, 8225, 710, 8240, 138, 8249, 338, 141, 142, 143,
+          144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 154, 8250,
+          339, 157, 158, 376, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169,
+          170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183,
+          184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 258, 196, 197,
+          198, 199, 200, 201, 202, 203, 768, 205, 206, 207, 272, 209, 777, 211,
+          212, 416, 214, 215, 216, 217, 218, 219, 220, 431, 771, 223, 224, 225,
+          226, 259, 228, 229, 230, 231, 232, 233, 234, 235, 769, 237, 238, 239,
+          273, 241, 803, 243, 244, 417, 246, 247, 248, 249, 250, 251, 252, 432,
+          8363, 255 });
       }
       if (name.equals("ISO-8859-2")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -919,7 +919,7 @@ ICharacterEncoding encoding,
     201, 280, 203, 282, 205, 206, 270, 272, 323, 327, 211, 212, 336, 214,
     215, 344, 366, 218, 368, 220, 221, 354, 223, 341, 225, 226, 259, 228,
     314, 263, 231, 269, 233, 281, 235, 283, 237, 238, 271, 273, 324, 328,
-    243, 244, 337, 246, 247, 345, 367, 250, 369, 252, 253, 355, 729 });
+    243, 244, 337, 246, 247, 345, 367, 250, 369, 252, 253, 355, 729, });
       }
       if (name.equals("ISO-8859-5")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -933,21 +933,21 @@ ICharacterEncoding encoding,
     1083, 1084, 1085, 1086, 1087, 1088, 1089, 1090, 1091, 1092, 1093, 1094,
     1095, 1096, 1097, 1098, 1099, 1100, 1101, 1102, 1103, 8470, 1105, 1106,
     1107, 1108, 1109, 1110, 1111, 1112, 1113, 1114, 1115, 1116, 167, 1118,
-    1119 });
+    1119, });
       }
       if (name.equals("windows-874") || name.equals("TIS-620")) {
       return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
           130,
-    131, 132, 8230, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
-    8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 153, 154, 155, 156, 157,
-    158, 159, 160, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593,
-    3594, 3595, 3596, 3597, 3598, 3599, 3600, 3601, 3602, 3603, 3604, 3605,
-    3606, 3607, 3608, 3609, 3610, 3611, 3612, 3613, 3614, 3615, 3616, 3617,
-    3618, 3619, 3620, 3621, 3622, 3623, 3624, 3625, 3626, 3627, 3628, 3629,
-    3630, 3631, 3632, 3633, 3634, 3635, 3636, 3637, 3638, 3639, 3640, 3641,
-    3642, -2, -2, -2, -2, 3647, 3648, 3649, 3650, 3651, 3652, 3653, 3654,
-    3655, 3656, 3657, 3658, 3659, 3660, 3661, 3662, 3663, 3664, 3665, 3666,
-    3667, 3668, 3669, 3670, 3671, 3672, 3673, 3674, 3675, -2, -2, -2, -2 });
+          131, 132, 8230, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
+          8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 153, 154, 155, 156, 157,
+          158, 159, 160, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593,
+          3594, 3595, 3596, 3597, 3598, 3599, 3600, 3601, 3602, 3603, 3604, 3605,
+          3606, 3607, 3608, 3609, 3610, 3611, 3612, 3613, 3614, 3615, 3616, 3617,
+          3618, 3619, 3620, 3621, 3622, 3623, 3624, 3625, 3626, 3627, 3628, 3629,
+          3630, 3631, 3632, 3633, 3634, 3635, 3636, 3637, 3638, 3639, 3640, 3641,
+          3642, -2, -2, -2, -2, 3647, 3648, 3649, 3650, 3651, 3652, 3653, 3654,
+          3655, 3656, 3657, 3658, 3659, 3660, 3661, 3662, 3663, 3664, 3665, 3666,
+          3667, 3668, 3669, 3670, 3671, 3672, 3673, 3674, 3675, -2, -2, -2, -2 });
       }
       if (name.equals("macintosh")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 196, 197, 199,
@@ -960,7 +960,7 @@ ICharacterEncoding encoding,
     8216, 8217, 247, 9674, 255, 376, 8260, 8364, 8249, 8250, 64257, 64258,
     8225, 183, 8218, 8222, 8240, 194, 202, 193, 203, 200, 205, 206, 207,
     204, 211, 212, 63743, 210, 218, 219, 217, 305, 710, 732, 175, 728, 729,
-    730, 184, 733, 731, 711 });
+    730, 184, 733, 731, 711, });
       }
       if (name.equals("ISO-8859-10")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -972,35 +972,35 @@ ICharacterEncoding encoding,
     201, 280, 203, 278, 205, 206, 207, 208, 325, 332, 211, 212, 213, 214,
     360, 216, 370, 218, 219, 220, 221, 222, 223, 257, 225, 226, 227, 228,
     229, 230, 303, 269, 233, 281, 235, 279, 237, 238, 239, 240, 326, 333,
-    243, 244, 245, 246, 361, 248, 371, 250, 251, 252, 253, 254, 312 });
+    243, 244, 245, 246, 361, 248, 371, 250, 251, 252, 253, 254, 312, });
       }
       if (name.equals("windows-1257")) {
      return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
           8218,
-    131, 8222, 8230, 8224, 8225, 136, 8240, 138, 8249, 140, 168, 711, 184,
-    144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482, 154, 8250,
-    156, 175, 731, 159, 160, -2, 162, 163, 164, -2, 166, 167, 216, 169, 342,
-    171, 172, 173, 174, 198, 176, 177, 178, 179, 180, 181, 182, 183, 248,
-    185, 343, 187, 188, 189, 190, 230, 260, 302, 256, 262, 196, 197, 280,
-    274, 268, 201, 377, 278, 290, 310, 298, 315, 352, 323, 325, 211, 332,
-    213, 214, 215, 370, 321, 346, 362, 220, 379, 381, 223, 261, 303, 257,
-    263, 228, 229, 281, 275, 269, 233, 378, 279, 291, 311, 299, 316, 353,
-    324, 326, 243, 333, 245, 246, 247, 371, 322, 347, 363, 252, 380, 382,
-    729 });
+          131, 8222, 8230, 8224, 8225, 136, 8240, 138, 8249, 140, 168, 711, 184,
+          144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482, 154, 8250,
+          156, 175, 731, 159, 160, -2, 162, 163, 164, -2, 166, 167, 216, 169, 342,
+          171, 172, 173, 174, 198, 176, 177, 178, 179, 180, 181, 182, 183, 248,
+          185, 343, 187, 188, 189, 190, 230, 260, 302, 256, 262, 196, 197, 280,
+          274, 268, 201, 377, 278, 290, 310, 298, 315, 352, 323, 325, 211, 332,
+          213, 214, 215, 370, 321, 346, 362, 220, 379, 381, 223, 261, 303, 257,
+          263, 228, 229, 281, 275, 269, 233, 378, 279, 291, 311, 299, 316, 353,
+          324, 326, 243, 333, 245, 246, 247, 371, 322, 347, 363, 252, 380, 382,
+          729 });
       }
       if (name.equals("windows-1250")) {
      return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
           8218,
-    131, 8222, 8230, 8224, 8225, 136, 8240, 352, 8249, 346, 356, 381, 377,
-    144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482, 353, 8250,
-    347, 357, 382, 378, 160, 711, 728, 321, 164, 260, 166, 167, 168, 169,
-    350, 171, 172, 173, 174, 379, 176, 177, 731, 322, 180, 181, 182, 183,
-    184, 261, 351, 187, 317, 733, 318, 380, 340, 193, 194, 258, 196, 313,
-    262, 199, 268, 201, 280, 203, 282, 205, 206, 270, 272, 323, 327, 211,
-    212, 336, 214, 215, 344, 366, 218, 368, 220, 221, 354, 223, 341, 225,
-    226, 259, 228, 314, 263, 231, 269, 233, 281, 235, 283, 237, 238, 271,
-    273, 324, 328, 243, 244, 337, 246, 247, 345, 367, 250, 369, 252, 253,
-    355, 729 });
+          131, 8222, 8230, 8224, 8225, 136, 8240, 352, 8249, 346, 356, 381, 377,
+          144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 152, 8482, 353, 8250,
+          347, 357, 382, 378, 160, 711, 728, 321, 164, 260, 166, 167, 168, 169,
+          350, 171, 172, 173, 174, 379, 176, 177, 731, 322, 180, 181, 182, 183,
+          184, 261, 351, 187, 317, 733, 318, 380, 340, 193, 194, 258, 196, 313,
+          262, 199, 268, 201, 280, 203, 282, 205, 206, 270, 272, 323, 327, 211,
+          212, 336, 214, 215, 344, 366, 218, 368, 220, 221, 354, 223, 341, 225,
+          226, 259, 228, 314, 263, 231, 269, 233, 281, 235, 283, 237, 238, 271,
+          273, 324, 328, 243, 244, 337, 246, 247, 345, 367, 250, 369, 252, 253,
+          355, 729 });
       }
       if (name.equals("ISO-8859-14")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -1013,7 +1013,7 @@ ICharacterEncoding encoding,
     212, 213, 214, 7786, 216, 217, 218, 219, 220, 221, 374, 223, 224, 225,
     226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
     373, 241, 242, 243, 244, 245, 246, 7787, 248, 249, 250, 251, 252, 253,
-    375, 255 });
+    375, 255, });
       }
       if (name.equals("ISO-8859-4")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -1025,7 +1025,7 @@ ICharacterEncoding encoding,
     201, 280, 203, 278, 205, 206, 298, 272, 325, 332, 310, 212, 213, 214,
     215, 216, 370, 218, 219, 220, 360, 362, 223, 257, 225, 226, 227, 228,
     229, 230, 303, 269, 233, 281, 235, 279, 237, 238, 299, 273, 326, 333,
-    311, 244, 245, 246, 247, 248, 371, 250, 251, 252, 361, 363, 729 });
+    311, 244, 245, 246, 247, 248, 371, 250, 251, 252, 361, 363, 729, });
       }
       if (name.equals("ISO-8859-8") || name.equals("ISO-8859-8-I")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -1037,7 +1037,7 @@ ICharacterEncoding encoding,
     -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,
     -2, 8215, 1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497,
     1498, 1499, 1500, 1501, 1502, 1503, 1504, 1505, 1506, 1507, 1508, 1509,
-    1510, 1511, 1512, 1513, 1514, -2, -2, 8206, 8207, -2 });
+    1510, 1511, 1512, 1513, 1514, -2, -2, 8206, 8207, -2, });
       }
       if (name.equals("KOI8-R")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 9472, 9474,
@@ -1051,7 +1051,7 @@ ICharacterEncoding encoding,
     1074, 1100, 1099, 1079, 1096, 1101, 1097, 1095, 1098, 1070, 1040, 1041,
     1062, 1044, 1045, 1060, 1043, 1061, 1048, 1049, 1050, 1051, 1052, 1053,
     1054, 1055, 1071, 1056, 1057, 1058, 1059, 1046, 1042, 1068, 1067, 1047,
-    1064, 1069, 1065, 1063, 1066 });
+    1064, 1069, 1065, 1063, 1066, });
       }
       if (name.equals("ISO-8859-6")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -1063,35 +1063,35 @@ ICharacterEncoding encoding,
     1580, 1581, 1582, 1583, 1584, 1585, 1586, 1587, 1588, 1589, 1590, 1591,
     1592, 1593, 1594, -2, -2, -2, -2, -2, 1600, 1601, 1602, 1603, 1604,
     1605, 1606, 1607, 1608, 1609, 1610, 1611, 1612, 1613, 1614, 1615, 1616,
-    1617, 1618, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2 });
+    1617, 1618, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, });
       }
       if (name.equals("windows-1254")) {
      return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
           8218,
-    402, 8222, 8230, 8224, 8225, 710, 8240, 352, 8249, 338, 141, 142, 143,
-    144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 353, 8250,
-    339, 157, 158, 376, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169,
-    170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183,
-    184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197,
-    198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 286, 209, 210, 211,
-    212, 213, 214, 215, 216, 217, 218, 219, 220, 304, 350, 223, 224, 225,
-    226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
-    287, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 305,
-    351, 255 });
+          402, 8222, 8230, 8224, 8225, 710, 8240, 352, 8249, 338, 141, 142, 143,
+          144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 353, 8250,
+          339, 157, 158, 376, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169,
+          170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183,
+          184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197,
+          198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 286, 209, 210, 211,
+          212, 213, 214, 215, 216, 217, 218, 219, 220, 304, 350, 223, 224, 225,
+          226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
+          287, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 305,
+          351, 255 });
       }
       if (name.equals("windows-1255")) {
      return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
           8218,
-    402, 8222, 8230, 8224, 8225, 710, 8240, 138, 8249, 140, 141, 142, 143,
-    144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 154, 8250,
-    156, 157, 158, 159, 160, 161, 162, 163, 8362, 165, 166, 167, 168, 169,
-    215, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183,
-    184, 185, 247, 187, 188, 189, 190, 191, 1456, 1457, 1458, 1459, 1460,
-    1461, 1462, 1463, 1464, 1465, 1466, 1467, 1468, 1469, 1470, 1471, 1472,
-    1473, 1474, 1475, 1520, 1521, 1522, 1523, 1524, -2, -2, -2, -2, -2, -2,
-    -2, 1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497, 1498,
-    1499, 1500, 1501, 1502, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510,
-    1511, 1512, 1513, 1514, -2, -2, 8206, 8207, -2 });
+          402, 8222, 8230, 8224, 8225, 710, 8240, 138, 8249, 140, 141, 142, 143,
+          144, 8216, 8217, 8220, 8221, 8226, 8211, 8212, 732, 8482, 154, 8250,
+          156, 157, 158, 159, 160, 161, 162, 163, 8362, 165, 166, 167, 168, 169,
+          215, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183,
+          184, 185, 247, 187, 188, 189, 190, 191, 1456, 1457, 1458, 1459, 1460,
+          1461, 1462, 1463, 1464, 1465, 1466, 1467, 1468, 1469, 1470, 1471, 1472,
+          1473, 1474, 1475, 1520, 1521, 1522, 1523, 1524, -2, -2, -2, -2, -2, -2,
+          -2, 1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497, 1498,
+          1499, 1500, 1501, 1502, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510,
+          1511, 1512, 1513, 1514, -2, -2, 8206, 8207, -2 });
       }
       if (name.equals("ISO-8859-16")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -1103,7 +1103,7 @@ ICharacterEncoding encoding,
     201, 202, 203, 204, 205, 206, 207, 272, 323, 210, 211, 212, 336, 214,
     346, 368, 217, 218, 219, 220, 280, 538, 223, 224, 225, 226, 259, 228,
     263, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 273, 324, 242,
-    243, 244, 337, 246, 347, 369, 249, 250, 251, 252, 281, 539, 255 });
+    243, 244, 337, 246, 347, 369, 249, 250, 251, 252, 281, 539, 255, });
       }
       if (name.equals("IBM866")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 1040, 1041,
@@ -1117,7 +1117,7 @@ ICharacterEncoding encoding,
     9555, 9579, 9578, 9496, 9484, 9608, 9604, 9612, 9616, 9600, 1088, 1089,
     1090, 1091, 1092, 1093, 1094, 1095, 1096, 1097, 1098, 1099, 1100, 1101,
     1102, 1103, 1025, 1105, 1028, 1108, 1031, 1111, 1038, 1118, 176, 8729,
-    183, 8730, 8470, 164, 9632, 160 });
+    183, 8730, 8470, 164, 9632, 160, });
       }
       if (name.equals("x-mac-cyrillic")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 1040, 1041,
@@ -1131,7 +1131,7 @@ ICharacterEncoding encoding,
     8222, 1038, 1118, 1039, 1119, 8470, 1025, 1105, 1103, 1072, 1073, 1074,
     1075, 1076, 1077, 1078, 1079, 1080, 1081, 1082, 1083, 1084, 1085, 1086,
     1087, 1088, 1089, 1090, 1091, 1092, 1093, 1094, 1095, 1096, 1097, 1098,
-    1099, 1100, 1101, 1102, 8364 });
+    1099, 1100, 1101, 1102, 8364, });
       }
       if (name.equals("windows-1251")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 1026, 1027,
@@ -1145,7 +1145,7 @@ ICharacterEncoding encoding,
     1063, 1064, 1065, 1066, 1067, 1068, 1069, 1070, 1071, 1072, 1073, 1074,
     1075, 1076, 1077, 1078, 1079, 1080, 1081, 1082, 1083, 1084, 1085, 1086,
     1087, 1088, 1089, 1090, 1091, 1092, 1093, 1094, 1095, 1096, 1097, 1098,
-    1099, 1100, 1101, 1102, 1103 });
+    1099, 1100, 1101, 1102, 1103, });
       }
       if (name.equals("windows-1256")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 1662,
@@ -1158,7 +1158,7 @@ ICharacterEncoding encoding,
     1582, 1583, 1584, 1585, 1586, 1587, 1588, 1589, 1590, 215, 1591, 1592,
     1593, 1594, 1600, 1601, 1602, 1603, 224, 1604, 226, 1605, 1606, 1607,
     1608, 231, 232, 233, 234, 235, 1609, 1610, 238, 239, 1611, 1612, 1613,
-    1614, 244, 1615, 1616, 247, 1617, 249, 1618, 251, 252, 8206, 8207, 1746
+    1614, 244, 1615, 1616, 247, 1617, 249, 1618, 251, 252, 8206, 8207, 1746,
     });
       }
       if (name.equals("KOI8-U")) {
@@ -1173,7 +1173,7 @@ ICharacterEncoding encoding,
     1074, 1100, 1099, 1079, 1096, 1101, 1097, 1095, 1098, 1070, 1040, 1041,
     1062, 1044, 1045, 1060, 1043, 1061, 1048, 1049, 1050, 1051, 1052, 1053,
     1054, 1055, 1071, 1056, 1057, 1058, 1059, 1046, 1042, 1068, 1067, 1047,
-    1064, 1069, 1065, 1063, 1066 });
+    1064, 1069, 1065, 1063, 1066, });
       }
       if (name.equals("ISO-8859-7")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -1185,7 +1185,7 @@ ICharacterEncoding encoding,
     920, 921, 922, 923, 924, 925, 926, 927, 928, 929, -2, 931, 932, 933,
     934, 935, 936, 937, 938, 939, 940, 941, 942, 943, 944, 945, 946, 947,
     948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959, 960, 961,
-    962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973, 974, -2 });
+    962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973, 974, -2, });
       }
       if (name.equals("ISO-8859-13")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
@@ -1197,7 +1197,7 @@ ICharacterEncoding encoding,
     201, 377, 278, 290, 310, 298, 315, 352, 323, 325, 211, 332, 213, 214,
     215, 370, 321, 346, 362, 220, 379, 381, 223, 261, 303, 257, 263, 228,
     229, 281, 275, 269, 233, 378, 279, 291, 311, 299, 316, 353, 324, 326,
-    243, 333, 245, 246, 247, 371, 322, 347, 363, 252, 380, 382, 8217 });
+    243, 333, 245, 246, 247, 371, 322, 347, 363, 252, 380, 382, 8217, });
       } else if (name.equals("EUC-JP")) {
         return (ICharacterEncoding)(new EncodingEUCJP());
       } else if (name.equals("EUC-KR")) {
@@ -1416,7 +1416,7 @@ ICharacterInput reader) {
      */
     public static byte[] StringToBytes(
 ICharacterEncoding encoding,
-  String str) {
+String str) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
       }
@@ -1447,7 +1447,7 @@ ICharacterEncoding encoding,
      */
     public static byte[] StringToBytes(
 ICharacterEncoder encoder,
-  String str) {
+String str) {
       if (encoder == null) {
         throw new NullPointerException("encoder");
       }
@@ -1516,8 +1516,8 @@ String str) {
      */
     public static ICharacterInput StringToInput(
 String str,
-  int offset,
-  int length) {
+int offset,
+int length) {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -1544,7 +1544,7 @@ String str,
       return new CharacterReader(str, offset, length);
     }
 
-private static Map<String, String> CreateAliasMap() {
+    private static Map<String, String> CreateAliasMap() {
 HashMap<String, String> aliases = new HashMap<String, String>();
 aliases.put("unicode-1-1-utf-8","UTF-8");
 aliases.put("utf-8","UTF-8");
@@ -1769,7 +1769,7 @@ aliases.put("x-user-defined","x-user-defined");
 return aliases;
 }
 
-private static Map<String, String> CreateEmailAliasMap() {
+    private static Map<String, String> CreateEmailAliasMap() {
 HashMap<String, String> aliases = new HashMap<String, String>();
 aliases.put("utf-7","UTF-7");
 aliases.put("utf-8","UTF-8");

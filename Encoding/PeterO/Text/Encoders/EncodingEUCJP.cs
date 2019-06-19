@@ -8,7 +8,7 @@ namespace PeterO.Text.Encoders {
     private class Decoder : ICharacterDecoder {
       private readonly DecoderState state;
       private int lead;
-        private bool jis0212;
+      private bool jis0212;
 
       public Decoder() {
         this.state = new DecoderState(1);
@@ -36,7 +36,7 @@ namespace PeterO.Text.Encoders {
           }
           if (this.lead != 0) {
             var c = -1;
-      if ((this.lead >= 0xa1 && this.lead <= 0xfe) && b >= 0xa1 && b <= 0xfe) {
+            if ((this.lead >= 0xa1 && this.lead <= 0xfe) && b >= 0xa1 && b <= 0xfe) {
               c = ((this.lead - 0xa1) * 94) + (b - 0xa1);
               c = this.jis0212 ? Jis0212.IndexToCodePoint(c) :
                     Jis0208.IndexToCodePoint(c);

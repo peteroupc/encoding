@@ -24,7 +24,8 @@
     <Rule Id='SA1413' Action='Warning'/>
     <Rule Id='SA1500' Action='None'/>
     <Rule Id='SA1509' Action='Warning'/>
-    <Rule Id='SA1513' Action='Warning'/>
+<!-- SA1513, closing brace not followed by blank line, is disabled -->
+    <Rule Id='SA1513' Action='None'/>
     <Rule Id='SA1515' Action='None'/>
     <Rule Id='SA1516' Action='None'/>
     <Rule Id='SA1600' Action='None'/>

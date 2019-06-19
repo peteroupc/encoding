@@ -103,7 +103,7 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>str</code> - The parameter <code>str</code> is a text string.
 
-* <code>skipByteOrderMark</code> - Either <code>true </code> or <code>false </code> .
+* <code>skipByteOrderMark</code> - Either <code>true</code> or <code>false</code> .
 
 ### CharacterReader
     public CharacterReader​(java.lang.String str, boolean skipByteOrderMark, boolean errorThrow)
@@ -113,9 +113,9 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>str</code> - The parameter <code>str</code> is a text string.
 
-* <code>skipByteOrderMark</code> - Either <code>true </code> or <code>false </code> .
+* <code>skipByteOrderMark</code> - Either <code>true</code> or <code>false</code> .
 
-* <code>errorThrow</code> - Either <code>true </code> or <code>false </code> .
+* <code>errorThrow</code> - Either <code>true</code> or <code>false</code> .
 
 **Throws:**
 
@@ -145,9 +145,9 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>length</code> - The parameter <code>length</code> is a 32-bit signed integer.
 
-* <code>skipByteOrderMark</code> - Either <code>true </code> or <code>false </code> .
+* <code>skipByteOrderMark</code> - Either <code>true</code> or <code>false</code> .
 
-* <code>errorThrow</code> - Either <code>true </code> or <code>false </code> .
+* <code>errorThrow</code> - Either <code>true</code> or <code>false</code> .
 
 **Throws:**
 
@@ -171,7 +171,7 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>mode</code> - The parameter <code>mode</code> is a 32-bit signed integer.
 
-* <code>errorThrow</code> - Either <code>true </code> or <code>false </code> .
+* <code>errorThrow</code> - Either <code>true</code> or <code>false</code> .
 
 ### CharacterReader
     public CharacterReader​(java.io.InputStream stream, int mode)
@@ -193,9 +193,9 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>mode</code> - The parameter <code>mode</code> is a 32-bit signed integer.
 
-* <code>errorThrow</code> - Either <code>true </code> or <code>false </code> .
+* <code>errorThrow</code> - Either <code>true</code> or <code>false</code> .
 
-* <code>dontSkipUtf8Bom</code> - Either <code>true </code> or <code>false </code> .
+* <code>dontSkipUtf8Bom</code> - Either <code>true</code> or <code>false</code> .
 
 **Throws:**
 

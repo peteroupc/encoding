@@ -44,8 +44,8 @@ import com.upokecenter.text.*;
               } else if (b < 0) {
                 return -1;
               } else if (b == 0x0d) {
-                tempState = machineState;
-                machineState = 9;
+                tempState = this.machineState;
+                this.machineState = 9;
                 break;
               } else if (b == 0x0e) {
                 this.machineState = 6;
@@ -61,8 +61,8 @@ import com.upokecenter.text.*;
               if (b == '$') {
                 this.machineState = 2;
               } else {
-                state.PrependOne(b);
-                machineState = 4;
+                this.state.PrependOne(b);
+                this.machineState = 4;
                 return -2;
               }
               break;
@@ -71,8 +71,8 @@ import com.upokecenter.text.*;
               if (b == ')') {
                 this.machineState = 3;
               } else {
-                state.PrependTwo((int)'$', b);
-                machineState = 4;
+                this.state.PrependTwo((int)'$', b);
+                this.machineState = 4;
                 return -2;
               }
               break;
@@ -83,8 +83,8 @@ import com.upokecenter.text.*;
                 this.lead = 0;
                 this.escapeState = true;
               } else {
-                state.PrependThree((int)'$', (int)')', b);
-                machineState = 4;
+                this.state.PrependThree((int)'$', (int)')', b);
+                this.machineState = 4;
                 return -2;
               }
               break;
@@ -95,8 +95,8 @@ import com.upokecenter.text.*;
               } else if (b < 0) {
                 return -1;
               } else if (b == 0x0d) {
-                tempState = machineState;
-                machineState = 9;
+                tempState = this.machineState;
+                this.machineState = 9;
                 break;
               } else if (b <= 0x7f && b != 0x0e && b != 0x0f) {
                 return b;
@@ -110,8 +110,8 @@ import com.upokecenter.text.*;
               } else if (b < 0) {
                 return -1;
               } else if (b == 0x0d) {
-                tempState = machineState;
-                machineState = 9;
+                tempState = this.machineState;
+                this.machineState = 9;
                 break;
               } else if (b == 0x0e) {
                 this.machineState = 6;
@@ -127,8 +127,8 @@ import com.upokecenter.text.*;
                 this.lead = b;
                 this.machineState = 8;
               } else if (b == 0x0d) {
-                tempState = machineState;
-                machineState = 9;
+                tempState = this.machineState;
+                this.machineState = 9;
               } else {
                 return -2;
               }
@@ -140,11 +140,11 @@ import com.upokecenter.text.*;
                 this.machineState = 8;
                 break;
               } else if (b == 0x0f) {
-                machineState = 5;
+                this.machineState = 5;
                 break;
               } else if (b == 0x0d) {
-                tempState = machineState;
-                machineState = 9;
+                tempState = this.machineState;
+                this.machineState = 9;
                 break;
               } else {
                 return -2;
@@ -162,10 +162,10 @@ import com.upokecenter.text.*;
                   return cp;
                 }
               } else if (b == 0x0f) {
-                machineState = 5;
+                this.machineState = 5;
                 break;
               } else {
-                machineState = 7;
+                this.machineState = 7;
                 return -2;
               }
             case 9:
@@ -177,11 +177,11 @@ import com.upokecenter.text.*;
               } else if (tempState == 4 || tempState == 5) {
                 // Merely in middle of line in ASCII mode
                 this.state.PrependOne(b);
-                machineState = tempState;
+                this.machineState = tempState;
                 return 0x0d;
               } else {
                 this.state.PrependOne(b);
-                machineState = tempState;
+                this.machineState = tempState;
                 return -2;
               }
             default: {

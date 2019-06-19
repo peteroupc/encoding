@@ -27,10 +27,10 @@ import com.upokecenter.text.*;
               } else if (b < 0) {
                 return -1;
               } else if (b <= 0x7f && b != 0x0e && b != 0x0f) {
-                output = 0;
+                this.output = 0;
                 return b;
               } else {
-                output = 0;
+                this.output = 0;
                 return -2;
               }
               break;
@@ -40,9 +40,9 @@ import com.upokecenter.text.*;
                 this.lead = b;
                 this.machineState = 2;
               } else {
-                state.PrependOne(b);
-                output = 0;
-                machineState = outputState;
+                this.state.PrependOne(b);
+                this.output = 0;
+                this.machineState = outputState;
                 return -2;
               }
               break;
@@ -82,13 +82,13 @@ import com.upokecenter.text.*;
               if (b == 0x1b) {
                 this.machineState = 1;
               } else if (b >= 0x21 && b <= 0x7e) {
-                output = 0;
-                lead = b;
-                machineState = 5;
+                this.output = 0;
+                this.lead = b;
+                this.machineState = 5;
               } else if (b < 0) {
                 return -1;
               } else {
-                output = 0;
+                this.output = 0;
                 return -2;
               }
               break;
@@ -98,28 +98,28 @@ import com.upokecenter.text.*;
                 this.state.PrependOne(b);
                 return -2;
               } else if (b == 0x1b) {
-                machineState = 1;
+                this.machineState = 1;
                 return -2;
               } else if (b >= 0x21 && b <= 0x7e) {
-                machineState = 4;
-                int p = (lead - 0x21) * 94 + (b - 0x21);
+                this.machineState = 4;
+                int p = ((this.lead - 0x21) * 94) + (b - 0x21);
                 // NOTE: Only JIS0208 now supported here
                 int c = Jis0208.IndexToCodePoint(p);
                 return c < 0 ? -2 : c;
               } else {
-                machineState = 4;
+                this.machineState = 4;
                 return -2;
               }
             case 6:  // Katakana
               if (b == 0x1b) {
                 this.machineState = 1;
               } else if (b >= 0x21 && b <= 0x5f) {
-                output = 0;
+                this.output = 0;
                 return 0xff40 + b;
               } else if (b < 0) {
                 return -1;
               } else {
-                output = 0;
+                this.output = 0;
                 return -2;
               }
               break;
@@ -127,18 +127,18 @@ import com.upokecenter.text.*;
               if (b == 0x1b) {
                 this.machineState = 1;
               } else if (b == 0x5c) {
-                output = 0;
+                this.output = 0;
                 return 0xa5;
               } else if (b == 0x7e) {
-                output = 0;
+                this.output = 0;
                 return 0x203e;
               } else if (b < 0x7f && b != 0x0e && b != 0x0f) {
-                output = 0;
+                this.output = 0;
                 return b;
               } else if (b < 0) {
                 return -1;
               } else {
-                output = 0;
+                this.output = 0;
                 return -2;
               }
               break;
@@ -164,7 +164,7 @@ import com.upokecenter.text.*;
         12481, 12484, 12486, 12488, 12490, 12491, 12492, 12493, 12494,
         12495, 12498, 12501, 12504, 12507, 12510, 12511, 12512, 12513,
         12514, 12516, 12518, 12520, 12521, 12522, 12523, 12524, 12525,
-        12527, 12531, 12443, 12444 };
+        12527, 12531, 12443, 12444, };
 
       public int Encode(int c, IWriter output) {
         int count = 0;
@@ -187,7 +187,7 @@ import com.upokecenter.text.*;
          // a different code point, in this case, U + FFFD
          return -2;
       }
-            if (this.encoderState == 0) {
+      if (this.encoderState == 0) {
               output.write((byte)c);
               return 1 + count;
             } else if (this.encoderState == 3 && c != 0x5c && c != 0x7e) {

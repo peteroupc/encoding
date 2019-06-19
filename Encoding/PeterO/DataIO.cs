@@ -1,4 +1,3 @@
-#pragma warning disable SA1118
 /*
 Written by Peter O. in 2014.
 Any copyright is dedicated to the Public Domain.
@@ -33,8 +32,8 @@ byte[] bytes) {
 this
 #endif
 byte[] bytes,
-  int offset,
-  int length) {
+int offset,
+int length) {
       if (bytes == null) {
         throw new ArgumentNullException(nameof(bytes));
       }
@@ -82,8 +81,8 @@ Stream input) {
 this
 #endif
 byte[] bytes,
-  int offset,
-  int length) {
+int offset,
+int length) {
       return (IByteReader)ToReader(bytes, offset, length);
     }
 

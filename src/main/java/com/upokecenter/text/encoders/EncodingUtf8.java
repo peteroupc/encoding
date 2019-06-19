@@ -8,10 +8,10 @@ import com.upokecenter.text.*;
     private static class Decoder implements ICharacterDecoder {
       private final DecoderState state;
       private int cp;
-        private int bytesSeen;
-        private int bytesNeeded;
-        private int lower = 0x80;
-        private int upper = 0xbf;
+      private int bytesSeen;
+      private int bytesNeeded;
+      private int lower = 0x80;
+      private int upper = 0xbf;
 
         public Decoder() {
         this.state = new DecoderState(2);
@@ -91,8 +91,8 @@ import com.upokecenter.text.*;
             return -2;
           }
           bytes[byteIndex++] = (byte)(0xe0 | ((c >> 12) & 0x0f));
-            bytes[byteIndex++] = (byte)(0x80 | ((c >> 6) & 0x3f));
-            bytes[byteIndex++] = (byte)(0x80 | (c & 0x3f));
+          bytes[byteIndex++] = (byte)(0x80 | ((c >> 6) & 0x3f));
+          bytes[byteIndex++] = (byte)(0x80 | (c & 0x3f));
         } else if (c <= 0x10ffff) {
             bytes[byteIndex++] = (byte)(0xf0 | ((c >> 18) & 0x07));
             bytes[byteIndex++] = (byte)(0x80 | ((c >> 12) & 0x3f));

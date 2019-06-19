@@ -39,7 +39,7 @@ import java.io.*;
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
-     * @param skipByteOrderMark Either {@code true } or {@code false } .
+     * @param skipByteOrderMark Either {@code true} or {@code false} .
      */
     public CharacterReader(String str, boolean skipByteOrderMark) {
  this(str, skipByteOrderMark, false);
@@ -49,11 +49,11 @@ import java.io.*;
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
-     * @param skipByteOrderMark Either {@code true } or {@code false } .
-     * @param errorThrow Either {@code true } or {@code false } .
+     * @param skipByteOrderMark Either {@code true} or {@code false} .
+     * @param errorThrow Either {@code true} or {@code false} .
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
-  public CharacterReader(
+    public CharacterReader(
   String str,
   boolean skipByteOrderMark,
   boolean errorThrow) {
@@ -87,8 +87,8 @@ import java.io.*;
      * @param str The parameter {@code str} is a text string.
      * @param offset The parameter {@code offset} is a 32-bit signed integer.
      * @param length The parameter {@code length} is a 32-bit signed integer.
-     * @param skipByteOrderMark Either {@code true } or {@code false } .
-     * @param errorThrow Either {@code true } or {@code false } .
+     * @param skipByteOrderMark Either {@code true} or {@code false} .
+     * @param errorThrow Either {@code true} or {@code false} .
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
     public CharacterReader(
@@ -144,7 +144,7 @@ if (str.length() - offset < length) {
      * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable data stream.
      * @param mode The parameter {@code mode} is a 32-bit signed integer.
-     * @param errorThrow Either {@code true } or {@code false } .
+     * @param errorThrow Either {@code true} or {@code false} .
      */
     public CharacterReader(InputStream stream, int mode, boolean errorThrow) {
  this(stream, mode, errorThrow, false);
@@ -165,8 +165,8 @@ if (str.length() - offset < length) {
      * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable data stream.
      * @param mode The parameter {@code mode} is a 32-bit signed integer.
-     * @param errorThrow Either {@code true } or {@code false } .
-     * @param dontSkipUtf8Bom Either {@code true } or {@code false } .
+     * @param errorThrow Either {@code true} or {@code false} .
+     * @param dontSkipUtf8Bom Either {@code true} or {@code false} .
      * @throws java.lang.NullPointerException The parameter {@code stream} is null.
      */
     public CharacterReader(
@@ -294,9 +294,9 @@ if (str.length() - offset < length) {
   this.stream,
   bigEndian,
   this.errorThrow);
-            newReader.Unget(c3, c4);
-            this.reader = newReader;
-            return newReader.ReadChar();
+  newReader.Unget(c3, c4);
+  this.reader = newReader;
+  return newReader.ReadChar();
           }
         }
         // Assume UTF-8 here, so the 0xff or 0xfe is invalid
@@ -340,15 +340,15 @@ if (str.length() - offset < length) {
   this.stream,
   false,
   this.errorThrow);
-              return c1;
+  return c1;
             } else {
           Utf16Reader newReader = new Utf16Reader(
   this.stream,
   false,
   this.errorThrow);
-              newReader.Unget(c3, c4);
-              this.reader = newReader;
-              return c1;
+  newReader.Unget(c3, c4);
+  this.reader = newReader;
+  return c1;
             }
           } else {
             // NZA NZ, so UTF-8
@@ -409,8 +409,8 @@ if (str.length() - offset < length) {
   this.stream,
   bigEndian,
   this.errorThrow);
-          this.reader = newReader;
-          return newReader.ReadChar();
+  this.reader = newReader;
+  return newReader.ReadChar();
         }
         // Assume UTF-8 here, so the 0xff or 0xfe is invalid
         if (this.errorThrow) {
@@ -431,7 +431,7 @@ if (str.length() - offset < length) {
   this.stream,
   false,
   this.errorThrow);
-            this.reader = newReader;
+  this.reader = newReader;
           } else {
             // NZA NZ
             Utf8Reader utf8reader = new Utf8Reader(this.stream, this.errorThrow);

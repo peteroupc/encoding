@@ -31,7 +31,7 @@ import com.upokecenter.text.*;
        if (c < 0) {
  return -1;
 }
-         if (c < 0x80) {
+if (c < 0x80) {
            output.write((byte)c);
            return 1;
          }

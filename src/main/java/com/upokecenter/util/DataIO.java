@@ -1,5 +1,4 @@
 package com.upokecenter.util;
-
 /*
 Written by Peter O. in 2014.
 Any copyright is dedicated to the Public Domain.
@@ -58,8 +57,8 @@ byte[] bytes) {
      */
     public static IReader ToReader(
 byte[] bytes,
-  int offset,
-  int length) {
+int offset,
+int length) {
       if (bytes == null) {
         throw new NullPointerException("bytes");
       }
@@ -129,8 +128,8 @@ InputStream input) {
 @Deprecated
     public static IByteReader ToByteReader(
 byte[] bytes,
-  int offset,
-  int length) {
+int offset,
+int length) {
       return (IByteReader)ToReader(bytes, offset, length);
     }
 

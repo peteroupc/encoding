@@ -2,9 +2,7 @@
 
     public interface ICharacterEncoding
 
-Defines methods that can be implemented by classes that convert to and from bytes and character code points.
-
-### Member Summary
+  Defines methods that can be implemented by classes that convert to and from bytes and character code points.  ### Member Summary
 * <code>[GetDecoder()](#GetDecoder)</code> - Creates a decoder for this character encoding with initial state.
 * <code>[GetEncoder()](#GetEncoder)</code> - Creates an encoder for this character encoding with initial state.
 
@@ -13,9 +11,7 @@ Defines methods that can be implemented by classes that convert to and from byte
 
     PeterO.Text.ICharacterDecoder GetDecoder();
 
-Creates a decoder for this character encoding with initial state. If the decoder is stateless, multiple calls of this method can return the same decoder.
-
-<b>Return Value:</b>
+ Creates a decoder for this character encoding with initial state. If the decoder is stateless, multiple calls of this method can return the same decoder.  <b>Return Value:</b>
 
 A character decoder object.
 
@@ -24,8 +20,6 @@ A character decoder object.
 
     PeterO.Text.ICharacterEncoder GetEncoder();
 
-Creates an encoder for this character encoding with initial state. If the encoder is stateless, multiple calls of this method can return the same encoder.
-
-<b>Return Value:</b>
+ Creates an encoder for this character encoding with initial state. If the encoder is stateless, multiple calls of this method can return the same encoder.  <b>Return Value:</b>
 
 A character encoder object.

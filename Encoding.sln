@@ -1,5 +1,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncodingTest40", "EncodingTest40\EncodingTest40.csproj", "{5B58DA30-CB45-45B7-D73D-5A8E8C9177CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncodingTest20", "EncodingTest20\EncodingTest20.csproj", "{52D9C946-90DD-4592-16EC-07022C13D7F9}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encoding", "Encoding\Encoding.csproj", "{112C4EE6-1A82-4905-AF2E-9FAEBC1868F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncodingTest", "EncodingTest\EncodingTest.csproj", "{8C720F8C-E0D2-45E6-B463-40FB128DE87E}"

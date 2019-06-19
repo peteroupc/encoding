@@ -3,9 +3,7 @@
     public interface IWriter :
         PeterO.IByteWriter
 
-A generic interface for writing bytes of data.
-
-### Member Summary
+ A generic interface for writing bytes of data.  ### Member Summary
 * <code>[Write(byte[], int, int)](#Write_byte_int_int)</code> - Writes a portion of a byte array to the data source.
 
 <a id="Write_byte_int_int"></a>
@@ -16,18 +14,16 @@ A generic interface for writing bytes of data.
         int offset,
         int length);
 
-Writes a portion of a byte array to the data source.
-
-<b>Parameters:</b>
+ Writes a portion of a byte array to the data source.  <b>Parameters:</b>
 
  * <i>bytes</i>: A byte array containing the data to write.
 
- * <i>offset</i>: A zero-based index showing where the desired portion of <i>bytes</i>
-begins.
+ * <i>offset</i>: A zero-based index showing where the desired portion of  <i>bytes</i>
+ begins.
 
- * <i>length</i>: The number of elements in the desired portion of <i>bytes</i>
-(but not more than <i>bytes</i>
-'s length).
+ * <i>length</i>: The number of elements in the desired portion of  <i>bytes</i>
+ (but not more than  <i>bytes</i>
+ 's length).
 
 <b>Exceptions:</b>
 

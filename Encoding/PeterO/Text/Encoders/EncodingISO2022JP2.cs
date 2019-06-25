@@ -54,7 +54,7 @@ namespace PeterO.Text.Encoders {
               } else {
                 this.state.PrependOne(b);
                 this.output = 0;
-                this.machineState = outputState;
+                this.machineState = this.outputState;
                 return -2;
               }
               break;
@@ -62,27 +62,27 @@ namespace PeterO.Text.Encoders {
                 // Escape
                 var tmpState = -1;
                 if (this.lead == 0x24 && (b == 0x40 || b == 0x42)) {
-                  tmpState = 4;  // JIS0208
+                  tmpState = 4; // JIS0208
                   this.leadTrailSet = 0;
                   this.lead = 0;
                 } else if (this.lead == 0x24 && b == 0x41) {
-                  tmpState = 4;  // GB2312
+                  tmpState = 4; // GB2312
                   this.leadTrailSet = 1;
                   this.lead = 0;
                 } else if (this.lead == 0x28 && b == 0x42) {
-                  tmpState = 0;  // Ascii
+                  tmpState = 0; // Ascii
                   this.lead = 0;
                 } else if (this.lead == '.' && b == 'A') {
-                  tmpState = 7;  // ISO-8859-1
+                  tmpState = 7; // ISO-8859-1
                   this.lead = 0;
                 } else if (this.lead == '.' && b == 'F') {
-                  tmpState = 8;  // ISO-8859-7
+                  tmpState = 8; // ISO-8859-7
                   this.lead = 0;
                 } else if (this.lead == 0x28 && b == 0x4a) {
-                  tmpState = 3;  // Roman
+                  tmpState = 3; // Roman
                   this.lead = 0;
                 } else if (this.lead == 0x24 && b == '(') {
-                  tmpState = 9;  // Escape final
+                  tmpState = 9; // Escape final
                   this.lead = 0;
                 } else if (this.lead == 0x28 && b == 0x49) {
                   tmpState = 6;
@@ -105,11 +105,11 @@ namespace PeterO.Text.Encoders {
                 // Escape final
                 var tmpState = -1;
                 if (b == 'C') {
-                  tmpState = 4;  // KSC5601
+                  tmpState = 4; // KSC5601
                   this.leadTrailSet = 3;
                   this.lead = 0;
                 } else if (b == 'D') {
-                  tmpState = 4;  // JIS0212
+                  tmpState = 4; // JIS0212
                   this.leadTrailSet = 2;
                   this.lead = 0;
                 } else {
@@ -141,7 +141,7 @@ namespace PeterO.Text.Encoders {
                 return -2;
               }
               break;
-            case 5:  // Trail
+            case 5: // Trail
               if (b < 0) {
                 this.machineState = 4;
                 this.state.PrependOne(b);
@@ -175,7 +175,7 @@ namespace PeterO.Text.Encoders {
                 this.machineState = 4;
                 return -2;
               }
-            case 6:  // Katakana
+            case 6: // Katakana
               if (b == 0x1b) {
                 this.machineState = 1;
               } else if (b >= 0x21 && b <= 0x5f) {
@@ -188,7 +188,7 @@ namespace PeterO.Text.Encoders {
                 return -2;
               }
               break;
-            case 7:  // ISO-8859-1
+            case 7: // ISO-8859-1
               if (b == 0x1b) {
                 this.machineState = 1;
               } else if (b >= 0x20 && b <= 0x7f) {
@@ -201,7 +201,7 @@ namespace PeterO.Text.Encoders {
                 return -2;
               }
               break;
-            case 8:  // ISO-8859-7
+            case 8: // ISO-8859-7
               if (b == 0x1b) {
                 this.machineState = 1;
               } else if (b >= 0x20 && b <= 0x7f) {
@@ -214,7 +214,7 @@ namespace PeterO.Text.Encoders {
                 return -2;
               }
               break;
-            case 3:  // Roman
+            case 3: // Roman
               if (b == 0x1b) {
                 this.machineState = 1;
               } else if (b == 0x5c) {

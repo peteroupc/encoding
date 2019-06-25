@@ -4,9 +4,8 @@ using PeterO;
 using PeterO.Text;
 
 namespace PeterO.Text.Encoders {
-    internal class EncodingGB18030 : ICharacterEncoding
-    {
-      private static readonly int[] ValueGb18030table = new int[] { 0,
+  internal class EncodingGB18030 : ICharacterEncoding {
+    private static readonly int[] ValueGb18030table = new int[] { 0,
           0x0080,
           36, 0x00a5,
           38, 0x00a9,
@@ -213,253 +212,253 @@ namespace PeterO.Text.Encoders {
           39116, 0xfe6c,
           39265, 0xff5f,
           39394, 0xffe6,
-          39419, 0xffff };
+          39419, 0xffff, };
 
-        private static int GB18030CodePoint(int pointer) {
-            if (pointer < 0) {
-                throw new ArgumentException("pointer(" + pointer +
-                  ") is less than 0");
-            }
-            if ((pointer > 39419 && pointer < 189000) || pointer > 1237575) {
-                return -1;
-            }
-            if (pointer >= 189000) {
-                return 0x10000 + pointer - 189000;
-            }
-            if (pointer == 7457) {
-                return 0xe7c7;
-            }
-            var v = -1;
-            for (int i = 0; i < ValueGb18030table.Length; i += 2) {
-                if (ValueGb18030table[i] <= pointer) {
-                    v = i;
-                } else {
-                    break;
-                }
-            }
-            if (v < 0) {
- throw new InvalidOperationException("Internal error");
-}
-            if (v >= ValueGb18030table.Length) {
-                return -1;
-            }
-            try {
-                int cpoffset = ValueGb18030table[v + 1];
-                int offset = ValueGb18030table[v];
-                return cpoffset + pointer - offset;
-            } catch (Exception ex) {
-                throw new InvalidOperationException(
-                  ex.Message + " " + ex.StackTrace + "\n" + "\npointer=" + pointer + "\noffset=" + v + " of " + ValueGb18030table.Length);
-            }
+    private static int GB18030CodePoint(int pointer) {
+      if (pointer < 0) {
+        throw new ArgumentException("pointer(" + pointer +
+          ") is less than 0");
+      }
+      if ((pointer > 39419 && pointer < 189000) || pointer > 1237575) {
+        return -1;
+      }
+      if (pointer >= 189000) {
+        return 0x10000 + pointer - 189000;
+      }
+      if (pointer == 7457) {
+        return 0xe7c7;
+      }
+      var v = -1;
+      for (int i = 0; i < ValueGb18030table.Length; i += 2) {
+        if (ValueGb18030table[i] <= pointer) {
+          v = i;
+        } else {
+          break;
         }
-
-        private static int GB18030Pointer(int codepoint) {
-            if (codepoint < 0x80 || codepoint >= 0x110000) {
-                return -1;
-            }
-            if (codepoint >= 0x10000) {
-                return 189000 + codepoint - 0x10000;
-            }
-            if (codepoint == 0xffff) {
-                return 39419;
-            }
-            if (codepoint == 0xe7c7) {
-                return 7457;
-            }
-            var v = -1;
-            for (int i = 0; i < ValueGb18030table.Length; i += 2) {
-                if (ValueGb18030table[i + 1] <= codepoint) {
-                    v = i;
-                } else {
-                    break;
-                }
-            }
-            if (v >= ValueGb18030table.Length) {
-                return -1;
-            }
-            int cpoffset = ValueGb18030table[v + 1];
-            int offset = ValueGb18030table[v];
-            return offset + codepoint - cpoffset;
-        }
-
-        private class Decoder : ICharacterDecoder
-        {
-            private readonly DecoderState state;
-            private int gbk1, gbk2, gbk3;
-
-            public Decoder() {
-                this.state = new DecoderState(3);
-            }
-
-            public int ReadChar(IByteReader stream) {
-                int c;
-                while (true) {
-                    int b;
-                    b = this.state.ReadInputByte(stream);
-                    if (b < 0) {
-                    if ((this.gbk1 | this.gbk2 | this.gbk3) == 0) {
-                    return -1;
-                    }
-                    this.gbk1 = this.gbk2 = this.gbk3 = 0;
-                    return -2;
-                    }
-                    if (this.gbk3 != 0) {
-                    c = -1;
-#if DEBUG
-                    if (this.gbk1 < 0x81) {
-                    throw new ArgumentException("this.gbk1(" + this.gbk1 +
-                    ") is less than " + 0x81);
-                    }
-                    if (this.gbk2 < 0x30) {
-                    throw new ArgumentException("this.gbk2(" + this.gbk2 +
-                    ") is less than " + 0x30);
-                    }
-                    if (this.gbk3 < 0x81) {
-                    throw new ArgumentException("this.gbk3(" + this.gbk3 +
-                    ") is less than " + 0x81);
-                    }
-#endif
-
-                    if (b >= 0x30 && b <= 0x39) {
-#if DEBUG
-                    if (b < 0x30) {
-                    throw new ArgumentException("b(" + b + ") is less than " +
-                    0x30);
-                    }
-#endif
-
-                    int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
-                    126) + this.gbk3 - 0x81) * 10) + b - 0x30;
-                    c = GB18030CodePoint(ap);
-                    // TODO: This step may possibly be missing
-                    // from the current Encoding Standard
-                    this.gbk1 = this.gbk2 = this.gbk3 = 0;
-                    return (c < 0) ? (-2) : c;
-                    } else {
-                    this.state.PrependThree(this.gbk2, this.gbk3, b);
-                    this.gbk1 = this.gbk2 = this.gbk3 = 0;
-                    return -2;
-                    }
-                    }
-                    if (this.gbk2 != 0) {
-                    if (b >= 0x81 && b <= 0xfe) {
-                    this.gbk3 = b;
-                    continue;
-                    }
-                    this.state.PrependTwo(this.gbk2, b);
-                    this.gbk1 = this.gbk2 = 0;
-                    return -2;
-                    }
-                    if (this.gbk1 != 0) {
-                    if (b >= 0x30 && b <= 0x39) {
-                    this.gbk2 = b;
-                    continue;
-                    }
-                    int a1 = this.gbk1;
-                    var ap = -1;
-                    this.gbk1 = 0;
-                    c = -1;
-                    int a2 = (b < 0x7f) ? 0x40 : 0x41;
-                    if ((b >= 0x40 && b <= 0x7e) || (b >= 0x80 && b <= 0xfe)) {
-                    ap = ((a1 - 0x81) * 190) + (b - a2);
-                    c = Gb18030.IndexToCodePoint(ap);
-                    }
-                    if (c < 0) {
-                    if (b < 0x80) {
-                    this.state.PrependOne(b);
-                    }
-                    return -2;
-                    }
-                    return c;
-                    }
-                    if (b < 0x80) {
-                    return b;
-                    } else if (b == 0x80) {
-                    return 0x20ac;
-                    } else if (b == 0xff) {
-                    return -2;
-                    } else {
-                    this.gbk1 = b;
-                    }
-                }
-            }
-        }
-
-        private class Encoder : ICharacterEncoder
-        {
-            private readonly bool gbk;
-
-            public Encoder(bool gbk) {
-                this.gbk = gbk;
-            }
-
-            public int Encode(
-             int c,
-             IWriter output) {
-                if (c < 0) {
-                    return -1;
-                }
-                if (c < 0x80) {
-                    output.WriteByte((byte)c);
-                    return 1;
-                } else if (c == 0xe5e5) {
-                    // Can't round trip under current WHATWG version
-                    // of specification; the bytes this code point corresponds
-                    // to map to U + 3000 instead
-                    return -2;
-                } else if (c == 0x20ac && this.gbk) {
-                    output.WriteByte((byte)0x80);
-                    return 1;
-                }
-                int cp = Gb18030.CodePointToIndex(c);
-                if (cp >= 0) {
-                    int a = cp / 190;
-                    int b = cp % 190;
-                    int cc = (b < 0x3f) ? 0x40 : 0x41;
-                    output.WriteByte((byte)(a + 0x81));
-                    output.WriteByte((byte)(b + cc));
-                    return 2;
-                }
-                if (this.gbk) {
-                    return -2;
-                }
-                cp = GB18030Pointer(c);
-                int m = 10 * 126 * 10;
-                int b1 = cp / m;
-                cp -= b1 * m;
-                m = 10 * 126;
-                int b2 = cp / m;
-                cp -= b2 * m;
-                int b3 = cp / 10;
-                int b4 = cp - (b3 * 10);
-                b1 += 0x81;
-                b2 += 0x30;
-                b3 += 0x81;
-                b4 += 0x30;
-                output.WriteByte((byte)b1);
-                output.WriteByte((byte)b2);
-                output.WriteByte((byte)b3);
-                output.WriteByte((byte)b4);
-                return 4;
-            }
-        }
-
-        internal static ICharacterDecoder GetDecoder2() {
-            return new Decoder();
-        }
-
-        internal static ICharacterEncoder GetEncoder2(bool gbk) {
-            return new Encoder(gbk);
-        }
-
-        private readonly ICharacterEncoder enc = GetEncoder2(false);
-
-        public ICharacterDecoder GetDecoder() {
-            return EncodingGB18030.GetDecoder2();
-        }
-
-        public ICharacterEncoder GetEncoder() {
-            return this.enc;
-        }
+      }
+      if (v < 0) {
+        throw new InvalidOperationException("Internal error");
+      }
+      if (v >= ValueGb18030table.Length) {
+        return -1;
+      }
+      try {
+        int cpoffset = ValueGb18030table[v + 1];
+        int offset = ValueGb18030table[v];
+        return cpoffset + pointer - offset;
+      } catch (Exception ex) {
+        throw new InvalidOperationException(
+          ex.Message + " " + ex.StackTrace + "\n" + "\npointer=" + pointer + "\noffset=" + v + " of " + ValueGb18030table.Length);
+      }
     }
+
+    private static int GB18030Pointer(int codepoint) {
+      if (codepoint < 0x80 || codepoint >= 0x110000) {
+        return -1;
+      }
+      if (codepoint >= 0x10000) {
+        return 189000 + codepoint - 0x10000;
+      }
+      if (codepoint == 0xffff) {
+        return 39419;
+      }
+      if (codepoint == 0xe7c7) {
+        return 7457;
+      }
+      var v = -1;
+      for (int i = 0; i < ValueGb18030table.Length; i += 2) {
+        if (ValueGb18030table[i + 1] <= codepoint) {
+          v = i;
+        } else {
+          break;
+        }
+      }
+      if (v >= ValueGb18030table.Length) {
+        return -1;
+      }
+      int cpoffset = ValueGb18030table[v + 1];
+      int offset = ValueGb18030table[v];
+      return offset + codepoint - cpoffset;
+    }
+
+    private class Decoder : ICharacterDecoder {
+      private readonly DecoderState state;
+      private int gbk1;
+      private int gbk2;
+      private int gbk3;
+
+      public Decoder() {
+        this.state = new DecoderState(3);
+      }
+
+      public int ReadChar(IByteReader stream) {
+        int c;
+        while (true) {
+          int b;
+          b = this.state.ReadInputByte(stream);
+          if (b < 0) {
+            if ((this.gbk1 | this.gbk2 | this.gbk3) == 0) {
+              return -1;
+            }
+            this.gbk1 = this.gbk2 = this.gbk3 = 0;
+            return -2;
+          }
+          if (this.gbk3 != 0) {
+            c = -1;
+#if DEBUG
+            if (this.gbk1 < 0x81) {
+              throw new ArgumentException("this.gbk1(" + this.gbk1 +
+              ") is less than " + 0x81);
+            }
+            if (this.gbk2 < 0x30) {
+              throw new ArgumentException("this.gbk2(" + this.gbk2 +
+              ") is less than " + 0x30);
+            }
+            if (this.gbk3 < 0x81) {
+              throw new ArgumentException("this.gbk3(" + this.gbk3 +
+              ") is less than " + 0x81);
+            }
+#endif
+
+            if (b >= 0x30 && b <= 0x39) {
+#if DEBUG
+              if (b < 0x30) {
+                throw new ArgumentException("b(" + b + ") is less than " +
+                0x30);
+              }
+#endif
+
+              int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
+              126) + this.gbk3 - 0x81) * 10) + b - 0x30;
+              c = GB18030CodePoint(ap);
+              // TODO: This step may possibly be missing
+              // from the current Encoding Standard
+              this.gbk1 = this.gbk2 = this.gbk3 = 0;
+              return (c < 0) ? (-2) : c;
+            } else {
+              this.state.PrependThree(this.gbk2, this.gbk3, b);
+              this.gbk1 = this.gbk2 = this.gbk3 = 0;
+              return -2;
+            }
+          }
+          if (this.gbk2 != 0) {
+            if (b >= 0x81 && b <= 0xfe) {
+              this.gbk3 = b;
+              continue;
+            }
+            this.state.PrependTwo(this.gbk2, b);
+            this.gbk1 = this.gbk2 = 0;
+            return -2;
+          }
+          if (this.gbk1 != 0) {
+            if (b >= 0x30 && b <= 0x39) {
+              this.gbk2 = b;
+              continue;
+            }
+            int a1 = this.gbk1;
+            var ap = -1;
+            this.gbk1 = 0;
+            c = -1;
+            int a2 = (b < 0x7f) ? 0x40 : 0x41;
+            if ((b >= 0x40 && b <= 0x7e) || (b >= 0x80 && b <= 0xfe)) {
+              ap = ((a1 - 0x81) * 190) + (b - a2);
+              c = Gb18030.IndexToCodePoint(ap);
+            }
+            if (c < 0) {
+              if (b < 0x80) {
+                this.state.PrependOne(b);
+              }
+              return -2;
+            }
+            return c;
+          }
+          if (b < 0x80) {
+            return b;
+          } else if (b == 0x80) {
+            return 0x20ac;
+          } else if (b == 0xff) {
+            return -2;
+          } else {
+            this.gbk1 = b;
+          }
+        }
+      }
+    }
+
+    private class Encoder : ICharacterEncoder {
+      private readonly bool gbk;
+
+      public Encoder(bool gbk) {
+        this.gbk = gbk;
+      }
+
+      public int Encode(
+       int c,
+       IWriter output) {
+        if (c < 0) {
+          return -1;
+        }
+        if (c < 0x80) {
+          output.WriteByte((byte)c);
+          return 1;
+        } else if (c == 0xe5e5) {
+          // Can't round trip under current WHATWG version
+          // of specification; the bytes this code point corresponds
+          // to map to U + 3000 instead
+          return -2;
+        } else if (c == 0x20ac && this.gbk) {
+          output.WriteByte((byte)0x80);
+          return 1;
+        }
+        int cp = Gb18030.CodePointToIndex(c);
+        if (cp >= 0) {
+          int a = cp / 190;
+          int b = cp % 190;
+          int cc = (b < 0x3f) ? 0x40 : 0x41;
+          output.WriteByte((byte)(a + 0x81));
+          output.WriteByte((byte)(b + cc));
+          return 2;
+        }
+        if (this.gbk) {
+          return -2;
+        }
+        cp = GB18030Pointer(c);
+        int m = 10 * 126 * 10;
+        int b1 = cp / m;
+        cp -= b1 * m;
+        m = 10 * 126;
+        int b2 = cp / m;
+        cp -= b2 * m;
+        int b3 = cp / 10;
+        int b4 = cp - (b3 * 10);
+        b1 += 0x81;
+        b2 += 0x30;
+        b3 += 0x81;
+        b4 += 0x30;
+        output.WriteByte((byte)b1);
+        output.WriteByte((byte)b2);
+        output.WriteByte((byte)b3);
+        output.WriteByte((byte)b4);
+        return 4;
+      }
+    }
+
+    internal static ICharacterDecoder GetDecoder2() {
+      return new Decoder();
+    }
+
+    internal static ICharacterEncoder GetEncoder2(bool gbk) {
+      return new Encoder(gbk);
+    }
+
+    private readonly ICharacterEncoder enc = GetEncoder2(false);
+
+    public ICharacterDecoder GetDecoder() {
+      return EncodingGB18030.GetDecoder2();
+    }
+
+    public ICharacterEncoder GetEncoder() {
+      return this.enc;
+    }
+  }
 }

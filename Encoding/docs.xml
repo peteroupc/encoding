@@ -4,11 +4,11 @@
     </summary>
   </doc>
   <doc name='M:PeterO.ArrayWriter.#ctor'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.ArrayWriter'/> class with a default backing store size of 16.
+    <summary>Initializes a new instance of the <see cref='ArrayWriter'/> class with a default backing store size of 16.
     </summary>
   </doc>
   <doc name='M:PeterO.ArrayWriter.#ctor(System.Int32)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.ArrayWriter'/> class.
+    <summary>Initializes a new instance of the <see cref='ArrayWriter'/> class.
     </summary>
     <param name='initialSize'>The initial size of the array writer's backing store.
     </param>
@@ -1482,13 +1482,13 @@
     </summary>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.
+    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
     </summary>
     <param name='stream'>A readable data stream.
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.
+    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
     </summary>
     <param name='stream'>A readable data stream.
     </param>
@@ -1498,7 +1498,7 @@
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.
+    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
     </summary>
     <param name='stream'>A readable data stream.
     </param>
@@ -1512,7 +1512,7 @@
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.
+    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
     </summary>
     <param name='stream'>A readable data stream.
     </param>
@@ -1534,7 +1534,7 @@
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.
+    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1542,7 +1542,7 @@
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.
+    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1554,7 +1554,7 @@
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.
+    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1574,7 +1574,7 @@
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.
+    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1590,7 +1590,7 @@
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='T:PeterO.Text.CharacterReader'/> class.
+    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>

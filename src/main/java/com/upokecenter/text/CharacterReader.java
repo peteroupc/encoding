@@ -9,12 +9,12 @@ at: http://peteroupc.github.io/
 
 import java.io.*;
 
-    /**
-     * A general-purpose character input for reading text from byte streams and
-     * text strings. When reading byte streams, this class supports the
-     * UTF-8 character encoding by default, but can be configured to support
-     * UTF-16 and UTF-32 as well.
-     */
+  /**
+   * A general-purpose character input for reading text from byte streams and
+   * text strings. When reading byte streams, this class supports the UTF-8
+   * character encoding by default, but can be configured to support UTF-16
+   * and UTF-32 as well.
+   */
   public final class CharacterReader implements ICharacterInput {
     private final int mode;
     private final boolean errorThrow;
@@ -27,8 +27,7 @@ import java.io.*;
     private ICharacterInput reader;
 
     /**
-     * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class.
+     * Initializes a new instance of the {@link CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      */
     public CharacterReader(String str) {
@@ -36,21 +35,19 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class.
+     * Initializes a new instance of the {@link CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
-     * @param skipByteOrderMark Either {@code true} or {@code false} .
+     * @param skipByteOrderMark Either {@code true } or {@code false } .
      */
     public CharacterReader(String str, boolean skipByteOrderMark) {
  this(str, skipByteOrderMark, false);
     }
 
     /**
-     * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class.
+     * Initializes a new instance of the {@link CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
-     * @param skipByteOrderMark Either {@code true} or {@code false} .
-     * @param errorThrow Either {@code true} or {@code false} .
+     * @param skipByteOrderMark Either {@code true } or {@code false } .
+     * @param errorThrow Either {@code true } or {@code false } .
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
     public CharacterReader(
@@ -71,8 +68,7 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class.
+     * Initializes a new instance of the {@link CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      * @param offset The parameter {@code offset} is a 32-bit signed integer.
      * @param length The parameter {@code length} is a 32-bit signed integer.
@@ -82,13 +78,12 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class.
+     * Initializes a new instance of the {@link CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      * @param offset The parameter {@code offset} is a 32-bit signed integer.
      * @param length The parameter {@code length} is a 32-bit signed integer.
-     * @param skipByteOrderMark Either {@code true} or {@code false} .
-     * @param errorThrow Either {@code true} or {@code false} .
+     * @param skipByteOrderMark Either {@code true } or {@code false } .
+     * @param errorThrow Either {@code true } or {@code false } .
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
     public CharacterReader(
@@ -98,28 +93,28 @@ import java.io.*;
   boolean skipByteOrderMark,
   boolean errorThrow) {
       if (str == null) {
-  throw new NullPointerException("str");
-}
-if (offset < 0) {
-  throw new IllegalArgumentException("offset (" + offset +
-    ") is less than 0");
-}
-if (offset > str.length()) {
-  throw new IllegalArgumentException("offset (" + offset +
-    ") is more than " + str.length());
-}
-if (length < 0) {
-  throw new IllegalArgumentException("length (" + length +
-    ") is less than 0");
-}
-if (length > str.length()) {
-  throw new IllegalArgumentException("length (" + length +
-    ") is more than " + str.length());
-}
-if (str.length() - offset < length) {
-  throw new IllegalArgumentException("str's length minus " + offset + " (" +
-    (str.length() - offset) + ") is less than " + length);
-}
+        throw new NullPointerException("str");
+      }
+      if (offset < 0) {
+        throw new IllegalArgumentException("offset (" + offset +
+          ") is less than 0");
+      }
+      if (offset > str.length()) {
+        throw new IllegalArgumentException("offset (" + offset +
+          ") is more than " + str.length());
+      }
+      if (length < 0) {
+        throw new IllegalArgumentException("length (" + length +
+          ") is less than 0");
+      }
+      if (length > str.length()) {
+        throw new IllegalArgumentException("length (" + length +
+          ") is more than " + str.length());
+      }
+      if (str.length() - offset < length) {
+        throw new IllegalArgumentException("str's length minus " + offset + " (" +
+          (str.length() - offset) + ") is less than " + length);
+      }
       this.strLength = length;
       this.offset = (skipByteOrderMark && length > 0 && str.charAt(offset) ==
         0xfeff) ? offset + 1 : 0;
@@ -132,19 +127,24 @@ if (str.length() - offset < length) {
 
     /**
      * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class.
+     * com.upokecenter.text.CharacterReader} class; will read the stream as
+     * UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
+     * stream, and replace invalid byte sequences with replacement
+     * characters (U + FFFD).
      * @param stream A readable data stream.
+     * @throws java.lang.NullPointerException The parameter {@code stream} is null.
      */
     public CharacterReader(InputStream stream) {
  this(stream, 0, false);
     }
 
     /**
-     * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class.
+     * Initializes a new instance of the {@link CharacterReader} class.
      * @param stream A readable data stream.
      * @param mode The parameter {@code mode} is a 32-bit signed integer.
-     * @param errorThrow Either {@code true} or {@code false} .
+     * @param errorThrow When encountering invalid encoding, throw an exception if
+     * this parameter is true, or replace it with U + FFFD (replacement
+     * character) if this parameter is false.
      */
     public CharacterReader(InputStream stream, int mode, boolean errorThrow) {
  this(stream, mode, errorThrow, false);
@@ -152,9 +152,21 @@ if (str.length() - offset < length) {
 
     /**
      * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class.
-     * @param stream A readable data stream.
-     * @param mode The parameter {@code mode} is a 32-bit signed integer.
+     * com.upokecenter.text.CharacterReader} class; will skip the byte-order
+     * mark (U + FEFF) if it appears first in the stream and replace invalid
+     * byte sequences with replacement characters (U + FFFD).
+     * @param stream A readable byte stream.
+     * @param mode The method to use when detecting encodings other than UTF-8 in
+     * the byte stream. This usually involves checking whether the stream
+     * begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
+     * point (NZB, U + 0001 to U + 007F) before reading the rest of the stream.
+     * This value can be one of the following: <ul> <li> 0: UTF-8 only.
+     * </li> <li> 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8. </li>
+     * <li> 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8.
+     * (Tries to detect UTF-32 first.) </li> <li> 3: Detect UTF-16 using
+     * BOM, otherwise UTF-8. </li> <li> 4: Detect UTF-16/UTF-32 using BOM,
+     * otherwise UTF-8. (Tries to detect UTF-32 first.) </li> </ul> .
+     * @throws java.lang.NullPointerException The parameter {@code stream} is null.
      */
     public CharacterReader(InputStream stream, int mode) {
  this(stream, mode, false, false);
@@ -163,10 +175,24 @@ if (str.length() - offset < length) {
     /**
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class.
-     * @param stream A readable data stream.
-     * @param mode The parameter {@code mode} is a 32-bit signed integer.
-     * @param errorThrow Either {@code true} or {@code false} .
-     * @param dontSkipUtf8Bom Either {@code true} or {@code false} .
+     * @param stream A readable byte stream.
+     * @param mode The method to use when detecting encodings other than UTF-8 in
+     * the byte stream. This usually involves checking whether the stream
+     * begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
+     * point (NZB, U + 0001 to U + 007F) before reading the rest of the stream.
+     * This value can be one of the following: <ul> <li> 0: UTF-8 only.
+     * </li> <li> 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8. </li>
+     * <li> 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8.
+     * (Tries to detect UTF-32 first.) </li> <li> 3: Detect UTF-16 using
+     * BOM, otherwise UTF-8. </li> <li> 4: Detect UTF-16/UTF-32 using BOM,
+     * otherwise UTF-8. (Tries to detect UTF-32 first.) </li> </ul> .
+     * @param errorThrow If true, will throw an exception if invalid byte sequences
+     * (in the detected encoding) are found in the byte stream. If false,
+     * replaces those byte sequences with replacement characters (U + FFFD) as
+     * the stream is read.
+     * @param dontSkipUtf8Bom If the stream is detected as UTF-8 and this parameter
+     * is {@code true } , won't skip the BOM character if it occurs at the
+     * start of the stream.
      * @throws java.lang.NullPointerException The parameter {@code stream} is null.
      */
     public CharacterReader(
@@ -263,10 +289,10 @@ if (str.length() - offset < length) {
         } else if ((c & 0xf800) == 0xd800) {
           // unpaired surrogate
           if (this.errorThrow) {
- throw new IllegalStateException("Unpaired surrogate code point");
-} else {
- c = 0xfffd;
-}
+            throw new IllegalStateException("Unpaired surrogate code point");
+          } else {
+            c = 0xfffd;
+          }
         }
         ++this.offset;
         return c;
@@ -290,13 +316,13 @@ if (str.length() - offset < length) {
             this.reader = new Utf32Reader(this.stream, false, this.errorThrow);
             return this.reader.ReadChar();
           } else {
-      Utf16Reader newReader = new Utf16Reader(
-  this.stream,
-  bigEndian,
-  this.errorThrow);
-  newReader.Unget(c3, c4);
-  this.reader = newReader;
-  return newReader.ReadChar();
+            Utf16Reader newReader = new Utf16Reader(
+        this.stream,
+        bigEndian,
+        this.errorThrow);
+            newReader.Unget(c3, c4);
+            this.reader = newReader;
+            return newReader.ReadChar();
           }
         }
         // Assume UTF-8 here, so the 0xff or 0xfe is invalid
@@ -336,19 +362,19 @@ if (str.length() - offset < length) {
             c3 = this.stream.read();
             c4 = this.stream.read();
             if (c3 == 0 && c4 == 0) {
-            this.reader = new Utf32Reader(
-  this.stream,
-  false,
-  this.errorThrow);
-  return c1;
+              this.reader = new Utf32Reader(
+    this.stream,
+    false,
+    this.errorThrow);
+              return c1;
             } else {
-          Utf16Reader newReader = new Utf16Reader(
-  this.stream,
-  false,
-  this.errorThrow);
-  newReader.Unget(c3, c4);
-  this.reader = newReader;
-  return c1;
+              Utf16Reader newReader = new Utf16Reader(
+      this.stream,
+      false,
+      this.errorThrow);
+              newReader.Unget(c3, c4);
+              this.reader = newReader;
+              return c1;
             }
           } else {
             // NZA NZ, so UTF-8
@@ -405,12 +431,12 @@ if (str.length() - offset < length) {
         boolean bigEndian = c1 == 0xfe;
         int otherbyte = bigEndian ? 0xff : 0xfe;
         if (c2 == otherbyte) {
-      Utf16Reader newReader = new Utf16Reader(
-  this.stream,
-  bigEndian,
-  this.errorThrow);
-  this.reader = newReader;
-  return newReader.ReadChar();
+          Utf16Reader newReader = new Utf16Reader(
+      this.stream,
+      bigEndian,
+      this.errorThrow);
+          this.reader = newReader;
+          return newReader.ReadChar();
         }
         // Assume UTF-8 here, so the 0xff or 0xfe is invalid
         if (this.errorThrow) {
@@ -427,11 +453,11 @@ if (str.length() - offset < length) {
           c2 = this.stream.read();
           if (c2 == 0) {
             // NZA 0, so UTF-16LE
-          Utf16Reader newReader = new Utf16Reader(
-  this.stream,
-  false,
-  this.errorThrow);
-  this.reader = newReader;
+            Utf16Reader newReader = new Utf16Reader(
+    this.stream,
+    false,
+    this.errorThrow);
+            this.reader = newReader;
           } else {
             // NZA NZ
             Utf8Reader utf8reader = new Utf8Reader(this.stream, this.errorThrow);
@@ -481,14 +507,14 @@ if (str.length() - offset < length) {
       } else if (mode == 1 || mode == 3) {
         c2 = this.DetectUtf8OrUtf16(c1);
         if (c2 >= -1) {
- return c2;
-}
+          return c2;
+        }
       } else if (mode == 2 || mode == 4) {
         // UTF-8, UTF-16, or UTF-32
         c2 = this.DetectUtf8Or16Or32(c1);
         if (c2 >= -1) {
- return c2;
-}
+          return c2;
+        }
       }
       // Default case: assume UTF-8
       utf8reader = new Utf8Reader(this.stream, this.errorThrow);
@@ -570,10 +596,10 @@ if (str.length() - offset < length) {
         if (c2 < 0) {
           this.state.AddOne(-1);
           if (this.errorThrow) {
- throw new IllegalStateException("Invalid UTF-16");
-} else {
- return 0xfffd;
-}
+            throw new IllegalStateException("Invalid UTF-16");
+          } else {
+            return 0xfffd;
+          }
         }
         c1 = this.bigEndian ? ((c1 << 8) | c2) : ((c2 << 8) | c1);
         int surr = c1 & 0xfc00;
@@ -584,10 +610,10 @@ if (str.length() - offset < length) {
           if (c1 < 0 || c2 < 0) {
             this.state.AddOne(-1);
             if (this.errorThrow) {
- throw new IllegalStateException("Invalid UTF-16");
-} else {
- return 0xfffd;
-}
+              throw new IllegalStateException("Invalid UTF-16");
+            } else {
+              return 0xfffd;
+            }
           }
           int unit2 = this.bigEndian ? ((c1 << 8) | c2) : ((c2 << 8) | c1);
           if ((unit2 & 0xfc00) == 0xdc00) {
@@ -595,17 +621,17 @@ if (str.length() - offset < length) {
           }
           this.Unget(c1, c2);
           if (this.errorThrow) {
- throw new IllegalStateException("Invalid UTF-16");
-} else {
- return 0xfffd;
-}
+            throw new IllegalStateException("Invalid UTF-16");
+          } else {
+            return 0xfffd;
+          }
         }
         if (surr == 0xdc00) {
           if (this.errorThrow) {
- throw new IllegalStateException("Invalid UTF-16");
-} else {
- return 0xfffd;
-}
+            throw new IllegalStateException("Invalid UTF-16");
+          } else {
+            return 0xfffd;
+          }
         }
         return c1;
       }
@@ -648,19 +674,19 @@ if (str.length() - offset < length) {
         if (c2 < 0 || c3 < 0 || c4 < 0) {
           this.state.AddOne(-1);
           if (this.errorThrow) {
- throw new IllegalStateException("Invalid UTF-32");
-} else {
- return 0xfffd;
-}
+            throw new IllegalStateException("Invalid UTF-32");
+          } else {
+            return 0xfffd;
+          }
         }
         c1 = this.bigEndian ? ((c1 << 24) | (c2 << 16) | (c3 << 8) | c4) :
           ((c4 << 24) | (c3 << 16) | (c2 << 8) | c1);
         if (c1 < 0 || c1 >= 0x110000 || (c1 & 0xfff800) == 0xd800) {
           if (this.errorThrow) {
- throw new IllegalStateException("Invalid UTF-32");
-} else {
- return 0xfffd;
-}
+            throw new IllegalStateException("Invalid UTF-32");
+          } else {
+            return 0xfffd;
+          }
         }
         return c1;
       }
@@ -718,10 +744,10 @@ if (str.length() - offset < length) {
             if (bytesNeeded != 0) {
               bytesNeeded = 0;
               if (this.errorThrow) {
- throw new IllegalStateException("Invalid UTF-8");
-} else {
- return 0xfffd;
-}
+                throw new IllegalStateException("Invalid UTF-8");
+              } else {
+                return 0xfffd;
+              }
             }
             return -1;
           }
@@ -746,10 +772,10 @@ if (str.length() - offset < length) {
               cp = (b - 0xf0) << 18;
             } else {
               if (this.errorThrow) {
- throw new IllegalStateException("Invalid UTF-8");
-} else {
- return 0xfffd;
-}
+                throw new IllegalStateException("Invalid UTF-8");
+              } else {
+                return 0xfffd;
+              }
             }
             continue;
           }
@@ -757,10 +783,10 @@ if (str.length() - offset < length) {
             cp = bytesNeeded = bytesSeen = 0;
             this.state.AddOne(b);
             if (this.errorThrow) {
- throw new IllegalStateException("Invalid UTF-8");
-} else {
- return 0xfffd;
-}
+              throw new IllegalStateException("Invalid UTF-8");
+            } else {
+              return 0xfffd;
+            }
           }
           lower = 0x80;
           upper = 0xbf;

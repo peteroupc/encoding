@@ -4,7 +4,7 @@ using PeterO;
 using PeterO.Text;
 
 namespace PeterO.Text.Encoders {
- internal class EncodingUtf8 : ICharacterEncoding {
+  internal class EncodingUtf8 : ICharacterEncoding {
     private class Decoder : ICharacterDecoder {
       private readonly DecoderState state;
       private int cp;
@@ -13,7 +13,7 @@ namespace PeterO.Text.Encoders {
       private int lower = 0x80;
       private int upper = 0xbf;
 
-        public Decoder() {
+      public Decoder() {
         this.state = new DecoderState(2);
       }
 
@@ -75,8 +75,8 @@ namespace PeterO.Text.Encoders {
     private class Encoder : ICharacterEncoder {
       public int Encode(int c, IWriter stream) {
         if (c < 0) {
- return -1;
-}
+          return -1;
+        }
         if (c < 0x80) {
           stream.WriteByte((byte)c);
           return 1;
@@ -94,10 +94,10 @@ namespace PeterO.Text.Encoders {
           bytes[byteIndex++] = (byte)(0x80 | ((c >> 6) & 0x3f));
           bytes[byteIndex++] = (byte)(0x80 | (c & 0x3f));
         } else if (c <= 0x10ffff) {
-            bytes[byteIndex++] = (byte)(0xf0 | ((c >> 18) & 0x07));
-            bytes[byteIndex++] = (byte)(0x80 | ((c >> 12) & 0x3f));
-            bytes[byteIndex++] = (byte)(0x80 | ((c >> 6) & 0x3f));
-            bytes[byteIndex++] = (byte)(0x80 | (c & 0x3f));
+          bytes[byteIndex++] = (byte)(0xf0 | ((c >> 18) & 0x07));
+          bytes[byteIndex++] = (byte)(0x80 | ((c >> 12) & 0x3f));
+          bytes[byteIndex++] = (byte)(0x80 | ((c >> 6) & 0x3f));
+          bytes[byteIndex++] = (byte)(0x80 | (c & 0x3f));
         } else {
           return -2;
         }
@@ -109,11 +109,11 @@ namespace PeterO.Text.Encoders {
     private readonly Encoder encoder = new Encoder();
 
     public ICharacterDecoder GetDecoder() {
-    return new Decoder();
-  }
+      return new Decoder();
+    }
 
-  public ICharacterEncoder GetEncoder() {
-    return this.encoder;
+    public ICharacterEncoder GetEncoder() {
+      return this.encoder;
+    }
   }
- }
 }

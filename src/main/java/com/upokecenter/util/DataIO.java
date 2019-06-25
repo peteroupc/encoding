@@ -29,7 +29,7 @@ private DataIO() {
      * @throws java.lang.NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(
-byte[] bytes) {
+       byte[] bytes) {
       if (bytes == null) {
         throw new NullPointerException("bytes");
       }

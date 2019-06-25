@@ -54,7 +54,7 @@ import com.upokecenter.text.*;
               } else {
                 this.state.PrependOne(b);
                 this.output = 0;
-                this.machineState = outputState;
+                this.machineState = this.outputState;
                 return -2;
               }
               break;

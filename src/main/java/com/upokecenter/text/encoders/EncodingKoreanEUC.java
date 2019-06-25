@@ -33,9 +33,9 @@ import com.upokecenter.text.*;
             this.lead = 0;
             if (c < 0) {
               if (b < 0x80) {
- this.state.PrependOne(b);
-}
-return -2;
+                this.state.PrependOne(b);
+              }
+              return -2;
             }
             return c;
           }
@@ -45,7 +45,7 @@ return -2;
             this.lead = b;
             continue;
           } else {
-           return -2;
+            return -2;
           }
         }
       }

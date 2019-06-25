@@ -8,15 +8,10 @@ using PeterO.Text.Encoders;
 namespace PeterO.Text {
     /// <include file='../../docs.xml'
     /// path='docs/doc[@name="T:PeterO.Text.Encodings"]/*'/>
-#if DEBUG
-[System.Diagnostics.CodeAnalysis.SuppressMessage(
-  "StyleCop.CSharp.DocumentationRules",
-  "SA1118:ParameterMustNotSpanMultipleLines",
-  Justification = "Preprocessor directives require " + "'this' parameters to span multiple lines in this class.")]
-#endif
   public static class Encodings {
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="F:PeterO.Text.Encodings.UTF8"]/*'/>
+    /// <summary>Character encoding object for the UTF-8 character encoding, which
+    /// represents each code point in the universal coded character set using 1 to
+    /// 4 bytes.</summary>
     public static readonly ICharacterEncoding UTF8 = new EncodingUtf8();
 
     private static readonly IDictionary<string, string> ValueCharsetAliases =
@@ -430,7 +425,7 @@ Stream input) {
           212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225,
           226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
           240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253,
-          254, 255 });
+          254, 255, });
       }
       if (name.Equals("windows-1253")) {
      return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129,
@@ -444,7 +439,7 @@ Stream input) {
           932, 933, 934, 935, 936, 937, 938, 939, 940, 941, 942, 943, 944, 945,
           946, 947, 948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959,
           960, 961, 962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973,
-          974, -2 });
+          974, -2, });
       }
       if (name.Equals("ISO-8859-15")) {
         return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
@@ -482,7 +477,7 @@ Stream input) {
           212, 416, 214, 215, 216, 217, 218, 219, 220, 431, 771, 223, 224, 225,
           226, 259, 228, 229, 230, 231, 232, 233, 234, 235, 769, 237, 238, 239,
           273, 241, 803, 243, 244, 417, 246, 247, 248, 249, 250, 251, 252, 432,
-          8363, 255 });
+          8363, 255, });
       }
       if (name.Equals("ISO-8859-2")) {
         return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
@@ -522,7 +517,7 @@ Stream input) {
           3630, 3631, 3632, 3633, 3634, 3635, 3636, 3637, 3638, 3639, 3640, 3641,
           3642, -2, -2, -2, -2, 3647, 3648, 3649, 3650, 3651, 3652, 3653, 3654,
           3655, 3656, 3657, 3658, 3659, 3660, 3661, 3662, 3663, 3664, 3665, 3666,
-          3667, 3668, 3669, 3670, 3671, 3672, 3673, 3674, 3675, -2, -2, -2, -2 });
+          3667, 3668, 3669, 3670, 3671, 3672, 3673, 3674, 3675, -2, -2, -2, -2, });
       }
       if (name.Equals("macintosh")) {
         return (ICharacterEncoding)new EncodingSingleByte(new[] { 196, 197, 199,
@@ -561,7 +556,7 @@ Stream input) {
           213, 214, 215, 370, 321, 346, 362, 220, 379, 381, 223, 261, 303, 257,
           263, 228, 229, 281, 275, 269, 233, 378, 279, 291, 311, 299, 316, 353,
           324, 326, 243, 333, 245, 246, 247, 371, 322, 347, 363, 252, 380, 382,
-          729 });
+          729, });
       }
       if (name.Equals("windows-1250")) {
      return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129,
@@ -575,7 +570,7 @@ Stream input) {
           212, 336, 214, 215, 344, 366, 218, 368, 220, 221, 354, 223, 341, 225,
           226, 259, 228, 314, 263, 231, 269, 233, 281, 235, 283, 237, 238, 271,
           273, 324, 328, 243, 244, 337, 246, 247, 345, 367, 250, 369, 252, 253,
-          355, 729 });
+          355, 729, });
       }
       if (name.Equals("ISO-8859-14")) {
         return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,
@@ -652,7 +647,7 @@ Stream input) {
           212, 213, 214, 215, 216, 217, 218, 219, 220, 304, 350, 223, 224, 225,
           226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239,
           287, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 305,
-          351, 255 });
+          351, 255, });
       }
       if (name.Equals("windows-1255")) {
      return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129,
@@ -666,7 +661,7 @@ Stream input) {
           1473, 1474, 1475, 1520, 1521, 1522, 1523, 1524, -2, -2, -2, -2, -2, -2,
           -2, 1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497, 1498,
           1499, 1500, 1501, 1502, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510,
-          1511, 1512, 1513, 1514, -2, -2, 8206, 8207, -2 });
+          1511, 1512, 1513, 1514, -2, -2, 8206, 8207, -2, });
       }
       if (name.Equals("ISO-8859-16")) {
         return (ICharacterEncoding)new EncodingSingleByte(new[] { 128, 129, 130,

@@ -8,8 +8,8 @@ at: http://peteroupc.github.io/
 using System;
 
 namespace PeterO {
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="T:PeterO.ArrayWriter"]/*'/>
+  /// <include file='../docs.xml'
+  /// path='docs/doc[@name="T:PeterO.ArrayWriter"]/*'/>
   public sealed class ArrayWriter : IWriter {
     private int retvalPos;
     private int retvalMax;
@@ -22,13 +22,14 @@ namespace PeterO {
       this.retvalMax = 0;
     }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.ArrayWriter.#ctor"]/*'/>
+    /// <summary>Initializes a new instance of the <see cref='ArrayWriter'/> class with a default backing store size of 16.</summary>
     public ArrayWriter() : this(16) {
     }
 
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.ArrayWriter.#ctor(System.Int32)"]/*'/>
+    /// <summary>Initializes a new instance of the <see cref='ArrayWriter'/> class.</summary>
+    /// <param name='initialSize'>
+    /// The initial size of the array writer's backing store.
+    /// </param>
     public ArrayWriter(int initialSize) {
       this.retval = new byte[initialSize];
     }

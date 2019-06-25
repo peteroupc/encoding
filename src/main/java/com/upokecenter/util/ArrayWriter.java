@@ -7,9 +7,9 @@ If you like this, you should donate to Peter O.
 at: http://peteroupc.github.io/
  */
 
-    /**
-     * An array of bytes that grows as needed.
-     */
+  /**
+   * An array of bytes that grows as needed.
+   */
   public final class ArrayWriter implements IWriter {
     private int retvalPos;
     private int retvalMax;
@@ -24,15 +24,15 @@ at: http://peteroupc.github.io/
     }
 
     /**
-     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
-     * with a default backing store size of 16.
+     * Initializes a new instance of the {@link ArrayWriter} class with a default
+     * backing store size of 16.
      */
     public ArrayWriter() {
  this(16);
     }
 
     /**
-     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class.
+     * Initializes a new instance of the {@link ArrayWriter} class.
      * @param initialSize The initial size of the array writer's backing store.
      */
     public ArrayWriter(int initialSize) {

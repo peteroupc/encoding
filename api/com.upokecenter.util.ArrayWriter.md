@@ -6,11 +6,11 @@ An array of bytes that grows as needed.
 
 ## Methods
 
-* `ArrayWriter() com.upokecenter.ArrayWriter`<br>
- Initializes a new instance of the com.upokecenter.ArrayWriter class
- with a default backing store size of 16.
-* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
- Initializes a new instance of the com.upokecenter.ArrayWriter class.
+* `ArrayWriter() ArrayWriter`<br>
+ Initializes a new instance of the ArrayWriter class with a default
+ backing store size of 16.
+* `ArrayWriter​(int initialSize) ArrayWriter`<br>
+ Initializes a new instance of the ArrayWriter class.
 * `void Clear()`<br>
  Offers a fast way to reset the length of the array writer's data to 0.
 * `byte[] ToArray()`<br>
@@ -24,21 +24,21 @@ An array of bytes that grows as needed.
 
 ## Constructors
 
-* `ArrayWriter() com.upokecenter.ArrayWriter`<br>
- Initializes a new instance of the com.upokecenter.ArrayWriter class
- with a default backing store size of 16.
-* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
- Initializes a new instance of the com.upokecenter.ArrayWriter class.
+* `ArrayWriter() ArrayWriter`<br>
+ Initializes a new instance of the ArrayWriter class with a default
+ backing store size of 16.
+* `ArrayWriter​(int initialSize) ArrayWriter`<br>
+ Initializes a new instance of the ArrayWriter class.
 
 ## Method Details
 
 ### ArrayWriter
     public ArrayWriter()
-Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class
- with a default backing store size of 16.
+Initializes a new instance of the <code>ArrayWriter</code> class with a default
+ backing store size of 16.
 ### ArrayWriter
     public ArrayWriter​(int initialSize)
-Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class.
+Initializes a new instance of the <code>ArrayWriter</code> class.
 
 **Parameters:**
 

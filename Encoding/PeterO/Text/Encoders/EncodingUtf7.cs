@@ -20,7 +20,7 @@ namespace PeterO.Text.Encoders {
   0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a,
   0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d,
   0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a,
-  0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x2b, 0x2f
+  0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x2b, 0x2f,
       };
 
     private class Decoder : ICharacterDecoder {
@@ -147,7 +147,7 @@ namespace PeterO.Text.Encoders {
                 return b;
               }
               break;
-            case 1:  // start of base64
+            case 1: // start of base64
               b = this.state.ReadInputByte(stream);
               if (b < 0) {
                 // End of stream, illegal
@@ -165,8 +165,8 @@ namespace PeterO.Text.Encoders {
               } else if (b >= 0x80) {
                 // Non-ASCII byte, illegal
                 this.machineState = 0;
-                this.state.AppendChar(-2);  // for the illegal plus
-                this.state.AppendChar(-2);  // for the illegal non-ASCII byte
+                this.state.AppendChar(-2); // for the illegal plus
+                this.state.AppendChar(-2); // for the illegal non-ASCII byte
                 ch = this.state.GetChar();
                 if (ch != -1) {
                   return ch;
@@ -176,13 +176,13 @@ namespace PeterO.Text.Encoders {
                 if (this.alphavalue >= 0) {
                   this.machineState = 2; // change state to "continuing base64"
                   this.base64value <<= 6;
-                  this.base64value |= alphavalue;
+                  this.base64value |= this.alphavalue;
                   ++this.base64count;
                 } else {
                   // Non-base64 byte (NOTE: Can't be plus or
                   // minus at this point)
                   this.machineState = 0;
-                  this.state.AppendChar(-2);  // for the illegal plus
+                  this.state.AppendChar(-2); // for the illegal plus
                   if (b == 0x09 || b == 0x0a || b == 0x0d) {
                     this.state.AppendChar((char)b);
                   } else if (b == 0x5c || b >= 0x7e || b < 0x20) {
@@ -209,44 +209,44 @@ namespace PeterO.Text.Encoders {
                 ++this.base64count;
                 if (this.base64count == 4) {
                   // Generate UTF-16 bytes
-         this.appender.AppendByte(
-  (this.base64value >> 16) & 0xff,
-  this.state);
-  this.appender.AppendByte(
-  (this.base64value >> 8) & 0xff,
-  this.state);
-  this.appender.AppendByte(this.base64value & 0xff, this.state);
-  this.base64count = 0;
+                  this.appender.AppendByte(
+                    (this.base64value >> 16) & 0xff,
+                    this.state);
+                  this.appender.AppendByte(
+                    (this.base64value >> 8) & 0xff,
+                    this.state);
+                  this.appender.AppendByte(this.base64value & 0xff, this.state);
+                  this.base64count = 0;
                 }
               } else {
                 this.machineState = 0;
                 switch (this.base64count) {
                   case 1: {
-                    // incomplete base64 byte
-                    this.appender.AppendIncompleteByte();
-                    break;
+                      // incomplete base64 byte
+                      this.appender.AppendIncompleteByte();
+                      break;
                     }
                   case 2: {
-                    this.base64value <<= 12;
-                    this.appender.AppendByte((base64value >> 16) & 0xff, state);
-                    if ((this.base64value & 0xffff) != 0) {
-                    // Redundant pad bits
-                    this.appender.AppendIncompleteByte();
-                    }
-                    break;
+                      this.base64value <<= 12;
+                      this.appender.AppendByte((this.base64value >> 16) & 0xff, this.state);
+                      if ((this.base64value & 0xffff) != 0) {
+                        // Redundant pad bits
+                        this.appender.AppendIncompleteByte();
+                      }
+                      break;
                     }
                   case 3: {
-                    this.base64value <<= 6;
-                    this.appender.AppendByte((base64value >> 16) & 0xff, state);
-                    this.appender.AppendByte((base64value >> 8) & 0xff, state);
-                    if ((this.base64value & 0xff) != 0) {
-                    // Redundant pad bits
-                    this.appender.AppendIncompleteByte();
-                    }
-                    break;
+                      this.base64value <<= 6;
+                      this.appender.AppendByte((this.base64value >> 16) & 0xff, this.state);
+                      this.appender.AppendByte((this.base64value >> 8) & 0xff, this.state);
+                      if ((this.base64value & 0xff) != 0) {
+                        // Redundant pad bits
+                        this.appender.AppendIncompleteByte();
+                      }
+                      break;
                     }
                 }
-                this.appender.FinalizeAndReset(state);
+                this.appender.FinalizeAndReset(this.state);
                 if (b < 0) {
                   // End of stream
                   ch = this.state.GetChar();
@@ -361,10 +361,11 @@ namespace PeterO.Text.Encoders {
           int byte2 = cc1 & 0xff;
           int byte3 = (cc2 >> 8) & 0xff;
           int byte4 = cc2 & 0xff;
+          var b64array = new byte[] { (byte)byte1,
+            (byte)byte2, (byte)byte3, (byte)byte4, };
           ret += this.AppendBase64(
-  new byte[] { (byte)byte1,
-  (byte)byte2, (byte)byte3, (byte)byte4, },
-  output);
+             b64array,
+             output);
         }
         return ret;
       }

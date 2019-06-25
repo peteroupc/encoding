@@ -10,7 +10,22 @@
 * <code>[Write(byte[], int, int)](#Write_byte_int_int)</code> - Writes a series of bytes to the array.
 * <code>[WriteByte(int)](#WriteByte_int)</code> - Writes an 8-bit byte to the array.
 
-<a id="Clear"></a>
+<a id="Void_ctor_Int32"></a>
+### ArrayWriter Constructor
+
+    public ArrayWriter(
+        int initialSize);
+
+ Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class.   <b>Parameters:</b>
+
+ * <i>initialSize</i>:  The initial size of the array writer's backing store.
+
+<a id="Void_ctor"></a>
+### ArrayWriter Constructor
+
+    public ArrayWriter();
+
+ Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class with a default backing store size of 16.  <a id="Clear"></a>
 ### Clear
 
     public void Clear();

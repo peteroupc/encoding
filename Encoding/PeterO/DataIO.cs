@@ -16,9 +16,9 @@ namespace PeterO {
     /// path='docs/doc[@name="M:PeterO.DataIO.ToReader(System.Byte[])"]/*'/>
     public static IReader ToReader(
   #if !NET20
-this
+       this
 #endif
-byte[] bytes) {
+       byte[] bytes) {
       if (bytes == null) {
         throw new ArgumentNullException(nameof(bytes));
       }

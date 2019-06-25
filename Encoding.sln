@@ -34,5 +34,9 @@ Global
     {BECCFDE4-E77C-4DB9-A847-AA7ACFDC38B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
     {BECCFDE4-E77C-4DB9-A847-AA7ACFDC38B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
     {BECCFDE4-E77C-4DB9-A847-AA7ACFDC38B9}.Release|Any CPU.Build.0 = Release|Any CPU
+    {5B58DA30-CB45-45B7-D73D-5A8E8C9177CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+    {5B58DA30-CB45-45B7-D73D-5A8E8C9177CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+    {52D9C946-90DD-4592-16EC-07022C13D7F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+    {52D9C946-90DD-4592-16EC-07022C13D7F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
   EndGlobalSection
 EndGlobal

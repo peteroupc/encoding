@@ -107,17 +107,9 @@
  * <i>length</i>:  The parameter  <i>length</i>
  is a 32-bit signed integer.
 
- * <i>skipByteOrderMark</i>:  Either  `
-            true
-            `  or  `
-            false
-            `  .
+ * <i>skipByteOrderMark</i>:  If true and the first character in the string portion is U+FEFF, skip that character.
 
- * <i>errorThrow</i>:  Either  `
-            true
-            `  or  `
-            false
-            `  .
+ * <i>errorThrow</i>:  When encountering invalid encoding, throw an exception if this parameter is true, or replace it with U+FFFD (replacement character) if this parameter is false.
 
 <b>Exceptions:</b>
 
@@ -131,9 +123,15 @@
     public CharacterReader(
         System.IO.Stream stream);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.   <b>Parameters:</b>
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the stream, and replace invalid byte sequences with replacement characters (U+FFFD).    <b>Parameters:</b>
 
  * <i>stream</i>:  A readable data stream.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+ The parameter  <i>stream</i>
+ is null.
 
 <a id="Void_ctor_Stream_Int32"></a>
 ### CharacterReader Constructor
@@ -142,12 +140,29 @@
         System.IO.Stream stream,
         int mode);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.    <b>Parameters:</b>
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and replace invalid byte sequences with replacement characters (U+FFFD).     <b>Parameters:</b>
 
- * <i>stream</i>:  A readable data stream.
+ * <i>stream</i>:  A readable byte stream.
 
- * <i>mode</i>:  The parameter  <i>mode</i>
- is a 32-bit signed integer.
+ * <i>mode</i>:  The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
+
+  *  0: UTF-8 only.
+
+  *  1: Detect UTF-16 using BOM or non-zero basic code point, otherwise UTF-8.
+
+  *  2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+  *  3: Detect UTF-16 using BOM, otherwise UTF-8.
+
+  *  4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+  .
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+ The parameter  <i>stream</i>
+ is null.
 
 <a id="Void_ctor_Stream_Int32_Boolean"></a>
 ### CharacterReader Constructor
@@ -157,18 +172,25 @@
         int mode,
         bool errorThrow);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.     <b>Parameters:</b>
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will skip the byte-order mark (U+FEFF) if it appears first in the stream and a UTF-8 stream is detected.     <b>Parameters:</b>
 
  * <i>stream</i>:  A readable data stream.
 
- * <i>mode</i>:  The parameter  <i>mode</i>
- is a 32-bit signed integer.
+ * <i>mode</i>:  The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
 
- * <i>errorThrow</i>:  Either  `
-            true
-            `  or  `
-            false
-            `  .
+  *  0: UTF-8 only.
+
+  *  1: Detect UTF-16 using BOM or non-zero basic code point, otherwise UTF-8.
+
+  *  2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+  *  3: Detect UTF-16 using BOM, otherwise UTF-8.
+
+  *  4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+  .
+
+ * <i>errorThrow</i>:  When encountering invalid encoding, throw an exception if this parameter is true, or replace it with U+FFFD (replacement character) if this parameter is false.
 
 <a id="Void_ctor_Stream_Int32_Boolean_Boolean"></a>
 ### CharacterReader Constructor
@@ -181,22 +203,27 @@
 
  Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.       <b>Parameters:</b>
 
- * <i>stream</i>:  A readable data stream.
+ * <i>stream</i>:  A readable byte stream.
 
- * <i>mode</i>:  The parameter  <i>mode</i>
- is a 32-bit signed integer.
+ * <i>mode</i>:  The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
 
- * <i>errorThrow</i>:  Either  `
+  *  0: UTF-8 only.
+
+  *  1: Detect UTF-16 using BOM or non-zero basic code point, otherwise UTF-8.
+
+  *  2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+  *  3: Detect UTF-16 using BOM, otherwise UTF-8.
+
+  *  4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+  .
+
+ * <i>errorThrow</i>:  If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
+
+ * <i>dontSkipUtf8Bom</i>:  If the stream is detected as UTF-8 and this parameter is  `
             true
-            `  or  `
-            false
-            `  .
-
- * <i>dontSkipUtf8Bom</i>:  Either  `
-            true
-            `  or  `
-            false
-            `  .
+            `  , won't skip the BOM character if it occurs at the start of the stream.
 
 <b>Exceptions:</b>
 

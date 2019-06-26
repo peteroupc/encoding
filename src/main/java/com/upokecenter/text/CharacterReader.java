@@ -82,8 +82,11 @@ import java.io.*;
      * @param str The parameter {@code str} is a text string.
      * @param offset The parameter {@code offset} is a 32-bit signed integer.
      * @param length The parameter {@code length} is a 32-bit signed integer.
-     * @param skipByteOrderMark Either {@code true } or {@code false } .
-     * @param errorThrow Either {@code true } or {@code false } .
+     * @param skipByteOrderMark If true and the first character in the string
+     * portion is U + FEFF, skip that character.
+     * @param errorThrow When encountering invalid encoding, throw an exception if
+     * this parameter is true, or replace it with U + FFFD (replacement
+     * character) if this parameter is false.
      * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
     public CharacterReader(
@@ -126,11 +129,10 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class; will read the stream as
-     * UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
-     * stream, and replace invalid byte sequences with replacement
-     * characters (U + FFFD).
+     * Initializes a new instance of the {@link CharacterReader} class; will read
+     * the stream as UTF-8, skip the byte-order mark (U + FEFF) if it appears
+     * first in the stream, and replace invalid byte sequences with
+     * replacement characters (U + FFFD).
      * @param stream A readable data stream.
      * @throws java.lang.NullPointerException The parameter {@code stream} is null.
      */
@@ -139,9 +141,21 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link CharacterReader} class; will skip
+     * the byte-order mark (U + FEFF) if it appears first in the stream and a
+     * UTF-8 stream is detected.
      * @param stream A readable data stream.
-     * @param mode The parameter {@code mode} is a 32-bit signed integer.
+     * @param mode The method to use when detecting encodings other than UTF-8 in
+     * the byte stream. This usually involves checking whether the stream
+     * begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
+     * point (U + 0001 to U + 007F) before reading the rest of the stream. This
+     * value can be one of the following: <ul> <li> 0: UTF-8 only. </li>
+     * <li> 1: Detect UTF-16 using BOM or non-zero basic code point,
+     * otherwise UTF-8. </li> <li> 2: Detect UTF-16/UTF-32 using BOM or
+     * non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32
+     * first.) </li> <li> 3: Detect UTF-16 using BOM, otherwise UTF-8. </li>
+     * <li> 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
+     * detect UTF-32 first.) </li> </ul> .
      * @param errorThrow When encountering invalid encoding, throw an exception if
      * this parameter is true, or replace it with U + FFFD (replacement
      * character) if this parameter is false.
@@ -151,21 +165,21 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class; will skip the byte-order
-     * mark (U + FEFF) if it appears first in the stream and replace invalid
-     * byte sequences with replacement characters (U + FFFD).
+     * Initializes a new instance of the {@link CharacterReader} class; will skip
+     * the byte-order mark (U + FEFF) if it appears first in the stream and
+     * replace invalid byte sequences with replacement characters (U + FFFD).
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream
      * begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
-     * point (NZB, U + 0001 to U + 007F) before reading the rest of the stream.
-     * This value can be one of the following: <ul> <li> 0: UTF-8 only.
-     * </li> <li> 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8. </li>
-     * <li> 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8.
-     * (Tries to detect UTF-32 first.) </li> <li> 3: Detect UTF-16 using
-     * BOM, otherwise UTF-8. </li> <li> 4: Detect UTF-16/UTF-32 using BOM,
-     * otherwise UTF-8. (Tries to detect UTF-32 first.) </li> </ul> .
+     * point (U + 0001 to U + 007F) before reading the rest of the stream. This
+     * value can be one of the following: <ul> <li> 0: UTF-8 only. </li>
+     * <li> 1: Detect UTF-16 using BOM or non-zero basic code point,
+     * otherwise UTF-8. </li> <li> 2: Detect UTF-16/UTF-32 using BOM or
+     * non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32
+     * first.) </li> <li> 3: Detect UTF-16 using BOM, otherwise UTF-8. </li>
+     * <li> 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
+     * detect UTF-32 first.) </li> </ul> .
      * @throws java.lang.NullPointerException The parameter {@code stream} is null.
      */
     public CharacterReader(InputStream stream, int mode) {
@@ -173,19 +187,19 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link
-     * com.upokecenter.text.CharacterReader} class.
+     * Initializes a new instance of the {@link CharacterReader} class.
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream
      * begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
-     * point (NZB, U + 0001 to U + 007F) before reading the rest of the stream.
-     * This value can be one of the following: <ul> <li> 0: UTF-8 only.
-     * </li> <li> 1: Detect UTF-16 using BOM or NZB, otherwise UTF-8. </li>
-     * <li> 2: Detect UTF-16/UTF-32 using BOM or NZB, otherwise UTF-8.
-     * (Tries to detect UTF-32 first.) </li> <li> 3: Detect UTF-16 using
-     * BOM, otherwise UTF-8. </li> <li> 4: Detect UTF-16/UTF-32 using BOM,
-     * otherwise UTF-8. (Tries to detect UTF-32 first.) </li> </ul> .
+     * point (U + 0001 to U + 007F) before reading the rest of the stream. This
+     * value can be one of the following: <ul> <li> 0: UTF-8 only. </li>
+     * <li> 1: Detect UTF-16 using BOM or non-zero basic code point,
+     * otherwise UTF-8. </li> <li> 2: Detect UTF-16/UTF-32 using BOM or
+     * non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32
+     * first.) </li> <li> 3: Detect UTF-16 using BOM, otherwise UTF-8. </li>
+     * <li> 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
+     * detect UTF-32 first.) </li> </ul> .
      * @param errorThrow If true, will throw an exception if invalid byte sequences
      * (in the detected encoding) are found in the byte stream. If false,
      * replaces those byte sequences with replacement characters (U + FFFD) as

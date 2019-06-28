@@ -117,7 +117,12 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>str</code> - The parameter <code>str</code> is a text string.
 
-* <code>skipByteOrderMark</code> - Either <code>true </code> or <code>false </code> .
+* <code>skipByteOrderMark</code> - If true and the first character in the string is
+ U + FEFF, skip that character.
+
+**Throws:**
+
+* <code>java.lang.NullPointerException</code> - The parameter <code>str</code> is null.
 
 ### CharacterReader
     public CharacterReader​(java.lang.String str, boolean skipByteOrderMark, boolean errorThrow)
@@ -127,9 +132,12 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>str</code> - The parameter <code>str</code> is a text string.
 
-* <code>skipByteOrderMark</code> - Either <code>true </code> or <code>false </code> .
+* <code>skipByteOrderMark</code> - If true and the first character in the string is
+ U + FEFF, skip that character.
 
-* <code>errorThrow</code> - Either <code>true </code> or <code>false </code> .
+* <code>errorThrow</code> - When encountering invalid encoding, throw an exception if
+ this parameter is true, or replace it with U + FFFD (replacement
+ character) if this parameter is false.
 
 **Throws:**
 

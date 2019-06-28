@@ -25,16 +25,18 @@
         string str,
         bool skipByteOrderMark);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.    <b>Parameters:</b>
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.     <b>Parameters:</b>
 
  * <i>str</i>:  The parameter  <i>str</i>
  is a text string.
 
- * <i>skipByteOrderMark</i>:  Either  `
-            true
-            `  or  `
-            false
-            `  .
+ * <i>skipByteOrderMark</i>:  If true and the first character in the string is U+FEFF, skip that character.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+ The parameter  <i>str</i>
+ is null.
 
 <a id="Void_ctor_String_Boolean_Boolean"></a>
 ### CharacterReader Constructor
@@ -49,17 +51,9 @@
  * <i>str</i>:  The parameter  <i>str</i>
  is a text string.
 
- * <i>skipByteOrderMark</i>:  Either  `
-            true
-            `  or  `
-            false
-            `  .
+ * <i>skipByteOrderMark</i>:  If true and the first character in the string is U+FEFF, skip that character.
 
- * <i>errorThrow</i>:  Either  `
-            true
-            `  or  `
-            false
-            `  .
+ * <i>errorThrow</i>:  When encountering invalid encoding, throw an exception if this parameter is true, or replace it with U+FFFD (replacement character) if this parameter is false.
 
 <b>Exceptions:</b>
 

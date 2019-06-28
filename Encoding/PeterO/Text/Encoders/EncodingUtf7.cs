@@ -250,7 +250,7 @@ namespace PeterO.Text.Encoders {
                 if (b < 0) {
                   // End of stream
                   ch = this.state.GetChar();
-                  return (ch != -1) ? (ch) : (-1);
+                  return (ch != -1) ? ch : (-1);
                 }
                 if (b == 0x2d) {
                   // Ignore the hyphen
@@ -330,7 +330,7 @@ namespace PeterO.Text.Encoders {
           output.WriteByte((byte)ToAlphabet[(b1 >> 2) & 63]);
           output.WriteByte((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
             15)]);
-          output.WriteByte((byte)ToAlphabet[((b2 & 15) << 2)]);
+          output.WriteByte((byte)ToAlphabet[(b2 & 15) << 2]);
           ret += 3;
         } else if (quantumCount == 1) {
           output.WriteByte((byte)ToAlphabet[(b1 >> 2) & 63]);

@@ -177,11 +177,6 @@ Either  <i>offset</i>
  is less than  <i>length</i>
  .
 
- * System.ArgumentNullException:
-The parameter  <i>enc</i>
- or  <i>bytes</i>
- is null.
-
 <a id="DecodeToString_this_PeterO_Text_ICharacterEncoding_System_IO_Stream"></a>
 ### DecodeToString
 
@@ -912,7 +907,3 @@ Either  <i>offset</i>
  ' s length minus  <i>offset</i>
  is less than  <i>length</i>
  .
-
- * System.ArgumentNullException:
-The parameter  <i>str</i>
- is null.

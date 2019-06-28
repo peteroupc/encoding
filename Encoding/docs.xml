@@ -4,11 +4,15 @@
     </summary>
   </doc>
   <doc name='M:PeterO.ArrayWriter.#ctor'>
-    <summary>Initializes a new instance of the <see cref='ArrayWriter'/> class with a default backing store size of 16.
+    <summary>Initializes a new instance of the
+      <see cref='ArrayWriter'/>
+       class with a default backing store size of 16.
     </summary>
   </doc>
   <doc name='M:PeterO.ArrayWriter.#ctor(System.Int32)'>
-    <summary>Initializes a new instance of the <see cref='ArrayWriter'/> class.
+    <summary>Initializes a new instance of the
+      <see cref='ArrayWriter'/>
+       class.
     </summary>
     <param name='initialSize'>The initial size of the array writer's backing store.
     </param>
@@ -462,10 +466,6 @@
       <paramref name='length'/>
        .
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
-    </exception>
   </doc>
   <doc name='M:PeterO.DataIO.ToByteReader(System.IO.Stream)'>
     <summary>Wraps a data stream into a byte reader.
@@ -536,10 +536,6 @@
        is less than
       <paramref name='length'/>
        .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.ToReader(System.IO.Stream)'>
@@ -667,10 +663,6 @@
        is less than
       <paramref name='length'/>
        .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.WriteByte(System.Int32)'>
@@ -1482,7 +1474,9 @@
     </summary>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream)'>
-    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF)
+    <summary>Initializes a new instance of the
+      <see cref='CharacterReader'/>
+       class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF)
       if it appears first in the stream, and replace invalid byte sequences with
       replacement characters (U+FFFD).
     </summary>
@@ -1494,7 +1488,9 @@
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32)'>
-    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class; will skip the byte-order mark (U+FEFF) if it appears first in the
+    <summary>Initializes a new instance of the
+      <see cref='CharacterReader'/>
+       class; will skip the byte-order mark (U+FEFF) if it appears first in the
       stream and replace invalid byte sequences with replacement characters
       (U+FFFD).
     </summary>
@@ -1528,7 +1524,9 @@
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class; will skip the byte-order mark (U+FEFF) if it appears first in the
+    <summary>Initializes a new instance of the
+      <see cref='CharacterReader'/>
+       class; will skip the byte-order mark (U+FEFF) if it appears first in the
       stream and a UTF-8 stream is detected.
     </summary>
     <param name='stream'>A readable data stream.
@@ -1561,7 +1559,9 @@
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
+    <summary>Initializes a new instance of the
+      <see cref='CharacterReader'/>
+       class.
     </summary>
     <param name='stream'>A readable byte stream.
     </param>
@@ -1601,7 +1601,9 @@
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String)'>
-    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
+    <summary>Initializes a new instance of the
+      <see cref='CharacterReader'/>
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1609,31 +1611,37 @@
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
+    <summary>Initializes a new instance of the
+      <see cref='CharacterReader'/>
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
        is a text string.
     </param>
-    <param name='skipByteOrderMark'>Either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='skipByteOrderMark'>If true and the first character in the string is U+FEFF, skip that
+      character.
     </param>
+    <exception cref='T:System.ArgumentNullException'>The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
+    <summary>Initializes a new instance of the
+      <see cref='CharacterReader'/>
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
        is a text string.
     </param>
-    <param name='skipByteOrderMark'>Either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='skipByteOrderMark'>If true and the first character in the string is U+FEFF, skip that
+      character.
     </param>
-    <param name='errorThrow'>Either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='errorThrow'>When encountering invalid encoding, throw an exception if this parameter
+      is true, or replace it with U+FFFD (replacement character) if this
+      parameter is false.
     </param>
     <exception cref='T:System.ArgumentNullException'>The parameter
       <paramref name='str'/>
@@ -1641,7 +1649,9 @@
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32)'>
-    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
+    <summary>Initializes a new instance of the
+      <see cref='CharacterReader'/>
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1657,7 +1667,9 @@
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)'>
-    <summary>Initializes a new instance of the <see cref='CharacterReader'/> class.
+    <summary>Initializes a new instance of the
+      <see cref='CharacterReader'/>
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -2006,12 +2018,6 @@
       <paramref name='length'/>
        .
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='enc'/>
-       or
-      <paramref name='bytes'/>
-       is null.
-    </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)'>
     <summary>Decodes data read from a data stream into a text string in the given
@@ -2077,10 +2083,6 @@
        is less than
       <paramref name='length'/>
        .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='buffer'/>
-       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar'>
@@ -2922,10 +2924,6 @@
        is less than
       <paramref name='length'/>
        .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='str'/>
-       is null.
     </exception>
   </doc>
   <doc name='F:PeterO.Text.Encodings.UTF8'>

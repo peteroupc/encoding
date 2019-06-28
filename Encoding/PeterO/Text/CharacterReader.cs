@@ -38,16 +38,13 @@ namespace PeterO.Text {
     /// is a text string.
     /// </param>
     /// <param name='skipByteOrderMark'>
-    /// Either
-    /// <c>
-    /// true
-    /// </c>
-    /// or
-    /// <c>
-    /// false
-    /// </c>
-    /// .
+    /// If true and the first character in the string is U+FEFF, skip that character.
     /// </param>
+    /// <exception cref='T:System.ArgumentNullException'>
+    /// The parameter
+    /// <paramref name='str'/>
+    /// is null.
+    /// </exception>
     public CharacterReader(string str, bool skipByteOrderMark)
       : this(str, skipByteOrderMark, false) {
     }
@@ -59,26 +56,12 @@ namespace PeterO.Text {
     /// is a text string.
     /// </param>
     /// <param name='skipByteOrderMark'>
-    /// Either
-    /// <c>
-    /// true
-    /// </c>
-    /// or
-    /// <c>
-    /// false
-    /// </c>
-    /// .
+    /// If true and the first character in the string is U+FEFF, skip that character.
     /// </param>
     /// <param name='errorThrow'>
-    /// Either
-    /// <c>
-    /// true
-    /// </c>
-    /// or
-    /// <c>
-    /// false
-    /// </c>
-    /// .
+    /// When encountering invalid encoding, throw an exception if this
+    /// parameter is true, or replace it with U+FFFD (replacement character)
+    /// if this parameter is false.
     /// </param>
     /// <exception cref='T:System.ArgumentNullException'>
     /// The parameter
@@ -618,27 +601,32 @@ namespace PeterO.Text {
         return -1;
       }
       Utf8Reader utf8reader;
-      if (mode == 0) {
-        // UTF-8 only
-        utf8reader = new Utf8Reader(this.stream, this.errorThrow);
-        this.reader = utf8reader;
-        c1 = utf8reader.ReadChar();
-        if (c1 == 0xfeff) {
-          // Skip BOM
+      switch (mode) {
+        case 0:
+          // UTF-8 only
+          utf8reader = new Utf8Reader(this.stream, this.errorThrow);
+          this.reader = utf8reader;
           c1 = utf8reader.ReadChar();
-        }
-        return c1;
-      } else if (mode == 1 || mode == 3) {
-        c2 = this.DetectUtf8OrUtf16(c1);
-        if (c2 >= -1) {
-          return c2;
-        }
-      } else if (mode == 2 || mode == 4) {
-        // UTF-8, UTF-16, or UTF-32
-        c2 = this.DetectUtf8Or16Or32(c1);
-        if (c2 >= -1) {
-          return c2;
-        }
+          if (c1 == 0xfeff) {
+            // Skip BOM
+            c1 = utf8reader.ReadChar();
+          }
+          return c1;
+        case 1:
+        case 3:
+          c2 = this.DetectUtf8OrUtf16(c1);
+          if (c2 >= -1) {
+            return c2;
+          }
+          break;
+        case 2:
+        case 4:
+          // UTF-8, UTF-16, or UTF-32
+          c2 = this.DetectUtf8Or16Or32(c1);
+          if (c2 >= -1) {
+            return c2;
+          }
+          break;
       }
       // Default case: assume UTF-8
       utf8reader = new Utf8Reader(this.stream, this.errorThrow);

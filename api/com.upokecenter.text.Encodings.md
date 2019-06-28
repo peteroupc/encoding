@@ -367,9 +367,6 @@ Reads a portion of a byte array from a data source and converts the bytes
  less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
  ' s length minus <code>offset</code> is less than <code>length</code> .
 
-* <code>java.lang.NullPointerException</code> - The parameter <code>enc</code> or <code>
- bytes</code> is null.
-
 ### EncodeToBytes
     public static byte[] EncodeToBytes​(ICharacterInput input, ICharacterEncoding encoding)
 Reads Unicode characters from a character input and writes them to a byte
@@ -1146,5 +1143,3 @@ Converts a portion of a text string to a character input. The resulting
 * <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
  less than 0 or greater than <code>str</code> 's length, or <code>str</code> ' s
  length minus <code>offset</code> is less than <code>length</code> .
-
-* <code>java.lang.NullPointerException</code> - The parameter <code>str</code> is null.

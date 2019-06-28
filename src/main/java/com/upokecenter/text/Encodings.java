@@ -244,8 +244,6 @@ byte[] bytes) {
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code bytes} 's length, or {@code bytes}
      * ' s length minus {@code offset} is less than {@code length} .
-     * @throws java.lang.NullPointerException The parameter {@code enc} or {@code
-     * bytes} is null.
      */
     public static String DecodeToString(
 ICharacterEncoding enc,
@@ -834,13 +832,13 @@ InputStream input) {
         return UTF8;
       }
       if (name.equals("US-ASCII")) {
-        return (ICharacterEncoding)(new EncodingAscii());
+        return (ICharacterEncoding)new EncodingAscii();
       }
       if (name.equals("ISO-8859-1")) {
-        return (ICharacterEncoding)(new EncodingLatinOne());
+        return (ICharacterEncoding)new EncodingLatinOne();
       }
       if (name.equals("UTF-7")) {
-        return (ICharacterEncoding)(new EncodingUtf7());
+        return (ICharacterEncoding)new EncodingUtf7();
       }
       if (name.equals("windows-1252")) {
      return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
@@ -1198,36 +1196,34 @@ InputStream input) {
     229, 281, 275, 269, 233, 378, 279, 291, 311, 299, 316, 353, 324, 326,
     243, 333, 245, 246, 247, 371, 322, 347, 363, 252, 380, 382, 8217, });
       } else if (name.equals("EUC-JP")) {
-        return (ICharacterEncoding)(new EncodingEUCJP());
+        return (ICharacterEncoding)new EncodingEUCJP();
       } else if (name.equals("EUC-KR")) {
-        return (ICharacterEncoding)(new EncodingKoreanEUC());
+        return (ICharacterEncoding)new EncodingKoreanEUC();
       } else if (name.equals("Big5")) {
-        return (ICharacterEncoding)(new EncodingBig5());
+        return (ICharacterEncoding)new EncodingBig5();
       } else if (name.equals("Shift_JIS")) {
-        return (ICharacterEncoding)(new EncodingShiftJIS());
+        return (ICharacterEncoding)new EncodingShiftJIS();
       } else if (name.equals("x-user-defined")) {
-        return (ICharacterEncoding)(new EncodingXUserDefined());
+        return (ICharacterEncoding)new EncodingXUserDefined();
       } else if (name.equals("GBK")) {
-        return (ICharacterEncoding)(new EncodingGBK());
+        return (ICharacterEncoding)new EncodingGBK();
       } else if (name.equals("GB2312")) {
-        return (ICharacterEncoding)(new EncodingGBK());
+        return (ICharacterEncoding)new EncodingGBK();
       } else if (name.equals("gb18030") || name.equals("GB18030")) {
-        return (ICharacterEncoding)(new EncodingGB18030());
+        return (ICharacterEncoding)new EncodingGB18030();
       } else if (name.equals("UTF-16")) {
-        return (ICharacterEncoding)(new EncodingUtf16());
+        return (ICharacterEncoding)new EncodingUtf16();
       } else if (name.equals("UTF-16LE")) {
-        return (ICharacterEncoding)(new EncodingUtf16LE());
+        return (ICharacterEncoding)new EncodingUtf16LE();
       } else if (name.equals("UTF-16BE")) {
-        return (ICharacterEncoding)(new EncodingUtf16BE());
+        return (ICharacterEncoding)new EncodingUtf16BE();
       } else if (name.equals("ISO-2022-JP-2")) {
-    return (ICharacterEncoding)(new EncodingISO2022JP2());
+    return (ICharacterEncoding)new EncodingISO2022JP2();
       } else if (name.equals("ISO-2022-KR")) {
-        return (ICharacterEncoding)(new EncodingISO2022KR());
+        return (ICharacterEncoding)new EncodingISO2022KR();
       }
-      return name.equals("ISO-2022-JP") ? (ICharacterEncoding)(new
-        EncodingISO2022JP()) :
-        (name.equals("replacement") ? (ICharacterEncoding)(new
-          EncodingReplacement()) : null);
+      return name.equals("ISO-2022-JP") ? (ICharacterEncoding)new EncodingISO2022JP() :
+        (name.equals("replacement") ? (ICharacterEncoding)new EncodingReplacement() : null);
     }
 
     /**
@@ -1511,7 +1507,6 @@ String str) {
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code str} 's length, or {@code str} ' s
      * length minus {@code offset} is less than {@code length} .
-     * @throws java.lang.NullPointerException The parameter {@code str} is null.
      */
     public static ICharacterInput StringToInput(
 String str,
@@ -1995,7 +1990,6 @@ return aliases;
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code buffer} 's length, or {@code
      * buffer} ' s length minus {@code offset} is less than {@code length} .
-     * @throws java.lang.NullPointerException The parameter {@code buffer} is null.
      */
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {

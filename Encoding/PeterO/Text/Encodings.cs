@@ -405,13 +405,13 @@ Stream input) {
         return UTF8;
       }
       if (name.Equals("US-ASCII")) {
-        return (ICharacterEncoding)(new EncodingAscii());
+        return (ICharacterEncoding)new EncodingAscii();
       }
       if (name.Equals("ISO-8859-1")) {
-        return (ICharacterEncoding)(new EncodingLatinOne());
+        return (ICharacterEncoding)new EncodingLatinOne();
       }
       if (name.Equals("UTF-7")) {
-        return (ICharacterEncoding)(new EncodingUtf7());
+        return (ICharacterEncoding)new EncodingUtf7();
       }
       if (name.Equals("windows-1252")) {
      return (ICharacterEncoding)new EncodingSingleByte(new[] { 8364, 129,
@@ -769,36 +769,34 @@ Stream input) {
     229, 281, 275, 269, 233, 378, 279, 291, 311, 299, 316, 353, 324, 326,
     243, 333, 245, 246, 247, 371, 322, 347, 363, 252, 380, 382, 8217, });
       } else if (name.Equals("EUC-JP")) {
-        return (ICharacterEncoding)(new EncodingEUCJP());
+        return (ICharacterEncoding)new EncodingEUCJP();
       } else if (name.Equals("EUC-KR")) {
-        return (ICharacterEncoding)(new EncodingKoreanEUC());
+        return (ICharacterEncoding)new EncodingKoreanEUC();
       } else if (name.Equals("Big5")) {
-        return (ICharacterEncoding)(new EncodingBig5());
+        return (ICharacterEncoding)new EncodingBig5();
       } else if (name.Equals("Shift_JIS")) {
-        return (ICharacterEncoding)(new EncodingShiftJIS());
+        return (ICharacterEncoding)new EncodingShiftJIS();
       } else if (name.Equals("x-user-defined")) {
-        return (ICharacterEncoding)(new EncodingXUserDefined());
+        return (ICharacterEncoding)new EncodingXUserDefined();
       } else if (name.Equals("GBK")) {
-        return (ICharacterEncoding)(new EncodingGBK());
+        return (ICharacterEncoding)new EncodingGBK();
       } else if (name.Equals("GB2312")) {
-        return (ICharacterEncoding)(new EncodingGBK());
+        return (ICharacterEncoding)new EncodingGBK();
       } else if (name.Equals("gb18030") || name.Equals("GB18030")) {
-        return (ICharacterEncoding)(new EncodingGB18030());
+        return (ICharacterEncoding)new EncodingGB18030();
       } else if (name.Equals("UTF-16")) {
-        return (ICharacterEncoding)(new EncodingUtf16());
+        return (ICharacterEncoding)new EncodingUtf16();
       } else if (name.Equals("UTF-16LE")) {
-        return (ICharacterEncoding)(new EncodingUtf16LE());
+        return (ICharacterEncoding)new EncodingUtf16LE();
       } else if (name.Equals("UTF-16BE")) {
-        return (ICharacterEncoding)(new EncodingUtf16BE());
+        return (ICharacterEncoding)new EncodingUtf16BE();
       } else if (name.Equals("ISO-2022-JP-2")) {
-    return (ICharacterEncoding)(new EncodingISO2022JP2());
+    return (ICharacterEncoding)new EncodingISO2022JP2();
       } else if (name.Equals("ISO-2022-KR")) {
-        return (ICharacterEncoding)(new EncodingISO2022KR());
+        return (ICharacterEncoding)new EncodingISO2022KR();
       }
-      return name.Equals("ISO-2022-JP") ? (ICharacterEncoding)(new
-        EncodingISO2022JP()) :
-        (name.Equals("replacement") ? (ICharacterEncoding)(new
-          EncodingReplacement()) : null);
+      return name.Equals("ISO-2022-JP") ? (ICharacterEncoding)new EncodingISO2022JP() :
+        (name.Equals("replacement") ? (ICharacterEncoding)new EncodingReplacement() : null);
     }
 
     /// <include file='../../docs.xml'

@@ -16,7 +16,7 @@ import com.upokecenter.util.*;
     }
 
     public void AppendChar(int ch) {
-      this.chars = (this.chars == null) ? ((new int[4])) : this.chars;
+      this.chars = (this.chars == null) ? (new int[4]) : this.chars;
       if (this.charCount >= this.chars.length) {
         int[] newchars = new int[this.chars.length + 8];
         System.arraycopy(this.chars, 0, newchars, 0, this.chars.length);
@@ -83,11 +83,8 @@ import com.upokecenter.util.*;
     }
 
     public IByteReader ToTransformIfBuffered(IByteReader stream) {
-      return (
-  this.prependedBytes == 0) ? stream : (
-  new StateToTransform(
-  this,
-  stream));
+      return (this.prependedBytes == 0) ?
+        stream : new StateToTransform(this, stream);
     }
 
     private static class StateToTransform implements IByteReader {

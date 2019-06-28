@@ -5,7 +5,7 @@ using PeterO.Text;
 
 namespace PeterO.Text.Encoders {
   internal class EncodingUtf16BE : ICharacterEncoding {
-   public ICharacterDecoder GetDecoder() {
+    public ICharacterDecoder GetDecoder() {
       return EncodingUtf16.GetDecoder2(1);
     }
 

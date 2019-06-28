@@ -11,7 +11,7 @@ import com.upokecenter.text.*;
 
       public EndianFreeEncoder() {
         this.start = true;
-        this.encoder = new Encoder(false);  // little endian
+        this.encoder = new Encoder(false); // little endian
       }
 
       public int Encode(int c, IWriter output) {
@@ -54,7 +54,7 @@ import com.upokecenter.text.*;
         }
         int c2 = stream.read();
         if (c2 < 0) {
-          return -2;  // Only one byte
+          return -2; // Only one byte
         }
         this.start = false;
         if (c == 0xff && c2 == 0xfe) {

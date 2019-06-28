@@ -16,7 +16,7 @@ namespace PeterO.Text.Encoders {
     }
 
     public void AppendChar(int ch) {
-      this.chars = this.chars ?? (new int[4]);
+      this.chars = this.chars ?? new int[4];
       if (this.charCount >= this.chars.Length) {
         var newchars = new int[this.chars.Length + 8];
         Array.Copy(this.chars, newchars, this.chars.Length);
@@ -83,11 +83,8 @@ namespace PeterO.Text.Encoders {
     }
 
     public IByteReader ToTransformIfBuffered(IByteReader stream) {
-      return (
-  this.prependedBytes == 0) ? stream : (
-  new StateToTransform(
-  this,
-  stream));
+      return (this.prependedBytes == 0) ?
+        stream : new StateToTransform(this, stream);
     }
 
     private class StateToTransform : IByteReader {

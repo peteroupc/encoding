@@ -78,10 +78,6 @@ Either  <i>offset</i>
  is less than  <i>length</i>
  .
 
- * System.ArgumentNullException:
-The parameter  <i>bytes</i>
- is null.
-
 <a id="ToByteReader_this_System_IO_Stream"></a>
 ### ToByteReader
 
@@ -164,10 +160,6 @@ Either  <i>offset</i>
  ' s length minus  <i>offset</i>
  is less than  <i>length</i>
  .
-
- * System.ArgumentNullException:
-The parameter  <i>bytes</i>
- is null.
 
 <a id="ToReader_this_System_IO_Stream"></a>
 ### ToReader

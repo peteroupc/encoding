@@ -142,7 +142,7 @@ namespace EncodingTest {
 
         LineBreak,
 
-        End }
+        End, }
 
       private sealed class TokenReader {
         private TokenType type;
@@ -155,7 +155,7 @@ namespace EncodingTest {
         public void SkipToLine() {
           while (true) {
             this.ReadToTokenChar();
-          if (this.type == TokenType.LineBreak || this.type ==
+            if (this.type == TokenType.LineBreak || this.type ==
               TokenType.End) {
               return;
             }
@@ -259,9 +259,8 @@ namespace EncodingTest {
                 if ((c & 0xfc00) == 0xd800 && index + 1 < str.Length &&
                     (str[index + 1] & 0xfc00) == 0xdc00) {
                   // Get the Unicode code point for the surrogate pair
-                c = 0x10000 + ((c - 0xd800) << 10) + (str[index + 1] -
-                    0xdc00);
-                  ++index;
+                c = 0x10000 + ((c & 0x3ff) << 10) + (str[index + 1] & 0x3ff);
+                ++index;
                 } else if ((c & 0xf800) == 0xd800) {
                   // unpaired surrogate
                   c = 0xfffd;
@@ -384,7 +383,7 @@ namespace EncodingTest {
               this.type = TokenType.End;
               break;
             } else if (c == 0x20 || c == 0x09) {
-              continue;  // whitespace
+              continue; // whitespace
             } else if (c == (int)';') {
               // comment
               while (true) {
@@ -444,13 +443,13 @@ namespace EncodingTest {
             } else if (ucs >= 0x100) {
               newarray = new int[0x3000];
             }
-          Array.Copy(
-  this.array,
-  0,
-  newarray,
-  0,
-  this.array.Length);
-      int i;
+            Array.Copy(
+              this.array,
+              0,
+              newarray,
+              0,
+              this.array.Length);
+            int i;
             for (i = this.array.Length; i < newarray.Length; ++i) {
               newarray[i] = -2;
             }

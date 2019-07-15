@@ -8,8 +8,10 @@ namespace PeterO.Text {
 /// that convert to and from bytes and character code points.
 /// </summary>
 public interface ICharacterEncoding {
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.ICharacterEncoding.GetEncoder"]/*'/>
+    /// <summary>Creates an encoder for this character encoding with
+    /// initial state. If the encoder is stateless, multiple calls of this
+    /// method can return the same encoder.</summary>
+    /// <returns>A character encoder object.</returns>
     #if CODE_ANALYSIS
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design",
       "CA1024:UsePropertiesWhereAppropriate",
@@ -18,8 +20,10 @@ public interface ICharacterEncoding {
 #endif
     ICharacterEncoder GetEncoder();
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.ICharacterEncoding.GetDecoder"]/*'/>
+    /// <summary>Creates a decoder for this character encoding with initial
+    /// state. If the decoder is stateless, multiple calls of this method
+    /// can return the same decoder.</summary>
+    /// <returns>A character decoder object.</returns>
 #if CODE_ANALYSIS
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design",
       "CA1024:UsePropertiesWhereAppropriate",

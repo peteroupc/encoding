@@ -5,16 +5,17 @@ import com.upokecenter.text.*;
 
     /**
      * A character encoding class that implements a code page read from the code
-     * page file format described in the Windows Protocols Unicode Reference
-     * (https://msdn.microsoft.com/en-us/library/cc248954.aspx), section
-     * 2.2.2.1. The code page file format supports single-byte encodings and
-     * certain multi-byte encodings in which each character is encoded in
-     * one or two bytes. <p>The code page format defines a single-byte as a
-     * replacement character and can specify certain "best-fit" mappings
-     * from certain Unicode characters to the code page encoding if the
-     * Unicode character is unsupported in the code page encoding. When
-     * decoding, any invalid bytes or unassigned bytes in the code page
-     * encoding are converted to the given replacement code point.</p>
+     * page file format described in the Windows Protocols Unicode
+     * Reference (https://msdn.microsoft.com/en-us/library/cc248954.aspx),
+     * section 2.2.2.1. The code page file format supports single-byte
+     * encodings and certain multi-byte encodings in which each character
+     * is encoded in one or two bytes. <p>The code page format defines a
+     * single-byte as a replacement character and can specify certain
+     *  "best-fit" mappings from certain Unicode characters to the code page
+     * encoding if the Unicode character is unsupported in the code page
+     * encoding. When decoding, any invalid bytes or unassigned bytes in
+     * the code page encoding are converted to the given replacement code
+     * point.</p>
      */
   public class CodePageEncoding implements ICharacterEncoding {
     private CodePageCoder coder;
@@ -147,7 +148,7 @@ import com.upokecenter.text.*;
 
         LineBreak,
 
-        End }
+        End, }
 
       private static final class TokenReader {
         private TokenType type;
@@ -160,7 +161,7 @@ import com.upokecenter.text.*;
         public void SkipToLine() {
           while (true) {
             this.ReadToTokenChar();
-          if (this.type == TokenType.LineBreak || this.type ==
+            if (this.type == TokenType.LineBreak || this.type ==
               TokenType.End) {
               return;
             }
@@ -264,9 +265,8 @@ import com.upokecenter.text.*;
                 if ((c & 0xfc00) == 0xd800 && index + 1 < str.length() &&
                     (str.charAt(index + 1) & 0xfc00) == 0xdc00) {
                   // Get the Unicode code point for the surrogate pair
-                c = 0x10000 + ((c - 0xd800) << 10) + (str.charAt(index + 1) -
-                    0xdc00);
-                  ++index;
+                c = 0x10000 + ((c & 0x3ff) << 10) + (str.charAt(index + 1) & 0x3ff);
+                ++index;
                 } else if ((c & 0xf800) == 0xd800) {
                   // unpaired surrogate
                   c = 0xfffd;
@@ -389,7 +389,7 @@ import com.upokecenter.text.*;
               this.type = TokenType.End;
               break;
             } else if (c == 0x20 || c == 0x09) {
-              continue;  // whitespace
+              continue; // whitespace
             } else if (c == (int)';') {
               // comment
               while (true) {
@@ -449,13 +449,13 @@ import com.upokecenter.text.*;
             } else if (ucs >= 0x100) {
               newarray = new int[0x3000];
             }
-          System.arraycopy(
-  this.array,
-  0,
-  newarray,
-  0,
-  this.array.length);
-      int i;
+            System.arraycopy(
+              this.array,
+              0,
+              newarray,
+              0,
+              this.array.length);
+            int i;
             for (i = this.array.length; i < newarray.length; ++i) {
               newarray[i] = -2;
             }

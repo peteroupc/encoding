@@ -40,12 +40,12 @@ Use ToReader instead.
 ### ToReader
     public static IReader ToReader​(byte[] bytes)
 Wraps a byte array into a byte reader. The reader will start at the
- beginning of the byte array. <p>In the .NET implementation, this
- method is implemented as an extension method to any byte array object
- and can be called as follows: <code>bytes.ToByteReader()</code> . If the
- object's class already has a ToByteReader method with the same
- parameters, that method takes precedence over this extension method.
- </p>
+ beginning of the byte array. <p>In the.NET implementation, this
+ method is implemented as an extension method to any byte array
+ object and can be called as follows: <code>bytes.ToByteReader()</code>. If
+ the object's class already has a ToByteReader method with the same
+ parameters, that method takes precedence over this extension
+ method.</p>
 
 **Parameters:**
 
@@ -61,10 +61,10 @@ Wraps a byte array into a byte reader. The reader will start at the
 
 ### ToReader
     public static IReader ToReader​(byte[] bytes, int offset, int length)
-Wraps a portion of a byte array into a byte reader object. <p>In the .NET
+Wraps a portion of a byte array into a byte reader object. <p>In the.getNET()
  implementation, this method is implemented as an extension method to
  any byte array object and can be called as follows:
- <code>bytes.ToByteReader(offset, length)</code> . If the object's class
+ <code>bytes.ToByteReader(offset, length)</code>. If the object's class
  already has a ToByteReader method with the same parameters, that
  method takes precedence over this extension method. </p>
 
@@ -73,10 +73,10 @@ Wraps a portion of a byte array into a byte reader object. <p>In the .NET
 * <code>bytes</code> - The byte array to wrap.
 
 * <code>offset</code> - A zero-based index showing where the desired portion of
- "bytes" begins.
+  "bytes" begins.
 
 * <code>length</code> - The length, in bytes, of the desired portion of "bytes" (but
- not more than "bytes" 's length).
+  not more than "bytes" 's length).
 
 **Returns:**
 
@@ -85,20 +85,24 @@ Wraps a portion of a byte array into a byte reader object. <p>In the .NET
 **Throws:**
 
 * <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
- less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
- ' s length minus <code>offset</code> is less than <code>length</code> .
+ less than 0 or greater than <code>bytes</code> 's length, or <code>
+ bytes</code> ' s length minus <code>offset</code> is less than <code>length</code>.
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>bytes</code> is null.
+
+* <code>java.lang.IllegalArgumentException</code> - Either "offset" or "length" is less than 0
+  or greater than "bytes"'s length, or "bytes"'s length minus "offset"
+  is less than "length".
 
 ### ToReader
     public static IReader ToReader​(java.io.InputStream input)
 Wraps an input stream into a reader object. If an IOException is thrown by
- the input stream, the reader object throws InvalidOperationException
- instead. <p>In the .NET implementation, this method is implemented as
+ the input stream, the reader object throws IllegalStateException
+ instead. <p>In the.NET implementation, this method is implemented as
  an extension method to any object implementing InputStream and can be
- called as follows: <code>input.ToByteReader()</code> . If the object's
+ called as follows: <code>input.ToByteReader()</code>. If the object's
  class already has a ToByteReader method with the same parameters,
- that method takes precedence over this extension method. </p>
+ that method takes precedence over this extension method.</p>
 
 **Parameters:**
 
@@ -134,8 +138,12 @@ Use ToReader instead.
 **Throws:**
 
 * <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
- less than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code>
- ' s length minus <code>offset</code> is less than <code>length</code> .
+ less than 0 or greater than <code>bytes</code> 's length, or <code>
+ bytes</code> ' s length minus <code>offset</code> is less than <code>length</code>.
+
+* <code>java.lang.IllegalArgumentException</code> - Either "offset" or "length" is less than 0
+  or greater than "bytes"'s length, or "bytes"'s length minus "offset"
+  is less than "length".
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>bytes</code> is null.
 
@@ -176,12 +184,12 @@ Use ToReader instead.
 ### ToWriter
     public static IWriter ToWriter​(java.io.OutputStream output)
 Wraps an output stream into a writer object. If an IOException is thrown by
- the input stream, the writer object throws InvalidOperationException
- instead. <p>In the .NET implementation, this method is implemented as
+ the input stream, the writer object throws IllegalStateException
+ instead. <p>In the.NET implementation, this method is implemented as
  an extension method to any object implementing InputStream and can be
- called as follows: <code>output.ToWriter()</code> . If the object's class
+ called as follows: <code>output.ToWriter()</code>. If the object's class
  already has a ToWriter method with the same parameters, that method
- takes precedence over this extension method. </p>
+ takes precedence over this extension method.</p>
 
 **Parameters:**
 
@@ -198,12 +206,12 @@ Wraps an output stream into a writer object. If an IOException is thrown by
 ### ToWriter
     public static IWriter ToWriter​(IByteWriter output)
 Wraps a byte writer (one that only implements a ReadByte method) to a writer
- (one that also implements a three-parameter Read method.) <p>In the
- .NET implementation, this method is implemented as an extension
+ (one that also implements a three-parameter Read method.) <p>In
+ the.NET implementation, this method is implemented as an extension
  method to any object implementing IByteWriter and can be called as
- follows: <code>output.ToWriter()</code> . If the object's class already has
+ follows: <code>output.ToWriter()</code>. If the object's class already has
  a ToWriter method with the same parameters, that method takes
- precedence over this extension method. </p>
+ precedence over this extension method.</p>
 
 **Parameters:**
 

@@ -66,7 +66,7 @@
 
   (Note that this library doesn't implement either encoding.)
 
-  ### Member Summary
+### Member Summary
 * <code>[DecodeToString(this PeterO.Text.ICharacterEncoding, byte[])](#DecodeToString_this_PeterO_Text_ICharacterEncoding_byte)</code> - Reads a byte array from a data source and converts the bytes from a given encoding to a text string.
 * <code>[DecodeToString(this PeterO.Text.ICharacterEncoding, byte[], int, int)](#DecodeToString_this_PeterO_Text_ICharacterEncoding_byte_int_int)</code> - Reads a portion of a byte array from a data source and converts the bytes from a given encoding to a text string.
 * <code>[DecodeToString(this PeterO.Text.ICharacterEncoding, PeterO.IByteReader)](#DecodeToString_this_PeterO_Text_ICharacterEncoding_PeterO_IByteReader)</code> - Reads bytes from a data source and converts the bytes from a given encoding to a text string.
@@ -103,7 +103,9 @@
 
     public static readonly PeterO.Text.ICharacterEncoding UTF8;
 
- Character encoding object for the UTF-8 character encoding, which represents each code point in the universal coded character set using 1 to 4 bytes.  <a id="DecodeToString_this_PeterO_Text_ICharacterEncoding_byte"></a>
+ Character encoding object for the UTF-8 character encoding, which represents each code point in the universal coded character set using 1 to 4 bytes.
+
+  <a id="DecodeToString_this_PeterO_Text_ICharacterEncoding_byte"></a>
 ### DecodeToString
 
     public static string DecodeToString(
@@ -114,7 +116,7 @@
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(bytes)`  . If the object's class already has a  `DecodeToString`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
@@ -140,11 +142,13 @@ The parameter  <i>enc</i>
         int offset,
         int length);
 
- Reads a portion of a byte array from a data source and converts the bytes from a given encoding to a text string. Errors in decoding are handled by replacing erroneous bytes with the replacement character (U+FFFD). In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(bytes, offset, length)`  . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
+ Reads a portion of a byte array from a data source and converts the bytes from a given encoding to a text string. Errors in decoding are handled by replacing erroneous bytes with the replacement character (U + FFFD). In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(bytes, offset,
+            length)` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
 
- In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(bytes, offset, length)`  . If the object's class already has a  `DecodeToString`  method with the same parameters, that method takes precedence over this extension method.
+ In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(bytes, offset,
+            length)` . If the object's class already has a  `DecodeToString`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+          <b>Parameters:</b>
 
  * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
@@ -175,7 +179,12 @@ Either  <i>offset</i>
  's length, or  <i> bytes</i>
  ' s length minus  <i>offset</i>
  is less than  <i>length</i>
- .
+.
+
+ * System.ArgumentNullException:
+The parameter  <i>enc</i>
+ or  <i>bytes</i>
+ is null.
 
 <a id="DecodeToString_this_PeterO_Text_ICharacterEncoding_System_IO_Stream"></a>
 ### DecodeToString
@@ -188,7 +197,7 @@ Either  <i>offset</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(input)`  . If the object's class already has a  `DecodeToString`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
@@ -213,7 +222,7 @@ The parameter "encoding" or  <i>input</i>
 
  Reads bytes from a data source and converts the bytes from a given encoding to a text string. In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: "encoding.DecodeString(input)". If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>encoding</i>: An object that implements a given character encoding. Any bytes that can't be decoded are converted to the replacement character (U+FFFD).
 
@@ -241,7 +250,7 @@ The parameter  <i>encoding</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToBytes(encoder)`  . If the object's class already has a  `EncodeToBytes`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>input</i>: An object that implements a stream of universal code points.
 
@@ -268,7 +277,7 @@ The parameter  <i>encoder</i>
 
  Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder and fallback strategy. In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToBytes(encoder, htmlFallback)`  . If the object's class already has a  `EncodeToBytes`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>input</i>: An object that implements a stream of universal code points.
 
@@ -301,7 +310,7 @@ The parameter  <i>encoder</i>
 
  Reads Unicode characters from a character input and writes them to a byte array encoded using the given character encoder. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character). In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToBytes(encoding)`  . If the object's class already has a  `EncodeToBytes`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>input</i>: An object that implements a stream of universal code points.
 
@@ -328,7 +337,7 @@ The parameter  <i>encoding</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.EncodeToBytes(enc)`  . If the object's class already has a  `EncodeToBytes`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>str</i>: A text string to encode to a byte array.
 
@@ -355,7 +364,7 @@ The parameter  <i>str</i>
 
  Reads Unicode characters from a text string and writes them to a byte array encoded in a given character encoding and using the given encoder fallback strategy. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD). In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.EncodeToBytes(enc, htmlFallback)`  . If the object's class already has a  `EncodeToBytes`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>str</i>: A text string to encode to a byte array.
 
@@ -386,7 +395,7 @@ The parameter  <i>str</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToWriter(encoder, writer)`  . If the object's class already has a  `EncodeToWriter`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>input</i>: An object that implements a stream of universal code points.
 
@@ -413,7 +422,7 @@ The parameter  <i>encoder</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToWriter(encoder, output)`  . If the object's class already has a  `EncodeToWriter`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>input</i>: An object that implements a stream of universal code points.
 
@@ -440,7 +449,7 @@ The parameter  <i>encoder</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToWriter(encoding, writer)`  . If the object's class already has a  `EncodeToWriter`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>input</i>: An object that implements a stream of universal code points.
 
@@ -466,7 +475,7 @@ The parameter  <i>encoding</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToWriter(encoding, output)`  . If the object's class already has a  `EncodeToWriter`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>input</i>: An object that implements a stream of universal code points.
 
@@ -492,7 +501,7 @@ The parameter  <i>encoding</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.EncodeToWriter(enc, writer)`  . If the object's class already has a  `EncodeToWriter`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>str</i>: A text string to encode.
 
@@ -519,7 +528,7 @@ The parameter  <i>str</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.EncodeToWriter(enc, output)`  . If the object's class already has a  `EncodeToWriter`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>str</i>: A text string to encode.
 
@@ -543,7 +552,7 @@ The parameter  <i>str</i>
 
  Converts a character encoding into a character input stream, given a streamable source of bytes. The input stream doesn't check the first few bytes for a byte-order mark indicating a Unicode encoding such as UTF-8 before using the character encoding's decoder. In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows: "encoding.GetDecoderInput(input)". If the object's class already has a GetDecoderInput method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>encoding</i>: Encoding that exposes a decoder to be converted into a character input stream. If the decoder returns -2 (indicating a decode error), the character input stream handles the error by returning a replacement character in its place.
 
@@ -564,7 +573,7 @@ An ICharacterInput object.
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.GetDecoderInput(input)`  . If the object's class already has a  `GetDecoderInput`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>encoding</i>: Encoding object that exposes a decoder to be converted into a character input stream. If the decoder returns -2 (indicating a decode error), the character input stream handles the error by returning a replacement character in its place.
 
@@ -585,7 +594,7 @@ An ICharacterInput object.
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.GetDecoderInputSkipBom(input)`  . If the object's class already has a  `GetDecoderInputSkipBom`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>encoding</i>: Encoding object that exposes a decoder to be converted into a character input stream. If the decoder returns -2 (indicating a decode error), the character input stream handles the error by returning a replacement character in its place.
 
@@ -604,7 +613,7 @@ An ICharacterInput object.
 
  Converts a character encoding into a character input stream, given a readable data stream. But if the input stream starts with a UTF-8 or UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may be, rather than the given character encoding.This method implements the "decode" algorithm specified in the Encoding standard. In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.GetDecoderInputSkipBom(input)`  . If the object's class already has a  `GetDecoderInputSkipBom`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>encoding</i>: Encoding object that exposes a decoder to be converted into a character input stream. If the decoder returns -2 (indicating a decode error), the character input stream handles the error by returning a replacement character in its place.
 
@@ -620,7 +629,9 @@ An ICharacterInput object.
     public static PeterO.Text.ICharacterEncoding GetEncoding(
         string name);
 
- Returns a character encoding from the given name.  <b>Parameters:</b>
+ Returns a character encoding from the given name.
+
+ <b>Parameters:</b>
 
  * <i>name</i>: A string naming a character encoding. See the ResolveAlias method. Can be null.
 
@@ -635,7 +646,9 @@ An object implementing a character encoding (gives access to an encoder and a de
         string name,
         bool forEmail);
 
- Returns a character encoding from the given name.  <b>Parameters:</b>
+ Returns a character encoding from the given name.
+
+ <b>Parameters:</b>
 
  * <i>name</i>: A string naming a character encoding. See the ResolveAlias method. Can be null.
 
@@ -653,7 +666,9 @@ An object that enables encoding and decoding text in the given character encodin
         bool forEmail,
         bool allowReplacement);
 
- Returns a character encoding from the given name.  <b>Parameters:</b>
+ Returns a character encoding from the given name.
+
+ <b>Parameters:</b>
 
  * <i>name</i>: A string naming a character encoding. See the ResolveAlias method. Can be null.
 
@@ -675,7 +690,7 @@ An object that enables encoding and decoding text in the given character encodin
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `reader.InputToString()`  . If the object's class already has a  `InputToString`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>reader</i>: A character input whose characters will be converted to a text string.
 
@@ -691,7 +706,7 @@ A text string containing the characters read.
 
  Resolves a character encoding's name to a standard form. This involves changing aliases of a character encoding to a standardized name. In several Internet specifications, this name is known as a "charset" parameter. In HTML and HTTP, for example, the "charset" parameter indicates the encoding used to represent text in the HTML page, text file, etc.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>name</i>: A string that names a given character encoding. Can be null. Any leading and trailing whitespace is removed and the name converted to lowercase before resolving the encoding's name. The Encoding Standard supports only the following encodings (and defines aliases for most of them).
 
@@ -764,7 +779,9 @@ A standardized name for the encoding. Returns the empty string if  <i>name</i>
     public static string ResolveAliasForEmail(
         string name);
 
- Resolves a character encoding's name to a canonical form, using rules more suitable for email.  <b>Parameters:</b>
+ Resolves a character encoding's name to a canonical form, using rules more suitable for email.
+
+ <b>Parameters:</b>
 
  * <i>name</i>: A string naming a character encoding. Can be null. Uses a modified version of the rules in the Encoding Standard to better conform, in some cases, to email standards like MIME. Encoding names and aliases not registered with the Internet Assigned Numbers Authority (IANA) are not supported, with the exception of  `ascii`  ,  `utf8`  ,  `cp1252`  , and names 10 characters or longer starting with  `iso-8859-`  . Also, the following additional encodings are supported. Note that the case combination  `GB18030`  , the combination registered with IANA, rather than  `gb18030`  can be retured by this method.
 
@@ -796,7 +813,7 @@ A standardized name for the encoding. Returns the empty string if  <i>name</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoder and can be called as follows:  `encoder.StringToBytes(str)`  . If the object's class already has a  `StringToBytes`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>encoder</i>: An object that implements a character encoder.
 
@@ -824,7 +841,7 @@ The parameter  <i>encoder</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `encoding.StringToBytes(str)`  . If the object's class already has a  `StringToBytes`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>encoding</i>: An object that implements a character encoding.
 
@@ -850,7 +867,7 @@ The parameter  <i>encoding</i>
 
  In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.StringToInput()`  . If the object's class already has a  `StringToInput`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>str</i>: The parameter  <i>str</i>
  is a text string.
@@ -873,11 +890,11 @@ The parameter  <i>str</i>
         int offset,
         int length);
 
- Converts a portion of a text string to a character input. The resulting input can then be used to encode the text to bytes, or to read the string code point by code point, among other things. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD). In the .NET implementation, this method is implemented as an extension method to any String object and can be called as follows:  `str.StringToInput(offset, length)`  . If the object's class already has a StringToInput method with the same parameters, that method takes precedence over this extension method.
+ Converts a portion of a text string to a character input. The resulting input can then be used to encode the text to bytes, or to read the string code point by code point, among other things. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U + FFFD). In the.NET implementation, this method is implemented as an extension method to any String object and can be called as follows:  `str.StringToInput(offset, length)` . If the object's class already has a StringToInput method with the same parameters, that method takes precedence over this extension method.
 
- In the .NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.StringToInput(offset, length)`  . If the object's class already has a  `StringToInput`  method with the same parameters, that method takes precedence over this extension method.
+ In the.NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.StringToInput(offset, length)` . If the object's class already has a  `StringToInput`  method with the same parameters, that method takes precedence over this extension method.
 
-  <b>Parameters:</b>
+          <b>Parameters:</b>
 
  * <i>str</i>: The parameter  <i>str</i>
  is a text string.
@@ -906,4 +923,11 @@ Either  <i>offset</i>
  's length, or  <i>             str</i>
  ' s length minus  <i>offset</i>
  is less than  <i>length</i>
- .
+.
+
+ * System.ArgumentNullException:
+The parameter  <i>str</i>
+ is null.
+
+ * System.ArgumentException:
+Either "offset" or "length" is less than 0 or greater than "str"'s length, or "str"'s length minus "offset" is less than "length".

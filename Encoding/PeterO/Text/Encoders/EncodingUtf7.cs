@@ -5,23 +5,29 @@ using PeterO.Text;
 
 namespace PeterO.Text.Encoders {
   internal class EncodingUtf7 : ICharacterEncoding {
-    internal static readonly int[] Alphabet = { -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63,
-        52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1,
-        -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
-        15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1,
-        -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-        41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, };
+    internal static readonly int[] Alphabet = {
+      -1, -1, -1, -1, -1, -1,
+      -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+      -1, -1, -1, -1, -1, -1, -1, -1, -1,
+      -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63,
+      52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1,
+      -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
+      15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1,
+      -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+      41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1,
+    };
 
     internal static readonly int[] ToAlphabet = {
-  0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d,
-  0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a,
-  0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d,
-  0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a,
-  0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x2b, 0x2f,
-      };
+      0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b,
+      0x4c, 0x4d,
+      0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58,
+      0x59, 0x5a,
+      0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b,
+      0x6c, 0x6d,
+      0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78,
+      0x79, 0x7a,
+      0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x2b, 0x2f,
+    };
 
     private class Decoder : ICharacterDecoder {
       private readonly DecoderState state;
@@ -82,8 +88,8 @@ namespace PeterO.Text.Encoders {
             // must be a valid "low surrogate" to complete the pair
             if ((codeunit & 0xfc00) == 0xdc00) {
               // valid low surrogate
-              int codepoint = 0x10000 + (codeunit - 0xdc00) +
-                ((this.surrogate - 0xd800) << 10);
+              int codepoint = 0x10000 + (codeunit & 0x3ff) +
+                ((this.surrogate & 0x3ff) << 10);
               state.AppendChar(codepoint);
               this.surrogate = -1;
             } else if ((codeunit & 0xfc00) == 0xd800) {
@@ -228,7 +234,8 @@ namespace PeterO.Text.Encoders {
                     }
                   case 2: {
                       this.base64value <<= 12;
-                      this.appender.AppendByte((this.base64value >> 16) & 0xff, this.state);
+                      this.appender.AppendByte((this.base64value >> 16) & 0xff,
+                        this.state);
                       if ((this.base64value & 0xffff) != 0) {
                         // Redundant pad bits
                         this.appender.AppendIncompleteByte();
@@ -237,8 +244,11 @@ namespace PeterO.Text.Encoders {
                     }
                   case 3: {
                       this.base64value <<= 6;
-                      this.appender.AppendByte((this.base64value >> 16) & 0xff, this.state);
-                      this.appender.AppendByte((this.base64value >> 8) & 0xff, this.state);
+                      this.appender.AppendByte((this.base64value >> 16) & 0xff,
+                        this.state);
+                        this.appender.AppendByte(
+                          (this.base64value >> 8) & 0xff,
+                          this.state);
                       if ((this.base64value & 0xff) != 0) {
                         // Redundant pad bits
                         this.appender.AppendIncompleteByte();
@@ -361,11 +371,13 @@ namespace PeterO.Text.Encoders {
           int byte2 = cc1 & 0xff;
           int byte3 = (cc2 >> 8) & 0xff;
           int byte4 = cc2 & 0xff;
-          var b64array = new byte[] { (byte)byte1,
-            (byte)byte2, (byte)byte3, (byte)byte4, };
+          var b64array = new byte[] {
+            (byte)byte1,
+            (byte)byte2, (byte)byte3, (byte)byte4,
+          };
           ret += this.AppendBase64(
-             b64array,
-             output);
+            b64array,
+            output);
         }
         return ret;
       }
@@ -383,7 +395,8 @@ namespace PeterO.Text.Encoders {
           output.WriteByte((byte)0x2d);
           return 2;
         }
-        if (c == 0x09 || c == 0x0a || c == 0x0d || (c >= 0x20 && c < 0x7e && c !=
+        if (
+          c == 0x09 || c == 0x0a || c == 0x0d || (c >= 0x20 && c < 0x7e && c !=
           0x5c)) {
           var ret = 1;
           if (this.inBase64) {

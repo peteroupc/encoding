@@ -26,8 +26,8 @@ namespace PeterO.Text.Encoders {
       }
 
       public int Encode(
-       int c,
-       IWriter output) {
+        int c,
+        IWriter output) {
         if (c < 0) {
           return -1;
         }

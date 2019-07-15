@@ -120,7 +120,7 @@ import com.upokecenter.text.*;
           this.lead = -1;
           if (this.surrogate >= 0) {
             if ((code & 0xfc00) == 0xdc00) {
-              code = 0x10000 + (code - 0xdc00) + ((this.surrogate - 0xd800) <<
+              code = 0x10000 + (code & 0x3ff) + ((this.surrogate & 0x3ff) <<
                     10);
               this.surrogate = -1;
               return code;
@@ -153,8 +153,8 @@ import com.upokecenter.text.*;
       }
 
       public int Encode(
-       int c,
-       IWriter output) {
+        int c,
+        IWriter output) {
         if (c < 0) {
           return -1;
         }

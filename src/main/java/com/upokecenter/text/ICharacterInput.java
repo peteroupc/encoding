@@ -20,7 +20,7 @@ package com.upokecenter.text;
      * (but not more than {@code chars} 's length).
      * @return Either a Unicode code point (from 0-0xd7ff or from 0xe000 to
      * 0x10ffff), or the value -1 indicating the end of the source.
-     * @throws java.lang.NullPointerException Should be thrown if "chars" is null.
+     * @throws NullPointerException Should be thrown if "chars" is null.
      */
     int Read(int[] chars, int index, int length);
   }

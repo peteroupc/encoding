@@ -144,13 +144,13 @@ import com.upokecenter.text.*;
       }
       BomBufferedTransform bomTransform = new BomBufferedTransform(transform);
       return Encodings.GetDecoderInput(
-  Encodings.UTF8,
-  bomTransform);
+        Encodings.UTF8,
+        bomTransform);
     }
 
     public static int Utf8EncodeAlgorithm(
-       ICharacterInput stream,
-       IWriter output) {
+      ICharacterInput stream,
+      IWriter output) {
       // Implements the "utf-8 encode" algorithm
       // in the Encoding Standard
       return EncodeAlgorithm(stream, Encodings.UTF8, output);
@@ -216,13 +216,13 @@ return EncodeAlgorithm(stream, encoding.GetEncoder(), output);
         throw new NullPointerException("transform");
       }
       return Encodings.GetDecoderInput(
-  Encodings.UTF8,
-  transform);
+        Encodings.UTF8,
+        transform);
     }
 
     public static ICharacterInput DecodeAlgorithmInput(
-       IByteReader transform,
-       ICharacterEncoding fallbackEncoding) {
+      IByteReader transform,
+      ICharacterEncoding fallbackEncoding) {
       // Implements the "decode" algorithm in the Encoding
       // Standard
       if (transform == null) {

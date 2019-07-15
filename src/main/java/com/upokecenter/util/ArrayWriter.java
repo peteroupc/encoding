@@ -7,9 +7,9 @@ If you like this, you should donate to Peter O.
 at: http://peteroupc.github.io/
  */
 
-  /**
-   * An array of bytes that grows as needed.
-   */
+    /**
+     * An array of bytes that grows as needed.
+     */
   public final class ArrayWriter implements IWriter {
     private int retvalPos;
     private int retvalMax;
@@ -58,8 +58,8 @@ at: http://peteroupc.github.io/
       if (this.retval.length <= this.retvalPos) {
         // Array too small, make it grow
         int newLength = Math.max(
-            this.retvalPos + 1000,
-            this.retval.length * 2);
+          this.retvalPos + 1000,
+          this.retval.length * 2);
         byte[] newArray = new byte[newLength];
         System.arraycopy(this.retval, 0, newArray, 0, this.retvalPos);
         this.retval = newArray;
@@ -76,10 +76,14 @@ at: http://peteroupc.github.io/
      * src} begins.
      * @param length The number of elements in the desired portion of {@code src}
      * (but not more than {@code src} 's length).
-     * @throws java.lang.NullPointerException The parameter {@code src} is null.
+     * @throws NullPointerException The parameter {@code src} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
-     * less than 0 or greater than {@code src} 's length, or {@code src} ' s
-     * length minus {@code offset} is less than {@code length} .
+     * less than 0 or greater than {@code src} 's length, or {@code src} '
+     * s length minus {@code offset} is less than {@code length}.
+     * @throws IllegalArgumentException Either "offset" or "length" is less than 0 or
+     *  greater than "src"'s length, or "src"'s length minus "offset" is
+     *  less than "length".
+     * @throws NullPointerException The parameter {@code src} is null.
      */
     public void write(byte[] src, int offset, int length) {
       if (src == null) {
@@ -108,8 +112,8 @@ at: http://peteroupc.github.io/
       if (this.retval.length - this.retvalPos < length) {
         // Array too small, make it grow
         int newLength = Math.max(
-  this.retvalPos + length + 1000,
-  this.retval.length * 2);
+          this.retvalPos + length + 1000,
+          this.retval.length * 2);
         byte[] newArray = new byte[newLength];
         System.arraycopy(this.retval, 0, newArray, 0, this.retvalPos);
         this.retval = newArray;

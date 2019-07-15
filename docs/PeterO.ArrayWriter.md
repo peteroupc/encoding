@@ -4,7 +4,9 @@
         PeterO.IByteWriter,
         PeterO.IWriter
 
- An array of bytes that grows as needed.  ### Member Summary
+ An array of bytes that grows as needed.
+
+### Member Summary
 * <code>[Clear()](#Clear)</code> - Offers a fast way to reset the length of the array writer's data to 0.
 * <code>[ToArray()](#ToArray)</code> - Generates an array of all bytes written so far to it.
 * <code>[Write(byte[], int, int)](#Write_byte_int_int)</code> - Writes a series of bytes to the array.
@@ -16,26 +18,34 @@
     public ArrayWriter(
         int initialSize);
 
- Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class.   <b>Parameters:</b>
+ Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class.
 
- * <i>initialSize</i>:  The initial size of the array writer's backing store.
+   <b>Parameters:</b>
+
+ * <i>initialSize</i>: The initial size of the array writer's backing store.
 
 <a id="Void_ctor"></a>
 ### ArrayWriter Constructor
 
     public ArrayWriter();
 
- Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class with a default backing store size of 16.  <a id="Clear"></a>
+ Initializes a new instance of the [PeterO.ArrayWriter](PeterO.ArrayWriter.md) class with a default backing store size of 16.
+
+  <a id="Clear"></a>
 ### Clear
 
     public void Clear();
 
- Offers a fast way to reset the length of the array writer's data to 0.  <a id="ToArray"></a>
+ Offers a fast way to reset the length of the array writer's data to 0.
+
+ <a id="ToArray"></a>
 ### ToArray
 
     public byte[] ToArray();
 
- Generates an array of all bytes written so far to it.  <b>Return Value:</b>
+ Generates an array of all bytes written so far to it.
+
+ <b>Return Value:</b>
 
 A byte array.
 
@@ -47,7 +57,9 @@ A byte array.
         int offset,
         int length);
 
- Writes a series of bytes to the array.  <b>Parameters:</b>
+ Writes a series of bytes to the array.
+
+ <b>Parameters:</b>
 
  * <i>src</i>: Byte array containing the data to write.
 
@@ -79,6 +91,8 @@ Either  <i>offset</i>
     public sealed void WriteByte(
         int byteValue);
 
- Writes an 8-bit byte to the array.  <b>Parameters:</b>
+ Writes an 8-bit byte to the array.
+
+ <b>Parameters:</b>
 
  * <i>byteValue</i>: An integer containing the byte to write. Only the lower 8 bits of this value will be used.

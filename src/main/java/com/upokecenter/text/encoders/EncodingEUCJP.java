@@ -36,7 +36,8 @@ import com.upokecenter.text.*;
           }
           if (this.lead != 0) {
             int c = -1;
-            if ((this.lead >= 0xa1 && this.lead <= 0xfe) && b >= 0xa1 && b <= 0xfe) {
+            if ((this.lead >= 0xa1 && this.lead <= 0xfe) && b >= 0xa1 && b <=
+              0xfe) {
               c = ((this.lead - 0xa1) * 94) + (b - 0xa1);
               c = this.jis0212 ? Jis0212.IndexToCodePoint(c) :
                     Jis0208.IndexToCodePoint(c);
@@ -65,8 +66,8 @@ import com.upokecenter.text.*;
 
     private static class Encoder implements ICharacterEncoder {
       public int Encode(
-       int c,
-       IWriter output) {
+        int c,
+        IWriter output) {
         if (c < 0) {
           return -1;
         }

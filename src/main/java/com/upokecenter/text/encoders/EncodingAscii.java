@@ -17,8 +17,8 @@ import com.upokecenter.text.*;
 
     private static class Encoder implements ICharacterEncoder {
       public int Encode(
-      int c,
-      IWriter output) {
+        int c,
+        IWriter output) {
         if (output == null) {
   throw new NullPointerException("output");
 }

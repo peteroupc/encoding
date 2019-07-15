@@ -197,7 +197,8 @@
       <para>The following cases return true:
       </para>
       <code>xx-x:mm example:/ww</code> The following cases return false:
-      <code>x@y:/z /x/y/z example.xyz</code> </summary>
+      <code>x@y:/z /x/y/z example.xyz</code> .
+    </summary>
     <param name='refValue'>A string representing an IRI to check.
     </param>
     <returns><c>true</c> if the string is a valid IRI with a scheme component; otherwise,
@@ -209,7 +210,8 @@
       can be used to check for relative URI references. The following cases
       return true:
       <code>http://example/z xx-x:mm example:/ww</code> The following cases return false:
-      <code>x@y:/z /x/y/z example.xyz</code> </summary>
+      <code>x@y:/z /x/y/z example.xyz</code> .
+    </summary>
     <param name='refValue'>A string representing an IRI to check.
     </param>
     <returns><c>true</c> if the string is a valid URI with a scheme component; otherwise,
@@ -428,7 +430,7 @@
   </doc>
   <doc name='M:PeterO.DataIO.ToByteReader(System.Byte[],System.Int32,System.Int32)'>
     <summary>Wraps a portion of a byte array into a byte reader.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing byte[] and can be called as follows:
         <c>bytes.ToByteReader(offset, length)</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
@@ -464,7 +466,15 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
+    </exception>
+    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+      than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
+      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>The parameter
+      <paramref name='bytes'/>
+       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.ToByteReader(System.IO.Stream)'>
@@ -504,7 +514,7 @@
   </doc>
   <doc name='M:PeterO.DataIO.ToReader(System.Byte[],System.Int32,System.Int32)'>
     <summary>Wraps a portion of a byte array into a byte reader object.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any byte array object and can be called as follows:
         <c>bytes.ToByteReader(offset, length)</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
@@ -535,7 +545,15 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>The parameter
+      <paramref name='bytes'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+      than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
+      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.ToReader(System.IO.Stream)'>
@@ -662,7 +680,15 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>The parameter
+      <paramref name='bytes'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+      than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
+      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.WriteByte(System.Int32)'>
@@ -1307,7 +1333,8 @@
       <para>The following cases return true:
       </para>
       <code>xx-x:mm example:/ww</code> The following cases return false:
-      <code>x@y:/z /x/y/z example.xyz</code> </summary>
+      <code>x@y:/z /x/y/z example.xyz</code> .
+    </summary>
     <param name='refValue'>A string representing an IRI to check.
     </param>
     <returns><c>true</c> if the string is a valid IRI with a scheme component; otherwise,
@@ -1319,7 +1346,8 @@
       can be used to check for relative URI references. The following cases
       return true:
       <code>http://example/z xx-x:mm example:/ww</code> The following cases return false:
-      <code>x@y:/z /x/y/z example.xyz</code> </summary>
+      <code>x@y:/z /x/y/z example.xyz</code> .
+    </summary>
     <param name='refValue'>A string representing an IRI to check.
     </param>
     <returns><c>true</c> if the string is a valid URI with a scheme component; otherwise,
@@ -1475,125 +1503,58 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream)'>
     <summary>Initializes a new instance of the
-      <see cref='CharacterReader'/>
-       class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF)
-      if it appears first in the stream, and replace invalid byte sequences with
-      replacement characters (U+FFFD).
+      <see cref='T:PeterO.Text.CharacterReader'/>
+      .
     </summary>
     <param name='stream'>A readable data stream.
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='stream'/>
-       is null.
-    </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32)'>
     <summary>Initializes a new instance of the
-      <see cref='CharacterReader'/>
-       class; will skip the byte-order mark (U+FEFF) if it appears first in the
-      stream and replace invalid byte sequences with replacement characters
-      (U+FFFD).
-    </summary>
-    <param name='stream'>A readable byte stream.
-    </param>
-    <param name='mode'>The method to use when detecting encodings other than UTF-8 in the byte
-      stream. This usually involves checking whether the stream begins with a
-      byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to
-      U+007F) before reading the rest of the stream. This value can be one of
-      the following:
-      <list>
-        <item>0: UTF-8 only.
-        </item>
-        <item>1: Detect UTF-16 using BOM or non-zero basic code point, otherwise
-          UTF-8.
-        </item>
-        <item>2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point,
-          otherwise UTF-8. (Tries to detect UTF-32 first.)
-        </item>
-        <item>3: Detect UTF-16 using BOM, otherwise UTF-8.
-        </item>
-        <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect
-          UTF-32 first.)
-        </item>
-      </list>
-       .
-    </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='stream'/>
-       is null.
-    </exception>
-  </doc>
-  <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)'>
-    <summary>Initializes a new instance of the
-      <see cref='CharacterReader'/>
-       class; will skip the byte-order mark (U+FEFF) if it appears first in the
-      stream and a UTF-8 stream is detected.
+      <see cref='T:PeterO.Text.CharacterReader'/>
+      .
     </summary>
     <param name='stream'>A readable data stream.
     </param>
-    <param name='mode'>The method to use when detecting encodings other than UTF-8 in the byte
-      stream. This usually involves checking whether the stream begins with a
-      byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to
-      U+007F) before reading the rest of the stream. This value can be one of
-      the following:
-      <list>
-        <item>0: UTF-8 only.
-        </item>
-        <item>1: Detect UTF-16 using BOM or non-zero basic code point, otherwise
-          UTF-8.
-        </item>
-        <item>2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point,
-          otherwise UTF-8. (Tries to detect UTF-32 first.)
-        </item>
-        <item>3: Detect UTF-16 using BOM, otherwise UTF-8.
-        </item>
-        <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect
-          UTF-32 first.)
-        </item>
-      </list>
-       .
+    <param name='mode'>The parameter
+      <paramref name='mode'/>
+       is a 32-bit signed integer.
     </param>
-    <param name='errorThrow'>When encountering invalid encoding, throw an exception if this parameter
-      is true, or replace it with U+FFFD (replacement character) if this
-      parameter is false.
+  </doc>
+  <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)'>
+    <summary>Initializes a new instance of the
+      <see cref='T:PeterO.Text.CharacterReader'/>
+      .
+    </summary>
+    <param name='stream'>A readable data stream.
+    </param>
+    <param name='mode'>The parameter
+      <paramref name='mode'/>
+       is a 32-bit signed integer.
+    </param>
+    <param name='errorThrow'>either
+      <c>true</c> or
+      <c>false</c> .
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean,System.Boolean)'>
     <summary>Initializes a new instance of the
-      <see cref='CharacterReader'/>
-       class.
+      <see cref='T:PeterO.Text.CharacterReader'/>
+      .
     </summary>
-    <param name='stream'>A readable byte stream.
+    <param name='stream'>A readable data stream.
     </param>
-    <param name='mode'>The method to use when detecting encodings other than UTF-8 in the byte
-      stream. This usually involves checking whether the stream begins with a
-      byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to
-      U+007F) before reading the rest of the stream. This value can be one of
-      the following:
-      <list>
-        <item>0: UTF-8 only.
-        </item>
-        <item>1: Detect UTF-16 using BOM or non-zero basic code point, otherwise
-          UTF-8.
-        </item>
-        <item>2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point,
-          otherwise UTF-8. (Tries to detect UTF-32 first.)
-        </item>
-        <item>3: Detect UTF-16 using BOM, otherwise UTF-8.
-        </item>
-        <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect
-          UTF-32 first.)
-        </item>
-      </list>
-       .
+    <param name='mode'>The parameter
+      <paramref name='mode'/>
+       is a 32-bit signed integer.
     </param>
-    <param name='errorThrow'>If true, will throw an exception if invalid byte sequences (in the
-      detected encoding) are found in the byte stream. If false, replaces those
-      byte sequences with replacement characters (U+FFFD) as the stream is read.
-
+    <param name='errorThrow'>either
+      <c>true</c> or
+      <c>false</c> .
     </param>
-    <param name='dontSkipUtf8Bom'>If the stream is detected as UTF-8 and this parameter is
-      <c>true</c> , won't skip the BOM character if it occurs at the start of the stream.
+    <param name='dontSkipUtf8Bom'>either
+      <c>true</c> or
+      <c>false</c> .
     </param>
     <exception cref='T:System.ArgumentNullException'>The parameter
       <paramref name='stream'/>
@@ -1602,8 +1563,8 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String)'>
     <summary>Initializes a new instance of the
-      <see cref='CharacterReader'/>
-       class.
+      <see cref='T:PeterO.Text.CharacterReader'/>
+      .
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1612,36 +1573,34 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean)'>
     <summary>Initializes a new instance of the
-      <see cref='CharacterReader'/>
-       class.
+      <see cref='T:PeterO.Text.CharacterReader'/>
+      .
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
        is a text string.
     </param>
-    <param name='skipByteOrderMark'>If true and the first character in the string is U+FEFF, skip that
-      character.
+    <param name='skipByteOrderMark'>either
+      <c>true</c> or
+      <c>false</c> .
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='str'/>
-       is null.
-    </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean,System.Boolean)'>
     <summary>Initializes a new instance of the
-      <see cref='CharacterReader'/>
-       class.
+      <see cref='T:PeterO.Text.CharacterReader'/>
+      .
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
        is a text string.
     </param>
-    <param name='skipByteOrderMark'>If true and the first character in the string is U+FEFF, skip that
-      character.
+    <param name='skipByteOrderMark'>either
+      <c>true</c> or
+      <c>false</c> .
     </param>
-    <param name='errorThrow'>When encountering invalid encoding, throw an exception if this parameter
-      is true, or replace it with U+FFFD (replacement character) if this
-      parameter is false.
+    <param name='errorThrow'>either
+      <c>true</c> or
+      <c>false</c> .
     </param>
     <exception cref='T:System.ArgumentNullException'>The parameter
       <paramref name='str'/>
@@ -1650,8 +1609,8 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32)'>
     <summary>Initializes a new instance of the
-      <see cref='CharacterReader'/>
-       class.
+      <see cref='T:PeterO.Text.CharacterReader'/>
+      .
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1668,8 +1627,8 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)'>
     <summary>Initializes a new instance of the
-      <see cref='CharacterReader'/>
-       class.
+      <see cref='T:PeterO.Text.CharacterReader'/>
+      .
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1683,12 +1642,13 @@
       <paramref name='length'/>
        is a 32-bit signed integer.
     </param>
-    <param name='skipByteOrderMark'>If true and the first character in the string portion is U+FEFF, skip that
-      character.
+    <param name='skipByteOrderMark'>either
+      <c>true</c> or
+      <c>false</c> .
     </param>
-    <param name='errorThrow'>When encountering invalid encoding, throw an exception if this parameter
-      is true, or replace it with U+FFFD (replacement character) if this
-      parameter is false.
+    <param name='errorThrow'>either
+      <c>true</c> or
+      <c>false</c> .
     </param>
     <exception cref='T:System.ArgumentNullException'>The parameter
       <paramref name='str'/>
@@ -1966,14 +1926,14 @@
     <summary>Reads a portion of a byte array from a data source and converts the bytes
       from a given encoding to a text string. Errors in decoding are handled by
       replacing erroneous bytes with the replacement character (U+FFFD).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>enc.DecodeToString(bytes, offset, length)</c> . If the object's class already has a DecodeToString method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>enc.DecodeToString(bytes, offset, length)</c> . If the object's class already has a
@@ -2016,7 +1976,13 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>The parameter
+      <paramref name='enc'/>
+       or
+      <paramref name='bytes'/>
+       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)'>
@@ -2082,7 +2048,15 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>The parameter
+      <paramref name='buffer'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+      than &#x22;buffer&#x22;&#x27;s length, or &#x22;buffer&#x22;&#x27;s length
+      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar'>
@@ -2878,13 +2852,12 @@
       code point by code point, among other things. When reading the string, any
       unpaired surrogate characters are replaced with the replacement character
       (U+FFFD).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
         <c>str.StringToInput(offset, length)</c> . If the object's class already has a
         <c>StringToInput</c> method with the same parameters, that method takes precedence over this
@@ -2918,12 +2891,21 @@
        is less than 0 or greater than
       <paramref name='str'/>
        's length, or
-      <paramref name='             str'/>
+      <paramref name='
+            str'/>
        ' s length minus
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
+    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
+      than &#x22;str&#x22;&#x27;s length, or &#x22;str&#x22;&#x27;s length minus
+      &#x22;offset&#x22; is less than &#x22;length&#x22;.
     </exception>
   </doc>
   <doc name='F:PeterO.Text.Encodings.UTF8'>

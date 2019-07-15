@@ -8,11 +8,11 @@ at: http://peteroupc.github.io/
 using System;
 
 namespace PeterO {
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="T:PeterO.IByteWriter"]/*'/>
+    /// <summary>A generic interface for writing bytes of data.</summary>
   public interface IByteWriter {
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.IByteWriter.WriteByte(System.Int32)"]/*'/>
+    /// <summary>Writes an 8-bit byte to a data source.</summary>
+    /// <param name='b'>Byte to write to the data source. Only the lower 8
+    /// bits of this value are used.</param>
     void WriteByte(int b);
   }
 }

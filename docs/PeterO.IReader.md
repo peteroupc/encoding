@@ -3,7 +3,9 @@
     public interface IReader :
         PeterO.IByteReader
 
- A generic interface for reading bytes of data from a data source.  ### Member Summary
+ A generic interface for reading bytes of data from a data source.
+
+### Member Summary
 * <code>[Read(byte[], int, int)](#Read_byte_int_int)</code> - Reads a portion of a byte array from the data source.
 
 <a id="Read_byte_int_int"></a>
@@ -14,7 +16,9 @@
         int offset,
         int length);
 
- Reads a portion of a byte array from the data source.  <b>Parameters:</b>
+ Reads a portion of a byte array from the data source.
+
+ <b>Parameters:</b>
 
  * <i>bytes</i>: A byte array which will contain the data that was read from the data source.
 

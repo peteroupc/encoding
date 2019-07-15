@@ -50,13 +50,13 @@ import com.upokecenter.text.*;
                 // Escape
                 int tmpState = -1;
                 if (this.lead == 0x24 && (b == 0x40 || b == 0x42)) {
-                  tmpState = 4;  // JIS0208
+                  tmpState = 4; // JIS0208
                   this.lead = 0;
                 } else if (this.lead == 0x28 && b == 0x42) {
-                  tmpState = 0;  // Ascii
+                  tmpState = 0; // Ascii
                   this.lead = 0;
                 } else if (this.lead == 0x28 && b == 0x4a) {
-                  tmpState = 3;  // Roman
+                  tmpState = 3; // Roman
                   this.lead = 0;
                 } else if (this.lead == 0x28 && b == 0x49) {
                   tmpState = 6;
@@ -92,7 +92,7 @@ import com.upokecenter.text.*;
                 return -2;
               }
               break;
-            case 5:  // Trail
+            case 5: // Trail
               if (b < 0) {
                 this.machineState = 4;
                 this.state.PrependOne(b);
@@ -110,7 +110,7 @@ import com.upokecenter.text.*;
                 this.machineState = 4;
                 return -2;
               }
-            case 6:  // Katakana
+            case 6: // Katakana
               if (b == 0x1b) {
                 this.machineState = 1;
               } else if (b >= 0x21 && b <= 0x5f) {
@@ -123,7 +123,7 @@ import com.upokecenter.text.*;
                 return -2;
               }
               break;
-            case 3:  // Roman
+            case 3: // Roman
               if (b == 0x1b) {
                 this.machineState = 1;
               } else if (b == 0x5c) {
@@ -157,14 +157,16 @@ import com.upokecenter.text.*;
       public Encoder() {
       }
 
-      private static int[] katakana = { 12290, 12300, 12301, 12289, 12539,
+      private static int[] katakana = {
+        12290, 12300, 12301, 12289, 12539,
         12530, 12449, 12451, 12453, 12455, 12457, 12515, 12517, 12519,
         12483, 12540, 12450, 12452, 12454, 12456, 12458, 12459, 12461,
         12463, 12465, 12467, 12469, 12471, 12473, 12475, 12477, 12479,
         12481, 12484, 12486, 12488, 12490, 12491, 12492, 12493, 12494,
         12495, 12498, 12501, 12504, 12507, 12510, 12511, 12512, 12513,
         12514, 12516, 12518, 12520, 12521, 12522, 12523, 12524, 12525,
-        12527, 12531, 12443, 12444, };
+        12527, 12531, 12443, 12444,
+      };
 
       public int Encode(int c, IWriter output) {
         int count = 0;

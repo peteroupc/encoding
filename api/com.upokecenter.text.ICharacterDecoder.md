@@ -16,13 +16,13 @@ Defines a method that can be implemented by classes that convert a stream of
 ### ReadChar
     int ReadChar​(IByteReader input)
 Reads bytes from an input transform until a Unicode code point is decoded or
- until the end of the stream is reached. <p>If this method returns -2,
- indicating an error, the caller of this method can take one of a
+ until the end of the stream is reached. <p>If this method returns
+ -2, indicating an error, the caller of this method can take one of a
  variety of actions to handle the error. For example, it can output
  one or more replacement code points instead (such as the Replacement
- Character 0xfffd), or it can throw an exception. In some cases, where
- the error won't cause data loss or a security problem, the caller can
- also ignore the decoder error. </p>
+ Character 0xfffd), or it can throw an exception. In some cases,
+ where the error won't cause data loss or a security problem, the
+ caller can also ignore the decoder error.</p>
 
 **Parameters:**
 
@@ -42,13 +42,13 @@ Reads bytes from an input transform until a Unicode code point is decoded or
 ### ReadChar
     int ReadChar​(IByteReader input)
 Reads bytes from an input transform until a Unicode code point is decoded or
- until the end of the stream is reached. <p>If this method returns -2,
- indicating an error, the caller of this method can take one of a
+ until the end of the stream is reached. <p>If this method returns
+ -2, indicating an error, the caller of this method can take one of a
  variety of actions to handle the error. For example, it can output
  one or more replacement code points instead (such as the Replacement
- Character 0xfffd), or it can throw an exception. In some cases, where
- the error won't cause data loss or a security problem, the caller can
- also ignore the decoder error. </p>
+ Character 0xfffd), or it can throw an exception. In some cases,
+ where the error won't cause data loss or a security problem, the
+ caller can also ignore the decoder error.</p>
 
 **Parameters:**
 

@@ -74,8 +74,8 @@ import com.upokecenter.text.*;
 
     private static class Encoder implements ICharacterEncoder {
       public int Encode(
-       int c,
-       IWriter output) {
+        int c,
+        IWriter output) {
         if (c < 0) {
           return -1;
         }

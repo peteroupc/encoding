@@ -17,8 +17,8 @@ namespace PeterO.Text.Encoders {
 
     private class Encoder : ICharacterEncoder {
       public int Encode(
-      int c,
-      IWriter output) {
+        int c,
+        IWriter output) {
         if (output == null) {
   throw new ArgumentNullException(nameof(output));
 }

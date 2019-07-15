@@ -91,5 +91,11 @@ Writes a series of bytes to the array.
 * <code>java.lang.NullPointerException</code> - The parameter <code>src</code> is null.
 
 * <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
- less than 0 or greater than <code>src</code> 's length, or <code>src</code> ' s
- length minus <code>offset</code> is less than <code>length</code> .
+ less than 0 or greater than <code>src</code> 's length, or <code>src</code> '
+ s length minus <code>offset</code> is less than <code>length</code>.
+
+* <code>java.lang.IllegalArgumentException</code> - Either "offset" or "length" is less than 0 or
+  greater than "src"'s length, or "src"'s length minus "offset" is
+  less than "length".
+
+* <code>java.lang.NullPointerException</code> - The parameter <code>src</code> is null.

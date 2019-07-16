@@ -6,126 +6,11 @@ using PeterO;
 using PeterO.Text.Encoders;
 
 namespace PeterO.Text {
-    /// <summary>Contains methods for converting text from one character
-    /// encoding to another. This class also contains convenience methods
-    /// for converting strings and other character inputs to sequences of
-    /// bytes and vice versa.
-    /// <para>The Encoding Standard, which is a Candidate Recommendation as
-    /// of early November 2015, defines algorithms for the most common
-    /// character encodings used on Web pages and recommends the UTF-8
-    /// encoding for new specifications and Web pages. Calling the
-    /// <c>GetEncoding(name)</c> method returns one of the character
-    /// encodings with the given name under the Encoding Standard.</para>
-    /// <para>Now let's define some terms.</para>
-    /// <para><b>Encoding Terms</b></para>
-    /// <list>
-    /// <item>A <b>code point</b> is a number that identifies a single text
-    /// character, such as a letter, digit, or symbol. (A collection of
-    /// such characters is also called an
-    /// <i>abstract character repertoire</i>.)</item>
-    /// <item>A <b>coded character set</b> is a set of code points which
-    /// are each assigned to a single text character. As used here, coded
-    /// character sets don't define how code points are laid out in
-    /// memory.</item>
-    /// <item>A <b>character encoding</b> is a mapping from a sequence of
-    /// code points, in one or more specific coded character sets, to a
-    /// sequence of bytes and vice versa. (For brevity, the rest of this
-    /// documentation may use the term
-    /// <i>encoding</i> instead. RFC 6365 uses the analogous term
-    /// <i>charset</i> instead; in this documentation, however,
-    /// <i>charset</i> is used only to refer to the names that identify a
-    /// character encoding.)</item>
-    /// <item><b>ASCII</b> is a 128-code-point coded character set that
-    /// includes the English letters and digits, common punctuation and
-    /// symbols, and control characters. As used here, its code points
-    /// match the code points within the Basic Latin block (0-127 or U +
-    /// 0000 to U + 007F) of the Unicode Standard.</item></list>
-    /// <para>There are several kinds of character encodings:</para>
-    /// <list>
-    /// <item><b>Single-byte encodings</b> define a coded character set
-    /// that assigns one code point to one byte. Thus, they can have a
-    /// maximum of 256 code points. For example:</item>
-    /// <item>(a) ISO 8859 encodings and <c>windows-1252</c>.</item>
-    /// <item>(b) ASCII is usually used as a single-byte encoding where
-    /// each code point fits in the lower 7 bits of an eight-bit byte (in
-    /// that case, the encoding is often called <c>US-ASCII</c> ). In the
-    /// Encoding Standard, all single-byte encodings use the ASCII
-    /// characters as the first 128 code points of their coded character
-    /// sets.</item>
-    /// <item><b>Multi-byte encodings</b> include code points from one or
-    /// more coded character sets and assign some or all code points to
-    /// several bytes. For example:</item>
-    /// <item>(a) <c>UTF-16LE</c> and <c>UTF-16BE</c> are two encodings
-    /// defined in the Unicode Standard. They use 2 bytes for the most
-    /// common code points, and 4 bytes for supplementary code
-    /// points.</item>
-    /// <item>(b) <c>UTF-8</c> is another encoding defined in the Unicode
-    /// Standard. It uses 1 byte for ASCII and 2 to 4 bytes for the other
-    /// Unicode code points.</item>
-    /// <item>(c) Most legacy East Asian encodings, such as
-    /// <c>Shift_JIS</c>, <c>GBK</c>, and <c>Big5</c> use 1 byte for
-    /// ASCII (or a slightly modified version) and, usually, 2 or more
-    /// bytes for national standard coded character sets. In many of these
-    /// encodings, notably <c>Shift_JIS</c>, characters whose code points
-    /// use one byte traditionally take half the space of characters whose
-    /// code points use two bytes.</item>
-    /// <item><b>Escape-based encodings</b> are combinations of single-
-    /// and/or multi-byte encodings, and use escape sequences and/or shift
-    /// codes to change which encoding to use for the bytes that follow.
-    /// For example:</item>
-    /// <item>(a) <c>ISO-2022-JP</c> supports several escape sequences that
-    /// shift into different encodings, including a Katakana, a Kanji, and
-    /// an ASCII encoding (with ASCII as the default).</item>
-    /// <item>(b) UTF-7 (not included in the Encoding Standard) is an
-    /// encoding that uses the Unicode Standard's coded character set,
-    /// which is encoded using a limited subset of ASCII. The plus symbol
-    /// (U + 002B) is used to shift into a UTF-16BE multi-byte encoding
-    /// (converted to a modified version of base-64) to encode other
-    /// Unicode code points.</item>
-    /// <item>The Encoding Standard also defines a <b>replacement
-    /// encoding</b>, which causes a decoding error and is used to alias a
-    /// few problematic or unsupported encoding names, such as
-    /// <c>hz-gb-2312</c>.</item></list>
-    /// <para><b>Getting an Encoding</b></para>
-    /// <para>The Encoding Standard includes UTF-8, UTF-16, and many legacy
-    /// encodings, and gives each one of them a name. The
-    /// <c>GetEncoding(name)</c> method takes a name string and returns an
-    /// ICharacterEncoding object that implements that encoding, or
-    /// <c>null</c> if the name is unrecognized.</para>
-    /// <para>However, the Encoding Standard is designed to include only
-    /// encodings commonly used on Web pages, not in other protocols such
-    /// as email. For email, the Encoding class includes an alternate
-    /// function <c>GetEncoding(name, forEmail)</c>. Setting
-    /// <c>forEmail</c> to <c>true</c> will use rules modified from the
-    /// Encoding Standard to better suit encoding and decoding text from
-    /// email messages.</para>
-    /// <para><b>Classes for Character Encodings</b></para>
-    /// <para>This Encodings class provides access to common character
-    /// encodings through classes as described below:</para>
-    /// <list type=''>
-    /// <item>An <b>encoder class</b> is a class that converts a sequence
-    /// of bytes to a sequence of code points in the universal character
-    /// set (otherwise known under the name Unicode). An encoder class
-    /// implements the <c>ICharacterEncoder</c> interface.</item>
-    /// <item>A <b>decoder class</b> is a class that converts a sequence of
-    /// Unicode code points to a sequence of bytes. A decoder class
-    /// implements the <c>ICharacterDecoder</c> interface.</item>
-    /// <item>An <b>encoding class</b> allows access to both an encoder
-    /// class and a decoder class and implements the
-    /// <c>ICharacterEncoding</c> interface. The encoder and decoder
-    /// classes should implement the same character encoding.</item></list>
-    /// <para><b>Custom Encodings</b></para>
-    /// <para>Classes that implement the ICharacterEncoding interface can
-    /// provide additional character encodings not included in the Encoding
-    /// Standard. Some examples of these include the following:</para>
-    /// <list>
-    /// <item>A modified version of UTF-8 used in Java's serialization
-    /// formats.</item>
-    /// <item>A modified version of UTF-7 used in the IMAP email
-    /// protocol.</item></list>
-    /// <para>(Note that this library doesn't implement either
-    /// encoding.)</para></summary>
+    /// <include file='../../docs.xml'
+    /// path='docs/doc[@name="T:PeterO.Text.Encodings"]/*'/>
   public static class Encodings {
+    /// <xmlbegin id='9'/>
+    /// <xmlend/>
     /// <summary>Character encoding object for the UTF-8 character
     /// encoding, which represents each code point in the universal coded
     /// character set using 1 to 4 bytes.</summary>
@@ -137,22 +22,8 @@ namespace PeterO.Text {
     private static readonly IDictionary<string, string> EmailAliases =
         CreateEmailAliasMap();
 
-    /// <summary>Reads bytes from a data source and converts the bytes from
-    /// a given encoding to a text string.
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: "encoding.DecodeString(input)". If the
-    /// object's class already has a DecodeToString method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='encoding'>An object that implements a given character
-    /// encoding. Any bytes that can't be decoded are converted to the
-    /// replacement character (U + FFFD).</param>
-    /// <param name='input'>An object that implements a byte
-    /// stream.</param>
-    /// <returns>The converted string.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoding'/> or <paramref name='input'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static string DecodeToString(
   #if !NET20
 this
@@ -169,26 +40,8 @@ ICharacterEncoding encoding,
          GetDecoderInput(encoding, input));
     }
 
-    /// <summary>Decodes data read from a data stream into a text string in
-    /// the given character encoding.
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>encoding.DecodeToString(input)</c>.
-    /// If the object's class already has a DecodeToString method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>enc.DecodeToString(input)</c>. If the
-    /// object's class already has a <c>DecodeToString</c> method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='enc'>An object implementing a character encoding
-    /// (gives access to an encoder and a decoder).</param>
-    /// <param name='input'>A readable byte stream.</param>
-    /// <returns>A string consisting of the decoded text.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter "encoding" or
-    /// <paramref name='input'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static string DecodeToString(
   #if !NET20
 this
@@ -205,28 +58,8 @@ ICharacterEncoding enc,
          GetDecoderInput(enc, DataIO.ToReader(input)));
     }
 
-    /// <summary>Reads a byte array from a data source and converts the
-    /// bytes from a given encoding to a text string. Errors in decoding
-    /// are handled by replacing erroneous bytes with the replacement
-    /// character (U + FFFD).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>enc.DecodeToString(bytes)</c>. If the
-    /// object's class already has a DecodeToString method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>enc.DecodeToString(bytes)</c>. If the
-    /// object's class already has a <c>DecodeToString</c> method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='enc'>An object implementing a character encoding
-    /// (gives access to an encoder and a decoder).</param>
-    /// <param name='bytes'>A byte array.</param>
-    /// <returns>A string consisting of the decoded text.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='enc'/> or <paramref name='bytes'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[])"]/*'/>
     public static string DecodeToString(
   #if !NET20
 this
@@ -242,8 +75,44 @@ ICharacterEncoding enc,
       return DecodeToString(enc, DataIO.ToReader(bytes));
     }
 
-    /// <include file='../../docs.xml'
-    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.Byte[],System.Int32,System.Int32)"]/*'/>
+    /// <xmlbegin id='10'/>
+    /// <xmlend/>
+    /// <summary>Reads a portion of a byte array from a data source and
+    /// converts the bytes from a given encoding to a text string. Errors
+    /// in decoding are handled by replacing erroneous bytes with the
+    /// replacement character (U + FFFD).
+    /// <para>In the.NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterEncoding and
+    /// can be called as follows: <c>enc.DecodeToString(bytes, offset,
+    /// length)</c>. If the object's class already has a DecodeToString
+    /// method with the same parameters, that method takes precedence over
+    /// this extension method.</para>
+    /// <para>In the.NET implementation, this method is implemented as an
+    /// extension method to any object implementing ICharacterEncoding and
+    /// can be called as follows: <c>enc.DecodeToString(bytes, offset,
+    /// length)</c>. If the object's class already has a
+    /// <c>DecodeToString</c> method with the same parameters, that method
+    /// takes precedence over this extension method.</para></summary>
+    /// <param name='enc'>An object implementing a character encoding
+    /// (gives access to an encoder and a decoder).</param>
+    /// <param name='bytes'>A byte array containing the desired portion to
+    /// read.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of <paramref name='bytes'/> begins.</param>
+    /// <param name='length'>The length, in bytes, of the desired portion
+    /// of <paramref name='bytes'/> (but not more than <paramref
+    /// name='bytes'/> 's length).</param>
+    /// <returns>A string consisting of the decoded text.</returns>
+    /// <exception cref=' T:System.ArgumentNullException'>The parameter
+    /// <paramref name='enc'/> or <paramref name='bytes'/> is
+    /// null.</exception>
+    /// <exception cref='ArgumentException'>Either <paramref
+    /// name='offset'/> or <paramref name='length'/> is less than 0 or
+    /// greater than <paramref name='bytes'/> 's length, or <paramref
+    /// name=' bytes'/> ' s length minus <paramref name='offset'/> is less
+    /// than <paramref name='length'/>.</exception>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='enc'/> or <paramref name='bytes'/> is null.</exception>
     public static string DecodeToString(
   #if !NET20
 this
@@ -281,24 +150,8 @@ ICharacterEncoding enc,
       return DecodeToString(enc, DataIO.ToReader(bytes, offset, length));
     }
 
-    /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded using the given character encoder.
-    /// When writing to the byte array, any characters that can't be
-    /// encoded are replaced with the byte 0x3f (the question mark
-    /// character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToBytes(encoding)</c>. If the
-    /// object's class already has a <c>EncodeToBytes</c> method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='input'>An object that implements a stream of universal
-    /// code points.</param>
-    /// <param name='encoding'>An object that implements a given character
-    /// encoding.</param>
-    /// <returns>A byte array containing the encoded text.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoding'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding)"]/*'/>
     public static byte[] EncodeToBytes(
   #if !NET20
 this
@@ -311,29 +164,8 @@ ICharacterInput input,
       return EncodeToBytes(input, encoding.GetEncoder());
     }
 
-    /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded using a given character encoding. When
-    /// writing to the byte array, any characters that can't be encoded are
-    /// replaced with the byte 0x3f (the question mark character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToBytes(encoder)</c>. If the
-    /// object's class already has a EncodeToBytes method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToBytes(encoder)</c>. If the
-    /// object's class already has a <c>EncodeToBytes</c> method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='input'>An object that implements a stream of universal
-    /// code points.</param>
-    /// <param name='encoder'>An object that implements a character
-    /// encoder.</param>
-    /// <returns>A byte array.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoder'/> or <paramref name='input'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder)"]/*'/>
     public static byte[] EncodeToBytes(
   #if !NET20
 this
@@ -343,30 +175,8 @@ ICharacterInput input,
       return EncodeToBytes(input, encoder, false);
     }
 
-    /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded using the given character encoder and
-    /// fallback strategy.
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToBytes(encoder,
-    /// htmlFallback)</c>. If the object's class already has a
-    /// <c>EncodeToBytes</c> method with the same parameters, that method
-    /// takes precedence over this extension method.</para></summary>
-    /// <param name='input'>An object that implements a stream of universal
-    /// code points.</param>
-    /// <param name='encoder'>A character encoder that takes Unicode
-    /// characters and writes them into bytes.</param>
-    /// <param name='htmlFallback'>If true, when the encoder encounters
-    /// invalid characters that can't be mapped into bytes, writes the HTML
-    /// decimal escape for the invalid characters instead. If false, writes
-    /// a question mark byte (0x3f) upon encountering invalid
-    /// characters.</param>
-    /// <returns>A byte array containing the encoded characters.</returns>
-    /// <exception cref=' T:System.ArgumentNullException'>The parameter
-    /// <paramref name=' encoder'/> or <paramref name=' input'/> is
-    /// null.</exception>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoder'/> or <paramref name='input'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,System.Boolean)"]/*'/>
     public static byte[] EncodeToBytes(
   #if !NET20
 this
@@ -399,29 +209,8 @@ EncoderAlgorithms.EncodeAlgorithm(input, encoder, writer);
       return writer.ToArray();
     }
 
-    /// <summary>Reads Unicode characters from a text string and writes
-    /// them to a byte array encoded in a given character encoding. When
-    /// reading the string, any unpaired surrogate characters are replaced
-    /// with the replacement character (U + FFFD), and when writing to the
-    /// byte array, any characters that can't be encoded are replaced with
-    /// the byte 0x3f (the question mark character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any String object and can be called as follows:
-    /// <c>str.EncodeToBytes(enc)</c>. If the object's class already has a
-    /// EncodeToBytes method with the same parameters, that method takes
-    /// precedence over this extension method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing string and can be
-    /// called as follows: <c>str.EncodeToBytes(enc)</c>. If the object's
-    /// class already has a <c>EncodeToBytes</c> method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='str'>A text string to encode to a byte array.</param>
-    /// <param name='enc'>An object implementing a character encoding
-    /// (gives access to an encoder and a decoder).</param>
-    /// <returns>A byte array containing the encoded text string.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='str'/> or <paramref name='enc'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding)"]/*'/>
     public static byte[] EncodeToBytes(
   #if !NET20
 this
@@ -440,28 +229,8 @@ string str,
   false);
     }
 
-    /// <summary>Reads Unicode characters from a text string and writes
-    /// them to a byte array encoded in a given character encoding and
-    /// using the given encoder fallback strategy. When reading the string,
-    /// any unpaired surrogate characters are replaced with the replacement
-    /// character (U + FFFD).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing string and can be
-    /// called as follows: <c>str.EncodeToBytes(enc, htmlFallback)</c>. If
-    /// the object's class already has a <c>EncodeToBytes</c> method with
-    /// the same parameters, that method takes precedence over this
-    /// extension method.</para></summary>
-    /// <param name='str'>A text string to encode to a byte array.</param>
-    /// <param name='enc'>An object implementing a character encoding
-    /// (gives access to an encoder and a decoder).</param>
-    /// <param name='htmlFallback'>If true, when the encoder encounters
-    /// invalid characters that can't be mapped into bytes, writes the HTML
-    /// decimal escape for the invalid characters instead. If false, writes
-    /// a question mark byte (0x3f) upon encountering invalid
-    /// characters.</param>
-    /// <returns>A byte array containing the encoded text string.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='str'/> or <paramref name='enc'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToBytes(System.String,PeterO.Text.ICharacterEncoding,System.Boolean)"]/*'/>
     public static byte[] EncodeToBytes(
   #if !NET20
 this
@@ -481,30 +250,8 @@ string str,
         htmlFallback);
     }
 
-    /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded using the given character encoder.
-    /// When writing to the byte array, any characters that can't be
-    /// encoded are replaced with the byte 0x3f (the question mark
-    /// character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToBytes(encoding)</c>. If the
-    /// object's class already has a EncodeToBytes method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToWriter(encoding, writer)</c>. If the object's class already has a <c>EncodeToWriter</c> method
-    /// with the same parameters, that method takes precedence over this
-    /// extension method.</para></summary>
-    /// <param name='input'>An object that implements a stream of universal
-    /// code points.</param>
-    /// <param name='encoding'>An object that implements a character
-    /// encoding.</param>
-    /// <param name='writer'>A byte writer to write the encoded bytes
-    /// to.</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoding'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
   #if !NET20
 this
@@ -518,29 +265,8 @@ ICharacterInput input,
       EncodeToWriter(input, encoding.GetEncoder(), writer);
     }
 
-    /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded in a given character encoding. When
-    /// writing to the byte array, any characters that can't be encoded are
-    /// replaced with the byte 0x3f (the question mark character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToBytes(encoder)</c>. If the
-    /// object's class already has a EncodeToBytes method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToWriter(encoder, writer)</c>. If the object's class already has a <c>EncodeToWriter</c> method
-    /// with the same parameters, that method takes precedence over this
-    /// extension method.</para></summary>
-    /// <param name='input'>An object that implements a stream of universal
-    /// code points.</param>
-    /// <param name='encoder'>An object that implements a character
-    /// encoder.</param>
-    /// <param name='writer'>A byte writer to write the encoded bytes
-    /// to.</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoder'/> or <paramref name='input'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
   #if !NET20
 this
@@ -570,30 +296,8 @@ ICharacterInput input,
       }
     }
 
-    /// <summary>Converts a text string to bytes and writes the bytes to an
-    /// output byte writer. When reading the string, any unpaired surrogate
-    /// characters are replaced with the replacement character (U + FFFD),
-    /// and when writing to the byte stream, any characters that can't be
-    /// encoded are replaced with the byte 0x3f (the question mark
-    /// character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any String object and can be called as follows:
-    /// <c>str.EncodeToBytes(enc, writer)</c>. If the object's class
-    /// already has a EncodeToBytes method with the same parameters, that
-    /// method takes precedence over this extension method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing string and can be
-    /// called as follows: <c>str.EncodeToWriter(enc, writer)</c>. If the
-    /// object's class already has a <c>EncodeToWriter</c> method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='str'>A text string to encode.</param>
-    /// <param name='enc'>An object implementing a character encoding
-    /// (gives access to an encoder and a decoder).</param>
-    /// <param name='writer'>A byte writer where the encoded bytes will be
-    /// written to.</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='str'/> or <paramref name='enc'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,PeterO.IWriter)"]/*'/>
     public static void EncodeToWriter(
   #if !NET20
 this
@@ -610,29 +314,8 @@ string str,
       EncodeToWriter(new CharacterReader(str), enc, writer);
     }
 
-    /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded using the given character encoder.
-    /// When writing to the byte array, any characters that can't be
-    /// encoded are replaced with the byte 0x3f (the question mark
-    /// character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToBytes(encoding)</c>. If the
-    /// object's class already has a EncodeToBytes method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToWriter(encoding, output)</c>. If the object's class already has a <c>EncodeToWriter</c> method
-    /// with the same parameters, that method takes precedence over this
-    /// extension method.</para></summary>
-    /// <param name='input'>An object that implements a stream of universal
-    /// code points.</param>
-    /// <param name='encoding'>An object that implements a character
-    /// encoding.</param>
-    /// <param name='output'>A writable data stream.</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoding'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
   #if !NET20
 this
@@ -646,28 +329,8 @@ ICharacterInput input,
       EncodeToWriter(input, encoding.GetEncoder(), DataIO.ToWriter(output));
     }
 
-    /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded in a given character encoding. When
-    /// writing to the byte array, any characters that can't be encoded are
-    /// replaced with the byte 0x3f (the question mark character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToBytes(encoder)</c>. If the
-    /// object's class already has a EncodeToBytes method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>input.EncodeToWriter(encoder, output)</c>. If the object's class already has a <c>EncodeToWriter</c> method
-    /// with the same parameters, that method takes precedence over this
-    /// extension method.</para></summary>
-    /// <param name='input'>An object that implements a stream of universal
-    /// code points.</param>
-    /// <param name='encoder'>An object that implements a character
-    /// encoder.</param>
-    /// <param name='output'>A writable data stream.</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoder'/> or <paramref name='input'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
   #if !NET20
 this
@@ -679,29 +342,8 @@ ICharacterInput input,
       EncodeToWriter(input, encoder, writer);
     }
 
-    /// <summary>Converts a text string to bytes and writes the bytes to an
-    /// output data stream. When reading the string, any unpaired surrogate
-    /// characters are replaced with the replacement character (U + FFFD),
-    /// and when writing to the byte stream, any characters that can't be
-    /// encoded are replaced with the byte 0x3f (the question mark
-    /// character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any String object and can be called as follows:
-    /// <c>str.EncodeToBytes(enc, writer)</c>. If the object's class
-    /// already has a EncodeToBytes method with the same parameters, that
-    /// method takes precedence over this extension method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing string and can be
-    /// called as follows: <c>str.EncodeToWriter(enc, output)</c>. If the
-    /// object's class already has a <c>EncodeToWriter</c> method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='str'>A text string to encode.</param>
-    /// <param name='enc'>An object implementing a character encoding
-    /// (gives access to an encoder and a decoder).</param>
-    /// <param name='output'>A writable data stream.</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='str'/> or <paramref name='enc'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.EncodeToWriter(System.String,PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static void EncodeToWriter(
   #if !NET20
 this
@@ -721,24 +363,8 @@ string str,
      DataIO.ToWriter(output));
     }
 
-    /// <summary>Converts a character encoding into a character input
-    /// stream, given a streamable source of bytes. The input stream
-    /// doesn't check the first few bytes for a byte-order mark indicating
-    /// a Unicode encoding such as UTF-8 before using the character
-    /// encoding's decoder.
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: "encoding.GetDecoderInput(input)". If the
-    /// object's class already has a GetDecoderInput method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='encoding'>Encoding that exposes a decoder to be
-    /// converted into a character input stream. If the decoder returns -2
-    /// (indicating a decode error), the character input stream handles the
-    /// error by returning a replacement character in its place.</param>
-    /// <param name='stream'>Byte stream to convert into Unicode
-    /// characters.</param>
-    /// <returns>An ICharacterInput object.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static ICharacterInput GetDecoderInput(
   #if !NET20
 this
@@ -750,29 +376,8 @@ ICharacterEncoding encoding,
         stream);
     }
 
-    /// <summary>Converts a character encoding into a character input
-    /// stream, given a data stream. The input stream doesn't check the
-    /// first few bytes for a byte-order mark indicating a Unicode encoding
-    /// such as UTF-8 before using the character encoding's decoder.
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>encoding.GetDecoderInput(input)</c>.
-    /// If the object's class already has a GetDecoderInput method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>encoding.GetDecoderInput(input)</c>.
-    /// If the object's class already has a <c>GetDecoderInput</c> method
-    /// with the same parameters, that method takes precedence over this
-    /// extension method.</para></summary>
-    /// <param name='encoding'>Encoding object that exposes a decoder to be
-    /// converted into a character input stream. If the decoder returns -2
-    /// (indicating a decode error), the character input stream handles the
-    /// error by returning a replacement character in its place.</param>
-    /// <param name='input'>Byte stream to convert into Unicode
-    /// characters.</param>
-    /// <returns>An ICharacterInput object.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static ICharacterInput GetDecoderInput(
   #if !NET20
 this
@@ -784,27 +389,8 @@ ICharacterEncoding encoding,
         DataIO.ToReader(input));
     }
 
-    /// <summary>Converts a character encoding into a character input
-    /// stream, given a streamable source of bytes. But if the input stream
-    /// starts with a UTF-8 or UTF-16 byte order mark, the input is decoded
-    /// as UTF-8 or UTF-16, as the case may be, rather than the given
-    /// character encoding.
-    /// <para>This method implements the "decode" algorithm specified in
-    /// the Encoding standard.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows:
-    /// <c>encoding.GetDecoderInputSkipBom(input)</c>. If the object's
-    /// class already has a <c>GetDecoderInputSkipBom</c> method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='encoding'>Encoding object that exposes a decoder to be
-    /// converted into a character input stream. If the decoder returns -2
-    /// (indicating a decode error), the character input stream handles the
-    /// error by returning a replacement character in its place.</param>
-    /// <param name='stream'>Byte stream to convert into Unicode
-    /// characters.</param>
-    /// <returns>An ICharacterInput object.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)"]/*'/>
     public static ICharacterInput GetDecoderInputSkipBom(
   #if !NET20
 this
@@ -814,26 +400,8 @@ ICharacterEncoding encoding,
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
 
-    /// <summary>Converts a character encoding into a character input
-    /// stream, given a readable data stream. But if the input stream
-    /// starts with a UTF-8 or UTF-16 byte order mark, the input is decoded
-    /// as UTF-8 or UTF-16, as the case may be, rather than the given
-    /// character encoding.This method implements the "decode" algorithm
-    /// specified in the Encoding standard.
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows:
-    /// <c>encoding.GetDecoderInputSkipBom(input)</c>. If the object's
-    /// class already has a <c>GetDecoderInputSkipBom</c> method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='encoding'>Encoding object that exposes a decoder to be
-    /// converted into a character input stream. If the decoder returns -2
-    /// (indicating a decode error), the character input stream handles the
-    /// error by returning a replacement character in its place.</param>
-    /// <param name='input'>Byte stream to convert into Unicode
-    /// characters.</param>
-    /// <returns>An ICharacterInput object.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,System.IO.Stream)"]/*'/>
     public static ICharacterInput GetDecoderInputSkipBom(
   #if !NET20
 this
@@ -845,28 +413,14 @@ ICharacterEncoding encoding,
         encoding);
     }
 
-    /// <summary>Returns a character encoding from the given
-    /// name.</summary>
-    /// <param name='name'>A string naming a character encoding. See the
-    /// ResolveAlias method. Can be null.</param>
-    /// <returns>An object implementing a character encoding (gives access
-    /// to an encoder and a decoder).</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String)"]/*'/>
     public static ICharacterEncoding GetEncoding(string name) {
       return GetEncoding(name, false, true);
     }
 
-    /// <summary>Returns a character encoding from the given
-    /// name.</summary>
-    /// <param name='name'>A string naming a character encoding. See the
-    /// ResolveAlias method. Can be null.</param>
-    /// <param name='forEmail'>If false, uses the encoding resolution rules
-    /// in the Encoding Standard. If true, uses modified rules as described
-    /// in the ResolveAliasForEmail method.</param>
-    /// <param name='allowReplacement'>Has no effect.</param>
-    /// <returns>An object that enables encoding and decoding text in the
-    /// given character encoding. Returns null if the name is null or
-    /// empty, or if it names an unrecognized or unsupported
-    /// encoding.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean,System.Boolean)"]/*'/>
     public static ICharacterEncoding GetEncoding(
       string name,
       bool forEmail,
@@ -875,17 +429,8 @@ ICharacterEncoding encoding,
         ToLowerCaseAscii(name).Equals("replacement",
   StringComparison.Ordinal)) ? null : GetEncoding(name, forEmail); }
 
-    /// <summary>Returns a character encoding from the given
-    /// name.</summary>
-    /// <param name='name'>A string naming a character encoding. See the
-    /// ResolveAlias method. Can be null.</param>
-    /// <param name='forEmail'>If false, uses the encoding resolution rules
-    /// in the Encoding Standard. If true, uses modified rules as described
-    /// in the ResolveAliasForEmail method.</param>
-    /// <returns>An object that enables encoding and decoding text in the
-    /// given character encoding. Returns null if the name is null or
-    /// empty, or if it names an unrecognized or unsupported
-    /// encoding.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.GetEncoding(System.String,System.Boolean)"]/*'/>
     public static ICharacterEncoding GetEncoding(
       string name,
       bool forEmail) {
@@ -1423,23 +968,8 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
           EncodingReplacement() : null);
     }
 
-    /// <summary>Reads Unicode characters from a character input and
-    /// converts them to a text string.
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>reader.InputToString()</c>. If the
-    /// object's class already has a InputToString method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterInput and can
-    /// be called as follows: <c>reader.InputToString()</c>. If the
-    /// object's class already has a <c>InputToString</c> method with the
-    /// same parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='reader'>A character input whose characters will be
-    /// converted to a text string.</param>
-    /// <returns>A text string containing the characters read.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.InputToString(PeterO.Text.ICharacterInput)"]/*'/>
     public static string InputToString(
   #if !NET20
 this
@@ -1461,70 +991,8 @@ ICharacterInput reader) {
       return builder.ToString();
     }
 
-    /// <summary>Resolves a character encoding's name to a standard form.
-    /// This involves changing aliases of a character encoding to a
-    /// standardized name.
-    /// <para>In several Internet specifications, this name is known as a
-    /// "charset" parameter. In HTML and HTTP, for example, the "charset"
-    /// parameter indicates the encoding used to represent text in the HTML
-    /// page, text file, etc.</para></summary>
-    /// <param name='name'>A string that names a given character encoding.
-    /// Can be null. Any leading and trailing whitespace is removed and the
-    /// name converted to lowercase before resolving the encoding's name.
-    /// The Encoding Standard supports only the following encodings (and
-    /// defines aliases for most of them).
-    /// <list type='bullet'>
-    /// <item><c>UTF-8</c> - UTF-8 (8-bit encoding of the universal coded
-    /// character set, the encoding recommended by the Encoding Standard
-    /// for new data formats)</item>
-    /// <item><c>UTF-16LE</c> - UTF-16 little-endian (16-bit UCS)</item>
-    /// <item><c>UTF-16BE</c> - UTF-16 big-endian (16-bit UCS)</item>
-    /// <item>The special-purpose encoding <c>x-user-defined</c></item>
-    /// <item>The special-purpose encoding <c>replacement</c>.</item>
-    /// <item>28 legacy single-byte encodings:
-    /// <list type='bullet'>
-    /// <item><c>windows-1252</c> : Western Europe (Note: The Encoding
-    /// Standard aliases the names <c>US-ASCII</c> and <c>ISO-8859-1</c> to
-    /// <c>windows-1252</c>, which uses a different coded character set
-    /// from either; it differs from <c>ISO-8859-1</c> by assigning
-    /// different characters to some bytes from 0x80 to 0x9F. The Encoding
-    /// Standard does this for compatibility with existing Web
-    /// pages.)</item>
-    /// <item><c>ISO-8859-2</c>, <c>windows-1250</c> : Central
-    /// Europe</item>
-    /// <item><c>ISO-8859-10</c> : Northern Europe</item>
-    /// <item><c>ISO-8859-4</c>, <c>windows-1257</c> : Baltic</item>
-    /// <item><c>ISO-8859-13</c> : Estonian</item>
-    /// <item><c>ISO-8859-14</c> : Celtic</item>
-    /// <item><c>ISO-8859-16</c> : Romanian</item>
-    /// <item><c>ISO-8859-5</c>, <c>IBM-866</c>, <c>KOI8-R</c>,
-    /// <c>windows-1251</c>, <c>x-mac-cyrillic</c> : Cyrillic</item>
-    /// <item><c>KOI8-U</c> : Ukrainian</item>
-    /// <item><c>ISO-8859-7</c>, <c>windows-1253</c> : Greek</item>
-    /// <item><c>ISO-8859-6</c>, <c>windows-1256</c> : Arabic</item>
-    /// <item><c>ISO-8859-8</c>, <c>ISO-8859-8-I</c>, <c>windows-1255</c>
-    /// : Hebrew</item>
-    /// <item><c>ISO-8859-3</c> : Latin 3</item>
-    /// <item><c>ISO-8859-15</c>, <c>windows-1254</c> : Turkish</item>
-    /// <item><c>windows-874</c> : Thai</item>
-    /// <item><c>windows-1258</c> : Vietnamese</item>
-    /// <item><c>macintosh</c> : Mac Roman</item></list></item>
-    /// <item>Three legacy Japanese encodings: <c>Shift_JIS</c>,
-    /// <c>EUC-JP</c>, <c>ISO-2022-JP</c></item>
-    /// <item>Two legacy simplified Chinese encodings: <c>GBK</c> and
-    /// <c>gb18030</c></item>
-    /// <item><c>Big5</c> : legacy traditional Chinese encoding</item>
-    /// <item><c>EUC-KR</c> : legacy Korean encoding</item></list>
-    /// <para>The <c>UTF-8</c>, <c>UTF-16LE</c>, and <c>UTF-16BE</c>
-    /// encodings don't encode a byte-order mark at the start of the text
-    /// (doing so is not recommended for <c>UTF-8</c>, while in
-    /// <c>UTF-16LE</c> and <c>UTF-16BE</c>, the byte-order mark character
-    /// U + FEFF is treated as an ordinary character, unlike in the UTF-16
-    /// encoding form). The Encoding Standard aliases <c>UTF-16</c> to
-    /// <c>UTF-16LE</c> "to deal with deployed content".</para>.</param>
-    /// <returns>A standardized name for the encoding. Returns the empty
-    /// string if <paramref name='name'/> is null or empty, or if the
-    /// encoding name is unsupported.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.ResolveAlias(System.String)"]/*'/>
     public static string ResolveAlias(string name) {
       if (String.IsNullOrEmpty(name)) {
         return String.Empty;
@@ -1535,48 +1003,8 @@ ICharacterInput reader) {
              String.Empty;
     }
 
-    /// <summary>Resolves a character encoding's name to a canonical form,
-    /// using rules more suitable for email.</summary>
-    /// <param name='name'>A string naming a character encoding. Can be
-    /// null. Uses a modified version of the rules in the Encoding Standard
-    /// to better conform, in some cases, to email standards like MIME.
-    /// Encoding names and aliases not registered with the Internet
-    /// Assigned Numbers Authority (IANA) are not supported, with the
-    /// exception of <c>ascii</c>, <c>utf8</c>, <c>cp1252</c>, and names
-    /// 10 characters or longer starting with <c>iso-8859-</c>. Also, the
-    /// following additional encodings are supported. Note that the case
-    /// combination <c>GB18030</c>, the combination registered with IANA,
-    /// rather than <c>gb18030</c> can be retured by this method.
-    /// <list type='bullet'>
-    /// <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an
-    /// alias to <c>windows-1252</c> as specified in the Encoding Standard.
-    /// The coded character set's code points match those in the Unicode
-    /// Standard's Basic Latin block (0-127 or U + 0000 to U + 007F). The
-    /// name <c>ascii</c> is an alias.</item>
-    /// <item><c>ISO-8859-1</c> - Latin-1 single-byte encoding, rather than
-    /// an alias to <c>windows-1252</c> as specified in the Encoding
-    /// Standard. The coded character set's code points match those in the
-    /// Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255
-    /// or U + 0000 to U + 00FF).</item>
-    /// <item><c>UTF-16</c> - UTF-16 without a fixed byte order, rather
-    /// than an alias to <c>UTF-16LE</c> as specified in the Encoding
-    /// Standard. The byte order is little endian if the byte stream starts
-    /// with 0xff 0xfe; otherwise, big endian. A leading 0xff 0xfe or 0xfe
-    /// 0xff in the byte stream is skipped.</item>
-    /// <item><c>UTF-7</c> - UTF-7 (7-bit universal coded character set).
-    /// The name <c>unicode-1-1-utf-7</c> is not supported and is not
-    /// treated as an alias to <c>UTF-7</c>, even though it uses the same
-    /// character encoding scheme as UTF-7, because RFC 1642, which defined
-    /// the former UTF-7, is linked to a different Unicode version with an
-    /// incompatible character repertoire (notably, the Hangul syllables
-    /// have different code point assignments in Unicode 1.1 and earlier
-    /// than in Unicode 2.0 and later).</item>
-    /// <item><c>ISO-2022-JP-2</c> - similar to "ISO-2022-JP", except that
-    /// the decoder supports additional character sets.</item></list>
-    /// .</param>
-    /// <returns>A standardized name for the encoding. Returns the empty
-    /// string if <paramref name='name'/> is null or empty, or if the
-    /// encoding name is unsupported.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.ResolveAliasForEmail(System.String)"]/*'/>
     public static string ResolveAliasForEmail(string name) {
       if (String.IsNullOrEmpty(name)) {
         return String.Empty;
@@ -1600,31 +1028,8 @@ ICharacterInput reader) {
       return String.Empty;
     }
 
-    /// <summary>Converts a text string to a byte array encoded in a given
-    /// character encoding. When reading the string, any unpaired surrogate
-    /// characters are replaced with the replacement character (U + FFFD),
-    /// and when writing to the byte array, any characters that can't be
-    /// encoded are replaced with the byte 0x3f (the question mark
-    /// character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>encoding.StringToBytes(str)</c>. If
-    /// the object's class already has a StringToBytes method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoding and
-    /// can be called as follows: <c>encoding.StringToBytes(str)</c>. If
-    /// the object's class already has a <c>StringToBytes</c> method with
-    /// the same parameters, that method takes precedence over this
-    /// extension method.</para></summary>
-    /// <param name='encoding'>An object that implements a character
-    /// encoding.</param>
-    /// <param name='str'>A string to be encoded into a byte array.</param>
-    /// <returns>A byte array containing the string encoded in the given
-    /// text encoding.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoding'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoding,System.String)"]/*'/>
     public static byte[] StringToBytes(
   #if !NET20
 this
@@ -1637,31 +1042,8 @@ ICharacterEncoding encoding,
       return StringToBytes(encoding.GetEncoder(), str);
     }
 
-    /// <summary>Converts a text string to a byte array using the given
-    /// character encoder. When reading the string, any unpaired surrogate
-    /// characters are replaced with the replacement character (U + FFFD),
-    /// and when writing to the byte array, any characters that can't be
-    /// encoded are replaced with the byte 0x3f (the question mark
-    /// character).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoder and
-    /// can be called as follows: <c>encoder.StringToBytes(str)</c>. If
-    /// the object's class already has a StringToBytes method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing ICharacterEncoder and
-    /// can be called as follows: <c>encoder.StringToBytes(str)</c>. If
-    /// the object's class already has a <c>StringToBytes</c> method with
-    /// the same parameters, that method takes precedence over this
-    /// extension method.</para></summary>
-    /// <param name='encoder'>An object that implements a character
-    /// encoder.</param>
-    /// <param name='str'>A text string to encode into a byte
-    /// array.</param>
-    /// <returns>A byte array.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='encoder'/> or <paramref name='str'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.StringToBytes(PeterO.Text.ICharacterEncoder,System.String)"]/*'/>
     public static byte[] StringToBytes(
   #if !NET20
 this
@@ -1679,27 +1061,8 @@ ICharacterEncoder encoder,
           encoder);
     }
 
-    /// <summary>Converts a text string to a character input. The resulting
-    /// input can then be used to encode the text to bytes, or to read the
-    /// string code point by code point, among other things. When reading
-    /// the string, any unpaired surrogate characters are replaced with the
-    /// replacement character (U + FFFD).
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any String object and can be called as follows:
-    /// <c>str.StringToInput(offset, length)</c>. If the object's class
-    /// already has a StringToInput method with the same parameters, that
-    /// method takes precedence over this extension method.</para>
-    /// <para>In the.NET implementation, this method is implemented as an
-    /// extension method to any object implementing string and can be
-    /// called as follows: <c>str.StringToInput()</c>. If the object's
-    /// class already has a <c>StringToInput</c> method with the same
-    /// parameters, that method takes precedence over this extension
-    /// method.</para></summary>
-    /// <param name='str'>The parameter <paramref name='str'/> is a text
-    /// string.</param>
-    /// <returns>An ICharacterInput object.</returns>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='str'/> is null.</exception>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String)"]/*'/>
     public static ICharacterInput StringToInput(
   #if !NET20
 this
@@ -1711,8 +1074,53 @@ string str) {
       return StringToInput(str, 0, str.Length);
     }
 
-    /// <include file='../../docs.xml'
-    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.StringToInput(System.String,System.Int32,System.Int32)"]/*'/>
+    /// <xmlbegin id='11'/>
+    /// <xmlend/>
+    /// <summary>Converts a portion of a text string to a character input.
+    /// The resulting input can then be used to encode the text to bytes,
+    /// or to read the string code point by code point, among other things.
+    /// When reading the string, any unpaired surrogate characters are
+    /// replaced with the replacement character (U + FFFD).
+    /// <para>In the.NET implementation, this method is implemented as an
+    /// extension method to any String object and can be called as follows:
+    /// <c>str.StringToInput(offset, length)</c>. If the object's class
+    /// already has a StringToInput method with the same parameters, that
+    /// method takes precedence over this extension method.</para>
+    /// <para>In the.NET implementation, this method is implemented as an
+    /// extension method to any object implementing string and can be
+    /// called as follows: <c>str.StringToInput(offset, length)</c>. If
+    /// the object's class already has a <c>StringToInput</c> method with
+    /// the same parameters, that method takes precedence over this
+    /// extension method.</para></summary>
+    /// <param name='str'>The parameter <paramref name='str'/> is a text
+    /// string.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of <paramref name='str'/> begins.</param>
+    /// <param name='length'>The length, in code units, of the desired
+    /// portion of <paramref name='str'/> (but not more than <paramref
+    /// name='str'/> 's length).</param>
+    /// <returns>An ICharacterInput object.</returns>
+    /// <exception cref=' T:System.ArgumentNullException'>The parameter
+    /// <paramref name='str'/> is null.</exception>
+    /// <exception cref='ArgumentException'>Either <paramref
+    /// name='offset'/> or <paramref name='length'/> is less than 0 or
+    /// greater than <paramref name='str'/> 's length, or <paramref name='
+    /// str'/> ' s length minus <paramref name='offset'/> is less than
+    /// <paramref name='length'/>.</exception>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='str'/> is null.</exception>
+    /// <exception cref='ArgumentException'>Either &#x22;offset&#x22; or
+    /// &#x22;length&#x22; is less than 0 or greater than
+    /// &#x22;str&#x22;&#x27;s length, or &#x22;str&#x22;&#x27;s length
+    /// minus &#x22;offset&#x22; is less than
+    /// &#x22;length&#x22;.</exception>
+    /// <exception cref='ArgumentException'>Either &#x22;offset&#x22; or
+    /// &#x22;length&#x22; is less than 0 or greater than
+    /// &#x22;str&#x22;&#x27;s length, or &#x22;str&#x22;&#x27;s length
+    /// minus &#x22;offset&#x22; is less than
+    /// &#x22;length&#x22;.</exception>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='str'/> is null.</exception>
     public static ICharacterInput StringToInput(
   #if !NET20
 this
@@ -2181,15 +1589,44 @@ return aliases;
         this.stream = stream;
       }
 
-    /// <summary>This is an internal method.</summary>
-    /// <returns>A 32-bit signed integer.</returns>
+    /// <include file='../../docs.xml'
+    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar"]/*'/>
       public int ReadChar() {
         int c = this.reader.ReadChar(this.stream);
         return (c == -2) ? 0xfffd : c;
       }
 
-    /// <include file='../../docs.xml'
-    ///   path='docs/doc[@name="M:PeterO.Text.Encodings.DecoderToInputClass.Read(System.Int32[],System.Int32,System.Int32)"]/*'/>
+    /// <xmlbegin id='12'/>
+    /// <xmlend/>
+    /// <summary>This is an internal method.</summary>
+    /// <param name='buffer'>An array of 32-bit unsigned integers.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of <paramref name='buffer'/> begins.</param>
+    /// <param name='length'>The number of elements in the desired portion
+    /// of <paramref name='buffer'/> (but not more than <paramref
+    /// name='buffer'/> 's length).</param>
+    /// <returns>A 32-bit signed integer.</returns>
+    /// <exception cref=' T:System.ArgumentNullException'>The parameter
+    /// <paramref name='buffer'/> is null.</exception>
+    /// <exception cref='ArgumentException'>Either <paramref
+    /// name='offset'/> or <paramref name='length'/> is less than 0 or
+    /// greater than <paramref name='buffer'/> 's length, or <paramref
+    /// name=' buffer'/> ' s length minus <paramref name='offset'/> is less
+    /// than <paramref name='length'/>.</exception>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='buffer'/> is null.</exception>
+    /// <exception cref='ArgumentException'>Either &#x22;offset&#x22; or
+    /// &#x22;length&#x22; is less than 0 or greater than
+    /// &#x22;buffer&#x22;&#x27;s length, or &#x22;buffer&#x22;&#x27;s
+    /// length minus &#x22;offset&#x22; is less than
+    /// &#x22;length&#x22;.</exception>
+    /// <exception cref='ArgumentException'>Either &#x22;offset&#x22; or
+    /// &#x22;length&#x22; is less than 0 or greater than
+    /// &#x22;buffer&#x22;&#x27;s length, or &#x22;buffer&#x22;&#x27;s
+    /// length minus &#x22;offset&#x22; is less than
+    /// &#x22;length&#x22;.</exception>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='buffer'/> is null.</exception>
       public int Read(int[] buffer, int offset, int length) {
         if (buffer == null) {
           throw new ArgumentNullException(nameof(buffer));

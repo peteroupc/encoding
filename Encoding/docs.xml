@@ -58,7 +58,15 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
+    </exception>
+    <exception cref='T:System.ArgumentException'>Either &quot;offset&quot; or &quot;length&quot; is less than 0 or greater
+      than &quot;src&quot;&apos;s length, or &quot;src&quot;&apos;s length minus
+      &quot;offset&quot; is less than &quot;length&quot;.
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>The parameter
+      <paramref name='src'/>
+       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.ArrayWriter.WriteByte(System.Int32)'>
@@ -394,7 +402,7 @@
     <returns>A 32-bit signed integer.
     </returns>
     <exception cref=' T:System.ArgumentException'>Either or is less than 0 or greater than 's length, or ' s length minus is
-      less than .
+      less than.
     </exception>
     <exception cref='T:System.ArgumentNullException'>The parameter
       <paramref name='bytes'/>
@@ -413,7 +421,7 @@
   </doc>
   <doc name='M:PeterO.DataIO.ToByteReader(System.Byte[])'>
     <summary>Wraps a byte array into a byte reader.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing byte[] and can be called as follows:
         <c>bytes.ToByteReader()</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
@@ -466,20 +474,16 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-      .
+       .
     </exception>
     <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
       than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
       minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
-    </exception>
   </doc>
   <doc name='M:PeterO.DataIO.ToByteReader(System.IO.Stream)'>
     <summary>Wraps a data stream into a byte reader.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing Stream and can be called as follows:
         <c>input.ToByteReader()</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
@@ -497,7 +501,7 @@
   <doc name='M:PeterO.DataIO.ToReader(System.Byte[])'>
     <summary>Wraps a byte array into a byte reader. The reader will start at the
       beginning of the byte array.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any byte array object and can be called as follows:
         <c>bytes.ToByteReader()</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
@@ -545,11 +549,7 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-      .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
+       .
     </exception>
     <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
       than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
@@ -560,7 +560,7 @@
     <summary>Wraps an input stream into a reader object. If an IOException is thrown by
       the input stream, the reader object throws InvalidOperationException
       instead.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing Stream and can be called as follows:
         <c>input.ToByteReader()</c> . If the object's class already has a ToByteReader method with the same
         parameters, that method takes precedence over this extension method.
@@ -578,7 +578,7 @@
   <doc name='M:PeterO.DataIO.ToWriter(PeterO.IByteWriter)'>
     <summary>Wraps a byte writer (one that only implements a ReadByte method) to a
       writer (one that also implements a three-parameter Read method.)
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing IByteWriter and can be called as
         follows:
         <c>output.ToWriter()</c> . If the object's class already has a ToWriter method with the same
@@ -598,7 +598,7 @@
     <summary>Wraps an output stream into a writer object. If an IOException is thrown
       by the input stream, the writer object throws InvalidOperationException
       instead.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing Stream and can be called as follows:
         <c>output.ToWriter()</c> . If the object's class already has a ToWriter method with the same
         parameters, that method takes precedence over this extension method.
@@ -635,7 +635,7 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
     </exception>
     <exception cref='T:System.ArgumentNullException'>The parameter
       <paramref name='bytes'/>
@@ -680,11 +680,7 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-      .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='bytes'/>
-       is null.
+       .
     </exception>
     <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
       than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
@@ -1690,7 +1686,15 @@
       <paramref name='index'/>
        is less than
       <paramref name='length'/>
-       .
+      .
+    </exception>
+    <exception cref='T:System.ArgumentException'>Either &quot;index&quot; or &quot;length&quot; is less than 0 or greater
+      than &quot;chars&quot;&apos;s length, or &quot;chars&quot;&apos;s length
+      minus &quot;index&quot; is less than &quot;length&quot;.
+    </exception>
+    <exception cref='T:System.ArgumentNullException'>The parameter
+      <paramref name='chars'/>
+       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.ReadChar'>
@@ -1719,9 +1723,9 @@
           letter, digit, or symbol. (A collection of such characters is also
           called an
           <i>
-             abstract character repertoire
+            abstract character repertoire
           </i>
-           .)
+          .)
         </item>
         <item>A
           <b>coded character set</b> is a set of code points which are each assigned to a single text
@@ -1733,15 +1737,15 @@
           coded character sets, to a sequence of bytes and vice versa. (For
           brevity, the rest of this documentation may use the term
           <i>
-             encoding
+            encoding
           </i>
            instead. RFC 6365 uses the analogous term
           <i>
-             charset
+            charset
           </i>
            instead; in this documentation, however,
           <i>
-             charset
+            charset
           </i>
            is used only to refer to the names that identify a character
           encoding.)
@@ -1767,7 +1771,6 @@
           encoding is often called
           <c>US-ASCII</c> ). In the Encoding Standard, all single-byte encodings use the ASCII
           characters as the first 128 code points of their coded character sets.
-
         </item>
         <item><b>Multi-byte encodings</b> include code points from one or more coded character sets and assign
           some or all code points to several bytes. For example:
@@ -1807,8 +1810,8 @@
           version of base-64) to encode other Unicode code points.
         </item>
         <item>The Encoding Standard also defines a
-          <b>replacement encoding</b> , which causes a decoding error and is used to alias a few
-          problematic or unsupported encoding names, such as
+          <b>replacement encoding</b> , which causes a decoding error and is used to alias a few problematic
+          or unsupported encoding names, such as
           <c>hz-gb-2312</c> .
         </item>
       </list>
@@ -1868,7 +1871,7 @@
   <doc name='M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)'>
     <summary>Reads bytes from a data source and converts the bytes from a given
       encoding to a text string.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows: "encoding.DecodeString(input)". If the object's class
         already has a DecodeToString method with the same parameters, that
@@ -1893,14 +1896,14 @@
     <summary>Reads a byte array from a data source and converts the bytes from a given
       encoding to a text string. Errors in decoding are handled by replacing
       erroneous bytes with the replacement character (U+FFFD).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>enc.DecodeToString(bytes)</c> . If the object's class already has a DecodeToString method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>enc.DecodeToString(bytes)</c> . If the object's class already has a
@@ -1976,26 +1979,20 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-      .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='enc'/>
-       or
-      <paramref name='bytes'/>
-       is null.
+       .
     </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)'>
     <summary>Decodes data read from a data stream into a text string in the given
       character encoding.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>encoding.DecodeToString(input)</c> . If the object's class already has a DecodeToString method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>enc.DecodeToString(input)</c> . If the object's class already has a
@@ -2048,11 +2045,7 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-      .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='buffer'/>
-       is null.
+       .
     </exception>
     <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
       than &#x22;buffer&#x22;&#x27;s length, or &#x22;buffer&#x22;&#x27;s length
@@ -2070,14 +2063,13 @@
       array encoded using a given character encoding. When writing to the byte
       array, any characters that can't be encoded are replaced with the byte
       0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a EncodeToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a EncodeToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
         <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a
@@ -2101,7 +2093,7 @@
   <doc name='M:PeterO.Text.Encodings.EncodeToBytes(PeterO.Text.ICharacterInput,PeterO.Text.ICharacterEncoder,System.Boolean)'>
     <summary>Reads Unicode characters from a character input and writes them to a byte
       array encoded using the given character encoder and fallback strategy.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
         <c>input.EncodeToBytes(encoder, htmlFallback)</c> . If the object's class already has a
@@ -2139,7 +2131,7 @@
       array encoded using the given character encoder. When writing to the byte
       array, any characters that can't be encoded are replaced with the byte
       0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
         <c>input.EncodeToBytes(encoding)</c> . If the object's class already has a
@@ -2164,13 +2156,12 @@
       unpaired surrogate characters are replaced with the replacement character
       (U+FFFD), and when writing to the byte array, any characters that can't be
       encoded are replaced with the byte 0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.EncodeToBytes(enc)</c> . If the object's class already has a EncodeToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>str.EncodeToBytes(enc)</c> . If the object's class already has a EncodeToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
         <c>str.EncodeToBytes(enc)</c> . If the object's class already has a
         <c>EncodeToBytes</c> method with the same parameters, that method takes precedence over this
@@ -2196,7 +2187,7 @@
       array encoded in a given character encoding and using the given encoder
       fallback strategy. When reading the string, any unpaired surrogate
       characters are replaced with the replacement character (U+FFFD).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
         <c>str.EncodeToBytes(enc, htmlFallback)</c> . If the object's class already has a
         <c>EncodeToBytes</c> method with the same parameters, that method takes precedence over this
@@ -2227,14 +2218,13 @@
       array encoded in a given character encoding. When writing to the byte
       array, any characters that can't be encoded are replaced with the byte
       0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a EncodeToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a EncodeToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
         <c>input.EncodeToWriter(encoder, writer)</c> . If the object's class already has a
@@ -2260,14 +2250,13 @@
       array encoded in a given character encoding. When writing to the byte
       array, any characters that can't be encoded are replaced with the byte
       0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a EncodeToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>input.EncodeToBytes(encoder)</c> . If the object's class already has a EncodeToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
         <c>input.EncodeToWriter(encoder, output)</c> . If the object's class already has a
@@ -2293,14 +2282,13 @@
       array encoded using the given character encoder. When writing to the byte
       array, any characters that can't be encoded are replaced with the byte
       0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoding)</c> . If the object's class already has a EncodeToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>input.EncodeToBytes(encoding)</c> . If the object's class already has a EncodeToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
         <c>input.EncodeToWriter(encoding, writer)</c> . If the object's class already has a
@@ -2324,14 +2312,13 @@
       array encoded using the given character encoder. When writing to the byte
       array, any characters that can't be encoded are replaced with the byte
       0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>input.EncodeToBytes(encoding)</c> . If the object's class already has a EncodeToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>input.EncodeToBytes(encoding)</c> . If the object's class already has a EncodeToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
         <c>input.EncodeToWriter(encoding, output)</c> . If the object's class already has a
@@ -2356,13 +2343,12 @@
       replaced with the replacement character (U+FFFD), and when writing to the
       byte stream, any characters that can't be encoded are replaced with the
       byte 0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.EncodeToBytes(enc, writer)</c> . If the object's class already has a EncodeToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>str.EncodeToBytes(enc, writer)</c> . If the object's class already has a EncodeToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
         <c>str.EncodeToWriter(enc, writer)</c> . If the object's class already has a
         <c>EncodeToWriter</c> method with the same parameters, that method takes precedence over this
@@ -2389,13 +2375,12 @@
       replaced with the replacement character (U+FFFD), and when writing to the
       byte stream, any characters that can't be encoded are replaced with the
       byte 0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.EncodeToBytes(enc, writer)</c> . If the object's class already has a EncodeToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>str.EncodeToBytes(enc, writer)</c> . If the object's class already has a EncodeToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
         <c>str.EncodeToWriter(enc, output)</c> . If the object's class already has a
         <c>EncodeToWriter</c> method with the same parameters, that method takes precedence over this
@@ -2421,7 +2406,7 @@
       streamable source of bytes. The input stream doesn't check the first few
       bytes for a byte-order mark indicating a Unicode encoding such as UTF-8
       before using the character encoding's decoder.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows: "encoding.GetDecoderInput(input)". If the object's class
         already has a GetDecoderInput method with the same parameters, that
@@ -2443,14 +2428,14 @@
       stream. The input stream doesn't check the first few bytes for a
       byte-order mark indicating a Unicode encoding such as UTF-8 before using
       the character encoding's decoder.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>encoding.GetDecoderInput(input)</c> . If the object's class already has a GetDecoderInput method with the
         same parameters, that method takes precedence over this extension
         method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>encoding.GetDecoderInput(input)</c> . If the object's class already has a
@@ -2476,7 +2461,7 @@
       <para>This method implements the "decode" algorithm specified in the Encoding
         standard.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>encoding.GetDecoderInputSkipBom(input)</c> . If the object's class already has a
@@ -2500,7 +2485,7 @@
       UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the
       case may be, rather than the given character encoding.This method
       implements the "decode" algorithm specified in the Encoding standard.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>encoding.GetDecoderInputSkipBom(input)</c> . If the object's class already has a
@@ -2536,7 +2521,6 @@
     </param>
     <param name='forEmail'>If false, uses the encoding resolution rules in the Encoding Standard. If
       true, uses modified rules as described in the ResolveAliasForEmail method.
-
     </param>
     <returns>An object that enables encoding and decoding text in the given character
       encoding. Returns null if the name is null or empty, or if it names an
@@ -2551,7 +2535,6 @@
     </param>
     <param name='forEmail'>If false, uses the encoding resolution rules in the Encoding Standard. If
       true, uses modified rules as described in the ResolveAliasForEmail method.
-
     </param>
     <param name='allowReplacement'>Has no effect.
     </param>
@@ -2563,14 +2546,13 @@
   <doc name='M:PeterO.Text.Encodings.InputToString(PeterO.Text.ICharacterInput)'>
     <summary>Reads Unicode characters from a character input and converts them to a
       text string.
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
-        <c>reader.InputToString()</c> . If the object's class already has a InputToString method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>reader.InputToString()</c> . If the object's class already has a InputToString method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterInput and can be called as
         follows:
         <c>reader.InputToString()</c> . If the object's class already has a
@@ -2690,7 +2672,7 @@
         <c>UTF-16</c> to
         <c>UTF-16LE</c> "to deal with deployed content".
       </para>
-       .
+      .
     </param>
     <returns>A standardized name for the encoding. Returns the empty string if
       <paramref name='name'/>
@@ -2728,7 +2710,7 @@
         <item><c>UTF-16</c> - UTF-16 without a fixed byte order, rather than an alias to
           <c>UTF-16LE</c> as specified in the Encoding Standard. The byte order is little
           endian if the byte stream starts with 0xff 0xfe; otherwise, big
-          endian. A leading 0xff 0xfe or 0xFE 0xff in the byte stream is
+          endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream is
           skipped.
         </item>
         <item><c>UTF-7</c> - UTF-7 (7-bit universal coded character set). The name
@@ -2756,14 +2738,13 @@
       with the replacement character (U+FFFD), and when writing to the byte
       array, any characters that can't be encoded are replaced with the byte
       0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoder and can be called as
         follows:
-        <c>encoder.StringToBytes(str)</c> . If the object's class already has a StringToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>encoder.StringToBytes(str)</c> . If the object's class already has a StringToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoder and can be called as
         follows:
         <c>encoder.StringToBytes(str)</c> . If the object's class already has a
@@ -2790,14 +2771,13 @@
       replaced with the replacement character (U+FFFD), and when writing to the
       byte array, any characters that can't be encoded are replaced with the
       byte 0x3f (the question mark character).
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
-        <c>encoding.StringToBytes(str)</c> . If the object's class already has a StringToBytes method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>encoding.StringToBytes(str)</c> . If the object's class already has a StringToBytes method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing ICharacterEncoding and can be called
         as follows:
         <c>encoding.StringToBytes(str)</c> . If the object's class already has a
@@ -2822,13 +2802,12 @@
       code point, among other things. When reading the string, any unpaired
       surrogate characters are replaced with the replacement character (U+FFFD).
 
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the .NET implementation, this method is implemented as an extension
+      <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
         <c>str.StringToInput()</c> . If the object's class already has a
         <c>StringToInput</c> method with the same parameters, that method takes precedence over this
@@ -2854,8 +2833,9 @@
       (U+FFFD).
       <para>In the.NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the same
-        parameters, that method takes precedence over this extension method.
+        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the
+        same parameters, that method takes precedence over this extension
+        method.
       </para>
       <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
@@ -2897,11 +2877,7 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-      .
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='str'/>
-       is null.
+       .
     </exception>
     <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
       than &#x22;str&#x22;&#x27;s length, or &#x22;str&#x22;&#x27;s length minus

@@ -233,9 +233,9 @@ Reads a series of code points from a Unicode stream or a string.
  less than 0 or greater than <code>chars</code> 's length, or <code>
  chars</code> 's length minus <code>index</code> is less than <code>length</code>.
 
-* <code>java.lang.IllegalArgumentException</code> - Either "index" or "length" is less than 0 or
-  greater than "chars"'s length, or "chars"'s length minus "index" is
-  less than "length".
+* <code>java.lang.IllegalArgumentException</code> - Either "index" or "length" is less than 0
+  or greater than "chars"'s length, or "chars"'s length minus "index"
+  is less than "length".
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>chars</code> is null.
 

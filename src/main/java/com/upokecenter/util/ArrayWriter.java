@@ -80,8 +80,8 @@ at: http://peteroupc.github.io/
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is
      * less than 0 or greater than {@code src} 's length, or {@code src} '
      * s length minus {@code offset} is less than {@code length}.
-     * @throws IllegalArgumentException Either "offset" or "length" is less than 0 or
-     *  greater than "src"'s length, or "src"'s length minus "offset" is
+     * @throws IllegalArgumentException Either "offset" or "length" is less than 0
+     *  or greater than "src"'s length, or "src"'s length minus "offset" is
      *  less than "length".
      * @throws NullPointerException The parameter {@code src} is null.
      */

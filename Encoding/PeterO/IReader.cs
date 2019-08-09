@@ -8,11 +8,26 @@ at: http://peteroupc.github.io/
 using System;
 
 namespace PeterO {
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="T:PeterO.IReader"]/*'/>
+    /// <summary>A generic interface for reading bytes of data from a data
+    /// source.</summary>
   public interface IReader : IByteReader {
-    /// <include file='../docs.xml'
-    ///   path='docs/doc[@name="M:PeterO.IReader.Read(System.Byte[],System.Int32,System.Int32)"]/*'/>
+    /// <summary>Reads a portion of a byte array from the data
+    /// source.</summary>
+    /// <param name='bytes'>A byte array which will contain the data that
+    /// was read from the data source.</param>
+    /// <param name='offset'>A zero-based index showing where the desired
+    /// portion of <paramref name='bytes'/> begins.</param>
+    /// <param name='length'>The number of elements in the desired portion
+    /// of <paramref name='bytes'/> (but not more than <paramref
+    /// name='bytes'/> 's length).</param>
+    /// <returns>The number of bytes read from the data source. Can be less
+    /// than "length" if the end of the stream was reached.</returns>
+    /// <exception cref='ArgumentNullException'>Should be thrown if the
+    /// parameter "bytes" is null.</exception>
+    /// <exception cref='ArgumentException'>Should be thrown if either
+    /// "offset" or "length" is less than 0 or greater than "bytes" 's
+    /// length, or "bytes" 's length minus "offset" is less than
+    /// "length".</exception>
     int Read(byte[] bytes, int offset, int length);
   }
 }

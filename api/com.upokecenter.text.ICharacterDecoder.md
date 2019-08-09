@@ -22,7 +22,7 @@ Reads bytes from an input transform until a Unicode code point is decoded or
  one or more replacement code points instead (such as the Replacement
  Character 0xfffd), or it can throw an exception. In some cases,
  where the error won't cause data loss or a security problem, the
- caller can also ignore the decoder error. </p>
+ caller can also ignore the decoder error.</p>
 
 **Parameters:**
 
@@ -48,7 +48,7 @@ Reads bytes from an input transform until a Unicode code point is decoded or
  one or more replacement code points instead (such as the Replacement
  Character 0xfffd), or it can throw an exception. In some cases,
  where the error won't cause data loss or a security problem, the
- caller can also ignore the decoder error. </p>
+ caller can also ignore the decoder error.</p>
 
 **Parameters:**
 

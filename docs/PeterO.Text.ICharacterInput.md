@@ -18,7 +18,7 @@
 
  Reads a sequence of Unicode code points from a data source.
 
- <b>Parameters:</b>
+       <b>Parameters:</b>
 
  * <i>chars</i>: Output buffer.
 
@@ -45,6 +45,6 @@ Should be thrown if "chars" is null.
 
  Reads a Unicode code point from a data source.
 
- <b>Return Value:</b>
+   <b>Return Value:</b>
 
 Either a Unicode code point (from 0-0xd7ff or from 0xe000 to 0x10ffff), or the value -1 indicating the end of the source.

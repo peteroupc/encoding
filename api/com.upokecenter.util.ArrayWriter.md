@@ -6,11 +6,11 @@ An array of bytes that grows as needed.
 
 ## Methods
 
-* `ArrayWriter() ArrayWriter`<br>
- Initializes a new instance of the ArrayWriter class with a default
- backing store size of 16.
-* `ArrayWriter​(int initialSize) ArrayWriter`<br>
- Initializes a new instance of the ArrayWriter class.
+* `ArrayWriter() com.upokecenter.ArrayWriter`<br>
+ Initializes a new instance of the com.upokecenter.ArrayWriter class
+ with a default backing store size of 16.
+* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
+ Initializes a new instance of the com.upokecenter.ArrayWriter class.
 * `void Clear()`<br>
  Offers a fast way to reset the length of the array writer's data to 0.
 * `byte[] ToArray()`<br>
@@ -24,21 +24,21 @@ An array of bytes that grows as needed.
 
 ## Constructors
 
-* `ArrayWriter() ArrayWriter`<br>
- Initializes a new instance of the ArrayWriter class with a default
- backing store size of 16.
-* `ArrayWriter​(int initialSize) ArrayWriter`<br>
- Initializes a new instance of the ArrayWriter class.
+* `ArrayWriter() com.upokecenter.ArrayWriter`<br>
+ Initializes a new instance of the com.upokecenter.ArrayWriter class
+ with a default backing store size of 16.
+* `ArrayWriter​(int initialSize) com.upokecenter.ArrayWriter`<br>
+ Initializes a new instance of the com.upokecenter.ArrayWriter class.
 
 ## Method Details
 
 ### ArrayWriter
     public ArrayWriter()
-Initializes a new instance of the <code>ArrayWriter</code> class with a default
- backing store size of 16.
+Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class
+ with a default backing store size of 16.
 ### ArrayWriter
     public ArrayWriter​(int initialSize)
-Initializes a new instance of the <code>ArrayWriter</code> class.
+Initializes a new instance of the <code>com.upokecenter.ArrayWriter</code> class.
 
 **Parameters:**
 
@@ -90,12 +90,6 @@ Writes a series of bytes to the array.
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>src</code> is null.
 
-* <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is
- less than 0 or greater than <code>src</code> 's length, or <code>src</code> '
- s length minus <code>offset</code> is less than <code>length</code>.
-
-* <code>java.lang.IllegalArgumentException</code> - Either "offset" or "length" is less than 0
-  or greater than "src"'s length, or "src"'s length minus "offset" is
-  less than "length".
-
-* <code>java.lang.NullPointerException</code> - The parameter <code>src</code> is null.
+* <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is less
+ than 0 or greater than <code>src</code> 's length, or <code>src</code> ' s
+ length minus <code>offset</code> is less than <code>length</code>.

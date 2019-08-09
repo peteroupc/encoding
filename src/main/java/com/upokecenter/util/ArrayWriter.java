@@ -24,15 +24,15 @@ at: http://peteroupc.github.io/
     }
 
     /**
-     * Initializes a new instance of the {@link ArrayWriter} class with a default
-     * backing store size of 16.
+     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
+     * with a default backing store size of 16.
      */
     public ArrayWriter() {
  this(16);
     }
 
     /**
-     * Initializes a new instance of the {@link ArrayWriter} class.
+     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class.
      * @param initialSize The initial size of the array writer's backing store.
      */
     public ArrayWriter(int initialSize) {
@@ -77,13 +77,9 @@ at: http://peteroupc.github.io/
      * @param length The number of elements in the desired portion of {@code src}
      * (but not more than {@code src} 's length).
      * @throws NullPointerException The parameter {@code src} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is
-     * less than 0 or greater than {@code src} 's length, or {@code src} '
-     * s length minus {@code offset} is less than {@code length}.
-     * @throws IllegalArgumentException Either "offset" or "length" is less than 0
-     *  or greater than "src"'s length, or "src"'s length minus "offset" is
-     *  less than "length".
-     * @throws NullPointerException The parameter {@code src} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
+     * than 0 or greater than {@code src} 's length, or {@code src} ' s
+     * length minus {@code offset} is less than {@code length}.
      */
     public void write(byte[] src, int offset, int length) {
       if (src == null) {

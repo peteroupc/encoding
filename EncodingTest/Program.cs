@@ -2,7 +2,7 @@ using System;
 
 namespace EncodingTest {
   internal class Program {
-    internal static void Main(string[] args) {
+    internal static void Main() {
     }
   }
 }

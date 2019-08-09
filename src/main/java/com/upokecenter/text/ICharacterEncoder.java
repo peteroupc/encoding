@@ -19,7 +19,7 @@ import com.upokecenter.util.*;
      * instead, it can replace the code point with an arbitrary byte or
      * sequence of bytes, or it can throw an exception. In some cases,
      * where the error won't cause data loss or a security problem, the
-     * caller can also ignore the encoding error. </p>
+     * caller can also ignore the encoding error.</p>
      * @param c Either a Unicode code point (from 0-0xd7ff or from 0xe000 to
      * 0x10ffff), or the value -1 indicating the end of the stream.
      * @param output Output stream where the converted bytes will be written. The

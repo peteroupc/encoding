@@ -253,7 +253,7 @@ import com.upokecenter.text.*;
                     if (words.length == 1) {
                     throw new
   IllegalArgumentException("Expected non-word character after '" + wordStr + "'");
-                    } else {
+} else {
                     throw new IllegalArgumentException("unexpected word found");
                     }
                   }
@@ -267,7 +267,7 @@ import com.upokecenter.text.*;
                   // Get the Unicode code point for the surrogate pair
                 c = 0x10000 + ((c & 0x3ff) << 10) + (str.charAt(index + 1) & 0x3ff);
                 ++index;
-                } else if ((c & 0xf800) == 0xd800) {
+              } else if ((c & 0xf800) == 0xd800) {
                   // unpaired surrogate
                   c = 0xfffd;
                 }
@@ -620,10 +620,10 @@ import com.upokecenter.text.*;
           }
         }
         if (haveGlyphTable) {
-         for (int i = 0; i < 256; ++i) {
+          for (int i = 0; i < 256; ++i) {
            if (this.bytesToGlyphs[i] == -2) {
- this.bytesToGlyphs[i] = this.bytesToUCS[i];
-}
+             this.bytesToGlyphs[i] = this.bytesToUCS[i];
+           }
          }
         }
       }

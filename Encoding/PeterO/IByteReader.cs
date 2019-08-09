@@ -8,11 +8,12 @@ at: http://peteroupc.github.io/
 using System;
 
 namespace PeterO {
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="T:PeterO.IByteReader"]/*'/>
+    /// <summary>A generic interface for reading data one byte at a
+    /// time.</summary>
   public interface IByteReader {
-    /// <include file='../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.IByteReader.ReadByte"]/*'/>
+    /// <summary>Reads a byte from the data source.</summary>
+    /// <returns>The byte read (from 0 through 255), or -1 if the end of
+    /// the source is reached.</returns>
     int ReadByte();
   }
 }

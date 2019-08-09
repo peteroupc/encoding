@@ -15,7 +15,7 @@
 
  Creates a decoder for this character encoding with initial state. If the decoder is stateless, multiple calls of this method can return the same decoder.
 
- <b>Return Value:</b>
+   <b>Return Value:</b>
 
 A character decoder object.
 
@@ -26,6 +26,6 @@ A character decoder object.
 
  Creates an encoder for this character encoding with initial state. If the encoder is stateless, multiple calls of this method can return the same encoder.
 
- <b>Return Value:</b>
+   <b>Return Value:</b>
 
 A character encoder object.

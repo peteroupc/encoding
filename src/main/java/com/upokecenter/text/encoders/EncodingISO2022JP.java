@@ -183,14 +183,14 @@ import com.upokecenter.text.*;
             }
           }
           if (c <= 0x7f) {
-      if ((this.encoderState == 0 || this.encoderState == 3) &&
+            if ((this.encoderState == 0 || this.encoderState == 3) &&
     (c == 0x0e || c == 0x0f || c == 0x1b)) {
          // TODO: Find a way to convey errors with
          // a different code point, in this case, U + FFFD
          return -2;
       }
       if (this.encoderState == 0) {
-              output.write((byte)c);
+        output.write((byte)c);
               return 1 + count;
             } else if (this.encoderState == 3 && c != 0x5c && c != 0x7e) {
               output.write((byte)c);

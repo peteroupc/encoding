@@ -23,8 +23,8 @@ import com.upokecenter.text.*;
   throw new NullPointerException("output");
 }
         if (c < 0) {
-          return -1;
-        }
+  return -1;
+}
         if (c < 0x80) {
           output.write((byte)c);
           return 1;

@@ -34,34 +34,34 @@ private static final int[] indextable= {
 };
 public static int CodePointToIndex(int codepoint) {
    if (codepoint<167 || codepoint>194726) {
- return -1;
-}
+     return -1;
+   }
    if (codepoint == 9552) {
- return 18991;
-}
+     return 18991;
+   }
    if (codepoint == 9566) {
- return 18975;
-}
+     return 18975;
+   }
    if (codepoint == 9569) {
- return 18977;
-}
+     return 18977;
+   }
    if (codepoint == 9578) {
- return 18976;
-}
+     return 18976;
+   }
    if (codepoint == 21313) {
- return 5512;
-}
+     return 5512;
+   }
    if (codepoint == 21317) {
- return 5599;
-}
+     return 5599;
+   }
   for (int i = 0;i<indextable.length;i+=4) {
-     if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
+    if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
       int startindex = indextable[i + 2];
        int length = indextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if ((table[j + startindex]) == codepoint) {
- return j + startindex;
-}
+        if ((table[j + startindex]) == codepoint) {
+          return j + startindex;
+        }
        }
     }
    }
@@ -69,7 +69,7 @@ public static int CodePointToIndex(int codepoint) {
  }
 public static int IndexToCodePoint(int index) {
 if (index<0 || index >= 19782) {
- return -1;
+  return -1;
 }
 int cp = table[index];
 return (cp == 0) ? -1 : cp;

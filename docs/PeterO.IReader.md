@@ -18,7 +18,7 @@
 
  Reads a portion of a byte array from the data source.
 
- <b>Parameters:</b>
+        <b>Parameters:</b>
 
  * <i>bytes</i>: A byte array which will contain the data that was read from the data source.
 

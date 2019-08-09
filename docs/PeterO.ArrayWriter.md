@@ -38,14 +38,14 @@
 
  Offers a fast way to reset the length of the array writer's data to 0.
 
- <a id="ToArray"></a>
+  <a id="ToArray"></a>
 ### ToArray
 
     public byte[] ToArray();
 
  Generates an array of all bytes written so far to it.
 
- <b>Return Value:</b>
+   <b>Return Value:</b>
 
 A byte array.
 
@@ -59,7 +59,7 @@ A byte array.
 
  Writes a series of bytes to the array.
 
- <b>Parameters:</b>
+       <b>Parameters:</b>
 
  * <i>src</i>: Byte array containing the data to write.
 
@@ -83,7 +83,7 @@ Either  <i>offset</i>
  's length, or  <i>src</i>
  ' s length minus  <i>offset</i>
  is less than  <i>length</i>
- .
+.
 
 <a id="WriteByte_int"></a>
 ### WriteByte
@@ -93,6 +93,6 @@ Either  <i>offset</i>
 
  Writes an 8-bit byte to the array.
 
- <b>Parameters:</b>
+   <b>Parameters:</b>
 
  * <i>byteValue</i>: An integer containing the byte to write. Only the lower 8 bits of this value will be used.

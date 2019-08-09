@@ -5,13 +5,13 @@
   </doc>
   <doc name='M:PeterO.ArrayWriter.#ctor'>
     <summary>Initializes a new instance of the
-      <see cref='ArrayWriter'/>
+      <see cref='PeterO.ArrayWriter'/>
        class with a default backing store size of 16.
     </summary>
   </doc>
   <doc name='M:PeterO.ArrayWriter.#ctor(System.Int32)'>
     <summary>Initializes a new instance of the
-      <see cref='ArrayWriter'/>
+      <see cref='PeterO.ArrayWriter'/>
        class.
     </summary>
     <param name='initialSize'>The initial size of the array writer's backing store.
@@ -42,11 +42,11 @@
       <paramref name='src'/>
        's length).
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='src'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -59,14 +59,6 @@
        is less than
       <paramref name='length'/>
       .
-    </exception>
-    <exception cref='T:System.ArgumentException'>Either &quot;offset&quot; or &quot;length&quot; is less than 0 or greater
-      than &quot;src&quot;&apos;s length, or &quot;src&quot;&apos;s length minus
-      &quot;offset&quot; is less than &quot;length&quot;.
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='src'/>
-       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.ArrayWriter.WriteByte(System.Int32)'>
@@ -242,7 +234,7 @@
       <paramref name='s'/>
        is null.
     </returns>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -358,7 +350,7 @@
       pair will be -1 (an index won't be less than 0 in any other case). If the
       string is null or is not a valid IRI, returns null.
     </returns>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -372,7 +364,7 @@
       <paramref name='length'/>
        .
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='s'/>
        is null.
     </exception>
@@ -404,13 +396,23 @@
     <exception cref=' T:System.ArgumentException'>Either or is less than 0 or greater than 's length, or ' s length minus is
       less than.
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='bytes'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-      than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
-      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
+    <exception cref='System.ArgumentException'>Either
+      <paramref name='offset'/>
+       or
+      <paramref name='length'/>
+       is less than 0 or greater than
+      <paramref name='bytes'/>
+       's length, or
+      <paramref name='bytes'/>
+       's length minus
+      <paramref name='offset'/>
+       is less than
+      <paramref name='length'/>
+      .
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.ByteArrayTransform.ReadByte'>
@@ -431,7 +433,7 @@
     </param>
     <returns>An IByteReader object.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='bytes'/>
        is null.
     </exception>
@@ -462,7 +464,7 @@
       <paramref name='bytes'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -474,11 +476,11 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
     </exception>
-    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-      than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
-      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='bytes'/>
+       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.ToByteReader(System.IO.Stream)'>
@@ -493,7 +495,7 @@
     </param>
     <returns>An IByteReader object.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='input'/>
        is null.
     </exception>
@@ -511,7 +513,7 @@
     </param>
     <returns>A byte reader wrapping the byte array.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='bytes'/>
        is null.
     </exception>
@@ -537,7 +539,7 @@
       <paramref name='bytes'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -549,11 +551,11 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
     </exception>
-    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-      than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
-      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='bytes'/>
+       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.ToReader(System.IO.Stream)'>
@@ -570,7 +572,7 @@
     </param>
     <returns>A byte reader wrapping the input stream.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='input'/>
        is null.
     </exception>
@@ -589,7 +591,7 @@
     </param>
     <returns>A writer that wraps the given stream.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='output'/>
        is null.
     </exception>
@@ -608,7 +610,7 @@
     </param>
     <returns>A byte writer that wraps the given output stream.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='output'/>
        is null.
     </exception>
@@ -637,13 +639,23 @@
       <paramref name='length'/>
       .
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='bytes'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-      than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
-      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
+    <exception cref='System.ArgumentException'>Either
+      <paramref name='offset'/>
+       or
+      <paramref name='length'/>
+       is less than 0 or greater than
+      <paramref name='bytes'/>
+       's length, or
+      <paramref name='bytes'/>
+       's length minus
+      <paramref name='offset'/>
+       is less than
+      <paramref name='length'/>
+      .
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.WrappedOutputStream.WriteByte(System.Int32)'>
@@ -668,7 +680,7 @@
       <paramref name='bytes'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -680,11 +692,11 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
     </exception>
-    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-      than &#x22;bytes&#x22;&#x27;s length, or &#x22;bytes&#x22;&#x27;s length
-      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='bytes'/>
+       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.DataIO.WrappedOutputStreamFromByteWriter.WriteByte(System.Int32)'>
@@ -740,7 +752,7 @@
       replacement character (U+FFFD) if the current character is an unpaired
       surrogate code point.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
@@ -766,7 +778,7 @@
       <paramref name='surrogateBehavior'/>
        if the previous character is an unpaired surrogate code point.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
@@ -786,7 +798,7 @@
       replacement character (U+FFFD) if the previous character is an unpaired
       surrogate code point.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
@@ -812,7 +824,7 @@
       <paramref name='surrogateBehavior'/>
        if the previous character is an unpaired surrogate code point.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
@@ -846,11 +858,11 @@
     </param>
     <returns>The string encoded in UTF-8.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>The string contains an unpaired surrogate code point and
+    <exception cref='System.ArgumentException'>The string contains an unpaired surrogate code point and
       <paramref name='replace'/>
        is false, or an internal error occurred.
     </exception>
@@ -871,11 +883,11 @@
     </param>
     <returns>The string encoded in UTF-8.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>The string contains an unpaired surrogate code point and
+    <exception cref='System.ArgumentException'>The string contains an unpaired surrogate code point and
       <paramref name='replace'/>
        is false, or an internal error occurred.
     </exception>
@@ -895,7 +907,7 @@
       <paramref name='replace'/>
        is false.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
@@ -910,11 +922,11 @@
     </param>
     <returns>A string represented by the UTF-8 byte array.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='bytes'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>The string is not valid UTF-8 and
+    <exception cref='System.ArgumentException'>The string is not valid UTF-8 and
       <paramref name='replace'/>
        is false.
     </exception>
@@ -933,15 +945,15 @@
     </param>
     <returns>A string represented by the UTF-8 byte array.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='bytes'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>The portion of the byte array is not valid UTF-8 and
+    <exception cref='System.ArgumentException'>The portion of the byte array is not valid UTF-8 and
       <paramref name='replace'/>
        is false.
     </exception>
-    <exception cref='T:System.ArgumentException'>The parameter
+    <exception cref='System.ArgumentException'>The parameter
       <paramref name='offset'/>
        is less than 0,
       <paramref name='bytesCount'/>
@@ -971,9 +983,9 @@
       <paramref name='bytesCount'/>
        is 0 or greater).
     </returns>
-    <exception cref='T:System.IO.IOException'>An I/O error occurred.
+    <exception cref='System.IO.IOException'>An I/O error occurred.
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='stream'/>
        is null or
       <paramref name='builder'/>
@@ -999,13 +1011,13 @@
       <paramref name='replace'/>
        is false.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='data'/>
        is null or
       <paramref name='builder'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>The parameter
+    <exception cref='System.ArgumentException'>The parameter
       <paramref name='offset'/>
        is less than 0,
       <paramref name='bytesCount'/>
@@ -1023,9 +1035,9 @@
     </param>
     <returns>The string read.
     </returns>
-    <exception cref='T:System.IO.IOException'>An I/O error occurred.
+    <exception cref='System.IO.IOException'>An I/O error occurred.
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='stream'/>
        is null.
     </exception>
@@ -1045,11 +1057,11 @@
     </param>
     <returns>The string read.
     </returns>
-    <exception cref='T:System.IO.IOException'>An I/O error occurred; or, the string is not valid UTF-8 and
+    <exception cref='System.IO.IOException'>An I/O error occurred; or, the string is not valid UTF-8 and
       <paramref name='replace'/>
        is false.
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='stream'/>
        is null.
     </exception>
@@ -1096,13 +1108,13 @@
       <paramref name='replace'/>
        is false.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null or
       <paramref name='stream'/>
        is null.
     </exception>
-    <exception cref='T:System.IO.IOException'>An I/O error occurred.
+    <exception cref='System.IO.IOException'>An I/O error occurred.
     </exception>
   </doc>
   <doc name='M:PeterO.DataUtilities.WriteUtf8(System.String,System.Int32,System.Int32,System.IO.Stream,System.Boolean)'>
@@ -1125,13 +1137,13 @@
       <paramref name='replace'/>
        is false.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null or
       <paramref name='stream'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>The parameter
+    <exception cref='System.ArgumentException'>The parameter
       <paramref name='offset'/>
        is less than 0,
       <paramref name='length'/>
@@ -1141,7 +1153,7 @@
       <paramref name='length'/>
        is greater than the string's length.
     </exception>
-    <exception cref='T:System.IO.IOException'>An I/O error occurred.
+    <exception cref='System.IO.IOException'>An I/O error occurred.
     </exception>
   </doc>
   <doc name='M:PeterO.DataUtilities.WriteUtf8(System.String,System.Int32,System.Int32,System.IO.Stream,System.Boolean,System.Boolean)'>
@@ -1167,13 +1179,13 @@
       <paramref name='replace'/>
        is false.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null or
       <paramref name='stream'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>The parameter
+    <exception cref='System.ArgumentException'>The parameter
       <paramref name='offset'/>
        is less than 0,
       <paramref name='length'/>
@@ -1183,7 +1195,7 @@
       <paramref name='length'/>
        is greater than the string's length.
     </exception>
-    <exception cref='T:System.IO.IOException'>An I/O error occurred.
+    <exception cref='System.IO.IOException'>An I/O error occurred.
     </exception>
   </doc>
   <doc name='T:PeterO.IByteReader'>
@@ -1231,9 +1243,9 @@
     <returns>The number of bytes read from the data source. Can be less than "length"
       if the end of the stream was reached.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>Should be thrown if the parameter "bytes" is null.
+    <exception cref='System.ArgumentNullException'>Should be thrown if the parameter "bytes" is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Should be thrown if either "offset" or "length" is less than 0 or greater
+    <exception cref='System.ArgumentException'>Should be thrown if either "offset" or "length" is less than 0 or greater
       than "bytes" 's length, or "bytes" 's length minus "offset" is less than
       "length".
     </exception>
@@ -1257,9 +1269,9 @@
       <paramref name='bytes'/>
        's length).
     </param>
-    <exception cref='T:System.ArgumentNullException'>Should be thrown if the parameter "bytes" is null.
+    <exception cref='System.ArgumentNullException'>Should be thrown if the parameter "bytes" is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Should be thrown if either "offset" or "length" is less than 0 or greater
+    <exception cref='System.ArgumentException'>Should be thrown if either "offset" or "length" is less than 0 or greater
       than "bytes" 's length, or "bytes" 's length minus "offset" is less than
       "length".
     </exception>
@@ -1366,7 +1378,7 @@
       <paramref name='s'/>
        is null.
     </returns>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -1471,7 +1483,7 @@
       be less than 0 in any other case). If the string is null or is not a valid
       IRI, returns null.
     </returns>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -1485,7 +1497,7 @@
       <paramref name='length'/>
        .
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='s'/>
        is null.
     </exception>
@@ -1499,7 +1511,7 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream)'>
     <summary>Initializes a new instance of the
-      <see cref='T:PeterO.Text.CharacterReader'/>
+      <see cref='PeterO.Text.CharacterReader'/>
       .
     </summary>
     <param name='stream'>A readable data stream.
@@ -1507,7 +1519,7 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32)'>
     <summary>Initializes a new instance of the
-      <see cref='T:PeterO.Text.CharacterReader'/>
+      <see cref='PeterO.Text.CharacterReader'/>
       .
     </summary>
     <param name='stream'>A readable data stream.
@@ -1519,7 +1531,7 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)'>
     <summary>Initializes a new instance of the
-      <see cref='T:PeterO.Text.CharacterReader'/>
+      <see cref='PeterO.Text.CharacterReader'/>
       .
     </summary>
     <param name='stream'>A readable data stream.
@@ -1535,7 +1547,7 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean,System.Boolean)'>
     <summary>Initializes a new instance of the
-      <see cref='T:PeterO.Text.CharacterReader'/>
+      <see cref='PeterO.Text.CharacterReader'/>
       .
     </summary>
     <param name='stream'>A readable data stream.
@@ -1552,14 +1564,14 @@
       <c>true</c> or
       <c>false</c> .
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='stream'/>
        is null.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String)'>
     <summary>Initializes a new instance of the
-      <see cref='T:PeterO.Text.CharacterReader'/>
+      <see cref='PeterO.Text.CharacterReader'/>
       .
     </summary>
     <param name='str'>The parameter
@@ -1569,7 +1581,7 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean)'>
     <summary>Initializes a new instance of the
-      <see cref='T:PeterO.Text.CharacterReader'/>
+      <see cref='PeterO.Text.CharacterReader'/>
       .
     </summary>
     <param name='str'>The parameter
@@ -1583,7 +1595,7 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean,System.Boolean)'>
     <summary>Initializes a new instance of the
-      <see cref='T:PeterO.Text.CharacterReader'/>
+      <see cref='PeterO.Text.CharacterReader'/>
       .
     </summary>
     <param name='str'>The parameter
@@ -1598,14 +1610,14 @@
       <c>true</c> or
       <c>false</c> .
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32)'>
     <summary>Initializes a new instance of the
-      <see cref='T:PeterO.Text.CharacterReader'/>
+      <see cref='PeterO.Text.CharacterReader'/>
       .
     </summary>
     <param name='str'>The parameter
@@ -1623,7 +1635,7 @@
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)'>
     <summary>Initializes a new instance of the
-      <see cref='T:PeterO.Text.CharacterReader'/>
+      <see cref='PeterO.Text.CharacterReader'/>
       .
     </summary>
     <param name='str'>The parameter
@@ -1646,7 +1658,7 @@
       <c>true</c> or
       <c>false</c> .
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
@@ -1670,11 +1682,11 @@
       <paramref name='length'/>
        parameter if the end of the stream is reached.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='chars'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='index'/>
        or
       <paramref name='length'/>
@@ -1687,14 +1699,6 @@
        is less than
       <paramref name='length'/>
       .
-    </exception>
-    <exception cref='T:System.ArgumentException'>Either &quot;index&quot; or &quot;length&quot; is less than 0 or greater
-      than &quot;chars&quot;&apos;s length, or &quot;chars&quot;&apos;s length
-      minus &quot;index&quot; is less than &quot;length&quot;.
-    </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
-      <paramref name='chars'/>
-       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.ReadChar'>
@@ -1885,7 +1889,7 @@
     </param>
     <returns>The converted string.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoding'/>
        or
       <paramref name='input'/>
@@ -1918,7 +1922,7 @@
     </param>
     <returns>A string consisting of the decoded text.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='enc'/>
        or
       <paramref name='bytes'/>
@@ -1967,7 +1971,7 @@
       <paramref name='bytes'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -1979,7 +1983,13 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
+    </exception>
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='enc'/>
+       or
+      <paramref name='bytes'/>
+       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.DecodeToString(PeterO.Text.ICharacterEncoding,System.IO.Stream)'>
@@ -2007,7 +2017,7 @@
     </param>
     <returns>A string consisting of the decoded text.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter "encoding" or
+    <exception cref='System.ArgumentNullException'>The parameter "encoding" or
       <paramref name='input'/>
        is null.
     </exception>
@@ -2033,7 +2043,7 @@
       <paramref name='buffer'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -2045,11 +2055,11 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
     </exception>
-    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-      than &#x22;buffer&#x22;&#x27;s length, or &#x22;buffer&#x22;&#x27;s length
-      minus &#x22;offset&#x22; is less than &#x22;length&#x22;.
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='buffer'/>
+       is null.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.DecoderToInputClass.ReadChar'>
@@ -2083,7 +2093,7 @@
     </param>
     <returns>A byte array.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoder'/>
        or
       <paramref name='input'/>
@@ -2119,7 +2129,7 @@
       <paramref name=' input'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoder'/>
        or
       <paramref name='input'/>
@@ -2145,7 +2155,7 @@
     </param>
     <returns>A byte array containing the encoded text.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoding'/>
        is null.
     </exception>
@@ -2175,7 +2185,7 @@
     </param>
     <returns>A byte array containing the encoded text string.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        or
       <paramref name='enc'/>
@@ -2206,7 +2216,7 @@
     </param>
     <returns>A byte array containing the encoded text string.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        or
       <paramref name='enc'/>
@@ -2238,7 +2248,7 @@
     </param>
     <param name='writer'>A byte writer to write the encoded bytes to.
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoder'/>
        or
       <paramref name='input'/>
@@ -2270,7 +2280,7 @@
     </param>
     <param name='output'>A writable data stream.
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoder'/>
        or
       <paramref name='input'/>
@@ -2302,7 +2312,7 @@
     </param>
     <param name='writer'>A byte writer to write the encoded bytes to.
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoding'/>
        is null.
     </exception>
@@ -2332,7 +2342,7 @@
     </param>
     <param name='output'>A writable data stream.
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoding'/>
        is null.
     </exception>
@@ -2362,7 +2372,7 @@
     </param>
     <param name='writer'>A byte writer where the encoded bytes will be written to.
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        or
       <paramref name='enc'/>
@@ -2394,7 +2404,7 @@
     </param>
     <param name='output'>A writable data stream.
     </param>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        or
       <paramref name='enc'/>
@@ -2422,6 +2432,10 @@
     </param>
     <returns>An ICharacterInput object.
     </returns>
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='encoding'/>
+       is null.
+    </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.GetDecoderInput(PeterO.Text.ICharacterEncoding,System.IO.Stream)'>
     <summary>Converts a character encoding into a character input stream, given a data
@@ -2452,6 +2466,10 @@
     </param>
     <returns>An ICharacterInput object.
     </returns>
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='encoding'/>
+       is null.
+    </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.GetDecoderInputSkipBom(PeterO.Text.ICharacterEncoding,PeterO.IByteReader)'>
     <summary>Converts a character encoding into a character input stream, given a
@@ -2564,6 +2582,10 @@
     </param>
     <returns>A text string containing the characters read.
     </returns>
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='reader'/>
+       is null.
+    </exception>
   </doc>
   <doc name='M:PeterO.Text.Encodings.ResolveAlias(System.String)'>
     <summary>Resolves a character encoding's name to a standard form. This involves
@@ -2758,7 +2780,7 @@
     </param>
     <returns>A byte array.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoder'/>
        or
       <paramref name='str'/>
@@ -2791,7 +2813,7 @@
     </param>
     <returns>A byte array containing the string encoded in the given text encoding.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='encoding'/>
        is null.
     </exception>
@@ -2820,7 +2842,7 @@
     </param>
     <returns>An ICharacterInput object.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>The parameter
+    <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
        is null.
     </exception>
@@ -2833,9 +2855,8 @@
       (U+FFFD).
       <para>In the.NET implementation, this method is implemented as an extension
         method to any String object and can be called as follows:
-        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the
-        same parameters, that method takes precedence over this extension
-        method.
+        <c>str.StringToInput(offset, length)</c> . If the object's class already has a StringToInput method with the same
+        parameters, that method takes precedence over this extension method.
       </para>
       <para>In the.NET implementation, this method is implemented as an extension
         method to any object implementing string and can be called as follows:
@@ -2864,7 +2885,7 @@
       <paramref name='str'/>
        is null.
     </exception>
-    <exception cref='T:System.ArgumentException'>Either
+    <exception cref='System.ArgumentException'>Either
       <paramref name='offset'/>
        or
       <paramref name='length'/>
@@ -2877,11 +2898,11 @@
       <paramref name='offset'/>
        is less than
       <paramref name='length'/>
-       .
+      .
     </exception>
-    <exception cref='T:System.ArgumentException'>Either &#x22;offset&#x22; or &#x22;length&#x22; is less than 0 or greater
-      than &#x22;str&#x22;&#x27;s length, or &#x22;str&#x22;&#x27;s length minus
-      &#x22;offset&#x22; is less than &#x22;length&#x22;.
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='str'/>
+       is null.
     </exception>
   </doc>
   <doc name='F:PeterO.Text.Encodings.UTF8'>
@@ -2995,7 +3016,7 @@
     <returns>Either a Unicode code point (from 0-0xd7ff or from 0xe000 to 0x10ffff), or
       the value -1 indicating the end of the source.
     </returns>
-    <exception cref='T:System.ArgumentNullException'>Should be thrown if "chars" is null.
+    <exception cref='System.ArgumentNullException'>Should be thrown if "chars" is null.
     </exception>
   </doc>
   <doc name='M:PeterO.Text.ICharacterInput.ReadChar'>

@@ -15,11 +15,12 @@
     public CharacterReader(
         string str);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md).
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
    <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
 <a id="Void_ctor_System_String_Boolean"></a>
 ### CharacterReader Constructor
@@ -28,13 +29,20 @@
         string str,
         bool skipByteOrderMark);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md).
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
-    <b>Parameters:</b>
+     <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
- * <i>skipByteOrderMark</i>: A Boolean object.
+ * <i>skipByteOrderMark</i>: If true and the first character in the string is U + FEFF, skip that character.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter  <i>str</i>
+ is null.
 
 <a id="Void_ctor_System_String_Boolean_Boolean"></a>
 ### CharacterReader Constructor
@@ -44,15 +52,16 @@
         bool skipByteOrderMark,
         bool errorThrow);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md).
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
       <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
- * <i>skipByteOrderMark</i>: A Boolean object.
+ * <i>skipByteOrderMark</i>: If true and the first character in the string is U + FEFF, skip that character.
 
- * <i>errorThrow</i>: Another Boolean object.
+ * <i>errorThrow</i>: When encountering invalid encoding, throw an exception if this parameter is true, or replace it with U + FFFD (replacement character) if this parameter is false.
 
 <b>Exceptions:</b>
 
@@ -68,15 +77,18 @@ The parameter  <i>str</i>
         int offset,
         int length);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md).
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
      <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
- * <i>offset</i>: A 32-bit signed integer.
+ * <i>offset</i>: The parameter  <i>offset</i>
+ is a 32-bit signed integer.
 
- * <i>length</i>: Another 32-bit signed integer.
+ * <i>length</i>: The parameter  <i>length</i>
+ is a 32-bit signed integer.
 
 <a id="Void_ctor_System_String_Int32_Int32_Boolean_Boolean"></a>
 ### CharacterReader Constructor
@@ -88,19 +100,22 @@ The parameter  <i>str</i>
         bool skipByteOrderMark,
         bool errorThrow);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md).
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
         <b>Parameters:</b>
 
- * <i>str</i>: A string object.
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
 
- * <i>offset</i>: A 32-bit signed integer.
+ * <i>offset</i>: The parameter  <i>offset</i>
+ is a 32-bit signed integer.
 
- * <i>length</i>: Another 32-bit signed integer.
+ * <i>length</i>: The parameter  <i>length</i>
+ is a 32-bit signed integer.
 
- * <i>skipByteOrderMark</i>: A Boolean object.
+ * <i>skipByteOrderMark</i>: If true and the first character in the string portion is U + FEFF, skip that character.
 
- * <i>errorThrow</i>: Another Boolean object.
+ * <i>errorThrow</i>: When encountering invalid encoding, throw an exception if this parameter is true, or replace it with U + FFFD (replacement character) if this parameter is false.
 
 <b>Exceptions:</b>
 
@@ -114,11 +129,17 @@ The parameter  <i>str</i>
     public CharacterReader(
         System.IO.Stream stream);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md).
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will read the stream as UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the stream, and replace invalid byte sequences with replacement characters (U + FFFD).
 
-   <b>Parameters:</b>
+    <b>Parameters:</b>
 
  * <i>stream</i>: A readable data stream.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter  <i>stream</i>
+ is null.
 
 <a id="Void_ctor_System_IO_Stream_Int32"></a>
 ### CharacterReader Constructor
@@ -127,13 +148,31 @@ The parameter  <i>str</i>
         System.IO.Stream stream,
         int mode);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md).
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will skip the byte-order mark (U + FEFF) if it appears first in the stream and replace invalid byte sequences with replacement characters (U + FFFD).
 
-    <b>Parameters:</b>
+     <b>Parameters:</b>
 
- * <i>stream</i>: A readable data stream.
+ * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: A 32-bit signed integer.
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code point (U + 0001 to U + 007F) before reading the rest of the stream. This value can be one of the following:
+
+  * 0: UTF-8 only.
+
+  * 1: Detect UTF-16 using BOM or non-zero basic code point, otherwise UTF-8.
+
+  * 2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
+
+  * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter  <i>stream</i>
+ is null.
 
 <a id="Void_ctor_System_IO_Stream_Int32_Boolean"></a>
 ### CharacterReader Constructor
@@ -143,15 +182,27 @@ The parameter  <i>str</i>
         int mode,
         bool errorThrow);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md).
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class; will skip the byte-order mark (U + FEFF) if it appears first in the stream and a UTF-8 stream is detected.
 
      <b>Parameters:</b>
 
  * <i>stream</i>: A readable data stream.
 
- * <i>mode</i>: A 32-bit signed integer.
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code point (U + 0001 to U + 007F) before reading the rest of the stream. This value can be one of the following:
 
- * <i>errorThrow</i>: A Boolean object.
+  * 0: UTF-8 only.
+
+  * 1: Detect UTF-16 using BOM or non-zero basic code point, otherwise UTF-8.
+
+  * 2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
+
+  * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+.
+
+ * <i>errorThrow</i>: When encountering invalid encoding, throw an exception if this parameter is true, or replace it with U + FFFD (replacement character) if this parameter is false.
 
 <a id="Void_ctor_System_IO_Stream_Int32_Boolean_Boolean"></a>
 ### CharacterReader Constructor
@@ -162,17 +213,29 @@ The parameter  <i>str</i>
         bool errorThrow,
         bool dontSkipUtf8Bom);
 
- Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md).
+ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.CharacterReader.md) class.
 
        <b>Parameters:</b>
 
- * <i>stream</i>: A readable data stream.
+ * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: A 32-bit signed integer.
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code point (U + 0001 to U + 007F) before reading the rest of the stream. This value can be one of the following:
 
- * <i>errorThrow</i>: A Boolean object.
+  * 0: UTF-8 only.
 
- * <i>dontSkipUtf8Bom</i>: Another Boolean object.
+  * 1: Detect UTF-16 using BOM or non-zero basic code point, otherwise UTF-8.
+
+  * 2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
+
+  * 4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect UTF-32 first.)
+
+.
+
+ * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U + FFFD) as the stream is read.
+
+ * <i>dontSkipUtf8Bom</i>: If the stream is detected as UTF-8 and this parameter is  `true` , won't skip the BOM character if it occurs at the start of the stream.
 
 <b>Exceptions:</b>
 
@@ -190,7 +253,7 @@ The parameter  <i>stream</i>
 
  Reads a series of code points from a Unicode stream or a string.
 
-        <b>Parameters:</b>
+ <b>Parameters:</b>
 
  * <i>chars</i>: An array where the code points that were read will be stored.
 
@@ -219,7 +282,7 @@ Either  <i>index</i>
  's length, or  <i>chars</i>
  's length minus  <i>index</i>
  is less than  <i>length</i>
-.
+ .
 
 <a id="ReadChar"></a>
 ### ReadChar
@@ -228,6 +291,6 @@ Either  <i>index</i>
 
  Reads the next character from a Unicode stream or a string.
 
-   <b>Return Value:</b>
+ <b>Return Value:</b>
 
 The next character, or -1 if the end of the string or stream was reached.

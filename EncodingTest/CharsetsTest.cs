@@ -446,6 +446,9 @@ namespace EncodingTest {
     public static void TestSingleByteRoundTrip(ICharacterEncoding enc) {
       var codepoints = new int[256];
       var codesrc = new int[256];
+      if (enc == null) {
+        throw new ArgumentNullException(nameof(enc));
+      }
       ICharacterEncoder encoder = enc.GetEncoder();
       ICharacterDecoder decoder = enc.GetDecoder();
       var codetotal = 0;
@@ -563,6 +566,9 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
 
     public static void TestUtfRoundTrip(
        ICharacterEncoding enc) {
+      if (enc == null) {
+        throw new ArgumentNullException(nameof(enc));
+      }
       ICharacterEncoder encoder = enc.GetEncoder();
       ICharacterDecoder decoder = enc.GetDecoder();
       TestUtfRoundTrip(encoder, decoder);
@@ -608,10 +614,16 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
         if (i >= 0xd800 && i < 0xe000) {
           continue;
         }
+        if (encoder == null) {
+          throw new ArgumentNullException(nameof(encoder));
+        }
         int e = encoder.Encode(i, aw);
         if (e == -2) {
           Assert.Fail("Failed to encode " + i);
         }
+      }
+      if (encoder == null) {
+        throw new ArgumentNullException(nameof(encoder));
       }
       encoder.Encode(-1, aw);
       var reader = new ByteCounterReader(aw.ToArray());
@@ -620,6 +632,9 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
           continue;
         }
         int pos = reader.Position;
+        if (decoder == null) {
+          throw new ArgumentNullException(nameof(decoder));
+        }
         int c = decoder.ReadChar(reader);
         if (c != i) {
           reader.Position = pos;

@@ -471,6 +471,9 @@ try { if (ms != null) {
     public static void TestSingleByteRoundTrip(ICharacterEncoding enc) {
       int[] codepoints = new int[256];
       int[] codesrc = new int[256];
+      if (enc == null) {
+        throw new NullPointerException("enc");
+      }
       ICharacterEncoder encoder = enc.GetEncoder();
       ICharacterDecoder decoder = enc.GetDecoder();
       int codetotal = 0;
@@ -587,6 +590,9 @@ Encodings.GetEncoding(this.valueSingleByteNames[j]);
 
     public static void TestUtfRoundTrip(
        ICharacterEncoding enc) {
+      if (enc == null) {
+        throw new NullPointerException("enc");
+      }
       ICharacterEncoder encoder = enc.GetEncoder();
       ICharacterDecoder decoder = enc.GetDecoder();
       TestUtfRoundTrip(encoder, decoder);
@@ -634,10 +640,16 @@ private int propVarposition;
         if (i >= 0xd800 && i < 0xe000) {
           continue;
         }
+        if (encoder == null) {
+          throw new NullPointerException("encoder");
+        }
         int e = encoder.Encode(i, aw);
         if (e == -2) {
           Assert.fail("Failed to encode " + i);
         }
+      }
+      if (encoder == null) {
+        throw new NullPointerException("encoder");
       }
       encoder.Encode(-1, aw);
       ByteCounterReader reader = new ByteCounterReader(aw.ToArray());
@@ -646,6 +658,9 @@ private int propVarposition;
           continue;
         }
         int pos = reader.getPosition();
+        if (decoder == null) {
+          throw new NullPointerException("decoder");
+        }
         int c = decoder.ReadChar(reader);
         if (c != i) {
           reader.setPosition(pos);

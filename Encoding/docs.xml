@@ -1512,57 +1512,123 @@
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream)'>
     <summary>Initializes a new instance of the
       <see cref='PeterO.Text.CharacterReader'/>
-      .
+       class; will read the stream as UTF-8, skip the byte-order mark (U+FEFF)
+      if it appears first in the stream, and replace invalid byte sequences with
+      replacement characters (U+FFFD).
     </summary>
     <param name='stream'>A readable data stream.
     </param>
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='stream'/>
+       is null.
+    </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32)'>
     <summary>Initializes a new instance of the
       <see cref='PeterO.Text.CharacterReader'/>
-      .
+       class; will skip the byte-order mark (U+FEFF) if it appears first in the
+      stream and replace invalid byte sequences with replacement characters
+      (U+FFFD).
     </summary>
-    <param name='stream'>A readable data stream.
+    <param name='stream'>A readable byte stream.
     </param>
-    <param name='mode'>The parameter
-      <paramref name='mode'/>
-       is a 32-bit signed integer.
+    <param name='mode'>The method to use when detecting encodings other than UTF-8 in the byte
+      stream. This usually involves checking whether the stream begins with a
+      byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to
+      U+007F) before reading the rest of the stream. This value can be one of
+      the following:
+      <list>
+        <item>0: UTF-8 only.
+        </item>
+        <item>1: Detect UTF-16 using BOM or non-zero basic code point, otherwise
+          UTF-8.
+        </item>
+        <item>2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point,
+          otherwise UTF-8. (Tries to detect UTF-32 first.)
+        </item>
+        <item>3: Detect UTF-16 using BOM, otherwise UTF-8.
+        </item>
+        <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect
+          UTF-32 first.)
+        </item>
+      </list>
+      .
     </param>
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='stream'/>
+       is null.
+    </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)'>
     <summary>Initializes a new instance of the
       <see cref='PeterO.Text.CharacterReader'/>
-      .
+       class; will skip the byte-order mark (U+FEFF) if it appears first in the
+      stream and a UTF-8 stream is detected.
     </summary>
     <param name='stream'>A readable data stream.
     </param>
-    <param name='mode'>The parameter
-      <paramref name='mode'/>
-       is a 32-bit signed integer.
+    <param name='mode'>The method to use when detecting encodings other than UTF-8 in the byte
+      stream. This usually involves checking whether the stream begins with a
+      byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to
+      U+007F) before reading the rest of the stream. This value can be one of
+      the following:
+      <list>
+        <item>0: UTF-8 only.
+        </item>
+        <item>1: Detect UTF-16 using BOM or non-zero basic code point, otherwise
+          UTF-8.
+        </item>
+        <item>2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point,
+          otherwise UTF-8. (Tries to detect UTF-32 first.)
+        </item>
+        <item>3: Detect UTF-16 using BOM, otherwise UTF-8.
+        </item>
+        <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect
+          UTF-32 first.)
+        </item>
+      </list>
+      .
     </param>
-    <param name='errorThrow'>either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='errorThrow'>When encountering invalid encoding, throw an exception if this parameter
+      is true, or replace it with U+FFFD (replacement character) if this
+      parameter is false.
     </param>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.IO.Stream,System.Int32,System.Boolean,System.Boolean)'>
     <summary>Initializes a new instance of the
       <see cref='PeterO.Text.CharacterReader'/>
-      .
+       class.
     </summary>
-    <param name='stream'>A readable data stream.
+    <param name='stream'>A readable byte stream.
     </param>
-    <param name='mode'>The parameter
-      <paramref name='mode'/>
-       is a 32-bit signed integer.
+    <param name='mode'>The method to use when detecting encodings other than UTF-8 in the byte
+      stream. This usually involves checking whether the stream begins with a
+      byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to
+      U+007F) before reading the rest of the stream. This value can be one of
+      the following:
+      <list>
+        <item>0: UTF-8 only.
+        </item>
+        <item>1: Detect UTF-16 using BOM or non-zero basic code point, otherwise
+          UTF-8.
+        </item>
+        <item>2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point,
+          otherwise UTF-8. (Tries to detect UTF-32 first.)
+        </item>
+        <item>3: Detect UTF-16 using BOM, otherwise UTF-8.
+        </item>
+        <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to detect
+          UTF-32 first.)
+        </item>
+      </list>
+      .
     </param>
-    <param name='errorThrow'>either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='errorThrow'>If true, will throw an exception if invalid byte sequences (in the
+      detected encoding) are found in the byte stream. If false, replaces those
+      byte sequences with replacement characters (U+FFFD) as the stream is read.
     </param>
-    <param name='dontSkipUtf8Bom'>either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='dontSkipUtf8Bom'>If the stream is detected as UTF-8 and this parameter is
+      <c>true</c> , won't skip the BOM character if it occurs at the start of the stream.
     </param>
     <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='stream'/>
@@ -1572,7 +1638,7 @@
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String)'>
     <summary>Initializes a new instance of the
       <see cref='PeterO.Text.CharacterReader'/>
-      .
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1582,33 +1648,35 @@
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean)'>
     <summary>Initializes a new instance of the
       <see cref='PeterO.Text.CharacterReader'/>
-      .
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
        is a text string.
     </param>
-    <param name='skipByteOrderMark'>either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='skipByteOrderMark'>If true and the first character in the string is U+FEFF, skip that
+      character.
     </param>
+    <exception cref='System.ArgumentNullException'>The parameter
+      <paramref name='str'/>
+       is null.
+    </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Boolean,System.Boolean)'>
     <summary>Initializes a new instance of the
       <see cref='PeterO.Text.CharacterReader'/>
-      .
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
        is a text string.
     </param>
-    <param name='skipByteOrderMark'>either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='skipByteOrderMark'>If true and the first character in the string is U+FEFF, skip that
+      character.
     </param>
-    <param name='errorThrow'>either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='errorThrow'>When encountering invalid encoding, throw an exception if this parameter
+      is true, or replace it with U+FFFD (replacement character) if this
+      parameter is false.
     </param>
     <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
@@ -1618,7 +1686,7 @@
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32)'>
     <summary>Initializes a new instance of the
       <see cref='PeterO.Text.CharacterReader'/>
-      .
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1636,7 +1704,7 @@
   <doc name='M:PeterO.Text.CharacterReader.#ctor(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)'>
     <summary>Initializes a new instance of the
       <see cref='PeterO.Text.CharacterReader'/>
-      .
+       class.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1650,13 +1718,12 @@
       <paramref name='length'/>
        is a 32-bit signed integer.
     </param>
-    <param name='skipByteOrderMark'>either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='skipByteOrderMark'>If true and the first character in the string portion is U+FEFF, skip that
+      character.
     </param>
-    <param name='errorThrow'>either
-      <c>true</c> or
-      <c>false</c> .
+    <param name='errorThrow'>When encountering invalid encoding, throw an exception if this parameter
+      is true, or replace it with U+FFFD (replacement character) if this
+      parameter is false.
     </param>
     <exception cref='System.ArgumentNullException'>The parameter
       <paramref name='str'/>
@@ -1698,7 +1765,7 @@
       <paramref name='index'/>
        is less than
       <paramref name='length'/>
-      .
+       .
     </exception>
   </doc>
   <doc name='M:PeterO.Text.CharacterReader.ReadChar'>
@@ -2570,13 +2637,6 @@
         <c>reader.InputToString()</c> . If the object's class already has a InputToString method with the same
         parameters, that method takes precedence over this extension method.
       </para>
-      <para>In the.NET implementation, this method is implemented as an extension
-        method to any object implementing ICharacterInput and can be called as
-        follows:
-        <c>reader.InputToString()</c> . If the object's class already has a
-        <c>InputToString</c> method with the same parameters, that method takes precedence over this
-        extension method.
-      </para>
     </summary>
     <param name='reader'>A character input whose characters will be converted to a text string.
     </param>
@@ -2597,9 +2657,13 @@
       </para>
     </summary>
     <param name='name'>A string that names a given character encoding. Can be null. Any leading
-      and trailing whitespace is removed and the name converted to lowercase
-      before resolving the encoding's name. The Encoding Standard supports only
-      the following encodings (and defines aliases for most of them).
+      and trailing whitespace (U+0009, U+000c, U+000D, U+000A, U+0010) is
+      removed before resolving the encoding's name, and encoding names are
+      matched using a basic case-insensitive comparison. (Two strings are equal
+      in such a comparison, if they match after converting the basic upper-case
+      letters A to Z (U+0041 to U+005A) in both strings to lower case.) The
+      Encoding Standard supports only the following encodings (and defines
+      aliases for most of them).
       <list type='bullet'>
         <item><c>UTF-8</c> - UTF-8 (8-bit encoding of the universal coded character set, the
           encoding recommended by the Encoding Standard for new data formats)
@@ -2705,11 +2769,16 @@
     <summary>Resolves a character encoding's name to a canonical form, using rules more
       suitable for email.
     </summary>
-    <param name='name'>A string naming a character encoding. Can be null. Uses a modified version
-      of the rules in the Encoding Standard to better conform, in some cases, to
-      email standards like MIME. Encoding names and aliases not registered with
-      the Internet Assigned Numbers Authority (IANA) are not supported, with the
-      exception of
+    <param name='name'>A string naming a character encoding. Can be null. Any leading and
+      trailing whitespace (U+0009, U+000c, U+000D, U+000A, U+0010) is removed
+      before resolving the encoding's name, and encoding names are matched using
+      a basic case-insensitive comparison. (Two strings are equal in such a
+      comparison, if they match after converting the basic upper-case letters A
+      to Z (U+0041 to U+005A) in both strings to lower case.) Uses a modified
+      version of the rules in the Encoding Standard to better conform, in some
+      cases, to email standards like MIME. Encoding names and aliases not
+      registered with the Internet Assigned Numbers Authority (IANA) are not
+      supported, with the exception of
       <c>ascii</c> ,
       <c>utf8</c> ,
       <c>cp1252</c> , and names 10 characters or longer starting with
@@ -2721,8 +2790,12 @@
         <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an alias to
           <c>windows-1252</c> as specified in the Encoding Standard. The coded character set's code
           points match those in the Unicode Standard's Basic Latin block (0-127
-          or U+0000 to U+007F). The name
-          <c>ascii</c> is an alias.
+          or U+0000 to U+007F). This method name
+          <c>ascii</c> is treated as an alias to
+          <c>US-ASCII</c> even though it is not registered with IANA as a charset name and RFC
+          2046 (part of MIME) reserves the name "ASCII". A future version of
+          this method may stop supporting the alias
+          <c>ascii</c> .
         </item>
         <item><c>ISO-8859-1</c> - Latin-1 single-byte encoding, rather than an alias to
           <c>windows-1252</c> as specified in the Encoding Standard. The coded character set's code
@@ -2798,13 +2871,6 @@
         as follows:
         <c>encoding.StringToBytes(str)</c> . If the object's class already has a StringToBytes method with the same
         parameters, that method takes precedence over this extension method.
-      </para>
-      <para>In the.NET implementation, this method is implemented as an extension
-        method to any object implementing ICharacterEncoding and can be called
-        as follows:
-        <c>encoding.StringToBytes(str)</c> . If the object's class already has a
-        <c>StringToBytes</c> method with the same parameters, that method takes precedence over this
-        extension method.
       </para>
     </summary>
     <param name='encoding'>An object that implements a character encoding.

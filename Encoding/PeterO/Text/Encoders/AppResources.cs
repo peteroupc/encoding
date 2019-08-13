@@ -9,9 +9,10 @@ namespace PeterO.Text.Encoders {
     }
 
     public short[] GetShortArray(string name) {
-      string str = this.mgr.GetString(name);
+      string str = this.mgr.GetString(name,
+  System.Globalization.CultureInfo.InvariantCulture);
       if (str == null || (str.Length & 3) != 0) {
-         return null;
+        return null;
       }
       var ret = new short[str.Length >> 2];
       var k = 0;
@@ -37,9 +38,10 @@ namespace PeterO.Text.Encoders {
     }
 
     public int[] GetIntArray(string name) {
-      string str = this.mgr.GetString(name);
+      string str = this.mgr.GetString(name,
+  System.Globalization.CultureInfo.InvariantCulture);
       if (str == null || (str.Length & 7) != 0) {
-         return null;
+        return null;
       }
       var ret = new int[str.Length >> 3];
       var k = 0;
@@ -65,7 +67,8 @@ namespace PeterO.Text.Encoders {
     }
 
     public string GetString(string name) {
-      return this.mgr.GetString(name);
+      return this.mgr.GetString(name,
+  System.Globalization.CultureInfo.InvariantCulture);
     }
   }
 }

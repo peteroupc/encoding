@@ -27,7 +27,8 @@ import java.io.*;
     private ICharacterInput reader;
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      */
     public CharacterReader(String str) {
@@ -35,7 +36,8 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      * @param skipByteOrderMark If true and the first character in the string is
      * U + FEFF, skip that character.
@@ -46,7 +48,8 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      * @param skipByteOrderMark If true and the first character in the string is
      * U + FEFF, skip that character.
@@ -73,7 +76,8 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      * @param offset The parameter {@code offset} is a 32-bit signed integer.
      * @param length The parameter {@code length} is a 32-bit signed integer.
@@ -83,7 +87,8 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      * @param offset The parameter {@code offset} is a 32-bit signed integer.
      * @param length The parameter {@code length} is a 32-bit signed integer.
@@ -134,10 +139,11 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class; will read
-     * the stream as UTF-8, skip the byte-order mark (U + FEFF) if it appears
-     * first in the stream, and replace invalid byte sequences with
-     * replacement characters (U + FFFD).
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class; will read the stream as
+     * UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
+     * stream, and replace invalid byte sequences with replacement
+     * characters (U + FFFD).
      * @param stream A readable data stream.
      * @throws NullPointerException The parameter {@code stream} is null.
      */
@@ -146,8 +152,9 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class; will skip
-     * the byte-order mark (U + FEFF) if it appears first in the stream and a
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class; will skip the
+     * byte-order mark (U + FEFF) if it appears first in the stream and a
      * UTF-8 stream is detected.
      * @param stream A readable data stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
@@ -170,8 +177,9 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class; will skip
-     * the byte-order mark (U + FEFF) if it appears first in the stream and
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class; will skip the
+     * byte-order mark (U + FEFF) if it appears first in the stream and
      * replace invalid byte sequences with replacement characters (U + FFFD).
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
@@ -192,7 +200,8 @@ import java.io.*;
     }
 
     /**
-     * Initializes a new instance of the {@link CharacterReader} class.
+     * Initializes a new instance of the {@link
+     * com.upokecenter.text.CharacterReader} class.
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream
@@ -245,9 +254,9 @@ import java.io.*;
      * than the {@code length} parameter if the end of the stream is
      * reached.
      * @throws NullPointerException The parameter {@code chars} is null.
-     * @throws IllegalArgumentException Either {@code index} or {@code length} is
-     * less than 0 or greater than {@code chars} 's length, or {@code
-     * chars} 's length minus {@code index} is less than {@code length}.
+     * @throws IllegalArgumentException Either {@code index} or {@code length} is less
+     * than 0 or greater than {@code chars} 's length, or {@code chars} 's
+     * length minus {@code index} is less than {@code length}.
      */
     public int Read(int[] chars, int index, int length) {
       if (chars == null) {

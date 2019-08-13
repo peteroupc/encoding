@@ -1445,7 +1445,8 @@ name.Equals("ISO-8859-8-I", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingXUserDefined();
       } else if (name.Equals("GBK", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingGBK();
-      } else if (name.Equals("GB2312", StringComparison.Ordinal)) {
+      } else if (name.Equals("GB2312", StringComparison.Ordinal) ||
+              name.Equals("gb2312", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingGBK();
       } else if (name.Equals("gb18030", StringComparison.Ordinal) ||
 name.Equals("GB18030", StringComparison.Ordinal)) {

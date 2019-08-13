@@ -9,8 +9,10 @@ using System;
 using System.IO;
 
 namespace PeterO.Text {
-  /// <include file='../../docs.xml'
-  /// path='docs/doc[@name="T:PeterO.Text.CharacterReader"]/*'/>
+  /// <summary>A general-purpose character input for reading text from
+  /// byte streams and text strings. When reading byte streams, this
+  /// class supports the UTF-8 character encoding by default, but can be
+  /// configured to support UTF-16 and UTF-32 as well.</summary>
   public sealed class CharacterReader : ICharacterInput {
     private readonly int mode;
     private readonly bool errorThrow;
@@ -23,14 +25,14 @@ namespace PeterO.Text {
     private ICharacterInput reader;
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
+    /// <see cref='PeterO.Text.CharacterReader'/> class.</summary>
     /// <param name='str'>The parameter <paramref name='str'/> is a text
     /// string.</param>
     public CharacterReader(string str) : this(str, false, false) {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
+    /// <see cref='PeterO.Text.CharacterReader'/> class.</summary>
     /// <param name='str'>The parameter <paramref name='str'/> is a text
     /// string.</param>
     /// <param name='skipByteOrderMark'>If true and the first character in
@@ -42,7 +44,7 @@ namespace PeterO.Text {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
+    /// <see cref='PeterO.Text.CharacterReader'/> class.</summary>
     /// <param name='str'>The parameter <paramref name='str'/> is a text
     /// string.</param>
     /// <param name='skipByteOrderMark'>If true and the first character in
@@ -70,7 +72,7 @@ namespace PeterO.Text {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
+    /// <see cref='PeterO.Text.CharacterReader'/> class.</summary>
     /// <param name='str'>The parameter <paramref name='str'/> is a text
     /// string.</param>
     /// <param name='offset'>The parameter <paramref name='offset'/> is a
@@ -82,7 +84,7 @@ namespace PeterO.Text {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
+    /// <see cref='PeterO.Text.CharacterReader'/> class.</summary>
     /// <param name='str'>The parameter <paramref name='str'/> is a text
     /// string.</param>
     /// <param name='offset'>The parameter <paramref name='offset'/> is a
@@ -136,10 +138,10 @@ namespace PeterO.Text {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class; will read the stream as UTF-8,
-    /// skip the byte-order mark (U + FEFF) if it appears first in the
-    /// stream, and replace invalid byte sequences with replacement
-    /// characters (U + FFFD).</summary>
+    /// <see cref='PeterO.Text.CharacterReader'/> class; will read the
+    /// stream as UTF-8, skip the byte-order mark (U + FEFF) if it appears
+    /// first in the stream, and replace invalid byte sequences with
+    /// replacement characters (U + FFFD).</summary>
     /// <param name='stream'>A readable data stream.</param>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='stream'/> is null.</exception>
@@ -147,9 +149,9 @@ namespace PeterO.Text {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class; will skip the byte-order mark
-    /// (U + FEFF) if it appears first in the stream and a UTF-8 stream is
-    /// detected.</summary>
+    /// <see cref='PeterO.Text.CharacterReader'/> class; will skip the
+    /// byte-order mark (U + FEFF) if it appears first in the stream and a
+    /// UTF-8 stream is detected.</summary>
     /// <param name='stream'>A readable data stream.</param>
     /// <param name='mode'>The method to use when detecting encodings other
     /// than UTF-8 in the byte stream. This usually involves checking
@@ -173,9 +175,10 @@ namespace PeterO.Text {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class; will skip the byte-order mark
-    /// (U + FEFF) if it appears first in the stream and replace invalid
-    /// byte sequences with replacement characters (U + FFFD).</summary>
+    /// <see cref='PeterO.Text.CharacterReader'/> class; will skip the
+    /// byte-order mark (U + FEFF) if it appears first in the stream and
+    /// replace invalid byte sequences with replacement characters (U +
+    /// FFFD).</summary>
     /// <param name='stream'>A readable byte stream.</param>
     /// <param name='mode'>The method to use when detecting encodings other
     /// than UTF-8 in the byte stream. This usually involves checking
@@ -198,7 +201,7 @@ namespace PeterO.Text {
     }
 
     /// <summary>Initializes a new instance of the
-    /// <see cref='CharacterReader'/> class.</summary>
+    /// <see cref='PeterO.Text.CharacterReader'/> class.</summary>
     /// <param name='stream'>A readable byte stream.</param>
     /// <param name='mode'>The method to use when detecting encodings other
     /// than UTF-8 in the byte stream. This usually involves checking
@@ -243,8 +246,25 @@ namespace PeterO.Text {
       int ReadByte();
     }
 
-    /// <include file='../../docs.xml'
-    ///   path='docs/doc[@name="M:PeterO.Text.CharacterReader.Read(System.Int32[],System.Int32,System.Int32)"]/*'/>
+    /// <summary>Reads a series of code points from a Unicode stream or a
+    /// string.</summary>
+    /// <param name='chars'>An array where the code points that were read
+    /// will be stored.</param>
+    /// <param name='index'>A zero-based index showing where the desired
+    /// portion of <paramref name='chars'/> begins.</param>
+    /// <param name='length'>The number of elements in the desired portion
+    /// of <paramref name='chars'/> (but not more than <paramref
+    /// name='chars'/> 's length).</param>
+    /// <returns>The number of code points read from the stream. This can
+    /// be less than the <paramref name='length'/> parameter if the end of
+    /// the stream is reached.</returns>
+    /// <exception cref='ArgumentNullException'>The parameter <paramref
+    /// name='chars'/> is null.</exception>
+    /// <exception cref='ArgumentException'>Either <paramref name='index'/>
+    /// or <paramref name='length'/> is less than 0 or greater than
+    /// <paramref name='chars'/> 's length, or <paramref name='chars'/> 's
+    /// length minus <paramref name='index'/> is less than <paramref
+    /// name='length'/>.</exception>
     public int Read(int[] chars, int index, int length) {
       if (chars == null) {
         throw new ArgumentNullException(nameof(chars));
@@ -281,8 +301,10 @@ namespace PeterO.Text {
       return count;
     }
 
-    /// <include file='../../docs.xml'
-    /// path='docs/doc[@name="M:PeterO.Text.CharacterReader.ReadChar"]/*'/>
+    /// <summary>Reads the next character from a Unicode stream or a
+    /// string.</summary>
+    /// <returns>The next character, or -1 if the end of the string or
+    /// stream was reached.</returns>
     public int ReadChar() {
       if (this.reader != null) {
         return this.reader.ReadChar();

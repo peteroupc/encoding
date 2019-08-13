@@ -10,20 +10,20 @@ A general-purpose character input for reading text from byte streams and
 ## Methods
 
 * `CharacterReader​(java.io.InputStream stream) CharacterReader`<br>
- Initializes a new instance of the CharacterReader class; will read
- the stream as UTF-8, skip the byte-order mark (U + FEFF) if it appears
- first in the stream, and replace invalid byte sequences with
- replacement characters (U + FFFD).
+ Initializes a new instance of the CharacterReader class; will read the stream as
+ UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
+ stream, and replace invalid byte sequences with replacement
+ characters (U + FFFD).
 * `CharacterReader​(java.io.InputStream stream,
                int mode) CharacterReader`<br>
- Initializes a new instance of the CharacterReader class; will skip
- the byte-order mark (U + FEFF) if it appears first in the stream and
+ Initializes a new instance of the CharacterReader class; will skip the
+ byte-order mark (U + FEFF) if it appears first in the stream and
  replace invalid byte sequences with replacement characters (U + FFFD).
 * `CharacterReader​(java.io.InputStream stream,
                int mode,
                boolean errorThrow) CharacterReader`<br>
- Initializes a new instance of the CharacterReader class; will skip
- the byte-order mark (U + FEFF) if it appears first in the stream and a
+ Initializes a new instance of the CharacterReader class; will skip the
+ byte-order mark (U + FEFF) if it appears first in the stream and a
  UTF-8 stream is detected.
 * `CharacterReader​(java.io.InputStream stream,
                int mode,
@@ -59,20 +59,20 @@ A general-purpose character input for reading text from byte streams and
 ## Constructors
 
 * `CharacterReader​(java.io.InputStream stream) CharacterReader`<br>
- Initializes a new instance of the CharacterReader class; will read
- the stream as UTF-8, skip the byte-order mark (U + FEFF) if it appears
- first in the stream, and replace invalid byte sequences with
- replacement characters (U + FFFD).
+ Initializes a new instance of the CharacterReader class; will read the stream as
+ UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
+ stream, and replace invalid byte sequences with replacement
+ characters (U + FFFD).
 * `CharacterReader​(java.io.InputStream stream,
                int mode) CharacterReader`<br>
- Initializes a new instance of the CharacterReader class; will skip
- the byte-order mark (U + FEFF) if it appears first in the stream and
+ Initializes a new instance of the CharacterReader class; will skip the
+ byte-order mark (U + FEFF) if it appears first in the stream and
  replace invalid byte sequences with replacement characters (U + FFFD).
 * `CharacterReader​(java.io.InputStream stream,
                int mode,
                boolean errorThrow) CharacterReader`<br>
- Initializes a new instance of the CharacterReader class; will skip
- the byte-order mark (U + FEFF) if it appears first in the stream and a
+ Initializes a new instance of the CharacterReader class; will skip the
+ byte-order mark (U + FEFF) if it appears first in the stream and a
  UTF-8 stream is detected.
 * `CharacterReader​(java.io.InputStream stream,
                int mode,
@@ -180,10 +180,10 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 ### CharacterReader
     public CharacterReader​(java.io.InputStream stream)
-Initializes a new instance of the <code>CharacterReader</code> class; will read
- the stream as UTF-8, skip the byte-order mark (U + FEFF) if it appears
- first in the stream, and replace invalid byte sequences with
- replacement characters (U + FFFD).
+Initializes a new instance of the <code>CharacterReader</code> class; will read the stream as
+ UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
+ stream, and replace invalid byte sequences with replacement
+ characters (U + FFFD).
 
 **Parameters:**
 
@@ -195,8 +195,8 @@ Initializes a new instance of the <code>CharacterReader</code> class; will read
 
 ### CharacterReader
     public CharacterReader​(java.io.InputStream stream, int mode, boolean errorThrow)
-Initializes a new instance of the <code>CharacterReader</code> class; will skip
- the byte-order mark (U + FEFF) if it appears first in the stream and a
+Initializes a new instance of the <code>CharacterReader</code> class; will skip the
+ byte-order mark (U + FEFF) if it appears first in the stream and a
  UTF-8 stream is detected.
 
 **Parameters:**
@@ -221,8 +221,8 @@ Initializes a new instance of the <code>CharacterReader</code> class; will skip
 
 ### CharacterReader
     public CharacterReader​(java.io.InputStream stream, int mode)
-Initializes a new instance of the <code>CharacterReader</code> class; will skip
- the byte-order mark (U + FEFF) if it appears first in the stream and
+Initializes a new instance of the <code>CharacterReader</code> class; will skip the
+ byte-order mark (U + FEFF) if it appears first in the stream and
  replace invalid byte sequences with replacement characters (U + FFFD).
 
 **Parameters:**
@@ -306,9 +306,9 @@ Reads a series of code points from a Unicode stream or a string.
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>chars</code> is null.
 
-* <code>java.lang.IllegalArgumentException</code> - Either <code>index</code> or <code>length</code> is
- less than 0 or greater than <code>chars</code> 's length, or <code>
- chars</code> 's length minus <code>index</code> is less than <code>length</code>.
+* <code>java.lang.IllegalArgumentException</code> - Either <code>index</code> or <code>length</code> is less
+ than 0 or greater than <code>chars</code> 's length, or <code>chars</code> 's
+ length minus <code>index</code> is less than <code>length</code>.
 
 ### ReadChar
     public int ReadChar()

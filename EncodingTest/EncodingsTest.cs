@@ -87,6 +87,29 @@ namespace EncodingTest {
           stringTemp);
       }
     }
+
+    [Test]
+    public void TestGetEncodingGb2312() {
+if (Encodings.GetEncoding("gb2312") == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("gb2312", true) == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("gb2312", false) == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("GB2312") == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("GB2312", true) == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("GB2312", false) == null) {
+  Assert.Fail();
+}
+    }
+
     [Test]
     public void TestGetEncoding() {
       if (Encodings.GetEncoding("utf-8") == null) {

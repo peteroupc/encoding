@@ -1322,7 +1322,8 @@ name.equals("ISO-8859-8-I")) {
         return (ICharacterEncoding)new EncodingXUserDefined();
       } else if (name.equals("GBK")) {
         return (ICharacterEncoding)new EncodingGBK();
-      } else if (name.equals("GB2312")) {
+      } else if (name.equals("GB2312") ||
+              name.equals("gb2312")) {
         return (ICharacterEncoding)new EncodingGBK();
       } else if (name.equals("gb18030") ||
 name.equals("GB18030")) {

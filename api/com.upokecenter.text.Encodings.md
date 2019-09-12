@@ -27,7 +27,7 @@ Contains methods for converting text from one character encoding to another.
  is a 128-code-point coded character set that includes the English
  letters and digits, common punctuation and symbols, and control
  characters. As used here, its code points match the code points within
- the Basic Latin block (0-127 or U + 0000 to U + 007F) of the Unicode
+ the Basic Latin block (0-127 or U+0000 to U+007F) of the Unicode
  Standard.</li></ul> <p>There are several kinds of character
  encodings:</p> <ul> <li><b>Single-byte encodings</b> define a coded
  character set that assigns one code point to one byte. Thus, they can
@@ -59,7 +59,7 @@ Contains methods for converting text from one character encoding to another.
  Kanji, and an ASCII encoding (with ASCII as the default).</li> <li>(b)
  UTF-7 (not included in the Encoding Standard) is an encoding that uses
  the Unicode Standard's coded character set, which is encoded using a
- limited subset of ASCII. The plus symbol (U + 002B) is used to shift
+ limited subset of ASCII. The plus symbol (U+002B) is used to shift
  into a UTF-16BE multi-byte encoding (converted to a modified version
  of base-64) to encode other Unicode code points.</li> <li>The Encoding
  Standard also defines a <b>replacement encoding</b>, which causes a
@@ -247,7 +247,7 @@ Reads bytes from a data source and converts the bytes from a given encoding
 
 * <code>encoding</code> - An object that implements a given character encoding. Any
  bytes that can't be decoded are converted to the replacement
- character (U + FFFD).
+ character (U+FFFD).
 
 * <code>input</code> - An object that implements a byte stream.
 
@@ -295,7 +295,7 @@ Decodes data read from a data stream into a text string in the given
     public static java.lang.String DecodeToString​(ICharacterEncoding enc, byte[] bytes)
 Reads a byte array from a data source and converts the bytes from a given
  encoding to a text string. Errors in decoding are handled by
- replacing erroneous bytes with the replacement character (U + FFFD).
+ replacing erroneous bytes with the replacement character (U+FFFD).
  <p>In the.NET implementation, this method is implemented as an
  extension method to any object implementing ICharacterEncoding and
  can be called as follows: <code>enc.DecodeToString(bytes)</code>. If the
@@ -329,7 +329,7 @@ Reads a byte array from a data source and converts the bytes from a given
 Reads a portion of a byte array from a data source and converts the bytes
  from a given encoding to a text string. Errors in decoding are
  handled by replacing erroneous bytes with the replacement character
- (U + FFFD). <p>In the.NET implementation, this method is implemented
+ (U+FFFD). <p>In the.NET implementation, this method is implemented
  as an extension method to any object implementing ICharacterEncoding
  and can be called as follows: <code>enc.DecodeToString(bytes, offset,
  length)</code>. If the object's class already has a DecodeToString
@@ -349,8 +349,8 @@ Reads a portion of a byte array from a data source and converts the bytes
 
 * <code>bytes</code> - A byte array containing the desired portion to read.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>
- bytes</code> begins.
+* <code>offset</code> - An index starting at 0 showing where the desired portion of
+ <code>bytes</code> begins.
 
 * <code>length</code> - The length, in bytes, of the desired portion of <code>bytes</code>
  (but not more than <code>bytes</code> 's length).
@@ -464,7 +464,7 @@ Reads Unicode characters from a character input and writes them to a byte
 Reads Unicode characters from a text string and writes them to a byte array
  encoded in a given character encoding. When reading the string, any
  unpaired surrogate characters are replaced with the replacement
- character (U + FFFD), and when writing to the byte array, any
+ character (U+FFFD), and when writing to the byte array, any
  characters that can't be encoded are replaced with the byte 0x3f
  (the question mark character). <p>In the.NET implementation, this
  method is implemented as an extension method to any string object
@@ -499,7 +499,7 @@ Reads Unicode characters from a text string and writes them to a byte array
 Reads Unicode characters from a text string and writes them to a byte array
  encoded in a given character encoding and using the given encoder
  fallback strategy. When reading the string, any unpaired surrogate
- characters are replaced with the replacement character (U + FFFD).
+ characters are replaced with the replacement character (U+FFFD).
  <p>In the.NET implementation, this method is implemented as an
  extension method to any object implementing string and can be called
  as follows: <code>str.EncodeToBytes(enc, htmlFallback)</code>. If the
@@ -593,7 +593,7 @@ Reads Unicode characters from a character input and writes them to a byte
     public static void EncodeToWriter​(java.lang.String str, ICharacterEncoding enc, IWriter writer)
 Converts a text string to bytes and writes the bytes to an output byte
  writer. When reading the string, any unpaired surrogate characters
- are replaced with the replacement character (U + FFFD), and when
+ are replaced with the replacement character (U+FFFD), and when
  writing to the byte stream, any characters that can't be encoded are
  replaced with the byte 0x3f (the question mark character). <p>In
  the.NET implementation, this method is implemented as an extension
@@ -690,7 +690,7 @@ Reads Unicode characters from a character input and writes them to a byte
     public static void EncodeToWriter​(java.lang.String str, ICharacterEncoding enc, java.io.OutputStream output) throws java.io.IOException
 Converts a text string to bytes and writes the bytes to an output data
  stream. When reading the string, any unpaired surrogate characters
- are replaced with the replacement character (U + FFFD), and when
+ are replaced with the replacement character (U+FFFD), and when
  writing to the byte stream, any characters that can't be encoded are
  replaced with the byte 0x3f (the question mark character). <p>In
  the.NET implementation, this method is implemented as an extension
@@ -930,51 +930,52 @@ Resolves a character encoding's name to a standard form. This involves
 **Parameters:**
 
 * <code>name</code> - A string that names a given character encoding. Can be null. Any
- leading and trailing whitespace (U + 0009, U + 000c, U + 000D, U + 000A,
+ leading and trailing whitespace (U+0009, U+000c, U+000D, U+000A,
  U+0010) is removed before resolving the encoding's name, and
  encoding names are matched using a basic case-insensitive
  comparison. (Two strings are equal in such a comparison, if they
- match after converting the basic upper-case letters A to Z (U + 0041
- to U + 005A) in both strings to lower case.) The Encoding Standard
- supports only the following encodings (and defines aliases for most
- of them). <ul> <li> <code>UTF-8</code> - UTF-8 (8-bit encoding of the
- universal coded character set, the encoding recommended by the
- Encoding Standard for new data formats)</li> <li> <code>UTF-16LE</code> -
- UTF-16 little-endian (16-bit UCS)</li> <li> <code>UTF-16BE</code> - UTF-16
- big-endian (16-bit UCS)</li> <li>The special-purpose encoding <code>
- x-user-defined</code></li> <li>The special-purpose encoding <code>
- replacement</code>.</li> <li>28 legacy single-byte encodings: <ul>
- <li> <code>windows-1252</code> : Western Europe (Note: The Encoding
- Standard aliases the names <code>US-ASCII</code> and <code>ISO-8859-1</code>
- to <code>windows-1252</code>, which uses a different coded character set
- from either; it differs from <code>ISO-8859-1</code> by assigning
- different characters to some bytes from 0x80 to 0x9F. The Encoding
- Standard does this for compatibility with existing Web pages.)</li>
- <li> <code>ISO-8859-2</code>, <code>windows-1250</code> : Central Europe</li>
- <li> <code>ISO-8859-10</code> : Northern Europe</li> <li> <code>
- ISO-8859-4</code>, <code>windows-1257</code> : Baltic</li> <li> <code>
- ISO-8859-13</code> : Estonian</li> <li> <code>ISO-8859-14</code> : Celtic</li>
- <li> <code>ISO-8859-16</code> : Romanian</li> <li> <code>ISO-8859-5</code>,
- <code>IBM-866</code>, <code>KOI8-R</code>, <code>windows-1251</code>, <code>
- x-mac-cyrillic</code> : Cyrillic</li> <li> <code>KOI8-U</code> : Ukrainian</li>
- <li> <code>ISO-8859-7</code>, <code>windows-1253</code> : Greek</li> <li> <code>
- ISO-8859-6</code>, <code>windows-1256</code> : Arabic</li> <li> <code>
- ISO-8859-8</code>, <code>ISO-8859-8-I</code>, <code>windows-1255</code> :
- Hebrew</li> <li> <code>ISO-8859-3</code> : Latin 3</li> <li> <code>
- ISO-8859-15</code>, <code>windows-1254</code> : Turkish</li> <li> <code>
- windows-874</code> : Thai</li> <li> <code>windows-1258</code> : Vietnamese</li>
- <li> <code>macintosh</code> : Mac Roman</li></ul></li> <li>Three legacy
- Japanese encodings: <code>Shift_JIS</code>, <code>EUC-JP</code>, <code>
- ISO-2022-JP</code></li> <li>Two legacy simplified Chinese encodings:
- <code>GBK</code> and <code>gb18030</code></li> <li> <code>Big5</code> : legacy
- traditional Chinese encoding</li> <li> <code>EUC-KR</code> : legacy Korean
- encoding</li></ul> <p>The <code>UTF-8</code>, <code>UTF-16LE</code>, and
- <code>UTF-16BE</code> encodings don't encode a byte-order mark at the
- start of the text (doing so is not recommended for <code>UTF-8</code>,
- while in <code>UTF-16LE</code> and <code>UTF-16BE</code>, the byte-order mark
- character U + FEFF is treated as an ordinary character, unlike in the
- UTF-16 encoding form). The Encoding Standard aliases <code>UTF-16</code>
-  to <code>UTF-16LE</code> "to deal with deployed content".</p>.
+ match after converting the basic upper-case letters A to Z (U+0041
+ to U+005A) in both strings to basic lower-case letters.) The
+ Encoding Standard supports only the following encodings (and defines
+ aliases for most of them). <ul> <li> <code>UTF-8</code> - UTF-8 (8-bit
+ encoding of the universal coded character set, the encoding
+ recommended by the Encoding Standard for new data formats)</li>
+ <li> <code>UTF-16LE</code> - UTF-16 little-endian (16-bit UCS)</li>
+ <li> <code>UTF-16BE</code> - UTF-16 big-endian (16-bit UCS)</li> <li>The
+ special-purpose encoding <code>x-user-defined</code></li> <li>The
+ special-purpose encoding <code>replacement</code>.</li> <li>28 legacy
+ single-byte encodings: <ul> <li> <code>windows-1252</code> : Western
+ Europe (Note: The Encoding Standard aliases the names <code>
+ US-ASCII</code> and <code>ISO-8859-1</code> to <code>windows-1252</code>, which uses
+ a different coded character set from either; it differs from <code>
+ ISO-8859-1</code> by assigning different characters to some bytes from
+ 0x80 to 0x9F. The Encoding Standard does this for compatibility with
+ existing Web pages.)</li> <li> <code>ISO-8859-2</code>, <code>
+ windows-1250</code> : Central Europe</li> <li> <code>ISO-8859-10</code> :
+ Northern Europe</li> <li> <code>ISO-8859-4</code>, <code>windows-1257</code> :
+ Baltic</li> <li> <code>ISO-8859-13</code> : Estonian</li> <li> <code>
+ ISO-8859-14</code> : Celtic</li> <li> <code>ISO-8859-16</code> : Romanian</li>
+ <li> <code>ISO-8859-5</code>, <code>IBM-866</code>, <code>KOI8-R</code>, <code>
+ windows-1251</code>, <code>x-mac-cyrillic</code> : Cyrillic</li> <li> <code>
+ KOI8-U</code> : Ukrainian</li> <li> <code>ISO-8859-7</code>, <code>
+ windows-1253</code> : Greek</li> <li> <code>ISO-8859-6</code>, <code>
+ windows-1256</code> : Arabic</li> <li> <code>ISO-8859-8</code>, <code>
+ ISO-8859-8-I</code>, <code>windows-1255</code> : Hebrew</li> <li> <code>
+ ISO-8859-3</code> : Latin 3</li> <li> <code>ISO-8859-15</code>, <code>
+ windows-1254</code> : Turkish</li> <li> <code>windows-874</code> : Thai</li>
+ <li> <code>windows-1258</code> : Vietnamese</li> <li> <code>macintosh</code> :
+ Mac Roman</li></ul></li> <li>Three legacy Japanese encodings: <code>
+ Shift_JIS</code>, <code>EUC-JP</code>, <code>ISO-2022-JP</code></li> <li>Two legacy
+ simplified Chinese encodings: <code>GBK</code> and <code>gb18030</code></li>
+ <li> <code>Big5</code> : legacy traditional Chinese encoding</li>
+ <li> <code>EUC-KR</code> : legacy Korean encoding</li></ul> <p>The <code>
+ UTF-8</code>, <code>UTF-16LE</code>, and <code>UTF-16BE</code> encodings don't
+ encode a byte-order mark at the start of the text (doing so is not
+ recommended for <code>UTF-8</code>, while in <code>UTF-16LE</code> and <code>
+ UTF-16BE</code>, the byte-order mark character U+FEFF is treated as an
+ ordinary character, unlike in the UTF-16 encoding form). The
+  Encoding Standard aliases <code>UTF-16</code> to <code>UTF-16LE</code> "to
+  deal with deployed content".</p>.
 
 **Returns:**
 
@@ -990,47 +991,47 @@ Resolves a character encoding's name to a canonical form, using rules more
 **Parameters:**
 
 * <code>name</code> - A string naming a character encoding. Can be null. Any leading
- and trailing whitespace (U + 0009, U + 000c, U + 000D, U + 000A, U + 0010) is
+ and trailing whitespace (U+0009, U+000c, U+000D, U+000A, U+0010) is
  removed before resolving the encoding's name, and encoding names are
  matched using a basic case-insensitive comparison. (Two strings are
  equal in such a comparison, if they match after converting the basic
- upper-case letters A to Z (U + 0041 to U + 005A) in both strings to
- lower case.) Uses a modified version of the rules in the Encoding
- Standard to better conform, in some cases, to email standards like
- MIME. Encoding names and aliases not registered with the Internet
- Assigned Numbers Authority (IANA) are not supported, with the
- exception of <code>ascii</code>, <code>utf8</code>, <code>cp1252</code>, and names
- 10 characters or longer starting with <code>iso-8859-</code>. Also, the
- following additional encodings are supported. Note that the case
- combination <code>GB18030</code>, the combination registered with IANA,
- rather than <code>gb18030</code> can be retured by this method. <ul>
- <li> <code>US-ASCII</code> - ASCII single-byte encoding, rather than an
- alias to <code>windows-1252</code> as specified in the Encoding Standard.
- The coded character set's code points match those in the Unicode
- Standard's Basic Latin block (0-127 or U+0000 to U+007F). This
- method name <code>ascii</code> is treated as an alias to <code>US-ASCII</code>
- even though it is not registered with IANA as a charset name and RFC
-  2046 (part of MIME) reserves the name "ASCII". A future version of
- this method may stop supporting the alias <code>ascii</code>.</li>
- <li> <code>ISO-8859-1</code> - Latin-1 single-byte encoding, rather than
- an alias to <code>windows-1252</code> as specified in the Encoding
- Standard. The coded character set's code points match those in the
- Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255
- or U + 0000 to U + 00FF).</li> <li> <code>UTF-16</code> - UTF-16 without a
- fixed byte order, rather than an alias to <code>UTF-16LE</code> as
- specified in the Encoding Standard. The byte order is little endian
- if the byte stream starts with 0xff 0xfe; otherwise, big endian. A
- leading 0xff 0xfe or 0xfe 0xff in the byte stream is skipped.</li>
- <li> <code>UTF-7</code> - UTF-7 (7-bit universal coded character set). The
- name <code>unicode-1-1-utf-7</code> is not supported and is not treated
- as an alias to <code>UTF-7</code>, even though it uses the same character
- encoding scheme as UTF-7, because RFC 1642, which defined the former
- UTF-7, is linked to a different Unicode version with an incompatible
- character repertoire (notably, the Hangul syllables have different
- code point assignments in Unicode 1.1 and earlier than in Unicode
- 2.0 and later).</li> <li> <code>ISO-2022-JP-2</code> - similar to
-  "ISO-2022-JP", except that the decoder supports additional character
- sets.</li></ul> .
+ upper-case letters A to Z (U+0041 to U+005A) in both strings to
+ basic lower-case letters.) Uses a modified version of the rules in
+ the Encoding Standard to better conform, in some cases, to email
+ standards like MIME. Encoding names and aliases not registered with
+ the Internet Assigned Numbers Authority (IANA) are not supported,
+ with the exception of <code>ascii</code>, <code>utf8</code>, <code>cp1252</code>,
+ and names 10 characters or longer starting with <code>iso-8859-</code>.
+ Also, the following additional encodings are supported. Note that
+ the case combination <code>GB18030</code>, the combination registered
+ with IANA, rather than <code>gb18030</code> can be retured by this
+ method. <ul> <li> <code>US-ASCII</code> - ASCII single-byte encoding,
+ rather than an alias to <code>windows-1252</code> as specified in the
+ Encoding Standard. The coded character set's code points match those
+ in the Unicode Standard's Basic Latin block (0-127 or U+0000 to
+ U+007F). This method name <code>ascii</code> is treated as an alias to
+ <code>US-ASCII</code> even though it is not registered with IANA as a
+  charset name and RFC 2046 (part of MIME) reserves the name "ASCII".
+ A future version of this method may stop supporting the alias <code>
+ ascii</code>.</li> <li> <code>ISO-8859-1</code> - Latin-1 single-byte encoding,
+ rather than an alias to <code>windows-1252</code> as specified in the
+ Encoding Standard. The coded character set's code points match those
+ in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks
+ (0-255 or U+0000 to U+00FF).</li> <li> <code>UTF-16</code> - UTF-16
+ without a fixed byte order, rather than an alias to <code>UTF-16LE</code>
+ as specified in the Encoding Standard. The byte order is little
+ endian if the byte stream starts with 0xff 0xfe; otherwise, big
+ endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream is
+ skipped.</li> <li> <code>UTF-7</code> - UTF-7 (7-bit universal coded
+ character set). The name <code>unicode-1-1-utf-7</code> is not supported
+ and is not treated as an alias to <code>UTF-7</code>, even though it uses
+ the same character encoding scheme as UTF-7, because RFC 1642, which
+ defined the former UTF-7, is linked to a different Unicode version
+ with an incompatible character repertoire (notably, the Hangul
+ syllables have different code point assignments in Unicode 1.1 and
+ earlier than in Unicode 2.0 and later).</li> <li> <code>
+  ISO-2022-JP-2</code> - similar to "ISO-2022-JP", except that the decoder
+ supports additional character sets.</li></ul> .
 
 **Returns:**
 
@@ -1042,7 +1043,7 @@ Resolves a character encoding's name to a canonical form, using rules more
     public static byte[] StringToBytes​(ICharacterEncoding encoding, java.lang.String str)
 Converts a text string to a byte array encoded in a given character
  encoding. When reading the string, any unpaired surrogate characters
- are replaced with the replacement character (U + FFFD), and when
+ are replaced with the replacement character (U+FFFD), and when
  writing to the byte array, any characters that can't be encoded are
  replaced with the byte 0x3f (the question mark character). <p>In
  the.NET implementation, this method is implemented as an extension
@@ -1071,7 +1072,7 @@ Converts a text string to a byte array encoded in a given character
     public static byte[] StringToBytes​(ICharacterEncoder encoder, java.lang.String str)
 Converts a text string to a byte array using the given character encoder.
  When reading the string, any unpaired surrogate characters are
- replaced with the replacement character (U + FFFD), and when writing
+ replaced with the replacement character (U+FFFD), and when writing
  to the byte array, any characters that can't be encoded are replaced
  with the byte 0x3f (the question mark character). <p>In the.getNET()
  implementation, this method is implemented as an extension method to
@@ -1107,7 +1108,7 @@ Converts a text string to a character input. The resulting input can then be
  used to encode the text to bytes, or to read the string code point
  by code point, among other things. When reading the string, any
  unpaired surrogate characters are replaced with the replacement
- character (U + FFFD). <p>In the.NET implementation, this method is
+ character (U+FFFD). <p>In the.NET implementation, this method is
  implemented as an extension method to any string object and can be
  called as follows: <code>str.StringToInput(offset, length)</code>. If the
  object's class already has a StringToInput method with the same
@@ -1136,7 +1137,7 @@ Converts a portion of a text string to a character input. The resulting
  input can then be used to encode the text to bytes, or to read the
  string code point by code point, among other things. When reading
  the string, any unpaired surrogate characters are replaced with the
- replacement character (U + FFFD). <p>In the.NET implementation, this
+ replacement character (U+FFFD). <p>In the.NET implementation, this
  method is implemented as an extension method to any string object
  and can be called as follows: <code>str.StringToInput(offset,
  length)</code>. If the object's class already has a StringToInput
@@ -1152,8 +1153,8 @@ Converts a portion of a text string to a character input. The resulting
 
 * <code>str</code> - The parameter <code>str</code> is a text string.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>
- str</code> begins.
+* <code>offset</code> - An index starting at 0 showing where the desired portion of
+ <code>str</code> begins.
 
 * <code>length</code> - The length, in code units, of the desired portion of <code>
  str</code> (but not more than <code>str</code> 's length).

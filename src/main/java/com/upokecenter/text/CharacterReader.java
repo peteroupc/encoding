@@ -40,7 +40,7 @@ import java.io.*;
      * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      * @param skipByteOrderMark If true and the first character in the string is
-     * U + FEFF, skip that character.
+     * U+FEFF, skip that character.
      * @throws NullPointerException The parameter {@code str} is null.
      */
     public CharacterReader(String str, boolean skipByteOrderMark) {
@@ -52,9 +52,9 @@ import java.io.*;
      * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
      * @param skipByteOrderMark If true and the first character in the string is
-     * U + FEFF, skip that character.
+     * U+FEFF, skip that character.
      * @param errorThrow When encountering invalid encoding, throw an exception if
-     * this parameter is true, or replace it with U + FFFD (replacement
+     * this parameter is true, or replace it with U+FFFD (replacement
      * character) if this parameter is false.
      * @throws NullPointerException The parameter {@code str} is null.
      */
@@ -79,8 +79,14 @@ import java.io.*;
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
-     * @param offset The parameter {@code offset} is a 32-bit signed integer.
-     * @param length The parameter {@code length} is a 32-bit signed integer.
+     * @param offset An index, starting at 0, showing where the desired portion of
+     * {@code str} begins.
+     * @param length The length, in code units, of the desired portion of {@code
+     * str} (but not more than {@code str} 's length).
+     * @throws IllegalArgumentException Either "offset" or "length" is less than 0 or
+     *  greater than "str"'s length, or "str"'s length minus "offset" is
+     *  less than "length".
+     * @throws NullPointerException The parameter {@code str} is null.
      */
     public CharacterReader(String str, int offset, int length) {
  this(str, offset, length, false, false);
@@ -93,9 +99,9 @@ import java.io.*;
      * @param offset The parameter {@code offset} is a 32-bit signed integer.
      * @param length The parameter {@code length} is a 32-bit signed integer.
      * @param skipByteOrderMark If true and the first character in the string
-     * portion is U + FEFF, skip that character.
+     * portion is U+FEFF, skip that character.
      * @param errorThrow When encountering invalid encoding, throw an exception if
-     * this parameter is true, or replace it with U + FFFD (replacement
+     * this parameter is true, or replace it with U+FFFD (replacement
      * character) if this parameter is false.
      * @throws NullPointerException The parameter {@code str} is null.
      */
@@ -141,9 +147,9 @@ import java.io.*;
     /**
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class; will read the stream as
-     * UTF-8, skip the byte-order mark (U + FEFF) if it appears first in the
+     * UTF-8, skip the byte-order mark (U+FEFF) if it appears first in the
      * stream, and replace invalid byte sequences with replacement
-     * characters (U + FFFD).
+     * characters (U+FFFD).
      * @param stream A readable data stream.
      * @throws NullPointerException The parameter {@code stream} is null.
      */
@@ -154,13 +160,13 @@ import java.io.*;
     /**
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class; will skip the
-     * byte-order mark (U + FEFF) if it appears first in the stream and a
+     * byte-order mark (U+FEFF) if it appears first in the stream and a
      * UTF-8 stream is detected.
      * @param stream A readable data stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream
-     * begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
-     * point (U + 0001 to U + 007F) before reading the rest of the stream. This
+     * begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code
+     * point (U+0001 to U+007F) before reading the rest of the stream. This
      * value can be one of the following: <ul> <li>0: UTF-8 only.</li>
      * <li>1: Detect UTF-16 using BOM or non-zero basic code point,
      * otherwise UTF-8.</li> <li>2: Detect UTF-16/UTF-32 using BOM or
@@ -169,7 +175,7 @@ import java.io.*;
      * <li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
      * detect UTF-32 first.)</li></ul>.
      * @param errorThrow When encountering invalid encoding, throw an exception if
-     * this parameter is true, or replace it with U + FFFD (replacement
+     * this parameter is true, or replace it with U+FFFD (replacement
      * character) if this parameter is false.
      */
     public CharacterReader(InputStream stream, int mode, boolean errorThrow) {
@@ -179,13 +185,13 @@ import java.io.*;
     /**
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class; will skip the
-     * byte-order mark (U + FEFF) if it appears first in the stream and
-     * replace invalid byte sequences with replacement characters (U + FFFD).
+     * byte-order mark (U+FEFF) if it appears first in the stream and
+     * replace invalid byte sequences with replacement characters (U+FFFD).
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream
-     * begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
-     * point (U + 0001 to U + 007F) before reading the rest of the stream. This
+     * begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code
+     * point (U+0001 to U+007F) before reading the rest of the stream. This
      * value can be one of the following: <ul> <li>0: UTF-8 only.</li>
      * <li>1: Detect UTF-16 using BOM or non-zero basic code point,
      * otherwise UTF-8.</li> <li>2: Detect UTF-16/UTF-32 using BOM or
@@ -205,8 +211,8 @@ import java.io.*;
      * @param stream A readable byte stream.
      * @param mode The method to use when detecting encodings other than UTF-8 in
      * the byte stream. This usually involves checking whether the stream
-     * begins with a byte-order mark (BOM, U + FEFF) or a non-zero basic code
-     * point (U + 0001 to U + 007F) before reading the rest of the stream. This
+     * begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code
+     * point (U+0001 to U+007F) before reading the rest of the stream. This
      * value can be one of the following: <ul> <li>0: UTF-8 only.</li>
      * <li>1: Detect UTF-16 using BOM or non-zero basic code point,
      * otherwise UTF-8.</li> <li>2: Detect UTF-16/UTF-32 using BOM or
@@ -216,7 +222,7 @@ import java.io.*;
      * detect UTF-32 first.)</li></ul>.
      * @param errorThrow If true, will throw an exception if invalid byte sequences
      * (in the detected encoding) are found in the byte stream. If false,
-     * replaces those byte sequences with replacement characters (U + FFFD)
+     * replaces those byte sequences with replacement characters (U+FFFD)
      * as the stream is read.
      * @param dontSkipUtf8Bom If the stream is detected as UTF-8 and this parameter
      * is {@code true}, won't skip the BOM character if it occurs at the
@@ -246,8 +252,8 @@ import java.io.*;
     /**
      * Reads a series of code points from a Unicode stream or a string.
      * @param chars An array where the code points that were read will be stored.
-     * @param index A zero-based index showing where the desired portion of {@code
-     * chars} begins.
+     * @param index An index starting at 0 showing where the desired portion of
+     * {@code chars} begins.
      * @param length The number of elements in the desired portion of {@code chars}
      * (but not more than {@code chars} 's length).
      * @return The number of code points read from the stream. This can be less

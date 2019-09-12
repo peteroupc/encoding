@@ -44,7 +44,7 @@ byte[] bytes) {
      * already has a ToByteReader method with the same parameters, that
      * method takes precedence over this extension method.</p>
      * @param bytes The byte array to wrap.
-     * @param offset A zero-based index showing where the desired portion of
+     * @param offset An index starting at 0 showing where the desired portion of
      *  "bytes" begins.
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      *  not more than "bytes" 's length).
@@ -113,8 +113,8 @@ InputStream input) {
      * already has a ToByteReader method with the same parameters, that
      * method takes precedence over this extension method.</p>
      * @param bytes The byte array to wrap into a byte reader.
-     * @param offset A zero-based index showing where the desired portion of {@code
-     * bytes} begins.
+     * @param offset An index starting at 0 showing where the desired portion of
+     * {@code bytes} begins.
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return An IByteReader object.
@@ -236,8 +236,8 @@ IByteWriter output) {
     /**
      * This is an internal method.
      * @param bytes The parameter {@code bytes} is an internal parameter.
-     * @param offset A zero-based index showing where the desired portion of {@code
-     * bytes} begins.
+     * @param offset An index starting at 0 showing where the desired portion of
+     * {@code bytes} begins.
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return A 32-bit signed integer.
@@ -308,7 +308,7 @@ IByteWriter output) {
     /**
      * This is an internal method.
      * @param bytes A byte array.
-     * @param offset A zero-based index showing where the desired portion of
+     * @param offset An index starting at 0 showing where the desired portion of
      *  "bytes" begins.
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      *  not more than "bytes" 's length).
@@ -347,7 +347,7 @@ IByteWriter output) {
     /**
      * This is an internal method.
      * @param bytes A byte array.
-     * @param offset A zero-based index showing where the desired portion of
+     * @param offset An index starting at 0 showing where the desired portion of
      *  "bytes" begins.
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      *  not more than "bytes" 's length).

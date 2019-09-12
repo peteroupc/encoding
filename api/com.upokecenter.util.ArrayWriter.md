@@ -80,8 +80,8 @@ Writes a series of bytes to the array.
 
 * <code>src</code> - Byte array containing the data to write.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>
- src</code> begins.
+* <code>offset</code> - An index starting at 0 showing where the desired portion of
+ <code>src</code> begins.
 
 * <code>length</code> - The number of elements in the desired portion of <code>src</code>
  (but not more than <code>src</code> 's length).

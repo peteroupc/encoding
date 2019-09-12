@@ -38,8 +38,8 @@ namespace PeterO.Text {
   /// <item><b>ASCII</b> is a 128-code-point coded character set that
   /// includes the English letters and digits, common punctuation and
   /// symbols, and control characters. As used here, its code points
-  /// match the code points within the Basic Latin block (0-127 or U +
-  /// 0000 to U + 007F) of the Unicode Standard.</item></list>
+  /// match the code points within the Basic Latin block (0-127 or U+0000
+  /// to U+007F) of the Unicode Standard.</item></list>
   /// <para>There are several kinds of character encodings:</para>
   /// <list>
   /// <item><b>Single-byte encodings</b> define a coded character set
@@ -79,7 +79,7 @@ namespace PeterO.Text {
   /// <item>(b) UTF-7 (not included in the Encoding Standard) is an
   /// encoding that uses the Unicode Standard's coded character set,
   /// which is encoded using a limited subset of ASCII. The plus symbol
-  /// (U + 002B) is used to shift into a UTF-16BE multi-byte encoding
+  /// (U+002B) is used to shift into a UTF-16BE multi-byte encoding
   /// (converted to a modified version of base-64) to encode other
   /// Unicode code points.</item>
   /// <item>The Encoding Standard also defines a <b>replacement
@@ -147,7 +147,7 @@ namespace PeterO.Text {
     /// method.</para></summary>
     /// <param name='encoding'>An object that implements a given character
     /// encoding. Any bytes that can't be decoded are converted to the
-    /// replacement character (U + FFFD).</param>
+    /// replacement character (U+FFFD).</param>
     /// <param name='input'>An object that implements a byte
     /// stream.</param>
     /// <returns>The converted string.</returns>
@@ -208,7 +208,7 @@ ICharacterEncoding enc,
     /// <summary>Reads a byte array from a data source and converts the
     /// bytes from a given encoding to a text string. Errors in decoding
     /// are handled by replacing erroneous bytes with the replacement
-    /// character (U + FFFD).
+    /// character (U+FFFD).
     /// <para>In the.NET implementation, this method is implemented as an
     /// extension method to any object implementing ICharacterEncoding and
     /// can be called as follows: <c>enc.DecodeToString(bytes)</c>. If the
@@ -245,7 +245,7 @@ ICharacterEncoding enc,
     /// <summary>Reads a portion of a byte array from a data source and
     /// converts the bytes from a given encoding to a text string. Errors
     /// in decoding are handled by replacing erroneous bytes with the
-    /// replacement character (U + FFFD).
+    /// replacement character (U+FFFD).
     /// <para>In the.NET implementation, this method is implemented as an
     /// extension method to any object implementing ICharacterEncoding and
     /// can be called as follows: <c>enc.DecodeToString(bytes, offset,
@@ -262,8 +262,8 @@ ICharacterEncoding enc,
     /// (gives access to an encoder and a decoder).</param>
     /// <param name='bytes'>A byte array containing the desired portion to
     /// read.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of <paramref name='bytes'/> begins.</param>
+    /// <param name='offset'>An index starting at 0 showing where the
+    /// desired portion of <paramref name='bytes'/> begins.</param>
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of <paramref name='bytes'/> (but not more than <paramref
     /// name='bytes'/> 's length).</param>
@@ -436,7 +436,7 @@ ICharacterInput input,
     /// <summary>Reads Unicode characters from a text string and writes
     /// them to a byte array encoded in a given character encoding. When
     /// reading the string, any unpaired surrogate characters are replaced
-    /// with the replacement character (U + FFFD), and when writing to the
+    /// with the replacement character (U+FFFD), and when writing to the
     /// byte array, any characters that can't be encoded are replaced with
     /// the byte 0x3f (the question mark character).
     /// <para>In the.NET implementation, this method is implemented as an
@@ -478,7 +478,7 @@ string str,
     /// them to a byte array encoded in a given character encoding and
     /// using the given encoder fallback strategy. When reading the string,
     /// any unpaired surrogate characters are replaced with the replacement
-    /// character (U + FFFD).
+    /// character (U+FFFD).
     /// <para>In the.NET implementation, this method is implemented as an
     /// extension method to any object implementing string and can be
     /// called as follows: <c>str.EncodeToBytes(enc, htmlFallback)</c>. If
@@ -606,7 +606,7 @@ ICharacterInput input,
 
     /// <summary>Converts a text string to bytes and writes the bytes to an
     /// output byte writer. When reading the string, any unpaired surrogate
-    /// characters are replaced with the replacement character (U + FFFD),
+    /// characters are replaced with the replacement character (U+FFFD),
     /// and when writing to the byte stream, any characters that can't be
     /// encoded are replaced with the byte 0x3f (the question mark
     /// character).
@@ -715,7 +715,7 @@ ICharacterInput input,
 
     /// <summary>Converts a text string to bytes and writes the bytes to an
     /// output data stream. When reading the string, any unpaired surrogate
-    /// characters are replaced with the replacement character (U + FFFD),
+    /// characters are replaced with the replacement character (U+FFFD),
     /// and when writing to the byte stream, any characters that can't be
     /// encoded are replaced with the byte 0x3f (the question mark
     /// character).
@@ -1515,14 +1515,14 @@ ICharacterInput reader) {
     /// parameter indicates the encoding used to represent text in the HTML
     /// page, text file, etc.</para></summary>
     /// <param name='name'>A string that names a given character encoding.
-    /// Can be null. Any leading and trailing whitespace (U + 0009, U +
-    /// 000c, U + 000D, U + 000A, U + 0010) is removed before resolving the
-    /// encoding's name, and encoding names are matched using a basic
-    /// case-insensitive comparison. (Two strings are equal in such a
-    /// comparison, if they match after converting the basic upper-case
-    /// letters A to Z (U + 0041 to U + 005A) in both strings to lower
-    /// case.) The Encoding Standard supports only the following encodings
-    /// (and defines aliases for most of them).
+    /// Can be null. Any leading and trailing whitespace (U+0009, U+000c,
+    /// U+000D, U+000A, U+0010) is removed before resolving the encoding's
+    /// name, and encoding names are matched using a basic case-insensitive
+    /// comparison. (Two strings are equal in such a comparison, if they
+    /// match after converting the basic upper-case letters A to Z (U+0041
+    /// to U+005A) in both strings to basic lower-case letters.) The
+    /// Encoding Standard supports only the following encodings (and
+    /// defines aliases for most of them).
     /// <list type='bullet'>
     /// <item><c>UTF-8</c> - UTF-8 (8-bit encoding of the universal coded
     /// character set, the encoding recommended by the Encoding Standard
@@ -1569,7 +1569,7 @@ ICharacterInput reader) {
     /// encodings don't encode a byte-order mark at the start of the text
     /// (doing so is not recommended for <c>UTF-8</c>, while in
     /// <c>UTF-16LE</c> and <c>UTF-16BE</c>, the byte-order mark character
-    /// U + FEFF is treated as an ordinary character, unlike in the UTF-16
+    /// U+FEFF is treated as an ordinary character, unlike in the UTF-16
     /// encoding form). The Encoding Standard aliases <c>UTF-16</c> to
     /// <c>UTF-16LE</c> "to deal with deployed content".</para>.</param>
     /// <returns>A standardized name for the encoding. Returns the empty
@@ -1588,26 +1588,26 @@ ICharacterInput reader) {
     /// <summary>Resolves a character encoding's name to a canonical form,
     /// using rules more suitable for email.</summary>
     /// <param name='name'>A string naming a character encoding. Can be
-    /// null. Any leading and trailing whitespace (U + 0009, U + 000c, U +
-    /// 000D, U + 000A, U+0010) is removed before resolving the encoding's
+    /// null. Any leading and trailing whitespace (U+0009, U+000c, U +
+    /// 000D, U+000A, U+0010) is removed before resolving the encoding's
     /// name, and encoding names are matched using a basic case-insensitive
     /// comparison. (Two strings are equal in such a comparison, if they
     /// match after converting the basic upper-case letters A to Z (U +
-    /// 0041 to U + 005A) in both strings to lower case.) Uses a modified
-    /// version of the rules in the Encoding Standard to better conform, in
-    /// some cases, to email standards like MIME. Encoding names and
-    /// aliases not registered with the Internet Assigned Numbers Authority
-    /// (IANA) are not supported, with the exception of <c>ascii</c>,
-    /// <c>utf8</c>, <c>cp1252</c>, and names 10 characters or longer
-    /// starting with <c>iso-8859-</c>. Also, the following additional
-    /// encodings are supported. Note that the case combination
-    /// <c>GB18030</c>, the combination registered with IANA, rather than
-    /// <c>gb18030</c> can be retured by this method.
+    /// 0041 to U+005A) in both strings to basic lower-case letters.) Uses
+    /// a modified version of the rules in the Encoding Standard to better
+    /// conform, in some cases, to email standards like MIME. Encoding
+    /// names and aliases not registered with the Internet Assigned Numbers
+    /// Authority (IANA) are not supported, with the exception of
+    /// <c>ascii</c>, <c>utf8</c>, <c>cp1252</c>, and names 10
+    /// characters or longer starting with <c>iso-8859-</c>. Also, the
+    /// following additional encodings are supported. Note that the case
+    /// combination <c>GB18030</c>, the combination registered with IANA,
+    /// rather than <c>gb18030</c> can be retured by this method.
     /// <list type='bullet'>
     /// <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an
     /// alias to <c>windows-1252</c> as specified in the Encoding Standard.
     /// The coded character set's code points match those in the Unicode
-    /// Standard's Basic Latin block (0-127 or U + 0000 to U + 007F). This
+    /// Standard's Basic Latin block (0-127 or U+0000 to U+007F). This
     /// method name <c>ascii</c> is treated as an alias to <c>US-ASCII</c>
     /// even though it is not registered with IANA as a charset name and
     /// RFC 2046 (part of MIME) reserves the name "ASCII". A future version
@@ -1616,7 +1616,7 @@ ICharacterInput reader) {
     /// an alias to <c>windows-1252</c> as specified in the Encoding
     /// Standard. The coded character set's code points match those in the
     /// Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255
-    /// or U + 0000 to U + 00FF).</item>
+    /// or U+0000 to U+00FF).</item>
     /// <item><c>UTF-16</c> - UTF-16 without a fixed byte order, rather
     /// than an alias to <c>UTF-16LE</c> as specified in the Encoding
     /// Standard. The byte order is little endian if the byte stream starts
@@ -1661,7 +1661,7 @@ ICharacterInput reader) {
 
     /// <summary>Converts a text string to a byte array encoded in a given
     /// character encoding. When reading the string, any unpaired surrogate
-    /// characters are replaced with the replacement character (U + FFFD),
+    /// characters are replaced with the replacement character (U+FFFD),
     /// and when writing to the byte array, any characters that can't be
     /// encoded are replaced with the byte 0x3f (the question mark
     /// character).
@@ -1692,7 +1692,7 @@ ICharacterEncoding encoding,
 
     /// <summary>Converts a text string to a byte array using the given
     /// character encoder. When reading the string, any unpaired surrogate
-    /// characters are replaced with the replacement character (U + FFFD),
+    /// characters are replaced with the replacement character (U+FFFD),
     /// and when writing to the byte array, any characters that can't be
     /// encoded are replaced with the byte 0x3f (the question mark
     /// character).
@@ -1736,7 +1736,7 @@ ICharacterEncoder encoder,
     /// input can then be used to encode the text to bytes, or to read the
     /// string code point by code point, among other things. When reading
     /// the string, any unpaired surrogate characters are replaced with the
-    /// replacement character (U + FFFD).
+    /// replacement character (U+FFFD).
     /// <para>In the.NET implementation, this method is implemented as an
     /// extension method to any String object and can be called as follows:
     /// <c>str.StringToInput(offset, length)</c>. If the object's class
@@ -1768,7 +1768,7 @@ string str) {
     /// The resulting input can then be used to encode the text to bytes,
     /// or to read the string code point by code point, among other things.
     /// When reading the string, any unpaired surrogate characters are
-    /// replaced with the replacement character (U + FFFD).
+    /// replaced with the replacement character (U+FFFD).
     /// <para>In the.NET implementation, this method is implemented as an
     /// extension method to any String object and can be called as follows:
     /// <c>str.StringToInput(offset, length)</c>. If the object's class
@@ -1782,8 +1782,8 @@ string str) {
     /// extension method.</para></summary>
     /// <param name='str'>The parameter <paramref name='str'/> is a text
     /// string.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of <paramref name='str'/> begins.</param>
+    /// <param name='offset'>An index starting at 0 showing where the
+    /// desired portion of <paramref name='str'/> begins.</param>
     /// <param name='length'>The length, in code units, of the desired
     /// portion of <paramref name='str'/> (but not more than <paramref
     /// name='str'/> 's length).</param>
@@ -2274,8 +2274,8 @@ string str,
 
       /// <summary>This is an internal method.</summary>
       /// <param name='buffer'>An array of 32-bit unsigned integers.</param>
-      /// <param name='offset'>A zero-based index showing where the desired
-      /// portion of <paramref name='buffer'/> begins.</param>
+      /// <param name='offset'>An index starting at 0 showing where the
+      /// desired portion of <paramref name='buffer'/> begins.</param>
       /// <param name='length'>The number of elements in the desired portion
       /// of <paramref name='buffer'/> (but not more than <paramref
       /// name='buffer'/> 's length).</param>

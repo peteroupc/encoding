@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using PeterO;
 using PeterO.Text;
+using Test;
 
 namespace EncodingTest {
   [TestFixture]
@@ -40,6 +41,18 @@ namespace EncodingTest {
     public void TestGetDecoderInput() {
       // not implemented yet
     }
+
+    [Test]
+    public void TestIso2022JP00A5() {
+      ICharacterEncoding wenc = Encodings.GetEncoding("iso-2022-jp");
+      byte[] bytes = Encodings.EncodeToBytes("\u00a5", wenc);
+      var bytes2 = new byte[bytes.Length * 2];
+      Array.Copy(bytes, 0, bytes2, 0, bytes.Length);
+      Array.Copy(bytes, 0, bytes2, bytes.Length, bytes.Length);
+      string str = Encodings.DecodeToString(wenc, bytes2);
+      Assert.AreEqual("\u00a5\ufffd\u00a5", str);
+    }
+
     [Test]
     public void TestGetDecoderInputSkipBom() {
       ICharacterInput input;
@@ -106,6 +119,50 @@ if (Encodings.GetEncoding("GB2312", true) == null) {
   Assert.Fail();
 }
 if (Encodings.GetEncoding("GB2312", false) == null) {
+  Assert.Fail();
+}
+    }
+
+    [Test]
+    public void TestGetEncodingGb18030() {
+if (Encodings.GetEncoding("gb18030") == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("gb18030", true) == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("gb18030", false) == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("GB18030") == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("GB18030", true) == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("GB18030", false) == null) {
+  Assert.Fail();
+}
+    }
+
+    [Test]
+    public void TestGetEncodingGbk() {
+if (Encodings.GetEncoding("gbk") == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("gbk", true) == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("gbk", false) == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("GBK") == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("GBK", true) == null) {
+  Assert.Fail();
+}
+if (Encodings.GetEncoding("GBK", false) == null) {
   Assert.Fail();
 }
     }

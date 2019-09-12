@@ -97,7 +97,7 @@ import com.upokecenter.text.*;
               state.AppendChar(-2);
               this.surrogate = codeunit;
             } else {
-              // not a surrogate, output the first as U + FFFD
+              // not a surrogate, output the first as U+FFFD
               // and the second as is
               state.AppendChar(-2);
               state.AppendChar((char)codeunit);

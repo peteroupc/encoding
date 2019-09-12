@@ -313,8 +313,6 @@ import com.upokecenter.text.*;
               int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
               126) + this.gbk3 - 0x81) * 10) + b - 0x30;
               c = GB18030CodePoint(ap);
-              // TODO: This step may possibly be missing
-              // from the current Encoding Standard
               this.gbk1 = this.gbk2 = this.gbk3 = 0;
               return (c < 0) ? (-2) : c;
             } else {
@@ -386,7 +384,7 @@ import com.upokecenter.text.*;
         } else if (c == 0xe5e5) {
           // Can't round trip under current WHATWG version
           // of specification; the bytes this code point corresponds
-          // to map to U + 3000 instead
+          // to map to U+3000 instead
           return -2;
         } else if (c == 0x20ac && this.gbk) {
           output.write((byte)0x80);

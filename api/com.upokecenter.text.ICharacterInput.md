@@ -32,8 +32,8 @@ Reads a sequence of Unicode code points from a data source.
 
 * <code>chars</code> - Output buffer.
 
-* <code>index</code> - A zero-based index showing where the desired portion of <code>
- chars</code> begins.
+* <code>index</code> - An index starting at 0 showing where the desired portion of
+ <code>chars</code> begins.
 
 * <code>length</code> - The number of elements in the desired portion of <code>chars</code>
  (but not more than <code>chars</code> 's length).
@@ -45,4 +45,8 @@ Reads a sequence of Unicode code points from a data source.
 
 **Throws:**
 
-* <code>java.lang.NullPointerException</code> - Should be thrown if "chars" is null.
+* <code>java.lang.NullPointerException</code> - Should be thrown if <code>chars</code> is null.
+
+* <code>java.lang.IllegalArgumentException</code> - Either "index" or "length" is less than 0 or
+  greater than "chars"'s length, or "chars"'s length minus "index" is
+  less than "length".

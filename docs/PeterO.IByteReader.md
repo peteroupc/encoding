@@ -2,7 +2,7 @@
 
     public interface IByteReader
 
- A generic interface for reading data one byte at a time.
+A generic interface for reading data one byte at a time.
 
 ### Member Summary
 * <code>[ReadByte()](#ReadByte)</code> - Reads a byte from the data source.
@@ -12,8 +12,8 @@
 
     int ReadByte();
 
- Reads a byte from the data source.
+Reads a byte from the data source.
 
-   <b>Return Value:</b>
+<b>Return Value:</b>
 
 The byte read (from 0 through 255), or -1 if the end of the source is reached.

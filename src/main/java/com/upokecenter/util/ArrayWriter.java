@@ -72,8 +72,8 @@ at: http://peteroupc.github.io/
     /**
      * Writes a series of bytes to the array.
      * @param src Byte array containing the data to write.
-     * @param offset A zero-based index showing where the desired portion of {@code
-     * src} begins.
+     * @param offset An index starting at 0 showing where the desired portion of
+     * {@code src} begins.
      * @param length The number of elements in the desired portion of {@code src}
      * (but not more than {@code src} 's length).
      * @throws NullPointerException The parameter {@code src} is null.

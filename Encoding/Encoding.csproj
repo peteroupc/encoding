@@ -7,7 +7,7 @@
     <Title>Encoding Library</Title>
     <Owners>Peter Occil</Owners>
     <Authors>Peter Occil</Authors>
-    <PackageLicenseUrl>http://creativecommons.org/publicdomain/zero/1.0/</PackageLicenseUrl>
+    <PackageLicenseExpression>CC0-1.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/peteroupc/Encoding</PackageProjectUrl>
     <Description>
 A portable library for .NET that implements character encodings used in Web pages and email.
@@ -45,5 +45,5 @@ Version 0.5.0:
     <EmbeddedResource Condition=' &apos;$(EnableDefaultEmbeddedResourceItems)&apos; == &apos;true&apos; ' Update='PeterO.Text.Encoders.AppResources.resx'>
       <LogicalName>PeterO.Text.Encoders.AppResources.resources</LogicalName>
     </EmbeddedResource>
-  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.1.118'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.FxCopAnalyzers' PrivateAssets='All' Version='2.9.4'></PackageReference></ItemGroup>
-</Project>
+  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.1.118'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.FxCopAnalyzers' PrivateAssets='All' Version='2.9.4'/></ItemGroup>
+   </Project>

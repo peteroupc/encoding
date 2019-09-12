@@ -44,8 +44,8 @@ byte[] bytes) {
     /// parameters, that method takes precedence over this extension
     /// method.</para></summary>
     /// <param name='bytes'>The byte array to wrap.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of "bytes" begins.</param>
+    /// <param name='offset'>An index starting at 0 showing where the
+    /// desired portion of "bytes" begins.</param>
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of "bytes" (but not more than "bytes" 's length).</param>
     /// <returns>A byte reader wrapping the byte array.</returns>
@@ -124,8 +124,8 @@ Stream input) {
     /// method.</para></summary>
     /// <param name='bytes'>The byte array to wrap into a byte
     /// reader.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of <paramref name='bytes'/> begins.</param>
+    /// <param name='offset'>An index starting at 0 showing where the
+    /// desired portion of <paramref name='bytes'/> begins.</param>
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of <paramref name='bytes'/> (but not more than <paramref
     /// name='bytes'/> 's length).</param>
@@ -264,8 +264,8 @@ IByteWriter output) {
     /// <summary>This is an internal method.</summary>
     /// <param name='bytes'>The parameter <paramref name='bytes'/> is an
     /// internal parameter.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of <paramref name='bytes'/> begins.</param>
+    /// <param name='offset'>An index starting at 0 showing where the
+    /// desired portion of <paramref name='bytes'/> begins.</param>
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of <paramref name='bytes'/> (but not more than <paramref
     /// name='bytes'/> 's length).</param>
@@ -338,8 +338,8 @@ IByteWriter output) {
 
     /// <summary>This is an internal method.</summary>
     /// <param name='bytes'>A byte array.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of "bytes" begins.</param>
+    /// <param name='offset'>An index starting at 0 showing where the
+    /// desired portion of "bytes" begins.</param>
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of "bytes" (but not more than "bytes" 's length).</param>
     /// <exception cref=' T:System.ArgumentException'>Either <paramref
@@ -379,8 +379,8 @@ IByteWriter output) {
 
     /// <summary>This is an internal method.</summary>
     /// <param name='bytes'>A byte array.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of "bytes" begins.</param>
+    /// <param name='offset'>An index starting at 0 showing where the
+    /// desired portion of "bytes" begins.</param>
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of "bytes" (but not more than "bytes" 's length).</param>
     /// <exception cref=' T:System.ArgumentNullException'>The parameter

@@ -72,7 +72,7 @@ Wraps a portion of a byte array into a byte reader object. <p>In the.getNET()
 
 * <code>bytes</code> - The byte array to wrap.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of
+* <code>offset</code> - An index starting at 0 showing where the desired portion of
   "bytes" begins.
 
 * <code>length</code> - The length, in bytes, of the desired portion of "bytes" (but
@@ -121,8 +121,8 @@ Use ToReader instead.
 
 * <code>bytes</code> - The byte array to wrap into a byte reader.
 
-* <code>offset</code> - A zero-based index showing where the desired portion of <code>
- bytes</code> begins.
+* <code>offset</code> - An index starting at 0 showing where the desired portion of
+ <code>bytes</code> begins.
 
 * <code>length</code> - The length, in bytes, of the desired portion of <code>bytes</code>
  (but not more than <code>bytes</code> 's length).

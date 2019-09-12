@@ -75,7 +75,8 @@ import com.upokecenter.text.*;
     }
 
     private static byte[] ISOIRTestString(String preamble) {
-      java.io.ByteArrayOutputStream ms = null;
+      {
+        java.io.ByteArrayOutputStream ms = null;
 try {
 ms = new java.io.ByteArrayOutputStream();
 
@@ -108,10 +109,12 @@ try { if (ms != null) {
  ms.close();
  } } catch (java.io.IOException ex) {}
 }
+}
     }
 
     private static byte[] ISOIRTestStringSISO(String preamble) {
-      java.io.ByteArrayOutputStream ms = null;
+      {
+        java.io.ByteArrayOutputStream ms = null;
 try {
 ms = new java.io.ByteArrayOutputStream();
 
@@ -143,10 +146,12 @@ try { if (ms != null) {
  ms.close();
  } } catch (java.io.IOException ex) {}
 }
+}
     }
 
     private static byte[] ISOIRTestStringSB(String preamble) {
-      java.io.ByteArrayOutputStream ms = null;
+      {
+        java.io.ByteArrayOutputStream ms = null;
 try {
 ms = new java.io.ByteArrayOutputStream();
 
@@ -178,6 +183,7 @@ finally {
 try { if (ms != null) {
  ms.close();
  } } catch (java.io.IOException ex) {}
+}
 }
     }
 

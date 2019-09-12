@@ -64,8 +64,8 @@ namespace PeterO {
 
     /// <summary>Writes a series of bytes to the array.</summary>
     /// <param name='src'>Byte array containing the data to write.</param>
-    /// <param name='offset'>A zero-based index showing where the desired
-    /// portion of <paramref name='src'/> begins.</param>
+    /// <param name='offset'>An index starting at 0 showing where the
+    /// desired portion of <paramref name='src'/> begins.</param>
     /// <param name='length'>The number of elements in the desired portion
     /// of <paramref name='src'/> (but not more than <paramref name='src'/>
     /// 's length).</param>

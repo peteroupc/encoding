@@ -32,7 +32,7 @@ import com.upokecenter.text.encoders.*;
    * is a 128-code-point coded character set that includes the English
    * letters and digits, common punctuation and symbols, and control
    * characters. As used here, its code points match the code points within
-   * the Basic Latin block (0-127 or U + 0000 to U + 007F) of the Unicode
+   * the Basic Latin block (0-127 or U+0000 to U+007F) of the Unicode
    * Standard.</li></ul> <p>There are several kinds of character
    * encodings:</p> <ul> <li><b>Single-byte encodings</b> define a coded
    * character set that assigns one code point to one byte. Thus, they can
@@ -64,7 +64,7 @@ import com.upokecenter.text.encoders.*;
    * Kanji, and an ASCII encoding (with ASCII as the default).</li> <li>(b)
    * UTF-7 (not included in the Encoding Standard) is an encoding that uses
    * the Unicode Standard's coded character set, which is encoded using a
-   * limited subset of ASCII. The plus symbol (U + 002B) is used to shift
+   * limited subset of ASCII. The plus symbol (U+002B) is used to shift
    * into a UTF-16BE multi-byte encoding (converted to a modified version
    * of base-64) to encode other Unicode code points.</li> <li>The Encoding
    * Standard also defines a <b>replacement encoding</b>, which causes a
@@ -127,7 +127,7 @@ private Encodings() {
      * precedence over this extension method.</p>
      * @param encoding An object that implements a given character encoding. Any
      * bytes that can't be decoded are converted to the replacement
-     * character (U + FFFD).
+     * character (U+FFFD).
      * @param input An object that implements a byte stream.
      * @return The converted string.
      * @throws NullPointerException The parameter {@code encoding} or {@code
@@ -182,7 +182,7 @@ ICharacterEncoding enc,
     /**
      * Reads a byte array from a data source and converts the bytes from a given
      * encoding to a text string. Errors in decoding are handled by
-     * replacing erroneous bytes with the replacement character (U + FFFD).
+     * replacing erroneous bytes with the replacement character (U+FFFD).
      * <p>In the.NET implementation, this method is implemented as an
      * extension method to any object implementing ICharacterEncoding and
      * can be called as follows: <code>enc.DecodeToString(bytes)</code>. If the
@@ -217,7 +217,7 @@ ICharacterEncoding enc,
      * Reads a portion of a byte array from a data source and converts the bytes
      * from a given encoding to a text string. Errors in decoding are
      * handled by replacing erroneous bytes with the replacement character
-     * (U + FFFD). <p>In the.NET implementation, this method is implemented
+     * (U+FFFD). <p>In the.NET implementation, this method is implemented
      * as an extension method to any object implementing ICharacterEncoding
      * and can be called as follows: <code>enc.DecodeToString(bytes, offset,
      * length)</code>. If the object's class already has a DecodeToString
@@ -232,8 +232,8 @@ ICharacterEncoding enc,
      * @param enc An object implementing a character encoding (gives access to an
      * encoder and a decoder).
      * @param bytes A byte array containing the desired portion to read.
-     * @param offset A zero-based index showing where the desired portion of {@code
-     * bytes} begins.
+     * @param offset An index starting at 0 showing where the desired portion of
+     * {@code bytes} begins.
      * @param length The length, in bytes, of the desired portion of {@code bytes}
      * (but not more than {@code bytes} 's length).
      * @return A string consisting of the decoded text.
@@ -386,7 +386,7 @@ ICharacterInput input,
      * Reads Unicode characters from a text string and writes them to a byte array
      * encoded in a given character encoding. When reading the string, any
      * unpaired surrogate characters are replaced with the replacement
-     * character (U + FFFD), and when writing to the byte array, any
+     * character (U+FFFD), and when writing to the byte array, any
      * characters that can't be encoded are replaced with the byte 0x3f
      * (the question mark character). <p>In the.NET implementation, this
      * method is implemented as an extension method to any string object
@@ -425,7 +425,7 @@ String str,
      * Reads Unicode characters from a text string and writes them to a byte array
      * encoded in a given character encoding and using the given encoder
      * fallback strategy. When reading the string, any unpaired surrogate
-     * characters are replaced with the replacement character (U + FFFD).
+     * characters are replaced with the replacement character (U+FFFD).
      * <p>In the.NET implementation, this method is implemented as an
      * extension method to any object implementing string and can be called
      * as follows: <code>str.EncodeToBytes(enc, htmlFallback)</code>. If the
@@ -541,7 +541,7 @@ ICharacterInput input,
     /**
      * Converts a text string to bytes and writes the bytes to an output byte
      * writer. When reading the string, any unpaired surrogate characters
-     * are replaced with the replacement character (U + FFFD), and when
+     * are replaced with the replacement character (U+FFFD), and when
      * writing to the byte stream, any characters that can't be encoded are
      * replaced with the byte 0x3f (the question mark character). <p>In
      * the.NET implementation, this method is implemented as an extension
@@ -638,7 +638,7 @@ ICharacterInput input,
     /**
      * Converts a text string to bytes and writes the bytes to an output data
      * stream. When reading the string, any unpaired surrogate characters
-     * are replaced with the replacement character (U + FFFD), and when
+     * are replaced with the replacement character (U+FFFD), and when
      * writing to the byte stream, any characters that can't be encoded are
      * replaced with the byte 0x3f (the question mark character). <p>In
      * the.NET implementation, this method is implemented as an extension
@@ -1389,51 +1389,52 @@ ICharacterInput reader) {
      * parameter indicates the encoding used to represent text in the HTML
      * page, text file, etc.</p>
      * @param name A string that names a given character encoding. Can be null. Any
-     * leading and trailing whitespace (U + 0009, U + 000c, U + 000D, U + 000A,
+     * leading and trailing whitespace (U+0009, U+000c, U+000D, U+000A,
      * U+0010) is removed before resolving the encoding's name, and
      * encoding names are matched using a basic case-insensitive
      * comparison. (Two strings are equal in such a comparison, if they
-     * match after converting the basic upper-case letters A to Z (U + 0041
-     * to U + 005A) in both strings to lower case.) The Encoding Standard
-     * supports only the following encodings (and defines aliases for most
-     * of them). <ul> <li> {@code UTF-8} - UTF-8 (8-bit encoding of the
-     * universal coded character set, the encoding recommended by the
-     * Encoding Standard for new data formats)</li> <li> {@code UTF-16LE} -
-     * UTF-16 little-endian (16-bit UCS)</li> <li> {@code UTF-16BE} - UTF-16
-     * big-endian (16-bit UCS)</li> <li>The special-purpose encoding {@code
-     * x-user-defined}</li> <li>The special-purpose encoding {@code
-     * replacement}.</li> <li>28 legacy single-byte encodings: <ul>
-     * <li> {@code windows-1252} : Western Europe (Note: The Encoding
-     * Standard aliases the names {@code US-ASCII} and {@code ISO-8859-1}
-     * to {@code windows-1252}, which uses a different coded character set
-     * from either; it differs from {@code ISO-8859-1} by assigning
-     * different characters to some bytes from 0x80 to 0x9F. The Encoding
-     * Standard does this for compatibility with existing Web pages.)</li>
-     * <li> {@code ISO-8859-2}, {@code windows-1250} : Central Europe</li>
-     * <li> {@code ISO-8859-10} : Northern Europe</li> <li> {@code
-     * ISO-8859-4}, {@code windows-1257} : Baltic</li> <li> {@code
-     * ISO-8859-13} : Estonian</li> <li> {@code ISO-8859-14} : Celtic</li>
-     * <li> {@code ISO-8859-16} : Romanian</li> <li> {@code ISO-8859-5},
-     * {@code IBM-866}, {@code KOI8-R}, {@code windows-1251}, {@code
-     * x-mac-cyrillic} : Cyrillic</li> <li> {@code KOI8-U} : Ukrainian</li>
-     * <li> {@code ISO-8859-7}, {@code windows-1253} : Greek</li> <li> {@code
-     * ISO-8859-6}, {@code windows-1256} : Arabic</li> <li> {@code
-     * ISO-8859-8}, {@code ISO-8859-8-I}, {@code windows-1255} :
-     * Hebrew</li> <li> {@code ISO-8859-3} : Latin 3</li> <li> {@code
-     * ISO-8859-15}, {@code windows-1254} : Turkish</li> <li> {@code
-     * windows-874} : Thai</li> <li> {@code windows-1258} : Vietnamese</li>
-     * <li> {@code macintosh} : Mac Roman</li></ul></li> <li>Three legacy
-     * Japanese encodings: {@code Shift_JIS}, {@code EUC-JP}, {@code
-     * ISO-2022-JP}</li> <li>Two legacy simplified Chinese encodings:
-     * {@code GBK} and {@code gb18030}</li> <li> {@code Big5} : legacy
-     * traditional Chinese encoding</li> <li> {@code EUC-KR} : legacy Korean
-     * encoding</li></ul> <p>The {@code UTF-8}, {@code UTF-16LE}, and
-     * {@code UTF-16BE} encodings don't encode a byte-order mark at the
-     * start of the text (doing so is not recommended for {@code UTF-8},
-     * while in {@code UTF-16LE} and {@code UTF-16BE}, the byte-order mark
-     * character U + FEFF is treated as an ordinary character, unlike in the
-     * UTF-16 encoding form). The Encoding Standard aliases {@code UTF-16}
-     *  to {@code UTF-16LE} "to deal with deployed content".</p>.
+     * match after converting the basic upper-case letters A to Z (U+0041
+     * to U+005A) in both strings to basic lower-case letters.) The
+     * Encoding Standard supports only the following encodings (and defines
+     * aliases for most of them). <ul> <li> {@code UTF-8} - UTF-8 (8-bit
+     * encoding of the universal coded character set, the encoding
+     * recommended by the Encoding Standard for new data formats)</li>
+     * <li> {@code UTF-16LE} - UTF-16 little-endian (16-bit UCS)</li>
+     * <li> {@code UTF-16BE} - UTF-16 big-endian (16-bit UCS)</li> <li>The
+     * special-purpose encoding {@code x-user-defined}</li> <li>The
+     * special-purpose encoding {@code replacement}.</li> <li>28 legacy
+     * single-byte encodings: <ul> <li> {@code windows-1252} : Western
+     * Europe (Note: The Encoding Standard aliases the names {@code
+     * US-ASCII} and {@code ISO-8859-1} to {@code windows-1252}, which uses
+     * a different coded character set from either; it differs from {@code
+     * ISO-8859-1} by assigning different characters to some bytes from
+     * 0x80 to 0x9F. The Encoding Standard does this for compatibility with
+     * existing Web pages.)</li> <li> {@code ISO-8859-2}, {@code
+     * windows-1250} : Central Europe</li> <li> {@code ISO-8859-10} :
+     * Northern Europe</li> <li> {@code ISO-8859-4}, {@code windows-1257} :
+     * Baltic</li> <li> {@code ISO-8859-13} : Estonian</li> <li> {@code
+     * ISO-8859-14} : Celtic</li> <li> {@code ISO-8859-16} : Romanian</li>
+     * <li> {@code ISO-8859-5}, {@code IBM-866}, {@code KOI8-R}, {@code
+     * windows-1251}, {@code x-mac-cyrillic} : Cyrillic</li> <li> {@code
+     * KOI8-U} : Ukrainian</li> <li> {@code ISO-8859-7}, {@code
+     * windows-1253} : Greek</li> <li> {@code ISO-8859-6}, {@code
+     * windows-1256} : Arabic</li> <li> {@code ISO-8859-8}, {@code
+     * ISO-8859-8-I}, {@code windows-1255} : Hebrew</li> <li> {@code
+     * ISO-8859-3} : Latin 3</li> <li> {@code ISO-8859-15}, {@code
+     * windows-1254} : Turkish</li> <li> {@code windows-874} : Thai</li>
+     * <li> {@code windows-1258} : Vietnamese</li> <li> {@code macintosh} :
+     * Mac Roman</li></ul></li> <li>Three legacy Japanese encodings: {@code
+     * Shift_JIS}, {@code EUC-JP}, {@code ISO-2022-JP}</li> <li>Two legacy
+     * simplified Chinese encodings: {@code GBK} and {@code gb18030}</li>
+     * <li> {@code Big5} : legacy traditional Chinese encoding</li>
+     * <li> {@code EUC-KR} : legacy Korean encoding</li></ul> <p>The {@code
+     * UTF-8}, {@code UTF-16LE}, and {@code UTF-16BE} encodings don't
+     * encode a byte-order mark at the start of the text (doing so is not
+     * recommended for {@code UTF-8}, while in {@code UTF-16LE} and {@code
+     * UTF-16BE}, the byte-order mark character U+FEFF is treated as an
+     * ordinary character, unlike in the UTF-16 encoding form). The
+     *  Encoding Standard aliases {@code UTF-16} to {@code UTF-16LE} "to
+     *  deal with deployed content".</p>.
      * @return A standardized name for the encoding. Returns the empty string if
      * {@code name} is null or empty, or if the encoding name is
      * unsupported.
@@ -1452,47 +1453,47 @@ ICharacterInput reader) {
      * Resolves a character encoding's name to a canonical form, using rules more
      * suitable for email.
      * @param name A string naming a character encoding. Can be null. Any leading
-     * and trailing whitespace (U + 0009, U + 000c, U + 000D, U + 000A, U + 0010) is
+     * and trailing whitespace (U+0009, U+000c, U+000D, U+000A, U+0010) is
      * removed before resolving the encoding's name, and encoding names are
      * matched using a basic case-insensitive comparison. (Two strings are
      * equal in such a comparison, if they match after converting the basic
-     * upper-case letters A to Z (U + 0041 to U + 005A) in both strings to
-     * lower case.) Uses a modified version of the rules in the Encoding
-     * Standard to better conform, in some cases, to email standards like
-     * MIME. Encoding names and aliases not registered with the Internet
-     * Assigned Numbers Authority (IANA) are not supported, with the
-     * exception of {@code ascii}, {@code utf8}, {@code cp1252}, and names
-     * 10 characters or longer starting with {@code iso-8859-}. Also, the
-     * following additional encodings are supported. Note that the case
-     * combination {@code GB18030}, the combination registered with IANA,
-     * rather than {@code gb18030} can be retured by this method. <ul>
-     * <li> {@code US-ASCII} - ASCII single-byte encoding, rather than an
-     * alias to {@code windows-1252} as specified in the Encoding Standard.
-     * The coded character set's code points match those in the Unicode
-     * Standard's Basic Latin block (0-127 or U+0000 to U+007F). This
-     * method name {@code ascii} is treated as an alias to {@code US-ASCII}
-     * even though it is not registered with IANA as a charset name and RFC
-     *  2046 (part of MIME) reserves the name "ASCII". A future version of
-     * this method may stop supporting the alias {@code ascii}.</li>
-     * <li> {@code ISO-8859-1} - Latin-1 single-byte encoding, rather than
-     * an alias to {@code windows-1252} as specified in the Encoding
-     * Standard. The coded character set's code points match those in the
-     * Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255
-     * or U + 0000 to U + 00FF).</li> <li> {@code UTF-16} - UTF-16 without a
-     * fixed byte order, rather than an alias to {@code UTF-16LE} as
-     * specified in the Encoding Standard. The byte order is little endian
-     * if the byte stream starts with 0xff 0xfe; otherwise, big endian. A
-     * leading 0xff 0xfe or 0xfe 0xff in the byte stream is skipped.</li>
-     * <li> {@code UTF-7} - UTF-7 (7-bit universal coded character set). The
-     * name {@code unicode-1-1-utf-7} is not supported and is not treated
-     * as an alias to {@code UTF-7}, even though it uses the same character
-     * encoding scheme as UTF-7, because RFC 1642, which defined the former
-     * UTF-7, is linked to a different Unicode version with an incompatible
-     * character repertoire (notably, the Hangul syllables have different
-     * code point assignments in Unicode 1.1 and earlier than in Unicode
-     * 2.0 and later).</li> <li> {@code ISO-2022-JP-2} - similar to
-     *  "ISO-2022-JP", except that the decoder supports additional character
-     * sets.</li></ul> .
+     * upper-case letters A to Z (U+0041 to U+005A) in both strings to
+     * basic lower-case letters.) Uses a modified version of the rules in
+     * the Encoding Standard to better conform, in some cases, to email
+     * standards like MIME. Encoding names and aliases not registered with
+     * the Internet Assigned Numbers Authority (IANA) are not supported,
+     * with the exception of {@code ascii}, {@code utf8}, {@code cp1252},
+     * and names 10 characters or longer starting with {@code iso-8859-}.
+     * Also, the following additional encodings are supported. Note that
+     * the case combination {@code GB18030}, the combination registered
+     * with IANA, rather than {@code gb18030} can be retured by this
+     * method. <ul> <li> {@code US-ASCII} - ASCII single-byte encoding,
+     * rather than an alias to {@code windows-1252} as specified in the
+     * Encoding Standard. The coded character set's code points match those
+     * in the Unicode Standard's Basic Latin block (0-127 or U+0000 to
+     * U+007F). This method name {@code ascii} is treated as an alias to
+     * {@code US-ASCII} even though it is not registered with IANA as a
+     *  charset name and RFC 2046 (part of MIME) reserves the name "ASCII".
+     * A future version of this method may stop supporting the alias {@code
+     * ascii}.</li> <li> {@code ISO-8859-1} - Latin-1 single-byte encoding,
+     * rather than an alias to {@code windows-1252} as specified in the
+     * Encoding Standard. The coded character set's code points match those
+     * in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks
+     * (0-255 or U+0000 to U+00FF).</li> <li> {@code UTF-16} - UTF-16
+     * without a fixed byte order, rather than an alias to {@code UTF-16LE}
+     * as specified in the Encoding Standard. The byte order is little
+     * endian if the byte stream starts with 0xff 0xfe; otherwise, big
+     * endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream is
+     * skipped.</li> <li> {@code UTF-7} - UTF-7 (7-bit universal coded
+     * character set). The name {@code unicode-1-1-utf-7} is not supported
+     * and is not treated as an alias to {@code UTF-7}, even though it uses
+     * the same character encoding scheme as UTF-7, because RFC 1642, which
+     * defined the former UTF-7, is linked to a different Unicode version
+     * with an incompatible character repertoire (notably, the Hangul
+     * syllables have different code point assignments in Unicode 1.1 and
+     * earlier than in Unicode 2.0 and later).</li> <li> {@code
+     *  ISO-2022-JP-2} - similar to "ISO-2022-JP", except that the decoder
+     * supports additional character sets.</li></ul> .
      * @return A standardized name for the encoding. Returns the empty string if
      * {@code name} is null or empty, or if the encoding name is
      * unsupported.
@@ -1522,7 +1523,7 @@ ICharacterInput reader) {
     /**
      * Converts a text string to a byte array encoded in a given character
      * encoding. When reading the string, any unpaired surrogate characters
-     * are replaced with the replacement character (U + FFFD), and when
+     * are replaced with the replacement character (U+FFFD), and when
      * writing to the byte array, any characters that can't be encoded are
      * replaced with the byte 0x3f (the question mark character). <p>In
      * the.NET implementation, this method is implemented as an extension
@@ -1549,7 +1550,7 @@ ICharacterEncoding encoding,
     /**
      * Converts a text string to a byte array using the given character encoder.
      * When reading the string, any unpaired surrogate characters are
-     * replaced with the replacement character (U + FFFD), and when writing
+     * replaced with the replacement character (U+FFFD), and when writing
      * to the byte array, any characters that can't be encoded are replaced
      * with the byte 0x3f (the question mark character). <p>In the.getNET()
      * implementation, this method is implemented as an extension method to
@@ -1588,7 +1589,7 @@ ICharacterEncoder encoder,
      * used to encode the text to bytes, or to read the string code point
      * by code point, among other things. When reading the string, any
      * unpaired surrogate characters are replaced with the replacement
-     * character (U + FFFD). <p>In the.NET implementation, this method is
+     * character (U+FFFD). <p>In the.NET implementation, this method is
      * implemented as an extension method to any string object and can be
      * called as follows: <code>str.StringToInput(offset, length)</code>. If the
      * object's class already has a StringToInput method with the same
@@ -1615,7 +1616,7 @@ String str) {
      * input can then be used to encode the text to bytes, or to read the
      * string code point by code point, among other things. When reading
      * the string, any unpaired surrogate characters are replaced with the
-     * replacement character (U + FFFD). <p>In the.NET implementation, this
+     * replacement character (U+FFFD). <p>In the.NET implementation, this
      * method is implemented as an extension method to any string object
      * and can be called as follows: <code>str.StringToInput(offset,
      * length)</code>. If the object's class already has a StringToInput
@@ -1627,8 +1628,8 @@ String str) {
      * <code>StringToInput</code> method with the same parameters, that method
      * takes precedence over this extension method.</p>
      * @param str The parameter {@code str} is a text string.
-     * @param offset A zero-based index showing where the desired portion of {@code
-     * str} begins.
+     * @param offset An index starting at 0 showing where the desired portion of
+     * {@code str} begins.
      * @param length The length, in code units, of the desired portion of {@code
      * str} (but not more than {@code str} 's length).
      * @return An ICharacterInput object.
@@ -2111,8 +2112,8 @@ String str,
       /**
        * This is an internal method.
        * @param buffer An array of 32-bit unsigned integers.
-       * @param offset A zero-based index showing where the desired portion of {@code
-       * buffer} begins.
+       * @param offset An index starting at 0 showing where the desired portion of
+       * {@code buffer} begins.
        * @param length The number of elements in the desired portion of {@code
        * buffer} (but not more than {@code buffer} 's length).
        * @return A 32-bit signed integer.

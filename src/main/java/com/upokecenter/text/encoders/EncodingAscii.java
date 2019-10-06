@@ -8,8 +8,8 @@ import com.upokecenter.text.*;
     private static class Decoder implements ICharacterDecoder {
       public int ReadChar(IByteReader transform) {
         if (transform == null) {
-  throw new NullPointerException("transform");
-}
+          throw new NullPointerException("transform");
+        }
         int b = transform.read();
         return (b < 0) ? (-1) : ((b < 0x80) ? b : -2);
       }
@@ -20,11 +20,11 @@ import com.upokecenter.text.*;
         int c,
         IWriter output) {
         if (output == null) {
-  throw new NullPointerException("output");
-}
+          throw new NullPointerException("output");
+        }
         if (c < 0) {
-  return -1;
-}
+          return -1;
+        }
         if (c < 0x80) {
           output.write((byte)c);
           return 1;

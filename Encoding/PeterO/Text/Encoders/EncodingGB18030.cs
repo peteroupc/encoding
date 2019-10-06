@@ -405,7 +405,7 @@ namespace PeterO.Text.Encoders {
         } else if (c == 0xe5e5) {
           // Can't round trip under current WHATWG version
           // of specification; the bytes this code point corresponds
-          // to map to U + 3000 instead
+          // to map to U+3000 instead
           return -2;
         } else if (c == 0x20ac && this.gbk) {
           output.WriteByte((byte)0x80);

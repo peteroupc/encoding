@@ -23,17 +23,17 @@ private static readonly int[] indextable= {
 };
 public static int CodePointToIndex(int codepoint) {
    if (codepoint<167 || codepoint>65509) {
- return -1;
-}
+     return -1;
+   }
  short cps = unchecked((short)(codepoint & 0xffff));
   for (int i = 0;i<indextable.Length;i+=4) {
-     if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
+    if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
       int startindex = indextable[i + 2];
        int length = indextable[i + 3];
       for (int j = 0; j < length; ++j) {
-         if ((table[j + startindex]) == cps) {
- return j + startindex;
-}
+        if ((table[j + startindex]) == cps) {
+          return j + startindex;
+        }
        }
     }
    }
@@ -54,17 +54,17 @@ private static readonly int[] indextable2= {
 };
 public static int ShiftJISCodePointToIndex(int codepoint) {
    if (codepoint<167 || codepoint>65509) {
- return -1;
-}
+     return -1;
+   }
  short cps = unchecked((short)(codepoint & 0xffff));
   for (int i = 0;i<indextable2.Length;i+=4) {
-     if (codepoint >= indextable2[i] && codepoint <= indextable2[i + 1]) {
+    if (codepoint >= indextable2[i] && codepoint <= indextable2[i + 1]) {
       int startindex = indextable2[i + 2];
        int length = indextable2[i + 3];
       for (int j = 0; j < length; ++j) {
-         if (table[j + startindex]==cps) {
- return j + startindex;
-}
+        if (table[j + startindex]==cps) {
+          return j + startindex;
+        }
        }
     }
    }
@@ -72,7 +72,7 @@ public static int ShiftJISCodePointToIndex(int codepoint) {
  }
 public static int IndexToCodePoint(int index) {
 if (index<0 || index >= 11104) {
- return -1;
+  return -1;
 }
 int cp=((int)table[index]) & 0xffff;
 return (cp == 0) ? -1 : cp;

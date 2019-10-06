@@ -85,7 +85,7 @@ Wraps a portion of a byte array into a byte reader object. <p>In the.getNET()
 **Throws:**
 
 * <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is less
- than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code> ' s
+ than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code> 's
  length minus <code>offset</code> is less than <code>length</code>.
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>bytes</code> is null.
@@ -134,7 +134,7 @@ Use ToReader instead.
 **Throws:**
 
 * <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is less
- than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code> ' s
+ than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code> 's
  length minus <code>offset</code> is less than <code>length</code>.
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>bytes</code> is null.

@@ -26,10 +26,10 @@ namespace PeterO {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
     public static IReader ToReader(
-  #if !NET20
-this
-#endif
-byte[] bytes) {
+      #if !NET20
+      this
+      #endif
+      byte[] bytes) {
       if (bytes == null) {
         throw new ArgumentNullException(nameof(bytes));
       }
@@ -54,15 +54,15 @@ byte[] bytes) {
     /// <exception cref='ArgumentException'>Either <paramref
     /// name='offset'/> or <paramref name='length'/> is less than 0 or
     /// greater than <paramref name='bytes'/> 's length, or <paramref
-    /// name=' bytes'/> ' s length minus <paramref name='offset'/> is less
+    /// name=' bytes'/> 's length minus <paramref name='offset'/> is less
     /// than <paramref name='length'/>.</exception>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
     public static IReader ToReader(
-  #if !NET20
-this
-#endif
-byte[] bytes,
+      #if !NET20
+      this
+      #endif
+      byte[] bytes,
       int offset,
       int length) {
       if (bytes == null) {
@@ -105,10 +105,10 @@ byte[] bytes,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='input'/> is null.</exception>
     public static IReader ToReader(
-  #if !NET20
-this
-#endif
-Stream input) {
+      #if !NET20
+      this
+      #endif
+      Stream input) {
       if (input == null) {
         throw new ArgumentNullException(nameof(input));
       }
@@ -135,16 +135,16 @@ Stream input) {
     /// <exception cref='ArgumentException'>Either <paramref
     /// name='offset'/> or <paramref name='length'/> is less than 0 or
     /// greater than <paramref name='bytes'/> 's length, or <paramref
-    /// name=' bytes'/> ' s length minus <paramref name='offset'/> is less
+    /// name=' bytes'/> 's length minus <paramref name='offset'/> is less
     /// than <paramref name='length'/>.</exception>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
-  #if !NET20
-this
-#endif
-byte[] bytes,
+      #if !NET20
+      this
+      #endif
+      byte[] bytes,
       int offset,
       int length) {
       return (IByteReader)ToReader(bytes, offset, length);
@@ -164,10 +164,10 @@ byte[] bytes,
     /// name='input'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
-  #if !NET20
-this
-#endif
-Stream input) {
+      #if !NET20
+      this
+      #endif
+      Stream input) {
       return (IByteReader)ToReader(input);
     }
 
@@ -185,10 +185,10 @@ Stream input) {
     /// name='bytes'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
-  #if !NET20
-this
-#endif
-byte[] bytes) {
+      #if !NET20
+      this
+      #endif
+      byte[] bytes) {
       return (IByteReader)ToReader(bytes);
     }
 
@@ -206,10 +206,10 @@ byte[] bytes) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
     public static IWriter ToWriter(
-  #if !NET20
-this
-#endif
-Stream output) {
+      #if !NET20
+      this
+      #endif
+      Stream output) {
       if (output == null) {
         throw new ArgumentNullException(nameof(output));
       }
@@ -229,10 +229,10 @@ Stream output) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
     public static IWriter ToWriter(
-  #if !NET20
-this
-#endif
-IByteWriter output) {
+      #if !NET20
+      this
+      #endif
+      IByteWriter output) {
       if (output == null) {
         throw new ArgumentNullException(nameof(output));
       }
@@ -271,7 +271,7 @@ IByteWriter output) {
     /// name='bytes'/> 's length).</param>
     /// <returns>A 32-bit signed integer.</returns>
     /// <exception cref=' T:System.ArgumentException'>Either or is less
-    /// than 0 or greater than 's length, or ' s length minus is less
+    /// than 0 or greater than 's length, or 's length minus is less
     /// than.</exception>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
@@ -342,11 +342,6 @@ IByteWriter output) {
     /// desired portion of "bytes" begins.</param>
     /// <param name='length'>The length, in bytes, of the desired portion
     /// of "bytes" (but not more than "bytes" 's length).</param>
-    /// <exception cref=' T:System.ArgumentException'>Either <paramref
-    /// name=' offset'/> or <paramref name=' length'/> is less than 0 or
-    /// greater than <paramref name='bytes'/> 's length, or <paramref
-    /// name=' bytes'/> ' s length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>.</exception>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
     /// <exception cref='ArgumentException'>Either <paramref
@@ -388,7 +383,7 @@ IByteWriter output) {
     /// <exception cref='ArgumentException'>Either <paramref
     /// name='offset'/> or <paramref name='length'/> is less than 0 or
     /// greater than <paramref name='bytes'/> 's length, or <paramref
-    /// name=' bytes'/> ' s length minus <paramref name='offset'/> is less
+    /// name=' bytes'/> 's length minus <paramref name='offset'/> is less
     /// than <paramref name='length'/>.</exception>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>

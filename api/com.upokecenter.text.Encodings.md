@@ -362,7 +362,7 @@ Reads a portion of a byte array from a data source and converts the bytes
 **Throws:**
 
 * <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is less
- than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code> ' s
+ than 0 or greater than <code>bytes</code> 's length, or <code>bytes</code> 's
  length minus <code>offset</code> is less than <code>length</code>.
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>enc</code> or <code>bytes</code> is
@@ -1166,7 +1166,7 @@ Converts a portion of a text string to a character input. The resulting
 **Throws:**
 
 * <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is less
- than 0 or greater than <code>str</code> 's length, or <code>str</code> ' s
+ than 0 or greater than <code>str</code> 's length, or <code>str</code> 's
  length minus <code>offset</code> is less than <code>length</code>.
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>str</code> is null.

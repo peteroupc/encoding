@@ -1,5 +1,7 @@
 using System.Resources;
 
+#pragma warning disable CA1801
+
 namespace PeterO.Text.Encoders {
   internal sealed class AppResources {
     private readonly ResourceManager mgr;

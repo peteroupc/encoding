@@ -244,11 +244,12 @@ import com.upokecenter.text.*;
                     }
                   case 3: {
                       this.base64value <<= 6;
-                      this.appender.AppendByte((this.base64value >> 16) & 0xff,
+                      this.appender.AppendByte(
+                        (this.base64value >> 16) & 0xff,
                         this.state);
-                        this.appender.AppendByte(
-                          (this.base64value >> 8) & 0xff,
-                          this.state);
+                      this.appender.AppendByte(
+                        (this.base64value >> 8) & 0xff,
+                        this.state);
                       if ((this.base64value & 0xff) != 0) {
                         // Redundant pad bits
                         this.appender.AppendIncompleteByte();

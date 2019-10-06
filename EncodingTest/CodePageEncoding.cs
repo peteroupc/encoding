@@ -247,7 +247,7 @@ namespace EncodingTest {
                     if (words.Length == 1) {
                     throw new
   ArgumentException("Expected non-word character after '" + wordStr + "'");
-                    } else {
+} else {
                     throw new ArgumentException("unexpected word found");
                     }
                   }
@@ -261,7 +261,7 @@ namespace EncodingTest {
                   // Get the Unicode code point for the surrogate pair
                 c = 0x10000 + ((c & 0x3ff) << 10) + (str[index + 1] & 0x3ff);
                 ++index;
-                } else if ((c & 0xf800) == 0xd800) {
+              } else if ((c & 0xf800) == 0xd800) {
                   // unpaired surrogate
                   c = 0xfffd;
                 }
@@ -616,10 +616,10 @@ namespace EncodingTest {
           }
         }
         if (haveGlyphTable) {
-         for (var i = 0; i < 256; ++i) {
+          for (var i = 0; i < 256; ++i) {
            if (this.bytesToGlyphs[i] == -2) {
- this.bytesToGlyphs[i] = this.bytesToUCS[i];
-}
+             this.bytesToGlyphs[i] = this.bytesToUCS[i];
+           }
          }
         }
       }

@@ -29,7 +29,7 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(
-byte[] bytes) {
+      byte[] bytes) {
       if (bytes == null) {
         throw new NullPointerException("bytes");
       }
@@ -51,12 +51,12 @@ byte[] bytes) {
      * @return A byte reader wrapping the byte array.
      * @throws T:NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} ' s
+     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
      * length minus {@code offset} is less than {@code length}.
      * @throws NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(
-byte[] bytes,
+      byte[] bytes,
       int offset,
       int length) {
       if (bytes == null) {
@@ -98,7 +98,7 @@ byte[] bytes,
      * @throws NullPointerException The parameter {@code input} is null.
      */
     public static IReader ToReader(
-InputStream input) {
+      InputStream input) {
       if (input == null) {
         throw new NullPointerException("input");
       }
@@ -120,14 +120,14 @@ InputStream input) {
      * @return An IByteReader object.
      * @throws T:NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} ' s
+     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
      * length minus {@code offset} is less than {@code length}.
      * @throws NullPointerException The parameter {@code bytes} is null.
      * @deprecated Use ToReader instead.
  */
 @Deprecated
     public static IByteReader ToByteReader(
-byte[] bytes,
+      byte[] bytes,
       int offset,
       int length) {
       return (IByteReader)ToReader(bytes, offset, length);
@@ -147,7 +147,7 @@ byte[] bytes,
  */
 @Deprecated
     public static IByteReader ToByteReader(
-InputStream input) {
+      InputStream input) {
       return (IByteReader)ToReader(input);
     }
 
@@ -165,7 +165,7 @@ InputStream input) {
  */
 @Deprecated
     public static IByteReader ToByteReader(
-byte[] bytes) {
+      byte[] bytes) {
       return (IByteReader)ToReader(bytes);
     }
 
@@ -182,7 +182,7 @@ byte[] bytes) {
      * @throws NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(
-OutputStream output) {
+      OutputStream output) {
       if (output == null) {
         throw new NullPointerException("output");
       }
@@ -202,7 +202,7 @@ OutputStream output) {
      * @throws NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(
-IByteWriter output) {
+      IByteWriter output) {
       if (output == null) {
         throw new NullPointerException("output");
       }
@@ -242,7 +242,7 @@ IByteWriter output) {
      * (but not more than {@code bytes} 's length).
      * @return A 32-bit signed integer.
      * @throws T:IllegalArgumentException Either or is less than 0 or greater than
-     * 's length, or ' s length minus is less than.
+     * 's length, or 's length minus is less than.
      * @throws NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
      * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
@@ -312,9 +312,6 @@ IByteWriter output) {
      *  "bytes" begins.
      * @param length The length, in bytes, of the desired portion of "bytes" (but
      *  not more than "bytes" 's length).
-     * @throws T:IllegalArgumentException Either {@code offset} or {@code length}
-     * is less than 0 or greater than {@code bytes} 's length, or {@code
-     * bytes} ' s length minus {@code offset} is less than {@code length}.
      * @throws NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
      * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
@@ -353,7 +350,7 @@ IByteWriter output) {
      *  not more than "bytes" 's length).
      * @throws T:NullPointerException The parameter {@code bytes} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} ' s
+     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
      * length minus {@code offset} is less than {@code length}.
      * @throws NullPointerException The parameter {@code bytes} is null.
      */

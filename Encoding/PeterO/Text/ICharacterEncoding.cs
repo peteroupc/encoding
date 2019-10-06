@@ -16,7 +16,7 @@ public interface ICharacterEncoding {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design",
       "CA1024:UsePropertiesWhereAppropriate",
       Justification =
-        "Some implementations can return the same object, others won't.")]
+    "Some implementations can return the same object, others won't.")]
 #endif
     ICharacterEncoder GetEncoder();
 
@@ -28,7 +28,7 @@ public interface ICharacterEncoding {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design",
       "CA1024:UsePropertiesWhereAppropriate",
       Justification =
-        "Some implementations can return the same object, others won't.")]
+    "Some implementations can return the same object, others won't.")]
 #endif
     ICharacterDecoder GetDecoder();
 }

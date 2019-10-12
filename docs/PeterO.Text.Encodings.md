@@ -177,7 +177,7 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>bytes</i>
  's length, or  <i> bytes</i>
- ' s length minus  <i>offset</i>
+ 's length minus  <i>offset</i>
  is less than  <i>length</i>
 .
 
@@ -936,7 +936,7 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>str</i>
  's length, or  <i>             str</i>
- ' s length minus  <i>offset</i>
+ 's length minus  <i>offset</i>
  is less than  <i>length</i>
 .
 

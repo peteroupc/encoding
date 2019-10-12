@@ -5,9 +5,9 @@
 Convenience class that contains static methods for wrapping byte arrays and streams into byte readers and byte writers.
 
 ### Member Summary
-* <code>[ToByteReader(this byte[])](#ToByteReader_this_byte)</code> - Wraps a byte array into a byte reader.
-* <code>[ToByteReader(this byte[], int, int)](#ToByteReader_this_byte_int_int)</code> - Wraps a portion of a byte array into a byte reader.
-* <code>[ToByteReader(this System.IO.Stream)](#ToByteReader_this_System_IO_Stream)</code> - Wraps a data stream into a byte reader.
+* <code>[ToByteReader(this byte[])](#ToByteReader_this_byte)</code> - <b>Deprecated:</b> Use ToReader instead.
+* <code>[ToByteReader(this byte[], int, int)](#ToByteReader_this_byte_int_int)</code> - <b>Deprecated:</b> Use ToReader instead.
+* <code>[ToByteReader(this System.IO.Stream)](#ToByteReader_this_System_IO_Stream)</code> - <b>Deprecated:</b> Use ToReader instead.
 * <code>[ToReader(this byte[])](#ToReader_this_byte)</code> - Wraps a byte array into a byte reader.
 * <code>[ToReader(this byte[], int, int)](#ToReader_this_byte_int_int)</code> - Wraps a portion of a byte array into a byte reader object.
 * <code>[ToReader(this System.IO.Stream)](#ToReader_this_System_IO_Stream)</code> - Wraps an input stream into a reader object.
@@ -76,7 +76,7 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>bytes</i>
  's length, or  <i> bytes</i>
- ' s length minus  <i>offset</i>
+ 's length minus  <i>offset</i>
  is less than  <i>length</i>
 .
 
@@ -163,7 +163,7 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>bytes</i>
  's length, or  <i> bytes</i>
- ' s length minus  <i>offset</i>
+ 's length minus  <i>offset</i>
  is less than  <i>length</i>
 .
 

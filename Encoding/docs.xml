@@ -370,7 +370,7 @@
             of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param>
             <returns>A 32-bit signed integer.</returns>
             <exception cref=' T:System.ArgumentException'>Either or is less
-            than 0 or greater than 's length, or ' s length minus is less
+            than 0 or greater than 's length, or 's length minus is less
             than.</exception>
             <exception cref='ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
@@ -418,7 +418,7 @@
             <exception cref=' T:System.ArgumentNullException'>The parameter
             <paramref name='bytes'/> is null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name=' bytes'/> ' s length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name=' bytes'/> 's length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
             <exception cref='ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
 
@@ -471,7 +471,7 @@
             <exception cref=' T:System.ArgumentNullException'>The parameter
             <paramref name='bytes'/> is null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name=' bytes'/> ' s length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name=' bytes'/> 's length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
             <exception cref='ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
 
@@ -531,9 +531,6 @@
             desired portion of "bytes" begins.</param>
             <param name='length'>The length, in bytes, of the desired portion
             of "bytes" (but not more than "bytes" 's length).</param>
-            <exception cref=' T:System.ArgumentException'>Either <paramref name=' offset'/> or <paramref name=' length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name=' bytes'/> ' s length minus <paramref name='offset'/> is less
-            than <paramref name='length'/>.</exception>
             <exception cref='ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
             greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> 's length minus <paramref name='offset'/> is less
@@ -558,7 +555,7 @@
             <exception cref=' T:System.ArgumentNullException'>The parameter
             <paramref name='bytes'/> is null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name=' bytes'/> ' s length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name=' bytes'/> 's length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
             <exception cref='ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
 
@@ -1753,7 +1750,7 @@
             <paramref name='enc'/> or <paramref name='bytes'/> is
             null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='bytes'/> 's length, or <paramref name=' bytes'/> ' s length minus <paramref name='offset'/> is less
+            greater than <paramref name='bytes'/> 's length, or <paramref name=' bytes'/> 's length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
             <exception cref='ArgumentNullException'>The parameter <paramref name='enc'/> or <paramref name='bytes'/> is null.</exception>
 
@@ -1794,7 +1791,7 @@
             <exception cref=' T:System.ArgumentNullException'>The parameter
             <paramref name='buffer'/> is null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='buffer'/> 's length, or <paramref name=' buffer'/> ' s length minus <paramref name='offset'/> is less
+            greater than <paramref name='buffer'/> 's length, or <paramref name=' buffer'/> 's length minus <paramref name='offset'/> is less
             than <paramref name='length'/>.</exception>
             <exception cref='ArgumentNullException'>The parameter <paramref name='buffer'/> is null.</exception>
 
@@ -2469,7 +2466,7 @@
             <paramref name='str'/> is null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
             greater than <paramref name='str'/> 's length, or <paramref name='
-            str'/> ' s length minus <paramref name='offset'/> is less than
+            str'/> 's length minus <paramref name='offset'/> is less than
             <paramref name='length'/>.</exception>
             <exception cref='ArgumentNullException'>The parameter <paramref name='str'/> is null.</exception>
 

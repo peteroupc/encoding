@@ -7,9 +7,9 @@ If you like this, you should donate to Peter O.
 at: http://peteroupc.github.io/
  */
 
-    /**
-     * A generic interface for reading data one byte at a time.
-     */
+  /**
+   * A generic interface for reading data one byte at a time.
+   */
   public interface IByteReader {
     /**
      * Reads a byte from the data source.

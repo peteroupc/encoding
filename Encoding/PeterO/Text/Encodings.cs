@@ -132,10 +132,10 @@ namespace PeterO.Text {
     public static readonly ICharacterEncoding UTF8 = new EncodingUtf8();
 
     private static readonly IDictionary<string, string> ValueCharsetAliases =
-        CreateAliasMap();
+      CreateAliasMap();
 
     private static readonly IDictionary<string, string> EmailAliases =
-        CreateEmailAliasMap();
+      CreateEmailAliasMap();
 
     /// <summary>Reads bytes from a data source and converts the bytes from
     /// a given encoding to a text string.
@@ -154,10 +154,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> or <paramref name='input'/> is null.</exception>
     public static string DecodeToString(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoding encoding,
+  #if !NET20
+this
+#endif
+ICharacterEncoding encoding,
       IByteReader input) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -165,8 +165,8 @@ namespace PeterO.Text {
       if (input == null) {
         throw new ArgumentNullException(nameof(input));
       }
-      return InputToString(
-         GetDecoderInput(encoding, input));
+      return InputToString (
+          GetDecoderInput(encoding, input));
     }
 
     /// <summary>Decodes data read from a data stream into a text string in
@@ -190,10 +190,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter "encoding" or
     /// <paramref name='input'/> is null.</exception>
     public static string DecodeToString(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoding enc,
+  #if !NET20
+this
+#endif
+ICharacterEncoding enc,
       Stream input) {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
@@ -201,8 +201,8 @@ namespace PeterO.Text {
       if (input == null) {
         throw new ArgumentNullException(nameof(input));
       }
-      return InputToString(
-         GetDecoderInput(enc, DataIO.ToReader(input)));
+      return InputToString (
+          GetDecoderInput(enc, DataIO.ToReader(input)));
     }
 
     /// <summary>Reads a byte array from a data source and converts the
@@ -228,10 +228,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='enc'/> or <paramref name='bytes'/> is null.</exception>
     public static string DecodeToString(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoding enc,
+  #if !NET20
+this
+#endif
+ICharacterEncoding enc,
       byte[] bytes) {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
@@ -279,10 +279,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='enc'/> or <paramref name='bytes'/> is null.</exception>
     public static string DecodeToString(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoding enc,
+  #if !NET20
+this
+#endif
+ICharacterEncoding enc,
       byte[] bytes,
       int offset,
       int length) {
@@ -293,23 +293,23 @@ namespace PeterO.Text {
         throw new ArgumentNullException(nameof(bytes));
       }
       if (offset < 0) {
-        throw new ArgumentException("offset (" + offset +
+        throw new ArgumentException("offset(" + offset +
           ") is less than 0");
       }
       if (offset > bytes.Length) {
-        throw new ArgumentException("offset (" + offset +
+        throw new ArgumentException("offset(" + offset +
           ") is more than " + bytes.Length);
       }
       if (length < 0) {
-        throw new ArgumentException("length (" + length +
+        throw new ArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > bytes.Length) {
-        throw new ArgumentException("length (" + length +
+        throw new ArgumentException("length(" + length +
           ") is more than " + bytes.Length);
       }
       if (bytes.Length - offset < length) {
-        throw new ArgumentException("bytes's length minus " + offset + " (" +
+        throw new ArgumentException("bytes's length minus " + offset + "(" +
           (bytes.Length - offset) + ") is less than " + length);
       }
       return DecodeToString(enc, DataIO.ToReader(bytes, offset, length));
@@ -334,10 +334,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static byte[] EncodeToBytes(
-      #if !NET20
-      this
-      #endif
-      ICharacterInput input,
+  #if !NET20
+this
+#endif
+ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -369,10 +369,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='input'/> is null.</exception>
     public static byte[] EncodeToBytes(
-      #if !NET20
-      this
-      #endif
-      ICharacterInput input,
+  #if !NET20
+this
+#endif
+ICharacterInput input,
       ICharacterEncoder encoder) {
       return EncodeToBytes(input, encoder, false);
     }
@@ -402,10 +402,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='input'/> is null.</exception>
     public static byte[] EncodeToBytes(
-      #if !NET20
-      this
-      #endif
-      ICharacterInput input,
+  #if !NET20
+this
+#endif
+ICharacterInput input,
       ICharacterEncoder encoder,
       bool htmlFallback) {
       if (encoder == null) {
@@ -457,10 +457,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> or <paramref name='enc'/> is null.</exception>
     public static byte[] EncodeToBytes(
-      #if !NET20
-      this
-      #endif
-      string str,
+  #if !NET20
+this
+#endif
+string str,
       ICharacterEncoding enc) {
       if (str == null) {
         throw new ArgumentNullException(nameof(str));
@@ -468,10 +468,10 @@ namespace PeterO.Text {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
       }
-      return EncodeToBytes(
-  new CharacterReader(str),
-  enc.GetEncoder(),
-  false);
+      return EncodeToBytes (
+          new CharacterReader(str),
+          enc.GetEncoder(),
+          false);
     }
 
     /// <summary>Reads Unicode characters from a text string and writes
@@ -497,10 +497,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> or <paramref name='enc'/> is null.</exception>
     public static byte[] EncodeToBytes(
-      #if !NET20
-      this
-      #endif
-      string str,
+  #if !NET20
+this
+#endif
+string str,
       ICharacterEncoding enc,
       bool htmlFallback) {
       if (str == null) {
@@ -509,10 +509,10 @@ namespace PeterO.Text {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
       }
-      return EncodeToBytes(
-        new CharacterReader(str),
-        enc.GetEncoder(),
-        htmlFallback);
+      return EncodeToBytes (
+          new CharacterReader(str),
+          enc.GetEncoder(),
+          htmlFallback);
     }
 
     /// <summary>Reads Unicode characters from a character input and writes
@@ -540,10 +540,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static void EncodeToWriter(
-      #if !NET20
-      this
-      #endif
-      ICharacterInput input,
+  #if !NET20
+this
+#endif
+ICharacterInput input,
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
@@ -576,10 +576,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='input'/> is null.</exception>
     public static void EncodeToWriter(
-      #if !NET20
-      this
-      #endif
-      ICharacterInput input,
+  #if !NET20
+this
+#endif
+ICharacterInput input,
       ICharacterEncoder encoder,
       IWriter writer) {
       if (encoder == null) {
@@ -629,10 +629,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> or <paramref name='enc'/> is null.</exception>
     public static void EncodeToWriter(
-      #if !NET20
-      this
-      #endif
-      string str,
+  #if !NET20
+this
+#endif
+string str,
       ICharacterEncoding enc,
       IWriter writer) {
       if (str == null) {
@@ -668,10 +668,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static void EncodeToWriter(
-      #if !NET20
-      this
-      #endif
-      ICharacterInput input,
+  #if !NET20
+this
+#endif
+ICharacterInput input,
       ICharacterEncoding encoding,
       Stream output) {
       if (encoding == null) {
@@ -703,10 +703,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='input'/> is null.</exception>
     public static void EncodeToWriter(
-      #if !NET20
-      this
-      #endif
-      ICharacterInput input,
+  #if !NET20
+this
+#endif
+ICharacterInput input,
       ICharacterEncoder encoder,
       Stream output) {
       IWriter writer = DataIO.ToWriter(output);
@@ -737,10 +737,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> or <paramref name='enc'/> is null.</exception>
     public static void EncodeToWriter(
-      #if !NET20
-      this
-      #endif
-      string str,
+  #if !NET20
+this
+#endif
+string str,
       ICharacterEncoding enc,
       Stream output) {
       if (str == null) {
@@ -749,10 +749,10 @@ namespace PeterO.Text {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
       }
-      EncodeToWriter(
-     new CharacterReader(str),
-     enc,
-     DataIO.ToWriter(output));
+      EncodeToWriter (
+        new CharacterReader(str),
+        enc,
+        DataIO.ToWriter(output));
     }
 
     /// <summary>Converts a character encoding into a character input
@@ -776,17 +776,17 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static ICharacterInput GetDecoderInput(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoding encoding,
+  #if !NET20
+this
+#endif
+ICharacterEncoding encoding,
       IByteReader stream) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
       }
 
       return new DecoderToInputClass(encoding.GetDecoder(),
-        stream);
+          stream);
     }
 
     /// <summary>Converts a character encoding into a character input
@@ -815,18 +815,18 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static ICharacterInput GetDecoderInput(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoding encoding,
+  #if !NET20
+this
+#endif
+ICharacterEncoding encoding,
       Stream input) {
       if (
-     encoding == null) {
+        encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
       }
-      return new DecoderToInputClass(
-           encoding.GetDecoder(),
-           DataIO.ToReader(input));
+      return new DecoderToInputClass (
+          encoding.GetDecoder(),
+          DataIO.ToReader(input));
     }
 
     /// <summary>Converts a character encoding into a character input
@@ -851,10 +851,10 @@ namespace PeterO.Text {
     /// characters.</param>
     /// <returns>An ICharacterInput object.</returns>
     public static ICharacterInput GetDecoderInputSkipBom(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoding encoding,
+  #if !NET20
+this
+#endif
+ICharacterEncoding encoding,
       IByteReader stream) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
@@ -880,14 +880,14 @@ namespace PeterO.Text {
     /// characters.</param>
     /// <returns>An ICharacterInput object.</returns>
     public static ICharacterInput GetDecoderInputSkipBom(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoding encoding,
+  #if !NET20
+this
+#endif
+ICharacterEncoding encoding,
       Stream input) {
-      return EncoderAlgorithms.DecodeAlgorithmInput(
-        DataIO.ToReader(input),
-        encoding);
+      return EncoderAlgorithms.DecodeAlgorithmInput (
+          DataIO.ToReader(input),
+          encoding);
     }
 
     /// <summary>Returns a character encoding from the given
@@ -917,8 +917,8 @@ namespace PeterO.Text {
       bool forEmail,
       bool allowReplacement) {
       return (!allowReplacement && name != null &&
-        ToLowerCaseAscii(name).Equals("replacement",
-  StringComparison.Ordinal)) ? null : GetEncoding(name, forEmail);
+          ToLowerCaseAscii(name).Equals("replacement",
+            StringComparison.Ordinal)) ? null : GetEncoding(name, forEmail);
     }
 
     /// <summary>Returns a character encoding from the given
@@ -1065,7 +1065,7 @@ namespace PeterO.Text {
         });
       }
       if (name.Equals("windows-874", StringComparison.Ordinal) ||
-name.Equals("TIS-620", StringComparison.Ordinal)) {
+        name.Equals("TIS-620", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingSingleByte(new[] {
           8364, 129,
           130,
@@ -1184,7 +1184,7 @@ name.Equals("TIS-620", StringComparison.Ordinal)) {
         });
       }
       if (name.Equals("ISO-8859-8", StringComparison.Ordinal) ||
-name.Equals("ISO-8859-8-I", StringComparison.Ordinal)) {
+        name.Equals("ISO-8859-8-I", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingSingleByte(new[] {
           128, 129, 130,
           131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
@@ -1446,10 +1446,10 @@ name.Equals("ISO-8859-8-I", StringComparison.Ordinal)) {
       } else if (name.Equals("GBK", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingGBK();
       } else if (name.Equals("GB2312", StringComparison.Ordinal) ||
-              name.Equals("gb2312", StringComparison.Ordinal)) {
+        name.Equals("gb2312", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingGBK();
       } else if (name.Equals("gb18030", StringComparison.Ordinal) ||
-name.Equals("GB18030", StringComparison.Ordinal)) {
+        name.Equals("GB18030", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingGB18030();
       } else if (name.Equals("UTF-16", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingUtf16();
@@ -1463,11 +1463,10 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingISO2022KR();
       }
       return name.Equals("ISO-2022-JP", StringComparison.Ordinal) ?
-(ICharacterEncoding)new
-        EncodingISO2022JP() :
-        (name.Equals("replacement", StringComparison.Ordinal) ?
-(ICharacterEncoding)new
-          EncodingReplacement() : null);
+        (ICharacterEncoding)new EncodingISO2022JP() :
+(name.Equals("replacement", StringComparison.Ordinal) ?
+
+          (ICharacterEncoding)new EncodingReplacement() : null);
     }
 
     /// <summary>Reads Unicode characters from a character input and
@@ -1483,11 +1482,11 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
     /// <returns>A text string containing the characters read.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='reader'/> is null.</exception>
-    public static string InputToString(
-      #if !NET20
-      this
-      #endif
-      ICharacterInput reader) {
+    public static string InputToString (
+  #if !NET20
+this
+#endif
+ICharacterInput reader) {
       var builder = new StringBuilder();
       while (true) {
         if (reader == null) {
@@ -1581,8 +1580,9 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
       }
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
-      return ValueCharsetAliases.ContainsKey(name) ? ValueCharsetAliases[name] :
-             String.Empty;
+      return ValueCharsetAliases.ContainsKey(name) ?
+ValueCharsetAliases[name] :
+        String.Empty;
     }
 
     /// <summary>Resolves a character encoding's name to a canonical form,
@@ -1651,7 +1651,7 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
         return EmailAliases[name];
       }
       if (name.Length > 9 && name.Substring(0, 9).Equals("iso-8859-",
-  StringComparison.Ordinal)) {
+          StringComparison.Ordinal)) {
         // NOTE: For conformance to RFC 2049, treat unknown iso-8859-* encodings
         // as ASCII
         return "US-ASCII";
@@ -1679,10 +1679,10 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static byte[] StringToBytes(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoding encoding,
+  #if !NET20
+this
+#endif
+ICharacterEncoding encoding,
       string str) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -1716,10 +1716,10 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='str'/> is null.</exception>
     public static byte[] StringToBytes(
-      #if !NET20
-      this
-      #endif
-      ICharacterEncoder encoder,
+  #if !NET20
+this
+#endif
+ICharacterEncoder encoder,
       string str) {
       if (encoder == null) {
         throw new ArgumentNullException(nameof(encoder));
@@ -1727,7 +1727,7 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
       if (str == null) {
         throw new ArgumentNullException(nameof(str));
       }
-      return EncodeToBytes(
+      return EncodeToBytes (
           new CharacterReader(str),
           encoder);
     }
@@ -1753,11 +1753,11 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
     /// <returns>An ICharacterInput object.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> is null.</exception>
-    public static ICharacterInput StringToInput(
-      #if !NET20
-      this
-      #endif
-      string str) {
+    public static ICharacterInput StringToInput (
+  #if !NET20
+this
+#endif
+string str) {
       if (str == null) {
         throw new ArgumentNullException(nameof(str));
       }
@@ -1798,33 +1798,33 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> is null.</exception>
     public static ICharacterInput StringToInput(
-      #if !NET20
-      this
-      #endif
-      string str,
+  #if !NET20
+this
+#endif
+string str,
       int offset,
       int length) {
       if (str == null) {
         throw new ArgumentNullException(nameof(str));
       }
       if (offset < 0) {
-        throw new ArgumentException("offset (" + offset +
+        throw new ArgumentException("offset(" + offset +
           ") is less than 0");
       }
       if (offset > str.Length) {
-        throw new ArgumentException("offset (" + offset +
+        throw new ArgumentException("offset(" + offset +
           ") is more than " + str.Length);
       }
       if (length < 0) {
-        throw new ArgumentException("length (" + length +
+        throw new ArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > str.Length) {
-        throw new ArgumentException("length (" + length +
+        throw new ArgumentException("length(" + length +
           ") is more than " + str.Length);
       }
       if (str.Length - offset < length) {
-        throw new ArgumentException("str's length minus " + offset + " (" +
+        throw new ArgumentException("str's length minus " + offset + "(" +
           (str.Length - offset) + ") is less than " + length);
       }
       return new CharacterReader(str, offset, length);
@@ -2260,7 +2260,8 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
       private readonly IByteReader stream;
       private readonly ICharacterDecoder reader;
 
-      public DecoderToInputClass(ICharacterDecoder reader, IByteReader stream) {
+      public DecoderToInputClass(ICharacterDecoder reader, IByteReader
+stream) {
         this.reader = reader;
         this.stream = stream;
       }
@@ -2294,23 +2295,25 @@ name.Equals("GB18030", StringComparison.Ordinal)) {
           throw new ArgumentNullException(nameof(buffer));
         }
         if (offset < 0) {
-          throw new ArgumentException("offset (" + offset +
+          throw new ArgumentException("offset(" + offset +
             ") is less than 0");
         }
         if (offset > buffer.Length) {
-          throw new ArgumentException("offset (" + offset + ") is more than " +
+          throw new ArgumentException("offset(" + offset + ") is more than " +
             buffer.Length);
         }
         if (length < 0) {
-          throw new ArgumentException("length (" + length +
+          throw new ArgumentException("length(" + length +
             ") is less than 0");
         }
         if (length > buffer.Length) {
-          throw new ArgumentException("length (" + length + ") is more than " +
+          throw new ArgumentException("length(" + length + ") is more than " +
             buffer.Length);
         }
         if (buffer.Length - offset < length) {
-          throw new ArgumentException("buffer's length minus " + offset + " (" +
+          throw new ArgumentException("buffer's length minus " + offset +
+String.Empty +
+"\u0020(" +
             (buffer.Length - offset) + ") is less than " + length);
         }
         var count = 0;

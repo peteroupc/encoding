@@ -3,9 +3,9 @@ using System.IO;
 using PeterO;
 
 namespace PeterO.Text {
-    /// <summary>Defines a method that can be implemented by classes that
-    /// convert a stream of bytes to Unicode code points.</summary>
-public interface ICharacterDecoder {
+  /// <summary>Defines a method that can be implemented by classes that
+  /// convert a stream of bytes to Unicode code points.</summary>
+  public interface ICharacterDecoder {
     /// <summary>Reads bytes from an input transform until a Unicode code
     /// point is decoded or until the end of the stream is reached.
     /// <para>If this method returns -2, indicating an error, the caller of
@@ -24,6 +24,6 @@ public interface ICharacterDecoder {
     /// <returns>The Unicode code point decoded, from 0-0xd7ff or from
     /// 0xe000 to 0x10ffff. Returns -1 if the end of the source is reached
     /// or -2 if a decoder error occurs.</returns>
-  int ReadChar(IByteReader input);
-}
+    int ReadChar(IByteReader input);
+  }
 }

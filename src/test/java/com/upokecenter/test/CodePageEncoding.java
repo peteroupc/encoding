@@ -3,20 +3,19 @@ package com.upokecenter.test; import com.upokecenter.util.*;
 import com.upokecenter.util.*;
 import com.upokecenter.text.*;
 
-    /**
-     * A character encoding class that implements a code page read from the code
-     * page file format described in the Windows Protocols Unicode
-     * Reference (https://msdn.microsoft.com/en-us/library/cc248954.aspx),
-     * section 2.2.2.1. The code page file format supports single-byte
-     * encodings and certain multi-byte encodings in which each character
-     * is encoded in one or two bytes. <p>The code page format defines a
-     * single-byte as a replacement character and can specify certain
-     *  "best-fit" mappings from certain Unicode characters to the code page
-     * encoding if the Unicode character is unsupported in the code page
-     * encoding. When decoding, any invalid bytes or unassigned bytes in
-     * the code page encoding are converted to the given replacement code
-     * point.</p>
-     */
+  /**
+   * A character encoding class that implements a code page read from the code
+   * page file format described in the Windows Protocols Unicode Reference
+   * (https://msdn.microsoft.com/en-us/library/cc248954.aspx), section
+   * 2.2.2.1. The code page file format supports single-byte encodings and
+   * certain multi-byte encodings in which each character is encoded in one
+   * or two bytes. <p>The code page format defines a single-byte as a
+   *  replacement character and can specify certain "best-fit" mappings from
+   * certain Unicode characters to the code page encoding if the Unicode
+   * character is unsupported in the code page encoding. When decoding, any
+   * invalid bytes or unassigned bytes in the code page encoding are
+   * converted to the given replacement code point.</p>
+   */
   public class CodePageEncoding implements ICharacterEncoding {
     private CodePageCoder coder;
 
@@ -148,7 +147,8 @@ import com.upokecenter.text.*;
 
         LineBreak,
 
-        End, }
+        End,
+      }
 
       private static final class TokenReader {
         private TokenType type;
@@ -183,7 +183,7 @@ import com.upokecenter.text.*;
         public int ExpectByte() {
           int number = this.ExpectNumber();
           if (number >= 256) {
-      throw new IllegalArgumentException("expected number from 0-255, got " +
+            throw new IllegalArgumentException("expected number from 0-255, got " +
               number);
           }
           return number;
@@ -192,7 +192,7 @@ import com.upokecenter.text.*;
         public int ExpectByteOnSameLine() {
           int number = this.ExpectNumberOnSameLine();
           if (number >= 256) {
-      throw new IllegalArgumentException("expected number from 0-255, got " +
+            throw new IllegalArgumentException("expected number from 0-255, got " +
               number);
           }
           return number;
@@ -201,7 +201,7 @@ import com.upokecenter.text.*;
         public int ExpectUInt16OnSameLine() {
           int number = this.ExpectNumberOnSameLine();
           if (number >= 65536) {
-    throw new IllegalArgumentException("expected number from 0-65536, got " +
+            throw new IllegalArgumentException("expected number from 0-65536, got " +
               number);
           }
           return number;
@@ -210,7 +210,8 @@ import com.upokecenter.text.*;
         public int ExpectCodePointOnSameLine() {
           int number = this.ExpectNumberOnSameLine();
           if (number >= 0x110000) {
- throw new IllegalArgumentException("expected number from 0-0x10ffff, got " +
+            throw new IllegalArgumentException("expected number from 0-0x10ffff," +
+"\u0020 got " +
               number);
           }
           return number;
@@ -219,7 +220,8 @@ import com.upokecenter.text.*;
         public int ExpectCodePoint() {
           int number = this.ExpectNumber();
           if (number >= 0x110000) {
- throw new IllegalArgumentException("expected number from 0-0x10ffff, got " +
+            throw new IllegalArgumentException("expected number from 0-0x10ffff," +
+"\u0020 got " +
               number);
           }
           return number;
@@ -247,27 +249,27 @@ import com.upokecenter.text.*;
                     this.input.Unget();
                     return i;
                   } else {
-                  isPossible[i] = false;
-                  --possibleCount;
-                  if (possibleCount == 0) {
-                    if (words.length == 1) {
-                    throw new
-  IllegalArgumentException("Expected non-word character after '" + wordStr + "'");
-} else {
-                    throw new IllegalArgumentException("unexpected word found");
+                    isPossible[i] = false;
+                    --possibleCount;
+                    if (possibleCount == 0) {
+                      if (words.length == 1) {
+                throw new IllegalArgumentException("Expected non-word character" +
+"\u0020after '" + wordStr + "'");
+                      } else {
+                        throw new IllegalArgumentException("unexpected word found");
+                      }
                     }
-                  }
                   }
                 }
                 String str = wordStr;
                 int c = str.charAt(index);
                 ++index;
                 if ((c & 0xfc00) == 0xd800 && index + 1 < str.length() &&
-                    (str.charAt(index + 1) & 0xfc00) == 0xdc00) {
+                  (str.charAt(index + 1) & 0xfc00) == 0xdc00) {
                   // Get the Unicode code point for the surrogate pair
-                c = 0x10000 + ((c & 0x3ff) << 10) + (str.charAt(index + 1) & 0x3ff);
-                ++index;
-              } else if ((c & 0xf800) == 0xd800) {
+                  c = 0x10000 + ((c & 0x3ff) << 10) + (str.charAt(index + 1) & 0x3ff);
+                  ++index;
+                } else if ((c & 0xf800) == 0xd800) {
                   // unpaired surrogate
                   c = 0xfffd;
                 }
@@ -277,10 +279,10 @@ import com.upokecenter.text.*;
                   --possibleCount;
                   if (possibleCount == 0) {
                     if (words.length == 1) {
-               throw new IllegalArgumentException("word '" + wordStr +
-                    "' expected");
+                      throw new IllegalArgumentException("word '" + wordStr +
+                        "' expected");
                     } else {
-                    throw new IllegalArgumentException("unexpected word found");
+                      throw new IllegalArgumentException("unexpected word found");
                     }
                   }
                 }
@@ -297,9 +299,9 @@ import com.upokecenter.text.*;
           int c = this.input.ReadChar();
           this.input.Unget();
           if (!IsWordEndChar(c)) {
-              throw new
-                IllegalArgumentException("Expected non-word character after '" +
-                number + "'");
+            throw new
+            IllegalArgumentException("Expected non-word character after '" +
+              number + "'");
           }
           return number;
         }
@@ -329,20 +331,20 @@ import com.upokecenter.text.*;
               c = this.input.ReadChar();
               if (c >= '0' && c <= '9') {
                 if ((value >> 28) != 0) {
- throw new IllegalArgumentException("Overflow");
-}
+                  throw new IllegalArgumentException("Overflow");
+                }
                 value <<= 4;
                 value |= c - '0';
               } else if (c >= 'a' && c <= 'f') {
                 if ((value >> 28) != 0) {
- throw new IllegalArgumentException("Overflow");
-}
+                  throw new IllegalArgumentException("Overflow");
+                }
                 value <<= 4;
                 value |= (c - 'a') + 10;
               } else if (c >= 'A' && c <= 'F') {
                 if ((value >> 28) != 0) {
- throw new IllegalArgumentException("Overflow");
-}
+                  throw new IllegalArgumentException("Overflow");
+                }
                 value <<= 4;
                 value |= (c - 'A') + 10;
               } else {
@@ -355,13 +357,13 @@ import com.upokecenter.text.*;
               c = this.input.ReadChar();
               if (c >= '0' && c <= '9') {
                 if (value > Integer.MAX_VALUE / 10) {
- throw new IllegalArgumentException("Overflow");
-}
+                  throw new IllegalArgumentException("Overflow");
+                }
                 value *= 10;
                 int add = c - '0';
                 if (value > Integer.MAX_VALUE - add) {
- throw new IllegalArgumentException("Overflow");
-}
+                  throw new IllegalArgumentException("Overflow");
+                }
                 value += add;
               } else {
                 this.input.Unget();
@@ -433,7 +435,7 @@ import com.upokecenter.text.*;
         }
 
         public int GetMapping(int ucs) {
-    return (ucs < 0 || ucs > this.array.length) ? (-2) :
+          return (ucs < 0 || ucs > this.array.length) ? (-2) :
             this.array[ucs];
         }
 
@@ -507,124 +509,124 @@ import com.upokecenter.text.*;
         while (!done) {
           switch (state) {
             case 0: {
-                token.ExpectAnyOneWord("CODEPAGE");
-                this.codepageNumber = token.ExpectNumberOnSameLine();
-                token.SkipToLine();
-                token.ExpectAnyOneWord("CPINFO");
-                byteCount = token.ExpectNumberOnSameLine();
-                if (byteCount != 1 && byteCount != 2) {
-                  throw new IllegalArgumentException("Expected byte count 1 or 2");
-                }
-                this.defaultNative = token.ExpectByteOnSameLine();
-                this.defaultUCS = token.ExpectCodePointOnSameLine();
-                token.SkipToLine();
-                state = 1;
+              token.ExpectAnyOneWord("CODEPAGE");
+              this.codepageNumber = token.ExpectNumberOnSameLine();
+              token.SkipToLine();
+              token.ExpectAnyOneWord("CPINFO");
+              byteCount = token.ExpectNumberOnSameLine();
+              if (byteCount != 1 && byteCount != 2) {
+                throw new IllegalArgumentException("Expected byte count 1 or 2");
               }
-              break;
+              this.defaultNative = token.ExpectByteOnSameLine();
+              this.defaultUCS = token.ExpectCodePointOnSameLine();
+              token.SkipToLine();
+              state = 1;
+            }
+            break;
             case 1: {
-                int wordIndex = token.ExpectAnyOneWord(
-                  "MBTABLE",
-                  "DBCSRANGE",
-                  "WCTABLE",
-                  "GLYPHTABLE",
-                  "ENDCODEPAGE");
-                if (wordIndex == 0) {
-                  lineCount = token.ExpectNumberOnSameLine();
-                  token.SkipToLine();
-                  state = 2;
-                  haveMbTable = true;
-                } else if (wordIndex == 1) {
-                  ranges = token.ExpectNumberOnSameLine();
-                  if (ranges == 0) {
-                    throw new IllegalArgumentException("ranges is 0");
-                  }
-                  token.SkipToLine();
-                  state = 4;
-                } else if (wordIndex == 2) {
-                  lineCount = token.ExpectNumberOnSameLine();
-                  token.SkipToLine();
-                  state = 3;
-                  haveWcTable = true;
-                } else if (wordIndex == 3) {
-                  // Alternate characters for some bytes, for
-                  // display purposes.
-                  lineCount = token.ExpectNumberOnSameLine();
-                  token.SkipToLine();
-                  state = 5;
-                  haveGlyphTable = true;
-                } else if (wordIndex == 4 && haveMbTable &&
-                    haveWcTable) {
-                  done = true;
-                } else {
-                  throw new IllegalArgumentException("Unexpected word");
-                }
-              }
-              break;
-            case 2: {
-                for (int i = 0; i < lineCount; ++i) {
-                  int nativeValue = token.ExpectByte();
-                  int ucs = token.ExpectCodePointOnSameLine();
-                  this.bytesToUCS[nativeValue] = ucs;
-                  token.SkipToLine();
-                }
-                state = 1;
-              }
-              break;
-            case 3: {
-                for (int i = 0; i < lineCount; ++i) {
-                  int ucs = token.ExpectCodePoint();
-                  int nativeValue = (byteCount == 1) ?
-                token.ExpectByteOnSameLine() : token.ExpectUInt16OnSameLine();
-                  this.ucsToBytes.AddMapping(ucs, nativeValue);
-                  token.SkipToLine();
-                }
-                state = 1;
-              }
-              break;
-            case 4: {
-                rangeLow = token.ExpectByte();
-                rangeHigh = token.ExpectByteOnSameLine();
-                if (rangeLow > rangeHigh) {
-                  throw new IllegalArgumentException("invalid range");
+              int wordIndex = token.ExpectAnyOneWord(
+                "MBTABLE",
+                "DBCSRANGE",
+                "WCTABLE",
+                "GLYPHTABLE",
+                "ENDCODEPAGE");
+              if (wordIndex == 0) {
+                lineCount = token.ExpectNumberOnSameLine();
+                token.SkipToLine();
+                state = 2;
+                haveMbTable = true;
+              } else if (wordIndex == 1) {
+                ranges = token.ExpectNumberOnSameLine();
+                if (ranges == 0) {
+                  throw new IllegalArgumentException("ranges is 0");
                 }
                 token.SkipToLine();
-                for (int i = rangeLow; i <= rangeHigh; ++i) {
-                  this.bytesToUCS[i] = -3;
-                  token.ExpectAnyOneWord("DBCSTABLE");
-                  lineCount = token.ExpectNumberOnSameLine();
+                state = 4;
+              } else if (wordIndex == 2) {
+                lineCount = token.ExpectNumberOnSameLine();
+                token.SkipToLine();
+                state = 3;
+                haveWcTable = true;
+              } else if (wordIndex == 3) {
+                // Alternate characters for some bytes, for
+                // display purposes.
+                lineCount = token.ExpectNumberOnSameLine();
+                token.SkipToLine();
+                state = 5;
+                haveGlyphTable = true;
+              } else if (wordIndex == 4 && haveMbTable &&
+                haveWcTable) {
+                done = true;
+              } else {
+                throw new IllegalArgumentException("Unexpected word");
+              }
+            }
+            break;
+            case 2: {
+              for (int i = 0; i < lineCount; ++i) {
+                int nativeValue = token.ExpectByte();
+                int ucs = token.ExpectCodePointOnSameLine();
+                this.bytesToUCS[nativeValue] = ucs;
+                token.SkipToLine();
+              }
+              state = 1;
+            }
+            break;
+            case 3: {
+              for (int i = 0; i < lineCount; ++i) {
+                int ucs = token.ExpectCodePoint();
+                int nativeValue = (byteCount == 1) ?
+                  token.ExpectByteOnSameLine() : token.ExpectUInt16OnSameLine();
+                this.ucsToBytes.AddMapping(ucs, nativeValue);
+                token.SkipToLine();
+              }
+              state = 1;
+            }
+            break;
+            case 4: {
+              rangeLow = token.ExpectByte();
+              rangeHigh = token.ExpectByteOnSameLine();
+              if (rangeLow > rangeHigh) {
+                throw new IllegalArgumentException("invalid range");
+              }
+              token.SkipToLine();
+              for (int i = rangeLow; i <= rangeHigh; ++i) {
+                this.bytesToUCS[i] = -3;
+                token.ExpectAnyOneWord("DBCSTABLE");
+                lineCount = token.ExpectNumberOnSameLine();
+                token.SkipToLine();
+                int range = i << 8;
+                for (int j = 0; j < lineCount; ++j) {
+                  int nativeValue = token.ExpectByte() | range;
+                  int ucs = token.ExpectCodePointOnSameLine();
+                  this.dbcsToUCS.AddMapping(nativeValue, ucs);
                   token.SkipToLine();
-                  int range = i << 8;
-                  for (int j = 0; j < lineCount; ++j) {
-                    int nativeValue = token.ExpectByte() | range;
-                    int ucs = token.ExpectCodePointOnSameLine();
-                    this.dbcsToUCS.AddMapping(nativeValue, ucs);
-                    token.SkipToLine();
-                  }
-                }
-                --ranges;
-                if (ranges <= 0) {
-                  state = 1;
                 }
               }
-              break;
-            case 5: {
-                for (int i = 0; i < lineCount; ++i) {
-                  int nativeValue = token.ExpectByte();
-                  int ucs = token.ExpectCodePointOnSameLine();
-                  this.bytesToGlyphs[nativeValue] = ucs;
-                  token.SkipToLine();
-                }
+              --ranges;
+              if (ranges <= 0) {
                 state = 1;
               }
-              break;
+            }
+            break;
+            case 5: {
+              for (int i = 0; i < lineCount; ++i) {
+                int nativeValue = token.ExpectByte();
+                int ucs = token.ExpectCodePointOnSameLine();
+                this.bytesToGlyphs[nativeValue] = ucs;
+                token.SkipToLine();
+              }
+              state = 1;
+            }
+            break;
           }
         }
         if (haveGlyphTable) {
           for (int i = 0; i < 256; ++i) {
-           if (this.bytesToGlyphs[i] == -2) {
-             this.bytesToGlyphs[i] = this.bytesToUCS[i];
-           }
-         }
+            if (this.bytesToGlyphs[i] == -2) {
+              this.bytesToGlyphs[i] = this.bytesToUCS[i];
+            }
+          }
         }
       }
     }

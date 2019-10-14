@@ -7,9 +7,9 @@ If you like this, you should donate to Peter O.
 at: http://peteroupc.github.io/
  */
 
-    /**
-     * An array of bytes that grows as needed.
-     */
+  /**
+   * An array of bytes that grows as needed.
+   */
   public final class ArrayWriter implements IWriter {
     private int retvalPos;
     private int retvalMax;
@@ -78,7 +78,7 @@ at: http://peteroupc.github.io/
      * (but not more than {@code src} 's length).
      * @throws NullPointerException The parameter {@code src} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code src} 's length, or {@code src} ' s
+     * than 0 or greater than {@code src} 's length, or {@code src} 's
      * length minus {@code offset} is less than {@code length}.
      */
     public void write(byte[] src, int offset, int length) {
@@ -86,23 +86,23 @@ at: http://peteroupc.github.io/
         throw new NullPointerException("src");
       }
       if (offset < 0) {
-        throw new IllegalArgumentException("offset (" + offset + ") is less than " +
-              "0");
+        throw new IllegalArgumentException("offset(" + offset + ") is less than " +
+          "0");
       }
       if (offset > src.length) {
-        throw new IllegalArgumentException("offset (" + offset + ") is more than " +
+        throw new IllegalArgumentException("offset(" + offset + ") is more than " +
           src.length);
       }
       if (length < 0) {
-        throw new IllegalArgumentException("length (" + length + ") is less than " +
-              "0");
+        throw new IllegalArgumentException("length(" + length + ") is less than " +
+          "0");
       }
       if (length > src.length) {
-        throw new IllegalArgumentException("length (" + length + ") is more than " +
+        throw new IllegalArgumentException("length(" + length + ") is more than " +
           src.length);
       }
       if (src.length - offset < length) {
-        throw new IllegalArgumentException("src's length minus " + offset + " (" +
+        throw new IllegalArgumentException("src's length minus " + offset + "(" +
           (src.length - offset) + ") is less than " + length);
       }
       if (this.retval.length - this.retvalPos < length) {

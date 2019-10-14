@@ -7,9 +7,9 @@ If you like this, you should donate to Peter O.
 at: http://peteroupc.github.io/
  */
 
-    /**
-     * A generic interface for reading bytes of data from a data source.
-     */
+  /**
+   * A generic interface for reading bytes of data from a data source.
+   */
   public interface IReader extends IByteReader {
     /**
      * Reads a portion of a byte array from the data source.

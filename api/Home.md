@@ -8,7 +8,9 @@ Defines a method that can be implemented by classes that convert a stream of
 Defines a method that can be implemented by classes that convert Unicode
  code points to bytes.
 
-* [com.upokecenter.text.ICharacterEncoding](com.upokecenter.text.ICharacterEncoding.md) -  
+* [com.upokecenter.text.ICharacterEncoding](com.upokecenter.text.ICharacterEncoding.md) -
+Defines methods that can be implemented by classes that convert to and from
+ bytes and character code points.
 
 * [com.upokecenter.text.ICharacterInput](com.upokecenter.text.ICharacterInput.md) -
 An interface for reading Unicode code points from a data source.

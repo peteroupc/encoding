@@ -215,47 +215,48 @@ import com.upokecenter.text.*;
                 ++this.base64count;
                 if (this.base64count == 4) {
                   // Generate UTF-16 bytes
-                  this.appender.AppendByte(
+                  this.appender.AppendByte (
                     (this.base64value >> 16) & 0xff,
                     this.state);
-                  this.appender.AppendByte(
+                  this.appender.AppendByte (
                     (this.base64value >> 8) & 0xff,
                     this.state);
-                  this.appender.AppendByte(this.base64value & 0xff, this.state);
+                  this.appender.AppendByte(this.base64value & 0xff,
+  this.state);
                   this.base64count = 0;
                 }
               } else {
                 this.machineState = 0;
                 switch (this.base64count) {
                   case 1: {
-                      // incomplete base64 byte
-                      this.appender.AppendIncompleteByte();
-                      break;
-                    }
+                    // incomplete base64 byte
+                    this.appender.AppendIncompleteByte();
+                    break;
+                  }
                   case 2: {
-                      this.base64value <<= 12;
-                      this.appender.AppendByte((this.base64value >> 16) & 0xff,
-                        this.state);
-                      if ((this.base64value & 0xffff) != 0) {
-                        // Redundant pad bits
-                        this.appender.AppendIncompleteByte();
-                      }
-                      break;
+                    this.base64value <<= 12;
+                    this.appender.AppendByte((this.base64value >> 16) & 0xff,
+                      this.state);
+                    if ((this.base64value & 0xffff) != 0) {
+                      // Redundant pad bits
+                      this.appender.AppendIncompleteByte();
                     }
+                    break;
+                  }
                   case 3: {
-                      this.base64value <<= 6;
-                      this.appender.AppendByte(
-                        (this.base64value >> 16) & 0xff,
-                        this.state);
-                      this.appender.AppendByte(
-                        (this.base64value >> 8) & 0xff,
-                        this.state);
-                      if ((this.base64value & 0xff) != 0) {
-                        // Redundant pad bits
-                        this.appender.AppendIncompleteByte();
-                      }
-                      break;
+                    this.base64value <<= 6;
+                    this.appender.AppendByte (
+                      (this.base64value >> 16) & 0xff,
+                      this.state);
+                    this.appender.AppendByte (
+                      (this.base64value >> 8) & 0xff,
+                      this.state);
+                    if ((this.base64value & 0xff) != 0) {
+                      // Redundant pad bits
+                      this.appender.AppendIncompleteByte();
                     }
+                    break;
+                  }
                 }
                 this.appender.FinalizeAndReset(this.state);
                 if (b < 0) {
@@ -308,10 +309,12 @@ import com.upokecenter.text.*;
           switch (quantumCount) {
             case 2:
               output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
-              output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
-                15)]);
-              output.write((byte)ToAlphabet[((b2 & 15) << 2) + ((value >>
-                6) & 3)]);
+              output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >>
+4) &
+                    15)]);
+              output.write((byte)ToAlphabet[((b2 & 15) << 2) + ((value
+>>
+                      6) & 3)]);
               output.write((byte)ToAlphabet[value & 63]);
               ret += 4;
               quantumCount = 0;
@@ -340,13 +343,13 @@ import com.upokecenter.text.*;
         if (quantumCount == 2) {
           output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
           output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
-            15)]);
+                15)]);
           output.write((byte)ToAlphabet[(b2 & 15) << 2]);
           ret += 3;
         } else if (quantumCount == 1) {
           output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
           output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
-            15)]);
+                15)]);
           ret += 2;
         }
         output.write((byte)0x2d);
@@ -362,9 +365,9 @@ import com.upokecenter.text.*;
         if (c <= 0xffff) {
           int byte1 = (c >> 8) & 0xff;
           int byte2 = c & 0xff;
-          ret += this.AppendBase64(
-  new byte[] { (byte)byte1, (byte)byte2 },
-  output);
+          ret += this.AppendBase64 (
+              new byte[] { (byte)byte1, (byte)byte2 },
+              output);
         } else {
           int cc1 = (((c - 0x10000) >> 10) & 0x3ff) + 0xd800;
           int cc2 = ((c - 0x10000) & 0x3ff) + 0xdc00;
@@ -398,7 +401,7 @@ import com.upokecenter.text.*;
         }
         if (
           c == 0x09 || c == 0x0a || c == 0x0d || (c >= 0x20 && c < 0x7e && c !=
-          0x5c)) {
+            0x5c)) {
           int ret = 1;
           if (this.inBase64) {
             this.inBase64 = false;

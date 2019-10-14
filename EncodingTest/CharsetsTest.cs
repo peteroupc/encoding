@@ -488,7 +488,7 @@ namespace EncodingTest {
     public void TestCodePages() {
       for (var j = 0; j < this.valueSingleByteNames.Length; ++j) {
         ICharacterEncoding enc =
-Encodings.GetEncoding(this.valueSingleByteNames[j]);
+          Encodings.GetEncoding(this.valueSingleByteNames[j]);
 
         ICharacterDecoder dec = enc.GetDecoder();
         var bytes = new byte[256];
@@ -509,23 +509,23 @@ Encodings.GetEncoding(this.valueSingleByteNames[j]);
         }
         var builder = new StringBuilder();
         builder.Append("CODEPAGE 1\nCPINFO 1 0x3f 0x3f\nMBTABLE " +
-            TestCommon.IntToString(count) + "\n");
+          TestCommon.IntToString(count) + "\n");
         for (var i = 0; i < 256; ++i) {
           if (ints[i] >= 0) {
             builder.Append(TestCommon.IntToString(i) + " " +
-            TestCommon.IntToString(ints[i]) + "\n");
+              TestCommon.IntToString(ints[i]) + "\n");
           }
         }
         builder.Append("WCTABLE " + count + "\n");
         for (var i = 0; i < 256; ++i) {
           if (ints[i] >= 0) {
             builder.Append(TestCommon.IntToString(ints[i]) + " " +
-            TestCommon.IntToString(i) + "\n");
+              TestCommon.IntToString(i) + "\n");
           }
         }
         builder.Append("ENDCODEPAGE\n");
         var cpe = new
-CodePageEncoding(Encodings.StringToInput(builder.ToString()));
+        CodePageEncoding(Encodings.StringToInput(builder.ToString()));
         TestSingleByteRoundTrip(cpe);
       }
     }
@@ -564,8 +564,8 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
       "macintosh",
     };
 
-    public static void TestUtfRoundTrip(
-       ICharacterEncoding enc) {
+    public static void TestUtfRoundTrip (
+      ICharacterEncoding enc) {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
       }
@@ -584,7 +584,10 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
         this.reader = DataIO.ToReader(bytes);
       }
 
-      public int Position { get; set; }
+      public int Position {
+        get;
+        set;
+      }
 
       public int ReadByte() {
         int ret = this.reader.ReadByte();
@@ -657,9 +660,8 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
           continue;
         }
         if (
-            i == 0xa5 || i == 0x203e || i == 0x0e || i == 0x0f || i ==
-0x1b ||
-          i == 0x2212 || i == 0xe5e5 || (i >= 0xff61 && i <= 0xff9f)) {
+          i == 0xa5 || i == 0x203e || i == 0x0e || i == 0x0f || i ==
+          0x1b || i == 0x2212 || i == 0xe5e5 || (i >= 0xff61 && i <= 0xff9f)) {
           // ignore certain characters that intentionally
           // don't round trip in certain encodings
           continue;
@@ -722,7 +724,7 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
       IByteReader reader = DataIO.ToReader(new byte[] { 0, 0, 0, 0 });
       Assert.AreEqual(-2, decoder.ReadChar(reader));
       Assert.AreEqual(-1, decoder.ReadChar(reader));
-      TestUtfRoundTrip(
+      TestUtfRoundTrip (
         encoder,
         Encodings.GetEncoding("utf-8", true).GetDecoder());
     }
@@ -850,11 +852,11 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
           stringTemp);
       }
       bytes = new byte[] { 0xfe, 0xff };
-      Assert.AreEqual(
+      Assert.AreEqual (
         String.Empty,
         Encodings.DecodeToString(enc, bytes));
       bytes = new byte[] { 0xff, 0xfe };
-      Assert.AreEqual(
+      Assert.AreEqual (
         String.Empty,
         Encodings.DecodeToString(enc, bytes));
       bytes = new byte[] { 0, 0x41 };
@@ -890,7 +892,7 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
     public static void TestUtf7One(string input, string expect) {
       {
         object objectTemp = expect;
-        object objectTemp2 = Encodings.DecodeToString(
+        object objectTemp2 = Encodings.DecodeToString (
             Encodings.GetEncoding("utf-7", true),
             Encodings.EncodeToBytes(input, Encodings.UTF8));
         Assert.AreEqual(objectTemp, objectTemp2);
@@ -904,9 +906,9 @@ CodePageEncoding(Encodings.StringToInput(builder.ToString()));
       TestUtf7One(",", ",");
       TestUtf7One("\u0001", "\ufffd");
       TestUtf7One("\u007f", "\ufffd");
-      TestUtf7One(
-  "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?",
-  "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?");
+      TestUtf7One (
+        "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?",
+        "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?");
       TestUtf7One("x+--", "x+-");
       TestUtf7One("x+-y", "x+y");
       // Illegal byte after plus

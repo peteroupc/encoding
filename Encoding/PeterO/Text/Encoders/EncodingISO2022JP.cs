@@ -47,36 +47,36 @@ namespace PeterO.Text.Encoders {
               }
               break;
             case 2: {
-                // Escape
-                var tmpState = -1;
-                if (this.lead == 0x24 && (b == 0x40 || b == 0x42)) {
-                  tmpState = 4; // JIS0208
-                  this.lead = 0;
-                } else if (this.lead == 0x28 && b == 0x42) {
-                  tmpState = 0; // Ascii
-                  this.lead = 0;
-                } else if (this.lead == 0x28 && b == 0x4a) {
-                  tmpState = 3; // Roman
-                  this.lead = 0;
-                } else if (this.lead == 0x28 && b == 0x49) {
-                  tmpState = 6;
-                  this.lead = 0;
-                } else {
-                  // NOTE: Escape sequence (0x24 0x28 0x44)
-                  // enabling JIS0212 is no longer supported
-                  this.state.PrependTwo(this.lead, b);
-                  this.lead = 0;
-                  this.machineState = this.outputState;
-                  return -2;
-                }
-                this.machineState = this.outputState = tmpState;
-                if (this.output != 0) {
-                  return -2;
-                } else {
-                  this.output = 1;
-                }
-                break;
+              // Escape
+              var tmpState = -1;
+              if (this.lead == 0x24 && (b == 0x40 || b == 0x42)) {
+                tmpState = 4; // JIS0208
+                this.lead = 0;
+              } else if (this.lead == 0x28 && b == 0x42) {
+                tmpState = 0; // Ascii
+                this.lead = 0;
+              } else if (this.lead == 0x28 && b == 0x4a) {
+                tmpState = 3; // Roman
+                this.lead = 0;
+              } else if (this.lead == 0x28 && b == 0x49) {
+                tmpState = 6;
+                this.lead = 0;
+              } else {
+                // NOTE: Escape sequence (0x24 0x28 0x44)
+                // enabling JIS0212 is no longer supported
+                this.state.PrependTwo(this.lead, b);
+                this.lead = 0;
+                this.machineState = this.outputState;
+                return -2;
               }
+              this.machineState = this.outputState = tmpState;
+              if (this.output != 0) {
+                return -2;
+              } else {
+                this.output = 1;
+              }
+              break;
+            }
             case 4:
               // Lead
               if (b == 0x1b) {
@@ -143,9 +143,9 @@ namespace PeterO.Text.Encoders {
               }
               break;
             default: {
-                // NOTE: Escape final state is no longer used
-                throw new InvalidOperationException("Unexpected state");
-              }
+              // NOTE: Escape final state is no longer used
+              throw new InvalidOperationException("Unexpected state");
+            }
           }
         }
       }
@@ -184,25 +184,25 @@ namespace PeterO.Text.Encoders {
           }
           if (c <= 0x7f) {
             if ((this.encoderState == 0 || this.encoderState == 3) && (
-               c == 0x0e || c == 0x0f || c == 0x1b)) {
-             // TODO: Find a way to convey errors with
-             // a different code point, in this case, U+FFFD
-             return -2;
-           }
-           if (this.encoderState == 0) {
-             output.WriteByte((byte)c);
-             return 1 + count;
-           } else if (this.encoderState == 3 && c != 0x5c && c != 0x7e) {
-             output.WriteByte((byte)c);
-             return 1 + count;
-           } else {
+                c == 0x0e || c == 0x0f || c == 0x1b)) {
+              // TODO: Find a way to convey errors with
+              // a different code point, in this case, U+FFFD
+              return -2;
+            }
+            if (this.encoderState == 0) {
+              output.WriteByte((byte)c);
+              return 1 + count;
+            } else if (this.encoderState == 3 && c != 0x5c && c != 0x7e) {
+              output.WriteByte((byte)c);
+              return 1 + count;
+            } else {
               this.encoderState = 0;
               output.WriteByte((byte)0x1b);
               output.WriteByte((byte)0x28);
               output.WriteByte((byte)0x42);
               count += 3;
               continue;
-           }
+            }
           }
           if (this.encoderState == 3 && c == 0xa5) {
             output.WriteByte((byte)0x5c);

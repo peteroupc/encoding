@@ -249,9 +249,9 @@ import com.upokecenter.text.*;
         int offset = ValueGb18030table[v];
         return cpoffset + pointer - offset;
       } catch (Exception ex) {
-        throw new IllegalStateException(
+        throw new IllegalStateException (
           ex.getMessage() + " " + ex.getStackTrace() + "\n" + "\npointer=" + pointer +
-            "\noffset=" + v + " of " + ValueGb18030table.length);
+          "\noffset=" + v + " of " + ValueGb18030table.length);
       }
     }
 
@@ -311,7 +311,7 @@ import com.upokecenter.text.*;
 
             if (b >= 0x30 && b <= 0x39) {
               int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
-              126) + this.gbk3 - 0x81) * 10) + b - 0x30;
+                      126) + this.gbk3 - 0x81) * 10) + b - 0x30;
               c = GB18030CodePoint(ap);
               this.gbk1 = this.gbk2 = this.gbk3 = 0;
               return (c < 0) ? (-2) : c;

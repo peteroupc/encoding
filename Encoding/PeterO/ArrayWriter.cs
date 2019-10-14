@@ -8,7 +8,7 @@ at: http://peteroupc.github.io/
 using System;
 
 namespace PeterO {
-    /// <summary>An array of bytes that grows as needed.</summary>
+  /// <summary>An array of bytes that grows as needed.</summary>
   public sealed class ArrayWriter : IWriter {
     private int retvalPos;
     private int retvalMax;
@@ -74,30 +74,30 @@ namespace PeterO {
     /// <exception cref='ArgumentException'>Either <paramref
     /// name='offset'/> or <paramref name='length'/> is less than 0 or
     /// greater than <paramref name='src'/> 's length, or <paramref
-    /// name='src'/> ' s length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>.</exception>
+    /// name='src'/> 's length minus <paramref name='offset'/> is less than
+    /// <paramref name='length'/>.</exception>
     public void Write(byte[] src, int offset, int length) {
       if (src == null) {
         throw new ArgumentNullException(nameof(src));
       }
       if (offset < 0) {
-        throw new ArgumentException("offset (" + offset + ") is less than " +
-              "0");
+        throw new ArgumentException("offset(" + offset + ") is less than " +
+          "0");
       }
       if (offset > src.Length) {
-        throw new ArgumentException("offset (" + offset + ") is more than " +
+        throw new ArgumentException("offset(" + offset + ") is more than " +
           src.Length);
       }
       if (length < 0) {
-        throw new ArgumentException("length (" + length + ") is less than " +
-              "0");
+        throw new ArgumentException("length(" + length + ") is less than " +
+          "0");
       }
       if (length > src.Length) {
-        throw new ArgumentException("length (" + length + ") is more than " +
+        throw new ArgumentException("length(" + length + ") is more than " +
           src.Length);
       }
       if (src.Length - offset < length) {
-        throw new ArgumentException("src's length minus " + offset + " (" +
+        throw new ArgumentException("src's length minus " + offset + "(" +
           (src.Length - offset) + ") is less than " + length);
       }
       if (this.retval.Length - this.retvalPos < length) {

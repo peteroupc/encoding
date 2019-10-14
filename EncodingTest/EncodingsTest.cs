@@ -103,68 +103,68 @@ namespace EncodingTest {
 
     [Test]
     public void TestGetEncodingGb2312() {
-if (Encodings.GetEncoding("gb2312") == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("gb2312", true) == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("gb2312", false) == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("GB2312") == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("GB2312", true) == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("GB2312", false) == null) {
-  Assert.Fail();
-}
+      if (Encodings.GetEncoding("gb2312") == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("gb2312", true) == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("gb2312", false) == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("GB2312") == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("GB2312", true) == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("GB2312", false) == null) {
+        Assert.Fail();
+      }
     }
 
     [Test]
     public void TestGetEncodingGb18030() {
-if (Encodings.GetEncoding("gb18030") == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("gb18030", true) == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("gb18030", false) == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("GB18030") == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("GB18030", true) == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("GB18030", false) == null) {
-  Assert.Fail();
-}
+      if (Encodings.GetEncoding("gb18030") == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("gb18030", true) == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("gb18030", false) == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("GB18030") == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("GB18030", true) == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("GB18030", false) == null) {
+        Assert.Fail();
+      }
     }
 
     [Test]
     public void TestGetEncodingGbk() {
-if (Encodings.GetEncoding("gbk") == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("gbk", true) == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("gbk", false) == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("GBK") == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("GBK", true) == null) {
-  Assert.Fail();
-}
-if (Encodings.GetEncoding("GBK", false) == null) {
-  Assert.Fail();
-}
+      if (Encodings.GetEncoding("gbk") == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("gbk", true) == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("gbk", false) == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("GBK") == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("GBK", true) == null) {
+        Assert.Fail();
+      }
+      if (Encodings.GetEncoding("GBK", false) == null) {
+        Assert.Fail();
+      }
     }
 
     [Test]
@@ -2918,9 +2918,9 @@ if (Encodings.GetEncoding("GBK", false) == null) {
     [Test]
     public void TestResolveAliasForEmail() {
       Assert.AreEqual(String.Empty, Encodings.ResolveAliasForEmail(null));
-      Assert.AreEqual(
-  String.Empty,
-  Encodings.ResolveAliasForEmail(String.Empty));
+      Assert.AreEqual (
+        String.Empty,
+        Encodings.ResolveAliasForEmail(String.Empty));
       {
         string stringTemp = Encodings.ResolveAliasForEmail("iso-8859-1");
         Assert.AreEqual(
@@ -2964,7 +2964,7 @@ if (Encodings.GetEncoding("GBK", false) == null) {
           stringTemp);
       }
       {
-        string strTemp2 = Encodings.ResolveAliasForEmail(
+        string strTemp2 = Encodings.ResolveAliasForEmail (
             "replacement");
         Assert.AreEqual(String.Empty, strTemp2);
       }

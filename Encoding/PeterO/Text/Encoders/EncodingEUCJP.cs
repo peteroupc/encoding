@@ -40,7 +40,7 @@ namespace PeterO.Text.Encoders {
               0xfe) {
               c = ((this.lead - 0xa1) * 94) + (b - 0xa1);
               c = this.jis0212 ? Jis0212.IndexToCodePoint(c) :
-                    Jis0208.IndexToCodePoint(c);
+                Jis0208.IndexToCodePoint(c);
             }
             this.lead = 0;
             this.jis0212 = false;
@@ -58,7 +58,7 @@ namespace PeterO.Text.Encoders {
             this.lead = b;
             continue;
           } else {
-           return -2;
+            return -2;
           }
         }
       }

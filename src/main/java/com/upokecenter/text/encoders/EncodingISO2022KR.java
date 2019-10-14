@@ -185,9 +185,9 @@ import com.upokecenter.text.*;
                 return -2;
               }
             default: {
-                // NOTE: Escape final state is no longer used
-                throw new IllegalStateException("Unexpected state");
-              }
+              // NOTE: Escape final state is no longer used
+              throw new IllegalStateException("Unexpected state");
+            }
           }
         }
       }

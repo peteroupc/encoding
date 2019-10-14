@@ -8,7 +8,7 @@ at: http://peteroupc.github.io/
 using System;
 
 namespace PeterO {
-    /// <summary>A generic interface for writing bytes of data.</summary>
+  /// <summary>A generic interface for writing bytes of data.</summary>
   public interface IWriter : IByteWriter {
     /// <summary>Writes a portion of a byte array to the data
     /// source.</summary>

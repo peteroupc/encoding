@@ -249,9 +249,9 @@ namespace PeterO.Text.Encoders {
         int offset = ValueGb18030table[v];
         return cpoffset + pointer - offset;
       } catch (Exception ex) {
-        throw new InvalidOperationException(
+        throw new InvalidOperationException (
           ex.Message + " " + ex.StackTrace + "\n" + "\npointer=" + pointer +
-            "\noffset=" + v + " of " + ValueGb18030table.Length);
+          "\noffset=" + v + " of " + ValueGb18030table.Length);
       }
     }
 
@@ -308,31 +308,31 @@ namespace PeterO.Text.Encoders {
           }
           if (this.gbk3 != 0) {
             c = -1;
-#if DEBUG
+            #if DEBUG
             if (this.gbk1 < 0x81) {
               throw new ArgumentException("this.gbk1(" + this.gbk1 +
-              ") is less than " + 0x81);
+                ") is less than " + 0x81);
             }
             if (this.gbk2 < 0x30) {
               throw new ArgumentException("this.gbk2(" + this.gbk2 +
-              ") is less than " + 0x30);
+                ") is less than " + 0x30);
             }
             if (this.gbk3 < 0x81) {
               throw new ArgumentException("this.gbk3(" + this.gbk3 +
-              ") is less than " + 0x81);
+                ") is less than " + 0x81);
             }
-#endif
+            #endif
 
             if (b >= 0x30 && b <= 0x39) {
-#if DEBUG
+              #if DEBUG
               if (b < 0x30) {
                 throw new ArgumentException("b(" + b + ") is less than " +
-                0x30);
+                  0x30);
               }
-#endif
+              #endif
 
               int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
-              126) + this.gbk3 - 0x81) * 10) + b - 0x30;
+                      126) + this.gbk3 - 0x81) * 10) + b - 0x30;
               c = GB18030CodePoint(ap);
               this.gbk1 = this.gbk2 = this.gbk3 = 0;
               return (c < 0) ? (-2) : c;

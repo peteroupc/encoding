@@ -67,7 +67,7 @@ import java.io.*;
       }
       this.strLength = str.length();
       this.offset = (skipByteOrderMark && this.strLength > 0 && str.charAt(0) ==
-        0xfeff) ? 1 : 0;
+          0xfeff) ? 1 : 0;
       this.str = str;
       this.errorThrow = errorThrow;
       this.mode = -1;
@@ -115,28 +115,28 @@ import java.io.*;
         throw new NullPointerException("str");
       }
       if (offset < 0) {
-        throw new IllegalArgumentException("offset (" + offset +
+        throw new IllegalArgumentException("offset(" + offset +
           ") is less than 0");
       }
       if (offset > str.length()) {
-        throw new IllegalArgumentException("offset (" + offset +
+        throw new IllegalArgumentException("offset(" + offset +
           ") is more than " + str.length());
       }
       if (length < 0) {
-        throw new IllegalArgumentException("length (" + length +
+        throw new IllegalArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > str.length()) {
-        throw new IllegalArgumentException("length (" + length +
+        throw new IllegalArgumentException("length(" + length +
           ") is more than " + str.length());
       }
       if (str.length() - offset < length) {
-        throw new IllegalArgumentException("str's length minus " + offset + " (" +
+        throw new IllegalArgumentException("str's length minus " + offset + "(" +
           (str.length() - offset) + ") is less than " + length);
       }
       this.strLength = length;
       this.offset = (skipByteOrderMark && length > 0 && str.charAt(offset) ==
-        0xfeff) ? offset + 1 : 0;
+          0xfeff) ? offset + 1 : 0;
       this.str = str;
       this.errorThrow = errorThrow;
       this.mode = -1;
@@ -269,23 +269,23 @@ import java.io.*;
         throw new NullPointerException("chars");
       }
       if (index < 0) {
-        throw new IllegalArgumentException("index (" + index +
+        throw new IllegalArgumentException("index(" + index +
           ") is less than 0");
       }
       if (index > chars.length) {
-        throw new IllegalArgumentException("index (" + index +
+        throw new IllegalArgumentException("index(" + index +
           ") is more than " + chars.length);
       }
       if (length < 0) {
-        throw new IllegalArgumentException("length (" + length +
+        throw new IllegalArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > chars.length) {
-        throw new IllegalArgumentException("length (" + length +
+        throw new IllegalArgumentException("length(" + length +
           ") is more than " + chars.length);
       }
       if (chars.length - index < length) {
-        throw new IllegalArgumentException("chars's length minus " + index + " (" +
+        throw new IllegalArgumentException("chars's length minus " + index + "(" +
           (chars.length - index) + ") is less than " + length);
       }
       int count = 0;
@@ -314,17 +314,17 @@ import java.io.*;
       } else {
         int c = (this.offset < this.strLength) ? this.str.charAt(this.offset) : -1;
         if ((c & 0xfc00) == 0xd800 && this.offset + 1 < this.strLength &&
-                this.str.charAt(this.offset + 1) >= 0xdc00 && this.str.charAt(this.offset + 1)
-                <= 0xdfff) {
+          this.str.charAt(this.offset + 1) >= 0xdc00 && this.str.charAt(this.offset + 1)
+          <= 0xdfff) {
           // Get the Unicode code point for the surrogate pair
           c = 0x10000 + ((c & 0x3ff) << 10) + (this.str.charAt(this.offset + 1) &
-0x3ff);
+              0x3ff);
           ++this.offset;
         } else if ((c & 0xf800) == 0xd800) {
           // unpaired surrogate
           if (this.errorThrow) {
             throw new IllegalStateException("Unpaired surrogate code" +
-"\u0020point");
+              "\u0020point");
           } else {
             c = 0xfffd;
           }
@@ -378,7 +378,7 @@ import java.io.*;
         c3 = this.stream.read();
         c4 = this.stream.read();
         if (c2 == 0 &&
-           ((c3 == 0xfe && c4 == 0xff) ||
+          ((c3 == 0xfe && c4 == 0xff) ||
             (c3 == 0 && c4 >= 0x01 && c4 <= 0x7f))) {
           this.reader = new Utf32Reader(this.stream, true, this.errorThrow);
           return c3 == 0 ? c4 : this.reader.ReadChar();
@@ -423,7 +423,8 @@ import java.io.*;
           c2 = this.stream.read();
           if (c2 >= 0x01 && c2 <= 0x7f) {
             // 0 NZA, so UTF-16BE
-            Utf16Reader newReader = new Utf16Reader(this.stream, true, this.errorThrow);
+            Utf16Reader newReader = new Utf16Reader(this.stream, true,
+  this.errorThrow);
             this.reader = newReader;
             return c2;
           } else if (c2 == 0) {
@@ -432,11 +433,13 @@ import java.io.*;
             c4 = this.stream.read();
             if (c3 == 0 && c4 >= 0x01 && c4 <= 0x7f) {
               // 0 0 0 NZA
-              this.reader = new Utf32Reader(this.stream, true, this.errorThrow);
+              this.reader = new Utf32Reader(this.stream, true,
+  this.errorThrow);
               return c4;
             } else if (c3 == 0xfe && c4 == 0xff) {
               // 0 0 FE FF
-              this.reader = new Utf32Reader(this.stream, true, this.errorThrow);
+              this.reader = new Utf32Reader(this.stream, true,
+  this.errorThrow);
               return this.reader.ReadChar();
             } else {
               // 0 0 ...
@@ -505,7 +508,8 @@ import java.io.*;
           c2 = this.stream.read();
           if (c2 >= 0x01 && c2 <= 0x7f) {
             // 0 NZA, so UTF-16BE
-            Utf16Reader newReader = new Utf16Reader(this.stream, true, this.errorThrow);
+            Utf16Reader newReader = new Utf16Reader(this.stream, true,
+  this.errorThrow);
             this.reader = newReader;
             return c2;
           } else {

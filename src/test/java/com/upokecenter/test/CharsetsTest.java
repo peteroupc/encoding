@@ -513,7 +513,7 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
     public void TestCodePages() {
       for (int j = 0; j < this.valueSingleByteNames.length; ++j) {
         ICharacterEncoding enc =
-Encodings.GetEncoding(this.valueSingleByteNames[j]);
+          Encodings.GetEncoding(this.valueSingleByteNames[j]);
 
         ICharacterDecoder dec = enc.GetDecoder();
         byte[] bytes = new byte[256];
@@ -534,18 +534,18 @@ Encodings.GetEncoding(this.valueSingleByteNames[j]);
         }
         StringBuilder builder = new StringBuilder();
         builder.append("CODEPAGE 1\nCPINFO 1 0x3f 0x3f\nMBTABLE " +
-            TestCommon.IntToString(count) + "\n");
+          TestCommon.IntToString(count) + "\n");
         for (int i = 0; i < 256; ++i) {
           if (ints[i] >= 0) {
             builder.append(TestCommon.IntToString(i) + " " +
-            TestCommon.IntToString(ints[i]) + "\n");
+              TestCommon.IntToString(ints[i]) + "\n");
           }
         }
         builder.append("WCTABLE " + count + "\n");
         for (int i = 0; i < 256; ++i) {
           if (ints[i] >= 0) {
             builder.append(TestCommon.IntToString(ints[i]) + " " +
-            TestCommon.IntToString(i) + "\n");
+              TestCommon.IntToString(i) + "\n");
           }
         }
         builder.append("ENDCODEPAGE\n");
@@ -588,8 +588,8 @@ Encodings.GetEncoding(this.valueSingleByteNames[j]);
       "macintosh",
     };
 
-    public static void TestUtfRoundTrip(
-       ICharacterEncoding enc) {
+    public static void TestUtfRoundTrip (
+      ICharacterEncoding enc) {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
@@ -685,9 +685,8 @@ private int propVarposition;
           continue;
         }
         if (
-            i == 0xa5 || i == 0x203e || i == 0x0e || i == 0x0f || i ==
-0x1b ||
-          i == 0x2212 || i == 0xe5e5 || (i >= 0xff61 && i <= 0xff9f)) {
+          i == 0xa5 || i == 0x203e || i == 0x0e || i == 0x0f || i ==
+          0x1b || i == 0x2212 || i == 0xe5e5 || (i >= 0xff61 && i <= 0xff9f)) {
           // ignore certain characters that intentionally
           // don't round trip in certain encodings
           continue;
@@ -750,7 +749,7 @@ private int propVarposition;
       IByteReader reader = DataIO.ToReader(new byte[] { 0, 0, 0, 0 });
       Assert.assertEquals(-2, decoder.ReadChar(reader));
       Assert.assertEquals(-1, decoder.ReadChar(reader));
-      TestUtfRoundTrip(
+      TestUtfRoundTrip (
         encoder,
         Encodings.GetEncoding("utf-8", true).GetDecoder());
     }
@@ -881,11 +880,11 @@ private int propVarposition;
           stringTemp);
       }
       bytes = new byte[] { (byte)0xfe, (byte)0xff };
-      Assert.assertEquals(
+      Assert.assertEquals (
         "",
         Encodings.DecodeToString(enc, bytes));
       bytes = new byte[] { (byte)0xff, (byte)0xfe };
-      Assert.assertEquals(
+      Assert.assertEquals (
         "",
         Encodings.DecodeToString(enc, bytes));
       bytes = new byte[] { 0, 0x41 };
@@ -921,7 +920,7 @@ private int propVarposition;
     public static void TestUtf7One(String input, String expect) {
       {
         Object objectTemp = expect;
-        Object objectTemp2 = Encodings.DecodeToString(
+        Object objectTemp2 = Encodings.DecodeToString (
             Encodings.GetEncoding("utf-7", true),
             Encodings.EncodeToBytes(input, Encodings.UTF8));
         Assert.assertEquals(objectTemp, objectTemp2);
@@ -935,9 +934,9 @@ private int propVarposition;
       TestUtf7One(",", ",");
       TestUtf7One("\u0001", "\ufffd");
       TestUtf7One("\u007f", "\ufffd");
-      TestUtf7One(
-  "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?",
-  "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?");
+      TestUtf7One (
+        "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?",
+        "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?");
       TestUtf7One("x+--", "x+-");
       TestUtf7One("x+-y", "x+y");
       // Illegal byte after plus

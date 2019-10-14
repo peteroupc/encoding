@@ -53,7 +53,7 @@ namespace PeterO.Text.Encoders {
         throw new ArgumentNullException(nameof(codepoints));
       }
       if (codepoints.Length != 128) {
-        throw new ArgumentException("codepoints.Length (" + codepoints.Length +
+        throw new ArgumentException("codepoints.Length(" + codepoints.Length +
           ") is not equal to 128");
       }
       this.encoder = new Encoder(codepoints);

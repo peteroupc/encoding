@@ -9,10 +9,10 @@ at: http://peteroupc.github.io/
 
 import java.io.*;
 
-    /**
-     * Convenience class that contains static methods for wrapping byte arrays and
-     * streams into byte readers and byte writers.
-     */
+  /**
+   * Convenience class that contains static methods for wrapping byte arrays and
+   * streams into byte readers and byte writers.
+   */
   public final class DataIO {
 private DataIO() {
 }
@@ -29,7 +29,7 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(
-      byte[] bytes) {
+byte[] bytes) {
       if (bytes == null) {
         throw new NullPointerException("bytes");
       }
@@ -56,30 +56,30 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(
-      byte[] bytes,
+byte[] bytes,
       int offset,
       int length) {
       if (bytes == null) {
         throw new NullPointerException("bytes");
       }
       if (offset < 0) {
-        throw new IllegalArgumentException("offset (" + offset +
+        throw new IllegalArgumentException("offset(" + offset +
           ") is less than 0");
       }
       if (offset > bytes.length) {
-        throw new IllegalArgumentException("offset (" + offset + ") is more than " +
+        throw new IllegalArgumentException("offset(" + offset + ") is more than " +
           bytes.length);
       }
       if (length < 0) {
-        throw new IllegalArgumentException("length (" + length +
+        throw new IllegalArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > bytes.length) {
-        throw new IllegalArgumentException("length (" + length + ") is more than " +
+        throw new IllegalArgumentException("length(" + length + ") is more than " +
           bytes.length);
       }
       if (bytes.length - offset < length) {
-        throw new IllegalArgumentException("bytes's length minus " + offset + " (" +
+        throw new IllegalArgumentException("bytes's length minus " + offset + "(" +
           (bytes.length - offset) + ") is less than " + length);
       }
       return new ByteArrayTransform(bytes, offset, length);
@@ -98,7 +98,7 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code input} is null.
      */
     public static IReader ToReader(
-      InputStream input) {
+InputStream input) {
       if (input == null) {
         throw new NullPointerException("input");
       }
@@ -127,7 +127,7 @@ private DataIO() {
  */
 @Deprecated
     public static IByteReader ToByteReader(
-      byte[] bytes,
+byte[] bytes,
       int offset,
       int length) {
       return (IByteReader)ToReader(bytes, offset, length);
@@ -147,7 +147,7 @@ private DataIO() {
  */
 @Deprecated
     public static IByteReader ToByteReader(
-      InputStream input) {
+InputStream input) {
       return (IByteReader)ToReader(input);
     }
 
@@ -165,7 +165,7 @@ private DataIO() {
  */
 @Deprecated
     public static IByteReader ToByteReader(
-      byte[] bytes) {
+byte[] bytes) {
       return (IByteReader)ToReader(bytes);
     }
 
@@ -182,7 +182,7 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(
-      OutputStream output) {
+OutputStream output) {
       if (output == null) {
         throw new NullPointerException("output");
       }
@@ -202,7 +202,7 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(
-      IByteWriter output) {
+IByteWriter output) {
       if (output == null) {
         throw new NullPointerException("output");
       }
@@ -220,10 +220,10 @@ private DataIO() {
         this.endOffset = offset + length;
       }
 
-    /**
-     * This is an internal method.
-     * @return A 32-bit signed integer.
-     */
+      /**
+       * This is an internal method.
+       * @return A 32-bit signed integer.
+       */
       public int read() {
         if (this.offset >= this.endOffset) {
           return -1;
@@ -233,43 +233,43 @@ private DataIO() {
         return ((int)b) & 0xff;
       }
 
-    /**
-     * This is an internal method.
-     * @param bytes The parameter {@code bytes} is an internal parameter.
-     * @param offset An index starting at 0 showing where the desired portion of
-     * {@code bytes} begins.
-     * @param length The length, in bytes, of the desired portion of {@code bytes}
-     * (but not more than {@code bytes} 's length).
-     * @return A 32-bit signed integer.
-     * @throws T:IllegalArgumentException Either or is less than 0 or greater than
-     * 's length, or 's length minus is less than.
-     * @throws NullPointerException The parameter {@code bytes} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
-     * length minus {@code offset} is less than {@code length}.
-     */
+      /**
+       * This is an internal method.
+       * @param bytes The parameter {@code bytes} is an internal parameter.
+       * @param offset An index starting at 0 showing where the desired portion of
+       * {@code bytes} begins.
+       * @param length The length, in bytes, of the desired portion of {@code bytes}
+       * (but not more than {@code bytes} 's length).
+       * @return A 32-bit signed integer.
+       * @throws T:IllegalArgumentException Either or is less than 0 or greater than
+       * 's length, or 's length minus is less than.
+       * @throws NullPointerException The parameter {@code bytes} is null.
+       * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
+       * than 0 or greater than {@code bytes} 's length, or {@code bytes}
+       * 's length minus {@code offset} is less than {@code length}.
+       */
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
           throw new NullPointerException("bytes");
         }
         if (offset < 0) {
-          throw new IllegalArgumentException("offset (" + offset +
+          throw new IllegalArgumentException("offset(" + offset +
             ") is less than 0");
         }
         if (offset > bytes.length) {
-          throw new IllegalArgumentException("offset (" + offset +
+          throw new IllegalArgumentException("offset(" + offset +
             ") is more than " + bytes.length);
         }
         if (length < 0) {
-          throw new IllegalArgumentException("length (" + length +
+          throw new IllegalArgumentException("length(" + length +
             ") is less than 0");
         }
         if (length > bytes.length) {
-          throw new IllegalArgumentException("length (" + length +
+          throw new IllegalArgumentException("length(" + length +
             ") is more than " + bytes.length);
         }
         if (bytes.length - offset < length) {
-          throw new IllegalArgumentException("bytes's length minus " + offset + " (" +
+          throw new IllegalArgumentException("bytes's length minus " + offset + "(" +
             (bytes.length - offset) + ") is less than " + length);
         }
         int count = 0;
@@ -293,10 +293,10 @@ private DataIO() {
         this.output = output;
       }
 
-    /**
-     * This is an internal method.
-     * @param byteValue The parameter {@code byteValue} is a 32-bit signed integer.
-     */
+      /**
+       * This is an internal method.
+       * @param byteValue The parameter {@code byteValue} is a 32-bit signed integer.
+       */
       public void write(int byteValue) {
         try {
           this.output.write((byte)byteValue);
@@ -305,18 +305,18 @@ private DataIO() {
         }
       }
 
-    /**
-     * This is an internal method.
-     * @param bytes A byte array.
-     * @param offset An index starting at 0 showing where the desired portion of
-     *  "bytes" begins.
-     * @param length The length, in bytes, of the desired portion of "bytes" (but
-     *  not more than "bytes" 's length).
-     * @throws NullPointerException The parameter {@code bytes} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
-     * length minus {@code offset} is less than {@code length}.
-     */
+      /**
+       * This is an internal method.
+       * @param bytes A byte array.
+       * @param offset An index starting at 0 showing where the desired portion of
+       *  "bytes" begins.
+       * @param length The length, in bytes, of the desired portion of "bytes" (but
+       *  not more than "bytes" 's length).
+       * @throws NullPointerException The parameter {@code bytes} is null.
+       * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
+       * than 0 or greater than {@code bytes} 's length, or {@code bytes}
+       * 's length minus {@code offset} is less than {@code length}.
+       */
       public void write(byte[] bytes, int offset, int length) {
         try {
           this.output.write(bytes, offset, length);
@@ -333,49 +333,49 @@ private DataIO() {
         this.output = output;
       }
 
-    /**
-     * This is an internal method.
-     * @param byteValue The parameter {@code byteValue} is a 32-bit signed integer.
-     */
+      /**
+       * This is an internal method.
+       * @param byteValue The parameter {@code byteValue} is a 32-bit signed integer.
+       */
       public void write(int byteValue) {
         this.output.write((byte)byteValue);
       }
 
-    /**
-     * This is an internal method.
-     * @param bytes A byte array.
-     * @param offset An index starting at 0 showing where the desired portion of
-     *  "bytes" begins.
-     * @param length The length, in bytes, of the desired portion of "bytes" (but
-     *  not more than "bytes" 's length).
-     * @throws T:NullPointerException The parameter {@code bytes} is null.
-     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code bytes} 's length, or {@code bytes} 's
-     * length minus {@code offset} is less than {@code length}.
-     * @throws NullPointerException The parameter {@code bytes} is null.
-     */
+      /**
+       * This is an internal method.
+       * @param bytes A byte array.
+       * @param offset An index starting at 0 showing where the desired portion of
+       *  "bytes" begins.
+       * @param length The length, in bytes, of the desired portion of "bytes" (but
+       *  not more than "bytes" 's length).
+       * @throws T:NullPointerException The parameter {@code bytes} is null.
+       * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
+       * than 0 or greater than {@code bytes} 's length, or {@code bytes}
+       * 's length minus {@code offset} is less than {@code length}.
+       * @throws NullPointerException The parameter {@code bytes} is null.
+       */
       public void write(byte[] bytes, int offset, int length) {
         if (bytes == null) {
           throw new NullPointerException("bytes");
         }
         if (offset < 0) {
-          throw new IllegalArgumentException("offset (" + offset +
+          throw new IllegalArgumentException("offset(" + offset +
             ") is less than 0");
         }
         if (offset > bytes.length) {
-          throw new IllegalArgumentException("offset (" + offset + ") is more than " +
+          throw new IllegalArgumentException("offset(" + offset + ") is more than " +
             bytes.length);
         }
         if (length < 0) {
-          throw new IllegalArgumentException("length (" + length +
+          throw new IllegalArgumentException("length(" + length +
             ") is less than 0");
         }
         if (length > bytes.length) {
-          throw new IllegalArgumentException("length (" + length + ") is more than " +
+          throw new IllegalArgumentException("length(" + length + ") is more than " +
             bytes.length);
         }
         if (bytes.length - offset < length) {
-          throw new IllegalArgumentException("bytes's length minus " + offset + " (" +
+          throw new IllegalArgumentException("bytes's length minus " + offset + "(" +
             (bytes.length - offset) + ") is less than " + length);
         }
         for (int i = 0; i < length; ++i) {
@@ -391,10 +391,10 @@ private DataIO() {
         this.stream = stream;
       }
 
-    /**
-     * This is an internal method.
-     * @return A 32-bit signed integer.
-     */
+      /**
+       * This is an internal method.
+       * @return A 32-bit signed integer.
+       */
       public int read() {
         try {
           return this.stream.read();

@@ -3,8 +3,8 @@ using System.IO;
 using PeterO;
 
 namespace PeterO.Text {
-    /// <summary>Defines a method that can be implemented by classes that
-    /// convert Unicode code points to bytes.</summary>
+  /// <summary>Defines a method that can be implemented by classes that
+  /// convert Unicode code points to bytes.</summary>
   public interface ICharacterEncoder {
     /// <summary>Converts a Unicode code point to bytes and writes the
     /// bytes to an output stream.

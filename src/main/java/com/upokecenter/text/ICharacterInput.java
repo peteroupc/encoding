@@ -1,8 +1,8 @@
 package com.upokecenter.text;
 
-    /**
-     * An interface for reading Unicode code points from a data source.
-     */
+  /**
+   * An interface for reading Unicode code points from a data source.
+   */
   public interface ICharacterInput {
     /**
      * Reads a Unicode code point from a data source.

@@ -7,9 +7,9 @@ If you like this, you should donate to Peter O.
 at: http://peteroupc.github.io/
  */
 
-    /**
-     * A generic interface for writing bytes of data.
-     */
+  /**
+   * A generic interface for writing bytes of data.
+   */
   public interface IWriter extends IByteWriter {
     /**
      * Writes a portion of a byte array to the data source.

@@ -2,6 +2,9 @@
 
     public interface ICharacterEncoding
 
+Defines methods that can be implemented by classes that convert to and from
+ bytes and character code points.
+
 ## Methods
 
 * `ICharacterDecoder GetDecoder()`<br>

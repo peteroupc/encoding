@@ -9,9 +9,9 @@ using System;
 using System.IO;
 
 namespace PeterO {
-    /// <summary>Convenience class that contains static methods for
-    /// wrapping byte arrays and streams into byte readers and byte
-    /// writers.</summary>
+  /// <summary>Convenience class that contains static methods for
+  /// wrapping byte arrays and streams into byte readers and byte
+  /// writers.</summary>
   public static class DataIO {
     /// <summary>Wraps a byte array into a byte reader. The reader will
     /// start at the beginning of the byte array.
@@ -25,11 +25,11 @@ namespace PeterO {
     /// <returns>A byte reader wrapping the byte array.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
-    public static IReader ToReader(
-      #if !NET20
-      this
-      #endif
-      byte[] bytes) {
+    public static IReader ToReader (
+  #if !NET20
+this
+#endif
+byte[] bytes) {
       if (bytes == null) {
         throw new ArgumentNullException(nameof(bytes));
       }
@@ -59,33 +59,33 @@ namespace PeterO {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
     public static IReader ToReader(
-      #if !NET20
-      this
-      #endif
-      byte[] bytes,
+  #if !NET20
+this
+#endif
+byte[] bytes,
       int offset,
       int length) {
       if (bytes == null) {
         throw new ArgumentNullException(nameof(bytes));
       }
       if (offset < 0) {
-        throw new ArgumentException("offset (" + offset +
+        throw new ArgumentException("offset(" + offset +
           ") is less than 0");
       }
       if (offset > bytes.Length) {
-        throw new ArgumentException("offset (" + offset + ") is more than " +
+        throw new ArgumentException("offset(" + offset + ") is more than " +
           bytes.Length);
       }
       if (length < 0) {
-        throw new ArgumentException("length (" + length +
+        throw new ArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > bytes.Length) {
-        throw new ArgumentException("length (" + length + ") is more than " +
+        throw new ArgumentException("length(" + length + ") is more than " +
           bytes.Length);
       }
       if (bytes.Length - offset < length) {
-        throw new ArgumentException("bytes's length minus " + offset + " (" +
+        throw new ArgumentException("bytes's length minus " + offset + "(" +
           (bytes.Length - offset) + ") is less than " + length);
       }
       return new ByteArrayTransform(bytes, offset, length);
@@ -104,11 +104,11 @@ namespace PeterO {
     /// <returns>A byte reader wrapping the input stream.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='input'/> is null.</exception>
-    public static IReader ToReader(
-      #if !NET20
-      this
-      #endif
-      Stream input) {
+    public static IReader ToReader (
+  #if !NET20
+this
+#endif
+Stream input) {
       if (input == null) {
         throw new ArgumentNullException(nameof(input));
       }
@@ -141,10 +141,10 @@ namespace PeterO {
     /// name='bytes'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
-      #if !NET20
-      this
-      #endif
-      byte[] bytes,
+  #if !NET20
+this
+#endif
+byte[] bytes,
       int offset,
       int length) {
       return (IByteReader)ToReader(bytes, offset, length);
@@ -163,11 +163,11 @@ namespace PeterO {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='input'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
-    public static IByteReader ToByteReader(
-      #if !NET20
-      this
-      #endif
-      Stream input) {
+    public static IByteReader ToByteReader (
+  #if !NET20
+this
+#endif
+Stream input) {
       return (IByteReader)ToReader(input);
     }
 
@@ -184,11 +184,11 @@ namespace PeterO {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
-    public static IByteReader ToByteReader(
-      #if !NET20
-      this
-      #endif
-      byte[] bytes) {
+    public static IByteReader ToByteReader (
+  #if !NET20
+this
+#endif
+byte[] bytes) {
       return (IByteReader)ToReader(bytes);
     }
 
@@ -205,11 +205,11 @@ namespace PeterO {
     /// stream.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
-    public static IWriter ToWriter(
-      #if !NET20
-      this
-      #endif
-      Stream output) {
+    public static IWriter ToWriter (
+  #if !NET20
+this
+#endif
+Stream output) {
       if (output == null) {
         throw new ArgumentNullException(nameof(output));
       }
@@ -228,11 +228,11 @@ namespace PeterO {
     /// <returns>A writer that wraps the given stream.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
-    public static IWriter ToWriter(
-      #if !NET20
-      this
-      #endif
-      IByteWriter output) {
+    public static IWriter ToWriter (
+  #if !NET20
+this
+#endif
+IByteWriter output) {
       if (output == null) {
         throw new ArgumentNullException(nameof(output));
       }
@@ -250,8 +250,8 @@ namespace PeterO {
         this.endOffset = offset + length;
       }
 
-    /// <summary>This is an internal method.</summary>
-    /// <returns>A 32-bit signed integer.</returns>
+      /// <summary>This is an internal method.</summary>
+      /// <returns>A 32-bit signed integer.</returns>
       public int ReadByte() {
         if (this.offset >= this.endOffset) {
           return -1;
@@ -261,47 +261,47 @@ namespace PeterO {
         return ((int)b) & 0xff;
       }
 
-    /// <summary>This is an internal method.</summary>
-    /// <param name='bytes'>The parameter <paramref name='bytes'/> is an
-    /// internal parameter.</param>
-    /// <param name='offset'>An index starting at 0 showing where the
-    /// desired portion of <paramref name='bytes'/> begins.</param>
-    /// <param name='length'>The length, in bytes, of the desired portion
-    /// of <paramref name='bytes'/> (but not more than <paramref
-    /// name='bytes'/> 's length).</param>
-    /// <returns>A 32-bit signed integer.</returns>
-    /// <exception cref=' T:System.ArgumentException'>Either or is less
-    /// than 0 or greater than 's length, or 's length minus is less
-    /// than.</exception>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='bytes'/> is null.</exception>
-    /// <exception cref='ArgumentException'>Either <paramref
-    /// name='offset'/> or <paramref name='length'/> is less than 0 or
-    /// greater than <paramref name='bytes'/> 's length, or <paramref
-    /// name='bytes'/> 's length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>.</exception>
+      /// <summary>This is an internal method.</summary>
+      /// <param name='bytes'>The parameter <paramref name='bytes'/> is an
+      /// internal parameter.</param>
+      /// <param name='offset'>An index starting at 0 showing where the
+      /// desired portion of <paramref name='bytes'/> begins.</param>
+      /// <param name='length'>The length, in bytes, of the desired portion
+      /// of <paramref name='bytes'/> (but not more than <paramref
+      /// name='bytes'/> 's length).</param>
+      /// <returns>A 32-bit signed integer.</returns>
+      /// <exception cref=' T:System.ArgumentException'>Either or is less
+      /// than 0 or greater than 's length, or 's length minus is less
+      /// than.</exception>
+      /// <exception cref='ArgumentNullException'>The parameter <paramref
+      /// name='bytes'/> is null.</exception>
+      /// <exception cref='ArgumentException'>Either <paramref
+      /// name='offset'/> or <paramref name='length'/> is less than 0 or
+      /// greater than <paramref name='bytes'/> 's length, or <paramref
+      /// name='bytes'/> 's length minus <paramref name='offset'/> is less
+      /// than <paramref name='length'/>.</exception>
       public int Read(byte[] bytes, int offset, int length) {
         if (bytes == null) {
           throw new ArgumentNullException(nameof(bytes));
         }
         if (offset < 0) {
-          throw new ArgumentException("offset (" + offset +
+          throw new ArgumentException("offset(" + offset +
             ") is less than 0");
         }
         if (offset > bytes.Length) {
-          throw new ArgumentException("offset (" + offset +
+          throw new ArgumentException("offset(" + offset +
             ") is more than " + bytes.Length);
         }
         if (length < 0) {
-          throw new ArgumentException("length (" + length +
+          throw new ArgumentException("length(" + length +
             ") is less than 0");
         }
         if (length > bytes.Length) {
-          throw new ArgumentException("length (" + length +
+          throw new ArgumentException("length(" + length +
             ") is more than " + bytes.Length);
         }
         if (bytes.Length - offset < length) {
-          throw new ArgumentException("bytes's length minus " + offset + " (" +
+          throw new ArgumentException("bytes's length minus " + offset + "(" +
             (bytes.Length - offset) + ") is less than " + length);
         }
         var count = 0;
@@ -325,9 +325,9 @@ namespace PeterO {
         this.output = output;
       }
 
-    /// <summary>This is an internal method.</summary>
-    /// <param name='byteValue'>The parameter <paramref name='byteValue'/>
-    /// is a 32-bit signed integer.</param>
+      /// <summary>This is an internal method.</summary>
+      /// <param name='byteValue'>The parameter <paramref name='byteValue'/>
+      /// is a 32-bit signed integer.</param>
       public void WriteByte(int byteValue) {
         try {
           this.output.WriteByte((byte)byteValue);
@@ -336,19 +336,19 @@ namespace PeterO {
         }
       }
 
-    /// <summary>This is an internal method.</summary>
-    /// <param name='bytes'>A byte array.</param>
-    /// <param name='offset'>An index starting at 0 showing where the
-    /// desired portion of "bytes" begins.</param>
-    /// <param name='length'>The length, in bytes, of the desired portion
-    /// of "bytes" (but not more than "bytes" 's length).</param>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='bytes'/> is null.</exception>
-    /// <exception cref='ArgumentException'>Either <paramref
-    /// name='offset'/> or <paramref name='length'/> is less than 0 or
-    /// greater than <paramref name='bytes'/> 's length, or <paramref
-    /// name='bytes'/> 's length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>.</exception>
+      /// <summary>This is an internal method.</summary>
+      /// <param name='bytes'>A byte array.</param>
+      /// <param name='offset'>An index starting at 0 showing where the
+      /// desired portion of "bytes" begins.</param>
+      /// <param name='length'>The length, in bytes, of the desired portion
+      /// of "bytes" (but not more than "bytes" 's length).</param>
+      /// <exception cref='ArgumentNullException'>The parameter <paramref
+      /// name='bytes'/> is null.</exception>
+      /// <exception cref='ArgumentException'>Either <paramref
+      /// name='offset'/> or <paramref name='length'/> is less than 0 or
+      /// greater than <paramref name='bytes'/> 's length, or <paramref
+      /// name='bytes'/> 's length minus <paramref name='offset'/> is less
+      /// than <paramref name='length'/>.</exception>
       public void Write(byte[] bytes, int offset, int length) {
         try {
           this.output.Write(bytes, offset, length);
@@ -365,50 +365,50 @@ namespace PeterO {
         this.output = output;
       }
 
-    /// <summary>This is an internal method.</summary>
-    /// <param name='byteValue'>The parameter <paramref name='byteValue'/>
-    /// is a 32-bit signed integer.</param>
+      /// <summary>This is an internal method.</summary>
+      /// <param name='byteValue'>The parameter <paramref name='byteValue'/>
+      /// is a 32-bit signed integer.</param>
       public void WriteByte(int byteValue) {
         this.output.WriteByte((byte)byteValue);
       }
 
-    /// <summary>This is an internal method.</summary>
-    /// <param name='bytes'>A byte array.</param>
-    /// <param name='offset'>An index starting at 0 showing where the
-    /// desired portion of "bytes" begins.</param>
-    /// <param name='length'>The length, in bytes, of the desired portion
-    /// of "bytes" (but not more than "bytes" 's length).</param>
-    /// <exception cref=' T:System.ArgumentNullException'>The parameter
-    /// <paramref name='bytes'/> is null.</exception>
-    /// <exception cref='ArgumentException'>Either <paramref
-    /// name='offset'/> or <paramref name='length'/> is less than 0 or
-    /// greater than <paramref name='bytes'/> 's length, or <paramref
-    /// name=' bytes'/> 's length minus <paramref name='offset'/> is less
-    /// than <paramref name='length'/>.</exception>
-    /// <exception cref='ArgumentNullException'>The parameter <paramref
-    /// name='bytes'/> is null.</exception>
+      /// <summary>This is an internal method.</summary>
+      /// <param name='bytes'>A byte array.</param>
+      /// <param name='offset'>An index starting at 0 showing where the
+      /// desired portion of "bytes" begins.</param>
+      /// <param name='length'>The length, in bytes, of the desired portion
+      /// of "bytes" (but not more than "bytes" 's length).</param>
+      /// <exception cref=' T:System.ArgumentNullException'>The parameter
+      /// <paramref name='bytes'/> is null.</exception>
+      /// <exception cref='ArgumentException'>Either <paramref
+      /// name='offset'/> or <paramref name='length'/> is less than 0 or
+      /// greater than <paramref name='bytes'/> 's length, or <paramref
+      /// name=' bytes'/> 's length minus <paramref name='offset'/> is less
+      /// than <paramref name='length'/>.</exception>
+      /// <exception cref='ArgumentNullException'>The parameter <paramref
+      /// name='bytes'/> is null.</exception>
       public void Write(byte[] bytes, int offset, int length) {
         if (bytes == null) {
           throw new ArgumentNullException(nameof(bytes));
         }
         if (offset < 0) {
-          throw new ArgumentException("offset (" + offset +
+          throw new ArgumentException("offset(" + offset +
             ") is less than 0");
         }
         if (offset > bytes.Length) {
-          throw new ArgumentException("offset (" + offset + ") is more than " +
+          throw new ArgumentException("offset(" + offset + ") is more than " +
             bytes.Length);
         }
         if (length < 0) {
-          throw new ArgumentException("length (" + length +
+          throw new ArgumentException("length(" + length +
             ") is less than 0");
         }
         if (length > bytes.Length) {
-          throw new ArgumentException("length (" + length + ") is more than " +
+          throw new ArgumentException("length(" + length + ") is more than " +
             bytes.Length);
         }
         if (bytes.Length - offset < length) {
-          throw new ArgumentException("bytes's length minus " + offset + " (" +
+          throw new ArgumentException("bytes's length minus " + offset + "(" +
             (bytes.Length - offset) + ") is less than " + length);
         }
         for (int i = 0; i < length; ++i) {
@@ -424,8 +424,8 @@ namespace PeterO {
         this.stream = stream;
       }
 
-    /// <summary>This is an internal method.</summary>
-    /// <returns>A 32-bit signed integer.</returns>
+      /// <summary>This is an internal method.</summary>
+      /// <returns>A 32-bit signed integer.</returns>
       public int ReadByte() {
         try {
           return this.stream.ReadByte();

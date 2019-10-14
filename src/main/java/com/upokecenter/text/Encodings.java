@@ -112,10 +112,10 @@ private Encodings() {
     public static final ICharacterEncoding UTF8 = new EncodingUtf8();
 
     private static final Map<String, String> ValueCharsetAliases =
-        CreateAliasMap();
+      CreateAliasMap();
 
     private static final Map<String, String> EmailAliases =
-        CreateEmailAliasMap();
+      CreateEmailAliasMap();
 
     /**
      * Reads bytes from a data source and converts the bytes from a given encoding
@@ -134,7 +134,7 @@ private Encodings() {
      * input} is null.
      */
     public static String DecodeToString(
-      ICharacterEncoding encoding,
+ICharacterEncoding encoding,
       IByteReader input) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
@@ -142,8 +142,8 @@ private Encodings() {
       if (input == null) {
         throw new NullPointerException("input");
       }
-      return InputToString(
-         GetDecoderInput(encoding, input));
+      return InputToString (
+          GetDecoderInput(encoding, input));
     }
 
     /**
@@ -167,7 +167,7 @@ private Encodings() {
      * null.
      */
     public static String DecodeToString(
-      ICharacterEncoding enc,
+ICharacterEncoding enc,
       InputStream input) {
       if (enc == null) {
         throw new NullPointerException("enc");
@@ -175,8 +175,8 @@ private Encodings() {
       if (input == null) {
         throw new NullPointerException("input");
       }
-      return InputToString(
-         GetDecoderInput(enc, DataIO.ToReader(input)));
+      return InputToString (
+          GetDecoderInput(enc, DataIO.ToReader(input)));
     }
 
     /**
@@ -202,7 +202,7 @@ private Encodings() {
      * null.
      */
     public static String DecodeToString(
-      ICharacterEncoding enc,
+ICharacterEncoding enc,
       byte[] bytes) {
       if (enc == null) {
         throw new NullPointerException("enc");
@@ -246,7 +246,7 @@ private Encodings() {
      * null.
      */
     public static String DecodeToString(
-      ICharacterEncoding enc,
+ICharacterEncoding enc,
       byte[] bytes,
       int offset,
       int length) {
@@ -257,23 +257,23 @@ private Encodings() {
         throw new NullPointerException("bytes");
       }
       if (offset < 0) {
-        throw new IllegalArgumentException("offset (" + offset +
+        throw new IllegalArgumentException("offset(" + offset +
           ") is less than 0");
       }
       if (offset > bytes.length) {
-        throw new IllegalArgumentException("offset (" + offset +
+        throw new IllegalArgumentException("offset(" + offset +
           ") is more than " + bytes.length);
       }
       if (length < 0) {
-        throw new IllegalArgumentException("length (" + length +
+        throw new IllegalArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > bytes.length) {
-        throw new IllegalArgumentException("length (" + length +
+        throw new IllegalArgumentException("length(" + length +
           ") is more than " + bytes.length);
       }
       if (bytes.length - offset < length) {
-        throw new IllegalArgumentException("bytes's length minus " + offset + " (" +
+        throw new IllegalArgumentException("bytes's length minus " + offset + "(" +
           (bytes.length - offset) + ") is less than " + length);
       }
       return DecodeToString(enc, DataIO.ToReader(bytes, offset, length));
@@ -295,7 +295,7 @@ private Encodings() {
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static byte[] EncodeToBytes(
-      ICharacterInput input,
+ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
@@ -326,7 +326,7 @@ private Encodings() {
      * is null.
      */
     public static byte[] EncodeToBytes(
-      ICharacterInput input,
+ICharacterInput input,
       ICharacterEncoder encoder) {
       return EncodeToBytes(input, encoder, false);
     }
@@ -354,7 +354,7 @@ private Encodings() {
      * is null.
      */
     public static byte[] EncodeToBytes(
-      ICharacterInput input,
+ICharacterInput input,
       ICharacterEncoder encoder,
       boolean htmlFallback) {
       if (encoder == null) {
@@ -407,7 +407,7 @@ private Encodings() {
      * null.
      */
     public static byte[] EncodeToBytes(
-      String str,
+String str,
       ICharacterEncoding enc) {
       if (str == null) {
         throw new NullPointerException("str");
@@ -415,10 +415,10 @@ private Encodings() {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
-      return EncodeToBytes(
-  new CharacterReader(str),
-  enc.GetEncoder(),
-  false);
+      return EncodeToBytes (
+          new CharacterReader(str),
+          enc.GetEncoder(),
+          false);
     }
 
     /**
@@ -444,7 +444,7 @@ private Encodings() {
      * null.
      */
     public static byte[] EncodeToBytes(
-      String str,
+String str,
       ICharacterEncoding enc,
       boolean htmlFallback) {
       if (str == null) {
@@ -453,10 +453,10 @@ private Encodings() {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
-      return EncodeToBytes(
-        new CharacterReader(str),
-        enc.GetEncoder(),
-        htmlFallback);
+      return EncodeToBytes (
+          new CharacterReader(str),
+          enc.GetEncoder(),
+          htmlFallback);
     }
 
     /**
@@ -481,7 +481,7 @@ private Encodings() {
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static void EncodeToWriter(
-      ICharacterInput input,
+ICharacterInput input,
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
@@ -513,7 +513,7 @@ private Encodings() {
      * is null.
      */
     public static void EncodeToWriter(
-      ICharacterInput input,
+ICharacterInput input,
       ICharacterEncoder encoder,
       IWriter writer) {
       if (encoder == null) {
@@ -562,7 +562,7 @@ private Encodings() {
      * null.
      */
     public static void EncodeToWriter(
-      String str,
+String str,
       ICharacterEncoding enc,
       IWriter writer) {
       if (str == null) {
@@ -596,7 +596,7 @@ private Encodings() {
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static void EncodeToWriter(
-      ICharacterInput input,
+ICharacterInput input,
       ICharacterEncoding encoding,
       OutputStream output) throws java.io.IOException {
       if (encoding == null) {
@@ -628,7 +628,7 @@ private Encodings() {
      * is null.
      */
     public static void EncodeToWriter(
-      ICharacterInput input,
+ICharacterInput input,
       ICharacterEncoder encoder,
       OutputStream output) throws java.io.IOException {
       IWriter writer = DataIO.ToWriter(output);
@@ -659,7 +659,7 @@ private Encodings() {
      * null.
      */
     public static void EncodeToWriter(
-      String str,
+String str,
       ICharacterEncoding enc,
       OutputStream output) throws java.io.IOException {
       if (str == null) {
@@ -668,10 +668,10 @@ private Encodings() {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
-      EncodeToWriter(
-     new CharacterReader(str),
-     enc,
-     DataIO.ToWriter(output));
+      EncodeToWriter (
+        new CharacterReader(str),
+        enc,
+        DataIO.ToWriter(output));
     }
 
     /**
@@ -694,14 +694,14 @@ private Encodings() {
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static ICharacterInput GetDecoderInput(
-      ICharacterEncoding encoding,
+ICharacterEncoding encoding,
       IByteReader stream) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
       }
 
       return new DecoderToInputClass(encoding.GetDecoder(),
-        stream);
+          stream);
     }
 
     /**
@@ -729,15 +729,15 @@ private Encodings() {
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static ICharacterInput GetDecoderInput(
-      ICharacterEncoding encoding,
+ICharacterEncoding encoding,
       InputStream input) {
       if (
-     encoding == null) {
+        encoding == null) {
         throw new NullPointerException("encoding");
       }
-      return new DecoderToInputClass(
-           encoding.GetDecoder(),
-           DataIO.ToReader(input));
+      return new DecoderToInputClass (
+          encoding.GetDecoder(),
+          DataIO.ToReader(input));
     }
 
     /**
@@ -761,7 +761,7 @@ private Encodings() {
      * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInputSkipBom(
-      ICharacterEncoding encoding,
+ICharacterEncoding encoding,
       IByteReader stream) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
@@ -787,11 +787,11 @@ private Encodings() {
      * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInputSkipBom(
-      ICharacterEncoding encoding,
+ICharacterEncoding encoding,
       InputStream input) {
-      return EncoderAlgorithms.DecodeAlgorithmInput(
-        DataIO.ToReader(input),
-        encoding);
+      return EncoderAlgorithms.DecodeAlgorithmInput (
+          DataIO.ToReader(input),
+          encoding);
     }
 
     /**
@@ -822,7 +822,7 @@ private Encodings() {
       boolean forEmail,
       boolean allowReplacement) {
       return (!allowReplacement && name != null &&
-        ToLowerCaseAscii(name).equals("replacement")) ? null : GetEncoding(name, forEmail);
+          ToLowerCaseAscii(name).equals("replacement")) ? null : GetEncoding(name, forEmail);
     }
 
     /**
@@ -962,7 +962,7 @@ private Encodings() {
         });
       }
       if (name.equals("windows-874") ||
-name.equals("TIS-620")) {
+        name.equals("TIS-620")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 8364, 129,
           130,
           131, 132, 8230, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
@@ -1074,7 +1074,7 @@ name.equals("TIS-620")) {
         });
       }
       if (name.equals("ISO-8859-8") ||
-name.equals("ISO-8859-8-I")) {
+        name.equals("ISO-8859-8-I")) {
         return (ICharacterEncoding)new EncodingSingleByte(new int[] { 128, 129, 130,
           131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
           145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
@@ -1323,10 +1323,10 @@ name.equals("ISO-8859-8-I")) {
       } else if (name.equals("GBK")) {
         return (ICharacterEncoding)new EncodingGBK();
       } else if (name.equals("GB2312") ||
-              name.equals("gb2312")) {
+        name.equals("gb2312")) {
         return (ICharacterEncoding)new EncodingGBK();
       } else if (name.equals("gb18030") ||
-name.equals("GB18030")) {
+        name.equals("GB18030")) {
         return (ICharacterEncoding)new EncodingGB18030();
       } else if (name.equals("UTF-16")) {
         return (ICharacterEncoding)new EncodingUtf16();
@@ -1340,11 +1340,10 @@ name.equals("GB18030")) {
         return (ICharacterEncoding)new EncodingISO2022KR();
       }
       return name.equals("ISO-2022-JP") ?
-(ICharacterEncoding)new
-        EncodingISO2022JP() :
-        (name.equals("replacement") ?
-(ICharacterEncoding)new
-          EncodingReplacement() : null);
+        (ICharacterEncoding)new EncodingISO2022JP() :
+(name.equals("replacement") ?
+
+          (ICharacterEncoding)new EncodingReplacement() : null);
     }
 
     /**
@@ -1361,7 +1360,7 @@ name.equals("GB18030")) {
      * @throws NullPointerException The parameter {@code reader} is null.
      */
     public static String InputToString(
-      ICharacterInput reader) {
+ICharacterInput reader) {
       StringBuilder builder = new StringBuilder();
       while (true) {
         if (reader == null) {
@@ -1445,8 +1444,9 @@ name.equals("GB18030")) {
       }
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
-      return ValueCharsetAliases.containsKey(name) ? ValueCharsetAliases.get(name) :
-             "";
+      return ValueCharsetAliases.containsKey(name) ?
+ValueCharsetAliases.get(name) :
+        "";
     }
 
     /**
@@ -1539,7 +1539,7 @@ name.equals("GB18030")) {
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static byte[] StringToBytes(
-      ICharacterEncoding encoding,
+ICharacterEncoding encoding,
       String str) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
@@ -1571,7 +1571,7 @@ name.equals("GB18030")) {
      * is null.
      */
     public static byte[] StringToBytes(
-      ICharacterEncoder encoder,
+ICharacterEncoder encoder,
       String str) {
       if (encoder == null) {
         throw new NullPointerException("encoder");
@@ -1579,7 +1579,7 @@ name.equals("GB18030")) {
       if (str == null) {
         throw new NullPointerException("str");
       }
-      return EncodeToBytes(
+      return EncodeToBytes (
           new CharacterReader(str),
           encoder);
     }
@@ -1604,7 +1604,7 @@ name.equals("GB18030")) {
      * @throws NullPointerException The parameter {@code str} is null.
      */
     public static ICharacterInput StringToInput(
-      String str) {
+String str) {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -1640,30 +1640,30 @@ name.equals("GB18030")) {
      * @throws NullPointerException The parameter {@code str} is null.
      */
     public static ICharacterInput StringToInput(
-      String str,
+String str,
       int offset,
       int length) {
       if (str == null) {
         throw new NullPointerException("str");
       }
       if (offset < 0) {
-        throw new IllegalArgumentException("offset (" + offset +
+        throw new IllegalArgumentException("offset(" + offset +
           ") is less than 0");
       }
       if (offset > str.length()) {
-        throw new IllegalArgumentException("offset (" + offset +
+        throw new IllegalArgumentException("offset(" + offset +
           ") is more than " + str.length());
       }
       if (length < 0) {
-        throw new IllegalArgumentException("length (" + length +
+        throw new IllegalArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > str.length()) {
-        throw new IllegalArgumentException("length (" + length +
+        throw new IllegalArgumentException("length(" + length +
           ") is more than " + str.length());
       }
       if (str.length() - offset < length) {
-        throw new IllegalArgumentException("str's length minus " + offset + " (" +
+        throw new IllegalArgumentException("str's length minus " + offset + "(" +
           (str.length() - offset) + ") is less than " + length);
       }
       return new CharacterReader(str, offset, length);
@@ -2095,7 +2095,8 @@ name.equals("GB18030")) {
       private final IByteReader stream;
       private final ICharacterDecoder reader;
 
-      public DecoderToInputClass(ICharacterDecoder reader, IByteReader stream) {
+      public DecoderToInputClass(ICharacterDecoder reader, IByteReader
+stream) {
         this.reader = reader;
         this.stream = stream;
       }
@@ -2128,23 +2129,25 @@ name.equals("GB18030")) {
           throw new NullPointerException("buffer");
         }
         if (offset < 0) {
-          throw new IllegalArgumentException("offset (" + offset +
+          throw new IllegalArgumentException("offset(" + offset +
             ") is less than 0");
         }
         if (offset > buffer.length) {
-          throw new IllegalArgumentException("offset (" + offset + ") is more than " +
+          throw new IllegalArgumentException("offset(" + offset + ") is more than " +
             buffer.length);
         }
         if (length < 0) {
-          throw new IllegalArgumentException("length (" + length +
+          throw new IllegalArgumentException("length(" + length +
             ") is less than 0");
         }
         if (length > buffer.length) {
-          throw new IllegalArgumentException("length (" + length + ") is more than " +
+          throw new IllegalArgumentException("length(" + length + ") is more than " +
             buffer.length);
         }
         if (buffer.length - offset < length) {
-          throw new IllegalArgumentException("buffer's length minus " + offset + " (" +
+          throw new IllegalArgumentException("buffer's length minus " + offset +
+"" +
+"\u0020(" +
             (buffer.length - offset) + ") is less than " + length);
         }
         int count = 0;

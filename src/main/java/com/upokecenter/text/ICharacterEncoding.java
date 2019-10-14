@@ -3,11 +3,11 @@ package com.upokecenter.text;
 import java.io.*;
 import com.upokecenter.util.*;
 
-/// <summary>
-/// Defines methods that can be implemented by classes
-/// that convert to and from bytes and character code points.
-/// </summary>
-public interface ICharacterEncoding {
+  /**
+   * Defines methods that can be implemented by classes that convert to and from
+   * bytes and character code points.
+   */
+  public interface ICharacterEncoding {
     /**
      * Creates an encoder for this character encoding with initial state. If the
      * encoder is stateless, multiple calls of this method can return the
@@ -25,4 +25,4 @@ public interface ICharacterEncoding {
      */
 
     ICharacterDecoder GetDecoder();
-}
+  }

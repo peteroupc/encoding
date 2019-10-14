@@ -102,68 +102,68 @@ import com.upokecenter.text.*;
 
     @Test
     public void TestGetEncodingGb2312() {
-if (Encodings.GetEncoding("gb2312") == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("gb2312", true) == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("gb2312", false) == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("GB2312") == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("GB2312", true) == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("GB2312", false) == null) {
-  Assert.fail();
-}
+      if (Encodings.GetEncoding("gb2312") == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("gb2312", true) == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("gb2312", false) == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("GB2312") == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("GB2312", true) == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("GB2312", false) == null) {
+        Assert.fail();
+      }
     }
 
     @Test
     public void TestGetEncodingGb18030() {
-if (Encodings.GetEncoding("gb18030") == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("gb18030", true) == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("gb18030", false) == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("GB18030") == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("GB18030", true) == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("GB18030", false) == null) {
-  Assert.fail();
-}
+      if (Encodings.GetEncoding("gb18030") == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("gb18030", true) == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("gb18030", false) == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("GB18030") == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("GB18030", true) == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("GB18030", false) == null) {
+        Assert.fail();
+      }
     }
 
     @Test
     public void TestGetEncodingGbk() {
-if (Encodings.GetEncoding("gbk") == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("gbk", true) == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("gbk", false) == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("GBK") == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("GBK", true) == null) {
-  Assert.fail();
-}
-if (Encodings.GetEncoding("GBK", false) == null) {
-  Assert.fail();
-}
+      if (Encodings.GetEncoding("gbk") == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("gbk", true) == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("gbk", false) == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("GBK") == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("GBK", true) == null) {
+        Assert.fail();
+      }
+      if (Encodings.GetEncoding("GBK", false) == null) {
+        Assert.fail();
+      }
     }
 
     @Test
@@ -2917,9 +2917,9 @@ if (Encodings.GetEncoding("GBK", false) == null) {
     @Test
     public void TestResolveAliasForEmail() {
       Assert.assertEquals("", Encodings.ResolveAliasForEmail(null));
-      Assert.assertEquals(
-  "",
-  Encodings.ResolveAliasForEmail(""));
+      Assert.assertEquals (
+        "",
+        Encodings.ResolveAliasForEmail(""));
       {
         String stringTemp = Encodings.ResolveAliasForEmail("iso-8859-1");
         Assert.assertEquals(
@@ -2963,7 +2963,7 @@ if (Encodings.GetEncoding("GBK", false) == null) {
           stringTemp);
       }
       {
-        String strTemp2 = Encodings.ResolveAliasForEmail(
+        String strTemp2 = Encodings.ResolveAliasForEmail (
             "replacement");
         Assert.assertEquals("", strTemp2);
       }

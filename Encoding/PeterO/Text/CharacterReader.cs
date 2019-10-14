@@ -63,7 +63,7 @@ namespace PeterO.Text {
       }
       this.strLength = str.Length;
       this.offset = (skipByteOrderMark && this.strLength > 0 && str[0] ==
-        0xfeff) ? 1 : 0;
+          0xfeff) ? 1 : 0;
       this.str = str;
       this.errorThrow = errorThrow;
       this.mode = -1;
@@ -116,28 +116,28 @@ namespace PeterO.Text {
         throw new ArgumentNullException(nameof(str));
       }
       if (offset < 0) {
-        throw new ArgumentException("offset (" + offset +
+        throw new ArgumentException("offset(" + offset +
           ") is less than 0");
       }
       if (offset > str.Length) {
-        throw new ArgumentException("offset (" + offset +
+        throw new ArgumentException("offset(" + offset +
           ") is more than " + str.Length);
       }
       if (length < 0) {
-        throw new ArgumentException("length (" + length +
+        throw new ArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > str.Length) {
-        throw new ArgumentException("length (" + length +
+        throw new ArgumentException("length(" + length +
           ") is more than " + str.Length);
       }
       if (str.Length - offset < length) {
-        throw new ArgumentException("str's length minus " + offset + " (" +
+        throw new ArgumentException("str's length minus " + offset + "(" +
           (str.Length - offset) + ") is less than " + length);
       }
       this.strLength = length;
       this.offset = (skipByteOrderMark && length > 0 && str[offset] ==
-        0xfeff) ? offset + 1 : 0;
+          0xfeff) ? offset + 1 : 0;
       this.str = str;
       this.errorThrow = errorThrow;
       this.mode = -1;
@@ -205,7 +205,7 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='stream'/> is null.</exception>
     public CharacterReader(Stream stream, int mode)
-  : this(stream, mode, false, false) {
+      : this(stream, mode, false, false) {
     }
 
     /// <summary>Initializes a new instance of the
@@ -278,23 +278,23 @@ namespace PeterO.Text {
         throw new ArgumentNullException(nameof(chars));
       }
       if (index < 0) {
-        throw new ArgumentException("index (" + index +
+        throw new ArgumentException("index(" + index +
           ") is less than 0");
       }
       if (index > chars.Length) {
-        throw new ArgumentException("index (" + index +
+        throw new ArgumentException("index(" + index +
           ") is more than " + chars.Length);
       }
       if (length < 0) {
-        throw new ArgumentException("length (" + length +
+        throw new ArgumentException("length(" + length +
           ") is less than 0");
       }
       if (length > chars.Length) {
-        throw new ArgumentException("length (" + length +
+        throw new ArgumentException("length(" + length +
           ") is more than " + chars.Length);
       }
       if (chars.Length - index < length) {
-        throw new ArgumentException("chars's length minus " + index + " (" +
+        throw new ArgumentException("chars's length minus " + index + "(" +
           (chars.Length - index) + ") is less than " + length);
       }
       var count = 0;
@@ -322,17 +322,17 @@ namespace PeterO.Text {
       } else {
         int c = (this.offset < this.strLength) ? this.str[this.offset] : -1;
         if ((c & 0xfc00) == 0xd800 && this.offset + 1 < this.strLength &&
-                this.str[this.offset + 1] >= 0xdc00 && this.str[this.offset + 1]
-                <= 0xdfff) {
+          this.str[this.offset + 1] >= 0xdc00 && this.str[this.offset + 1]
+          <= 0xdfff) {
           // Get the Unicode code point for the surrogate pair
           c = 0x10000 + ((c & 0x3ff) << 10) + (this.str[this.offset + 1] &
-0x3ff);
+              0x3ff);
           ++this.offset;
         } else if ((c & 0xf800) == 0xd800) {
           // unpaired surrogate
           if (this.errorThrow) {
             throw new InvalidOperationException("Unpaired surrogate code" +
-"\u0020point");
+              "\u0020point");
           } else {
             c = 0xfffd;
           }
@@ -386,7 +386,7 @@ namespace PeterO.Text {
         c3 = this.stream.ReadByte();
         c4 = this.stream.ReadByte();
         if (c2 == 0 &&
-           ((c3 == 0xfe && c4 == 0xff) ||
+          ((c3 == 0xfe && c4 == 0xff) ||
             (c3 == 0 && c4 >= 0x01 && c4 <= 0x7f))) {
           this.reader = new Utf32Reader(this.stream, true, this.errorThrow);
           return c3 == 0 ? c4 : this.reader.ReadChar();
@@ -431,7 +431,8 @@ namespace PeterO.Text {
           c2 = this.stream.ReadByte();
           if (c2 >= 0x01 && c2 <= 0x7f) {
             // 0 NZA, so UTF-16BE
-            var newReader = new Utf16Reader(this.stream, true, this.errorThrow);
+            var newReader = new Utf16Reader(this.stream, true,
+  this.errorThrow);
             this.reader = newReader;
             return c2;
           } else if (c2 == 0) {
@@ -440,11 +441,13 @@ namespace PeterO.Text {
             c4 = this.stream.ReadByte();
             if (c3 == 0 && c4 >= 0x01 && c4 <= 0x7f) {
               // 0 0 0 NZA
-              this.reader = new Utf32Reader(this.stream, true, this.errorThrow);
+              this.reader = new Utf32Reader(this.stream, true,
+  this.errorThrow);
               return c4;
             } else if (c3 == 0xfe && c4 == 0xff) {
               // 0 0 FE FF
-              this.reader = new Utf32Reader(this.stream, true, this.errorThrow);
+              this.reader = new Utf32Reader(this.stream, true,
+  this.errorThrow);
               return this.reader.ReadChar();
             } else {
               // 0 0 ...
@@ -513,7 +516,8 @@ namespace PeterO.Text {
           c2 = this.stream.ReadByte();
           if (c2 >= 0x01 && c2 <= 0x7f) {
             // 0 NZA, so UTF-16BE
-            var newReader = new Utf16Reader(this.stream, true, this.errorThrow);
+            var newReader = new Utf16Reader(this.stream, true,
+  this.errorThrow);
             this.reader = newReader;
             return c2;
           } else {

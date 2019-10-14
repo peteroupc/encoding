@@ -115,12 +115,12 @@ namespace PeterO.Text.Encoders {
             continue;
           }
           int code = this.bigEndian ? b + (this.lead << 8) : this.lead + (b <<
-               8);
+              8);
           this.lead = -1;
           if (this.surrogate >= 0) {
             if ((code & 0xfc00) == 0xdc00) {
               code = 0x10000 + (code & 0x3ff) + ((this.surrogate & 0x3ff) <<
-                    10);
+                  10);
               this.surrogate = -1;
               return code;
             }
@@ -202,13 +202,13 @@ namespace PeterO.Text.Encoders {
     internal static ICharacterDecoder GetDecoder2(int kind) {
       // kind: 0-little endian, 1-big endian, 2-unlabeled
       return (kind == 2) ? ((ICharacterDecoder)new EndianFreeDecoder()) :
-        ((ICharacterDecoder)new Decoder(kind == 1));
+((ICharacterDecoder)new Decoder(kind == 1));
     }
 
     internal static ICharacterEncoder GetEncoder2(int kind) {
       // kind: 0-little endian, 1-big endian, 2-unlabeled
       return (kind == 2) ? ((ICharacterEncoder)new EndianFreeEncoder()) :
-        ((ICharacterEncoder)new Encoder(kind == 1));
+((ICharacterEncoder)new Encoder(kind == 1));
     }
 
     public ICharacterDecoder GetDecoder() {

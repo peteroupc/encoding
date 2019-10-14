@@ -1,8 +1,8 @@
 using System;
 
 namespace PeterO.Text {
-    /// <summary>An interface for reading Unicode code points from a data
-    /// source.</summary>
+  /// <summary>An interface for reading Unicode code points from a data
+  /// source.</summary>
   public interface ICharacterInput {
     /// <summary>Reads a Unicode code point from a data source.</summary>
     /// <returns>Either a Unicode code point (from 0-0xd7ff or from 0xe000

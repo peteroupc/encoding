@@ -8,8 +8,8 @@ at: http://peteroupc.github.io/
 using System;
 
 namespace PeterO {
-    /// <summary>A generic interface for reading bytes of data from a data
-    /// source.</summary>
+  /// <summary>A generic interface for reading bytes of data from a data
+  /// source.</summary>
   public interface IReader : IByteReader {
     /// <summary>Reads a portion of a byte array from the data
     /// source.</summary>

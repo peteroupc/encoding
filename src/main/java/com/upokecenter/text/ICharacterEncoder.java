@@ -3,10 +3,10 @@ package com.upokecenter.text;
 import java.io.*;
 import com.upokecenter.util.*;
 
-    /**
-     * Defines a method that can be implemented by classes that convert Unicode
-     * code points to bytes.
-     */
+  /**
+   * Defines a method that can be implemented by classes that convert Unicode
+   * code points to bytes.
+   */
   public interface ICharacterEncoder {
     /**
      * Converts a Unicode code point to bytes and writes the bytes to an output

@@ -38,7 +38,7 @@ import com.upokecenter.text.*;
             }
           }
           if (bufferCount >= 3 && buffer[0] == 0xef &&
-             buffer[1] == 0xbb && buffer[2] == 0xbf) {
+            buffer[1] == 0xbb && buffer[2] == 0xbf) {
             this.decoder = Encodings.UTF8.GetDecoder();
             this.useOriginal = true;
           } else if (bufferCount >= 2 && buffer[0] == 0xfe &&
@@ -110,7 +110,7 @@ import com.upokecenter.text.*;
           }
         }
         if (this.bufferCount >= 3 && this.buffer[0] == 0xef &&
-           this.buffer[1] == 0xbb && this.buffer[2] == 0xbf) {
+          this.buffer[1] == 0xbb && this.buffer[2] == 0xbf) {
           // UTF-8 BOM found
           this.bufferOffset = this.bufferCount = 0;
         } else {
@@ -136,7 +136,7 @@ import com.upokecenter.text.*;
     }
 
     public static ICharacterInput Utf8DecodeAlgorithmInput(
-       IByteReader transform) {
+      IByteReader transform) {
       // Implements the "utf-8 decode" algorithm in the Encoding
       // Standard
       if (transform == null) {
@@ -160,7 +160,7 @@ import com.upokecenter.text.*;
       ICharacterInput stream,
       ICharacterEncoding encoding,
       IWriter output) {
-return EncodeAlgorithm(stream, encoding.GetEncoder(), output);
+      return EncodeAlgorithm(stream, encoding.GetEncoder(), output);
     }
 
     public static int EncodeAlgorithm(
@@ -209,7 +209,7 @@ return EncodeAlgorithm(stream, encoding.GetEncoder(), output);
     }
 
     public static ICharacterInput Utf8DecodeWithoutBOMAlgorithmInput(
-       IByteReader transform) {
+      IByteReader transform) {
       // Implements the "utf-8 decode without BOM" algorithm
       // in the Encoding Standard
       if (transform == null) {
@@ -231,7 +231,7 @@ return EncodeAlgorithm(stream, encoding.GetEncoder(), output);
       if (fallbackEncoding == null) {
         throw new NullPointerException("fallbackEncoding");
       }
-      DecodeWithFallbackDecoder decoder = new DecodeWithFallbackDecoder(
+      DecodeWithFallbackDecoder decoder = new DecodeWithFallbackDecoder (
         fallbackEncoding);
       return Encodings.GetDecoderInput(decoder, transform);
     }

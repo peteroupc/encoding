@@ -270,9 +270,6 @@ IByteWriter output) {
       /// of <paramref name='bytes'/> (but not more than <paramref
       /// name='bytes'/> 's length).</param>
       /// <returns>A 32-bit signed integer.</returns>
-      /// <exception cref=' T:System.ArgumentException'>Either or is less
-      /// than 0 or greater than 's length, or 's length minus is less
-      /// than.</exception>
       /// <exception cref='ArgumentNullException'>The parameter <paramref
       /// name='bytes'/> is null.</exception>
       /// <exception cref='ArgumentException'>Either <paramref

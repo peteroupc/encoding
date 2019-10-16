@@ -241,8 +241,6 @@ IByteWriter output) {
        * @param length The length, in bytes, of the desired portion of {@code bytes}
        * (but not more than {@code bytes} 's length).
        * @return A 32-bit signed integer.
-       * @throws T:IllegalArgumentException Either or is less than 0 or greater than
-       * 's length, or 's length minus is less than.
        * @throws NullPointerException The parameter {@code bytes} is null.
        * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
        * than 0 or greater than {@code bytes} 's length, or {@code bytes}

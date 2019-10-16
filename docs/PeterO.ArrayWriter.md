@@ -81,7 +81,7 @@ Either  <i>offset</i>
  or  <i>length</i>
  is less than 0 or greater than  <i>src</i>
  's length, or  <i>src</i>
- ' s length minus  <i>offset</i>
+ 's length minus  <i>offset</i>
  is less than  <i>length</i>
 .
 

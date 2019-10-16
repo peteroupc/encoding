@@ -43,8 +43,8 @@
             's length).</param>
             <exception cref='ArgumentNullException'>The parameter <paramref name='src'/> is null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
-            greater than <paramref name='src'/> 's length, or <paramref name='src'/> ' s length minus <paramref name='offset'/> is less
-            than <paramref name='length'/>.</exception>
+            greater than <paramref name='src'/> 's length, or <paramref name='src'/> 's length minus <paramref name='offset'/> is less than
+            <paramref name='length'/>.</exception>
 
 </doc>
 <doc name="M:PeterO.ArrayWriter.WriteByte(System.Int32)">
@@ -369,9 +369,7 @@
             <param name='length'>The length, in bytes, of the desired portion
             of <paramref name='bytes'/> (but not more than <paramref name='bytes'/> 's length).</param>
             <returns>A 32-bit signed integer.</returns>
-            <exception cref=' T:System.ArgumentException'>Either or is less
-            than 0 or greater than 's length, or 's length minus is less
-            than.</exception>
+
             <exception cref='ArgumentNullException'>The parameter <paramref name='bytes'/> is null.</exception>
             <exception cref='ArgumentException'>Either <paramref name='offset'/> or <paramref name='length'/> is less than 0 or
             greater than <paramref name='bytes'/> 's length, or <paramref name='bytes'/> 's length minus <paramref name='offset'/> is less
@@ -2544,9 +2542,8 @@
 </doc>
 <doc name="T:PeterO.Text.ICharacterEncoding">
 
-            <summary>Defines methods that can be implemented by classes
-            that convert to and from bytes and character code points.
-            </summary>
+            <summary>Defines methods that can be implemented by classes that
+            convert to and from bytes and character code points.</summary>
 
 </doc>
 <doc name="M:PeterO.Text.ICharacterEncoding.GetDecoder">

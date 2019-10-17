@@ -173,9 +173,11 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 
 * <code>str</code> - The parameter <code>str</code> is a text string.
 
-* <code>offset</code> - The parameter <code>offset</code> is a 32-bit signed integer.
+* <code>offset</code> - An index, starting at 0, showing where the desired portion of
+ <code>str</code> begins.
 
-* <code>length</code> - The parameter <code>length</code> is a 32-bit signed integer.
+* <code>length</code> - The length, in code units, of the desired portion of <code>
+ str</code> (but not more than <code>str</code> 's length).
 
 * <code>skipByteOrderMark</code> - If true and the first character in the string
  portion is U+FEFF, skip that character.
@@ -187,6 +189,10 @@ Initializes a new instance of the <code>CharacterReader</code> class.
 **Throws:**
 
 * <code>java.lang.NullPointerException</code> - The parameter <code>str</code> is null.
+
+* <code>java.lang.IllegalArgumentException</code> - Either <code>offset</code> or <code>length</code> is less
+ than 0 or greater than <code>str</code> 's length, or <code>str</code> 's
+ length minus <code>offset</code> is less than <code>length</code>.
 
 ### CharacterReader
     public CharacterReader​(java.io.InputStream stream)

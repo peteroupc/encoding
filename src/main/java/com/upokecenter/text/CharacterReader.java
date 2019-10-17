@@ -96,14 +96,19 @@ import java.io.*;
      * Initializes a new instance of the {@link
      * com.upokecenter.text.CharacterReader} class.
      * @param str The parameter {@code str} is a text string.
-     * @param offset The parameter {@code offset} is a 32-bit signed integer.
-     * @param length The parameter {@code length} is a 32-bit signed integer.
+     * @param offset An index, starting at 0, showing where the desired portion of
+     * {@code str} begins.
+     * @param length The length, in code units, of the desired portion of {@code
+     * str} (but not more than {@code str} 's length).
      * @param skipByteOrderMark If true and the first character in the string
      * portion is U+FEFF, skip that character.
      * @param errorThrow When encountering invalid encoding, throw an exception if
      * this parameter is true, or replace it with U+FFFD (replacement
      * character) if this parameter is false.
      * @throws NullPointerException The parameter {@code str} is null.
+     * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
+     * than 0 or greater than {@code str} 's length, or {@code str} 's
+     * length minus {@code offset} is less than {@code length}.
      */
     public CharacterReader(
       String str,

@@ -117,11 +117,12 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
  * <i>str</i>: The parameter  <i>str</i>
  is a text string.
 
- * <i>offset</i>: The parameter  <i>offset</i>
- is a 32-bit signed integer.
+ * <i>offset</i>: An index, starting at 0, showing where the desired portion of  <i>str</i>
+ begins.
 
- * <i>length</i>: The parameter  <i>length</i>
- is a 32-bit signed integer.
+ * <i>length</i>: The length, in code units, of the desired portion of  <i>str</i>
+ (but not more than  <i>str</i>
+ 's length).
 
  * <i>skipByteOrderMark</i>: If true and the first character in the string portion is U+FEFF, skip that character.
 
@@ -132,6 +133,15 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
  * System.ArgumentNullException:
 The parameter  <i>str</i>
  is null.
+
+ * System.ArgumentException:
+Either  <i>offset</i>
+ or  <i>length</i>
+ is less than 0 or greater than  <i>str</i>
+ 's length, or  <i>str</i>
+ 's length minus  <i>offset</i>
+ is less than  <i>length</i>
+.
 
 <a id="Void_ctor_System_IO_Stream"></a>
 ### CharacterReader Constructor

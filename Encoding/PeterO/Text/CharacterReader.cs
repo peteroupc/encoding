@@ -437,8 +437,10 @@ namespace PeterO.Text {
           c2 = this.stream.ReadByte();
           if (c2 >= 0x01 && c2 <= 0x7f) {
             // 0 NZA, so UTF-16BE
-            var newReader = new Utf16Reader(this.stream, true,
-  this.errorThrow);
+            var newReader = new Utf16Reader(
+              this.stream,
+              true,
+              this.errorThrow);
             this.reader = newReader;
             return c2;
           } else if (c2 == 0) {
@@ -447,13 +449,17 @@ namespace PeterO.Text {
             c4 = this.stream.ReadByte();
             if (c3 == 0 && c4 >= 0x01 && c4 <= 0x7f) {
               // 0 0 0 NZA
-              this.reader = new Utf32Reader(this.stream, true,
-  this.errorThrow);
+              this.reader = new Utf32Reader(
+                this.stream,
+                true,
+                this.errorThrow);
               return c4;
             } else if (c3 == 0xfe && c4 == 0xff) {
               // 0 0 FE FF
-              this.reader = new Utf32Reader(this.stream, true,
-  this.errorThrow);
+              this.reader = new Utf32Reader(
+                this.stream,
+                true,
+                this.errorThrow);
               return this.reader.ReadChar();
             } else {
               // 0 0 ...
@@ -522,8 +528,10 @@ namespace PeterO.Text {
           c2 = this.stream.ReadByte();
           if (c2 >= 0x01 && c2 <= 0x7f) {
             // 0 NZA, so UTF-16BE
-            var newReader = new Utf16Reader(this.stream, true,
-  this.errorThrow);
+            var newReader = new Utf16Reader(
+              this.stream,
+              true,
+              this.errorThrow);
             this.reader = newReader;
             return c2;
           } else {

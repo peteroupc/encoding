@@ -134,7 +134,7 @@ private Encodings() {
      * input} is null.
      */
     public static String DecodeToString(
-ICharacterEncoding encoding,
+      ICharacterEncoding encoding,
       IByteReader input) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
@@ -167,7 +167,7 @@ ICharacterEncoding encoding,
      * null.
      */
     public static String DecodeToString(
-ICharacterEncoding enc,
+      ICharacterEncoding enc,
       InputStream input) {
       if (enc == null) {
         throw new NullPointerException("enc");
@@ -202,7 +202,7 @@ ICharacterEncoding enc,
      * null.
      */
     public static String DecodeToString(
-ICharacterEncoding enc,
+      ICharacterEncoding enc,
       byte[] bytes) {
       if (enc == null) {
         throw new NullPointerException("enc");
@@ -246,7 +246,7 @@ ICharacterEncoding enc,
      * null.
      */
     public static String DecodeToString(
-ICharacterEncoding enc,
+      ICharacterEncoding enc,
       byte[] bytes,
       int offset,
       int length) {
@@ -295,7 +295,7 @@ ICharacterEncoding enc,
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static byte[] EncodeToBytes(
-ICharacterInput input,
+      ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
@@ -326,7 +326,7 @@ ICharacterInput input,
      * is null.
      */
     public static byte[] EncodeToBytes(
-ICharacterInput input,
+      ICharacterInput input,
       ICharacterEncoder encoder) {
       return EncodeToBytes(input, encoder, false);
     }
@@ -354,7 +354,7 @@ ICharacterInput input,
      * is null.
      */
     public static byte[] EncodeToBytes(
-ICharacterInput input,
+      ICharacterInput input,
       ICharacterEncoder encoder,
       boolean htmlFallback) {
       if (encoder == null) {
@@ -407,7 +407,7 @@ ICharacterInput input,
      * null.
      */
     public static byte[] EncodeToBytes(
-String str,
+      String str,
       ICharacterEncoding enc) {
       if (str == null) {
         throw new NullPointerException("str");
@@ -444,7 +444,7 @@ String str,
      * null.
      */
     public static byte[] EncodeToBytes(
-String str,
+      String str,
       ICharacterEncoding enc,
       boolean htmlFallback) {
       if (str == null) {
@@ -481,7 +481,7 @@ String str,
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static void EncodeToWriter(
-ICharacterInput input,
+      ICharacterInput input,
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
@@ -513,7 +513,7 @@ ICharacterInput input,
      * is null.
      */
     public static void EncodeToWriter(
-ICharacterInput input,
+      ICharacterInput input,
       ICharacterEncoder encoder,
       IWriter writer) {
       if (encoder == null) {
@@ -562,7 +562,7 @@ ICharacterInput input,
      * null.
      */
     public static void EncodeToWriter(
-String str,
+      String str,
       ICharacterEncoding enc,
       IWriter writer) {
       if (str == null) {
@@ -596,7 +596,7 @@ String str,
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static void EncodeToWriter(
-ICharacterInput input,
+      ICharacterInput input,
       ICharacterEncoding encoding,
       OutputStream output) throws java.io.IOException {
       if (encoding == null) {
@@ -628,7 +628,7 @@ ICharacterInput input,
      * is null.
      */
     public static void EncodeToWriter(
-ICharacterInput input,
+      ICharacterInput input,
       ICharacterEncoder encoder,
       OutputStream output) throws java.io.IOException {
       IWriter writer = DataIO.ToWriter(output);
@@ -659,7 +659,7 @@ ICharacterInput input,
      * null.
      */
     public static void EncodeToWriter(
-String str,
+      String str,
       ICharacterEncoding enc,
       OutputStream output) throws java.io.IOException {
       if (str == null) {
@@ -694,7 +694,7 @@ String str,
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static ICharacterInput GetDecoderInput(
-ICharacterEncoding encoding,
+      ICharacterEncoding encoding,
       IByteReader stream) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
@@ -729,7 +729,7 @@ ICharacterEncoding encoding,
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static ICharacterInput GetDecoderInput(
-ICharacterEncoding encoding,
+      ICharacterEncoding encoding,
       InputStream input) {
       if (
         encoding == null) {
@@ -761,7 +761,7 @@ ICharacterEncoding encoding,
      * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInputSkipBom(
-ICharacterEncoding encoding,
+      ICharacterEncoding encoding,
       IByteReader stream) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
@@ -787,7 +787,7 @@ ICharacterEncoding encoding,
      * @return An ICharacterInput object.
      */
     public static ICharacterInput GetDecoderInputSkipBom(
-ICharacterEncoding encoding,
+      ICharacterEncoding encoding,
       InputStream input) {
       return EncoderAlgorithms.DecodeAlgorithmInput (
           DataIO.ToReader(input),
@@ -1539,7 +1539,7 @@ ValueCharsetAliases.get(name) :
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
     public static byte[] StringToBytes(
-ICharacterEncoding encoding,
+      ICharacterEncoding encoding,
       String str) {
       if (encoding == null) {
         throw new NullPointerException("encoding");
@@ -1571,7 +1571,7 @@ ICharacterEncoding encoding,
      * is null.
      */
     public static byte[] StringToBytes(
-ICharacterEncoder encoder,
+      ICharacterEncoder encoder,
       String str) {
       if (encoder == null) {
         throw new NullPointerException("encoder");
@@ -1640,7 +1640,7 @@ String str) {
      * @throws NullPointerException The parameter {@code str} is null.
      */
     public static ICharacterInput StringToInput(
-String str,
+      String str,
       int offset,
       int length) {
       if (str == null) {

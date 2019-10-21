@@ -154,10 +154,10 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> or <paramref name='input'/> is null.</exception>
     public static string DecodeToString(
-  #if !NET20
-this
-#endif
-ICharacterEncoding encoding,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoding encoding,
       IByteReader input) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -190,10 +190,10 @@ ICharacterEncoding encoding,
     /// <exception cref='ArgumentNullException'>The parameter "encoding" or
     /// <paramref name='input'/> is null.</exception>
     public static string DecodeToString(
-  #if !NET20
-this
-#endif
-ICharacterEncoding enc,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoding enc,
       Stream input) {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
@@ -228,10 +228,10 @@ ICharacterEncoding enc,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='enc'/> or <paramref name='bytes'/> is null.</exception>
     public static string DecodeToString(
-  #if !NET20
-this
-#endif
-ICharacterEncoding enc,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoding enc,
       byte[] bytes) {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
@@ -279,10 +279,10 @@ ICharacterEncoding enc,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='enc'/> or <paramref name='bytes'/> is null.</exception>
     public static string DecodeToString(
-  #if !NET20
-this
-#endif
-ICharacterEncoding enc,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoding enc,
       byte[] bytes,
       int offset,
       int length) {
@@ -334,10 +334,10 @@ ICharacterEncoding enc,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static byte[] EncodeToBytes(
-  #if !NET20
-this
-#endif
-ICharacterInput input,
+      #if !NET20
+      this
+      #endif
+      ICharacterInput input,
       ICharacterEncoding encoding) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -369,10 +369,10 @@ ICharacterInput input,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='input'/> is null.</exception>
     public static byte[] EncodeToBytes(
-  #if !NET20
-this
-#endif
-ICharacterInput input,
+      #if !NET20
+      this
+      #endif
+      ICharacterInput input,
       ICharacterEncoder encoder) {
       return EncodeToBytes(input, encoder, false);
     }
@@ -402,10 +402,10 @@ ICharacterInput input,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='input'/> is null.</exception>
     public static byte[] EncodeToBytes(
-  #if !NET20
-this
-#endif
-ICharacterInput input,
+      #if !NET20
+      this
+      #endif
+      ICharacterInput input,
       ICharacterEncoder encoder,
       bool htmlFallback) {
       if (encoder == null) {
@@ -457,10 +457,10 @@ ICharacterInput input,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> or <paramref name='enc'/> is null.</exception>
     public static byte[] EncodeToBytes(
-  #if !NET20
-this
-#endif
-string str,
+      #if !NET20
+      this
+      #endif
+      string str,
       ICharacterEncoding enc) {
       if (str == null) {
         throw new ArgumentNullException(nameof(str));
@@ -497,10 +497,10 @@ string str,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> or <paramref name='enc'/> is null.</exception>
     public static byte[] EncodeToBytes(
-  #if !NET20
-this
-#endif
-string str,
+      #if !NET20
+      this
+      #endif
+      string str,
       ICharacterEncoding enc,
       bool htmlFallback) {
       if (str == null) {
@@ -540,10 +540,10 @@ string str,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static void EncodeToWriter(
-  #if !NET20
-this
-#endif
-ICharacterInput input,
+      #if !NET20
+      this
+      #endif
+      ICharacterInput input,
       ICharacterEncoding encoding,
       IWriter writer) {
       if (encoding == null) {
@@ -576,10 +576,10 @@ ICharacterInput input,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='input'/> is null.</exception>
     public static void EncodeToWriter(
-  #if !NET20
-this
-#endif
-ICharacterInput input,
+      #if !NET20
+      this
+      #endif
+      ICharacterInput input,
       ICharacterEncoder encoder,
       IWriter writer) {
       if (encoder == null) {
@@ -629,10 +629,10 @@ ICharacterInput input,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> or <paramref name='enc'/> is null.</exception>
     public static void EncodeToWriter(
-  #if !NET20
-this
-#endif
-string str,
+      #if !NET20
+      this
+      #endif
+      string str,
       ICharacterEncoding enc,
       IWriter writer) {
       if (str == null) {
@@ -668,10 +668,10 @@ string str,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static void EncodeToWriter(
-  #if !NET20
-this
-#endif
-ICharacterInput input,
+      #if !NET20
+      this
+      #endif
+      ICharacterInput input,
       ICharacterEncoding encoding,
       Stream output) {
       if (encoding == null) {
@@ -703,10 +703,10 @@ ICharacterInput input,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='input'/> is null.</exception>
     public static void EncodeToWriter(
-  #if !NET20
-this
-#endif
-ICharacterInput input,
+      #if !NET20
+      this
+      #endif
+      ICharacterInput input,
       ICharacterEncoder encoder,
       Stream output) {
       IWriter writer = DataIO.ToWriter(output);
@@ -737,10 +737,10 @@ ICharacterInput input,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> or <paramref name='enc'/> is null.</exception>
     public static void EncodeToWriter(
-  #if !NET20
-this
-#endif
-string str,
+      #if !NET20
+      this
+      #endif
+      string str,
       ICharacterEncoding enc,
       Stream output) {
       if (str == null) {
@@ -776,10 +776,10 @@ string str,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static ICharacterInput GetDecoderInput(
-  #if !NET20
-this
-#endif
-ICharacterEncoding encoding,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoding encoding,
       IByteReader stream) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -815,10 +815,10 @@ ICharacterEncoding encoding,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static ICharacterInput GetDecoderInput(
-  #if !NET20
-this
-#endif
-ICharacterEncoding encoding,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoding encoding,
       Stream input) {
       if (
         encoding == null) {
@@ -851,10 +851,10 @@ ICharacterEncoding encoding,
     /// characters.</param>
     /// <returns>An ICharacterInput object.</returns>
     public static ICharacterInput GetDecoderInputSkipBom(
-  #if !NET20
-this
-#endif
-ICharacterEncoding encoding,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoding encoding,
       IByteReader stream) {
       return EncoderAlgorithms.DecodeAlgorithmInput(stream, encoding);
     }
@@ -880,10 +880,10 @@ ICharacterEncoding encoding,
     /// characters.</param>
     /// <returns>An ICharacterInput object.</returns>
     public static ICharacterInput GetDecoderInputSkipBom(
-  #if !NET20
-this
-#endif
-ICharacterEncoding encoding,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoding encoding,
       Stream input) {
       return EncoderAlgorithms.DecodeAlgorithmInput (
           DataIO.ToReader(input),
@@ -1679,10 +1679,10 @@ ValueCharsetAliases[name] :
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static byte[] StringToBytes(
-  #if !NET20
-this
-#endif
-ICharacterEncoding encoding,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoding encoding,
       string str) {
       if (encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
@@ -1716,10 +1716,10 @@ ICharacterEncoding encoding,
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoder'/> or <paramref name='str'/> is null.</exception>
     public static byte[] StringToBytes(
-  #if !NET20
-this
-#endif
-ICharacterEncoder encoder,
+      #if !NET20
+      this
+      #endif
+      ICharacterEncoder encoder,
       string str) {
       if (encoder == null) {
         throw new ArgumentNullException(nameof(encoder));
@@ -1798,10 +1798,10 @@ string str) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> is null.</exception>
     public static ICharacterInput StringToInput(
-  #if !NET20
-this
-#endif
-string str,
+      #if !NET20
+      this
+      #endif
+      string str,
       int offset,
       int length) {
       if (str == null) {

@@ -59,10 +59,10 @@ byte[] bytes) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
     public static IReader ToReader(
-  #if !NET20
-this
-#endif
-byte[] bytes,
+      #if !NET20
+      this
+      #endif
+      byte[] bytes,
       int offset,
       int length) {
       if (bytes == null) {
@@ -141,10 +141,10 @@ Stream input) {
     /// name='bytes'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
-  #if !NET20
-this
-#endif
-byte[] bytes,
+      #if !NET20
+      this
+      #endif
+      byte[] bytes,
       int offset,
       int length) {
       return (IByteReader)ToReader(bytes, offset, length);

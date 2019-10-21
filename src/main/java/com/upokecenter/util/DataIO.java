@@ -56,7 +56,7 @@ byte[] bytes) {
      * @throws NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(
-byte[] bytes,
+      byte[] bytes,
       int offset,
       int length) {
       if (bytes == null) {
@@ -127,7 +127,7 @@ InputStream input) {
  */
 @Deprecated
     public static IByteReader ToByteReader(
-byte[] bytes,
+      byte[] bytes,
       int offset,
       int length) {
       return (IByteReader)ToReader(bytes, offset, length);

@@ -564,7 +564,7 @@ namespace EncodingTest {
       "macintosh",
     };
 
-    public static void TestUtfRoundTrip (
+    public static void TestUtfRoundTrip(
       ICharacterEncoding enc) {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
@@ -682,6 +682,28 @@ namespace EncodingTest {
         }
       }
     }
+
+[Test]
+public void TestCharacterReaderUtf8() {
+ byte[] bytes;
+ bytes = new byte[] { 0xef, 0xbb, 0xbf, 0x30, 0x31, 0x32 };
+ using (var ms = new MemoryStream(bytes)) {
+   var cr = new CharacterReader(ms, 0, true, true);
+   Assert.AreEqual(0xfeff, cr.ReadChar());
+   Assert.AreEqual(0x30, cr.ReadChar());
+   Assert.AreEqual(0x31, cr.ReadChar());
+   Assert.AreEqual(0x32, cr.ReadChar());
+   Assert.AreEqual(-1, cr.ReadChar());
+ }
+ using (var ms = new MemoryStream(bytes)) {
+   var cr = new CharacterReader(ms, 0, true, false);
+   Assert.AreEqual(0x30, cr.ReadChar());
+   Assert.AreEqual(0x31, cr.ReadChar());
+   Assert.AreEqual(0x32, cr.ReadChar());
+   Assert.AreEqual(-1, cr.ReadChar());
+ }
+}
+
     [Test]
     public void TestGBK() {
       TestCJKRoundTrip("gbk");
@@ -724,7 +746,7 @@ namespace EncodingTest {
       IByteReader reader = DataIO.ToReader(new byte[] { 0, 0, 0, 0 });
       Assert.AreEqual(-2, decoder.ReadChar(reader));
       Assert.AreEqual(-1, decoder.ReadChar(reader));
-      TestUtfRoundTrip (
+      TestUtfRoundTrip(
         encoder,
         Encodings.GetEncoding("utf-8", true).GetDecoder());
     }
@@ -852,11 +874,11 @@ namespace EncodingTest {
           stringTemp);
       }
       bytes = new byte[] { 0xfe, 0xff };
-      Assert.AreEqual (
+      Assert.AreEqual(
         String.Empty,
         Encodings.DecodeToString(enc, bytes));
       bytes = new byte[] { 0xff, 0xfe };
-      Assert.AreEqual (
+      Assert.AreEqual(
         String.Empty,
         Encodings.DecodeToString(enc, bytes));
       bytes = new byte[] { 0, 0x41 };
@@ -892,7 +914,7 @@ namespace EncodingTest {
     public static void TestUtf7One(string input, string expect) {
       {
         object objectTemp = expect;
-        object objectTemp2 = Encodings.DecodeToString (
+        object objectTemp2 = Encodings.DecodeToString(
             Encodings.GetEncoding("utf-7", true),
             Encodings.EncodeToBytes(input, Encodings.UTF8));
         Assert.AreEqual(objectTemp, objectTemp2);
@@ -906,7 +928,7 @@ namespace EncodingTest {
       TestUtf7One(",", ",");
       TestUtf7One("\u0001", "\ufffd");
       TestUtf7One("\u007f", "\ufffd");
-      TestUtf7One (
+      TestUtf7One(
         "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?",
         "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?");
       TestUtf7One("x+--", "x+-");

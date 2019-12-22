@@ -588,7 +588,7 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
       "macintosh",
     };
 
-    public static void TestUtfRoundTrip (
+    public static void TestUtfRoundTrip(
       ICharacterEncoding enc) {
       if (enc == null) {
         throw new NullPointerException("enc");
@@ -707,6 +707,44 @@ private int propVarposition;
         }
       }
     }
+
+@Test
+public void TestCharacterReaderUtf8() {
+ byte[] bytes;
+ bytes = new byte[] { (byte)0xef, (byte)0xbb, (byte)0xbf, 0x30, 0x31, 0x32 };
+ {
+   java.io.ByteArrayInputStream ms = null;
+try {
+ms = new java.io.ByteArrayInputStream(bytes);
+
+   CharacterReader cr = new CharacterReader(ms, 0, true, true);
+   Assert.assertEquals(0xfeff, cr.ReadChar());
+   Assert.assertEquals(0x30, cr.ReadChar());
+   Assert.assertEquals(0x31, cr.ReadChar());
+   Assert.assertEquals(0x32, cr.ReadChar());
+   Assert.assertEquals(-1, cr.ReadChar());
+}
+finally {
+try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
+}
+}
+ {
+   java.io.ByteArrayInputStream ms = null;
+try {
+ms = new java.io.ByteArrayInputStream(bytes);
+
+   CharacterReader cr = new CharacterReader(ms, 0, true, false);
+   Assert.assertEquals(0x30, cr.ReadChar());
+   Assert.assertEquals(0x31, cr.ReadChar());
+   Assert.assertEquals(0x32, cr.ReadChar());
+   Assert.assertEquals(-1, cr.ReadChar());
+}
+finally {
+try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
+}
+}
+}
+
     @Test
     public void TestGBK() {
       TestCJKRoundTrip("gbk");
@@ -749,7 +787,7 @@ private int propVarposition;
       IByteReader reader = DataIO.ToReader(new byte[] { 0, 0, 0, 0 });
       Assert.assertEquals(-2, decoder.ReadChar(reader));
       Assert.assertEquals(-1, decoder.ReadChar(reader));
-      TestUtfRoundTrip (
+      TestUtfRoundTrip(
         encoder,
         Encodings.GetEncoding("utf-8", true).GetDecoder());
     }
@@ -880,11 +918,11 @@ private int propVarposition;
           stringTemp);
       }
       bytes = new byte[] { (byte)0xfe, (byte)0xff };
-      Assert.assertEquals (
+      Assert.assertEquals(
         "",
         Encodings.DecodeToString(enc, bytes));
       bytes = new byte[] { (byte)0xff, (byte)0xfe };
-      Assert.assertEquals (
+      Assert.assertEquals(
         "",
         Encodings.DecodeToString(enc, bytes));
       bytes = new byte[] { 0, 0x41 };
@@ -920,7 +958,7 @@ private int propVarposition;
     public static void TestUtf7One(String input, String expect) {
       {
         Object objectTemp = expect;
-        Object objectTemp2 = Encodings.DecodeToString (
+        Object objectTemp2 = Encodings.DecodeToString(
             Encodings.GetEncoding("utf-7", true),
             Encodings.EncodeToBytes(input, Encodings.UTF8));
         Assert.assertEquals(objectTemp, objectTemp2);
@@ -934,7 +972,7 @@ private int propVarposition;
       TestUtf7One(",", ",");
       TestUtf7One("\u0001", "\ufffd");
       TestUtf7One("\u007f", "\ufffd");
-      TestUtf7One (
+      TestUtf7One(
         "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?",
         "\r\n\t '!\"#'()$-%@[]^&=<>;*_`{}./:|?");
       TestUtf7One("x+--", "x+-");

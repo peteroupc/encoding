@@ -286,9 +286,9 @@ Initializes a new instance of the <code>CharacterReader</code> class.
  replaces those byte sequences with replacement characters (U+FFFD)
  as the stream is read.
 
-* <code>dontSkipUtf8Bom</code> - If the stream is detected as UTF-8 and this parameter
- is <code>true</code>, won't skip the BOM character if it occurs at the
- start of the stream.
+* <code>dontSkipUtf8Bom</code> - If the stream is detected as UTF-8 (including when
+  "mode" is 0) and this parameter is <code>true</code>, won't skip the BOM
+ character if it occurs at the start of the stream.
 
 **Throws:**
 

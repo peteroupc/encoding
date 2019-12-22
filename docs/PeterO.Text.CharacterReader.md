@@ -255,7 +255,7 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>errorThrow</i>: If true, will throw an exception if invalid byte sequences (in the detected encoding) are found in the byte stream. If false, replaces those byte sequences with replacement characters (U+FFFD) as the stream is read.
 
- * <i>dontSkipUtf8Bom</i>: If the stream is detected as UTF-8 and this parameter is  `true` , won't skip the BOM character if it occurs at the start of the stream.
+ * <i>dontSkipUtf8Bom</i>: If the stream is detected as UTF-8 (including when "mode" is 0) and this parameter is  `true` , won't skip the BOM character if it occurs at the start of the stream.
 
 <b>Exceptions:</b>
 

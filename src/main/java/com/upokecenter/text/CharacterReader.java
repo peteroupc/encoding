@@ -229,9 +229,9 @@ import java.io.*;
      * (in the detected encoding) are found in the byte stream. If false,
      * replaces those byte sequences with replacement characters (U+FFFD)
      * as the stream is read.
-     * @param dontSkipUtf8Bom If the stream is detected as UTF-8 and this parameter
-     * is {@code true}, won't skip the BOM character if it occurs at the
-     * start of the stream.
+     * @param dontSkipUtf8Bom If the stream is detected as UTF-8 (including when
+     *  "mode" is 0) and this parameter is {@code true}, won't skip the BOM
+     * character if it occurs at the start of the stream.
      * @throws NullPointerException The parameter {@code stream} is null.
      */
     public CharacterReader(
@@ -551,8 +551,9 @@ import java.io.*;
           // UTF-8 only
           utf8reader = new Utf8Reader(this.stream, this.errorThrow);
           this.reader = utf8reader;
+          utf8reader.Unget(c1);
           c1 = utf8reader.ReadChar();
-          if (c1 == 0xfeff) {
+          if (c1 == 0xfeff && !this.dontSkipUtf8Bom) {
             // Skip BOM
             c1 = utf8reader.ReadChar();
           }

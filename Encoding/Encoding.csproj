@@ -12,6 +12,10 @@
 A portable library for .NET that implements character encodings used in Web pages and email.
     </Description>
     <PackageReleaseNotes>
+Version 0.6.0:
+
+- Bug fixes
+
 Version 0.5.1:
 
 - Fixed issue in .NET 2.0 and 4.0 assemblies where resources were inadvertently left out of build.
@@ -26,7 +30,7 @@ Version 0.5.0:
     </PackageReleaseNotes>
     <Copyright>Written by Peter O. in 2015-2018.  Any copyright is released to the Public Domain.</Copyright>
     <PackOnBuild>true</PackOnBuild>
-    <Version>0.5.1</Version>
+    <Version>0.6.0</Version>
     <Summary>A portable library for .NET that implements character encodings used in Web pages and email.</Summary>
     <PackageTags>text, encoding, strings</PackageTags>
     <SignAssembly>true</SignAssembly>
@@ -44,5 +48,5 @@ Version 0.5.0:
     <EmbeddedResource Condition=' &apos;$(EnableDefaultEmbeddedResourceItems)&apos; == &apos;true&apos; ' Update='PeterO.Text.Encoders.AppResources.resx'>
       <LogicalName>PeterO.Text.Encoders.AppResources.resources</LogicalName>
     </EmbeddedResource>
-  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.1.118'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.FxCopAnalyzers' PrivateAssets='All' Version='2.9.8'/></ItemGroup>
+  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.113'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.FxCopAnalyzers' PrivateAssets='All' Version='2.9.8'/></ItemGroup>
    </Project>

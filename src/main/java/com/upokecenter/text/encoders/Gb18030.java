@@ -7,7 +7,7 @@ package com.upokecenter.text.encoders;
   public final class Gb18030 {
 private Gb18030() {
 }
-    private static final short[] table = new AppResources ("Resources")
+    private static final short[] table = new AppResources("Resources")
     .GetShortArray ("Gb18030");
     private static final int[] indextable = {
       19970, 20496, 0, 256, 20497, 20833, 256, 256, 20835, 21278, 512, 256,
@@ -49,7 +49,7 @@ private Gb18030() {
       if (codepoint < 164 || codepoint > 65509) {
         return -1;
       }
-      short cps = unchecked ((short)(codepoint & 0xffff));
+      short cps = ((short)(codepoint & 0xffff));
       for (int i = 0; i < indextable.length; i += 4) {
         if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
           int startindex = indextable[i + 2];

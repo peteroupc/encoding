@@ -231,7 +231,7 @@ import com.upokecenter.text.*;
       if (fallbackEncoding == null) {
         throw new NullPointerException("fallbackEncoding");
       }
-      DecodeWithFallbackDecoder decoder = new DecodeWithFallbackDecoder (
+      DecodeWithFallbackDecoder decoder = new DecodeWithFallbackDecoder(
         fallbackEncoding);
       return Encodings.GetDecoderInput(decoder, transform);
     }

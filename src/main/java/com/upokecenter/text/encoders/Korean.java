@@ -7,7 +7,7 @@ package com.upokecenter.text.encoders;
   public final class Korean {
 private Korean() {
 }
-    private static final short[] table = new AppResources ("Resources")
+    private static final short[] table = new AppResources("Resources")
     .GetShortArray ("Korean");
     private static final int[] indextable = {
       44034, 44378, 0, 256, 44379, 44702, 256, 256, 44703, 45002, 512, 256,
@@ -49,7 +49,7 @@ private Korean() {
       if (codepoint < 161 || codepoint > 65510) {
         return -1;
       }
-      short cps = unchecked ((short)(codepoint & 0xffff));
+      short cps = ((short)(codepoint & 0xffff));
       for (int i = 0; i < indextable.length; i += 4) {
         if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
           int startindex = indextable[i + 2];

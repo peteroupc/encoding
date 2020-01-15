@@ -7,7 +7,7 @@ package com.upokecenter.text.encoders;
   public final class Big5 {
 private Big5() {
 }
-    private static final int[] table = new AppResources ("Resources")
+    private static final int[] table = new AppResources("Resources")
     .GetIntArray ("Big5");
     private static final int[] indextable = {
       167, 65509, 5024, 256, 711, 65370, 5280, 256, 19981, 31435, 5536, 256,

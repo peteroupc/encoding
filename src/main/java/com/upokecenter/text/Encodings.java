@@ -142,7 +142,7 @@ private Encodings() {
       if (input == null) {
         throw new NullPointerException("input");
       }
-      return InputToString (
+      return InputToString(
           GetDecoderInput(encoding, input));
     }
 
@@ -175,7 +175,7 @@ private Encodings() {
       if (input == null) {
         throw new NullPointerException("input");
       }
-      return InputToString (
+      return InputToString(
           GetDecoderInput(enc, DataIO.ToReader(input)));
     }
 
@@ -415,7 +415,7 @@ private Encodings() {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
-      return EncodeToBytes (
+      return EncodeToBytes(
           new CharacterReader(str),
           enc.GetEncoder(),
           false);
@@ -453,7 +453,7 @@ private Encodings() {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
-      return EncodeToBytes (
+      return EncodeToBytes(
           new CharacterReader(str),
           enc.GetEncoder(),
           htmlFallback);
@@ -668,7 +668,7 @@ private Encodings() {
       if (enc == null) {
         throw new NullPointerException("enc");
       }
-      EncodeToWriter (
+      EncodeToWriter(
         new CharacterReader(str),
         enc,
         DataIO.ToWriter(output));
@@ -735,7 +735,7 @@ private Encodings() {
         encoding == null) {
         throw new NullPointerException("encoding");
       }
-      return new DecoderToInputClass (
+      return new DecoderToInputClass(
           encoding.GetDecoder(),
           DataIO.ToReader(input));
     }
@@ -789,7 +789,7 @@ private Encodings() {
     public static ICharacterInput GetDecoderInputSkipBom(
       ICharacterEncoding encoding,
       InputStream input) {
-      return EncoderAlgorithms.DecodeAlgorithmInput (
+      return EncoderAlgorithms.DecodeAlgorithmInput(
           DataIO.ToReader(input),
           encoding);
     }
@@ -1579,7 +1579,7 @@ ValueCharsetAliases.get(name) :
       if (str == null) {
         throw new NullPointerException("str");
       }
-      return EncodeToBytes (
+      return EncodeToBytes(
           new CharacterReader(str),
           encoder);
     }

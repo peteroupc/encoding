@@ -7,7 +7,7 @@ package com.upokecenter.text.encoders;
   public final class Jis0212 {
 private Jis0212() {
 }
-    private static final short[] table = new AppResources ("Resources")
+    private static final short[] table = new AppResources("Resources")
     .GetShortArray ("Jis0212");
     private static final int[] indextable = {
       161, 65374, 0, 256, 198, 1119, 512, 256, 192, 501, 768, 256, 378, 382,
@@ -26,7 +26,7 @@ private Jis0212() {
       if (codepoint < 161 || codepoint > 65374) {
         return -1;
       }
-      short cps = unchecked ((short)(codepoint & 0xffff));
+      short cps = ((short)(codepoint & 0xffff));
       for (int i = 0; i < indextable.length; i += 4) {
         if (codepoint >= indextable[i] && codepoint <= indextable[i + 1]) {
           int startindex = indextable[i + 2];

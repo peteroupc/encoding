@@ -37,8 +37,8 @@ namespace EncodingTest {
       {
         object objectTemp = ValueExpected;
         object objectTemp2 = Encodings.DecodeToString(
-          charset,
-          bytes);
+            charset,
+            bytes);
         Assert.AreEqual(objectTemp, objectTemp2);
       }
     }
@@ -395,8 +395,8 @@ namespace EncodingTest {
       bytes = new byte[] { 0x90, 0xa1, 0xa1 };
       {
         string stringTemp = Encodings.DecodeToString(
-          charset,
-          bytes);
+            charset,
+            bytes);
         Assert.AreEqual(
           "\ufffd\u3000",
           stringTemp);
@@ -525,7 +525,7 @@ namespace EncodingTest {
         }
         builder.Append("ENDCODEPAGE\n");
         var cpe = new
-        CodePageEncoding(Encodings.StringToInput(builder.ToString()));
+CodePageEncoding(Encodings.StringToInput(builder.ToString()));
         TestSingleByteRoundTrip(cpe);
       }
     }
@@ -683,26 +683,26 @@ namespace EncodingTest {
       }
     }
 
-[Test]
-public void TestCharacterReaderUtf8() {
- byte[] bytes;
- bytes = new byte[] { 0xef, 0xbb, 0xbf, 0x30, 0x31, 0x32 };
- using (var ms = new MemoryStream(bytes)) {
-   var cr = new CharacterReader(ms, 0, true, true);
-   Assert.AreEqual(0xfeff, cr.ReadChar());
-   Assert.AreEqual(0x30, cr.ReadChar());
-   Assert.AreEqual(0x31, cr.ReadChar());
-   Assert.AreEqual(0x32, cr.ReadChar());
-   Assert.AreEqual(-1, cr.ReadChar());
- }
- using (var ms = new MemoryStream(bytes)) {
-   var cr = new CharacterReader(ms, 0, true, false);
-   Assert.AreEqual(0x30, cr.ReadChar());
-   Assert.AreEqual(0x31, cr.ReadChar());
-   Assert.AreEqual(0x32, cr.ReadChar());
-   Assert.AreEqual(-1, cr.ReadChar());
- }
-}
+    [Test]
+    public void TestCharacterReaderUtf8() {
+      byte[] bytes;
+      bytes = new byte[] { 0xef, 0xbb, 0xbf, 0x30, 0x31, 0x32 };
+      using (var ms = new MemoryStream(bytes)) {
+        var cr = new CharacterReader(ms, 0, true, true);
+        Assert.AreEqual(0xfeff, cr.ReadChar());
+        Assert.AreEqual(0x30, cr.ReadChar());
+        Assert.AreEqual(0x31, cr.ReadChar());
+        Assert.AreEqual(0x32, cr.ReadChar());
+        Assert.AreEqual(-1, cr.ReadChar());
+      }
+      using (var ms = new MemoryStream(bytes)) {
+        var cr = new CharacterReader(ms, 0, true, false);
+        Assert.AreEqual(0x30, cr.ReadChar());
+        Assert.AreEqual(0x31, cr.ReadChar());
+        Assert.AreEqual(0x32, cr.ReadChar());
+        Assert.AreEqual(-1, cr.ReadChar());
+      }
+    }
 
     [Test]
     public void TestGBK() {

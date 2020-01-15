@@ -2917,7 +2917,7 @@ import com.upokecenter.text.*;
     @Test
     public void TestResolveAliasForEmail() {
       Assert.assertEquals("", Encodings.ResolveAliasForEmail(null));
-      Assert.assertEquals (
+      Assert.assertEquals(
         "",
         Encodings.ResolveAliasForEmail(""));
       {
@@ -2963,7 +2963,7 @@ import com.upokecenter.text.*;
           stringTemp);
       }
       {
-        String strTemp2 = Encodings.ResolveAliasForEmail (
+        String strTemp2 = Encodings.ResolveAliasForEmail(
             "replacement");
         Assert.assertEquals("", strTemp2);
       }

@@ -36,8 +36,8 @@ import com.upokecenter.text.*;
       {
         Object objectTemp = ValueExpected;
         Object objectTemp2 = Encodings.DecodeToString(
-          charset,
-          bytes);
+            charset,
+            bytes);
         Assert.assertEquals(objectTemp, objectTemp2);
       }
     }
@@ -418,8 +418,8 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
       bytes = new byte[] { (byte)0x90, (byte)0xa1, (byte)0xa1 };
       {
         String stringTemp = Encodings.DecodeToString(
-          charset,
-          bytes);
+            charset,
+            bytes);
         Assert.assertEquals(
           "\ufffd\u3000",
           stringTemp);
@@ -708,42 +708,42 @@ private int propVarposition;
       }
     }
 
-@Test
-public void TestCharacterReaderUtf8() {
- byte[] bytes;
- bytes = new byte[] { (byte)0xef, (byte)0xbb, (byte)0xbf, 0x30, 0x31, 0x32 };
- {
-   java.io.ByteArrayInputStream ms = null;
+    @Test
+    public void TestCharacterReaderUtf8() {
+      byte[] bytes;
+      bytes = new byte[] { (byte)0xef, (byte)0xbb, (byte)0xbf, 0x30, 0x31, 0x32 };
+      {
+        java.io.ByteArrayInputStream ms = null;
 try {
 ms = new java.io.ByteArrayInputStream(bytes);
 
-   CharacterReader cr = new CharacterReader(ms, 0, true, true);
-   Assert.assertEquals(0xfeff, cr.ReadChar());
-   Assert.assertEquals(0x30, cr.ReadChar());
-   Assert.assertEquals(0x31, cr.ReadChar());
-   Assert.assertEquals(0x32, cr.ReadChar());
-   Assert.assertEquals(-1, cr.ReadChar());
+        CharacterReader cr = new CharacterReader(ms, 0, true, true);
+        Assert.assertEquals(0xfeff, cr.ReadChar());
+        Assert.assertEquals(0x30, cr.ReadChar());
+        Assert.assertEquals(0x31, cr.ReadChar());
+        Assert.assertEquals(0x32, cr.ReadChar());
+        Assert.assertEquals(-1, cr.ReadChar());
 }
 finally {
 try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
 }
 }
- {
-   java.io.ByteArrayInputStream ms = null;
+      {
+        java.io.ByteArrayInputStream ms = null;
 try {
 ms = new java.io.ByteArrayInputStream(bytes);
 
-   CharacterReader cr = new CharacterReader(ms, 0, true, false);
-   Assert.assertEquals(0x30, cr.ReadChar());
-   Assert.assertEquals(0x31, cr.ReadChar());
-   Assert.assertEquals(0x32, cr.ReadChar());
-   Assert.assertEquals(-1, cr.ReadChar());
+        CharacterReader cr = new CharacterReader(ms, 0, true, false);
+        Assert.assertEquals(0x30, cr.ReadChar());
+        Assert.assertEquals(0x31, cr.ReadChar());
+        Assert.assertEquals(0x32, cr.ReadChar());
+        Assert.assertEquals(-1, cr.ReadChar());
 }
 finally {
 try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
 }
 }
-}
+    }
 
     @Test
     public void TestGBK() {

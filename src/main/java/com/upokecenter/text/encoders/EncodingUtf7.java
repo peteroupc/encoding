@@ -215,10 +215,10 @@ import com.upokecenter.text.*;
                 ++this.base64count;
                 if (this.base64count == 4) {
                   // Generate UTF-16 bytes
-                  this.appender.AppendByte (
+                  this.appender.AppendByte(
                     (this.base64value >> 16) & 0xff,
                     this.state);
-                  this.appender.AppendByte (
+                  this.appender.AppendByte(
                     (this.base64value >> 8) & 0xff,
                     this.state);
                   this.appender.AppendByte(this.base64value & 0xff,
@@ -245,10 +245,10 @@ import com.upokecenter.text.*;
                   }
                   case 3: {
                     this.base64value <<= 6;
-                    this.appender.AppendByte (
+                    this.appender.AppendByte(
                       (this.base64value >> 16) & 0xff,
                       this.state);
-                    this.appender.AppendByte (
+                    this.appender.AppendByte(
                       (this.base64value >> 8) & 0xff,
                       this.state);
                     if ((this.base64value & 0xff) != 0) {
@@ -365,7 +365,7 @@ import com.upokecenter.text.*;
         if (c <= 0xffff) {
           int byte1 = (c >> 8) & 0xff;
           int byte2 = c & 0xff;
-          ret += this.AppendBase64 (
+          ret += this.AppendBase64(
               new byte[] { (byte)byte1, (byte)byte2 },
               output);
         } else {

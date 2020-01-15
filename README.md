@@ -76,6 +76,10 @@ In C#.
 History
 -----------
 
+Version 0.6.0:
+
+- Bug fixes
+
 Version 0.5.1:
 
 - Fixed issue in .NET 2.0 and 4.0 assemblies where resources were inadvertently left out of build.

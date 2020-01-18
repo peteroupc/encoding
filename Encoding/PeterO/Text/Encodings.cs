@@ -165,7 +165,7 @@ namespace PeterO.Text {
       if (input == null) {
         throw new ArgumentNullException(nameof(input));
       }
-      return InputToString (
+      return InputToString(
           GetDecoderInput(encoding, input));
     }
 
@@ -201,7 +201,7 @@ namespace PeterO.Text {
       if (input == null) {
         throw new ArgumentNullException(nameof(input));
       }
-      return InputToString (
+      return InputToString(
           GetDecoderInput(enc, DataIO.ToReader(input)));
     }
 
@@ -468,7 +468,7 @@ namespace PeterO.Text {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
       }
-      return EncodeToBytes (
+      return EncodeToBytes(
           new CharacterReader(str),
           enc.GetEncoder(),
           false);
@@ -509,7 +509,7 @@ namespace PeterO.Text {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
       }
-      return EncodeToBytes (
+      return EncodeToBytes(
           new CharacterReader(str),
           enc.GetEncoder(),
           htmlFallback);
@@ -749,7 +749,7 @@ namespace PeterO.Text {
       if (enc == null) {
         throw new ArgumentNullException(nameof(enc));
       }
-      EncodeToWriter (
+      EncodeToWriter(
         new CharacterReader(str),
         enc,
         DataIO.ToWriter(output));
@@ -824,7 +824,7 @@ namespace PeterO.Text {
         encoding == null) {
         throw new ArgumentNullException(nameof(encoding));
       }
-      return new DecoderToInputClass (
+      return new DecoderToInputClass(
           encoding.GetDecoder(),
           DataIO.ToReader(input));
     }
@@ -885,7 +885,7 @@ namespace PeterO.Text {
       #endif
       ICharacterEncoding encoding,
       Stream input) {
-      return EncoderAlgorithms.DecodeAlgorithmInput (
+      return EncoderAlgorithms.DecodeAlgorithmInput(
           DataIO.ToReader(input),
           encoding);
     }
@@ -1482,7 +1482,7 @@ namespace PeterO.Text {
     /// <returns>A text string containing the characters read.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='reader'/> is null.</exception>
-    public static string InputToString (
+    public static string InputToString(
   #if !NET20
 this
 #endif
@@ -1727,7 +1727,7 @@ ValueCharsetAliases[name] :
       if (str == null) {
         throw new ArgumentNullException(nameof(str));
       }
-      return EncodeToBytes (
+      return EncodeToBytes(
           new CharacterReader(str),
           encoder);
     }
@@ -1753,7 +1753,7 @@ ValueCharsetAliases[name] :
     /// <returns>An ICharacterInput object.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> is null.</exception>
-    public static ICharacterInput StringToInput (
+    public static ICharacterInput StringToInput(
   #if !NET20
 this
 #endif

@@ -14,12 +14,12 @@ namespace EncodingTest {
       ICharacterEncoding charset = Encodings.GetEncoding("iso-2022-jp");
       bytes = new byte[] { 0x79, 0x31, 0x40, 0x40, 0x21, 0x5b, 0x26, 0x1e };
       str = "y1@@![&\u001e";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x67 };
       str = "g";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -27,7 +27,7 @@ namespace EncodingTest {
         0x1b, 0x28, 0x42, 0x47, 0x6b,
       };
       str = "^\u007bx0UBGk";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -35,7 +35,7 @@ namespace EncodingTest {
         0x4c, 0x47, 0x46, 0x5a,
       };
       str = "GQs\u007b}o\ufffd(HLGFZ";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -47,7 +47,7 @@ namespace EncodingTest {
       str =
 
   "\uff67\uff88\ufffd\ufffd\uff68\uff88\ufffd\u56bc\u6177\u737a\u6372\u82a5\ufffd\u6238\ufffd\u5448\u4f3c\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -58,7 +58,7 @@ namespace EncodingTest {
       str =
 
   "\u622e\u6e90\u87b3\ufffd\uff7f\uff8a\ufffd\uff7d\uff7f\uff87\ufffd\u6d5c\u96f7\u6795";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -67,7 +67,7 @@ namespace EncodingTest {
         0x2f, 0x7f, 0x1b, 0x28, 0x49, 0x3c, 0x3f, 0x5a, 0x32, 0x33, 0x7a,
       };
       str = "\ufffd?^i?~/RZ3*&/\u007f\uff7c\uff7f\uff9a\uff72\uff73\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -75,7 +75,7 @@ namespace EncodingTest {
         0x57, 0x6a, 0x36, 0x3e, 0x36, 0x5b, 0x64, 0x74, 0x78, 0x2a, 0x52,
       };
       str = "\u007bB0?0\"R*TWj6>6[dtx*R";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -84,22 +84,22 @@ namespace EncodingTest {
         0x2b, 0x79, 0x30,
       };
       str = "~\u0015Atl'T\u63f4\u63cf\u53dd\u4e01+y0";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x53 };
       str = "S";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x4b, 0x65, 0x78 };
       str = "Kex";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x31, 0x1b, 0x28, 0x4a, 0x71 };
       str = "1q";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -107,7 +107,7 @@ namespace EncodingTest {
         0x49,
       };
       str = "z4ftx3.";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -115,7 +115,7 @@ namespace EncodingTest {
         0x28, 0x42, 0x77, 0x1b, 0x28, 0x42, 0x5b, 0x3e, 0x5f,
       };
       str = "N_9v;%L}w[>_";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -124,7 +124,7 @@ namespace EncodingTest {
         0x38, 0x4b, 0x39, 0x63, 0x6e, 0x44,
       };
       str = "4qlP>YM}1\\1\ufffd(H\u003d@\u8017\u5eab\u9d3b\u914a";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -135,7 +135,7 @@ namespace EncodingTest {
       str =
 
   "6\u0013|/\uff92\uff80\uff87\uff64\ufffd\uff68\uff88\uff67\uff80\uff95\uff64\uff61\ufffd\uff7b\uff69\uff92\uff92\uff73\uff9f\uff76\uff8f";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -145,7 +145,7 @@ namespace EncodingTest {
         0x24, 0x40, 0x1b, 0x24, 0x42, 0x44,
       };
       str = ">5wEHEpWo7V\u001cMgpn\\n[>Q\uff73\ufffd\ufffd\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -157,7 +157,7 @@ namespace EncodingTest {
       str =
 
   "xk\u001aY]?jUQ\u8590\u7f69\u805e\u58a8\u68df\u7e55\ufffd\ufffd\ufffd\u66bf\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -165,7 +165,7 @@ namespace EncodingTest {
         0x1b, 0x28, 0x42, 0x61,
       };
       str = "^6M'v84jUa";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -173,7 +173,7 @@ namespace EncodingTest {
         0x69, 0x2e, 0x52, 0x37, 0x41, 0x1b, 0x28, 0x4a, 0x49, 0x3e,
       };
       str = "z\u00a5.4\u003dbi.R7AI>";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -183,7 +183,7 @@ namespace EncodingTest {
         0x5b,
       };
       str = "\ufffd(HKb`c\ufffd\u8268\u5d8b\ufffd8_^}TpE[";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -191,7 +191,7 @@ namespace EncodingTest {
         0x4c, 0x52, 0x14,
       };
       str = "jA\\x]X+qBLR\u0014";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -201,7 +201,7 @@ namespace EncodingTest {
       };
       str =
 "\u9078\u203b\ufffd\ufffd\ufffd\uff73\ufffd\uff94\uff93(\u203eE|(`@";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -209,7 +209,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x40, 0x66, 0x53,
       };
       str = "\u000c\u007b&)[yWj$\u801c";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -220,7 +220,7 @@ namespace EncodingTest {
       str =
 
   "\u5694\ufffd\ufffd\ufffd\uff82\uff74\uff9c\uff87\uff84\ufffd\uff9d\ufffd\uff99\ufffd\uff93\uff7a\uff68\ufffd\uff63\uff7b\uff67";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -229,12 +229,12 @@ namespace EncodingTest {
         0x29, 0x34,
       };
       str = "\"7\u002cz\ufffd(Ho!o\\T`mmt|E:Ol)4";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x20, 0x72, 0x65, 0x7b };
       str = "\u0020re\u007b";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -242,7 +242,7 @@ namespace EncodingTest {
         0x56, 0x39, 0x3f, 0x63, 0x6a, 0x73, 0x2e,
       };
       str = "GeC;-@*;zV9?cjs.";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -250,7 +250,7 @@ namespace EncodingTest {
         0x72,
       };
       str = "?Ajt;1\u0016-r";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -258,12 +258,12 @@ namespace EncodingTest {
         0x48, 0x74, 0x62, 0x20, 0x5f, 0x52, 0x69,
       };
       str = "\u5e63\ufffd\ufffd\u98db\ufffd\u7032\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x1b, 0x24, 0x40, 0x31, 0x78 };
       str = "\u6c5a";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -274,7 +274,7 @@ namespace EncodingTest {
       str =
 
   "~^Y`:!_}Vyqv8)a\ufffd\uff68\uff88\uff79\ufffd\uff87\uff90\uff75\ufffd\ufffd\ufffd\uff68\uff88";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -282,7 +282,7 @@ namespace EncodingTest {
         0x38,
       };
       str = "\ufffd(Ha.|R58";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -291,12 +291,12 @@ namespace EncodingTest {
         0x52,
       };
       str = "jBGM>dW&\"\"#qI<[R";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x7a, 0x64 };
       str = "zd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -308,7 +308,7 @@ namespace EncodingTest {
       str =
 
   "\uff9a\uff95\ufffd\uff74\ufffd\uff86\uff73\uff6d\uff81\uff70\uff90wfbUe-\ufffd(H^j:.;i\u7c9b\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -318,7 +318,7 @@ namespace EncodingTest {
         0x26,
       };
       str = "'VX0(QMJ(lA;;a&^-E3\"E\ufffd\uff7e\uff91\uff9e\uff85\uff66";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -326,7 +326,7 @@ namespace EncodingTest {
         0x28, 0x4a,
       };
       str = "WtN\ufffd(HST";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -336,7 +336,7 @@ namespace EncodingTest {
         0x30, 0x5b, 0x4e, 0x29, 0x22,
       };
       str = "\ufffd\uff68\uff88EUpZ.k9HIbmf)0&uA\u00200[N)\"";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -346,7 +346,7 @@ namespace EncodingTest {
         0x2d,
       };
       str = "ZMOuDYud[\ufffd(H*@\ufffd(HYw^yrbHV*-";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -356,7 +356,7 @@ namespace EncodingTest {
         0x42,
       };
       str = "*MZ8tN&G-iD_yKlu1K9?LEc\u00a5";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -364,12 +364,12 @@ namespace EncodingTest {
         0x1b, 0x28, 0x49, 0x1b, 0x28, 0x48, 0x32, 0x50, 0x26, 0x37, 0x57,
       };
       str = "w*B!`KWih\ufffd\uff68\uff88\uff72\uff90\uff66\uff77\uff97";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x1b, 0x28, 0x49, 0x4f, 0x41, 0x75, 0x23, 0x6e };
       str = "\uff8f\uff81\ufffd\uff63\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -377,7 +377,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x42, 0x23, 0x67, 0x1b, 0x28, 0x49, 0x30,
       };
       str = "[n]\u8180\ufffd\u8d08\ufffd\uff70";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -386,7 +386,7 @@ namespace EncodingTest {
         0x3f, 0x54, 0x38, 0x63, 0x30,
       };
       str = "V`UFrR\uff6c\uff84\u7faf\u30a7\u3232\ufffd\u57b3\u7955";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -395,7 +395,7 @@ namespace EncodingTest {
         0x1b, 0x28, 0x42, 0x22, 0x1b, 0x28, 0x4a,
       };
       str = "\u9a57\u611b\ufffd\u9be3\ufffd\ufffd\ufffd\ufffd\u7d4b\"";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -404,7 +404,7 @@ namespace EncodingTest {
         0x5c, 0x57, 0x52, 0x1b, 0x24, 0x42, 0x36, 0x27, 0x65,
       };
       str = "dt\u0015$qkIE\ufffd(HA`SthlJ#\u002ck\\WR\u51f6\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -412,7 +412,7 @@ namespace EncodingTest {
         0x1b, 0x28, 0x4a, 0x3f,
       };
       str = "Xq_E6\ufffd?";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -421,7 +421,7 @@ namespace EncodingTest {
         0x66, 0x7d, 0x3a, 0x5f, 0x2f,
       };
       str = "\ufffd\u6177\u6d87\u51b5\ufffd\ufffd\ufffdMkf}:_/";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -433,12 +433,12 @@ namespace EncodingTest {
       str =
 
   "\ufffd\uff7f\ufffd\ufffd\uff6d\uff7f\ufffd\ufffd\uff6c\uff79\ufffd!`&ju\u0011IokA";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x63 };
       str = "c";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -447,7 +447,7 @@ namespace EncodingTest {
         0x1b, 0x28, 0x4a,
       };
       str = "\ufffd(HURoqttV\u007f\ufffd(H\u0011)O_x\"\u0019";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -456,7 +456,7 @@ namespace EncodingTest {
         0x3d,
       };
       str = "'!c-h\ufffd(HC|EoFK\u003d5fxD9\u003d";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -465,17 +465,17 @@ namespace EncodingTest {
         0x48, 0x51, 0x72, 0x5e, 0x20, 0x29, 0x4d,
       };
       str = "\ufffd\ufffd\u4e11\ufffd\ufffdj[h%_&JHQr^\u0020)M";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x1b, 0x24, 0x40, 0x7b };
       str = "\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x1b, 0x28, 0x49, 0x29, 0x38, 0x61, 0x40 };
       str = "\uff69\uff78\ufffd\uff80";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -483,7 +483,7 @@ namespace EncodingTest {
         0x3b, 0x1b, 0x24, 0x40, 0x49, 0x72, 0x5d, 0x31,
       };
       str = "Nl'UGgtk-;\u8461\u8616";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -492,7 +492,7 @@ namespace EncodingTest {
         0x4a, 0x4c, 0x64,
       };
       str = "\ufffd\uff39\u8b02\ufffd\ufffd\ufffd\uff8c\uff93\ufffdLd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -500,7 +500,7 @@ namespace EncodingTest {
         0x71, 0x62, 0x41, 0x65, 0x6c, 0x29,
       };
       str = "--?.@n?((qbAel)";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -508,7 +508,7 @@ namespace EncodingTest {
         0x27, 0x39, 0x20, 0x68,
       };
       str = ":L\\oVP|Cn'9\u0020h";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -519,7 +519,7 @@ namespace EncodingTest {
       str =
 
   "\uff62\uff82\uff80\uff7d\ufffd\ufffd\uff91\ufffdXr9\\\u7ffb\ufffd\ufffd\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -528,12 +528,12 @@ namespace EncodingTest {
         0x24, 0x37, 0x6a, 0x1b, 0x24, 0x40,
       };
       str = "\u0020V^\ufffd\u522e\u6a80\u2471\ufffd\u973b\u62ff\u2463\u7a74";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x2e };
       str = ".";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -541,7 +541,7 @@ namespace EncodingTest {
         0x4b, 0x3f, 0x2d, 0x4e, 0x76, 0x4d, 0x45, 0x0b, 0x18, 0x5f,
       };
       str = "\ufffdgY^K?-NvME\u000b\u0018_";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -549,7 +549,7 @@ namespace EncodingTest {
         0x36, 0x1b, 0x28, 0x4a, 0x38, 0x33, 0x66,
       };
       str = "/\u6518\u90e8\u62d483f";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -558,7 +558,7 @@ namespace EncodingTest {
         0x42, 0x4c, 0x7a,
       };
       str = "|:^J$z+`|U'tZeY2X_wLz";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -566,7 +566,7 @@ namespace EncodingTest {
         0x4f, 0x65, 0x31, 0x6d, 0x53, 0x2e,
       };
       str = "MA\uff98\uff93\uff98\ufffd\uff8f\ufffd\uff71\ufffd\uff93\uff6e";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -574,7 +574,7 @@ namespace EncodingTest {
         0x48,
       };
       str = "5uL]hd\u007b\ufffd(H";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -584,7 +584,7 @@ namespace EncodingTest {
         0x67,
       };
       str = "-vH\ufffd\ufffd(HnpRls'wgFbX\ufffd(H\u007b\u00203&a+LTg";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -592,7 +592,7 @@ namespace EncodingTest {
         0x28, 0x42, 0x76, 0x72,
       };
       str = "\uff6d\uff61\uff80\ufffd\ufffdvr";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -600,12 +600,12 @@ namespace EncodingTest {
         0x5d, 0x2f,
       };
       str = "\u7f38\ufffd]/";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x1b, 0x28, 0x42, 0x51 };
       str = "Q";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -613,7 +613,7 @@ namespace EncodingTest {
         0x63, 0x35, 0x2c, 0x34, 0x5d, 0x37, 0x5d, 0x47,
       };
       str = "F|u\ufffd\ufffd\uff75\uff6c\uff74\uff9d\uff77\uff9d\uff87";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -622,7 +622,7 @@ namespace EncodingTest {
         0x1b, 0x28, 0x49, 0x63,
       };
       str = "s\ufffd(H5Rh\"-\\X\"BQ\ufffd\u592e\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -631,7 +631,7 @@ namespace EncodingTest {
         0x20, 0x4c,
       };
       str = "Q9Ng#\"1ZFdk+kPfH.\ufffd(HI\u0020L";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -639,7 +639,7 @@ namespace EncodingTest {
         0x4a, 0x07, 0x58, 0x75,
       };
       str = "`iY1m_*o*J\u0007Xu";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -647,7 +647,7 @@ namespace EncodingTest {
         0x38, 0x57, 0x7d, 0x4c, 0x5d, 0x62, 0x75, 0x25, 0x21, 0x5d,
       };
       str = "(]+\ufffd8W}L]bu%!]";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -656,7 +656,7 @@ namespace EncodingTest {
         0x28, 0x42, 0x61, 0x3a,
       };
       str = "\ufffd\u0020\ufffd\ufffd\ufffd\u7b8da:";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -664,7 +664,7 @@ namespace EncodingTest {
         0x28, 0x48, 0x58, 0x6b, 0x76, 0x20, 0x29, 0x1b, 0x28, 0x49,
       };
       str = "!\u0013\ufffd(HM7O\ufffd(HXkv\u0020)";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -675,7 +675,7 @@ namespace EncodingTest {
       str =
 
   "X\u003dHS4h\ufffd\ufffd\ufffd\uff96\ufffd\ufffd\ufffd~\ufffd\uff63\uff70\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -683,7 +683,7 @@ namespace EncodingTest {
         0x44, 0x4d, 0x70, 0x64, 0x5e, 0x4a, 0x6e, 0x6f,
       };
       str = "\ufffd\u9785\u30b9\u585a\u97a3\u6dd9\u923f";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -691,7 +691,7 @@ namespace EncodingTest {
         0x34, 0x4a, 0x67, 0x1e,
       };
       str = "Ws#tye4Jg\u001e";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -702,7 +702,7 @@ namespace EncodingTest {
       str =
 
   "\ufffd\ufffd\u7e3b\ufffd\ufffd\ufffd\u0416\ufffd\u51c6\u6dbc\u6c13\u79d5\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -710,7 +710,7 @@ namespace EncodingTest {
         0x28, 0x42,
       };
       str = "a^~5\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -719,7 +719,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x40, 0x35, 0x7b,
       };
       str = "\"S!FLr3k/HRg!bd\u9b5a";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -727,17 +727,17 @@ namespace EncodingTest {
         0x38,
       };
       str = "\ufffd\u58d8\u7aaf\u7296";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x1b, 0x28, 0x42 };
       str = String.Empty;
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x1b, 0x28, 0x49 };
       str = String.Empty;
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -746,12 +746,12 @@ namespace EncodingTest {
         0x51, 0x59, 0x26, 0x3e, 0x25, 0x38,
       };
       str = "NO4cQ>F\ufffd\ufffd\ufffd\u5fae\u622e\ufffd\u6232\u54e8\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x49, 0x1b, 0x24, 0x42, 0x1b, 0x24, 0x40, 0x43 };
       str = "I\ufffd\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -762,7 +762,7 @@ namespace EncodingTest {
       str =
 
   "1}*8QA\ufffd\u6a0a\u978d\u92ed\u6726\u68cb\u56d3\u9867\u98c3\u82d2\ufffd";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -771,7 +771,7 @@ namespace EncodingTest {
         0x52, 0x3e, 0x6b, 0x2e, 0x3b, 0x21, 0x5b, 0x48,
       };
       str = "AdEZA&u?Wi;3~FA\uff92\uff7e\ufffd\uff6e\uff7b\uff61\uff9b\uff88";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -779,7 +779,7 @@ namespace EncodingTest {
         0x42, 0x46,
       };
       str = "Lr8N>\u00065F";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -789,7 +789,7 @@ namespace EncodingTest {
       };
       str =
 "@KHv\u007buQ~Dpzgc9\uff98\uff74\uff8b\uff8d\uff84\ufffd\ufffd\uff9f";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -799,7 +799,7 @@ namespace EncodingTest {
       str =
 
   "-\uff6b\uff62\uff80\ufffd\ufffd\ufffd\uff6c\uff8b\ufffd\ufffd\uff8a\uff8b\uff9c";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -807,7 +807,7 @@ namespace EncodingTest {
         0x24, 0x4e, 0x0f, 0x74, 0x58,
       };
       str = "3EO2]dc\u007f9$N\ufffdtX";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -815,7 +815,7 @@ namespace EncodingTest {
         0x67,
       };
       str = "HfBt2g";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -824,12 +824,12 @@ namespace EncodingTest {
         0x05, 0x41, 0x1b, 0x28, 0x42, 0x38, 0x55, 0x6c,
       };
       str = ".(O]*.<@\u874e\u5a92\u84c4\ufffd\ufffd8Ul";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] { 0x36, 0x34, 0x5c, 0x78 };
       str = "64\\x";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
       bytes = new byte[] {
@@ -837,7 +837,7 @@ namespace EncodingTest {
         0x6a, 0x27, 0x20, 0x3a,
       };
       str = "\u007b@h\u203et2j'\u0020:";
-      Assert.AreEqual (
+      Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
     }
@@ -848,12 +848,12 @@ namespace EncodingTest {
       ICharacterEncoding charset = Encodings.GetEncoding("iso-2022-jp");
       str = "\u30f6";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x25, 0x76, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u223d";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x22, 0x66, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff97\u5680\uff08";
@@ -861,7 +861,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x25, 0x69, 0x53, 0x66, 0x21, 0x4a,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5cf0\uff22\u7941";
@@ -869,12 +869,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x4a, 0x76, 0x23, 0x42, 0x37, 0x37,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u56de";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x32, 0x73, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff26\uff29\uff78";
@@ -882,17 +882,17 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x23, 0x46, 0x23, 0x49, 0x25, 0x2f,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff94";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x25, 0x64, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff1a";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x21, 0x27, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u54c2\uff54\u5df5";
@@ -900,7 +900,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x53, 0x22, 0x23, 0x74, 0x56, 0x62,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7826\u695c\u6681";
@@ -908,7 +908,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x3a, 0x56, 0x5c, 0x35, 0x36, 0x47,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff5c\u5168";
@@ -916,12 +916,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x21, 0x43, 0x41, 0x34, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5514";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x53, 0x2a, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u695c\uff70\u5b63";
@@ -929,7 +929,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x5c, 0x35, 0x21, 0x3c, 0x35, 0x28,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff2e\uff9c\u7e52";
@@ -937,7 +937,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x23, 0x4e, 0x25, 0x6f, 0x7b, 0x53,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7b46\uff9d\u6b63";
@@ -945,7 +945,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x49, 0x2e, 0x25, 0x73, 0x40, 0x35,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7e4b\u7e5d";
@@ -953,7 +953,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x37, 0x52, 0x65, 0x63, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u9c57\uff13\u6377";
@@ -961,7 +961,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x4e, 0x5a, 0x23, 0x33, 0x3e, 0x39,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u2032\u7e67\u5bdd\uff2e";
@@ -969,12 +969,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x21, 0x6c, 0x65, 0x62, 0x3f, 0x32,
         0x23, 0x4e, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u57d3";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x54, 0x40, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u696d\u5727\u6de4\u7d35";
@@ -982,12 +982,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x36, 0x48, 0x30, 0x35, 0x5e, 0x4b,
         0x65, 0x2a, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u03c1";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x26, 0x51, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "?\uff93\uff6e";
@@ -995,7 +995,7 @@ namespace EncodingTest {
         0x3f, 0x1b, 0x24, 0x42, 0x25, 0x62, 0x25, 0x67, 0x1b,
         0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u50e3\u734e\u7dd1";
@@ -1003,7 +1003,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x51, 0x29, 0x60, 0x52, 0x4e, 0x50,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5f14\uff69";
@@ -1011,7 +1011,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x44, 0x24, 0x25, 0x25, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff34\uff5d\u6a29\u62d9";
@@ -1019,7 +1019,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x23, 0x54, 0x21, 0x51, 0x38, 0x22,
         0x40, 0x5b, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5147\uff6c\uff86\uff83";
@@ -1027,12 +1027,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x36, 0x24, 0x25, 0x63, 0x25, 0x4b,
         0x25, 0x46, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5186";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x31, 0x5f, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u77bf\uff2b\u2283\uff39";
@@ -1040,7 +1040,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x62, 0x5a, 0x23, 0x4b, 0x22, 0x3f,
         0x23, 0x59, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6c86\uff87\uff08";
@@ -1048,7 +1048,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x7a, 0x5d, 0x25, 0x4c, 0x21, 0x4a,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6e72\u76d7";
@@ -1056,7 +1056,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x5e, 0x53, 0x45, 0x70, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6c41\u51cb";
@@ -1064,7 +1064,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x3d, 0x41, 0x43, 0x7c, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u69b1\u7def\u2021\uff30\u2542";
@@ -1072,22 +1072,22 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x5c, 0x63, 0x30, 0x5e, 0x22, 0x78,
         0x23, 0x50, 0x28, 0x40, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6959";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x5c, 0x3e, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u67b9";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x5b, 0x54, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7d63";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x65, 0x33, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5154\uff7c\u52e0";
@@ -1095,7 +1095,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x51, 0x3d, 0x25, 0x37, 0x52, 0x2d,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u2103\uff48\u6c8d";
@@ -1103,7 +1103,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x21, 0x6e, 0x23, 0x68, 0x5d, 0x6c,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5ec3\uff57\uff9e";
@@ -1111,7 +1111,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x47, 0x51, 0x23, 0x77, 0x21, 0x2b,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff1b\u5be4\uff5c";
@@ -1119,7 +1119,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x21, 0x28, 0x55, 0x68, 0x21, 0x43,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6f6d\uff4f\uff37";
@@ -1127,7 +1127,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x5f, 0x2c, 0x23, 0x6f, 0x23, 0x57,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7db7\u5f90";
@@ -1135,7 +1135,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x7b, 0x50, 0x3d, 0x79, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff61\uff20";
@@ -1143,7 +1143,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x21, 0x23, 0x21, 0x77, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff99\u7ac5";
@@ -1151,7 +1151,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x25, 0x6b, 0x63, 0x61, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff47\uff2e\uff41";
@@ -1159,7 +1159,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x23, 0x67, 0x23, 0x4e, 0x23, 0x61,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u665e\u67c4\u7c7e";
@@ -1167,7 +1167,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x5a, 0x6b, 0x4a, 0x41, 0x4c, 0x62,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6562\u5a41\uff59";
@@ -1175,7 +1175,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x34, 0x3a, 0x4f, 0x2c, 0x23, 0x79,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6c6a\u5360\u5821";
@@ -1183,7 +1183,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x5d, 0x6a, 0x40, 0x6a, 0x54, 0x48,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u79e9\u6ef8\u6d1e";
@@ -1191,7 +1191,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x43, 0x61, 0x5e, 0x77, 0x46, 0x36,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6cb9\u67fb\uff36";
@@ -1199,7 +1199,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x4c, 0x7d, 0x3a, 0x3a, 0x23, 0x56,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uffe2\uff94\u250f";
@@ -1207,7 +1207,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x22, 0x4c, 0x25, 0x64, 0x28, 0x2e,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7a70\uff13\u5553";
@@ -1215,17 +1215,17 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x63, 0x55, 0x23, 0x33, 0x37, 0x3c,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff5d";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x21, 0x51, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u69fd";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x41, 0x65, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6f64\u6ce1Y\u6328\uff73";
@@ -1234,7 +1234,7 @@ namespace EncodingTest {
         0x42, 0x59, 0x1b, 0x24, 0x42, 0x30, 0x27, 0x25, 0x26, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5fae\u5a1a\u7826";
@@ -1242,7 +1242,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x48, 0x79, 0x55, 0x33, 0x3a, 0x56,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7009\uff79\u5230";
@@ -1250,7 +1250,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x5f, 0x43, 0x25, 0x31, 0x45, 0x7e,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5085\u7949\u527d";
@@ -1258,7 +1258,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x50, 0x7c, 0x3b, 0x63, 0x51, 0x77,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5b57\uff41\u706b";
@@ -1266,7 +1266,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x3b, 0x7a, 0x23, 0x61, 0x32, 0x50,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff21\uff49\uff6b";
@@ -1274,7 +1274,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x23, 0x41, 0x23, 0x69, 0x25, 0x29,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff7b\u5338\u56d7";
@@ -1282,7 +1282,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x25, 0x35, 0x52, 0x3e, 0x53, 0x78,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff9c\uff1b\uff71\u61a4";
@@ -1290,7 +1290,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x25, 0x6f, 0x21, 0x28, 0x25, 0x22,
         0x4a, 0x30, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5be1\uff3d\u7e94";
@@ -1298,12 +1298,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x32, 0x49, 0x21, 0x4f, 0x65, 0x78,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7462";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x7b, 0x30, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff57\uff03";
@@ -1311,7 +1311,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x23, 0x77, 0x21, 0x74, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff5e\u5841\uff72";
@@ -1319,7 +1319,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x21, 0x41, 0x4e, 0x5d, 0x25, 0x24,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u602a\u3092";
@@ -1327,7 +1327,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x32, 0x78, 0x24, 0x72, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u50de\uff11\uff32";
@@ -1335,7 +1335,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x51, 0x26, 0x23, 0x31, 0x23, 0x52,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff52\u5f09";
@@ -1343,12 +1343,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x23, 0x72, 0x57, 0x32, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7ca7";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x3e, 0x51, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6bcd\u5ba3";
@@ -1356,7 +1356,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x4a, 0x6c, 0x40, 0x6b, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff6e\u568a\uff9d";
@@ -1364,7 +1364,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x25, 0x67, 0x53, 0x67, 0x25, 0x73,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7f78\uff3a\u5c94\uff08";
@@ -1372,7 +1372,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x66, 0x2f, 0x23, 0x5a, 0x56, 0x2b,
         0x21, 0x4a, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff93\u2514\uff4b\u5b9b";
@@ -1380,7 +1380,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x25, 0x62, 0x28, 0x26, 0x23, 0x6b,
         0x30, 0x38, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u530f\u793e]";
@@ -1388,12 +1388,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x52, 0x37, 0x3c, 0x52, 0x1b, 0x28,
         0x42, 0x5d,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff4e";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x23, 0x6e, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7cb9\u613d\u524b\u6c8d";
@@ -1401,7 +1401,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x64, 0x6f, 0x58, 0x49, 0x51, 0x6e,
         0x5d, 0x6c, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6821\u8a8d";
@@ -1409,7 +1409,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x39, 0x3b, 0x47, 0x27, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff43\u778b";
@@ -1417,17 +1417,17 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x23, 0x63, 0x62, 0x53, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff77";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x25, 0x2d, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff67";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x25, 0x21, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u7b19\u5480\u78ca\uff64";
@@ -1435,7 +1435,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x63, 0x79, 0x52, 0x72, 0x62, 0x7d,
         0x21, 0x22, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff42\u585e\uff85";
@@ -1443,12 +1443,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x23, 0x62, 0x3a, 0x49, 0x25, 0x4a,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5b95";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x45, 0x66, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff04\u4f83\u7483";
@@ -1456,7 +1456,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x21, 0x70, 0x34, 0x26, 0x4d, 0x7e,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u676a\u65e7\u5efc";
@@ -1464,17 +1464,17 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x5b, 0x42, 0x35, 0x6c, 0x47, 0x36,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u6846";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x5b, 0x5a, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5289";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x4e, 0x2d, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff8f\u6e2f\u690d";
@@ -1482,7 +1482,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x25, 0x5e, 0x39, 0x41, 0x3f, 0x22,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u52fe\uffe2\u53f8\u6bb7\u6763";
@@ -1490,7 +1490,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x38, 0x7b, 0x22, 0x4c, 0x3b, 0x4a,
         0x5d, 0x56, 0x5b, 0x3c, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff0a\uff2e";
@@ -1498,7 +1498,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x21, 0x76, 0x23, 0x4e, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u67d0\u7fc1";
@@ -1506,7 +1506,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x4b, 0x3f, 0x32, 0x27, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5c51\u5c3d\uff26\u5ddd";
@@ -1514,7 +1514,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x36, 0x7d, 0x3f, 0x54, 0x23, 0x46,
         0x40, 0x6e, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u5247\u2030\uff68";
@@ -1522,7 +1522,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x42, 0x27, 0x22, 0x73, 0x25, 0x23,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff71\u5373";
@@ -1530,17 +1530,17 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x25, 0x22, 0x42, 0x28, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u763b";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x61, 0x71, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff6a";
       bytes = new byte[] { 0x1b, 0x24, 0x42, 0x25, 0x27, 0x1b, 0x28, 0x42 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "O\u5bc9";
@@ -1548,7 +1548,7 @@ namespace EncodingTest {
         0x4f, 0x1b, 0x24, 0x42, 0x55, 0x65, 0x1b, 0x28,
         0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\u52b9\uff04\uff21\u7de1\uff04";
@@ -1556,7 +1556,7 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x38, 0x7a, 0x21, 0x70, 0x23, 0x41,
         0x65, 0x4e, 0x21, 0x70, 0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "\uff8f\uff1b\uff43";
@@ -1564,12 +1564,12 @@ namespace EncodingTest {
         0x1b, 0x24, 0x42, 0x25, 0x5e, 0x21, 0x28, 0x23, 0x63,
         0x1b, 0x28, 0x42,
       };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
       str = "T";
       bytes = new byte[] { 0x54 };
-      TestCommon.AssertByteArraysEqual (
+      TestCommon.AssertByteArraysEqual(
         bytes,
         Encodings.EncodeToBytes(str, charset));
     }

@@ -1,0 +1,17 @@
+<package
+><metadata><version>0.6.0</version><id>PeterO.Encoding</id><requireLicenseAcceptance>false</requireLicenseAcceptance><releaseNotes>Version 0.6.0:
+
+- Bug fixes
+
+Version 0.5.1:
+
+- Fixed issue in .NET 2.0 and 4.0 assemblies where resources were inadvertently left out of build.
+
+Version 0.5.0:
+
+- Separate aliases and encodings for email are used, for better conformance to MIME.
+- New methods added to Encodings class.
+- Endian-independent UTF-16 encoding added for email.
+- ISO-2022-JP-2 and ISO-2022-KR encodings added for email.
+- .NET 2 and .NET 4 assemblies added to NuGet package.</releaseNotes><summary></summary><license type='expression'>CC0-1.0</license><projectUrl>https://github.com/peteroupc/Encoding</projectUrl><authors>Peter Occil</authors><description>A portable library for .NET that implements character encodings used in Web pages and email.</description><owners>Peter Occil</owners><title>Encoding Library</title><tags>text, encoding, strings</tags><dependencies><group /></dependencies></metadata><files><file src='Encoding/bin/Release/netstandard1.0/Encoding.dll' target='/lib/netstandard1.0' /><file src='Encoding/bin/Release/netstandard1.0/Encoding.xml' target='/lib/netstandard1.0' /><file src='Encoding20/bin/Release/Encoding.dll' target='/lib/net20' /><file src='Encoding20/bin/Release/Encoding.xml' target='/lib/net20' /><file src='Encoding40/bin/Release/Encoding.dll' target='/lib/net40' /><file src='Encoding40/bin/Release/Encoding.xml' target='/lib/net40' /></files></package
+>

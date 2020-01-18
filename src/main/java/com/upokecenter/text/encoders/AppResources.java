@@ -7,7 +7,8 @@ import java.util.*;
     private ResourceBundle mgr;
 
     public AppResources(String name) {
-      this.mgr = ResourceBundle.getBundle(name);
+      this.mgr = ResourceBundle.getBundle(
+         "com.upokecenter.text.encoders." + name);
     }
 
     public short[] GetShortArray(String name) {

@@ -153,7 +153,7 @@ private Encodings() {
      * ICharacterEncoding and can be called as follows:
      * <code>encoding.DecodeToString(input)</code>. If the object's class already
      * has a DecodeToString method with the same parameters, that method
-     * takes precedence over this extension method.</p> <p>In the.getNET()
+     * takes precedence over this extension method.</p> <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterEncoding and can be called as
      * follows: <code>enc.DecodeToString(input)</code>. If the object's class
@@ -283,7 +283,7 @@ private Encodings() {
      * Reads Unicode characters from a character input and writes them to a byte
      * array encoded using the given character encoder. When writing to the
      * byte array, any characters that can't be encoded are replaced with
-     * the byte 0x3f (the question mark character). <p>In the.getNET()
+     * the byte 0x3f (the question mark character). <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterInput and can be called as
      * follows: <code>input.EncodeToBytes(encoding)</code>. If the object's class
@@ -307,7 +307,7 @@ private Encodings() {
      * Reads Unicode characters from a character input and writes them to a byte
      * array encoded using a given character encoding. When writing to the
      * byte array, any characters that can't be encoded are replaced with
-     * the byte 0x3f (the question mark character). <p>In the.getNET()
+     * the byte 0x3f (the question mark character). <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterInput and can be called as
      * follows: <code>input.EncodeToBytes(encoder)</code>. If the object's class
@@ -463,7 +463,7 @@ private Encodings() {
      * Reads Unicode characters from a character input and writes them to a byte
      * array encoded using the given character encoder. When writing to the
      * byte array, any characters that can't be encoded are replaced with
-     * the byte 0x3f (the question mark character). <p>In the.getNET()
+     * the byte 0x3f (the question mark character). <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterInput and can be called as
      * follows: <code>input.EncodeToBytes(encoding)</code>. If the object's class
@@ -494,7 +494,7 @@ private Encodings() {
      * Reads Unicode characters from a character input and writes them to a byte
      * array encoded in a given character encoding. When writing to the
      * byte array, any characters that can't be encoded are replaced with
-     * the byte 0x3f (the question mark character). <p>In the.getNET()
+     * the byte 0x3f (the question mark character). <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterInput and can be called as
      * follows: <code>input.EncodeToBytes(encoder)</code>. If the object's class
@@ -548,7 +548,7 @@ private Encodings() {
      * method to any string object and can be called as follows:
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
-     * takes precedence over this extension method.</p> <p>In the.getNET()
+     * takes precedence over this extension method.</p> <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing string and can be called as follows:
      * <code>str.EncodeToWriter(enc, writer)</code>. If the object's class
@@ -578,7 +578,7 @@ private Encodings() {
      * Reads Unicode characters from a character input and writes them to a byte
      * array encoded using the given character encoder. When writing to the
      * byte array, any characters that can't be encoded are replaced with
-     * the byte 0x3f (the question mark character). <p>In the.getNET()
+     * the byte 0x3f (the question mark character). <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterInput and can be called as
      * follows: <code>input.EncodeToBytes(encoding)</code>. If the object's class
@@ -609,7 +609,7 @@ private Encodings() {
      * Reads Unicode characters from a character input and writes them to a byte
      * array encoded in a given character encoding. When writing to the
      * byte array, any characters that can't be encoded are replaced with
-     * the byte 0x3f (the question mark character). <p>In the.getNET()
+     * the byte 0x3f (the question mark character). <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterInput and can be called as
      * follows: <code>input.EncodeToBytes(encoder)</code>. If the object's class
@@ -645,7 +645,7 @@ private Encodings() {
      * method to any string object and can be called as follows:
      * <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
      * has a EncodeToBytes method with the same parameters, that method
-     * takes precedence over this extension method.</p> <p>In the.getNET()
+     * takes precedence over this extension method.</p> <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing string and can be called as follows:
      * <code>str.EncodeToWriter(enc, output)</code>. If the object's class
@@ -708,7 +708,7 @@ private Encodings() {
      * Converts a character encoding into a character input stream, given a data
      * stream. The input stream doesn't check the first few bytes for a
      * byte-order mark indicating a Unicode encoding such as UTF-8 before
-     * using the character encoding's decoder. <p>In the.getNET()
+     * using the character encoding's decoder. <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterEncoding and can be called as
      * follows: <code>encoding.GetDecoderInput(input)</code>. If the object's
@@ -1552,7 +1552,7 @@ ValueCharsetAliases.get(name) :
      * When reading the string, any unpaired surrogate characters are
      * replaced with the replacement character (U+FFFD), and when writing
      * to the byte array, any characters that can't be encoded are replaced
-     * with the byte 0x3f (the question mark character). <p>In the.getNET()
+     * with the byte 0x3f (the question mark character). <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing ICharacterEncoder and can be called as
      * follows: <code>encoder.StringToBytes(str)</code>. If the object's class

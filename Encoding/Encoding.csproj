@@ -28,7 +28,7 @@ Version 0.5.0:
 - ISO-2022-JP-2 and ISO-2022-KR encodings added for email.
 - .NET 2 and .NET 4 assemblies added to NuGet package.
     </PackageReleaseNotes>
-    <Copyright>Written by Peter O. in 2015-2018.  Any copyright is released to the Public Domain.</Copyright>
+    <Copyright>Written by Peter O.  Any copyright to this work is released to the Public Domain.</Copyright>
     <PackOnBuild>true</PackOnBuild>
     <Version>0.6.0</Version>
     <Summary>A portable library for .NET that implements character encodings used in Web pages and email.</Summary>
@@ -37,10 +37,10 @@ Version 0.5.0:
     <AssemblyOriginatorKeyFile>PeterO.snk</AssemblyOriginatorKeyFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
 
-  <PropertyGroup Condition=' &apos;$(Configuration)|$(Platform)&apos; == &apos;Debug|AnyCPU&apos; '>
+  <PropertyGroup Condition=' &apos;$(Configuration)&apos;==&apos;Debug&apos; '>
     <DocumentationFile>bin\Debug\netstandard1.0\Encoding.xml</DocumentationFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
-  <PropertyGroup Condition=' &apos;$(Configuration)|$(Platform)&apos; == &apos;Release|AnyCPU&apos; '>
+  <PropertyGroup Condition=' &apos;$(Configuration)&apos;==&apos;Release&apos; '>
     <DebugType/>
     <DocumentationFile>bin\Release\netstandard1.0\Encoding.xml</DocumentationFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
@@ -48,5 +48,5 @@ Version 0.5.0:
     <EmbeddedResource Condition=' &apos;$(EnableDefaultEmbeddedResourceItems)&apos; == &apos;true&apos; ' Update='PeterO.Text.Encoders.AppResources.resx'>
       <LogicalName>PeterO.Text.Encoders.AppResources.resources</LogicalName>
     </EmbeddedResource>
-  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.113'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.FxCopAnalyzers' PrivateAssets='All' Version='2.9.8'/></ItemGroup>
+  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.333'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='5.0.3'/></ItemGroup>
    </Project>

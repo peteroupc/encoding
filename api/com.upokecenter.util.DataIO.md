@@ -61,7 +61,7 @@ Wraps a byte array into a byte reader. The reader will start at the
 
 ### ToReader
     public static IReader ToReader​(byte[] bytes, int offset, int length)
-Wraps a portion of a byte array into a byte reader object. <p>In the.getNET()
+Wraps a portion of a byte array into a byte reader object. <p>In the.NET
  implementation, this method is implemented as an extension method to
  any byte array object and can be called as follows:
  <code>bytes.ToByteReader(offset, length)</code>. If the object's class

@@ -249,7 +249,7 @@ namespace PeterO.Text.Encoders {
         int offset = ValueGb18030table[v];
         return cpoffset + pointer - offset;
       } catch (Exception ex) {
-        throw new InvalidOperationException (
+        throw new InvalidOperationException(
           ex.Message + " " + ex.StackTrace + "\n" + "\npointer=" + pointer +
           "\noffset=" + v + " of " + ValueGb18030table.Length);
       }

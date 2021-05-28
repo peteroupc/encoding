@@ -1,9 +1,10 @@
 /*
-Written by Peter O. in 2014.
-Any copyright is dedicated to the Public Domain.
-http://creativecommons.org/publicdomain/zero/1.0/
-If you like this, you should donate to Peter O.
-at: http://peteroupc.github.io/
+Written by Peter O.
+Any copyright to this work is released to the Public Domain.
+In case this is not possible, this work is also
+licensed under Creative Commons Zero (CC0):
+https://creativecommons.org/publicdomain/zero/1.0/
+
  */
 using System;
 using System.IO;
@@ -25,7 +26,7 @@ namespace PeterO {
     /// <returns>A byte reader wrapping the byte array.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
-    public static IReader ToReader (
+    public static IReader ToReader(
   #if !NET20
 this
 #endif
@@ -104,7 +105,7 @@ byte[] bytes) {
     /// <returns>A byte reader wrapping the input stream.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='input'/> is null.</exception>
-    public static IReader ToReader (
+    public static IReader ToReader(
   #if !NET20
 this
 #endif
@@ -163,7 +164,7 @@ Stream input) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='input'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
-    public static IByteReader ToByteReader (
+    public static IByteReader ToByteReader(
   #if !NET20
 this
 #endif
@@ -184,7 +185,7 @@ Stream input) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
-    public static IByteReader ToByteReader (
+    public static IByteReader ToByteReader(
   #if !NET20
 this
 #endif
@@ -205,7 +206,7 @@ byte[] bytes) {
     /// stream.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
-    public static IWriter ToWriter (
+    public static IWriter ToWriter(
   #if !NET20
 this
 #endif
@@ -228,7 +229,7 @@ Stream output) {
     /// <returns>A writer that wraps the given stream.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
-    public static IWriter ToWriter (
+    public static IWriter ToWriter(
   #if !NET20
 this
 #endif

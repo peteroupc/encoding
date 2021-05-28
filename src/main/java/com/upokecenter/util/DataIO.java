@@ -1,10 +1,11 @@
 package com.upokecenter.util;
 /*
-Written by Peter O. in 2014.
-Any copyright is dedicated to the Public Domain.
-http://creativecommons.org/publicdomain/zero/1.0/
-If you like this, you should donate to Peter O.
-at: http://peteroupc.github.io/
+Written by Peter O.
+Any copyright to this work is released to the Public Domain.
+In case this is not possible, this work is also
+licensed under Creative Commons Zero (CC0):
+https://creativecommons.org/publicdomain/zero/1.0/
+
  */
 
 import java.io.*;
@@ -37,7 +38,7 @@ byte[] bytes) {
     }
 
     /**
-     * Wraps a portion of a byte array into a byte reader object. <p>In the.getNET()
+     * Wraps a portion of a byte array into a byte reader object. <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any byte array object and can be called as follows:
      * <code>bytes.ToByteReader(offset, length)</code>. If the object's class
@@ -106,7 +107,7 @@ InputStream input) {
     }
 
     /**
-     * Wraps a portion of a byte array into a byte reader. <p>In the.getNET()
+     * Wraps a portion of a byte array into a byte reader. <p>In the.NET
      * implementation, this method is implemented as an extension method to
      * any object implementing byte[] and can be called as follows:
      * <code>bytes.ToByteReader(offset, length)</code>. If the object's class

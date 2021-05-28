@@ -135,7 +135,7 @@ namespace PeterO.Text.Encoders {
       }
     }
 
-    public static ICharacterInput Utf8DecodeAlgorithmInput (
+    public static ICharacterInput Utf8DecodeAlgorithmInput(
       IByteReader transform) {
       // Implements the "utf-8 decode" algorithm in the Encoding
       // Standard
@@ -208,7 +208,7 @@ namespace PeterO.Text.Encoders {
       return total;
     }
 
-    public static ICharacterInput Utf8DecodeWithoutBOMAlgorithmInput (
+    public static ICharacterInput Utf8DecodeWithoutBOMAlgorithmInput(
       IByteReader transform) {
       // Implements the "utf-8 decode without BOM" algorithm
       // in the Encoding Standard
@@ -231,7 +231,7 @@ namespace PeterO.Text.Encoders {
       if (fallbackEncoding == null) {
         throw new ArgumentNullException(nameof(fallbackEncoding));
       }
-      var decoder = new DecodeWithFallbackDecoder (
+      var decoder = new DecodeWithFallbackDecoder(
         fallbackEncoding);
       return Encodings.GetDecoderInput(decoder, transform);
     }

@@ -5,7 +5,7 @@
 using System;
 namespace PeterO.Text.Encoders {
   internal static class Gb18030 {
-    private static readonly short[] table = new AppResources ("Resources")
+    private static readonly short[] table = new AppResources("Resources")
     .GetShortArray ("Gb18030");
     private static readonly int[] indextable = {
       19970, 20496, 0, 256, 20497, 20833, 256, 256, 20835, 21278, 512, 256,

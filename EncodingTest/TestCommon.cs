@@ -1,9 +1,10 @@
 /*
 Written in 2013-2018 by Peter O.
-Any copyright is dedicated to the Public Domain.
-http://creativecommons.org/publicdomain/zero/1.0/
-If you like this, you should donate to Peter O.
-at: http://peteroupc.github.io/
+Any copyright to this work is released to the Public Domain.
+In case this is not possible, this work is also
+licensed under Creative Commons Zero (CC0):
+https://creativecommons.org/publicdomain/zero/1.0/
+
  */
 using System;
 using System.Text;
@@ -11,7 +12,7 @@ using NUnit.Framework;
 
 namespace Test {
   public static class TestCommon {
-    private const string ValueDigits = "0123456789";
+    private const string Digits = "0123456789";
 
     public static int StringToInt(string str) {
       var neg = false;
@@ -99,6 +100,53 @@ namespace Test {
 
     public static void AssertByteArraysEqual(byte[] arr1, byte[] arr2) {
       if (!ByteArraysEqual(arr1, arr2)) {
+        Assert.Fail("Expected " + ToByteArrayString(arr1) + ",\ngot..... " +
+          ToByteArrayString(arr2));
+      }
+    }
+
+    public static void AssertByteArraysEqual(
+      byte[] arr1,
+      int offset,
+      int length,
+      byte[] arr2) {
+      if (!ByteArraysEqual(
+         arr1,
+         offset,
+         length,
+         arr2,
+         0,
+         arr2 == null ? 0 : arr2.Length)) {
+        Assert.Fail("Expected " + ToByteArrayString(arr1) + ",\ngot..... " +
+          ToByteArrayString(arr2));
+      }
+    }
+
+    public static void AssertByteArraysEqual(
+      byte[] arr1,
+      byte[] arr2,
+      int offset2,
+      int length2) {
+      if (!ByteArraysEqual(
+        arr1,
+        0,
+        arr1 == null ? 0 : arr1.Length,
+        arr2,
+        offset2,
+        length2)) {
+        Assert.Fail("Expected " + ToByteArrayString(arr1) + ",\ngot..... " +
+          ToByteArrayString(arr2));
+      }
+    }
+
+    public static void AssertByteArraysEqual(
+      byte[] arr1,
+      int offset,
+      int length,
+      byte[] arr2,
+      int offset2,
+      int length2) {
+      if (!ByteArraysEqual(arr1, offset, length, arr2, offset2, length2)) {
         Assert.Fail("Expected " + ToByteArrayString(arr1) + ",\ngot..... " +
           ToByteArrayString(arr2));
       }
@@ -424,32 +472,58 @@ namespace Test {
     }
 
     public static string IntToString(int value) {
-      if (value == Int32.MinValue) {
-        return "-2147483648";
-      }
       if (value == 0) {
         return "0";
       }
+      if (value == Int32.MinValue) {
+        return "-2147483648";
+      }
       bool neg = value < 0;
-      var chars = new char[12];
-      var count = 11;
       if (neg) {
         value = -value;
       }
-      while (value > 43698) {
+      char[] chars;
+      int count;
+      if (value < 100000) {
+        if (neg) {
+         chars = new char[6];
+         count = 5;
+        } else {
+         chars = new char[5];
+         count = 4;
+        }
+        while (value > 9) {
+          int intdivvalue = unchecked((((value >> 1) * 52429) >> 18) & 16383);
+          char digit = Digits[(int)(value - (intdivvalue * 10))];
+          chars[count--] = digit;
+          value = intdivvalue;
+        }
+        if (value != 0) {
+          chars[count--] = Digits[(int)value];
+        }
+        if (neg) {
+          chars[count] = '-';
+        } else {
+          ++count;
+        }
+        return new String(chars, count, chars.Length - count);
+      }
+      chars = new char[12];
+      count = 11;
+      while (value >= 163840) {
         int intdivvalue = value / 10;
-        char digit = ValueDigits[(int)(value - (intdivvalue * 10))];
+        char digit = Digits[(int)(value - (intdivvalue * 10))];
         chars[count--] = digit;
         value = intdivvalue;
       }
       while (value > 9) {
-        int intdivvalue = (value * 26215) >> 18;
-        char digit = ValueDigits[(int)(value - (intdivvalue * 10))];
+        int intdivvalue = unchecked((((value >> 1) * 52429) >> 18) & 16383);
+        char digit = Digits[(int)(value - (intdivvalue * 10))];
         chars[count--] = digit;
         value = intdivvalue;
       }
       if (value != 0) {
-        chars[count--] = ValueDigits[(int)value];
+        chars[count--] = Digits[(int)value];
       }
       if (neg) {
         chars[count] = '-';
@@ -466,62 +540,32 @@ namespace Test {
       if (longValue == 0L) {
         return "0";
       }
-      if (longValue == (long)Int32.MinValue) {
-        return "-2147483648";
-      }
       bool neg = longValue < 0;
       var count = 0;
       char[] chars;
       int intlongValue = unchecked((int)longValue);
       if ((long)intlongValue == longValue) {
-        chars = new char[12];
-        count = 11;
-        if (neg) {
-          intlongValue = -intlongValue;
-        }
-        while (intlongValue > 43698) {
-          int intdivValue = intlongValue / 10;
-          char digit = ValueDigits[(int)(intlongValue - (intdivValue *
-10))];
-          chars[count--] = digit;
-          intlongValue = intdivValue;
-        }
-        while (intlongValue > 9) {
-          int intdivValue = (intlongValue * 26215) >> 18;
-          char digit = ValueDigits[(int)(intlongValue - (intdivValue *
-10))];
-          chars[count--] = digit;
-          intlongValue = intdivValue;
-        }
-        if (intlongValue != 0) {
-          chars[count--] = ValueDigits[(int)intlongValue];
-        }
-        if (neg) {
-          chars[count] = '-';
-        } else {
-          ++count;
-        }
-        return new String(chars, count, 12 - count);
+        return IntToString(intlongValue);
       } else {
         chars = new char[24];
         count = 23;
         if (neg) {
           longValue = -longValue;
         }
-        while (longValue > 43698) {
+        while (longValue >= 163840) {
           long divValue = longValue / 10;
-          char digit = ValueDigits[(int)(longValue - (divValue * 10))];
+          char digit = Digits[(int)(longValue - (divValue * 10))];
           chars[count--] = digit;
           longValue = divValue;
         }
         while (longValue > 9) {
-          long divValue = (longValue * 26215) >> 18;
-          char digit = ValueDigits[(int)(longValue - (divValue * 10))];
+          long divValue = unchecked((((longValue >> 1) * 52429) >> 18) & 16383);
+          char digit = Digits[(int)(longValue - (divValue * 10))];
           chars[count--] = digit;
           longValue = divValue;
         }
         if (longValue != 0) {
-          chars[count--] = ValueDigits[(int)longValue];
+          chars[count--] = Digits[(int)longValue];
         }
         if (neg) {
           chars[count] = '-';
@@ -546,6 +590,7 @@ namespace Test {
       String s) {
       return s + ":\n" + o1 + " and\n" + o2 + " and\n" + o3;
     }
+
     private const int RepeatDivideThreshold = 10000;
 
     public static string Repeat(char c, int num) {
@@ -591,25 +636,129 @@ namespace Test {
     }
 
     public static string ToByteArrayString(byte[] bytes) {
+      return (bytes == null) ? "null" : ToByteArrayString(
+         bytes,
+         0,
+         bytes.Length);
+    }
+
+    public static string ToByteArrayString(
+       byte[] bytes,
+       int offset,
+       int length) {
       if (bytes == null) {
         return "null";
+      }
+      if (bytes == null) {
+        throw new ArgumentNullException(nameof(bytes));
+      }
+      if (offset < 0) {
+        throw new ArgumentException("\"offset\" (" + offset + ") is not" +
+"\u0020greater or equal to 0");
+      }
+      if (offset > bytes.Length) {
+        throw new ArgumentException("\"offset\" (" + offset + ") is not less" +
+"\u0020or equal to " + bytes.Length);
+      }
+      if (length < 0) {
+        throw new ArgumentException(" (" + length + ") is not greater or" +
+"\u0020equal to 0");
+      }
+      if (length > bytes.Length) {
+        throw new ArgumentException(" (" + length + ") is not less or equal" +
+"\u0020to " + bytes.Length);
+      }
+      if (bytes.Length - offset < length) {
+        throw new ArgumentException("\"bytes\" + \"'s length minus \" +" +
+"\u0020offset (" + (bytes.Length - offset) + ") is not greater or equal to " +
+length);
       }
       var sb = new System.Text.StringBuilder();
       const string ValueHex = "0123456789ABCDEF";
       sb.Append("new byte[] { ");
-      for (var i = 0; i < bytes.Length; ++i) {
+      for (var i = 0; i < length; ++i) {
         if (i > 0) {
-          sb.Append(","); }
-        if ((bytes[i] & 0x80) != 0) {
+          sb.Append(',');
+        }
+        if ((bytes[offset + i] & 0x80) != 0) {
           sb.Append("(byte)0x");
         } else {
           sb.Append("0x");
         }
-        sb.Append(ValueHex[(bytes[i] >> 4) & 0xf]);
-        sb.Append(ValueHex[bytes[i] & 0xf]);
+        sb.Append(ValueHex[(bytes[offset + i] >> 4) & 0xf]);
+        sb.Append(ValueHex[bytes[offset + i] & 0xf]);
       }
-      sb.Append("}");
+      sb.Append('}');
       return sb.ToString();
+    }
+
+    private static bool ByteArraysEqual(
+      byte[] arr1,
+      int offset,
+      int length,
+      byte[] arr2,
+      int offset2,
+      int length2) {
+      if (arr1 == null) {
+        return arr2 == null;
+      }
+      if (arr2 == null) {
+        return false;
+      }
+      if (offset < 0) {
+        throw new ArgumentException("\"offset\" (" + offset + ") is not" +
+"\u0020greater or equal to 0");
+      }
+      if (offset > arr1.Length) {
+        throw new ArgumentException("\"offset\" (" + offset + ") is not less" +
+"\u0020or equal to " + arr1.Length);
+      }
+      if (length < 0) {
+        throw new ArgumentException(" (" + length + ") is not greater or" +
+"\u0020equal to 0");
+      }
+      if (length > arr1.Length) {
+        throw new ArgumentException(" (" + length + ") is not less or equal" +
+"\u0020to " + arr1.Length);
+      }
+      if (arr1.Length - offset < length) {
+        throw new ArgumentException("\"arr1\" + \"'s length minus \" +" +
+"\u0020offset (" + (arr1.Length - offset) + ") is not greater or equal to " +
+length);
+      }
+      if (arr2 == null) {
+        throw new ArgumentNullException(nameof(arr2));
+      }
+      if (offset2 < 0) {
+        throw new ArgumentException("\"offset2\" (" + offset2 + ") is not" +
+"\u0020greater or equal to 0");
+      }
+      if (offset2 > arr2.Length) {
+        throw new ArgumentException("\"offset2\" (" + offset2 + ") is not" +
+"\u0020less or equal to " + arr2.Length);
+      }
+      if (length2 < 0) {
+        throw new ArgumentException(" (" + length2 + ") is not greater or" +
+"\u0020equal to 0");
+      }
+      if (length2 > arr2.Length) {
+        throw new ArgumentException(" (" + length2 + ") is not less or equal" +
+"\u0020to " + arr2.Length);
+      }
+      if (arr2.Length - offset2 < length2) {
+        throw new ArgumentException("\"arr2\"'s length minus " +
+"\u0020offset2 (" + (arr2.Length - offset2) + ") is not greater or equal to " +
+length2);
+      }
+      if (length != length2) {
+        return false;
+      }
+      for (var i = 0; i < length; ++i) {
+        if (arr1[offset + i] != arr2[offset2 + i]) {
+          return false;
+        }
+      }
+      return true;
     }
 
     private static bool ByteArraysEqual(byte[] arr1, byte[] arr2) {

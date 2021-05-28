@@ -268,7 +268,7 @@ Decodes data read from a data stream into a text string in the given
  ICharacterEncoding and can be called as follows:
  <code>encoding.DecodeToString(input)</code>. If the object's class already
  has a DecodeToString method with the same parameters, that method
- takes precedence over this extension method.</p> <p>In the.getNET()
+ takes precedence over this extension method.</p> <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing ICharacterEncoding and can be called as
  follows: <code>enc.DecodeToString(input)</code>. If the object's class
@@ -373,7 +373,7 @@ Reads a portion of a byte array from a data source and converts the bytes
 Reads Unicode characters from a character input and writes them to a byte
  array encoded using the given character encoder. When writing to the
  byte array, any characters that can't be encoded are replaced with
- the byte 0x3f (the question mark character). <p>In the.getNET()
+ the byte 0x3f (the question mark character). <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing ICharacterInput and can be called as
  follows: <code>input.EncodeToBytes(encoding)</code>. If the object's class
@@ -399,7 +399,7 @@ Reads Unicode characters from a character input and writes them to a byte
 Reads Unicode characters from a character input and writes them to a byte
  array encoded using a given character encoding. When writing to the
  byte array, any characters that can't be encoded are replaced with
- the byte 0x3f (the question mark character). <p>In the.getNET()
+ the byte 0x3f (the question mark character). <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing ICharacterInput and can be called as
  follows: <code>input.EncodeToBytes(encoder)</code>. If the object's class
@@ -533,7 +533,7 @@ Reads Unicode characters from a text string and writes them to a byte array
 Reads Unicode characters from a character input and writes them to a byte
  array encoded using the given character encoder. When writing to the
  byte array, any characters that can't be encoded are replaced with
- the byte 0x3f (the question mark character). <p>In the.getNET()
+ the byte 0x3f (the question mark character). <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing ICharacterInput and can be called as
  follows: <code>input.EncodeToBytes(encoding)</code>. If the object's class
@@ -563,7 +563,7 @@ Reads Unicode characters from a character input and writes them to a byte
 Reads Unicode characters from a character input and writes them to a byte
  array encoded in a given character encoding. When writing to the
  byte array, any characters that can't be encoded are replaced with
- the byte 0x3f (the question mark character). <p>In the.getNET()
+ the byte 0x3f (the question mark character). <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing ICharacterInput and can be called as
  follows: <code>input.EncodeToBytes(encoder)</code>. If the object's class
@@ -600,7 +600,7 @@ Converts a text string to bytes and writes the bytes to an output byte
  method to any string object and can be called as follows:
  <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
  has a EncodeToBytes method with the same parameters, that method
- takes precedence over this extension method.</p> <p>In the.getNET()
+ takes precedence over this extension method.</p> <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing string and can be called as follows:
  <code>str.EncodeToWriter(enc, writer)</code>. If the object's class
@@ -626,7 +626,7 @@ Converts a text string to bytes and writes the bytes to an output byte
 Reads Unicode characters from a character input and writes them to a byte
  array encoded using the given character encoder. When writing to the
  byte array, any characters that can't be encoded are replaced with
- the byte 0x3f (the question mark character). <p>In the.getNET()
+ the byte 0x3f (the question mark character). <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing ICharacterInput and can be called as
  follows: <code>input.EncodeToBytes(encoding)</code>. If the object's class
@@ -658,7 +658,7 @@ Reads Unicode characters from a character input and writes them to a byte
 Reads Unicode characters from a character input and writes them to a byte
  array encoded in a given character encoding. When writing to the
  byte array, any characters that can't be encoded are replaced with
- the byte 0x3f (the question mark character). <p>In the.getNET()
+ the byte 0x3f (the question mark character). <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing ICharacterInput and can be called as
  follows: <code>input.EncodeToBytes(encoder)</code>. If the object's class
@@ -697,7 +697,7 @@ Converts a text string to bytes and writes the bytes to an output data
  method to any string object and can be called as follows:
  <code>str.EncodeToBytes(enc, writer)</code>. If the object's class already
  has a EncodeToBytes method with the same parameters, that method
- takes precedence over this extension method.</p> <p>In the.getNET()
+ takes precedence over this extension method.</p> <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing string and can be called as follows:
  <code>str.EncodeToWriter(enc, output)</code>. If the object's class
@@ -755,7 +755,7 @@ Converts a character encoding into a character input stream, given a
 Converts a character encoding into a character input stream, given a data
  stream. The input stream doesn't check the first few bytes for a
  byte-order mark indicating a Unicode encoding such as UTF-8 before
- using the character encoding's decoder. <p>In the.getNET()
+ using the character encoding's decoder. <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing ICharacterEncoding and can be called as
  follows: <code>encoding.GetDecoderInput(input)</code>. If the object's
@@ -1074,7 +1074,7 @@ Converts a text string to a byte array using the given character encoder.
  When reading the string, any unpaired surrogate characters are
  replaced with the replacement character (U+FFFD), and when writing
  to the byte array, any characters that can't be encoded are replaced
- with the byte 0x3f (the question mark character). <p>In the.getNET()
+ with the byte 0x3f (the question mark character). <p>In the.NET
  implementation, this method is implemented as an extension method to
  any object implementing ICharacterEncoder and can be called as
  follows: <code>encoder.StringToBytes(str)</code>. If the object's class

@@ -2918,7 +2918,7 @@ namespace EncodingTest {
     [Test]
     public void TestResolveAliasForEmail() {
       Assert.AreEqual(String.Empty, Encodings.ResolveAliasForEmail(null));
-      Assert.AreEqual (
+      Assert.AreEqual(
         String.Empty,
         Encodings.ResolveAliasForEmail(String.Empty));
       {
@@ -2964,7 +2964,7 @@ namespace EncodingTest {
           stringTemp);
       }
       {
-        string strTemp2 = Encodings.ResolveAliasForEmail (
+        string strTemp2 = Encodings.ResolveAliasForEmail(
             "replacement");
         Assert.AreEqual(String.Empty, strTemp2);
       }

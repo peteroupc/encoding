@@ -5,7 +5,7 @@
 using System;
 namespace PeterO.Text.Encoders {
   internal static class Korean {
-    private static readonly short[] table = new AppResources ("Resources")
+    private static readonly short[] table = new AppResources("Resources")
     .GetShortArray ("Korean");
     private static readonly int[] indextable = {
       44034, 44378, 0, 256, 44379, 44702, 256, 256, 44703, 45002, 512, 256,

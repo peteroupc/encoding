@@ -1,10 +1,11 @@
 package com.upokecenter.test;
 /*
 Written in 2013-2018 by Peter O.
-Any copyright is dedicated to the Public Domain.
-http://creativecommons.org/publicdomain/zero/1.0/
-If you like this, you should donate to Peter O.
-at: http://peteroupc.github.io/
+Any copyright to this work is released to the Public Domain.
+In case this is not possible, this work is also
+licensed under Creative Commons Zero (CC0):
+https://creativecommons.org/publicdomain/zero/1.0/
+
  */
 
 import org.junit.Assert;
@@ -12,7 +13,7 @@ import org.junit.Assert;
   public final class TestCommon {
 private TestCommon() {
 }
-    private static final String ValueDigits = "0123456789";
+    private static final String Digits = "0123456789";
 
     public static int StringToInt(String str) {
       boolean neg = false;
@@ -100,6 +101,53 @@ private TestCommon() {
 
     public static void AssertByteArraysEqual(byte[] arr1, byte[] arr2) {
       if (!ByteArraysEqual(arr1, arr2)) {
+        Assert.fail("Expected " + ToByteArrayString(arr1) + ",\ngot..... " +
+          ToByteArrayString(arr2));
+      }
+    }
+
+    public static void AssertByteArraysEqual(
+      byte[] arr1,
+      int offset,
+      int length,
+      byte[] arr2) {
+      if (!ByteArraysEqual(
+         arr1,
+         offset,
+         length,
+         arr2,
+         0,
+         arr2 == null ? 0 : arr2.length)) {
+        Assert.fail("Expected " + ToByteArrayString(arr1) + ",\ngot..... " +
+          ToByteArrayString(arr2));
+      }
+    }
+
+    public static void AssertByteArraysEqual(
+      byte[] arr1,
+      byte[] arr2,
+      int offset2,
+      int length2) {
+      if (!ByteArraysEqual(
+        arr1,
+        0,
+        arr1 == null ? 0 : arr1.length,
+        arr2,
+        offset2,
+        length2)) {
+        Assert.fail("Expected " + ToByteArrayString(arr1) + ",\ngot..... " +
+          ToByteArrayString(arr2));
+      }
+    }
+
+    public static void AssertByteArraysEqual(
+      byte[] arr1,
+      int offset,
+      int length,
+      byte[] arr2,
+      int offset2,
+      int length2) {
+      if (!ByteArraysEqual(arr1, offset, length, arr2, offset2, length2)) {
         Assert.fail("Expected " + ToByteArrayString(arr1) + ",\ngot..... " +
           ToByteArrayString(arr2));
       }
@@ -409,32 +457,58 @@ private TestCommon() {
     }
 
     public static String IntToString(int value) {
-      if (value == Integer.MIN_VALUE) {
-        return "-2147483648";
-      }
       if (value == 0) {
         return "0";
       }
+      if (value == Integer.MIN_VALUE) {
+        return "-2147483648";
+      }
       boolean neg = value < 0;
-      char[] chars = new char[12];
-      int count = 11;
       if (neg) {
         value = -value;
       }
-      while (value > 43698) {
+      char[] chars;
+      int count;
+      if (value < 100000) {
+        if (neg) {
+         chars = new char[6];
+         count = 5;
+        } else {
+         chars = new char[5];
+         count = 4;
+        }
+        while (value > 9) {
+          int intdivvalue = ((((value >> 1) * 52429) >> 18) & 16383);
+          char digit = Digits.charAt((int)(value - (intdivvalue * 10)));
+          chars[count--] = digit;
+          value = intdivvalue;
+        }
+        if (value != 0) {
+          chars[count--] = Digits.charAt((int)value);
+        }
+        if (neg) {
+          chars[count] = '-';
+        } else {
+          ++count;
+        }
+        return new String(chars, count, chars.length - count);
+      }
+      chars = new char[12];
+      count = 11;
+      while (value >= 163840) {
         int intdivvalue = value / 10;
-        char digit = ValueDigits.charAt((int)(value - (intdivvalue * 10)));
+        char digit = Digits.charAt((int)(value - (intdivvalue * 10)));
         chars[count--] = digit;
         value = intdivvalue;
       }
       while (value > 9) {
-        int intdivvalue = (value * 26215) >> 18;
-        char digit = ValueDigits.charAt((int)(value - (intdivvalue * 10)));
+        int intdivvalue = ((((value >> 1) * 52429) >> 18) & 16383);
+        char digit = Digits.charAt((int)(value - (intdivvalue * 10)));
         chars[count--] = digit;
         value = intdivvalue;
       }
       if (value != 0) {
-        chars[count--] = ValueDigits.charAt((int)value);
+        chars[count--] = Digits.charAt((int)value);
       }
       if (neg) {
         chars[count] = '-';
@@ -451,62 +525,32 @@ private TestCommon() {
       if (longValue == 0L) {
         return "0";
       }
-      if (longValue == (long)Integer.MIN_VALUE) {
-        return "-2147483648";
-      }
       boolean neg = longValue < 0;
       int count = 0;
       char[] chars;
       int intlongValue = ((int)longValue);
       if ((long)intlongValue == longValue) {
-        chars = new char[12];
-        count = 11;
-        if (neg) {
-          intlongValue = -intlongValue;
-        }
-        while (intlongValue > 43698) {
-          int intdivValue = intlongValue / 10;
-          char digit = ValueDigits.charAt((int)(intlongValue - (intdivValue *
-10)));
-          chars[count--] = digit;
-          intlongValue = intdivValue;
-        }
-        while (intlongValue > 9) {
-          int intdivValue = (intlongValue * 26215) >> 18;
-          char digit = ValueDigits.charAt((int)(intlongValue - (intdivValue *
-10)));
-          chars[count--] = digit;
-          intlongValue = intdivValue;
-        }
-        if (intlongValue != 0) {
-          chars[count--] = ValueDigits.charAt((int)intlongValue);
-        }
-        if (neg) {
-          chars[count] = '-';
-        } else {
-          ++count;
-        }
-        return new String(chars, count, 12 - count);
+        return IntToString(intlongValue);
       } else {
         chars = new char[24];
         count = 23;
         if (neg) {
           longValue = -longValue;
         }
-        while (longValue > 43698) {
+        while (longValue >= 163840) {
           long divValue = longValue / 10;
-          char digit = ValueDigits.charAt((int)(longValue - (divValue * 10)));
+          char digit = Digits.charAt((int)(longValue - (divValue * 10)));
           chars[count--] = digit;
           longValue = divValue;
         }
         while (longValue > 9) {
-          long divValue = (longValue * 26215) >> 18;
-          char digit = ValueDigits.charAt((int)(longValue - (divValue * 10)));
+          long divValue = ((((longValue >> 1) * 52429) >> 18) & 16383);
+          char digit = Digits.charAt((int)(longValue - (divValue * 10)));
           chars[count--] = digit;
           longValue = divValue;
         }
         if (longValue != 0) {
-          chars[count--] = ValueDigits.charAt((int)longValue);
+          chars[count--] = Digits.charAt((int)longValue);
         }
         if (neg) {
           chars[count] = '-';
@@ -531,6 +575,7 @@ private TestCommon() {
       String s) {
       return s + ":\n" + o1 + " and\n" + o2 + " and\n" + o3;
     }
+
     private static final int RepeatDivideThreshold = 10000;
 
     public static String Repeat(char c, int num) {
@@ -576,25 +621,129 @@ private TestCommon() {
     }
 
     public static String ToByteArrayString(byte[] bytes) {
+      return (bytes == null) ? "null" : ToByteArrayString(
+         bytes,
+         0,
+         bytes.length);
+    }
+
+    public static String ToByteArrayString(
+       byte[] bytes,
+       int offset,
+       int length) {
       if (bytes == null) {
         return "null";
+      }
+      if (bytes == null) {
+        throw new NullPointerException("bytes");
+      }
+      if (offset < 0) {
+        throw new IllegalArgumentException("\"offset\" (" + offset + ") is not" +
+"\u0020greater or equal to 0");
+      }
+      if (offset > bytes.length) {
+        throw new IllegalArgumentException("\"offset\" (" + offset + ") is not less" +
+"\u0020or equal to " + bytes.length);
+      }
+      if (length < 0) {
+        throw new IllegalArgumentException(" (" + length + ") is not greater or" +
+"\u0020equal to 0");
+      }
+      if (length > bytes.length) {
+        throw new IllegalArgumentException(" (" + length + ") is not less or equal" +
+"\u0020to " + bytes.length);
+      }
+      if (bytes.length - offset < length) {
+        throw new IllegalArgumentException("\"bytes\" + \"'s length minus \" +" +
+"\u0020offset (" + (bytes.length - offset) + ") is not greater or equal to " +
+length);
       }
       StringBuilder sb = new StringBuilder();
       String ValueHex = "0123456789ABCDEF";
       sb.append("new byte[] { ");
-      for (int i = 0; i < bytes.length; ++i) {
+      for (int i = 0; i < length; ++i) {
         if (i > 0) {
-          sb.append(","); }
-        if ((bytes[i] & 0x80) != 0) {
+          sb.append(',');
+        }
+        if ((bytes[offset + i] & 0x80) != 0) {
           sb.append("(byte)0x");
         } else {
           sb.append("0x");
         }
-        sb.append(ValueHex.charAt((bytes[i] >> 4) & 0xf));
-        sb.append(ValueHex.charAt(bytes[i] & 0xf));
+        sb.append(ValueHex.charAt((bytes[offset + i] >> 4) & 0xf));
+        sb.append(ValueHex.charAt(bytes[offset + i] & 0xf));
       }
-      sb.append("}");
+      sb.append('}');
       return sb.toString();
+    }
+
+    private static boolean ByteArraysEqual(
+      byte[] arr1,
+      int offset,
+      int length,
+      byte[] arr2,
+      int offset2,
+      int length2) {
+      if (arr1 == null) {
+        return arr2 == null;
+      }
+      if (arr2 == null) {
+        return false;
+      }
+      if (offset < 0) {
+        throw new IllegalArgumentException("\"offset\" (" + offset + ") is not" +
+"\u0020greater or equal to 0");
+      }
+      if (offset > arr1.length) {
+        throw new IllegalArgumentException("\"offset\" (" + offset + ") is not less" +
+"\u0020or equal to " + arr1.length);
+      }
+      if (length < 0) {
+        throw new IllegalArgumentException(" (" + length + ") is not greater or" +
+"\u0020equal to 0");
+      }
+      if (length > arr1.length) {
+        throw new IllegalArgumentException(" (" + length + ") is not less or equal" +
+"\u0020to " + arr1.length);
+      }
+      if (arr1.length - offset < length) {
+        throw new IllegalArgumentException("\"arr1\" + \"'s length minus \" +" +
+"\u0020offset (" + (arr1.length - offset) + ") is not greater or equal to " +
+length);
+      }
+      if (arr2 == null) {
+        throw new NullPointerException("arr2");
+      }
+      if (offset2 < 0) {
+        throw new IllegalArgumentException("\"offset2\" (" + offset2 + ") is not" +
+"\u0020greater or equal to 0");
+      }
+      if (offset2 > arr2.length) {
+        throw new IllegalArgumentException("\"offset2\" (" + offset2 + ") is not" +
+"\u0020less or equal to " + arr2.length);
+      }
+      if (length2 < 0) {
+        throw new IllegalArgumentException(" (" + length2 + ") is not greater or" +
+"\u0020equal to 0");
+      }
+      if (length2 > arr2.length) {
+        throw new IllegalArgumentException(" (" + length2 + ") is not less or equal" +
+"\u0020to " + arr2.length);
+      }
+      if (arr2.length - offset2 < length2) {
+        throw new IllegalArgumentException("\"arr2\"'s length minus " +
+"\u0020offset2 (" + (arr2.length - offset2) + ") is not greater or equal to " +
+length2);
+      }
+      if (length != length2) {
+        return false;
+      }
+      for (int i = 0; i < length; ++i) {
+        if (arr1[offset + i] != arr2[offset2 + i]) {
+          return false;
+        }
+      }
+      return true;
     }
 
     private static boolean ByteArraysEqual(byte[] arr1, byte[] arr2) {

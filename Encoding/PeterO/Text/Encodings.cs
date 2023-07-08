@@ -10,10 +10,9 @@ namespace PeterO.Text {
   /// encoding to another. This class also contains convenience methods
   /// for converting strings and other character inputs to sequences of
   /// bytes and vice versa.
-  /// <para>The Encoding Standard, which is a Candidate Recommendation as
-  /// of early November 2015, defines algorithms for the most common
-  /// character encodings used on Web pages and recommends the UTF-8
-  /// encoding for new specifications and Web pages. Calling the
+  /// <para>The WHATWG Encoding Standard defines algorithms for the most
+  /// common character encodings used on Web pages and recommends the
+  /// UTF-8 encoding for new specifications and Web pages. Calling the
   /// <c>GetEncoding(name)</c> method returns one of the character
   /// encodings with the given name under the Encoding Standard.</para>
   /// <para>Now let's define some terms.</para>
@@ -927,7 +926,11 @@ namespace PeterO.Text {
     /// ResolveAlias method. Can be null.</param>
     /// <param name='forEmail'>If false, uses the encoding resolution rules
     /// in the Encoding Standard. If true, uses modified rules as described
-    /// in the ResolveAliasForEmail method.</param>
+    /// in the ResolveAliasForEmail method. If the resolved encoding is
+    /// "GB18030" or "GBK" (in any combination of case), uses either an
+    /// encoding intended to conform to the 2022 version of GB18030 if
+    /// 'forEmail' is true, or the definition of the encoding in the WHATWG
+    /// Encoding Standard if 'forEmail' is false.</param>
     /// <returns>An object that enables encoding and decoding text in the
     /// given character encoding. Returns null if the name is null or
     /// empty, or if it names an unrecognized or unsupported
@@ -1444,13 +1447,16 @@ namespace PeterO.Text {
       } else if (name.Equals("x-user-defined", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingXUserDefined();
       } else if (name.Equals("GBK", StringComparison.Ordinal)) {
-        return (ICharacterEncoding)new EncodingGBK();
+        return forEmail ? (ICharacterEncoding)new EncodingGBK2() :
+             (ICharacterEncoding)new EncodingGBK();
       } else if (name.Equals("GB2312", StringComparison.Ordinal) ||
         name.Equals("gb2312", StringComparison.Ordinal)) {
-        return (ICharacterEncoding)new EncodingGBK();
+        return forEmail ? (ICharacterEncoding)new EncodingGBK2() :
+             (ICharacterEncoding)new EncodingGBK();
       } else if (name.Equals("gb18030", StringComparison.Ordinal) ||
         name.Equals("GB18030", StringComparison.Ordinal)) {
-        return (ICharacterEncoding)new EncodingGB18030();
+        return forEmail ? (ICharacterEncoding)new EncodingGB180302() :
+             (ICharacterEncoding)new EncodingGB18030();
       } else if (name.Equals("UTF-16", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingUtf16();
       } else if (name.Equals("UTF-16LE", StringComparison.Ordinal)) {
@@ -1600,9 +1606,7 @@ ValueCharsetAliases[name] :
     /// Authority (IANA) are not supported, with the exception of
     /// <c>ascii</c>, <c>utf8</c>, <c>cp1252</c>, and names 10
     /// characters or longer starting with <c>iso-8859-</c>. Also, the
-    /// following additional encodings are supported. Note that the case
-    /// combination <c>GB18030</c>, the combination registered with IANA,
-    /// rather than <c>gb18030</c> can be retured by this method.
+    /// following additional encodings are supported.
     /// <list type='bullet'>
     /// <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an
     /// alias to <c>windows-1252</c> as specified in the Encoding Standard.
@@ -1632,7 +1636,9 @@ ValueCharsetAliases[name] :
     /// than in Unicode 2.0 and later).</item>
     /// <item><c>ISO-2022-JP-2</c> - similar to "ISO-2022-JP", except that
     /// the decoder supports additional character sets.</item></list>
-    /// .</param>
+    /// <para>Note that the case combination <c>GB18030</c>, the
+    /// combination registered with IANA, rather than <c>gb18030</c> can be
+    /// retured by this method.</para>.</param>
     /// <returns>A standardized name for the encoding. Returns the empty
     /// string if <paramref name='name'/> is null or empty, or if the
     /// encoding name is unsupported.</returns>

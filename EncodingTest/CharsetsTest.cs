@@ -485,6 +485,63 @@ namespace EncodingTest {
       }
     }
 
+    private int ReadHex(char c) {
+          if (c >= '0' && c <= '9') {
+            return (int)(c-'0');
+          } else if (c >= 'a' && c <= 'f') {
+            return (int)((c - 'a') + 10);
+          } else if (c >= 'A' && c <= 'F') {
+            return (int)((c - 'A') + 10);
+          } else {
+             throw new ArgumentOutOfRangeException(nameof(c));
+          }
+    }
+
+    private sealed class CharAndBytes {
+       public string CharStr { get; set; }
+       public byte[] Cbytes { get; set; }
+    }
+
+    private CharAndBytes GetCharAndBytes(string str) {
+if (str == null) {
+  throw new ArgumentNullException(nameof(str));
+}
+       var cv = 0;
+       var i = 0;
+       while (true) {
+          char ch = str[i++];
+if (ch=='\t') {
+  break;
+}
+          cv=(cv << 4) | ReadHex(ch);
+       }
+       int charsLeft = str.Length-i;
+if (charsLeft != 2 && charsLeft != 4 && charsLeft != 6 &&
+          charsLeft != 8) {
+  throw new ArgumentException(nameof(str));
+}
+       var bytes = new byte[charsLeft/2];
+       for (var j = 0; j < charsLeft;j+=2) {
+         char c1 = str[i++];
+         char c2 = str[i++];
+         int b = ReadHex(c1);
+         b=(b << 4)|ReadHex(c2);
+         bytes[j/2]=(byte)b;
+       }
+       var builder = new System.Text.StringBuilder();
+if (cv <= 0xffff) {
+            { builder.Append((char)(cv));
+         }
+} else if (cv <= 0x10ffff) {
+  builder.Append((char)((((cv - 0x10000) >> 10) & 0x3ff) | 0xd800));
+builder.Append((char)(((cv - 0x10000) & 0x3ff) | 0xdc00));
+}
+       var cab = new CharAndBytes();
+       cab.CharStr = builder.ToString();
+       cab.Cbytes = bytes;
+       return cab;
+    }
+
     [Test]
     public void TestCodePages() {
       for (var j = 0; j < this.valueSingleByteNames.Length; ++j) {

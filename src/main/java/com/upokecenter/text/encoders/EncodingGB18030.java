@@ -289,9 +289,15 @@ import com.upokecenter.text.*;
       private int gbk1;
       private int gbk2;
       private int gbk3;
+      private boolean gb2022;
+
+      public Decoder(boolean gb2022) {
+        this.state = new DecoderState(3);
+        this.gb2022 = gb2022;
+      }
 
       public Decoder() {
-        this.state = new DecoderState(3);
+ this(true);
       }
 
       public int ReadChar(IByteReader stream) {
@@ -313,6 +319,19 @@ import com.upokecenter.text.*;
               int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
                       126) + this.gbk3 - 0x81) * 10) + b - 0x30;
               c = GB18030CodePoint(ap);
+              if (this.gb2022 && ap >= 19057 && ap <= 19064) {
+                int[]
+cs = {0xe81e, 0xe826, 0xe82b, 0xe82c, 0xe832, 0xe843, 0xe854, 0xe864 };
+                c = cs[ap - 19057];
+              }
+              if (this.gb2022 && ap >= 39076 && ap <= 39085) {
+                int[]
+cs = {
+  0xe78d, 0xe78f, 0xe78e, 0xe790, 0xe791, 0xe792, 0xe793, 0xe794,
+  0xe795, 0xe796
+};
+                c = cs[ap - 39076];
+              }
               this.gbk1 = this.gbk2 = this.gbk3 = 0;
               return (c < 0) ? (-2) : c;
             } else {
@@ -343,6 +362,54 @@ import com.upokecenter.text.*;
             if ((b >= 0x40 && b <= 0x7e) || (b >= 0x80 && b <= 0xfe)) {
               ap = ((a1 - 0x81) * 190) + (b - a2);
               c = Gb18030.IndexToCodePoint(ap);
+              if (this.gb2022) {
+                if (ap >= 6555 && ap <= 7208) {
+if (ap == 6555) {
+  c = 0xe5e5;
+}
+if (ap == 7201) {
+  c = 0xfe17;
+}
+if (ap == 7202) {
+  c = 0xfe18;
+}
+if (ap == 7208) {
+  c = 0xfe19;
+}
+              if (ap >= 7182 && ap <= 7188) {
+                int[] cs = {
+                  0xfe10, 0xfe12, 0xfe11, 0xfe13, 0xfe14, 0xfe15,
+                  0xfe16
+                };
+                c = cs[ap - 7182];
+              }
+              } else if (ap >= 23775) {
+if (ap == 23775) {
+  c = 0x9fb4;
+}
+if (ap == 23783) {
+  c = 0x9fb5;
+}
+if (ap == 23788) {
+  c = 0x9fb6;
+}
+if (ap == 23789) {
+  c = 0x9fb7;
+}
+if (ap == 23795) {
+  c = 0x9fb8;
+}
+if (ap == 23812) {
+  c = 0x9fb9;
+}
+if (ap == 23829) {
+  c = 0x9fba;
+}
+if (ap == 23845) {
+  c = 0x9fbb;
+}
+              }
+              }
             }
             if (c < 0) {
               if (b < 0x80) {
@@ -367,9 +434,29 @@ import com.upokecenter.text.*;
 
     private static class Encoder implements ICharacterEncoder {
       private final boolean gbk;
+      private final boolean gb2022;
 
       public Encoder(boolean gbk) {
+ this(gbk, true);
+      }
+
+      public Encoder(boolean gbk, boolean gb2022) {
         this.gbk = gbk;
+        this.gb2022 = gb2022;
+      }
+
+      private int Write2(IWriter output, int a, int b) {
+        output.write((byte)a);
+        output.write((byte)b);
+        return 2;
+      }
+
+      private int Write4(IWriter output, int a, int b, int c, int d) {
+        output.write((byte)a);
+        output.write((byte)b);
+        output.write((byte)c);
+        output.write((byte)d);
+        return 4;
       }
 
       public int Encode(
@@ -381,7 +468,7 @@ import com.upokecenter.text.*;
         if (c < 0x80) {
           output.write((byte)c);
           return 1;
-        } else if (c == 0xe5e5) {
+        } else if (c == 0xe5e5 && !this.gb2022) {
           // Can't round trip under current WHATWG version
           // of specification; the bytes this code point corresponds
           // to map to U+3000 instead
@@ -389,6 +476,120 @@ import com.upokecenter.text.*;
         } else if (c == 0x20ac && this.gbk) {
           output.write((byte)0x80);
           return 1;
+        }
+        if (this.gb2022 && (c >= 0x9fb4 && c <= 0xa000) ||
+               (c >= 0xe5e5 && c <= 0xfe19)) {
+          if (c == 0xe81e) {
+            return this.Write4(output, 130, 53, 144, 55);
+          }
+          if (c == 0xe826) {
+            return this.Write4(output, 130, 53, 144, 56);
+          }
+          if (c == 0xe82b) {
+            return this.Write4(output, 130, 53, 144, 57);
+          }
+if (c == 0xe82c) {
+            return this.Write4(output, 130, 53, 145, 48);
+          }
+if (c == 0xe832) {
+  return this.Write4(output, 130, 53, 145, 49);
+}
+if (c == 0xe843) {
+  return this.Write4(output, 130, 53, 145, 50);
+}
+if (c == 0xe854) {
+  return this.Write4(output, 130, 53, 145, 51);
+}
+if (c == 0xe864) {
+  return this.Write4(output, 130, 53, 145, 52);
+}
+if (c == 0xe5e5) {
+  return this.Write2(output, 163, 160);
+}
+if (c == 0xfe10) {
+  return this.Write2(output, 166, 217);
+}
+if (c == 0xfe12) {
+  return this.Write2(output, 166, 218);
+}
+if (c == 0xfe11) {
+  return this.Write2(output, 166, 219);
+}
+if (c == 0xfe13) {
+  return this.Write2(output, 166, 220);
+}
+if (c == 0xfe14) {
+  return this.Write2(output, 166, 221);
+}
+if (c == 0xfe15) {
+  return this.Write2(output, 166, 222);
+}
+if (c == 0xfe16) {
+  return this.Write2(output, 166, 223);
+}
+if (c == 0xfe17) {
+  return this.Write2(output, 166, 236);
+}
+if (c == 0xfe18) {
+  return this.Write2(output, 166, 237);
+}
+if (c == 0xfe19) {
+  return this.Write2(output, 166, 243);
+}
+if (c == 0x9fb4) {
+  return this.Write2(output, 254, 89);
+}
+if (c == 0x9fb5) {
+  return this.Write2(output, 254, 97);
+}
+if (c == 0x9fb6) {
+  return this.Write2(output, 254, 102);
+}
+if (c == 0x9fb7) {
+  return this.Write2(output, 254, 103);
+}
+if (c == 0x9fb8) {
+  return this.Write2(output, 254, 109);
+}
+if (c == 0x9fb9) {
+  return this.Write2(output, 254, 126);
+}
+if (c == 0x9fba) {
+  return this.Write2(output, 254, 144);
+}
+if (c == 0x9fbb) {
+  return this.Write2(output, 254, 160);
+}
+if (c == 0xe78d) {
+  return this.Write4(output, 132, 49, 130, 54);
+}
+if (c == 0xe78f) {
+  return this.Write4(output, 132, 49, 130, 55);
+}
+if (c == 0xe78e) {
+  return this.Write4(output, 132, 49, 130, 56);
+}
+if (c == 0xe790) {
+  return this.Write4(output, 132, 49, 130, 57);
+}
+if (c == 0xe791) {
+  return this.Write4(output, 132, 49, 131, 48);
+}
+if (c == 0xe792) {
+  return this.Write4(output, 132, 49, 131, 49);
+}
+if (c == 0xe793) {
+  return this.Write4(output, 132, 49, 131, 50);
+}
+if (c == 0xe794) {
+  return this.Write4(output, 132, 49, 131, 51);
+}
+if (c == 0xe795) {
+  return this.Write4(output, 132, 49, 131, 52);
+}
+if (c == 0xe796) {
+  return this.Write4(output, 132, 49, 131, 53);
+}
         }
         int cp = Gb18030.CodePointToIndex(c);
         if (cp >= 0) {
@@ -424,11 +625,19 @@ import com.upokecenter.text.*;
     }
 
     public static ICharacterDecoder GetDecoder2() {
-      return new Decoder();
+      return new Decoder(false);
     }
 
     public static ICharacterEncoder GetEncoder2(boolean gbk) {
-      return new Encoder(gbk);
+      return new Encoder(gbk, false);
+    }
+
+    public static ICharacterDecoder GetDecoder3() {
+      return new Decoder(true);
+    }
+
+    public static ICharacterEncoder GetEncoder3(boolean gbk) {
+      return new Encoder(gbk, true);
     }
 
     private final ICharacterEncoder enc = GetEncoder2(false);

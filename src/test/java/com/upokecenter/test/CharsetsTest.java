@@ -510,6 +510,67 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
       }
     }
 
+    private int ReadHex(char c) {
+          if (c >= '0' && c <= '9') {
+            return (int)(c-'0');
+          } else if (c >= 'a' && c <= 'f') {
+            return (int)((c - 'a') + 10);
+          } else if (c >= 'A' && c <= 'F') {
+            return (int)((c - 'A') + 10);
+          } else {
+             throw new IllegalArgumentException("c");
+          }
+    }
+
+    private static final class CharAndBytes {
+       public final String getCharStr() { return propVarcharstr; }
+public final void setCharStr(String value) { propVarcharstr = value; }
+private String propVarcharstr;
+       public final byte[] getCbytes() { return propVarcbytes; }
+public final void setCbytes(byte[] value) { propVarcbytes = value; }
+private byte[] propVarcbytes;
+    }
+
+    private CharAndBytes GetCharAndBytes(String str) {
+if (str == null) {
+  throw new NullPointerException("str");
+}
+       int cv = 0;
+       int i = 0;
+       while (true) {
+          char ch = str.charAt(i++);
+if (ch=='\t') {
+  break;
+}
+          cv=(cv << 4) | ReadHex(ch);
+       }
+       int charsLeft = str.length()-i;
+if (charsLeft != 2 && charsLeft != 4 && charsLeft != 6 &&
+          charsLeft != 8) {
+  throw new IllegalArgumentException("str");
+}
+       byte[] bytes = new byte[charsLeft/2];
+       for (int j = 0; j < charsLeft;j+=2) {
+         char c1 = str.charAt(i++);
+         char c2 = str.charAt(i++);
+         int b = ReadHex(c1);
+         b=(b << 4)|ReadHex(c2);
+         bytes[j/2]=(byte)b;
+       }
+       StringBuilder builder = new StringBuilder();
+if (cv <= 0xffff) {
+            { builder.append((char)(cv));
+         }
+} else if (cv <= 0x10ffff) {
+  builder.append((char)((((cv - 0x10000) >> 10) & 0x3ff) | 0xd800));
+builder.append((char)(((cv - 0x10000) & 0x3ff) | 0xdc00));
+}
+       CharAndBytes cab = new CharAndBytes();
+       cab.setCharStr(builder.toString());
+       cab.setCbytes(bytes);
+       return cab;
+    }
+
     @Test
     public void TestCodePages() {
       for (int j = 0; j < this.valueSingleByteNames.length; ++j) {

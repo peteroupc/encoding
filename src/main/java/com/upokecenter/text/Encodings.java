@@ -10,63 +10,63 @@ import com.upokecenter.text.encoders.*;
    * Contains methods for converting text from one character encoding to another.
    * This class also contains convenience methods for converting strings
    * and other character inputs to sequences of bytes and vice versa.
-   * <p>The Encoding Standard, which is a Candidate Recommendation as of
-   * early November 2015, defines algorithms for the most common character
-   * encodings used on Web pages and recommends the UTF-8 encoding for new
-   * specifications and Web pages. Calling the <code>GetEncoding(name)</code>
-   * method returns one of the character encodings with the given name
-   * under the Encoding Standard.</p> <p>Now let's define some terms.</p>
-   * <p><b>Encoding Terms</b></p> <ul> <li>A <b>code point</b> is a number
-   * that identifies a single text character, such as a letter, digit, or
-   * symbol. (A collection of such characters is also called an <i>abstract
-   * character repertoire</i>.)</li> <li>A <b>coded character set</b> is a
-   * set of code points which are each assigned to a single text character.
-   * As used here, coded character sets don't define how code points are
-   * laid out in memory.</li> <li>A <b>character encoding</b> is a mapping
-   * from a sequence of code points, in one or more specific coded
-   * character sets, to a sequence of bytes and vice versa. (For brevity,
-   * the rest of this documentation may use the term <i>encoding</i>
-   * instead. RFC 6365 uses the analogous term <i>charset</i> instead; in
-   * this documentation, however, <i>charset</i> is used only to refer to
-   * the names that identify a character encoding.)</li> <li><b>ASCII</b>
-   * is a 128-code-point coded character set that includes the English
-   * letters and digits, common punctuation and symbols, and control
-   * characters. As used here, its code points match the code points within
-   * the Basic Latin block (0-127 or U+0000 to U+007F) of the Unicode
-   * Standard.</li></ul> <p>There are several kinds of character
-   * encodings:</p> <ul> <li><b>Single-byte encodings</b> define a coded
-   * character set that assigns one code point to one byte. Thus, they can
-   * have a maximum of 256 code points. For example:</li> <li>(a) ISO 8859
-   * encodings and <code>windows-1252</code>.</li> <li>(b) ASCII is usually used
-   * as a single-byte encoding where each code point fits in the lower 7
-   * bits of an eight-bit byte (in that case, the encoding is often called
-   * <code>US-ASCII</code>). In the Encoding Standard, all single-byte encodings
-   * use the ASCII characters as the first 128 code points of their coded
-   * character sets.</li> <li><b>Multi-byte encodings</b> include code
-   * points from one or more coded character sets and assign some or all
-   * code points to several bytes. For example:</li> <li>(a)
-   * <code>UTF-16LE</code> and <code>UTF-16BE</code> are two encodings defined in the
-   * Unicode Standard. They use 2 bytes for the most common code points,
-   * and 4 bytes for supplementary code points.</li> <li>(b) <code>UTF-8</code>
-   * is another encoding defined in the Unicode Standard. It uses 1 byte
-   * for ASCII and 2 to 4 bytes for the other Unicode code points.</li>
-   * <li>(c) Most legacy East Asian encodings, such as <code>Shift_JIS</code>,
-   * <code>GBK</code>, and <code>Big5</code> use 1 byte for ASCII (or a slightly
-   * modified version) and, usually, 2 or more bytes for national standard
-   * coded character sets. In many of these encodings, notably
-   * <code>Shift_JIS</code>, characters whose code points use one byte
-   * traditionally take half the space of characters whose code points use
-   * two bytes.</li> <li><b>Escape-based encodings</b> are combinations of
-   * single- and/or multi-byte encodings, and use escape sequences and/or
-   * shift codes to change which encoding to use for the bytes that follow.
-   * For example:</li> <li>(a) <code>ISO-2022-JP</code> supports several escape
-   * sequences that shift into different encodings, including a Katakana, a
-   * Kanji, and an ASCII encoding (with ASCII as the default).</li> <li>(b)
-   * UTF-7 (not included in the Encoding Standard) is an encoding that uses
-   * the Unicode Standard's coded character set, which is encoded using a
-   * limited subset of ASCII. The plus symbol (U+002B) is used to shift
-   * into a UTF-16BE multi-byte encoding (converted to a modified version
-   * of base-64) to encode other Unicode code points.</li> <li>The Encoding
+   * <p>The WHATWG Encoding Standard defines algorithms for the most common
+   * character encodings used on Web pages and recommends the UTF-8
+   * encoding for new specifications and Web pages. Calling the
+   * <code>GetEncoding(name)</code> method returns one of the character encodings
+   * with the given name under the Encoding Standard.</p> <p>Now let's
+   * define some terms.</p> <p><b>Encoding Terms</b></p> <ul> <li>A <b>code
+   * point</b> is a number that identifies a single text character, such as
+   * a letter, digit, or symbol. (A collection of such characters is also
+   * called an <i>abstract character repertoire</i>.)</li> <li>A <b>coded
+   * character set</b> is a set of code points which are each assigned to a
+   * single text character. As used here, coded character sets don't define
+   * how code points are laid out in memory.</li> <li>A <b>character
+   * encoding</b> is a mapping from a sequence of code points, in one or
+   * more specific coded character sets, to a sequence of bytes and vice
+   * versa. (For brevity, the rest of this documentation may use the term
+   * <i>encoding</i> instead. RFC 6365 uses the analogous term
+   * <i>charset</i> instead; in this documentation, however, <i>charset</i>
+   * is used only to refer to the names that identify a character
+   * encoding.)</li> <li><b>ASCII</b> is a 128-code-point coded character
+   * set that includes the English letters and digits, common punctuation
+   * and symbols, and control characters. As used here, its code points
+   * match the code points within the Basic Latin block (0-127 or U+0000 to
+   * U+007F) of the Unicode Standard.</li></ul> <p>There are several kinds
+   * of character encodings:</p> <ul> <li><b>Single-byte encodings</b>
+   * define a coded character set that assigns one code point to one byte.
+   * Thus, they can have a maximum of 256 code points. For example:</li>
+   * <li>(a) ISO 8859 encodings and <code>windows-1252</code>.</li> <li>(b) ASCII
+   * is usually used as a single-byte encoding where each code point fits
+   * in the lower 7 bits of an eight-bit byte (in that case, the encoding
+   * is often called <code>US-ASCII</code>). In the Encoding Standard, all
+   * single-byte encodings use the ASCII characters as the first 128 code
+   * points of their coded character sets.</li> <li><b>Multi-byte
+   * encodings</b> include code points from one or more coded character
+   * sets and assign some or all code points to several bytes. For
+   * example:</li> <li>(a) <code>UTF-16LE</code> and <code>UTF-16BE</code> are two
+   * encodings defined in the Unicode Standard. They use 2 bytes for the
+   * most common code points, and 4 bytes for supplementary code
+   * points.</li> <li>(b) <code>UTF-8</code> is another encoding defined in the
+   * Unicode Standard. It uses 1 byte for ASCII and 2 to 4 bytes for the
+   * other Unicode code points.</li> <li>(c) Most legacy East Asian
+   * encodings, such as <code>Shift_JIS</code>, <code>GBK</code>, and <code>Big5</code> use 1
+   * byte for ASCII (or a slightly modified version) and, usually, 2 or
+   * more bytes for national standard coded character sets. In many of
+   * these encodings, notably <code>Shift_JIS</code>, characters whose code
+   * points use one byte traditionally take half the space of characters
+   * whose code points use two bytes.</li> <li><b>Escape-based
+   * encodings</b> are combinations of single- and/or multi-byte encodings,
+   * and use escape sequences and/or shift codes to change which encoding
+   * to use for the bytes that follow. For example:</li> <li>(a)
+   * <code>ISO-2022-JP</code> supports several escape sequences that shift into
+   * different encodings, including a Katakana, a Kanji, and an ASCII
+   * encoding (with ASCII as the default).</li> <li>(b) UTF-7 (not included
+   * in the Encoding Standard) is an encoding that uses the Unicode
+   * Standard's coded character set, which is encoded using a limited
+   * subset of ASCII. The plus symbol (U+002B) is used to shift into a
+   * UTF-16BE multi-byte encoding (converted to a modified version of
+   * base-64) to encode other Unicode code points.</li> <li>The Encoding
    * Standard also defines a <b>replacement encoding</b>, which causes a
    * decoding error and is used to alias a few problematic or unsupported
    * encoding names, such as <code>hz-gb-2312</code>.</li></ul> <p><b>Getting an
@@ -831,7 +831,11 @@ private Encodings() {
      * method. Can be null.
      * @param forEmail If false, uses the encoding resolution rules in the Encoding
      * Standard. If true, uses modified rules as described in the
-     * ResolveAliasForEmail method.
+     *  ResolveAliasForEmail method. If the resolved encoding is "GB18030"
+     *  or "GBK" (in any combination of case), uses either an encoding
+     * intended to conform to the 2022 version of GB18030 if 'forEmail' is
+     * true, or the definition of the encoding in the WHATWG Encoding
+     * Standard if 'forEmail' is false.
      * @return An object that enables encoding and decoding text in the given
      * character encoding. Returns null if the name is null or empty, or if
      * it names an unrecognized or unsupported encoding.
@@ -1321,13 +1325,16 @@ private Encodings() {
       } else if (name.equals("x-user-defined")) {
         return (ICharacterEncoding)new EncodingXUserDefined();
       } else if (name.equals("GBK")) {
-        return (ICharacterEncoding)new EncodingGBK();
+        return forEmail ? (ICharacterEncoding)new EncodingGBK2() :
+             (ICharacterEncoding)new EncodingGBK();
       } else if (name.equals("GB2312") ||
         name.equals("gb2312")) {
-        return (ICharacterEncoding)new EncodingGBK();
+        return forEmail ? (ICharacterEncoding)new EncodingGBK2() :
+             (ICharacterEncoding)new EncodingGBK();
       } else if (name.equals("gb18030") ||
         name.equals("GB18030")) {
-        return (ICharacterEncoding)new EncodingGB18030();
+        return forEmail ? (ICharacterEncoding)new EncodingGB180302() :
+             (ICharacterEncoding)new EncodingGB18030();
       } else if (name.equals("UTF-16")) {
         return (ICharacterEncoding)new EncodingUtf16();
       } else if (name.equals("UTF-16LE")) {
@@ -1464,36 +1471,36 @@ ValueCharsetAliases.get(name) :
      * the Internet Assigned Numbers Authority (IANA) are not supported,
      * with the exception of {@code ascii}, {@code utf8}, {@code cp1252},
      * and names 10 characters or longer starting with {@code iso-8859-}.
-     * Also, the following additional encodings are supported. Note that
-     * the case combination {@code GB18030}, the combination registered
-     * with IANA, rather than {@code gb18030} can be retured by this
-     * method. <ul> <li> {@code US-ASCII} - ASCII single-byte encoding,
-     * rather than an alias to {@code windows-1252} as specified in the
-     * Encoding Standard. The coded character set's code points match those
-     * in the Unicode Standard's Basic Latin block (0-127 or U+0000 to
-     * U+007F). This method name {@code ascii} is treated as an alias to
-     * {@code US-ASCII} even though it is not registered with IANA as a
-     *  charset name and RFC 2046 (part of MIME) reserves the name "ASCII".
-     * A future version of this method may stop supporting the alias {@code
-     * ascii}.</li> <li> {@code ISO-8859-1} - Latin-1 single-byte encoding,
-     * rather than an alias to {@code windows-1252} as specified in the
-     * Encoding Standard. The coded character set's code points match those
-     * in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks
-     * (0-255 or U+0000 to U+00FF).</li> <li> {@code UTF-16} - UTF-16
-     * without a fixed byte order, rather than an alias to {@code UTF-16LE}
-     * as specified in the Encoding Standard. The byte order is little
-     * endian if the byte stream starts with 0xff 0xfe; otherwise, big
-     * endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream is
-     * skipped.</li> <li> {@code UTF-7} - UTF-7 (7-bit universal coded
-     * character set). The name {@code unicode-1-1-utf-7} is not supported
-     * and is not treated as an alias to {@code UTF-7}, even though it uses
-     * the same character encoding scheme as UTF-7, because RFC 1642, which
-     * defined the former UTF-7, is linked to a different Unicode version
-     * with an incompatible character repertoire (notably, the Hangul
-     * syllables have different code point assignments in Unicode 1.1 and
-     * earlier than in Unicode 2.0 and later).</li> <li> {@code
-     *  ISO-2022-JP-2} - similar to "ISO-2022-JP", except that the decoder
-     * supports additional character sets.</li></ul> .
+     * Also, the following additional encodings are supported. <ul>
+     * <li> {@code US-ASCII} - ASCII single-byte encoding, rather than an
+     * alias to {@code windows-1252} as specified in the Encoding Standard.
+     * The coded character set's code points match those in the Unicode
+     * Standard's Basic Latin block (0-127 or U+0000 to U+007F). This
+     * method name {@code ascii} is treated as an alias to {@code US-ASCII}
+     * even though it is not registered with IANA as a charset name and RFC
+     *  2046 (part of MIME) reserves the name "ASCII". A future version of
+     * this method may stop supporting the alias {@code ascii}.</li>
+     * <li> {@code ISO-8859-1} - Latin-1 single-byte encoding, rather than
+     * an alias to {@code windows-1252} as specified in the Encoding
+     * Standard. The coded character set's code points match those in the
+     * Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255
+     * or U+0000 to U+00FF).</li> <li> {@code UTF-16} - UTF-16 without a
+     * fixed byte order, rather than an alias to {@code UTF-16LE} as
+     * specified in the Encoding Standard. The byte order is little endian
+     * if the byte stream starts with 0xff 0xfe; otherwise, big endian. A
+     * leading 0xff 0xfe or 0xfe 0xff in the byte stream is skipped.</li>
+     * <li> {@code UTF-7} - UTF-7 (7-bit universal coded character set). The
+     * name {@code unicode-1-1-utf-7} is not supported and is not treated
+     * as an alias to {@code UTF-7}, even though it uses the same character
+     * encoding scheme as UTF-7, because RFC 1642, which defined the former
+     * UTF-7, is linked to a different Unicode version with an incompatible
+     * character repertoire (notably, the Hangul syllables have different
+     * code point assignments in Unicode 1.1 and earlier than in Unicode
+     * 2.0 and later).</li> <li> {@code ISO-2022-JP-2} - similar to
+     *  "ISO-2022-JP", except that the decoder supports additional character
+     * sets.</li></ul> <p>Note that the case combination {@code GB18030},
+     * the combination registered with IANA, rather than {@code gb18030}
+     * can be retured by this method.</p>.
      * @return A standardized name for the encoding. Returns the empty string if
      * {@code name} is null or empty, or if the encoding name is
      * unsupported.

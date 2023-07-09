@@ -835,7 +835,7 @@ private Encodings() {
      *  or "GBK" (in any combination of case), uses either an encoding
      * intended to conform to the 2022 version of GB18030 if 'forEmail' is
      * true, or the definition of the encoding in the WHATWG Encoding
-     * Standard if 'forEmail' is false.
+     * Standard (as of July 7, 2023) if 'forEmail' is false.
      * @return An object that enables encoding and decoding text in the given
      * character encoding. Returns null if the name is null or empty, or if
      * it names an unrecognized or unsupported encoding.

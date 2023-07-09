@@ -328,7 +328,7 @@ cs = {0xe81e, 0xe826, 0xe82b, 0xe82c, 0xe832, 0xe843, 0xe854, 0xe864 };
                 int[]
 cs = {
   0xe78d, 0xe78f, 0xe78e, 0xe790, 0xe791, 0xe792, 0xe793, 0xe794,
-  0xe795, 0xe796
+  0xe795, 0xe796,
 };
                 c = cs[ap - 39076];
               }
@@ -378,8 +378,7 @@ if (ap == 7208) {
 }
               if (ap >= 7182 && ap <= 7188) {
                 int[] cs = {
-                  0xfe10, 0xfe12, 0xfe11, 0xfe13, 0xfe14, 0xfe15,
-                  0xfe16
+                  0xfe10, 0xfe12, 0xfe11, 0xfe13, 0xfe14, 0xfe15, 0xfe16,
                 };
                 c = cs[ap - 7182];
               }
@@ -488,15 +487,15 @@ if (ap == 23845) {
           if (c == 0xe82b) {
             return this.Write4(output, 130, 53, 144, 57);
           }
-if (c == 0xe82c) {
+          if (c == 0xe82c) {
             return this.Write4(output, 130, 53, 145, 48);
           }
-if (c == 0xe832) {
-  return this.Write4(output, 130, 53, 145, 49);
-}
+          if (c == 0xe832) {
+            return this.Write4(output, 130, 53, 145, 49);
+          }
 if (c == 0xe843) {
-  return this.Write4(output, 130, 53, 145, 50);
-}
+            return this.Write4(output, 130, 53, 145, 50);
+          }
 if (c == 0xe854) {
   return this.Write4(output, 130, 53, 145, 51);
 }

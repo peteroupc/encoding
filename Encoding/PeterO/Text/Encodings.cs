@@ -1607,7 +1607,9 @@ ValueCharsetAliases[name] :
     /// Authority (IANA) are not supported, with the exception of
     /// <c>ascii</c>, <c>utf8</c>, <c>cp1252</c>, and names 10
     /// characters or longer starting with <c>iso-8859-</c>. Also, the
-    /// following additional encodings are supported.
+    /// following additional encodings are supported. Note that the case
+    /// combination <c>GB18030</c>, the combination registered with IANA,
+    /// rather than <c>gb18030</c>, can be returned by this method.
     /// <list type='bullet'>
     /// <item><c>US-ASCII</c> - ASCII single-byte encoding, rather than an
     /// alias to <c>windows-1252</c> as specified in the Encoding Standard.
@@ -1636,10 +1638,8 @@ ValueCharsetAliases[name] :
     /// have different code point assignments in Unicode 1.1 and earlier
     /// than in Unicode 2.0 and later).</item>
     /// <item><c>ISO-2022-JP-2</c> - similar to "ISO-2022-JP", except that
-    /// the decoder supports additional character sets.</item></list>
-    /// <para>Note that the case combination <c>GB18030</c>, the
-    /// combination registered with IANA, rather than <c>gb18030</c> can be
-    /// retured by this method.</para>.</param>
+    /// the decoder supports additional character
+    /// sets.</item></list></param>
     /// <returns>A standardized name for the encoding. Returns the empty
     /// string if <paramref name='name'/> is null or empty, or if the
     /// encoding name is unsupported.</returns>

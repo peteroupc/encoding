@@ -493,15 +493,15 @@ if (ap == 23845) {
           if (c == 0xe832) {
             return this.Write4(output, 130, 53, 145, 49);
           }
-if (c == 0xe843) {
+          if (c == 0xe843) {
             return this.Write4(output, 130, 53, 145, 50);
           }
-if (c == 0xe854) {
-  return this.Write4(output, 130, 53, 145, 51);
-}
+          if (c == 0xe854) {
+            return this.Write4(output, 130, 53, 145, 51);
+          }
 if (c == 0xe864) {
-  return this.Write4(output, 130, 53, 145, 52);
-}
+            return this.Write4(output, 130, 53, 145, 52);
+          }
 if (c == 0xe5e5) {
   return this.Write2(output, 163, 160);
 }

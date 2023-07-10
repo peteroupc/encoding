@@ -1471,36 +1471,36 @@ ValueCharsetAliases.get(name) :
      * the Internet Assigned Numbers Authority (IANA) are not supported,
      * with the exception of {@code ascii}, {@code utf8}, {@code cp1252},
      * and names 10 characters or longer starting with {@code iso-8859-}.
-     * Also, the following additional encodings are supported. <ul>
-     * <li> {@code US-ASCII} - ASCII single-byte encoding, rather than an
-     * alias to {@code windows-1252} as specified in the Encoding Standard.
-     * The coded character set's code points match those in the Unicode
-     * Standard's Basic Latin block (0-127 or U+0000 to U+007F). This
-     * method name {@code ascii} is treated as an alias to {@code US-ASCII}
-     * even though it is not registered with IANA as a charset name and RFC
-     *  2046 (part of MIME) reserves the name "ASCII". A future version of
-     * this method may stop supporting the alias {@code ascii}.</li>
-     * <li> {@code ISO-8859-1} - Latin-1 single-byte encoding, rather than
-     * an alias to {@code windows-1252} as specified in the Encoding
-     * Standard. The coded character set's code points match those in the
-     * Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255
-     * or U+0000 to U+00FF).</li> <li> {@code UTF-16} - UTF-16 without a
-     * fixed byte order, rather than an alias to {@code UTF-16LE} as
-     * specified in the Encoding Standard. The byte order is little endian
-     * if the byte stream starts with 0xff 0xfe; otherwise, big endian. A
-     * leading 0xff 0xfe or 0xfe 0xff in the byte stream is skipped.</li>
-     * <li> {@code UTF-7} - UTF-7 (7-bit universal coded character set). The
-     * name {@code unicode-1-1-utf-7} is not supported and is not treated
-     * as an alias to {@code UTF-7}, even though it uses the same character
-     * encoding scheme as UTF-7, because RFC 1642, which defined the former
-     * UTF-7, is linked to a different Unicode version with an incompatible
-     * character repertoire (notably, the Hangul syllables have different
-     * code point assignments in Unicode 1.1 and earlier than in Unicode
-     * 2.0 and later).</li> <li> {@code ISO-2022-JP-2} - similar to
-     *  "ISO-2022-JP", except that the decoder supports additional character
-     * sets.</li></ul> <p>Note that the case combination {@code GB18030},
-     * the combination registered with IANA, rather than {@code gb18030}
-     * can be retured by this method.</p>.
+     * Also, the following additional encodings are supported. Note that
+     * the case combination {@code GB18030}, the combination registered
+     * with IANA, rather than {@code gb18030}, can be returned by this
+     * method. <ul> <li> {@code US-ASCII} - ASCII single-byte encoding,
+     * rather than an alias to {@code windows-1252} as specified in the
+     * Encoding Standard. The coded character set's code points match those
+     * in the Unicode Standard's Basic Latin block (0-127 or U+0000 to
+     * U+007F). This method name {@code ascii} is treated as an alias to
+     * {@code US-ASCII} even though it is not registered with IANA as a
+     *  charset name and RFC 2046 (part of MIME) reserves the name "ASCII".
+     * A future version of this method may stop supporting the alias {@code
+     * ascii}.</li> <li> {@code ISO-8859-1} - Latin-1 single-byte encoding,
+     * rather than an alias to {@code windows-1252} as specified in the
+     * Encoding Standard. The coded character set's code points match those
+     * in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks
+     * (0-255 or U+0000 to U+00FF).</li> <li> {@code UTF-16} - UTF-16
+     * without a fixed byte order, rather than an alias to {@code UTF-16LE}
+     * as specified in the Encoding Standard. The byte order is little
+     * endian if the byte stream starts with 0xff 0xfe; otherwise, big
+     * endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream is
+     * skipped.</li> <li> {@code UTF-7} - UTF-7 (7-bit universal coded
+     * character set). The name {@code unicode-1-1-utf-7} is not supported
+     * and is not treated as an alias to {@code UTF-7}, even though it uses
+     * the same character encoding scheme as UTF-7, because RFC 1642, which
+     * defined the former UTF-7, is linked to a different Unicode version
+     * with an incompatible character repertoire (notably, the Hangul
+     * syllables have different code point assignments in Unicode 1.1 and
+     * earlier than in Unicode 2.0 and later).</li> <li> {@code
+     *  ISO-2022-JP-2} - similar to "ISO-2022-JP", except that the decoder
+     * supports additional character sets.</li></ul>
      * @return A standardized name for the encoding. Returns the empty string if
      * {@code name} is null or empty, or if the encoding name is
      * unsupported.

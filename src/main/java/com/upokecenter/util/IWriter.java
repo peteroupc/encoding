@@ -22,9 +22,8 @@ https://creativecommons.org/publicdomain/zero/1.0/
      * @throws NullPointerException Should be thrown if the parameter {@code
      * bytes} is null.
      * @throws IllegalArgumentException Should be thrown if either {@code offset} or
-     * {@code length} is less than 0 or greater than {@code bytes} 's
-     * length, or {@code bytes} 's length minus {@code offset} is less than
-     * {@code length}.
+     * {@code length} is less than 0 or greater than {@code bytes} 's length, or
+     * {@code bytes} 's length minus {@code offset} is less than {@code length}.
      */
     void write(byte[] bytes, int offset, int length);
   }

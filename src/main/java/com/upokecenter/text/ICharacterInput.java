@@ -22,8 +22,8 @@ package com.upokecenter.text;
      * 0x10ffff), or the value -1 indicating the end of the source.
      * @throws NullPointerException Should be thrown if {@code chars} is null.
      * @throws IllegalArgumentException Either "index" or "length" is less than 0 or
-     *  greater than "chars"'s length, or "chars"'s length minus "index" is
-     *  less than "length".
+     * greater than "chars"'s length, or "chars"'s length minus "index" is less
+     * than "length".
      */
     int Read(int[] chars, int index, int length);
   }

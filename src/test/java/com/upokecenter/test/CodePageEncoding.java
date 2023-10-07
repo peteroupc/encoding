@@ -4,17 +4,17 @@ import com.upokecenter.util.*;
 import com.upokecenter.text.*;
 
   /**
-   * A character encoding class that implements a code page read from the code
+   * <p>A character encoding class that implements a code page read from the code
    * page file format described in the Windows Protocols Unicode Reference
-   * (https://msdn.microsoft.com/en-us/library/cc248954.aspx), section
-   * 2.2.2.1. The code page file format supports single-byte encodings and
-   * certain multi-byte encodings in which each character is encoded in one
-   * or two bytes. <p>The code page format defines a single-byte as a
-   *  replacement character and can specify certain "best-fit" mappings from
-   * certain Unicode characters to the code page encoding if the Unicode
-   * character is unsupported in the code page encoding. When decoding, any
-   * invalid bytes or unassigned bytes in the code page encoding are
-   * converted to the given replacement code point.</p>
+   * (https://msdn.microsoft.com/en-us/library/cc248954.aspx), section 2.2.2.1.
+   * The code page file format supports single-byte encodings and certain
+   * multi-byte encodings in which each character is encoded in one or two bytes.
+   * </p> <p>The code page format defines a single-byte as a replacement
+   * character and can specify certain "best-fit" mappings from certain Unicode
+   * characters to the code page encoding if the Unicode character is unsupported
+   * in the code page encoding. When decoding, any invalid bytes or unassigned
+   * bytes in the code page encoding are converted to the given replacement code
+   * point.</p>
    */
   public class CodePageEncoding implements ICharacterEncoding {
     private CodePageCoder coder;

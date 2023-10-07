@@ -25,15 +25,16 @@ https://creativecommons.org/publicdomain/zero/1.0/
     }
 
     /**
-     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class
-     * with a default backing store size of 16.
+     * Initializes a new instance of the {@link com.upokecenter.util.ArrayWriter}
+     * class with a default backing store size of 16.
      */
     public ArrayWriter() {
  this(16);
     }
 
     /**
-     * Initializes a new instance of the {@link com.upokecenter.ArrayWriter} class.
+     * Initializes a new instance of the {@link com.upokecenter.util.ArrayWriter}
+     * class.
      * @param initialSize The initial size of the array writer's backing store.
      */
     public ArrayWriter(int initialSize) {
@@ -79,8 +80,8 @@ https://creativecommons.org/publicdomain/zero/1.0/
      * (but not more than {@code src} 's length).
      * @throws NullPointerException The parameter {@code src} is null.
      * @throws IllegalArgumentException Either {@code offset} or {@code length} is less
-     * than 0 or greater than {@code src} 's length, or {@code src} 's
-     * length minus {@code offset} is less than {@code length}.
+     * than 0 or greater than {@code src} 's length, or {@code src} 's length minus
+     * {@code offset} is less than {@code length}.
      */
     public void write(byte[] src, int offset, int length) {
       if (src == null) {

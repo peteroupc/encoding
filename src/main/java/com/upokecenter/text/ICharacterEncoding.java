@@ -10,8 +10,8 @@ import com.upokecenter.util.*;
   public interface ICharacterEncoding {
     /**
      * Creates an encoder for this character encoding with initial state. If the
-     * encoder is stateless, multiple calls of this method can return the
-     * same encoder.
+     * encoder is stateless, multiple calls of this method can return the same
+     * encoder.
      * @return A character encoder object.
      */
 
@@ -19,8 +19,8 @@ import com.upokecenter.util.*;
 
     /**
      * Creates a decoder for this character encoding with initial state. If the
-     * decoder is stateless, multiple calls of this method can return the
-     * same decoder.
+     * decoder is stateless, multiple calls of this method can return the same
+     * decoder.
      * @return A character decoder object.
      */
 

@@ -2,8 +2,7 @@
 Written in 2013-2018 by Peter O.
 Any copyright to this work is released to the Public Domain.
 In case this is not possible, this work is also
-licensed under Creative Commons Zero (CC0):
-https://creativecommons.org/publicdomain/zero/1.0/
+licensed under the Unlicense: https://unlicense.org/
 
  */
 using System;
@@ -40,7 +39,7 @@ namespace Test {
           if (ret == 2147483640) {
             if (neg && x == 8) {
               return i != str.Length ? throw new FormatException() :
-int.MinValue;
+Int32.MinValue;
             }
             if (x > 7) {
               throw new FormatException();
@@ -80,7 +79,7 @@ int.MinValue;
           if (ret == 9223372036854775800L) {
             if (neg && x == 8) {
               return i != str.Length ? throw new FormatException() :
-long.MinValue;
+Int64.MinValue;
             }
             if (x > 7) {
               throw new FormatException();
@@ -488,7 +487,7 @@ long.MinValue;
       if (value == 0) {
         return "0";
       }
-      if (value == int.MinValue) {
+      if (value == Int32.MinValue) {
         return "-2147483648";
       }
       bool neg = value < 0;
@@ -547,7 +546,7 @@ long.MinValue;
     }
 
     public static string LongToString(long longValue) {
-      if (longValue == long.MinValue) {
+      if (longValue == Int64.MinValue) {
         return "-9223372036854775808";
       }
       if (longValue == 0L) {
@@ -692,10 +691,12 @@ length);
         if (i > 0) {
           _ = sb.Append(',');
         }
-        _ = (bytes[offset + i] & 0x80) != 0 ? sb.Append("(byte)0x") :
-sb.Append("0x");
-        _ = sb.Append(ValueHex[(bytes[offset + i] >> 4) & 0xf]);
-        _ = sb.Append(ValueHex[bytes[offset + i] & 0xf]);
+        if ((bytes[offset + i] & 0x80) != 0) {
+          sb.Append("(byte)");
+        }
+        sb.Append("0x");
+        sb.Append(ValueHex[(bytes[offset + i] >> 4) & 0xf]);
+        sb.Append(ValueHex[bytes[offset + i] & 0xf]);
       }
       _ = sb.Append('}');
       return sb.ToString();

@@ -3,8 +3,7 @@ package com.upokecenter.test;
 Written in 2013-2018 by Peter O.
 Any copyright to this work is released to the Public Domain.
 In case this is not possible, this work is also
-licensed under Creative Commons Zero (CC0):
-https://creativecommons.org/publicdomain/zero/1.0/
+licensed under the Unlicense: https://unlicense.org/
 
  */
 
@@ -32,7 +31,7 @@ private TestCommon() {
       while (i < str.length()) {
         int c = str.charAt(i);
         ++i;
-        if (c instanceof >= '0' and <= '9') {
+        if (c >= '0' && c <= '9') {
           int x = c - '0';
           if (ret > 214748364) {
             throw new NumberFormatException();
@@ -40,8 +39,10 @@ private TestCommon() {
           ret *= 10;
           if (ret == 2147483640) {
             if (neg && x == 8) {
-              return i != str.length() ? throw new NumberFormatException() :
-int.getMinValue();
+              if (i != str.length()) {
+                throw new NumberFormatException();
+              }
+ return Integer.MIN_VALUE;
             }
             if (x > 7) {
               throw new NumberFormatException();
@@ -72,7 +73,7 @@ int.getMinValue();
       while (i < str.length()) {
         int c = str.charAt(i);
         ++i;
-        if (c instanceof >= '0' and <= '9') {
+        if (c >= '0' && c <= '9') {
           int x = c - '0';
           if (ret > 922337203685477580L) {
             throw new NumberFormatException();
@@ -80,8 +81,10 @@ int.getMinValue();
           ret *= 10;
           if (ret == 9223372036854775800L) {
             if (neg && x == 8) {
-              return i != str.length() ? throw new NumberFormatException() :
-long.getMinValue();
+              if (i != str.length()) {
+                throw new NumberFormatException();
+              }
+ return Long.MIN_VALUE;
             }
             if (x > 7) {
               throw new NumberFormatException();
@@ -223,13 +226,13 @@ long.getMinValue();
         }
         // At least check that hashCode doesn't throw
         try {
-          _ = o.hashCode();
+          o.hashCode();
         } catch (Exception ex) {
           Assert.fail(ex.toString());
           throw new IllegalStateException("", ex);
         }
         try {
-          _ = o2.hashCode();
+          o2.hashCode();
         } catch (Exception ex) {
           Assert.fail(ex.toString());
           throw new IllegalStateException("", ex);
@@ -456,7 +459,7 @@ long.getMinValue();
       if (value == 0) {
         return "0";
       }
-      if (value == int.getMinValue()) {
+      if (value == Integer.MIN_VALUE) {
         return "-2147483648";
       }
       boolean neg = value < 0;
@@ -515,7 +518,7 @@ long.getMinValue();
     }
 
     public static String LongToString(long longValue) {
-      if (longValue == long.getMinValue()) {
+      if (longValue == Long.MIN_VALUE) {
         return "-9223372036854775808";
       }
       if (longValue == 0L) {
@@ -584,14 +587,14 @@ long.getMinValue();
         int count = num / RepeatDivideThreshold;
         int rem = num % RepeatDivideThreshold;
         for (int i = 0; i < count; ++i) {
-          _ = sb.append(sb2);
+          sb.append(sb2);
         }
         for (int i = 0; i < rem; ++i) {
-          _ = sb.append(c);
+          sb.append(c);
         }
       } else {
         for (int i = 0; i < num; ++i) {
-          _ = sb.append(c);
+          sb.append(c);
         }
       }
       return sb.toString();
@@ -610,7 +613,7 @@ long.getMinValue();
       }
       StringBuilder sb = new StringBuilder(num * str.length());
       for (int i = 0; i < num; ++i) {
-        _ = sb.append(str);
+        sb.append(str);
       }
       return sb.toString();
     }
@@ -655,17 +658,19 @@ length);
       }
       StringBuilder sb = new StringBuilder();
       String ValueHex = "0123456789ABCDEF";
-      _ = sb.append("new byte[] { ");
+      sb.append("new byte[] { ");
       for (int i = 0; i < length; ++i) {
         if (i > 0) {
-          _ = sb.append(',');
+          sb.append(',');
         }
-        _ = (bytes[offset + i] & 0x80) != 0 ? sb.append("(byte)0x") :
-sb.append("0x");
-        _ = sb.append(ValueHex.charAt((bytes[offset + i] >> 4) & 0xf));
-        _ = sb.append(ValueHex.charAt(bytes[offset + i] & 0xf));
+        if ((bytes[offset + i] & 0x80) != 0) {
+          sb.append("(byte)");
+        }
+        sb.append("0x");
+        sb.append(ValueHex.charAt((bytes[offset + i] >> 4) & 0xf));
+        sb.append(ValueHex.charAt(bytes[offset + i] & 0xf));
       }
-      _ = sb.append('}');
+      sb.append('}');
       return sb.toString();
     }
 

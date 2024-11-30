@@ -1,6 +1,6 @@
 <Project Sdk='Microsoft.NET.Sdk'>
   <PropertyGroup>
-    <TargetFramework>netstandard1.0</TargetFramework>
+
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>PeterO.Encoding</PackageId>
     <Title>Encoding Library</Title>
@@ -29,25 +29,25 @@ Version 0.5.0:
 - .NET 2 and .NET 4 assemblies added to NuGet package.
     </PackageReleaseNotes>
     <Copyright>Written by Peter O.  Any copyright to this work is released to the Public Domain.  In case this is not possible, this work is also
-licensed under Creative Commons Zero (CC0): https://creativecommons.org/publicdomain/zero/1.0/</Copyright>
+licensed under the Unlicense: https://unlicense.org/</Copyright>
     <PackOnBuild>true</PackOnBuild>
     <Version>0.6.0</Version>
     <Summary>A portable library for .NET that implements character encodings used in Web pages and email.</Summary>
     <PackageTags>text, encoding, strings</PackageTags>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>PeterO.snk</AssemblyOriginatorKeyFile>
-  <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
+  <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet><IsTrimmable Condition='$([MSBuild]::IsTargetFrameworkCompatible(&apos;$(TargetFramework)&apos;, &apos;net6.0&apos;))'>true</IsTrimmable><TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks></PropertyGroup>
 
   <PropertyGroup Condition=' &apos;$(Configuration)&apos;==&apos;Debug&apos; '>
-    <DocumentationFile>bin\Debug\netstandard1.0\Encoding.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\Encoding.xml</DocumentationFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
   <PropertyGroup Condition=' &apos;$(Configuration)&apos;==&apos;Release&apos; '>
-    <DebugType/>
-    <DocumentationFile>bin\Release\netstandard1.0\Encoding.xml</DocumentationFile>
+    <DebugType>none</DebugType>
+    <DocumentationFile>bin\Release\netstandard2.0\Encoding.xml</DocumentationFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include='PeterO.Text.Encoders.AppResources.restext'>
       <LogicalName>PeterO.Text.Encoders.AppResources.resources</LogicalName>
     </EmbeddedResource>
-  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.354'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='6.0.0'/></ItemGroup>
+  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.354'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><!-- PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='9.0.0-preview.24454.1' --></ItemGroup>
    </Project>

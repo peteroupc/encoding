@@ -341,15 +341,15 @@ namespace PeterO.Text.Encoders {
               c = GB18030CodePoint(ap);
               if (this.gb2022 && ap >= 19057 && ap <= 19064) {
                 int[]
-cs = {0xe81e, 0xe826, 0xe82b, 0xe82c, 0xe832, 0xe843, 0xe854, 0xe864 };
+cs = {0x9fb4, 0x9fb5, 0x9fb6, 0x9fb7, 0x9fb8, 0x9fb9, 0x9fba, 0x9fbb };
                 c = cs[ap - 19057];
               }
               if (this.gb2022 && ap >= 39076 && ap <= 39085) {
-                int[]
-cs = {
-  0xe78d, 0xe78f, 0xe78e, 0xe790, 0xe791, 0xe792, 0xe793, 0xe794,
-  0xe795, 0xe796,
-};
+                int[] cs = {
+                  0xfe10, 0xfe11, 0xfe12, 0xfe13, 0xfe14, 0xfe15, 0xfe16, 0xfe17,
+                  0xfe18, 0xfe19
+                };
+
                 c = cs[ap - 39076];
               }
               this.gbk1 = this.gbk2 = this.gbk3 = 0;
@@ -497,30 +497,60 @@ if (ap == 23845) {
         }
         if (this.gb2022 && (c >= 0x9fb4 && c <= 0xa000) ||
                (c >= 0xe5e5 && c <= 0xfe19)) {
-          if (c == 0xe81e) {
-            return this.Write4(output, 130, 53, 144, 55);
+          if (c == 0xe78d) {
+            return this.Write2(output, 0xa6, 0xd9);
           }
-          if (c == 0xe826) {
-            return this.Write4(output, 130, 53, 144, 56);
+if (c == 0xe78e) {
+            return this.Write2(output, 0xa6, 0xda);
           }
-          if (c == 0xe82b) {
-            return this.Write4(output, 130, 53, 144, 57);
-          }
-          if (c == 0xe82c) {
-            return this.Write4(output, 130, 53, 145, 48);
-          }
-          if (c == 0xe832) {
-            return this.Write4(output, 130, 53, 145, 49);
-          }
-          if (c == 0xe843) {
-            return this.Write4(output, 130, 53, 145, 50);
-          }
-          if (c == 0xe854) {
-            return this.Write4(output, 130, 53, 145, 51);
-          }
-          if (c == 0xe864) {
-            return this.Write4(output, 130, 53, 145, 52);
-          }
+if (c == 0xe78f) {
+  return this.Write2(output, 0xa6, 0xdb);
+}
+if (c == 0xe790) {
+  return this.Write2(output, 0xa6, 0xdc);
+}
+if (c == 0xe791) {
+  return this.Write2(output, 0xa6, 0xdd);
+}
+if (c == 0xe792) {
+  return this.Write2(output, 0xa6, 0xde);
+}
+if (c == 0xe793) {
+  return this.Write2(output, 0xa6, 0xdf);
+}
+if (c == 0xe794) {
+  return this.Write2(output, 0xa6, 0xec);
+}
+if (c == 0xe795) {
+  return this.Write2(output, 0xa6, 0xed);
+}
+if (c == 0xe796) {
+  return this.Write2(output, 0xa6, 0xf3);
+}
+if (c == 0xe81e) {
+  return this.Write2(output, 0xfe, 0x59);
+}
+if (c == 0xe826) {
+  return this.Write2(output, 0xfe, 0x61);
+}
+if (c == 0xe82b) {
+  return this.Write2(output, 0xfe, 0x66);
+}
+if (c == 0xe82c) {
+  return this.Write2(output, 0xfe, 0x67);
+}
+if (c == 0xe832) {
+  return this.Write2(output, 0xfe, 0x6d);
+}
+if (c == 0xe843) {
+  return this.Write2(output, 0xfe, 0x7e);
+}
+if (c == 0xe854) {
+  return this.Write2(output, 0xfe, 0x90);
+}
+if (c == 0xe864) {
+  return this.Write2(output, 0xfe, 0xa0);
+}
           if (c == 0xe5e5) {
             return this.Write2(output, 163, 160);
           }
@@ -536,39 +566,39 @@ if (ap == 23845) {
           if (c == 0xfe13) {
             return this.Write2(output, 166, 220);
           }
-if (c == 0xfe14) {
+          if (c == 0xfe14) {
             return this.Write2(output, 166, 221);
           }
-if (c == 0xfe15) {
-  return this.Write2(output, 166, 222);
-}
-if (c == 0xfe16) {
-  return this.Write2(output, 166, 223);
-}
-if (c == 0xfe17) {
-  return this.Write2(output, 166, 236);
-}
-if (c == 0xfe18) {
-  return this.Write2(output, 166, 237);
-}
-if (c == 0xfe19) {
-  return this.Write2(output, 166, 243);
-}
-if (c == 0x9fb4) {
-  return this.Write2(output, 254, 89);
-}
-if (c == 0x9fb5) {
-  return this.Write2(output, 254, 97);
-}
-if (c == 0x9fb6) {
-  return this.Write2(output, 254, 102);
-}
-if (c == 0x9fb7) {
-  return this.Write2(output, 254, 103);
-}
+          if (c == 0xfe15) {
+            return this.Write2(output, 166, 222);
+          }
+          if (c == 0xfe16) {
+            return this.Write2(output, 166, 223);
+          }
+          if (c == 0xfe17) {
+            return this.Write2(output, 166, 236);
+          }
+          if (c == 0xfe18) {
+            return this.Write2(output, 166, 237);
+          }
+          if (c == 0xfe19) {
+            return this.Write2(output, 166, 243);
+          }
+          if (c == 0x9fb4) {
+            return this.Write2(output, 254, 89);
+          }
+          if (c == 0x9fb5) {
+            return this.Write2(output, 254, 97);
+          }
+          if (c == 0x9fb6) {
+            return this.Write2(output, 254, 102);
+          }
+          if (c == 0x9fb7) {
+            return this.Write2(output, 254, 103);
+          }
 if (c == 0x9fb8) {
-  return this.Write2(output, 254, 109);
-}
+            return this.Write2(output, 254, 109);
+          }
 if (c == 0x9fb9) {
   return this.Write2(output, 254, 126);
 }
@@ -577,36 +607,6 @@ if (c == 0x9fba) {
 }
 if (c == 0x9fbb) {
   return this.Write2(output, 254, 160);
-}
-if (c == 0xe78d) {
-  return this.Write4(output, 132, 49, 130, 54);
-}
-if (c == 0xe78f) {
-  return this.Write4(output, 132, 49, 130, 55);
-}
-if (c == 0xe78e) {
-  return this.Write4(output, 132, 49, 130, 56);
-}
-if (c == 0xe790) {
-  return this.Write4(output, 132, 49, 130, 57);
-}
-if (c == 0xe791) {
-  return this.Write4(output, 132, 49, 131, 48);
-}
-if (c == 0xe792) {
-  return this.Write4(output, 132, 49, 131, 49);
-}
-if (c == 0xe793) {
-  return this.Write4(output, 132, 49, 131, 50);
-}
-if (c == 0xe794) {
-  return this.Write4(output, 132, 49, 131, 51);
-}
-if (c == 0xe795) {
-  return this.Write4(output, 132, 49, 131, 52);
-}
-if (c == 0xe796) {
-  return this.Write4(output, 132, 49, 131, 53);
 }
         }
         int cp = Gb18030.CodePointToIndex(c);

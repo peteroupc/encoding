@@ -2067,7 +2067,7 @@ string str) {
     #region CreateEmailAliasMap
     private static IDictionary<string, string> CreateEmailAliasMap() {
       var aliases = new Dictionary<string, string>();
-      aliases["utf-7"] = "UTF-7";
+      aliases["utf-7"] = "UTF-7"; // TODO: Remove from this list eventually
       aliases["utf-8"] = "UTF-8";
       aliases["utf8"] = "UTF-8";
       aliases["866"] = "IBM866";

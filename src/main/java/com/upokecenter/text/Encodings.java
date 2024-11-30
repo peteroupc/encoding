@@ -1857,7 +1857,7 @@ String str) {
 
     private static Map<String, String> CreateEmailAliasMap() {
       HashMap<String, String> aliases = new HashMap<String, String>();
-      aliases.put("utf-7","UTF-7");
+      aliases.put("utf-7","UTF-7"); // TODO: Remove from this list eventually
       aliases.put("utf-8","UTF-8");
       aliases.put("utf8","UTF-8");
       aliases.put("866","IBM866");

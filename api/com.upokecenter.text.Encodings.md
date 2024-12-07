@@ -1027,7 +1027,7 @@ Resolves a character encoding's name to a canonical form, using rules more
  repertoire (notably, the Hangul syllables have different code point
  assignments in Unicode 1.1 and earlier than in Unicode 2.0 and
  later).</li><li><code>ISO-2022-JP-2</code> - similar to "ISO-2022-JP", except
- that the decoder supports additional character sets.</li></ul>
+ that the decoder supports additional coded character sets.</li></ul>
 
 **Returns:**
 

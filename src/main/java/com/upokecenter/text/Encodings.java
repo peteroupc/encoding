@@ -1460,7 +1460,7 @@ ValueCharsetAliases.get(name) :
      * repertoire (notably, the Hangul syllables have different code point
      * assignments in Unicode 1.1 and earlier than in Unicode 2.0 and
      * later).</li><li>{@code ISO-2022-JP-2} - similar to "ISO-2022-JP", except
-     * that the decoder supports additional character sets.</li></ul>
+     * that the decoder supports additional coded character sets.</li></ul>
      * @return A standardized name for the encoding. Returns the empty string if
      * {@code name} is null or empty, or if the encoding name is unsupported.
      */

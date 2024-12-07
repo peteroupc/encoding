@@ -1638,7 +1638,7 @@ ValueCharsetAliases[name] :
     /// have different code point assignments in Unicode 1.1 and earlier
     /// than in Unicode 2.0 and later).</item>
     /// <item><c>ISO-2022-JP-2</c> - similar to "ISO-2022-JP", except that
-    /// the decoder supports additional character
+    /// the decoder supports additional coded character
     /// sets.</item></list></param>
     /// <returns>A standardized name for the encoding. Returns the empty
     /// string if <paramref name='name'/> is null or empty, or if the

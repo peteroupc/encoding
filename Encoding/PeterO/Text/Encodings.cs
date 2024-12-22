@@ -1626,8 +1626,8 @@ ValueCharsetAliases[name] :
     /// or U+0000 to U+00FF).</item>
     /// <item><c>UTF-16</c> - UTF-16 without a fixed byte order, rather
     /// than an alias to <c>UTF-16LE</c> as specified in the Encoding
-    /// Standard. The byte order is little endian if the byte stream starts
-    /// with 0xff 0xfe; otherwise, big endian. A leading 0xff 0xfe or 0xfe
+    /// Standard. The byte order is little-endian if the byte stream starts
+    /// with 0xff 0xfe; otherwise, big-endian. A leading 0xff 0xfe or 0xfe
     /// 0xff in the byte stream is skipped.</item>
     /// <item><c>UTF-7</c> - UTF-7 (7-bit universal coded character set).
     /// The name <c>unicode-1-1-utf-7</c> is not supported and is not

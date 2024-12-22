@@ -1450,8 +1450,8 @@ ValueCharsetAliases.get(name) :
      * Basic Latin and Latin-1 Supplement blocks (0-255 or U+0000 to
      * U+00FF).</li><li> {@code UTF-16} - UTF-16 without a fixed byte order, rather
      * than an alias to {@code UTF-16LE} as specified in the Encoding Standard. The
-     * byte order is little endian if the byte stream starts with 0xff 0xfe;
-     * otherwise, big endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream
+     * byte order is little-endian if the byte stream starts with 0xff 0xfe;
+     * otherwise, big-endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream
      * is skipped.</li><li> {@code UTF-7} - UTF-7 (7-bit universal coded character
      * set). The name {@code unicode-1-1-utf-7} is not supported and is not treated
      * as an alias to {@code UTF-7}, even though it uses the same character

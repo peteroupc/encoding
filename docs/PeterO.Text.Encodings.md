@@ -806,7 +806,7 @@ Resolves a character encoding's name to a canonical form, using rules more suita
 
  *  `ISO-8859-1`  - Latin-1 single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The coded character set's code points match those in the Unicode Standard's Basic Latin and Latin-1 Supplement blocks (0-255 or U+0000 to U+00FF).
 
- *  `UTF-16`  - UTF-16 without a fixed byte order, rather than an alias to  `UTF-16LE`  as specified in the Encoding Standard. The byte order is little endian if the byte stream starts with 0xff 0xfe; otherwise, big endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream is skipped.
+ *  `UTF-16`  - UTF-16 without a fixed byte order, rather than an alias to  `UTF-16LE`  as specified in the Encoding Standard. The byte order is little-endian if the byte stream starts with 0xff 0xfe; otherwise, big-endian. A leading 0xff 0xfe or 0xfe 0xff in the byte stream is skipped.
 
  *  `UTF-7`  - UTF-7 (7-bit universal coded character set). The name  `unicode-1-1-utf-7`  is not supported and is not treated as an alias to  `UTF-7` , even though it uses the same character encoding scheme as UTF-7, because RFC 1642, which defined the former UTF-7, is linked to a different Unicode version with an incompatible character repertoire (notably, the Hangul syllables have different code point assignments in Unicode 1.1 and earlier than in Unicode 2.0 and later).
 

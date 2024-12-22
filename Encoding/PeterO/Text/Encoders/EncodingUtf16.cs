@@ -11,7 +11,7 @@ namespace PeterO.Text.Encoders {
 
       public EndianFreeEncoder() {
         this.start = true;
-        this.encoder = new Encoder(false); // little endian
+        this.encoder = new Encoder(false); // little-endian
       }
 
       public int Encode(int c, IWriter output) {
@@ -62,7 +62,7 @@ namespace PeterO.Text.Encoders {
           return this.decoder.ReadChar(stream);
         } else {
           // Anything else, including FE FF, is
-          // treated as big endian (see RFC 2781 sec. 4.3)
+          // treated as big-endian (see RFC 2781 sec. 4.3)
           if (c == 0xfe && c2 == 0xff) {
             // absorb BOM
             this.decoder = new Decoder(true);
@@ -200,13 +200,13 @@ namespace PeterO.Text.Encoders {
     }
 
     internal static ICharacterDecoder GetDecoder2(int kind) {
-      // kind: 0-little endian, 1-big endian, 2-unlabeled
+      // kind: 0-little-endian, 1-big-endian, 2-unlabeled
       return (kind == 2) ? ((ICharacterDecoder)new EndianFreeDecoder()) :
 ((ICharacterDecoder)new Decoder(kind == 1));
     }
 
     internal static ICharacterEncoder GetEncoder2(int kind) {
-      // kind: 0-little endian, 1-big endian, 2-unlabeled
+      // kind: 0-little-endian, 1-big-endian, 2-unlabeled
       return (kind == 2) ? ((ICharacterEncoder)new EndianFreeEncoder()) :
 ((ICharacterEncoder)new Encoder(kind == 1));
     }

@@ -14,30 +14,6 @@ Convenience class that contains static methods for wrapping byte arrays and stre
 * <code>[ToWriter(this PeterO.IByteWriter)](#ToWriter_this_PeterO_IByteWriter)</code> - Wraps a byte writer (one that only implements a ReadByte method) to a writer (one that also implements a three-parameter Read method.
 * <code>[ToWriter(this System.IO.Stream)](#ToWriter_this_System_IO_Stream)</code> - Wraps an output stream into a writer object.
 
-<a id="ToByteReader_this_byte"></a>
-### ToByteReader
-
-    public static PeterO.IByteReader ToByteReader(
-        this byte[] bytes);
-
-<b>Deprecated.</b> Use ToReader instead.
-
-Wraps a byte array into a byte reader. In the.NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows:  `bytes.ToByteReader()` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
-
-<b>Parameters:</b>
-
- * <i>bytes</i>: The byte array to wrap into a byte reader.
-
-<b>Return Value:</b>
-
-An IByteReader object.
-
-<b>Exceptions:</b>
-
- * System.ArgumentNullException:
-The parameter  <i>bytes</i>
- is null.
-
 <a id="ToByteReader_this_byte_int_int"></a>
 ### ToByteReader
 
@@ -84,6 +60,30 @@ Either  <i>offset</i>
 The parameter  <i>bytes</i>
  is null.
 
+<a id="ToByteReader_this_byte"></a>
+### ToByteReader
+
+    public static PeterO.IByteReader ToByteReader(
+        this byte[] bytes);
+
+<b>Deprecated.</b> Use ToReader instead.
+
+Wraps a byte array into a byte reader. In the.NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows:  `bytes.ToByteReader()` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>bytes</i>: The byte array to wrap into a byte reader.
+
+<b>Return Value:</b>
+
+An IByteReader object.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter  <i>bytes</i>
+ is null.
+
 <a id="ToByteReader_this_System_IO_Stream"></a>
 ### ToByteReader
 
@@ -106,28 +106,6 @@ An IByteReader object.
 
  * System.ArgumentNullException:
 The parameter  <i>input</i>
- is null.
-
-<a id="ToReader_this_byte"></a>
-### ToReader
-
-    public static PeterO.IReader ToReader(
-        this byte[] bytes);
-
-Wraps a byte array into a byte reader. The reader will start at the beginning of the byte array. In the.NET implementation, this method is implemented as an extension method to any byte array object and can be called as follows:  `bytes.ToByteReader()` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
-
-<b>Parameters:</b>
-
- * <i>bytes</i>: The byte array to wrap.
-
-<b>Return Value:</b>
-
-A byte reader wrapping the byte array.
-
-<b>Exceptions:</b>
-
- * System.ArgumentNullException:
-The parameter  <i>bytes</i>
  is null.
 
 <a id="ToReader_this_byte_int_int"></a>
@@ -166,6 +144,28 @@ Either  <i>offset</i>
  's length minus  <i>offset</i>
  is less than  <i>length</i>
 .
+
+ * System.ArgumentNullException:
+The parameter  <i>bytes</i>
+ is null.
+
+<a id="ToReader_this_byte"></a>
+### ToReader
+
+    public static PeterO.IReader ToReader(
+        this byte[] bytes);
+
+Wraps a byte array into a byte reader. The reader will start at the beginning of the byte array. In the.NET implementation, this method is implemented as an extension method to any byte array object and can be called as follows:  `bytes.ToByteReader()` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>bytes</i>: The byte array to wrap.
+
+<b>Return Value:</b>
+
+A byte reader wrapping the byte array.
+
+<b>Exceptions:</b>
 
  * System.ArgumentNullException:
 The parameter  <i>bytes</i>

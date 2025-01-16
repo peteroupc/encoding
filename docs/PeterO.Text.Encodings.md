@@ -2,7 +2,7 @@
 
     public static class Encodings
 
-Contains methods for converting text from one character encoding to another. This class also contains convenience methods for converting strings and other character inputs to sequences of bytes and vice versa. The Encoding Standard, which is a Candidate Recommendation as of early November 2015, defines algorithms for the most common character encodings used on Web pages and recommends the UTF-8 encoding for new specifications and Web pages. Calling the  `GetEncoding(name)`  method returns one of the character encodings with the given name under the Encoding Standard.
+Contains methods for converting text from one character encoding to another. This class also contains convenience methods for converting strings and other character inputs to sequences of bytes and vice versa. The WHATWG Encoding Standard defines algorithms for the most common character encodings used on Web pages and recommends the UTF-8 encoding for new specifications and Web pages. Calling the  `GetEncoding(name)`  method returns one of the character encodings with the given name under the Encoding Standard.
 
 Now let's define some terms.
 
@@ -105,34 +105,6 @@ Classes that implement the ICharacterEncoding interface can provide additional c
 
 Character encoding object for the UTF-8 character encoding, which represents each code point in the universal coded character set using 1 to 4 bytes.
 
-<a id="DecodeToString_this_PeterO_Text_ICharacterEncoding_byte"></a>
-### DecodeToString
-
-    public static string DecodeToString(
-        this PeterO.Text.ICharacterEncoding enc,
-        byte[] bytes);
-
-Reads a byte array from a data source and converts the bytes from a given encoding to a text string. Errors in decoding are handled by replacing erroneous bytes with the replacement character (U+FFFD). In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(bytes)` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
-
-In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(bytes)` . If the object's class already has a  `DecodeToString`  method with the same parameters, that method takes precedence over this extension method.
-
-<b>Parameters:</b>
-
- * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
-
- * <i>bytes</i>: A byte array.
-
-<b>Return Value:</b>
-
-A string consisting of the decoded text.
-
-<b>Exceptions:</b>
-
- * System.ArgumentNullException:
-The parameter  <i>enc</i>
- or  <i>bytes</i>
- is null.
-
 <a id="DecodeToString_this_PeterO_Text_ICharacterEncoding_byte_int_int"></a>
 ### DecodeToString
 
@@ -180,6 +152,34 @@ Either  <i>offset</i>
  's length minus  <i>offset</i>
  is less than  <i>length</i>
 .
+
+ * System.ArgumentNullException:
+The parameter  <i>enc</i>
+ or  <i>bytes</i>
+ is null.
+
+<a id="DecodeToString_this_PeterO_Text_ICharacterEncoding_byte"></a>
+### DecodeToString
+
+    public static string DecodeToString(
+        this PeterO.Text.ICharacterEncoding enc,
+        byte[] bytes);
+
+Reads a byte array from a data source and converts the bytes from a given encoding to a text string. Errors in decoding are handled by replacing erroneous bytes with the replacement character (U+FFFD). In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(bytes)` . If the object's class already has a DecodeToString method with the same parameters, that method takes precedence over this extension method.
+
+In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterEncoding and can be called as follows:  `enc.DecodeToString(bytes)` . If the object's class already has a  `DecodeToString`  method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
+
+ * <i>bytes</i>: A byte array.
+
+<b>Return Value:</b>
+
+A string consisting of the decoded text.
+
+<b>Exceptions:</b>
 
  * System.ArgumentNullException:
 The parameter  <i>enc</i>
@@ -239,34 +239,6 @@ The parameter  <i>encoding</i>
  or  <i>input</i>
  is null.
 
-<a id="EncodeToBytes_this_PeterO_Text_ICharacterInput_PeterO_Text_ICharacterEncoder"></a>
-### EncodeToBytes
-
-    public static byte[] EncodeToBytes(
-        this PeterO.Text.ICharacterInput input,
-        PeterO.Text.ICharacterEncoder encoder);
-
-Reads Unicode characters from a character input and writes them to a byte array encoded using a given character encoding. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character). In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToBytes(encoder)` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
-
-In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToBytes(encoder)` . If the object's class already has a  `EncodeToBytes`  method with the same parameters, that method takes precedence over this extension method.
-
-<b>Parameters:</b>
-
- * <i>input</i>: An object that implements a stream of universal code points.
-
- * <i>encoder</i>: An object that implements a character encoder.
-
-<b>Return Value:</b>
-
-A byte array.
-
-<b>Exceptions:</b>
-
- * System.ArgumentNullException:
-The parameter  <i>encoder</i>
- or  <i>input</i>
- is null.
-
 <a id="EncodeToBytes_this_PeterO_Text_ICharacterInput_PeterO_Text_ICharacterEncoder_bool"></a>
 ### EncodeToBytes
 
@@ -302,6 +274,34 @@ The parameter  <i>encoder</i>
  or  <i>input</i>
  is null.
 
+<a id="EncodeToBytes_this_PeterO_Text_ICharacterInput_PeterO_Text_ICharacterEncoder"></a>
+### EncodeToBytes
+
+    public static byte[] EncodeToBytes(
+        this PeterO.Text.ICharacterInput input,
+        PeterO.Text.ICharacterEncoder encoder);
+
+Reads Unicode characters from a character input and writes them to a byte array encoded using a given character encoding. When writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character). In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToBytes(encoder)` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+
+In the.NET implementation, this method is implemented as an extension method to any object implementing ICharacterInput and can be called as follows:  `input.EncodeToBytes(encoder)` . If the object's class already has a  `EncodeToBytes`  method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>input</i>: An object that implements a stream of universal code points.
+
+ * <i>encoder</i>: An object that implements a character encoder.
+
+<b>Return Value:</b>
+
+A byte array.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter  <i>encoder</i>
+ or  <i>input</i>
+ is null.
+
 <a id="EncodeToBytes_this_PeterO_Text_ICharacterInput_PeterO_Text_ICharacterEncoding"></a>
 ### EncodeToBytes
 
@@ -327,34 +327,6 @@ A byte array containing the encoded text.
 The parameter  <i>encoding</i>
  is null.
 
-<a id="EncodeToBytes_this_string_PeterO_Text_ICharacterEncoding"></a>
-### EncodeToBytes
-
-    public static byte[] EncodeToBytes(
-        this string str,
-        PeterO.Text.ICharacterEncoding enc);
-
-Reads Unicode characters from a text string and writes them to a byte array encoded in a given character encoding. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character). In the.NET implementation, this method is implemented as an extension method to any String object and can be called as follows:  `str.EncodeToBytes(enc)` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
-
-In the.NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.EncodeToBytes(enc)` . If the object's class already has a  `EncodeToBytes`  method with the same parameters, that method takes precedence over this extension method.
-
-<b>Parameters:</b>
-
- * <i>str</i>: A text string to encode to a byte array.
-
- * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
-
-<b>Return Value:</b>
-
-A byte array containing the encoded text string.
-
-<b>Exceptions:</b>
-
- * System.ArgumentNullException:
-The parameter  <i>str</i>
- or  <i>enc</i>
- is null.
-
 <a id="EncodeToBytes_this_string_PeterO_Text_ICharacterEncoding_bool"></a>
 ### EncodeToBytes
 
@@ -372,6 +344,34 @@ Reads Unicode characters from a text string and writes them to a byte array enco
  * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
  * <i>htmlFallback</i>: If true, when the encoder encounters invalid characters that can't be mapped into bytes, writes the HTML decimal escape for the invalid characters instead. If false, writes a question mark byte (0x3f) upon encountering invalid characters.
+
+<b>Return Value:</b>
+
+A byte array containing the encoded text string.
+
+<b>Exceptions:</b>
+
+ * System.ArgumentNullException:
+The parameter  <i>str</i>
+ or  <i>enc</i>
+ is null.
+
+<a id="EncodeToBytes_this_string_PeterO_Text_ICharacterEncoding"></a>
+### EncodeToBytes
+
+    public static byte[] EncodeToBytes(
+        this string str,
+        PeterO.Text.ICharacterEncoding enc);
+
+Reads Unicode characters from a text string and writes them to a byte array encoded in a given character encoding. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD), and when writing to the byte array, any characters that can't be encoded are replaced with the byte 0x3f (the question mark character). In the.NET implementation, this method is implemented as an extension method to any String object and can be called as follows:  `str.EncodeToBytes(enc)` . If the object's class already has a EncodeToBytes method with the same parameters, that method takes precedence over this extension method.
+
+In the.NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.EncodeToBytes(enc)` . If the object's class already has a  `EncodeToBytes`  method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>str</i>: A text string to encode to a byte array.
+
+ * <i>enc</i>: An object implementing a character encoding (gives access to an encoder and a decoder).
 
 <b>Return Value:</b>
 
@@ -636,41 +636,6 @@ Converts a character encoding into a character input stream, given a readable da
 
 An ICharacterInput object.
 
-<a id="GetEncoding_string"></a>
-### GetEncoding
-
-    public static PeterO.Text.ICharacterEncoding GetEncoding(
-        string name);
-
-Returns a character encoding from the given name.
-
-<b>Parameters:</b>
-
- * <i>name</i>: A string naming a character encoding. See the ResolveAlias method. Can be null.
-
-<b>Return Value:</b>
-
-An object implementing a character encoding (gives access to an encoder and a decoder).
-
-<a id="GetEncoding_string_bool"></a>
-### GetEncoding
-
-    public static PeterO.Text.ICharacterEncoding GetEncoding(
-        string name,
-        bool forEmail);
-
-Returns a character encoding from the given name.
-
-<b>Parameters:</b>
-
- * <i>name</i>: A string naming a character encoding. See the ResolveAlias method. Can be null.
-
- * <i>forEmail</i>: If false, uses the encoding resolution rules in the Encoding Standard. If true, uses modified rules as described in the ResolveAliasForEmail method.
-
-<b>Return Value:</b>
-
-An object that enables encoding and decoding text in the given character encoding. Returns null if the name is null or empty, or if it names an unrecognized or unsupported encoding.
-
 <a id="GetEncoding_string_bool_bool"></a>
 ### GetEncoding
 
@@ -692,6 +657,41 @@ Returns a character encoding from the given name.
 <b>Return Value:</b>
 
 An object that enables encoding and decoding text in the given character encoding. Returns null if the name is null or empty, or if it names an unrecognized or unsupported encoding.
+
+<a id="GetEncoding_string_bool"></a>
+### GetEncoding
+
+    public static PeterO.Text.ICharacterEncoding GetEncoding(
+        string name,
+        bool forEmail);
+
+Returns a character encoding from the given name.
+
+<b>Parameters:</b>
+
+ * <i>name</i>: A string naming a character encoding. See the ResolveAlias method. Can be null.
+
+ * <i>forEmail</i>: If false, uses the encoding resolution rules in the Encoding Standard. If true, uses modified rules as described in the ResolveAliasForEmail method. If the resolved encoding is "GB18030" or "GBK" (in any combination of case), uses either an encoding intended to conform to the 2022 version of GB18030 if 'forEmail' is true, or the definition of the encoding in the WHATWG Encoding Standard (as of July 7, 2023) if 'forEmail' is false.
+
+<b>Return Value:</b>
+
+An object that enables encoding and decoding text in the given character encoding. Returns null if the name is null or empty, or if it names an unrecognized or unsupported encoding.
+
+<a id="GetEncoding_string"></a>
+### GetEncoding
+
+    public static PeterO.Text.ICharacterEncoding GetEncoding(
+        string name);
+
+Returns a character encoding from the given name.
+
+<b>Parameters:</b>
+
+ * <i>name</i>: A string naming a character encoding. See the ResolveAlias method. Can be null.
+
+<b>Return Value:</b>
+
+An object implementing a character encoding (gives access to an encoder and a decoder).
 
 <a id="InputToString_this_PeterO_Text_ICharacterInput"></a>
 ### InputToString
@@ -721,7 +721,7 @@ The parameter  <i>reader</i>
     public static string ResolveAlias(
         string name);
 
-Resolves a character encoding's name to a standard form. This involves changing aliases of a character encoding to a standardized name. In several Internet specifications, this name is known as a "charset" parameter. In HTML and HTTP, for example, the "charset" parameter indicates the encoding used to represent text in the HTML page, text file, etc.
+Resolves a character encoding's name to a standard form. This involves changing aliases of a character encoding to a standardized name. In several Internet specifications, this name is known as a "charset" parameter. In HTML and HTTP, for example, the "charset" parameter indicates the encoding used to represent text in the HTML page, text file, or other document.
 
 <b>Parameters:</b>
 
@@ -800,7 +800,7 @@ Resolves a character encoding's name to a canonical form, using rules more suita
 
 <b>Parameters:</b>
 
- * <i>name</i>: A string naming a character encoding. Can be null. Any leading and trailing whitespace (U+0009, U+000c, U + 000D, U+000A, U+0010) is removed before resolving the encoding's name, and encoding names are matched using a basic case-insensitive comparison. (Two strings are equal in such a comparison, if they match after converting the basic uppercase letters A to Z (U + 0041 to U+005A) in both strings to basic lowercase letters.) Uses a modified version of the rules in the Encoding Standard to better conform, in some cases, to email standards like MIME. Encoding names and aliases not registered with the Internet Assigned Numbers Authority (IANA) are not supported, with the exception of  `ascii` ,  `utf8` ,  `cp1252` , and names 10 characters or longer starting with  `iso-8859-` . Also, the following additional encodings are supported. Note that the case combination  `GB18030` , the combination registered with IANA, rather than  `gb18030`  can be retured by this method.
+ * <i>name</i>: A string naming a character encoding. Can be null. Any leading and trailing whitespace (U+0009, U+000c, U + 000D, U+000A, U+0010) is removed before resolving the encoding's name, and encoding names are matched using a basic case-insensitive comparison. (Two strings are equal in such a comparison, if they match after converting the basic uppercase letters A to Z (U+0041 to U+005A) in both strings to basic lowercase letters.) Uses a modified version of the rules in the Encoding Standard to better conform, in some cases, to email standards like MIME. Encoding names and aliases not registered with the Internet Assigned Numbers Authority (IANA) are not supported, with the exception of  `ascii` ,  `utf8` ,  `cp1252` , and names 10 characters or longer starting with  `iso-8859-` . Also, the following additional encodings are supported. Note that the case combination  `GB18030` , the combination registered with IANA, rather than  `gb18030` , can be returned by this method.
 
  *  `US-ASCII`  - ASCII single-byte encoding, rather than an alias to  `windows-1252`  as specified in the Encoding Standard. The coded character set's code points match those in the Unicode Standard's Basic Latin block (0-127 or U+0000 to U+007F). This method name  `ascii`  is treated as an alias to  `US-ASCII`  even though it is not registered with IANA as a charset name and RFC 2046 (part of MIME) reserves the name "ASCII". A future version of this method may stop supporting the alias  `ascii` .
 
@@ -810,9 +810,7 @@ Resolves a character encoding's name to a canonical form, using rules more suita
 
  *  `UTF-7`  - UTF-7 (7-bit universal coded character set). The name  `unicode-1-1-utf-7`  is not supported and is not treated as an alias to  `UTF-7` , even though it uses the same character encoding scheme as UTF-7, because RFC 1642, which defined the former UTF-7, is linked to a different Unicode version with an incompatible character repertoire (notably, the Hangul syllables have different code point assignments in Unicode 1.1 and earlier than in Unicode 2.0 and later).
 
- *  `ISO-2022-JP-2`  - similar to "ISO-2022-JP", except that the decoder supports additional character sets.
-
- .
+ *  `ISO-2022-JP-2`  - similar to "ISO-2022-JP", except that the decoder supports additional coded character sets.
 
 <b>Return Value:</b>
 
@@ -872,31 +870,6 @@ A byte array containing the string encoded in the given text encoding.
 The parameter  <i>encoding</i>
  is null.
 
-<a id="StringToInput_this_string"></a>
-### StringToInput
-
-    public static PeterO.Text.ICharacterInput StringToInput(
-        this string str);
-
-Converts a text string to a character input. The resulting input can then be used to encode the text to bytes, or to read the string code point by code point, among other things. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD). In the.NET implementation, this method is implemented as an extension method to any String object and can be called as follows:  `str.StringToInput(offset, length)` . If the object's class already has a StringToInput method with the same parameters, that method takes precedence over this extension method.
-
-In the.NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.StringToInput()` . If the object's class already has a  `StringToInput`  method with the same parameters, that method takes precedence over this extension method.
-
-<b>Parameters:</b>
-
- * <i>str</i>: The parameter  <i>str</i>
- is a text string.
-
-<b>Return Value:</b>
-
-An ICharacterInput object.
-
-<b>Exceptions:</b>
-
- * System.ArgumentNullException:
-The parameter  <i>str</i>
- is null.
-
 <a id="StringToInput_this_string_int_int"></a>
 ### StringToInput
 
@@ -939,6 +912,31 @@ Either  <i>offset</i>
  's length minus  <i>offset</i>
  is less than  <i>length</i>
 .
+
+ * System.ArgumentNullException:
+The parameter  <i>str</i>
+ is null.
+
+<a id="StringToInput_this_string"></a>
+### StringToInput
+
+    public static PeterO.Text.ICharacterInput StringToInput(
+        this string str);
+
+Converts a text string to a character input. The resulting input can then be used to encode the text to bytes, or to read the string code point by code point, among other things. When reading the string, any unpaired surrogate characters are replaced with the replacement character (U+FFFD). In the.NET implementation, this method is implemented as an extension method to any String object and can be called as follows:  `str.StringToInput(offset, length)` . If the object's class already has a StringToInput method with the same parameters, that method takes precedence over this extension method.
+
+In the.NET implementation, this method is implemented as an extension method to any object implementing string and can be called as follows:  `str.StringToInput()` . If the object's class already has a  `StringToInput`  method with the same parameters, that method takes precedence over this extension method.
+
+<b>Parameters:</b>
+
+ * <i>str</i>: The parameter  <i>str</i>
+ is a text string.
+
+<b>Return Value:</b>
+
+An ICharacterInput object.
+
+<b>Exceptions:</b>
 
  * System.ArgumentNullException:
 The parameter  <i>str</i>

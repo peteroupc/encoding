@@ -5,9 +5,9 @@
 Convenience class that contains static methods for wrapping byte arrays and streams into byte readers and byte writers.
 
 ### Member Summary
-* <code>[ToByteReader(this byte[])](#ToByteReader_this_byte)</code> - <b>Deprecated:</b> Use ToReader instead.
-* <code>[ToByteReader(this byte[], int, int)](#ToByteReader_this_byte_int_int)</code> - <b>Deprecated:</b> Use ToReader instead.
-* <code>[ToByteReader(this System.IO.Stream)](#ToByteReader_this_System_IO_Stream)</code> - <b>Deprecated:</b> Use ToReader instead.
+* <code>[ToByteReader(this byte[])](#ToByteReader_this_byte)</code> - <b>Obsolete:</b> Use ToReader instead.
+* <code>[ToByteReader(this byte[], int, int)](#ToByteReader_this_byte_int_int)</code> - <b>Obsolete:</b> Use ToReader instead.
+* <code>[ToByteReader(this System.IO.Stream)](#ToByteReader_this_System_IO_Stream)</code> - <b>Obsolete:</b> Use ToReader instead.
 * <code>[ToReader(this byte[])](#ToReader_this_byte)</code> - Wraps a byte array into a byte reader.
 * <code>[ToReader(this byte[], int, int)](#ToReader_this_byte_int_int)</code> - Wraps a portion of a byte array into a byte reader object.
 * <code>[ToReader(this System.IO.Stream)](#ToReader_this_System_IO_Stream)</code> - Wraps an input stream into a reader object.
@@ -22,7 +22,7 @@ Convenience class that contains static methods for wrapping byte arrays and stre
         int offset,
         int length);
 
-<b>Deprecated.</b> Use ToReader instead.
+<b>Obsolete.</b> Use ToReader instead.
 
 Wraps a portion of a byte array into a byte reader. In the.NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows:  `bytes.ToByteReader(offset, length)` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
 
@@ -66,7 +66,7 @@ The parameter  <i>bytes</i>
     public static PeterO.IByteReader ToByteReader(
         this byte[] bytes);
 
-<b>Deprecated.</b> Use ToReader instead.
+<b>Obsolete.</b> Use ToReader instead.
 
 Wraps a byte array into a byte reader. In the.NET implementation, this method is implemented as an extension method to any object implementing byte[] and can be called as follows:  `bytes.ToByteReader()` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
 
@@ -90,7 +90,7 @@ The parameter  <i>bytes</i>
     public static PeterO.IByteReader ToByteReader(
         this System.IO.Stream input);
 
-<b>Deprecated.</b> Use ToReader instead.
+<b>Obsolete.</b> Use ToReader instead.
 
 Wraps a data stream into a byte reader. In the.NET implementation, this method is implemented as an extension method to any object implementing Stream and can be called as follows:  `input.ToByteReader()` . If the object's class already has a ToByteReader method with the same parameters, that method takes precedence over this extension method.
 

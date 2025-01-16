@@ -347,7 +347,7 @@ cs = {0x9fb4, 0x9fb5, 0x9fb6, 0x9fb7, 0x9fb8, 0x9fb9, 0x9fba, 0x9fbb };
               if (this.gb2022 && ap >= 39076 && ap <= 39085) {
                 int[] cs = {
                   0xfe10, 0xfe11, 0xfe12, 0xfe13, 0xfe14, 0xfe15, 0xfe16,
-                  0xfe17, 0xfe18, 0xfe19
+                  0xfe17, 0xfe18, 0xfe19,
                 };
 
                 c = cs[ap - 39076];
@@ -500,15 +500,15 @@ if (ap == 23845) {
           if (c == 0xe78d) {
             return this.Write2(output, 0xa6, 0xd9);
           }
-if (c == 0xe78e) {
+          if (c == 0xe78e) {
             return this.Write2(output, 0xa6, 0xda);
           }
-if (c == 0xe78f) {
-  return this.Write2(output, 0xa6, 0xdb);
-}
+          if (c == 0xe78f) {
+            return this.Write2(output, 0xa6, 0xdb);
+          }
 if (c == 0xe790) {
-  return this.Write2(output, 0xa6, 0xdc);
-}
+            return this.Write2(output, 0xa6, 0xdc);
+          }
 if (c == 0xe791) {
   return this.Write2(output, 0xa6, 0xdd);
 }
@@ -596,15 +596,15 @@ if (c == 0xe864) {
           if (c == 0x9fb7) {
             return this.Write2(output, 254, 103);
           }
-if (c == 0x9fb8) {
+          if (c == 0x9fb8) {
             return this.Write2(output, 254, 109);
           }
-if (c == 0x9fb9) {
-  return this.Write2(output, 254, 126);
-}
+          if (c == 0x9fb9) {
+            return this.Write2(output, 254, 126);
+          }
 if (c == 0x9fba) {
-  return this.Write2(output, 254, 144);
-}
+            return this.Write2(output, 254, 144);
+          }
 if (c == 0x9fbb) {
   return this.Write2(output, 254, 160);
 }

@@ -168,14 +168,14 @@ import java.io.*;
      * @param stream A readable data stream.
      * @param mode <p>The method to use when detecting encodings other than UTF-8
      * in the byte stream. This usually involves checking whether the stream begins
-     * with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001
+     * with a byte-order mark (BOM, U+FEFF) or a nonzero basic code point (U+0001
      * to U+007F) before reading the rest of the stream. This value can be one of
      * the following: </p><ul> <li>0: UTF-8 only.</li><li>1: Detect UTF-16 using
-     * BOM or non-zero basic code point, otherwise UTF-8.</li><li>2: Detect
-     * UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8.
-     * (Tries to detect UTF-32 first.)</li><li>3: Detect UTF-16 using BOM,
-     * otherwise UTF-8.</li><li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8.
-     * (Tries to detect UTF-32 first.)</li></ul>.
+     * BOM or nonzero basic code point, otherwise UTF-8.</li><li>2: Detect
+     * UTF-16/UTF-32 using BOM or nonzero basic code point, otherwise UTF-8. (Tries
+     * to detect UTF-32 first.)</li><li>3: Detect UTF-16 using BOM, otherwise
+     * UTF-8.</li><li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
+     * detect UTF-32 first.)</li></ul>.
      * @param errorThrow When encountering invalid encoding, throw an exception if
      * this parameter is true, or replace it with U+FFFD (replacement character) if
      * this parameter is false.
@@ -192,14 +192,14 @@ import java.io.*;
      * @param stream A readable byte stream.
      * @param mode <p>The method to use when detecting encodings other than UTF-8
      * in the byte stream. This usually involves checking whether the stream begins
-     * with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001
+     * with a byte-order mark (BOM, U+FEFF) or a nonzero basic code point (U+0001
      * to U+007F) before reading the rest of the stream. This value can be one of
      * the following: </p><ul> <li>0: UTF-8 only.</li><li>1: Detect UTF-16 using
-     * BOM or non-zero basic code point, otherwise UTF-8.</li><li>2: Detect
-     * UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8.
-     * (Tries to detect UTF-32 first.)</li><li>3: Detect UTF-16 using BOM,
-     * otherwise UTF-8.</li><li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8.
-     * (Tries to detect UTF-32 first.)</li></ul>.
+     * BOM or nonzero basic code point, otherwise UTF-8.</li><li>2: Detect
+     * UTF-16/UTF-32 using BOM or nonzero basic code point, otherwise UTF-8. (Tries
+     * to detect UTF-32 first.)</li><li>3: Detect UTF-16 using BOM, otherwise
+     * UTF-8.</li><li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
+     * detect UTF-32 first.)</li></ul>.
      * @throws NullPointerException The parameter {@code stream} is null.
      */
     public CharacterReader(InputStream stream, int mode) {
@@ -212,14 +212,14 @@ import java.io.*;
      * @param stream A readable byte stream.
      * @param mode <p>The method to use when detecting encodings other than UTF-8
      * in the byte stream. This usually involves checking whether the stream begins
-     * with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001
+     * with a byte-order mark (BOM, U+FEFF) or a nonzero basic code point (U+0001
      * to U+007F) before reading the rest of the stream. This value can be one of
      * the following: </p><ul> <li>0: UTF-8 only.</li><li>1: Detect UTF-16 using
-     * BOM or non-zero basic code point, otherwise UTF-8.</li><li>2: Detect
-     * UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8.
-     * (Tries to detect UTF-32 first.)</li><li>3: Detect UTF-16 using BOM,
-     * otherwise UTF-8.</li><li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8.
-     * (Tries to detect UTF-32 first.)</li></ul>.
+     * BOM or nonzero basic code point, otherwise UTF-8.</li><li>2: Detect
+     * UTF-16/UTF-32 using BOM or nonzero basic code point, otherwise UTF-8. (Tries
+     * to detect UTF-32 first.)</li><li>3: Detect UTF-16 using BOM, otherwise
+     * UTF-8.</li><li>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
+     * detect UTF-32 first.)</li></ul>.
      * @param errorThrow If true, will throw an exception if invalid byte sequences
      * (in the detected encoding) are found in the byte stream. If false, replaces
      * those byte sequences with replacement characters (U+FFFD) as the stream is

@@ -161,7 +161,7 @@ namespace PeterO.Text.Encoders {
                 return -2;
               }
               if (b == 0x2d) {
-                // hyphen, so output a plus sign
+                // hyphen, so give out a plus sign
                 this.machineState = 0;
                 this.state.AppendChar('+');
                 ch = this.state.GetChar();
@@ -185,7 +185,7 @@ namespace PeterO.Text.Encoders {
                   this.base64value |= this.alphavalue;
                   ++this.base64count;
                 } else {
-                  // Non-base64 byte (NOTE: Can't be plus or
+                  // Nonbase64 byte (NOTE: Can't be plus or
                   // minus at this point)
                   this.machineState = 0;
                   this.state.AppendChar(-2); // for the illegal plus

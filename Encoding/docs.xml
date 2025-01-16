@@ -924,8 +924,8 @@
     </exception>
 </doc>
 <doc name="M:PeterO.DataUtilities.ToLowerCaseAscii(System.String)">
-<summary>Returns a string with the basic upper-case letters A to Z (U+0041 to
-      U+005A) converted to lower-case. Other characters remain unchanged.
+<summary>Returns a string with the basic uppercase letters A to Z (U+0041 to
+      U+005A) converted to lowercase. Other characters remain unchanged.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -937,8 +937,8 @@
     </returns>
 </doc>
 <doc name="M:PeterO.DataUtilities.ToUpperCaseAscii(System.String)">
-<summary>Returns a string with the basic lower-case letters A to Z (U+0061 to
-      U+007A) converted to upper-case. Other characters remain unchanged.
+<summary>Returns a string with the basic lowercase letters A to Z (U+0061 to
+      U+007A) converted to uppercase. Other characters remain unchanged.
     </summary>
     <param name='str'>The parameter
       <paramref name='str'/>
@@ -1383,13 +1383,13 @@
             <param name='mode'>The method to use when detecting encodings other
             than UTF-8 in the byte stream. This usually involves checking
             whether the stream begins with a byte-order mark (BOM, U+FEFF) or a
-            non-zero basic code point (U+0001 to U+007F) before reading the
+            nonzero basic code point (U+0001 to U+007F) before reading the
             rest of the stream. This value can be one of the following:
             <list>
             <item>0: UTF-8 only.</item>
-            <item>1: Detect UTF-16 using BOM or non-zero basic code point,
+            <item>1: Detect UTF-16 using BOM or nonzero basic code point,
             otherwise UTF-8.</item>
-            <item>2: Detect UTF-16/UTF-32 using BOM or non-zero basic code
+            <item>2: Detect UTF-16/UTF-32 using BOM or nonzero basic code
             point, otherwise UTF-8. (Tries to detect UTF-32 first.)</item>
             <item>3: Detect UTF-16 using BOM, otherwise UTF-8.</item>
             <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
@@ -1407,13 +1407,13 @@
             <param name='mode'>The method to use when detecting encodings other
             than UTF-8 in the byte stream. This usually involves checking
             whether the stream begins with a byte-order mark (BOM, U+FEFF) or a
-            non-zero basic code point (U+0001 to U+007F) before reading the
+            nonzero basic code point (U+0001 to U+007F) before reading the
             rest of the stream. This value can be one of the following:
             <list>
             <item>0: UTF-8 only.</item>
-            <item>1: Detect UTF-16 using BOM or non-zero basic code point,
+            <item>1: Detect UTF-16 using BOM or nonzero basic code point,
             otherwise UTF-8.</item>
-            <item>2: Detect UTF-16/UTF-32 using BOM or non-zero basic code
+            <item>2: Detect UTF-16/UTF-32 using BOM or nonzero basic code
             point, otherwise UTF-8. (Tries to detect UTF-32 first.)</item>
             <item>3: Detect UTF-16 using BOM, otherwise UTF-8.</item>
             <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
@@ -1431,13 +1431,13 @@
             <param name='mode'>The method to use when detecting encodings other
             than UTF-8 in the byte stream. This usually involves checking
             whether the stream begins with a byte-order mark (BOM, U+FEFF) or a
-            non-zero basic code point (U+0001 to U+007F) before reading the
+            nonzero basic code point (U+0001 to U+007F) before reading the
             rest of the stream. This value can be one of the following:
             <list>
             <item>0: UTF-8 only.</item>
-            <item>1: Detect UTF-16 using BOM or non-zero basic code point,
+            <item>1: Detect UTF-16 using BOM or nonzero basic code point,
             otherwise UTF-8.</item>
-            <item>2: Detect UTF-16/UTF-32 using BOM or non-zero basic code
+            <item>2: Detect UTF-16/UTF-32 using BOM or nonzero basic code
             point, otherwise UTF-8. (Tries to detect UTF-32 first.)</item>
             <item>3: Detect UTF-16 using BOM, otherwise UTF-8.</item>
             <item>4: Detect UTF-16/UTF-32 using BOM, otherwise UTF-8. (Tries to
@@ -2256,8 +2256,8 @@
             U+000D, U+000A, U+0010) is removed before resolving the encoding's
             name, and encoding names are matched using a basic case-insensitive
             comparison. (Two strings are equal in such a comparison, if they
-            match after converting the basic upper-case letters A to Z (U+0041
-            to U+005A) in both strings to basic lower-case letters.) The
+            match after converting the basic uppercase letters A to Z (U+0041
+            to U+005A) in both strings to basic lowercase letters.) The
             Encoding Standard supports only the following encodings (and
             defines aliases for most of them).
             <list type='bullet'>
@@ -2320,7 +2320,7 @@
             null. Any leading and trailing whitespace (U+0009, U+000c, U+000D, U+000A, U+0010) is removed before resolving the encoding's
             name, and encoding names are matched using a basic case-insensitive
             comparison. (Two strings are equal in such a comparison, if they
-            match after converting the basic upper-case letters A to Z (U+0041 to U+005A) in both strings to basic lower-case letters.) Uses
+            match after converting the basic uppercase letters A to Z (U+0041 to U+005A) in both strings to basic lowercase letters.) Uses
             a modified version of the rules in the Encoding Standard to better
             conform, in some cases, to email standards like MIME. Encoding
             names and aliases not registered with the Internet Assigned Numbers

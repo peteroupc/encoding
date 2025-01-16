@@ -174,13 +174,13 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a nonzero basic code point (U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
 
  * 0: UTF-8 only.
 
- * 1: Detect UTF-16 using BOM or non-zero basic code point, otherwise UTF-8.
+ * 1: Detect UTF-16 using BOM or nonzero basic code point, otherwise UTF-8.
 
- * 2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
+ * 2: Detect UTF-16/UTF-32 using BOM or nonzero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
 
  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
 
@@ -208,13 +208,13 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>stream</i>: A readable data stream.
 
- * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a nonzero basic code point (U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
 
  * 0: UTF-8 only.
 
- * 1: Detect UTF-16 using BOM or non-zero basic code point, otherwise UTF-8.
+ * 1: Detect UTF-16 using BOM or nonzero basic code point, otherwise UTF-8.
 
- * 2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
+ * 2: Detect UTF-16/UTF-32 using BOM or nonzero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
 
  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
 
@@ -239,13 +239,13 @@ Initializes a new instance of the [PeterO.Text.CharacterReader](PeterO.Text.Char
 
  * <i>stream</i>: A readable byte stream.
 
- * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a non-zero basic code point (U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
+ * <i>mode</i>: The method to use when detecting encodings other than UTF-8 in the byte stream. This usually involves checking whether the stream begins with a byte-order mark (BOM, U+FEFF) or a nonzero basic code point (U+0001 to U+007F) before reading the rest of the stream. This value can be one of the following:
 
  * 0: UTF-8 only.
 
- * 1: Detect UTF-16 using BOM or non-zero basic code point, otherwise UTF-8.
+ * 1: Detect UTF-16 using BOM or nonzero basic code point, otherwise UTF-8.
 
- * 2: Detect UTF-16/UTF-32 using BOM or non-zero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
+ * 2: Detect UTF-16/UTF-32 using BOM or nonzero basic code point, otherwise UTF-8. (Tries to detect UTF-32 first.)
 
  * 3: Detect UTF-16 using BOM, otherwise UTF-8.
 

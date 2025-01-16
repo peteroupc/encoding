@@ -1519,14 +1519,14 @@ ICharacterInput reader) {
     /// <para>In several Internet specifications, this name is known as a
     /// "charset" parameter. In HTML and HTTP, for example, the "charset"
     /// parameter indicates the encoding used to represent text in the HTML
-    /// page, text file, etc.</para></summary>
+    /// page, text file, or other document.</para></summary>
     /// <param name='name'>A string that names a given character encoding.
     /// Can be null. Any leading and trailing whitespace (U+0009, U+000c,
     /// U+000D, U+000A, U+0010) is removed before resolving the encoding's
     /// name, and encoding names are matched using a basic case-insensitive
     /// comparison. (Two strings are equal in such a comparison, if they
-    /// match after converting the basic upper-case letters A to Z (U+0041
-    /// to U+005A) in both strings to basic lower-case letters.) The
+    /// match after converting the basic uppercase letters A to Z (U+0041
+    /// to U+005A) in both strings to basic lowercase letters.) The
     /// Encoding Standard supports only the following encodings (and
     /// defines aliases for most of them).
     /// <list type='bullet'>
@@ -1599,9 +1599,9 @@ ValueCharsetAliases[name] :
     /// 000D, U+000A, U+0010) is removed before resolving the encoding's
     /// name, and encoding names are matched using a basic case-insensitive
     /// comparison. (Two strings are equal in such a comparison, if they
-    /// match after converting the basic upper-case letters A to Z (U +
-    /// 0041 to U+005A) in both strings to basic lower-case letters.) Uses
-    /// a modified version of the rules in the Encoding Standard to better
+    /// match after converting the basic uppercase letters A to Z (U+0041
+    /// to U+005A) in both strings to basic lowercase letters.) Uses a
+    /// modified version of the rules in the Encoding Standard to better
     /// conform, in some cases, to email standards like MIME. Encoding
     /// names and aliases not registered with the Internet Assigned Numbers
     /// Authority (IANA) are not supported, with the exception of

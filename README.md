@@ -76,7 +76,7 @@ History
 
 Version 0.6.0:
 
-- Bug fixes
+- Issue fixes
 
 Version 0.5.1:
 
@@ -92,7 +92,7 @@ Version 0.5.0:
 
 Version 0.4.0:
 
-- Updated to latest Encoding Standard draft as of Jun. 28, 2018, except for a bug fix in one encoding.
+- Updated to latest Encoding Standard draft as of Jun. 28, 2018, except for a issue fix in one encoding.
 
 Version 0.3.2:
 
@@ -114,12 +114,12 @@ in version 0.2.0
 Version 0.2.0:
 
 - Update implementation to latest candidate recommendation of Encoding Standard
-- ResolveAlias may return a mixed-case encoding name (as opposed to a lower-case one).
+- ResolveAlias may return a mixed-case encoding name (as opposed to a lowercase one).
 - Add overloads to CharacterReader constructor
 - Add IReader interface
 - Deprecated some methods of DataIO
 - Add a few overloads in Encodings class, especially EncodeToWriter
-- Bug fixes
+- Issue fixes
 
 Version 0.1.0:
 

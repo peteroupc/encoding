@@ -931,7 +931,8 @@ Returns a character encoding from the given name.
  changing aliases of a character encoding to a standardized name. </p> <p>In
  several Internet specifications, this name is known as a "charset"
  parameter. In HTML and HTTP, for example, the "charset" parameter indicates
- the encoding used to represent text in the HTML page, text file, etc.</p>
+ the encoding used to represent text in the HTML page, text file, or other
+ document.</p>
 
 **Parameters:**
 
@@ -939,8 +940,8 @@ Returns a character encoding from the given name.
  Any leading and trailing whitespace (U+0009, U+000c, U+000D, U+000A, U+0010)
  is removed before resolving the encoding's name, and encoding names are
  matched using a basic case-insensitive comparison. (Two strings are equal in
- such a comparison, if they match after converting the basic upper-case
- letters A to Z (U+0041 to U+005A) in both strings to basic lower-case
+ such a comparison, if they match after converting the basic uppercase
+ letters A to Z (U+0041 to U+005A) in both strings to basic lowercase
  letters.) The Encoding Standard supports only the following encodings (and
  defines aliases for most of them). </p><ul> <li> <code>UTF-8</code> - UTF-8 (8-bit
  encoding of the universal coded character set, the encoding recommended by
@@ -994,8 +995,8 @@ Resolves a character encoding's name to a canonical form, using rules more
  leading and trailing whitespace (U+0009, U+000c, U+000D, U+000A, U+0010) is
  removed before resolving the encoding's name, and encoding names are matched
  using a basic case-insensitive comparison. (Two strings are equal in such a
- comparison, if they match after converting the basic upper-case letters A to
- Z (U+0041 to U+005A) in both strings to basic lower-case letters.) Uses a
+ comparison, if they match after converting the basic uppercase letters A to
+ Z (U+0041 to U+005A) in both strings to basic lowercase letters.) Uses a
  modified version of the rules in the Encoding Standard to better conform, in
  some cases, to email standards like MIME. Encoding names and aliases not
  registered with the Internet Assigned Numbers Authority (IANA) are not

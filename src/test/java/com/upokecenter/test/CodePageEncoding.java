@@ -253,7 +253,7 @@ import com.upokecenter.text.*;
                     --possibleCount;
                     if (possibleCount == 0) {
                       if (words.length == 1) {
-                throw new IllegalArgumentException("Expected non-word character" +
+                throw new IllegalArgumentException("Expected nonword character" +
 "\u0020after '" + wordStr + "'");
                       } else {
                         throw new IllegalArgumentException("unexpected word found");
@@ -300,7 +300,7 @@ import com.upokecenter.text.*;
           this.input.Unget();
           if (!IsWordEndChar(c)) {
             throw new
-            IllegalArgumentException("Expected non-word character after '" +
+            IllegalArgumentException("Expected nonword character after '" +
               number + "'");
           }
           return number;

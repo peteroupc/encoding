@@ -248,7 +248,7 @@ namespace EncodingTest {
                     --possibleCount;
                     if (possibleCount == 0) {
                       if (words.Length == 1) {
-                throw new ArgumentException("Expected non-word character" +
+                throw new ArgumentException("Expected nonword character" +
 "\u0020after '" + wordStr + "'");
                       } else {
                         throw new ArgumentException("unexpected word found");
@@ -295,7 +295,7 @@ namespace EncodingTest {
           this.input.Unget();
           if (!IsWordEndChar(c)) {
             throw new
-            ArgumentException("Expected non-word character after '" +
+            ArgumentException("Expected nonword character after '" +
               number + "'");
           }
           return number;

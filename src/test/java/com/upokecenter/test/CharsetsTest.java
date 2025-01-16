@@ -1075,7 +1075,7 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
       TestUtf7One("+2ADYANwA?", "\ufffd\ud800\udc00?");
       TestUtf7One("+2ADYANwA", "\ufffd\ud800\udc00");
       TestUtf7One("+2ADYANwA\u007f", "\ufffd\ud800\udc00\ufffd");
-      // High surrogate followed by non-surrogate
+      // High surrogate followed by nonsurrogate
       TestUtf7One("+2AAAwA?", "\ufffd\u00c0?");
       TestUtf7One("+2AAAwA", "\ufffd\u00c0");
       TestUtf7One("+2AAAwA\u007f", "\ufffd\u00c0\ufffd");

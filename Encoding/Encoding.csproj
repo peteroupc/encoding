@@ -14,7 +14,7 @@ A portable library for .NET that implements character encodings used in Web page
     <PackageReleaseNotes>
 Version 0.6.0:
 
-- Bug fixes
+- Issue fixes
 
 Version 0.5.1:
 

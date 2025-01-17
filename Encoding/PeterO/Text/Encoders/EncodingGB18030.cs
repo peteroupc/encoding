@@ -506,21 +506,21 @@ if (ap == 23845) {
           if (c == 0xe78f) {
             return this.Write2(output, 0xa6, 0xdb);
           }
-if (c == 0xe790) {
+          if (c == 0xe790) {
             return this.Write2(output, 0xa6, 0xdc);
           }
-if (c == 0xe791) {
-  return this.Write2(output, 0xa6, 0xdd);
-}
-if (c == 0xe792) {
-  return this.Write2(output, 0xa6, 0xde);
-}
-if (c == 0xe793) {
-  return this.Write2(output, 0xa6, 0xdf);
-}
+          if (c == 0xe791) {
+            return this.Write2(output, 0xa6, 0xdd);
+          }
+          if (c == 0xe792) {
+            return this.Write2(output, 0xa6, 0xde);
+          }
+          if (c == 0xe793) {
+            return this.Write2(output, 0xa6, 0xdf);
+          }
 if (c == 0xe794) {
-  return this.Write2(output, 0xa6, 0xec);
-}
+            return this.Write2(output, 0xa6, 0xec);
+          }
 if (c == 0xe795) {
   return this.Write2(output, 0xa6, 0xed);
 }
@@ -602,12 +602,12 @@ if (c == 0xe864) {
           if (c == 0x9fb9) {
             return this.Write2(output, 254, 126);
           }
-if (c == 0x9fba) {
+          if (c == 0x9fba) {
             return this.Write2(output, 254, 144);
           }
-if (c == 0x9fbb) {
-  return this.Write2(output, 254, 160);
-}
+          if (c == 0x9fbb) {
+            return this.Write2(output, 254, 160);
+          }
         }
         int cp = Gb18030.CodePointToIndex(c);
         if (cp >= 0) {

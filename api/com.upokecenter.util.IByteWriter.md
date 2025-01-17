@@ -12,7 +12,9 @@ A generic interface for writing bytes of data.
 ## Method Details
 
 ### write
+
     void write(int b)
+
 Writes an 8-bit byte to a data source.
 
 **Parameters:**

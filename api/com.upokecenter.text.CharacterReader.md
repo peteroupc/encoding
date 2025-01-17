@@ -22,7 +22,9 @@ A general-purpose character input for reading text from byte streams and
 ## Method Details
 
 ### Read
+
     public int Read(int[] chars, int index, int length)
+
 Reads a series of code points from a Unicode stream or a string.
 
 **Specified by:**
@@ -53,7 +55,9 @@ Reads a series of code points from a Unicode stream or a string.
  minus <code>index</code> is less than <code>length</code>.
 
 ### ReadChar
+
     public int ReadChar()
+
 Reads the next character from a Unicode stream or a string.
 
 **Specified by:**

@@ -14,7 +14,9 @@ Defines a method that can be implemented by classes that convert a stream of
 ## Method Details
 
 ### ReadChar
+
     int ReadChar(IByteReader input)
+
 <p>Reads bytes from an input transform until a Unicode code point is decoded
  or until the end of the stream is reached. </p> <p>If this method returns
  -2, indicating an error, the caller of this method can take one of a variety

@@ -25,10 +25,15 @@ An array of bytes that grows as needed.
 ## Method Details
 
 ### Clear
+
     public void Clear()
+
 Offers a fast way to reset the length of the array writer's data to 0.
+
 ### ToArray
+
     public byte[] ToArray()
+
 Generates an array of all bytes written so far to it.
 
 **Returns:**
@@ -36,7 +41,9 @@ Generates an array of all bytes written so far to it.
 * A byte array.
 
 ### write
+
     public void write(int byteValue)
+
 Writes an 8-bit byte to the array.
 
 **Specified by:**
@@ -49,7 +56,9 @@ Writes an 8-bit byte to the array.
  bits of this value will be used.
 
 ### write
+
     public void write(byte[] src, int offset, int length)
+
 Writes a series of bytes to the array.
 
 **Specified by:**

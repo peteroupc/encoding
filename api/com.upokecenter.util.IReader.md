@@ -14,7 +14,9 @@ A generic interface for reading bytes of data from a data source.
 ## Method Details
 
 ### Read
+
     int Read(byte[] bytes, int offset, int length)
+
 Reads a portion of a byte array from the data source.
 
 **Parameters:**

@@ -14,7 +14,9 @@ A generic interface for writing bytes of data.
 ## Method Details
 
 ### write
+
     void write(byte[] bytes, int offset, int length)
+
 Writes a portion of a byte array to the data source.
 
 **Parameters:**

@@ -511,27 +511,27 @@ if (ap == 23845) {
           if (c == 0xe81e) {
             return this.Write2(output, 0xfe, 0x59);
           }
-if (c == 0xe826) {
+          if (c == 0xe826) {
             return this.Write2(output, 0xfe, 0x61);
           }
-if (c == 0xe82b) {
-  return this.Write2(output, 0xfe, 0x66);
-}
-if (c == 0xe82c) {
-  return this.Write2(output, 0xfe, 0x67);
-}
-if (c == 0xe832) {
-  return this.Write2(output, 0xfe, 0x6d);
-}
-if (c == 0xe843) {
-  return this.Write2(output, 0xfe, 0x7e);
-}
-if (c == 0xe854) {
-  return this.Write2(output, 0xfe, 0x90);
-}
-if (c == 0xe864) {
-  return this.Write2(output, 0xfe, 0xa0);
-}
+          if (c == 0xe82b) {
+            return this.Write2(output, 0xfe, 0x66);
+          }
+          if (c == 0xe82c) {
+            return this.Write2(output, 0xfe, 0x67);
+          }
+          if (c == 0xe832) {
+            return this.Write2(output, 0xfe, 0x6d);
+          }
+          if (c == 0xe843) {
+            return this.Write2(output, 0xfe, 0x7e);
+          }
+          if (c == 0xe854) {
+            return this.Write2(output, 0xfe, 0x90);
+          }
+          if (c == 0xe864) {
+            return this.Write2(output, 0xfe, 0xa0);
+          }
           if (c == 0xe5e5) {
             return this.Write2(output, 163, 160);
           }

@@ -15,7 +15,9 @@ Defines a method that can be implemented by classes that convert Unicode
 ## Method Details
 
 ### Encode
+
     int Encode(int c, IWriter output)
+
 <p>Converts a Unicode code point to bytes and writes the bytes to an output
  stream. </p> <p>If this method returns -2, indicating an error, the caller
  of this method can take one of a variety of actions to handle the error. For

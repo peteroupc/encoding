@@ -17,7 +17,9 @@ An interface for reading Unicode code points from a data source.
 ## Method Details
 
 ### ReadChar
+
     int ReadChar()
+
 Reads a Unicode code point from a data source.
 
 **Returns:**
@@ -26,7 +28,9 @@ Reads a Unicode code point from a data source.
  0x10ffff), or the value -1 indicating the end of the source.
 
 ### Read
+
     int Read(int[] chars, int index, int length)
+
 Reads a sequence of Unicode code points from a data source.
 
 **Parameters:**

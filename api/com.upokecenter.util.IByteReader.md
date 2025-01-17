@@ -12,7 +12,9 @@ A generic interface for reading data one byte at a time.
 ## Method Details
 
 ### read
+
     int read()
+
 Reads a byte from the data source.
 
 **Returns:**

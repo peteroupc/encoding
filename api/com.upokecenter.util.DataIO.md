@@ -42,7 +42,9 @@ Use ToReader instead.
 ## Method Details
 
 ### ToReader
+
     public static IReader ToReader(byte[] bytes)
+
 <p>Wraps a byte array into a byte reader. The reader will start at the
  beginning of the byte array. </p> <p>In the.NET implementation, this method
  is implemented as an extension method to any byte array object and can be
@@ -63,7 +65,9 @@ Use ToReader instead.
 * <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
 
 ### ToReader
+
     public static IReader ToReader(byte[] bytes, int offset, int length)
+
 <p>Wraps a portion of a byte array into a byte reader object. </p> <p>In
  the.NET implementation, this method is implemented as an extension method to
  any byte array object and can be called as follows: <code>
@@ -96,7 +100,9 @@ Use ToReader instead.
 * <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
 
 ### ToReader
+
     public static IReader ToReader(InputStream input)
+
 <p>Wraps an input stream into a reader object. If an IOException is thrown
  by the input stream, the reader object throws IllegalStateException instead.
  </p> <p>In the.NET implementation, this method is implemented as an
@@ -118,7 +124,9 @@ Use ToReader instead.
 * <code>NullPointerException</code> - The parameter <code>input</code> is null.
 
 ### ToByteReader
+
     @Deprecated public static IByteReader ToByteReader(byte[] bytes, int offset, int length)
+
 <p>Wraps a portion of a byte array into a byte reader. </p> <p>In the.NET
  implementation, this method is implemented as an extension method to any
  object implementing byte[] and can be called as follows: <code>
@@ -151,7 +159,9 @@ Use ToReader instead.
 * <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
 
 ### ToByteReader
+
     @Deprecated public static IByteReader ToByteReader(InputStream input)
+
 <p>Wraps a data stream into a byte reader. </p> <p>In the.NET
  implementation, this method is implemented as an extension method to any
  object implementing InputStream and can be called as follows: <code>
@@ -172,7 +182,9 @@ Use ToReader instead.
 * <code>NullPointerException</code> - The parameter <code>input</code> is null.
 
 ### ToByteReader
+
     @Deprecated public static IByteReader ToByteReader(byte[] bytes)
+
 <p>Wraps a byte array into a byte reader. </p> <p>In the.NET implementation,
  this method is implemented as an extension method to any object implementing
  byte[] and can be called as follows: <code>bytes.ToByteReader()</code>. If the
@@ -192,7 +204,9 @@ Use ToReader instead.
 * <code>NullPointerException</code> - The parameter <code>bytes</code> is null.
 
 ### ToWriter
+
     public static IWriter ToWriter(OutputStream output)
+
 <p>Wraps an output stream into a writer object. If an IOException is thrown
  by the input stream, the writer object throws IllegalStateException instead.
  </p> <p>In the.NET implementation, this method is implemented as an
@@ -214,7 +228,9 @@ Use ToReader instead.
 * <code>NullPointerException</code> - The parameter <code>output</code> is null.
 
 ### ToWriter
+
     public static IWriter ToWriter(IByteWriter output)
+
 <p>Wraps a byte writer (one that only implements a ReadByte method) to a
  writer (one that also implements a three-parameter Read method.) </p> <p>In
  the.NET implementation, this method is implemented as an extension method to

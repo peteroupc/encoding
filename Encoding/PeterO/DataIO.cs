@@ -201,7 +201,7 @@ byte[] bytes) {
     /// already has a ToWriter method with the same parameters, that method
     /// takes precedence over this extension method.</para></summary>
     /// <param name='output'>Output stream to wrap.</param>
-    /// <returns>A byte writer that wraps the given output
+    /// <returns>A byte writer that wraps the specified output
     /// stream.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
@@ -225,7 +225,7 @@ Stream output) {
     /// already has a ToWriter method with the same parameters, that method
     /// takes precedence over this extension method.</para></summary>
     /// <param name='output'>A byte stream.</param>
-    /// <returns>A writer that wraps the given stream.</returns>
+    /// <returns>A writer that wraps the specified stream.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
     public static IWriter ToWriter(

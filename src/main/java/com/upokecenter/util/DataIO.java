@@ -176,7 +176,7 @@ byte[] bytes) {
      * ToWriter method with the same parameters, that method takes precedence over
      * this extension method.</p>
      * @param output Output stream to wrap.
-     * @return A byte writer that wraps the given output stream.
+     * @return A byte writer that wraps the specified output stream.
      * @throws NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(
@@ -196,7 +196,7 @@ OutputStream output) {
      * the same parameters, that method takes precedence over this extension
      * method.</p>
      * @param output A byte stream.
-     * @return A writer that wraps the given stream.
+     * @return A writer that wraps the specified stream.
      * @throws NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(

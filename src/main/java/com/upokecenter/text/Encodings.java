@@ -13,7 +13,7 @@ import com.upokecenter.text.encoders.*;
    * WHATWG Encoding Standard defines algorithms for the most common character
    * encodings used on Web pages and recommends the UTF-8 encoding for new
    * specifications and Web pages. Calling the {@code GetEncoding(name)} method
-   * returns one of the character encodings with the given name under the
+   * returns one of the character encodings with the specified name under the
    * Encoding Standard.</p> <p>Now let's define some terms.</p> <p><b>Encoding
    * Terms</b></p> <ul> <li>A <b>code point</b> is a number that identifies a
    * single text character, such as a letter, digit, or symbol. (A collection of
@@ -139,7 +139,7 @@ private Encodings() {
     }
 
     /**
-     * <p>Decodes data read from a data stream into a text string in the given
+     * <p>Decodes data read from a data stream into a text string in the specified
      * character encoding. </p><p>In the.NET implementation, this method is
      * implemented as an extension method to any object implementing
      * ICharacterEncoding and can be called as follows: {@code
@@ -270,9 +270,9 @@ private Encodings() {
 
     /**
      * <p>Reads Unicode characters from a character input and writes them to a byte
-     * array encoded using the given character encoder. When writing to the byte
-     * array, any characters that can't be encoded are replaced with the byte 0x3f
-     * (the question mark character). </p> <p>In the.NET implementation, this
+     * array encoded using the specified character encoder. When writing to the
+     * byte array, any characters that can't be encoded are replaced with the byte
+     * 0x3f (the question mark character). </p> <p>In the.NET implementation, this
      * method is implemented as an extension method to any object implementing
      * ICharacterInput and can be called as follows: {@code
      * input.EncodeToBytes(encoding)}. If the object's class already has a {@code
@@ -321,12 +321,12 @@ private Encodings() {
 
     /**
      * <p>Reads Unicode characters from a character input and writes them to a byte
-     * array encoded using the given character encoder and fallback strategy. </p>
-     * <p>In the.NET implementation, this method is implemented as an extension
-     * method to any object implementing ICharacterInput and can be called as
-     * follows: {@code input.EncodeToBytes(encoder, htmlFallback)}. If the object's
-     * class already has a {@code EncodeToBytes} method with the same parameters,
-     * that method takes precedence over this extension method.</p>
+     * array encoded using the specified character encoder and fallback strategy.
+     * </p> <p>In the.NET implementation, this method is implemented as an
+     * extension method to any object implementing ICharacterInput and can be
+     * called as follows: {@code input.EncodeToBytes(encoder, htmlFallback)}. If
+     * the object's class already has a {@code EncodeToBytes} method with the same
+     * parameters, that method takes precedence over this extension method.</p>
      * @param input An object that implements a stream of universal code points.
      * @param encoder A character encoder that takes Unicode characters and writes
      * them into bytes.
@@ -408,7 +408,7 @@ private Encodings() {
 
     /**
      * <p>Reads Unicode characters from a text string and writes them to a byte
-     * array encoded in a given character encoding and using the given encoder
+     * array encoded in a given character encoding and using the specified encoder
      * fallback strategy. When reading the string, any unpaired surrogate
      * characters are replaced with the replacement character (U+FFFD). </p> <p>In
      * the.NET implementation, this method is implemented as an extension method to
@@ -445,10 +445,10 @@ private Encodings() {
 
     /**
      * <p>Reads Unicode characters from a character input and writes them to a byte
-     * array encoded using the given character encoder. When writing to the byte
-     * array, any characters that can't be encoded are replaced with the byte 0x3f
-     * (the question mark character). </p><p>In the.NET implementation, this method
-     * is implemented as an extension method to any object implementing
+     * array encoded using the specified character encoder. When writing to the
+     * byte array, any characters that can't be encoded are replaced with the byte
+     * 0x3f (the question mark character). </p><p>In the.NET implementation, this
+     * method is implemented as an extension method to any object implementing
      * ICharacterInput and can be called as follows: {@code
      * input.EncodeToBytes(encoding)}. If the object's class already has a
      * EncodeToBytes method with the same parameters, that method takes precedence
@@ -557,10 +557,10 @@ private Encodings() {
 
     /**
      * <p>Reads Unicode characters from a character input and writes them to a byte
-     * array encoded using the given character encoder. When writing to the byte
-     * array, any characters that can't be encoded are replaced with the byte 0x3f
-     * (the question mark character). </p><p>In the.NET implementation, this method
-     * is implemented as an extension method to any object implementing
+     * array encoded using the specified character encoder. When writing to the
+     * byte array, any characters that can't be encoded are replaced with the byte
+     * 0x3f (the question mark character). </p><p>In the.NET implementation, this
+     * method is implemented as an extension method to any object implementing
      * ICharacterInput and can be called as follows: {@code
      * input.EncodeToBytes(encoding)}. If the object's class already has a
      * EncodeToBytes method with the same parameters, that method takes precedence
@@ -720,7 +720,7 @@ private Encodings() {
      * <p>Converts a character encoding into a character input stream, given a
      * streamable source of bytes. But if the input stream starts with a UTF-8 or
      * UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case
-     * may be, rather than the given character encoding. </p><p>This method
+     * may be, rather than the specified character encoding. </p><p>This method
      * implements the "decode" algorithm specified in the Encoding standard.</p>
      * <p>In the.NET implementation, this method is implemented as an extension
      * method to any object implementing ICharacterEncoding and can be called as
@@ -744,7 +744,7 @@ private Encodings() {
      * <p>Converts a character encoding into a character input stream, given a
      * readable data stream. But if the input stream starts with a UTF-8 or UTF-16
      * byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may
-     * be, rather than the given character encoding.This method implements the
+     * be, rather than the specified character encoding.This method implements the
      * "decode" algorithm specified in the Encoding standard. </p> <p>In the.NET
      * implementation, this method is implemented as an extension method to any
      * object implementing ICharacterEncoding and can be called as follows: {@code
@@ -767,7 +767,7 @@ private Encodings() {
     }
 
     /**
-     * Returns a character encoding from the given name.
+     * Returns a character encoding from the specified name.
      * @param name A string naming a character encoding. See the ResolveAlias
      * method. Can be null.
      * @return An object implementing a character encoding (gives access to an
@@ -778,14 +778,14 @@ private Encodings() {
     }
 
     /**
-     * Returns a character encoding from the given name.
+     * Returns a character encoding from the specified name.
      * @param name A string naming a character encoding. See the ResolveAlias
      * method. Can be null.
      * @param forEmail If false, uses the encoding resolution rules in the Encoding
      * Standard. If true, uses modified rules as described in the
      * ResolveAliasForEmail method.
      * @param allowReplacement Has no effect.
-     * @return An object that enables encoding and decoding text in the given
+     * @return An object that enables encoding and decoding text in the specified
      * character encoding. Returns null if the name is null or empty, or if it
      * names an unrecognized or unsupported encoding.
      */
@@ -798,7 +798,7 @@ private Encodings() {
     }
 
     /**
-     * Returns a character encoding from the given name.
+     * Returns a character encoding from the specified name.
      * @param name A string naming a character encoding. See the ResolveAlias
      * method. Can be null.
      * @param forEmail If false, uses the encoding resolution rules in the Encoding
@@ -808,7 +808,7 @@ private Encodings() {
      * the 2022 version of GB18030 if 'forEmail' is true, or the definition of the
      * encoding in the WHATWG Encoding Standard (as of July 7, 2023) if 'forEmail'
      * is false.
-     * @return An object that enables encoding and decoding text in the given
+     * @return An object that enables encoding and decoding text in the specified
      * character encoding. Returns null if the name is null or empty, or if it
      * names an unrecognized or unsupported encoding.
      */
@@ -1500,7 +1500,7 @@ ValueCharsetAliases.get(name) :
      * over this extension method.</p>
      * @param encoding An object that implements a character encoding.
      * @param str A string to be encoded into a byte array.
-     * @return A byte array containing the string encoded in the given text
+     * @return A byte array containing the string encoded in the specified text
      * encoding.
      * @throws NullPointerException The parameter {@code encoding} is null.
      */
@@ -1514,12 +1514,12 @@ ValueCharsetAliases.get(name) :
     }
 
     /**
-     * <p>Converts a text string to a byte array using the given character encoder.
-     * When reading the string, any unpaired surrogate characters are replaced with
-     * the replacement character (U+FFFD), and when writing to the byte array, any
-     * characters that can't be encoded are replaced with the byte 0x3f (the
-     * question mark character). </p><p>In the.NET implementation, this method is
-     * implemented as an extension method to any object implementing
+     * <p>Converts a text string to a byte array using the specified character
+     * encoder. When reading the string, any unpaired surrogate characters are
+     * replaced with the replacement character (U+FFFD), and when writing to the
+     * byte array, any characters that can't be encoded are replaced with the byte
+     * 0x3f (the question mark character). </p><p>In the.NET implementation, this
+     * method is implemented as an extension method to any object implementing
      * ICharacterEncoder and can be called as follows: {@code
      * encoder.StringToBytes(str)}. If the object's class already has a
      * StringToBytes method with the same parameters, that method takes precedence

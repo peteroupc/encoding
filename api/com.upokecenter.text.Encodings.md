@@ -8,7 +8,7 @@
  WHATWG Encoding Standard defines algorithms for the most common character
  encodings used on Web pages and recommends the UTF-8 encoding for new
  specifications and Web pages. Calling the <code>GetEncoding(name)</code> method
- returns one of the character encodings with the given name under the
+ returns one of the character encodings with the specified name under the
  Encoding Standard.</p> <p>Now let's define some terms.</p> <p><b>Encoding
  Terms</b></p> <ul> <li>A <b>code point</b> is a number that identifies a
  single text character, such as a letter, digit, or symbol. (A collection of
@@ -116,7 +116,7 @@
 
 * `static String DecodeToString(ICharacterEncoding enc,
  InputStream input)`<br>
- Decodes data read from a data stream into a text string in the given
+ Decodes data read from a data stream into a text string in the specified
  character encoding.
 
 * `static byte[] EncodeToBytes(ICharacterInput input,
@@ -128,12 +128,12 @@
  ICharacterEncoder encoder,
  boolean htmlFallback)`<br>
  Reads Unicode characters from a character input and writes them to a byte
- array encoded using the given character encoder and fallback strategy.
+ array encoded using the specified character encoder and fallback strategy.
 
 * `static byte[] EncodeToBytes(ICharacterInput input,
  ICharacterEncoding encoding)`<br>
  Reads Unicode characters from a character input and writes them to a byte
- array encoded using the given character encoder.
+ array encoded using the specified character encoder.
 
 * `static byte[] EncodeToBytes(String str,
  ICharacterEncoding enc)`<br>
@@ -144,7 +144,7 @@
  ICharacterEncoding enc,
  boolean htmlFallback)`<br>
  Reads Unicode characters from a text string and writes them to a byte
- array encoded in a given character encoding and using the given encoder
+ array encoded in a given character encoding and using the specified encoder
  fallback strategy.
 
 * `static void EncodeToWriter(ICharacterInput input,
@@ -163,13 +163,13 @@
  ICharacterEncoding encoding,
  IWriter writer)`<br>
  Reads Unicode characters from a character input and writes them to a byte
- array encoded using the given character encoder.
+ array encoded using the specified character encoder.
 
 * `static void EncodeToWriter(ICharacterInput input,
  ICharacterEncoding encoding,
  OutputStream output)`<br>
  Reads Unicode characters from a character input and writes them to a byte
- array encoded using the given character encoder.
+ array encoded using the specified character encoder.
 
 * `static void EncodeToWriter(String str,
  ICharacterEncoding enc,
@@ -204,16 +204,16 @@
  readable data stream.
 
 * `static ICharacterEncoding GetEncoding(String name)`<br>
- Returns a character encoding from the given name.
+ Returns a character encoding from the specified name.
 
 * `static ICharacterEncoding GetEncoding(String name,
  boolean forEmail)`<br>
- Returns a character encoding from the given name.
+ Returns a character encoding from the specified name.
 
 * `static ICharacterEncoding GetEncoding(String name,
  boolean forEmail,
  boolean allowReplacement)`<br>
- Returns a character encoding from the given name.
+ Returns a character encoding from the specified name.
 
 * `static String InputToString(ICharacterInput reader)`<br>
  Reads Unicode characters from a character input and converts them to a
@@ -228,7 +228,8 @@
 
 * `static byte[] StringToBytes(ICharacterEncoder encoder,
  String str)`<br>
- Converts a text string to a byte array using the given character encoder.
+ Converts a text string to a byte array using the specified character
+ encoder.
 
 * `static byte[] StringToBytes(ICharacterEncoding encoding,
  String str)`<br>
@@ -287,7 +288,7 @@ Character encoding object for the UTF-8 character encoding, which represents
 
     public static String DecodeToString(ICharacterEncoding enc, InputStream input)
 
-<p>Decodes data read from a data stream into a text string in the given
+<p>Decodes data read from a data stream into a text string in the specified
  character encoding. </p><p>In the.NET implementation, this method is
  implemented as an extension method to any object implementing
  ICharacterEncoding and can be called as follows: <code>
@@ -402,9 +403,9 @@ Character encoding object for the UTF-8 character encoding, which represents
     public static byte[] EncodeToBytes(ICharacterInput input, ICharacterEncoding encoding)
 
 <p>Reads Unicode characters from a character input and writes them to a byte
- array encoded using the given character encoder. When writing to the byte
- array, any characters that can't be encoded are replaced with the byte 0x3f
- (the question mark character). </p> <p>In the.NET implementation, this
+ array encoded using the specified character encoder. When writing to the
+ byte array, any characters that can't be encoded are replaced with the byte
+ 0x3f (the question mark character). </p> <p>In the.NET implementation, this
  method is implemented as an extension method to any object implementing
  ICharacterInput and can be called as follows: <code>
  input.EncodeToBytes(encoding)</code>. If the object's class already has a <code>
@@ -464,12 +465,12 @@ Character encoding object for the UTF-8 character encoding, which represents
     public static byte[] EncodeToBytes(ICharacterInput input, ICharacterEncoder encoder, boolean htmlFallback)
 
 <p>Reads Unicode characters from a character input and writes them to a byte
- array encoded using the given character encoder and fallback strategy. </p>
- <p>In the.NET implementation, this method is implemented as an extension
- method to any object implementing ICharacterInput and can be called as
- follows: <code>input.EncodeToBytes(encoder, htmlFallback)</code>. If the object's
- class already has a <code>EncodeToBytes</code> method with the same parameters,
- that method takes precedence over this extension method.</p>
+ array encoded using the specified character encoder and fallback strategy.
+ </p> <p>In the.NET implementation, this method is implemented as an
+ extension method to any object implementing ICharacterInput and can be
+ called as follows: <code>input.EncodeToBytes(encoder, htmlFallback)</code>. If
+ the object's class already has a <code>EncodeToBytes</code> method with the same
+ parameters, that method takes precedence over this extension method.</p>
 
 **Parameters:**
 
@@ -535,7 +536,7 @@ Character encoding object for the UTF-8 character encoding, which represents
     public static byte[] EncodeToBytes(String str, ICharacterEncoding enc, boolean htmlFallback)
 
 <p>Reads Unicode characters from a text string and writes them to a byte
- array encoded in a given character encoding and using the given encoder
+ array encoded in a given character encoding and using the specified encoder
  fallback strategy. When reading the string, any unpaired surrogate
  characters are replaced with the replacement character (U+FFFD). </p> <p>In
  the.NET implementation, this method is implemented as an extension method to
@@ -570,10 +571,10 @@ Character encoding object for the UTF-8 character encoding, which represents
     public static void EncodeToWriter(ICharacterInput input, ICharacterEncoding encoding, IWriter writer)
 
 <p>Reads Unicode characters from a character input and writes them to a byte
- array encoded using the given character encoder. When writing to the byte
- array, any characters that can't be encoded are replaced with the byte 0x3f
- (the question mark character). </p><p>In the.NET implementation, this method
- is implemented as an extension method to any object implementing
+ array encoded using the specified character encoder. When writing to the
+ byte array, any characters that can't be encoded are replaced with the byte
+ 0x3f (the question mark character). </p><p>In the.NET implementation, this
+ method is implemented as an extension method to any object implementing
  ICharacterInput and can be called as follows: <code>
  input.EncodeToBytes(encoding)</code>. If the object's class already has a
  EncodeToBytes method with the same parameters, that method takes precedence
@@ -666,10 +667,10 @@ Character encoding object for the UTF-8 character encoding, which represents
     public static void EncodeToWriter(ICharacterInput input, ICharacterEncoding encoding, OutputStream output) throws IOException
 
 <p>Reads Unicode characters from a character input and writes them to a byte
- array encoded using the given character encoder. When writing to the byte
- array, any characters that can't be encoded are replaced with the byte 0x3f
- (the question mark character). </p><p>In the.NET implementation, this method
- is implemented as an extension method to any object implementing
+ array encoded using the specified character encoder. When writing to the
+ byte array, any characters that can't be encoded are replaced with the byte
+ 0x3f (the question mark character). </p><p>In the.NET implementation, this
+ method is implemented as an extension method to any object implementing
  ICharacterInput and can be called as follows: <code>
  input.EncodeToBytes(encoding)</code>. If the object's class already has a
  EncodeToBytes method with the same parameters, that method takes precedence
@@ -837,7 +838,7 @@ Character encoding object for the UTF-8 character encoding, which represents
 <p>Converts a character encoding into a character input stream, given a
  streamable source of bytes. But if the input stream starts with a UTF-8 or
  UTF-16 byte order mark, the input is decoded as UTF-8 or UTF-16, as the case
- may be, rather than the given character encoding. </p><p>This method
+ may be, rather than the specified character encoding. </p><p>This method
  implements the "decode" algorithm specified in the Encoding standard.</p>
  <p>In the.NET implementation, this method is implemented as an extension
  method to any object implementing ICharacterEncoding and can be called as
@@ -865,7 +866,7 @@ Character encoding object for the UTF-8 character encoding, which represents
 <p>Converts a character encoding into a character input stream, given a
  readable data stream. But if the input stream starts with a UTF-8 or UTF-16
  byte order mark, the input is decoded as UTF-8 or UTF-16, as the case may
- be, rather than the given character encoding.This method implements the
+ be, rather than the specified character encoding.This method implements the
  "decode" algorithm specified in the Encoding standard. </p> <p>In the.NET
  implementation, this method is implemented as an extension method to any
  object implementing ICharacterEncoding and can be called as follows: <code>
@@ -890,7 +891,7 @@ Character encoding object for the UTF-8 character encoding, which represents
 
     public static ICharacterEncoding GetEncoding(String name)
 
-Returns a character encoding from the given name.
+Returns a character encoding from the specified name.
 
 **Parameters:**
 
@@ -906,7 +907,7 @@ Returns a character encoding from the given name.
 
     public static ICharacterEncoding GetEncoding(String name, boolean forEmail, boolean allowReplacement)
 
-Returns a character encoding from the given name.
+Returns a character encoding from the specified name.
 
 **Parameters:**
 
@@ -921,7 +922,7 @@ Returns a character encoding from the given name.
 
 **Returns:**
 
-* An object that enables encoding and decoding text in the given
+* An object that enables encoding and decoding text in the specified
  character encoding. Returns null if the name is null or empty, or if it
  names an unrecognized or unsupported encoding.
 
@@ -929,7 +930,7 @@ Returns a character encoding from the given name.
 
     public static ICharacterEncoding GetEncoding(String name, boolean forEmail)
 
-Returns a character encoding from the given name.
+Returns a character encoding from the specified name.
 
 **Parameters:**
 
@@ -946,7 +947,7 @@ Returns a character encoding from the given name.
 
 **Returns:**
 
-* An object that enables encoding and decoding text in the given
+* An object that enables encoding and decoding text in the specified
  character encoding. Returns null if the name is null or empty, or if it
  names an unrecognized or unsupported encoding.
 
@@ -1111,7 +1112,7 @@ Resolves a character encoding's name to a canonical form, using rules more
 
 **Returns:**
 
-* A byte array containing the string encoded in the given text
+* A byte array containing the string encoded in the specified text
  encoding.
 
 **Throws:**
@@ -1122,12 +1123,12 @@ Resolves a character encoding's name to a canonical form, using rules more
 
     public static byte[] StringToBytes(ICharacterEncoder encoder, String str)
 
-<p>Converts a text string to a byte array using the given character encoder.
- When reading the string, any unpaired surrogate characters are replaced with
- the replacement character (U+FFFD), and when writing to the byte array, any
- characters that can't be encoded are replaced with the byte 0x3f (the
- question mark character). </p><p>In the.NET implementation, this method is
- implemented as an extension method to any object implementing
+<p>Converts a text string to a byte array using the specified character
+ encoder. When reading the string, any unpaired surrogate characters are
+ replaced with the replacement character (U+FFFD), and when writing to the
+ byte array, any characters that can't be encoded are replaced with the byte
+ 0x3f (the question mark character). </p><p>In the.NET implementation, this
+ method is implemented as an extension method to any object implementing
  ICharacterEncoder and can be called as follows: <code>
  encoder.StringToBytes(str)</code>. If the object's class already has a
  StringToBytes method with the same parameters, that method takes precedence

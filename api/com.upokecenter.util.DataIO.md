@@ -221,7 +221,7 @@ Use ToReader instead.
 
 **Returns:**
 
-* A byte writer that wraps the given output stream.
+* A byte writer that wraps the specified output stream.
 
 **Throws:**
 
@@ -245,7 +245,7 @@ Use ToReader instead.
 
 **Returns:**
 
-* A writer that wraps the given stream.
+* A writer that wraps the specified stream.
 
 **Throws:**
 

@@ -14,7 +14,8 @@ namespace PeterO.Text {
   /// common character encodings used on Web pages and recommends the
   /// UTF-8 encoding for new specifications and Web pages. Calling the
   /// <c>GetEncoding(name)</c> method returns one of the character
-  /// encodings with the given name under the Encoding Standard.</para>
+  /// encodings with the specified name under the Encoding
+  /// Standard.</para>
   /// <para>Now let's define some terms.</para>
   /// <para><b>Encoding Terms</b></para>
   /// <list>
@@ -169,7 +170,7 @@ namespace PeterO.Text {
     }
 
     /// <summary>Decodes data read from a data stream into a text string in
-    /// the given character encoding.
+    /// the specified character encoding.
     /// <para>In the.NET implementation, this method is implemented as an
     /// extension method to any object implementing ICharacterEncoding and
     /// can be called as follows: <c>encoding.DecodeToString(input)</c>.
@@ -315,7 +316,7 @@ namespace PeterO.Text {
     }
 
     /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded using the given character encoder.
+    /// them to a byte array encoded using the specified character encoder.
     /// When writing to the byte array, any characters that can't be
     /// encoded are replaced with the byte 0x3f (the question mark
     /// character).
@@ -377,8 +378,8 @@ namespace PeterO.Text {
     }
 
     /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded using the given character encoder and
-    /// fallback strategy.
+    /// them to a byte array encoded using the specified character encoder
+    /// and fallback strategy.
     /// <para>In the.NET implementation, this method is implemented as an
     /// extension method to any object implementing ICharacterInput and can
     /// be called as follows: <c>input.EncodeToBytes(encoder,
@@ -475,9 +476,9 @@ namespace PeterO.Text {
 
     /// <summary>Reads Unicode characters from a text string and writes
     /// them to a byte array encoded in a given character encoding and
-    /// using the given encoder fallback strategy. When reading the string,
-    /// any unpaired surrogate characters are replaced with the replacement
-    /// character (U+FFFD).
+    /// using the specified encoder fallback strategy. When reading the
+    /// string, any unpaired surrogate characters are replaced with the
+    /// replacement character (U+FFFD).
     /// <para>In the.NET implementation, this method is implemented as an
     /// extension method to any object implementing string and can be
     /// called as follows: <c>str.EncodeToBytes(enc, htmlFallback)</c>. If
@@ -515,7 +516,7 @@ namespace PeterO.Text {
     }
 
     /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded using the given character encoder.
+    /// them to a byte array encoded using the specified character encoder.
     /// When writing to the byte array, any characters that can't be
     /// encoded are replaced with the byte 0x3f (the question mark
     /// character).
@@ -644,7 +645,7 @@ namespace PeterO.Text {
     }
 
     /// <summary>Reads Unicode characters from a character input and writes
-    /// them to a byte array encoded using the given character encoder.
+    /// them to a byte array encoded using the specified character encoder.
     /// When writing to the byte array, any characters that can't be
     /// encoded are replaced with the byte 0x3f (the question mark
     /// character).
@@ -831,7 +832,7 @@ namespace PeterO.Text {
     /// <summary>Converts a character encoding into a character input
     /// stream, given a streamable source of bytes. But if the input stream
     /// starts with a UTF-8 or UTF-16 byte order mark, the input is decoded
-    /// as UTF-8 or UTF-16, as the case may be, rather than the given
+    /// as UTF-8 or UTF-16, as the case may be, rather than the specified
     /// character encoding.
     /// <para>This method implements the "decode" algorithm specified in
     /// the Encoding standard.</para>
@@ -861,7 +862,7 @@ namespace PeterO.Text {
     /// <summary>Converts a character encoding into a character input
     /// stream, given a readable data stream. But if the input stream
     /// starts with a UTF-8 or UTF-16 byte order mark, the input is decoded
-    /// as UTF-8 or UTF-16, as the case may be, rather than the given
+    /// as UTF-8 or UTF-16, as the case may be, rather than the specified
     /// character encoding.This method implements the "decode" algorithm
     /// specified in the Encoding standard.
     /// <para>In the.NET implementation, this method is implemented as an
@@ -889,7 +890,7 @@ namespace PeterO.Text {
           encoding);
     }
 
-    /// <summary>Returns a character encoding from the given
+    /// <summary>Returns a character encoding from the specified
     /// name.</summary>
     /// <param name='name'>A string naming a character encoding. See the
     /// ResolveAlias method. Can be null.</param>
@@ -899,7 +900,7 @@ namespace PeterO.Text {
       return GetEncoding(name, false, true);
     }
 
-    /// <summary>Returns a character encoding from the given
+    /// <summary>Returns a character encoding from the specified
     /// name.</summary>
     /// <param name='name'>A string naming a character encoding. See the
     /// ResolveAlias method. Can be null.</param>
@@ -908,7 +909,7 @@ namespace PeterO.Text {
     /// in the ResolveAliasForEmail method.</param>
     /// <param name='allowReplacement'>Has no effect.</param>
     /// <returns>An object that enables encoding and decoding text in the
-    /// given character encoding. Returns null if the name is null or
+    /// specified character encoding. Returns null if the name is null or
     /// empty, or if it names an unrecognized or unsupported
     /// encoding.</returns>
     public static ICharacterEncoding GetEncoding(
@@ -920,7 +921,7 @@ namespace PeterO.Text {
             StringComparison.Ordinal)) ? null : GetEncoding(name, forEmail);
     }
 
-    /// <summary>Returns a character encoding from the given
+    /// <summary>Returns a character encoding from the specified
     /// name.</summary>
     /// <param name='name'>A string naming a character encoding. See the
     /// ResolveAlias method. Can be null.</param>
@@ -933,7 +934,7 @@ namespace PeterO.Text {
     /// Encoding Standard (as of July 7, 2023) if 'forEmail' is
     /// false.</param>
     /// <returns>An object that enables encoding and decoding text in the
-    /// given character encoding. Returns null if the name is null or
+    /// specified character encoding. Returns null if the name is null or
     /// empty, or if it names an unrecognized or unsupported
     /// encoding.</returns>
     public static ICharacterEncoding GetEncoding(
@@ -1681,8 +1682,8 @@ ValueCharsetAliases[name] :
     /// <param name='encoding'>An object that implements a character
     /// encoding.</param>
     /// <param name='str'>A string to be encoded into a byte array.</param>
-    /// <returns>A byte array containing the string encoded in the given
-    /// text encoding.</returns>
+    /// <returns>A byte array containing the string encoded in the
+    /// specified text encoding.</returns>
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='encoding'/> is null.</exception>
     public static byte[] StringToBytes(
@@ -1697,7 +1698,7 @@ ValueCharsetAliases[name] :
       return StringToBytes(encoding.GetEncoder(), str);
     }
 
-    /// <summary>Converts a text string to a byte array using the given
+    /// <summary>Converts a text string to a byte array using the specified
     /// character encoder. When reading the string, any unpaired surrogate
     /// characters are replaced with the replacement character (U+FFFD),
     /// and when writing to the byte array, any characters that can't be

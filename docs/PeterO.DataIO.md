@@ -207,7 +207,7 @@ Wraps a byte writer (one that only implements a ReadByte method) to a writer (on
 
 <b>Return Value:</b>
 
-A writer that wraps the given stream.
+A writer that wraps the specified stream.
 
 <b>Exceptions:</b>
 
@@ -229,7 +229,7 @@ Wraps an output stream into a writer object. If an IOException is thrown by the 
 
 <b>Return Value:</b>
 
-A byte writer that wraps the given output stream.
+A byte writer that wraps the specified output stream.
 
 <b>Exceptions:</b>
 

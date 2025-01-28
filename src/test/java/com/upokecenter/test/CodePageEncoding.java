@@ -13,8 +13,8 @@ import com.upokecenter.text.*;
    * character and can specify certain "best-fit" mappings from certain Unicode
    * characters to the code page encoding if the Unicode character is unsupported
    * in the code page encoding. When decoding, any invalid bytes or unassigned
-   * bytes in the code page encoding are converted to the given replacement code
-   * point.</p>
+   * bytes in the code page encoding are converted to the specified replacement
+   * code point.</p>
    */
   public class CodePageEncoding implements ICharacterEncoding {
     private CodePageCoder coder;
@@ -231,25 +231,25 @@ import com.upokecenter.text.*;
           do {
             this.ReadToTokenChar();
           } while (this.type == TokenType.LineBreak);
-          boolean[] isPossible = new boolean[words.length];
-          int[] wordIndices = new int[words.length];
+          boolean isPossible = new boolean.get(words.length);
+          int wordIndices = new int[words.length];
           int possibleCount = words.length;
           for (int i = 0; i < words.length; ++i) {
-            isPossible[i] = true;
-            wordIndices[i] = 0;
+            isPossible.set(i, true);
+            wordIndices.set(i, 0);
           }
           while (true) {
             int ch = this.input.ReadChar();
             for (int i = 0; i < words.length; ++i) {
-              int index = wordIndices[i];
+              int index = wordIndices.get(i);
               String wordStr = words[i];
-              if (isPossible[i]) {
+              if (isPossible.get(i)) {
                 if (index >= wordStr.length()) {
                   if (IsWordEndChar(ch)) {
                     this.input.Unget();
                     return i;
                   } else {
-                    isPossible[i] = false;
+                    isPossible.set(i, false);
                     --possibleCount;
                     if (possibleCount == 0) {
                       if (words.length == 1) {
@@ -273,9 +273,9 @@ import com.upokecenter.text.*;
                   // unpaired surrogate
                   c = 0xfffd;
                 }
-                wordIndices[i] = index;
+                wordIndices.set(i, index);
                 if (ch != c) {
-                  isPossible[i] = false;
+                  isPossible.set(i, false);
                   --possibleCount;
                   if (possibleCount == 0) {
                     if (words.length == 1) {

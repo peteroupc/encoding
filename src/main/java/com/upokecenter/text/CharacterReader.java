@@ -587,7 +587,7 @@ import java.io.*;
       private void Ensure(int size) {
         this.saved = (this.saved == null) ? ((new int[this.savedLength + size])) : this.saved;
         if (this.savedLength + size < this.saved.length) {
-          int[] newsaved = new int[this.savedLength + size + 4];
+          int newsaved = new int[this.savedLength + size + 4];
           System.arraycopy(this.saved, 0, newsaved, 0, this.savedLength);
           this.saved = newsaved;
         }

@@ -469,15 +469,15 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
     }
 
     public static void TestSingleByteRoundTrip(ICharacterEncoding enc) {
-      int[] codepoints = new int[256];
-      int[] codesrc = new int[256];
+      int codepoints = new int[256];
+      int codesrc = new int[256];
       if (enc == null) {
         throw new NullPointerException("enc");
       }
       ICharacterEncoder encoder = enc.GetEncoder();
       ICharacterDecoder decoder = enc.GetDecoder();
       int codetotal = 0;
-      byte[] bytes = new byte[256];
+      byte bytes = new byte[256];
       for (int i = 0; i < 256; ++i) {
         bytes[i] = (byte)i;
       }
@@ -488,14 +488,14 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
           Assert.fail();
         }
         if (c != -2) {
-          codepoints[codetotal] = c;
-          codesrc[codetotal] = i;
+          codepoints.set(codetotal, c);
+          codesrc.set(codetotal, i);
           ++codetotal;
         }
       }
       ArrayWriter aw = new ArrayWriter();
       for (int i = 0; i < codetotal; ++i) {
-        int c = encoder.Encode(codepoints[i], aw);
+        int c = encoder.Encode(codepoints.get(i), aw);
         if (c < 0) {
           Assert.fail();
         }
@@ -503,8 +503,8 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
       bytes = aw.ToArray();
       for (int i = 0; i < codetotal; ++i) {
         int b = ((int)bytes[i]) & 0xff;
-        if (b != codesrc[i]) {
-          Assert.assertEquals(codesrc[i], b);
+        if (b != codesrc.get(i)) {
+          Assert.assertEquals(codesrc.get(i), b);
         }
       }
     }
@@ -548,7 +548,7 @@ if (charsLeft != 2 && charsLeft != 4 && charsLeft != 6 &&
           charsLeft != 8) {
   throw new IllegalArgumentException("str");
 }
-       byte[] bytes = new byte[charsLeft/2];
+       byte bytes = new byte[charsLeft/2];
        for (int j = 0; j < charsLeft;j+=2) {
          char c1 = str.charAt(i++);
          char c2 = str.charAt(i++);
@@ -577,16 +577,16 @@ builder.append((char)(((cv - 0x10000) & 0x3ff) | 0xdc00));
           Encodings.GetEncoding(this.valueSingleByteNames[j]);
 
         ICharacterDecoder dec = enc.GetDecoder();
-        byte[] bytes = new byte[256];
-        int[] ints = new int[256];
+        byte bytes = new byte[256];
+        int ints = new int[256];
         int count = 0;
         for (int i = 0; i < 256; ++i) {
           bytes[i] = (byte)i;
         }
         IByteReader reader = DataIO.ToReader(bytes);
         for (int i = 0; i < 256; ++i) {
-          ints[i] = dec.ReadChar(reader);
-          if (ints[i] >= 0) {
+          ints.set(i, dec.ReadChar(reader));
+          if (ints.get(i) >= 0) {
             ++count;
           }
         }
@@ -597,15 +597,15 @@ builder.append((char)(((cv - 0x10000) & 0x3ff) | 0xdc00));
         builder.append("CODEPAGE 1\nCPINFO 1 0x3f 0x3f\nMBTABLE " +
           TestCommon.IntToString(count) + "\n");
         for (int i = 0; i < 256; ++i) {
-          if (ints[i] >= 0) {
+          if (ints.get(i) >= 0) {
             builder.append(TestCommon.IntToString(i) + " " +
-              TestCommon.IntToString(ints[i]) + "\n");
+              TestCommon.IntToString(ints.get(i)) + "\n");
           }
         }
         builder.append("WCTABLE " + count + "\n");
         for (int i = 0; i < 256; ++i) {
-          if (ints[i] >= 0) {
-            builder.append(TestCommon.IntToString(ints[i]) + " " +
+          if (ints.get(i) >= 0) {
+            builder.append(TestCommon.IntToString(ints.get(i)) + " " +
               TestCommon.IntToString(i) + "\n");
           }
         }
@@ -687,7 +687,7 @@ private int propVarposition;
         if (left < count) {
           count = left;
         }
-        byte[] ret = new byte[count];
+        byte ret = new byte[count];
         System.arraycopy(this.bytes, this.getPosition(), ret, 0, count);
         return ret;
       }

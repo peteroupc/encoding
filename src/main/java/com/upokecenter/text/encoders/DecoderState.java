@@ -18,7 +18,7 @@ import com.upokecenter.util.*;
     public void AppendChar(int ch) {
       this.chars = (this.chars == null) ? (new int[4]) : this.chars;
       if (this.charCount >= this.chars.length) {
-        int[] newchars = new int[this.chars.length + 8];
+        int newchars = new int[this.chars.length + 8];
         System.arraycopy(this.chars, 0, newchars, 0, this.chars.length);
         this.chars = newchars;
       }
@@ -40,7 +40,7 @@ import com.upokecenter.util.*;
 
     public void PrependOne(int b1) {
       if (this.prependedBytes + 1 > this.bytes.length) {
-        int[] newbytes = new int[this.prependedBytes + 8];
+        int newbytes = new int[this.prependedBytes + 8];
         System.arraycopy(this.bytes, 0, newbytes, 0, this.bytes.length);
         this.bytes = newbytes;
       }
@@ -49,7 +49,7 @@ import com.upokecenter.util.*;
 
     public void PrependThree(int b1, int b2, int b3) {
       if (this.prependedBytes + 3 > this.bytes.length) {
-        int[] newbytes = new int[this.prependedBytes + 8];
+        int newbytes = new int[this.prependedBytes + 8];
         System.arraycopy(this.bytes, 0, newbytes, 0, this.bytes.length);
         this.bytes = newbytes;
       }
@@ -60,7 +60,7 @@ import com.upokecenter.util.*;
 
     public void PrependTwo(int b1, int b2) {
       if (this.prependedBytes + 2 > this.bytes.length) {
-        int[] newbytes = new int[this.prependedBytes + 8];
+        int newbytes = new int[this.prependedBytes + 8];
         System.arraycopy(this.bytes, 0, newbytes, 0, this.bytes.length);
         this.bytes = newbytes;
       }

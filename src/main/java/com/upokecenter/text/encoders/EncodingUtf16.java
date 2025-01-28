@@ -174,26 +174,26 @@ import com.upokecenter.text.*;
           }
           return 2;
         }
-        byte[] buf = new byte[4];
+        byte buf = new byte[4];
         int c1 = ((c - 0x10000) >> 10) + 0xd800;
         int c2 = ((c - 0x10000) & 0x3ff) + 0xdc00;
         b1 = (c1 >> 8) & 0xff;
         b2 = c1 & 0xff;
         if (this.bigEndian) {
-          buf[0] = (byte)b1;
-          buf[1] = (byte)b2;
+          buf.set(0, (byte)b1);
+          buf.set(1, (byte)b2);
         } else {
-          buf[0] = (byte)b2;
-          buf[1] = (byte)b1;
+          buf.set(0, (byte)b2);
+          buf.set(1, (byte)b1);
         }
         b1 = (c2 >> 8) & 0xff;
         b2 = c2 & 0xff;
         if (this.bigEndian) {
-          buf[2] = (byte)b1;
-          buf[3] = (byte)b2;
+          buf.set(2, (byte)b1);
+          buf.set(3, (byte)b2);
         } else {
-          buf[2] = (byte)b2;
-          buf[3] = (byte)b1;
+          buf.set(2, (byte)b2);
+          buf.set(3, (byte)b1);
         }
         output.write(buf, 0, 4);
         return 4;

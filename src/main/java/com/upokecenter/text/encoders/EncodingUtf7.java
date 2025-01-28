@@ -375,7 +375,7 @@ import com.upokecenter.text.*;
           int byte2 = cc1 & 0xff;
           int byte3 = (cc2 >> 8) & 0xff;
           int byte4 = cc2 & 0xff;
-          byte[] b64array = new byte[] {
+          byte b64array = new byte[] {
             (byte)byte1,
             (byte)byte2, (byte)byte3, (byte)byte4,
            };

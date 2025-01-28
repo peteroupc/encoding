@@ -28,7 +28,7 @@ import com.upokecenter.text.*;
         }
         if (!this.bomChecked) {
           int c = 0;
-          int[] buffer = new int[3];
+          int buffer = new int[3];
           int bufferCount = 0;
           this.bomChecked = true;
           while (c >= 0 && bufferCount < 3) {

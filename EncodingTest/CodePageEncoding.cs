@@ -15,7 +15,7 @@ namespace EncodingTest {
   /// Unicode characters to the code page encoding if the Unicode
   /// character is unsupported in the code page encoding. When decoding,
   /// any invalid bytes or unassigned bytes in the code page encoding are
-  /// converted to the given replacement code point.</para></summary>
+  /// converted to the specified replacement code point.</para></summary>
   public class CodePageEncoding : ICharacterEncoding {
     private CodePageCoder coder;
 

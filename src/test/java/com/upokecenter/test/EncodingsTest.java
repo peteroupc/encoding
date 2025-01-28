@@ -45,7 +45,7 @@ import com.upokecenter.text.*;
     public void TestIso2022JP00A5() {
       ICharacterEncoding wenc = Encodings.GetEncoding("iso-2022-jp");
       byte[] bytes = Encodings.EncodeToBytes("\u00a5", wenc);
-      byte[] bytes2 = new byte[bytes.length * 2];
+      byte bytes2 = new byte[bytes.length * 2];
       System.arraycopy(bytes, 0, bytes2, 0, bytes.length);
       System.arraycopy(bytes, 0, bytes2, bytes.length, bytes.length);
       String str = Encodings.DecodeToString(wenc, bytes2);

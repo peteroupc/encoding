@@ -211,8 +211,7 @@ import com.upokecenter.text.*;
           int number = this.ExpectNumberOnSameLine();
           if (number >= 0x110000) {
             throw new IllegalArgumentException("expected number from 0-0x10ffff," +
-"\u0020 got " +
-              number);
+              "\u0020 got " + number);
           }
           return number;
         }
@@ -221,8 +220,7 @@ import com.upokecenter.text.*;
           int number = this.ExpectNumber();
           if (number >= 0x110000) {
             throw new IllegalArgumentException("expected number from 0-0x10ffff," +
-"\u0020 got " +
-              number);
+              "\u0020 got " + number);
           }
           return number;
         }
@@ -231,30 +229,30 @@ import com.upokecenter.text.*;
           do {
             this.ReadToTokenChar();
           } while (this.type == TokenType.LineBreak);
-          boolean isPossible = new boolean.get(words.length);
-          int wordIndices = new int[words.length];
+          boolean[] isPossible = new boolean[words.length];
+          int[] wordIndices = new int[words.length];
           int possibleCount = words.length;
           for (int i = 0; i < words.length; ++i) {
-            isPossible.set(i, true);
-            wordIndices.set(i, 0);
+            isPossible[i] = true;
+            wordIndices[i] = 0;
           }
           while (true) {
             int ch = this.input.ReadChar();
             for (int i = 0; i < words.length; ++i) {
-              int index = wordIndices.get(i);
+              int index = wordIndices[i];
               String wordStr = words[i];
-              if (isPossible.get(i)) {
+              if (isPossible[i]) {
                 if (index >= wordStr.length()) {
                   if (IsWordEndChar(ch)) {
                     this.input.Unget();
                     return i;
                   } else {
-                    isPossible.set(i, false);
+                    isPossible[i] = false;
                     --possibleCount;
                     if (possibleCount == 0) {
                       if (words.length == 1) {
-                throw new IllegalArgumentException("Expected nonword character" +
-"\u0020after '" + wordStr + "'");
+                        throw new IllegalArgumentException("Expected nonword " +
+                          "character" + "\u0020after '" + wordStr + "'");
                       } else {
                         throw new IllegalArgumentException("unexpected word found");
                       }
@@ -273,9 +271,9 @@ import com.upokecenter.text.*;
                   // unpaired surrogate
                   c = 0xfffd;
                 }
-                wordIndices.set(i, index);
+                wordIndices[i] = index;
                 if (ch != c) {
-                  isPossible.set(i, false);
+                  isPossible[i] = false;
                   --possibleCount;
                   if (possibleCount == 0) {
                     if (words.length == 1) {
@@ -525,11 +523,11 @@ import com.upokecenter.text.*;
             break;
             case 1: {
               int wordIndex = token.ExpectAnyOneWord(
-                "MBTABLE",
-                "DBCSRANGE",
-                "WCTABLE",
-                "GLYPHTABLE",
-                "ENDCODEPAGE");
+                  "MBTABLE",
+                  "DBCSRANGE",
+                  "WCTABLE",
+                  "GLYPHTABLE",
+                  "ENDCODEPAGE");
               if (wordIndex == 0) {
                 lineCount = token.ExpectNumberOnSameLine();
                 token.SkipToLine();

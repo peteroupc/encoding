@@ -222,7 +222,7 @@ import com.upokecenter.text.*;
                     (this.base64value >> 8) & 0xff,
                     this.state);
                   this.appender.AppendByte(this.base64value & 0xff,
-  this.state);
+                    this.state);
                   this.base64count = 0;
                 }
               } else {
@@ -280,7 +280,8 @@ import com.upokecenter.text.*;
                 return ch;
               }
               break;
-            default: throw new IllegalStateException("Unexpected state");
+            default:
+              throw new IllegalStateException("Unexpected state");
           }
         }
       }
@@ -310,11 +311,9 @@ import com.upokecenter.text.*;
             case 2:
               output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
               output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >>
-4) &
-                    15)]);
-              output.write((byte)ToAlphabet[((b2 & 15) << 2) + ((value
->>
-                      6) & 3)]);
+                4) & 15)]);
+              output.write((byte)ToAlphabet[((b2 & 15) << 2) + ((value >>
+                6) & 3)]);
               output.write((byte)ToAlphabet[value & 63]);
               ret += 4;
               quantumCount = 0;
@@ -343,13 +342,13 @@ import com.upokecenter.text.*;
         if (quantumCount == 2) {
           output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
           output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
-                15)]);
+            15)]);
           output.write((byte)ToAlphabet[(b2 & 15) << 2]);
           ret += 3;
         } else if (quantumCount == 1) {
           output.write((byte)ToAlphabet[(b1 >> 2) & 63]);
           output.write((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
-                15)]);
+            15)]);
           ret += 2;
         }
         output.write((byte)0x2d);
@@ -375,13 +374,13 @@ import com.upokecenter.text.*;
           int byte2 = cc1 & 0xff;
           int byte3 = (cc2 >> 8) & 0xff;
           int byte4 = cc2 & 0xff;
-          byte b64array = new byte[] {
+          byte[] b64array = new byte[] {
             (byte)byte1,
             (byte)byte2, (byte)byte3, (byte)byte4,
            };
           ret += this.AppendBase64(
-            b64array,
-            output);
+              b64array,
+              output);
         }
         return ret;
       }

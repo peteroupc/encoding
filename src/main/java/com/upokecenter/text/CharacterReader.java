@@ -317,7 +317,7 @@ import java.io.*;
           <= 0xdfff) {
           // Get the Unicode code point for the surrogate pair
           c = 0x10000 + ((c & 0x3ff) << 10) + (this.str.charAt(this.offset + 1) &
-              0x3ff);
+            0x3ff);
           ++this.offset;
         } else if ((c & 0xf800) == 0xd800) {
           // unpaired surrogate
@@ -378,7 +378,7 @@ import java.io.*;
         c4 = this.stream.read();
         if (c2 == 0 &&
           ((c3 == 0xfe && c4 == 0xff) ||
-            (c3 == 0 && c4 >= 0x01 && c4 <= 0x7f))) {
+          (c3 == 0 && c4 >= 0x01 && c4 <= 0x7f))) {
           this.reader = new Utf32Reader(this.stream, true, this.errorThrow);
           return c3 == 0 ? c4 : this.reader.ReadChar();
         } else {
@@ -587,7 +587,7 @@ import java.io.*;
       private void Ensure(int size) {
         this.saved = (this.saved == null) ? ((new int[this.savedLength + size])) : this.saved;
         if (this.savedLength + size < this.saved.length) {
-          int newsaved = new int[this.savedLength + size + 4];
+          int[] newsaved = new int[this.savedLength + size + 4];
           System.arraycopy(this.saved, 0, newsaved, 0, this.savedLength);
           this.saved = newsaved;
         }

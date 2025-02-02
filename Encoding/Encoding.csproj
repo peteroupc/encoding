@@ -43,11 +43,11 @@ licensed under the Unlicense: https://unlicense.org/</Copyright>
     <DebugType>none</DebugType>
     <DocumentationFile>bin\Release\netstandard2.0\Encoding.xml</DocumentationFile>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>PeterO.snk</AssemblyOriginatorKeyFile>
+    <PublicSign>true</PublicSign><AssemblyOriginatorKeyFile>PeterO.snk</AssemblyOriginatorKeyFile>
   <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet></PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include='PeterO.Text.Encoders.AppResources.restext'>
       <LogicalName>PeterO.Text.Encoders.AppResources.resources</LogicalName>
     </EmbeddedResource>
-  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.354'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><!-- PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='9.0.0-preview.24454.1' --></ItemGroup>
+  <PackageReference Include='StyleCop.Analyzers' PrivateAssets='All' Version='1.2.0-beta.354'/><AdditionalFiles Include='stylecop.json'/><AdditionalFiles Include='rules.ruleset'/><PackageReference Include='Microsoft.CodeAnalysis.NetAnalyzers' PrivateAssets='All' Version='9.0.0-preview.24454.1'/></ItemGroup>
    </Project>

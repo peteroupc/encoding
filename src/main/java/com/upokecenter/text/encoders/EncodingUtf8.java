@@ -81,23 +81,23 @@ import com.upokecenter.text.*;
           stream.write((byte)c);
           return 1;
         }
-        byte bytes = new byte[4];
+        byte[] bytes = new byte[4];
         int byteIndex = 0;
         if (c <= 0x7ff) {
-          bytes.set(byteIndex++, (byte)(0xc0 | ((c >> 6) & 0x1f)));
-          bytes.set(byteIndex++, (byte)(0x80 | (c & 0x3f)));
+          bytes[byteIndex++] = (byte)(0xc0 | ((c >> 6) & 0x1f));
+          bytes[byteIndex++] = (byte)(0x80 | (c & 0x3f));
         } else if (c <= 0xffff) {
           if (c >= 0xd800 && c < 0xe000) {
             return -2;
           }
-          bytes.set(byteIndex++, (byte)(0xe0 | ((c >> 12) & 0x0f)));
-          bytes.set(byteIndex++, (byte)(0x80 | ((c >> 6) & 0x3f)));
-          bytes.set(byteIndex++, (byte)(0x80 | (c & 0x3f)));
+          bytes[byteIndex++] = (byte)(0xe0 | ((c >> 12) & 0x0f));
+          bytes[byteIndex++] = (byte)(0x80 | ((c >> 6) & 0x3f));
+          bytes[byteIndex++] = (byte)(0x80 | (c & 0x3f));
         } else if (c <= 0x10ffff) {
-          bytes.set(byteIndex++, (byte)(0xf0 | ((c >> 18) & 0x07)));
-          bytes.set(byteIndex++, (byte)(0x80 | ((c >> 12) & 0x3f)));
-          bytes.set(byteIndex++, (byte)(0x80 | ((c >> 6) & 0x3f)));
-          bytes.set(byteIndex++, (byte)(0x80 | (c & 0x3f)));
+          bytes[byteIndex++] = (byte)(0xf0 | ((c >> 18) & 0x07));
+          bytes[byteIndex++] = (byte)(0x80 | ((c >> 12) & 0x3f));
+          bytes[byteIndex++] = (byte)(0x80 | ((c >> 6) & 0x3f));
+          bytes[byteIndex++] = (byte)(0x80 | (c & 0x3f));
         } else {
           return -2;
         }

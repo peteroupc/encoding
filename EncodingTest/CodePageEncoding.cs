@@ -206,8 +206,7 @@ namespace EncodingTest {
           int number = this.ExpectNumberOnSameLine();
           if (number >= 0x110000) {
             throw new ArgumentException("expected number from 0-0x10ffff," +
-"\u0020 got " +
-              number);
+              "\u0020 got " + number);
           }
           return number;
         }
@@ -216,8 +215,7 @@ namespace EncodingTest {
           int number = this.ExpectNumber();
           if (number >= 0x110000) {
             throw new ArgumentException("expected number from 0-0x10ffff," +
-"\u0020 got " +
-              number);
+              "\u0020 got " + number);
           }
           return number;
         }
@@ -248,8 +246,8 @@ namespace EncodingTest {
                     --possibleCount;
                     if (possibleCount == 0) {
                       if (words.Length == 1) {
-                throw new ArgumentException("Expected nonword character" +
-"\u0020after '" + wordStr + "'");
+                        throw new ArgumentException("Expected nonword " +
+                          "character" + "\u0020after '" + wordStr + "'");
                       } else {
                         throw new ArgumentException("unexpected word found");
                       }
@@ -522,11 +520,11 @@ namespace EncodingTest {
             break;
             case 1: {
               int wordIndex = token.ExpectAnyOneWord(
-                "MBTABLE",
-                "DBCSRANGE",
-                "WCTABLE",
-                "GLYPHTABLE",
-                "ENDCODEPAGE");
+                  "MBTABLE",
+                  "DBCSRANGE",
+                  "WCTABLE",
+                  "GLYPHTABLE",
+                  "ENDCODEPAGE");
               if (wordIndex == 0) {
                 lineCount = token.ExpectNumberOnSameLine();
                 token.SkipToLine();

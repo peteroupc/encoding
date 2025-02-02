@@ -144,8 +144,8 @@ namespace PeterO.Text.Encoders {
       }
       var bomTransform = new BomBufferedTransform(transform);
       return Encodings.GetDecoderInput(
-        Encodings.UTF8,
-        bomTransform);
+          Encodings.UTF8,
+          bomTransform);
     }
 
     public static int Utf8EncodeAlgorithm(
@@ -216,8 +216,8 @@ namespace PeterO.Text.Encoders {
         throw new ArgumentNullException(nameof(transform));
       }
       return Encodings.GetDecoderInput(
-        Encodings.UTF8,
-        transform);
+          Encodings.UTF8,
+          transform);
     }
 
     public static ICharacterInput DecodeAlgorithmInput(

@@ -116,12 +116,12 @@ import com.upokecenter.text.*;
             continue;
           }
           int code = this.bigEndian ? b + (this.lead << 8) : this.lead + (b <<
-              8);
+            8);
           this.lead = -1;
           if (this.surrogate >= 0) {
             if ((code & 0xfc00) == 0xdc00) {
               code = 0x10000 + (code & 0x3ff) + ((this.surrogate & 0x3ff) <<
-                  10);
+                10);
               this.surrogate = -1;
               return code;
             }
@@ -174,26 +174,26 @@ import com.upokecenter.text.*;
           }
           return 2;
         }
-        byte buf = new byte[4];
+        byte[] buf = new byte[4];
         int c1 = ((c - 0x10000) >> 10) + 0xd800;
         int c2 = ((c - 0x10000) & 0x3ff) + 0xdc00;
         b1 = (c1 >> 8) & 0xff;
         b2 = c1 & 0xff;
         if (this.bigEndian) {
-          buf.set(0, (byte)b1);
-          buf.set(1, (byte)b2);
+          buf[0] = (byte)b1;
+          buf[1] = (byte)b2;
         } else {
-          buf.set(0, (byte)b2);
-          buf.set(1, (byte)b1);
+          buf[0] = (byte)b2;
+          buf[1] = (byte)b1;
         }
         b1 = (c2 >> 8) & 0xff;
         b2 = c2 & 0xff;
         if (this.bigEndian) {
-          buf.set(2, (byte)b1);
-          buf.set(3, (byte)b2);
+          buf[2] = (byte)b1;
+          buf[3] = (byte)b2;
         } else {
-          buf.set(2, (byte)b2);
-          buf.set(3, (byte)b1);
+          buf[2] = (byte)b2;
+          buf[3] = (byte)b1;
         }
         output.write(buf, 0, 4);
         return 4;
@@ -203,13 +203,13 @@ import com.upokecenter.text.*;
     public static ICharacterDecoder GetDecoder2(int kind) {
       // kind: 0-little-endian, 1-big-endian, 2-unlabeled
       return (kind == 2) ? ((ICharacterDecoder)new EndianFreeDecoder()) :
-((ICharacterDecoder)new Decoder(kind == 1));
+        ((ICharacterDecoder)new Decoder(kind == 1));
     }
 
     public static ICharacterEncoder GetEncoder2(int kind) {
       // kind: 0-little-endian, 1-big-endian, 2-unlabeled
       return (kind == 2) ? ((ICharacterEncoder)new EndianFreeEncoder()) :
-((ICharacterEncoder)new Encoder(kind == 1));
+        ((ICharacterEncoder)new Encoder(kind == 1));
     }
 
     public ICharacterDecoder GetDecoder() {

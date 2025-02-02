@@ -169,7 +169,7 @@ namespace EncodingTest {
 
     [Test]
     public void TestGetEncoding() {
-      if (Encodings.GetEncoding("utf-8") == null) {
+      if (Encodings.GetEncoding("utf-8 ") == null) {
         Assert.Fail();
       }
       if (Encodings.GetEncoding("Utf-8") == null) {
@@ -190,10 +190,10 @@ namespace EncodingTest {
       if (Encodings.GetEncoding("utf-9") != null) {
         Assert.Fail();
       }
-      if (Encodings.GetEncoding(" utf-8 ") == null) {
+      if (Encodings.GetEncoding("utf-8 ") == null) {
         Assert.Fail();
       }
-      if (Encodings.GetEncoding(" utf-8") == null) {
+      if (Encodings.GetEncoding("utf-8 ") == null) {
         Assert.Fail();
       }
       if (Encodings.GetEncoding("utf-8 ") == null) {

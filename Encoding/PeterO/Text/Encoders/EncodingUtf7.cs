@@ -222,7 +222,7 @@ namespace PeterO.Text.Encoders {
                     (this.base64value >> 8) & 0xff,
                     this.state);
                   this.appender.AppendByte(this.base64value & 0xff,
-  this.state);
+                    this.state);
                   this.base64count = 0;
                 }
               } else {
@@ -280,7 +280,8 @@ namespace PeterO.Text.Encoders {
                 return ch;
               }
               break;
-            default: throw new InvalidOperationException("Unexpected state");
+            default:
+              throw new InvalidOperationException ("Unexpected state");
           }
         }
       }
@@ -310,11 +311,9 @@ namespace PeterO.Text.Encoders {
             case 2:
               output.WriteByte((byte)ToAlphabet[(b1 >> 2) & 63]);
               output.WriteByte((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >>
-4) &
-                    15)]);
-              output.WriteByte((byte)ToAlphabet[((b2 & 15) << 2) + ((value
->>
-                      6) & 3)]);
+                4) & 15)]);
+              output.WriteByte((byte)ToAlphabet[((b2 & 15) << 2) + ((value >>
+                6) & 3)]);
               output.WriteByte((byte)ToAlphabet[value & 63]);
               ret += 4;
               quantumCount = 0;
@@ -343,13 +342,13 @@ namespace PeterO.Text.Encoders {
         if (quantumCount == 2) {
           output.WriteByte((byte)ToAlphabet[(b1 >> 2) & 63]);
           output.WriteByte((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
-                15)]);
+            15)]);
           output.WriteByte((byte)ToAlphabet[(b2 & 15) << 2]);
           ret += 3;
         } else if (quantumCount == 1) {
           output.WriteByte((byte)ToAlphabet[(b1 >> 2) & 63]);
           output.WriteByte((byte)ToAlphabet[((b1 & 3) << 4) + ((b2 >> 4) &
-                15)]);
+            15)]);
           ret += 2;
         }
         output.WriteByte((byte)0x2d);
@@ -380,8 +379,8 @@ namespace PeterO.Text.Encoders {
             (byte)byte2, (byte)byte3, (byte)byte4,
           };
           ret += this.AppendBase64(
-            b64array,
-            output);
+              b64array,
+              output);
         }
         return ret;
       }

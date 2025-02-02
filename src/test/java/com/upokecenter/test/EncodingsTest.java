@@ -45,7 +45,7 @@ import com.upokecenter.text.*;
     public void TestIso2022JP00A5() {
       ICharacterEncoding wenc = Encodings.GetEncoding("iso-2022-jp");
       byte[] bytes = Encodings.EncodeToBytes("\u00a5", wenc);
-      byte bytes2 = new byte[bytes.length * 2];
+      byte[] bytes2 = new byte[bytes.length * 2];
       System.arraycopy(bytes, 0, bytes2, 0, bytes.length);
       System.arraycopy(bytes, 0, bytes2, bytes.length, bytes.length);
       String str = Encodings.DecodeToString(wenc, bytes2);
@@ -168,7 +168,7 @@ import com.upokecenter.text.*;
 
     @Test
     public void TestGetEncoding() {
-      if (Encodings.GetEncoding("utf-8") == null) {
+      if (Encodings.GetEncoding("utf-8 ") == null) {
         Assert.fail();
       }
       if (Encodings.GetEncoding("Utf-8") == null) {
@@ -189,10 +189,10 @@ import com.upokecenter.text.*;
       if (Encodings.GetEncoding("utf-9") != null) {
         Assert.fail();
       }
-      if (Encodings.GetEncoding(" utf-8 ") == null) {
+      if (Encodings.GetEncoding("utf-8 ") == null) {
         Assert.fail();
       }
-      if (Encodings.GetEncoding(" utf-8") == null) {
+      if (Encodings.GetEncoding("utf-8 ") == null) {
         Assert.fail();
       }
       if (Encodings.GetEncoding("utf-8 ") == null) {

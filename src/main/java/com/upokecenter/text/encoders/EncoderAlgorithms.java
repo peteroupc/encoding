@@ -28,7 +28,7 @@ import com.upokecenter.text.*;
         }
         if (!this.bomChecked) {
           int c = 0;
-          int buffer = new int[3];
+          int[] buffer = new int[3];
           int bufferCount = 0;
           this.bomChecked = true;
           while (c >= 0 && bufferCount < 3) {
@@ -144,8 +144,8 @@ import com.upokecenter.text.*;
       }
       BomBufferedTransform bomTransform = new BomBufferedTransform(transform);
       return Encodings.GetDecoderInput(
-        Encodings.UTF8,
-        bomTransform);
+          Encodings.UTF8,
+          bomTransform);
     }
 
     public static int Utf8EncodeAlgorithm(
@@ -216,8 +216,8 @@ import com.upokecenter.text.*;
         throw new NullPointerException("transform");
       }
       return Encodings.GetDecoderInput(
-        Encodings.UTF8,
-        transform);
+          Encodings.UTF8,
+          transform);
     }
 
     public static ICharacterInput DecodeAlgorithmInput(

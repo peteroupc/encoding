@@ -6,7 +6,7 @@ using System.Reflection;
 [assembly: AssemblyProduct("Encoding Library")]
 [assembly: AssemblyTitle("Encoding Library")]
 [assembly: AssemblyDescription("A portable library for .NET that impleme" +
-"nts character encodings used in Web page" +
-"s and email.")]
+    "nts character encodings used in Web page" +
+    "s and email.")]
 [assembly: AssemblyCompany("Peter Occil")]
 [assembly: AssemblyCopyright("CC0-1.0")]

@@ -35,7 +35,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "ZU\ufffd\ufffd\ufffd|\ufffdR\ufffdS\ufffdI\ufffd(\u8587\ufffd\ufffdN8\\A@\ufffd";
+        "ZU\ufffd\ufffd\ufffd|\ufffdR\ufffdS\ufffdI\ufffd(\u8587\ufffd\ufffdN8\\A@\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -47,7 +47,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\ufffd]*\u000bj\ufffd!\u7621'\ufffd\ufffd\u000b\u0012\ufffdNk\ufffd\u0019\ufffd\ufffdH\ufffd77\ufffd}|";
+        "\ufffd]*\u000bj\ufffd!\u7621'\ufffd\ufffd\u000b\u0012\ufffdNk\ufffd\u0019\ufffd\ufffdH\ufffd77\ufffd}|";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -80,7 +80,7 @@ import com.upokecenter.text.*;
         0x1f, (byte)0xca, (byte)0xe6, 0x4a, 0x0d, 0x63, (byte)0x84, 0x07,
        };
       str =
-"\ufffd<\ufffd\"\u81e3w\u00021\u000f\u535a\u001f\u7a42J\rc\ufffd\u0007";
+        "\ufffd<\ufffd\"\u81e3w\u00021\u000f\u535a\u001f\u7a42J\rc\ufffd\u0007";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -101,7 +101,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "/\u0008\u85ba\u5a36\u6c90L\u001f\u0001\ufffd2\ufffd\ufffd\ufffd\ufffdbVB\u0013\ufffd[kW*\ufffd(\ufffd>";
+        "/\u0008\u85ba\u5a36\u6c90L\u001f\u0001\ufffd2\ufffd\ufffd\ufffd\ufffdbVB\u0013\ufffd[kW*\ufffd(\ufffd>";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -113,7 +113,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\u30e8\u000e\ufffdP\u0006\ufffd\u5f6aa\ufffd+\u0001l\ufffdxC\ufffdo\u007f\ufffd\u834al\ufffdUVe";
+        "\u30e8\u000e\ufffdP\u0006\ufffd\u5f6aa\ufffd+\u0001l\ufffdxC\ufffdo\u007f\ufffd\u834al\ufffdUVe";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -203,7 +203,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\u003d\ufffdaA\ufffd6A5c\ufffd3\ufffdI\u001fer\ufffd\u0016\ufffds-R\ufffd\u001bo\ufffd*";
+        "\u003d\ufffdaA\ufffd6A5c\ufffd3\ufffdI\u001fer\ufffd\u0016\ufffds-R\ufffd\u001bo\ufffd*";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -227,7 +227,7 @@ import com.upokecenter.text.*;
         (byte)0xf8,
        };
       str =
-"\u0002\ufffdk\ufffd`0XA\u5b2cS7\ufffd\ufffd>\ufffd>\u001b\ufffd)~\ufffd";
+        "\u0002\ufffdk\ufffd`0XA\u5b2cS7\ufffd\ufffd>\ufffd>\u001b\ufffd)~\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -239,7 +239,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "Q\ufffdk\ufffd7\ufffd|F\ufffd^\ufffd3\ufffdZSr\u0010\u001bpE\ufffd)\ufffdM\u7d66X\u001e\ufffdW";
+        "Q\ufffdk\ufffd7\ufffd|F\ufffd^\ufffd3\ufffdZSr\u0010\u001bpE\ufffd)\ufffdM\u7d66X\u001e\ufffdW";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -252,7 +252,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\ufffdd\ufffd\u001d\ufffdwZ\ufffdU\ufffd\u8c41X`\ufffdZ()\ufffdY\ufffdj\u6e38tz\ufffd\u000f\ufffd";
+        "\ufffdd\ufffd\u001d\ufffdwZ\ufffdU\ufffd\u8c41X`\ufffdZ()\ufffdY\ufffdj\u6e38tz\ufffd\u000f\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -300,7 +300,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "o\ufffdN\u0013\ufffd\u0007/X\ufffd\u0005\u000b\ufffd\u0013f%\ufffd\u783f\u0005\u007f2[\ufffd|\ufffd";
+        "o\ufffdN\u0013\ufffd\u0007/X\ufffd\u0005\u000b\ufffd\u0013f%\ufffd\u783f\u0005\u007f2[\ufffd|\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -312,7 +312,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "`\ufffd$A\u79fb\ufffd\u82c5l\u222a\u0003\ufffd\ufffd-28\u30be\u5c3c\ufffd";
+        "`\ufffd$A\u79fb\ufffd\u82c5l\u222a\u0003\ufffd\ufffd-28\u30be\u5c3c\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -357,7 +357,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "#K\u784e\ufffd\ufffdr\ufffd\n\ufffdKUG\u000b\ufffdh\ufffd\ufffd\u83f4%uO\ufffd5C\ufffd\r";
+        "#K\u784e\ufffd\ufffdr\ufffd\n\ufffdKUG\u000b\ufffdh\ufffd\ufffd\u83f4%uO\ufffd5C\ufffd\r";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -372,7 +372,7 @@ import com.upokecenter.text.*;
         0x52, 0x0e, (byte)0x94, 0x73, 0x0a, 0x23, 0x3b,
        };
       str =
-"K\ufffd\u0011Z\ufffd5\u0003\ufffdYt\ufffd*X\ufffdR\u000e\ufffds\n#;";
+        "K\ufffd\u0011Z\ufffd5\u0003\ufffdYt\ufffd*X\ufffdR\u000e\ufffds\n#;";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -464,7 +464,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\u86eckR\ufffd&\ufffdstk\ufffd7\ufffdC\ufffd4$<\ufffdwD\u55df\u003d<\ufffd";
+        "\u86eckR\ufffd&\ufffdstk\ufffd7\ufffdC\ufffd4$<\ufffdwD\u55df\u003d<\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -519,7 +519,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "Kp\u000b\u0001~d\ufffd\ufffd\n\u007b\ufffdg\ufffd1\ufffdK\ufffdP\ufffdl\ufffd\u001d\ufffd'\u91a2N";
+        "Kp\u000b\u0001~d\ufffd\ufffd\n\u007b\ufffdg\ufffd1\ufffdK\ufffdP\ufffdl\ufffd\u001d\ufffd'\u91a2N";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -531,7 +531,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "?b\ufffd\u000b$-\ufffd^\u007f\u0020\ufffdF\ufffd\ufffd6\ufffdj\ufffd\u007b'\ufffd\ufffdD\ufffd";
+        "?b\ufffd\u000b$-\ufffd^\u007f\u0020\ufffdF\ufffd\ufffd6\ufffdj\ufffd\u007b'\ufffd\ufffdD\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -557,7 +557,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "?v\ufffdpU\u5189x\ufffd\ufffd.\u0020f\ufffd%\u7247\u6e2f\ufffd}kPc\u0002";
+        "?v\ufffdpU\u5189x\ufffd\ufffd.\u0020f\ufffd%\u7247\u6e2f\ufffd}kPc\u0002";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -589,7 +589,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\u0427p-S\ufffdD\u003d\ufffd\u0011\u0019\u00116@\ufffd\u007ff\u8774\u000bKa";
+        "\u0427p-S\ufffdD\u003d\ufffd\u0011\u0019\u00116@\ufffd\u007ff\u8774\u000bKa";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -601,7 +601,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "B\u0001\u001b\ufffd\u0020\ufffd\ufffd\"\u0014\u5f519\ufffd\u0008\u0003G\ufffd.\ufffd}\u7e21\ufffd\ufffd";
+        "B\u0001\u001b\ufffd\u0020\ufffd\ufffd\"\u0014\u5f519\ufffd\u0008\u0003G\ufffd.\ufffd}\u7e21\ufffd\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -663,7 +663,7 @@ import com.upokecenter.text.*;
         0x41,
        };
       str =
-":\ufffd\ufffdR\u8654\u5bf5@\ufffdv\ufffdY\ufffd\u0009Qt\u0019\ufffdA";
+        ":\ufffd\ufffdR\u8654\u5bf5@\ufffdv\ufffdY\ufffd\u0009Qt\u0019\ufffdA";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -683,7 +683,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\u0013\ufffdh\ufffd\u00086+\u0445Q\ufffdt\ufffd+\ufffd]\u800b\ufffd`\u002c\ufffd0\u0020D5";
+        "\u0013\ufffdh\ufffd\u00086+\u0445Q\ufffdt\ufffd+\ufffd]\u800b\ufffd`\u002c\ufffd0\u0020D5";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -725,7 +725,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\u5544\"^Fo.\ufffdah~\ufffd;\ufffd\u000e\u001c\ufffd5\ufffd\u8fa7\ufffdww\ufffd";
+        "\u5544\"^Fo.\ufffdah~\ufffd;\ufffd\u000e\u001c\ufffd5\ufffd\u8fa7\ufffdww\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -753,7 +753,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "7\u0001\ufffd\\[\ufffd\ufffd\ufffd\u0003\ufffdH\ufffd\ufffd\u0010\ufffd\ufffd9S\ufffd5\u000eb\ufffd";
+        "7\u0001\ufffd\\[\ufffd\ufffd\ufffd\u0003\ufffdH\ufffd\ufffd\u0010\ufffd\ufffd9S\ufffd5\u000eb\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -765,7 +765,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\ufffdb\u69e8!d1:xX\ufffdS\ufffd\u0020/`\u003d\u9a05\ufffdt\ufffd\u007b\ufffd\ufffd~\u6398";
+        "\ufffdb\u69e8!d1:xX\ufffdS\ufffd\u0020/`\u003d\u9a05\ufffdt\ufffd\u007b\ufffd\ufffd~\u6398";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -791,7 +791,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "~\u99eeR\u5446\u002c!+\ufffd_\ufffd\ufffdb\u63faR\ufffd\ufffd\ufffd\u000cQ";
+        "~\u99eeR\u5446\u002c!+\ufffd_\ufffd\ufffdb\u63faR\ufffd\ufffd\ufffd\u000cQ";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -802,7 +802,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\ufffd\ufffd\uff5b\u0018j\u0008c\u002c2\u0017\ufffd\u0016A\ufffd\u0001\u0020\ufffdxL\ufffd";
+        "\ufffd\ufffd\uff5b\u0018j\u0008c\u002c2\u0017\ufffd\u0016A\ufffd\u0001\u0020\ufffdxL\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -815,7 +815,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\u0006\ufffdNg\ufffd.\u0011|R\ufffd>\ufffd\ufffd\ufffd\ufffd\ufffd^%%\ufffd\ufffd\ufffdw\ufffd\ufffd";
+        "\u0006\ufffdNg\ufffd.\u0011|R\ufffd>\ufffd\ufffd\ufffd\ufffd\ufffd^%%\ufffd\ufffd\ufffdw\ufffd\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -844,7 +844,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "\u82f3Q\ufffd\n3\ufffd\u0013gR$-d\ufffd\ufffd%\ufffdA\ufffd~G)\u83aa\ufffdE\ufffd";
+        "\u82f3Q\ufffd\n3\ufffd\u0013gR$-d\ufffd\ufffd%\ufffdA\ufffd~G)\u83aa\ufffdE\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -855,7 +855,7 @@ import com.upokecenter.text.*;
         (byte)0xc6, (byte)0x87,
        };
       str =
-"Wm2?x\u000bw_\ufffd\nU\u000b\u7d1b\ufffd\u0013\ufffd6Am'Z\ufffdS\ufffd";
+        "Wm2?x\u000bw_\ufffd\nU\u000b\u7d1b\ufffd\u0013\ufffd6Am'Z\ufffdS\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -865,7 +865,7 @@ import com.upokecenter.text.*;
         (byte)0xb7,
        };
       str =
-"\u000e\ufffdo\ufffdc\ufffd\u0005\ufffd\u000eh|\ufffd\u007f\u000f\ufffd";
+        "\u000e\ufffdo\ufffdc\ufffd\u0005\ufffd\u000eh|\ufffd\u007f\u000f\ufffd";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -878,7 +878,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "Y\ufffd\u001b\u001bq\u770b9\ufffd\ufffd\u007f\ufffdr\u85c9\ufffd}\ufffdY\u0001e\u266a\ufffdW3`Td";
+        "Y\ufffd\u001b\u001bq\u770b9\ufffd\ufffd\u007f\ufffdr\u85c9\ufffd}\ufffdY\u0001e\u266a\ufffdW3`Td";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -890,7 +890,7 @@ import com.upokecenter.text.*;
        };
       str =
 
-  "D\ufffd/\ufffd\"\ufffd\ufffd\u000bB\u0005H\ufffd\u001a\ufffd\ufffdo'\\U\\[\ufffd\u001b";
+        "D\ufffd/\ufffd\"\ufffd\ufffd\u000bB\u0005H\ufffd\u001a\ufffd\ufffdo'\\U\\[\ufffd\u001b";
       Assert.assertEquals(
         str,
         Encodings.DecodeToString(charset, bytes));

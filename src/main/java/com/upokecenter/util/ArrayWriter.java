@@ -45,7 +45,7 @@ licensed under the Unlicense: https://unlicense.org/
      * @return A byte array.
      */
     public byte[] ToArray() {
-      byte ret = new byte[this.retvalMax];
+      byte[] ret = new byte[this.retvalMax];
       System.arraycopy(this.retval, 0, ret, 0, this.retvalMax);
       return ret;
     }
@@ -59,9 +59,9 @@ licensed under the Unlicense: https://unlicense.org/
       if (this.retval.length <= this.retvalPos) {
         // Array too small, make it grow
         int newLength = Math.max(
-          this.retvalPos + 1000,
-          this.retval.length * 2);
-        byte newArray = new byte[newLength];
+            this.retvalPos + 1000,
+            this.retval.length * 2);
+        byte[] newArray = new byte[newLength];
         System.arraycopy(this.retval, 0, newArray, 0, this.retvalPos);
         this.retval = newArray;
       }
@@ -109,9 +109,9 @@ licensed under the Unlicense: https://unlicense.org/
       if (this.retval.length - this.retvalPos < length) {
         // Array too small, make it grow
         int newLength = Math.max(
-          this.retvalPos + length + 1000,
-          this.retval.length * 2);
-        byte newArray = new byte[newLength];
+            this.retvalPos + length + 1000,
+            this.retval.length * 2);
+        byte[] newArray = new byte[newLength];
         System.arraycopy(this.retval, 0, newArray, 0, this.retvalPos);
         this.retval = newArray;
       }

@@ -51,8 +51,8 @@ namespace PeterO {
       if (this.retval.Length <= this.retvalPos) {
         // Array too small, make it grow
         int newLength = Math.Max(
-          this.retvalPos + 1000,
-          this.retval.Length * 2);
+            this.retvalPos + 1000,
+            this.retval.Length * 2);
         var newArray = new byte[newLength];
         Array.Copy(this.retval, 0, newArray, 0, this.retvalPos);
         this.retval = newArray;
@@ -103,8 +103,8 @@ namespace PeterO {
       if (this.retval.Length - this.retvalPos < length) {
         // Array too small, make it grow
         int newLength = Math.Max(
-          this.retvalPos + length + 1000,
-          this.retval.Length * 2);
+            this.retvalPos + length + 1000,
+            this.retval.Length * 2);
         var newArray = new byte[newLength];
         Array.Copy(this.retval, 0, newArray, 0, this.retvalPos);
         this.retval = newArray;

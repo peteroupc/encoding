@@ -32,7 +32,7 @@ import com.upokecenter.text.*;
        };
       String ValueExpected =
 
-  "\uFF19\u0033\u0041\u0061\u0033\uFF21\uFF41\u0033\uFF71\uFF6F\u0033\u30A2\u30F6\u0033\u3042\u0033\u65E5\u0033\u003A\u003C\u0033\u00F7\u2103\u0033\u0031\uFF12\u0041\u0061\uFF12\uFF21\uFF41\uFF12\uFF71\uFF6F\uFF12\u30A2\u30F6\uFF12\u3042\uFF12\u65E5\uFF12\u003A\u003C\uFF12\u00F7\u2103\uFF12";
+        "\uFF19\u0033\u0041\u0061\u0033\uFF21\uFF41\u0033\uFF71\uFF6F\u0033\u30A2\u30F6\u0033\u3042\u0033\u65E5\u0033\u003A\u003C\u0033\u00F7\u2103\u0033\u0031\uFF12\u0041\u0061\uFF12\uFF21\uFF41\uFF12\uFF71\uFF6F\uFF12\u30A2\u30F6\uFF12\u3042\uFF12\u65E5\uFF12\u003A\u003C\uFF12\u00F7\u2103\uFF12";
       {
         Object objectTemp = ValueExpected;
         Object objectTemp2 = Encodings.DecodeToString(
@@ -452,10 +452,10 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
        };
       result =
 
-  "\u0015\u9ba8\u6bbc\u0013\u8a85\uff96\u9ea8\u81f2\u7c67\uff94f\u5aba\uff70\u9b8a)\uff8a\uff94\u8b2c\u001e\u0009\uff6b\u59a5\uff67\uff76=\u75ca\u834a"
+        "\u0015\u9ba8\u6bbc\u0013\u8a85\uff96\u9ea8\u81f2\u7c67\uff94f\u5aba\uff70\u9b8a)\uff8a\uff94\u8b2c\u001e\u0009\uff6b\u59a5\uff67\uff76=\u75ca\u834a"
         +
 
-  "{\u0005\u8004\u001d\u5fd1\u60bd\uff83\u6595\u5a9a\u65fa\u731bB\uff62\u8f33\u5948\u8ec1\uff98\u978d\u0384\u56fd\uff70\u62c8\u0013";
+        "{\u0005\u8004\u001d\u5fd1\u60bd\uff83\u6595\u5a9a\u65fa\u731bB\uff62\u8f33\u5948\u8ec1\uff98\u978d\u0384\u56fd\uff70\u62c8\u0013";
 
       Assert.assertEquals(result, Encodings.DecodeToString(charset, bytes));
     }
@@ -469,15 +469,15 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
     }
 
     public static void TestSingleByteRoundTrip(ICharacterEncoding enc) {
-      int codepoints = new int[256];
-      int codesrc = new int[256];
+      int[] codepoints = new int[256];
+      int[] codesrc = new int[256];
       if (enc == null) {
         throw new NullPointerException("enc");
       }
       ICharacterEncoder encoder = enc.GetEncoder();
       ICharacterDecoder decoder = enc.GetDecoder();
       int codetotal = 0;
-      byte bytes = new byte[256];
+      byte[] bytes = new byte[256];
       for (int i = 0; i < 256; ++i) {
         bytes[i] = (byte)i;
       }
@@ -488,14 +488,14 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
           Assert.fail();
         }
         if (c != -2) {
-          codepoints.set(codetotal, c);
-          codesrc.set(codetotal, i);
+          codepoints[codetotal] = c;
+          codesrc[codetotal] = i;
           ++codetotal;
         }
       }
       ArrayWriter aw = new ArrayWriter();
       for (int i = 0; i < codetotal; ++i) {
-        int c = encoder.Encode(codepoints.get(i), aw);
+        int c = encoder.Encode(codepoints[i], aw);
         if (c < 0) {
           Assert.fail();
         }
@@ -503,71 +503,71 @@ try { if (ms != null) { ms.close(); } } catch (java.io.IOException ex) {}
       bytes = aw.ToArray();
       for (int i = 0; i < codetotal; ++i) {
         int b = ((int)bytes[i]) & 0xff;
-        if (b != codesrc.get(i)) {
-          Assert.assertEquals(codesrc.get(i), b);
+        if (b != codesrc[i]) {
+          Assert.assertEquals(codesrc[i], b);
         }
       }
     }
 
     private int ReadHex(char c) {
-          if (c >= '0' && c <= '9') {
-            return (int)(c-'0');
-          } else if (c >= 'a' && c <= 'f') {
-            return (int)((c - 'a') + 10);
-          } else if (c >= 'A' && c <= 'F') {
-            return (int)((c - 'A') + 10);
-          } else {
-             throw new IllegalArgumentException("c");
-          }
+      if (c >= '0' && c <= '9') {
+        return (int)(c - '0');
+      } else if (c >= 'a' && c <= 'f') {
+        return (int)((c - 'a') + 10);
+      } else if (c >= 'A' && c <= 'F') {
+        return (int)((c - 'A') + 10);
+      } else {
+        throw new IllegalArgumentException("c");
+      }
     }
 
     private static final class CharAndBytes {
-       public final String getCharStr() { return propVarcharstr; }
+      public final String getCharStr() { return propVarcharstr; }
 public final void setCharStr(String value) { propVarcharstr = value; }
 private String propVarcharstr;
-       public final byte[] getCbytes() { return propVarcbytes; }
+      public final byte[] getCbytes() { return propVarcbytes; }
 public final void setCbytes(byte[] value) { propVarcbytes = value; }
 private byte[] propVarcbytes;
     }
 
     private CharAndBytes GetCharAndBytes(String str) {
-if (str == null) {
-  throw new NullPointerException("str");
-}
-       int cv = 0;
-       int i = 0;
-       while (true) {
-          char ch = str.charAt(i++);
-if (ch=='\t') {
-  break;
-}
-          cv=(cv << 4) | ReadHex(ch);
-       }
-       int charsLeft = str.length()-i;
-if (charsLeft != 2 && charsLeft != 4 && charsLeft != 6 &&
-          charsLeft != 8) {
-  throw new IllegalArgumentException("str");
-}
-       byte bytes = new byte[charsLeft/2];
-       for (int j = 0; j < charsLeft;j+=2) {
-         char c1 = str.charAt(i++);
-         char c2 = str.charAt(i++);
-         int b = ReadHex(c1);
-         b=(b << 4)|ReadHex(c2);
-         bytes[j/2]=(byte)b;
-       }
-       StringBuilder builder = new StringBuilder();
-if (cv <= 0xffff) {
-            { builder.append((char)(cv));
-         }
-} else if (cv <= 0x10ffff) {
-  builder.append((char)((((cv - 0x10000) >> 10) & 0x3ff) | 0xd800));
-builder.append((char)(((cv - 0x10000) & 0x3ff) | 0xdc00));
-}
-       CharAndBytes cab = new CharAndBytes();
-       cab.setCharStr(builder.toString());
-       cab.setCbytes(bytes);
-       return cab;
+      if (str == null) {
+        throw new NullPointerException("str");
+      }
+      int cv = 0;
+      int i = 0;
+      while (true) {
+        char ch = str.charAt(i++);
+        if (ch == '\t') {
+          break;
+        }
+        cv = (cv << 4) | this.ReadHex(ch);
+      }
+      int charsLeft = str.length() - i;
+      if (charsLeft != 2 && charsLeft != 4 && charsLeft != 6 &&
+        charsLeft != 8) {
+        throw new IllegalArgumentException("str");
+      }
+      byte[] bytes = new byte[charsLeft / 2];
+      for (int j = 0; j < charsLeft; j += 2) {
+        char c1 = str.charAt(i++);
+        char c2 = str.charAt(i++);
+        int b = this.ReadHex(c1);
+        b = (b << 4) | this.ReadHex(c2);
+        bytes[j / 2] = (byte)b;
+      }
+      StringBuilder builder = new StringBuilder();
+      if (cv <= 0xffff) {
+        { builder.append((char)cv);
+        }
+      } else if (cv <= 0x10ffff) {
+        builder.append((char)((((cv - 0x10000) >> 10) & 0x3ff) | 0xd800));
+        builder.append((char)(((cv - 0x10000) & 0x3ff) | 0xdc00));
+      }
+      CharAndBytes cab = new CharAndBytes();
+      cab.setCharStr(builder.toString());
+      cab.setCbytes(bytes);
+      return cab;
     }
 
     @Test
@@ -577,16 +577,16 @@ builder.append((char)(((cv - 0x10000) & 0x3ff) | 0xdc00));
           Encodings.GetEncoding(this.valueSingleByteNames[j]);
 
         ICharacterDecoder dec = enc.GetDecoder();
-        byte bytes = new byte[256];
-        int ints = new int[256];
+        byte[] bytes = new byte[256];
+        int[] ints = new int[256];
         int count = 0;
         for (int i = 0; i < 256; ++i) {
           bytes[i] = (byte)i;
         }
         IByteReader reader = DataIO.ToReader(bytes);
         for (int i = 0; i < 256; ++i) {
-          ints.set(i, dec.ReadChar(reader));
-          if (ints.get(i) >= 0) {
+          ints[i] = dec.ReadChar(reader);
+          if (ints[i] >= 0) {
             ++count;
           }
         }
@@ -597,15 +597,15 @@ builder.append((char)(((cv - 0x10000) & 0x3ff) | 0xdc00));
         builder.append("CODEPAGE 1\nCPINFO 1 0x3f 0x3f\nMBTABLE " +
           TestCommon.IntToString(count) + "\n");
         for (int i = 0; i < 256; ++i) {
-          if (ints.get(i) >= 0) {
+          if (ints[i] >= 0) {
             builder.append(TestCommon.IntToString(i) + " " +
-              TestCommon.IntToString(ints.get(i)) + "\n");
+              TestCommon.IntToString(ints[i]) + "\n");
           }
         }
         builder.append("WCTABLE " + count + "\n");
         for (int i = 0; i < 256; ++i) {
-          if (ints.get(i) >= 0) {
-            builder.append(TestCommon.IntToString(ints.get(i)) + " " +
+          if (ints[i] >= 0) {
+            builder.append(TestCommon.IntToString(ints[i]) + " " +
               TestCommon.IntToString(i) + "\n");
           }
         }
@@ -687,7 +687,7 @@ private int propVarposition;
         if (left < count) {
           count = left;
         }
-        byte ret = new byte[count];
+        byte[] ret = new byte[count];
         System.arraycopy(this.bytes, this.getPosition(), ret, 0, count);
         return ret;
       }

@@ -786,7 +786,7 @@ namespace PeterO.Text {
       }
 
       return new DecoderToInputClass(encoding.GetDecoder(),
-          stream);
+        stream);
     }
 
     /// <summary>Converts a character encoding into a character input
@@ -918,7 +918,7 @@ namespace PeterO.Text {
       bool allowReplacement) {
       return (!allowReplacement && name != null &&
           ToLowerCaseAscii(name).Equals("replacement",
-            StringComparison.Ordinal)) ? null : GetEncoding(name, forEmail);
+        StringComparison.Ordinal)) ? null : GetEncoding(name, forEmail);
     }
 
     /// <summary>Returns a character encoding from the specified
@@ -1450,15 +1450,15 @@ namespace PeterO.Text {
         return (ICharacterEncoding)new EncodingXUserDefined();
       } else if (name.Equals("GBK", StringComparison.Ordinal)) {
         return forEmail ? (ICharacterEncoding)new EncodingGBK2() :
-             (ICharacterEncoding)new EncodingGBK();
+          (ICharacterEncoding)new EncodingGBK();
       } else if (name.Equals("GB2312", StringComparison.Ordinal) ||
         name.Equals("gb2312", StringComparison.Ordinal)) {
         return forEmail ? (ICharacterEncoding)new EncodingGBK2() :
-             (ICharacterEncoding)new EncodingGBK();
+          (ICharacterEncoding)new EncodingGBK();
       } else if (name.Equals("gb18030", StringComparison.Ordinal) ||
         name.Equals("GB18030", StringComparison.Ordinal)) {
         return forEmail ? (ICharacterEncoding)new EncodingGB180302() :
-             (ICharacterEncoding)new EncodingGB18030();
+          (ICharacterEncoding)new EncodingGB18030();
       } else if (name.Equals("UTF-16", StringComparison.Ordinal)) {
         return (ICharacterEncoding)new EncodingUtf16();
       } else if (name.Equals("UTF-16LE", StringComparison.Ordinal)) {
@@ -1472,9 +1472,9 @@ namespace PeterO.Text {
       }
       return name.Equals("ISO-2022-JP", StringComparison.Ordinal) ?
         (ICharacterEncoding)new EncodingISO2022JP() :
-(name.Equals("replacement", StringComparison.Ordinal) ?
+        (name.Equals("replacement", StringComparison.Ordinal) ?
 
-          (ICharacterEncoding)new EncodingReplacement() : null);
+        (ICharacterEncoding)new EncodingReplacement() : null);
     }
 
     /// <summary>Reads Unicode characters from a character input and
@@ -1491,10 +1491,11 @@ namespace PeterO.Text {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='reader'/> is null.</exception>
     public static string InputToString(
-  #if !NET20
-this
-#endif
-ICharacterInput reader) {
+      #if !NET20
+      this
+      #endif
+
+      ICharacterInput reader) {
       var builder = new StringBuilder();
       while (true) {
         if (reader == null) {
@@ -1589,8 +1590,7 @@ ICharacterInput reader) {
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
       return ValueCharsetAliases.ContainsKey(name) ?
-ValueCharsetAliases[name] :
-        String.Empty;
+        ValueCharsetAliases[name] : String.Empty;
     }
 
     /// <summary>Resolves a character encoding's name to a canonical form,
@@ -1659,7 +1659,7 @@ ValueCharsetAliases[name] :
         return EmailAliases[name];
       }
       if (name.Length > 9 && name.Substring(0, 9).Equals("iso-8859-",
-          StringComparison.Ordinal)) {
+        StringComparison.Ordinal)) {
         // NOTE: For conformance to RFC 2049, treat unknown iso-8859-* encodings
         // as ASCII
         return "US-ASCII";
@@ -1762,10 +1762,10 @@ ValueCharsetAliases[name] :
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='str'/> is null.</exception>
     public static ICharacterInput StringToInput(
-  #if !NET20
-this
-#endif
-string str) {
+      #if !NET20
+      this
+      #endif
+      string str) {
       if (str == null) {
         throw new ArgumentNullException(nameof(str));
       }
@@ -1838,7 +1838,6 @@ string str) {
       return new CharacterReader(str, offset, length);
     }
 
-    #region CreateAliasMap
     private static IDictionary<string, string> CreateAliasMap() {
       var aliases = new Dictionary<string, string>();
       aliases["unicode-1-1-utf-8"] = "UTF-8";
@@ -2063,9 +2062,7 @@ string str) {
       aliases["x-user-defined"] = "x-user-defined";
       return aliases;
     }
-    #endregion
 
-    #region CreateEmailAliasMap
     private static IDictionary<string, string> CreateEmailAliasMap() {
       var aliases = new Dictionary<string, string>();
       aliases["utf-7"] = "UTF-7"; // TODO: Remove from this list eventually
@@ -2200,7 +2197,6 @@ string str) {
       aliases["utf-16le"] = "UTF-16LE";
       return aliases;
     }
-    #endregion
 
     private static string ToLowerCaseAscii(string str) {
       if (str == null) {
@@ -2269,7 +2265,7 @@ string str) {
       private readonly ICharacterDecoder reader;
 
       public DecoderToInputClass(ICharacterDecoder reader, IByteReader
-stream) {
+        stream) {
         this.reader = reader;
         this.stream = stream;
       }
@@ -2320,8 +2316,7 @@ stream) {
         }
         if (buffer.Length - offset < length) {
           throw new ArgumentException("buffer's length minus " + offset +
-String.Empty +
-"\u0020(" +
+            String.Empty + "\u0020(" +
             (buffer.Length - offset) + ") is less than " + length);
         }
         var count = 0;

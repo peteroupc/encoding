@@ -26,10 +26,11 @@ namespace PeterO {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='bytes'/> is null.</exception>
     public static IReader ToReader(
-  #if !NET20
-this
-#endif
-byte[] bytes) {
+      #if !NET20
+      this
+      #endif
+
+      byte[] bytes) {
       if (bytes == null) {
         throw new ArgumentNullException(nameof(bytes));
       }
@@ -105,10 +106,11 @@ byte[] bytes) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='input'/> is null.</exception>
     public static IReader ToReader(
-  #if !NET20
-this
-#endif
-Stream input) {
+      #if !NET20
+      this
+      #endif
+
+      Stream input) {
       if (input == null) {
         throw new ArgumentNullException(nameof(input));
       }
@@ -164,10 +166,11 @@ Stream input) {
     /// name='input'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
-  #if !NET20
-this
-#endif
-Stream input) {
+      #if !NET20
+      this
+      #endif
+
+      Stream input) {
       return (IByteReader)ToReader(input);
     }
 
@@ -185,10 +188,11 @@ Stream input) {
     /// name='bytes'/> is null.</exception>
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
-  #if !NET20
-this
-#endif
-byte[] bytes) {
+      #if !NET20
+      this
+      #endif
+
+      byte[] bytes) {
       return (IByteReader)ToReader(bytes);
     }
 
@@ -206,10 +210,11 @@ byte[] bytes) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
     public static IWriter ToWriter(
-  #if !NET20
-this
-#endif
-Stream output) {
+      #if !NET20
+      this
+      #endif
+
+      Stream output) {
       if (output == null) {
         throw new ArgumentNullException(nameof(output));
       }
@@ -229,10 +234,11 @@ Stream output) {
     /// <exception cref='ArgumentNullException'>The parameter <paramref
     /// name='output'/> is null.</exception>
     public static IWriter ToWriter(
-  #if !NET20
-this
-#endif
-IByteWriter output) {
+      #if !NET20
+      this
+      #endif
+
+      IByteWriter output) {
       if (output == null) {
         throw new ArgumentNullException(nameof(output));
       }

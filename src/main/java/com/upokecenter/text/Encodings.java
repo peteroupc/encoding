@@ -678,7 +678,7 @@ private Encodings() {
       }
 
       return new DecoderToInputClass(encoding.GetDecoder(),
-          stream);
+        stream);
     }
 
     /**
@@ -1298,15 +1298,15 @@ private Encodings() {
         return (ICharacterEncoding)new EncodingXUserDefined();
       } else if (name.equals("GBK")) {
         return forEmail ? (ICharacterEncoding)new EncodingGBK2() :
-             (ICharacterEncoding)new EncodingGBK();
+          (ICharacterEncoding)new EncodingGBK();
       } else if (name.equals("GB2312") ||
         name.equals("gb2312")) {
         return forEmail ? (ICharacterEncoding)new EncodingGBK2() :
-             (ICharacterEncoding)new EncodingGBK();
+          (ICharacterEncoding)new EncodingGBK();
       } else if (name.equals("gb18030") ||
         name.equals("GB18030")) {
         return forEmail ? (ICharacterEncoding)new EncodingGB180302() :
-             (ICharacterEncoding)new EncodingGB18030();
+          (ICharacterEncoding)new EncodingGB18030();
       } else if (name.equals("UTF-16")) {
         return (ICharacterEncoding)new EncodingUtf16();
       } else if (name.equals("UTF-16LE")) {
@@ -1320,9 +1320,9 @@ private Encodings() {
       }
       return name.equals("ISO-2022-JP") ?
         (ICharacterEncoding)new EncodingISO2022JP() :
-(name.equals("replacement") ?
+        (name.equals("replacement") ?
 
-          (ICharacterEncoding)new EncodingReplacement() : null);
+        (ICharacterEncoding)new EncodingReplacement() : null);
     }
 
     /**
@@ -1338,7 +1338,7 @@ private Encodings() {
      * @throws NullPointerException The parameter {@code reader} is null.
      */
     public static String InputToString(
-ICharacterInput reader) {
+      ICharacterInput reader) {
       StringBuilder builder = new StringBuilder();
       while (true) {
         if (reader == null) {
@@ -1417,8 +1417,7 @@ ICharacterInput reader) {
       name = TrimAsciiWhite(name);
       name = ToLowerCaseAscii(name);
       return ValueCharsetAliases.containsKey(name) ?
-ValueCharsetAliases.get(name) :
-        "";
+        ValueCharsetAliases.get(name) : "";
     }
 
     /**
@@ -1568,7 +1567,7 @@ ValueCharsetAliases.get(name) :
      * @throws NullPointerException The parameter {@code str} is null.
      */
     public static ICharacterInput StringToInput(
-String str) {
+      String str) {
       if (str == null) {
         throw new NullPointerException("str");
       }
@@ -2058,7 +2057,7 @@ String str) {
       private final ICharacterDecoder reader;
 
       public DecoderToInputClass(ICharacterDecoder reader, IByteReader
-stream) {
+        stream) {
         this.reader = reader;
         this.stream = stream;
       }
@@ -2108,8 +2107,7 @@ stream) {
         }
         if (buffer.length - offset < length) {
           throw new IllegalArgumentException("buffer's length minus " + offset +
-"" +
-"\u0020(" +
+            "" + "\u0020(" +
             (buffer.length - offset) + ") is less than " + length);
         }
         int count = 0;

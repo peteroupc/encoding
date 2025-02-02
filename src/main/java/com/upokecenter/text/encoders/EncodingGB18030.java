@@ -317,11 +317,13 @@ import com.upokecenter.text.*;
 
             if (b >= 0x30 && b <= 0x39) {
               int ap = ((((((this.gbk1 - 0x81) * 10) + this.gbk2 - 0x30) *
-                      126) + this.gbk3 - 0x81) * 10) + b - 0x30;
+                126) + this.gbk3 - 0x81) * 10) + b - 0x30;
               c = GB18030CodePoint(ap);
               if (this.gb2022 && ap >= 19057 && ap <= 19064) {
-                int[]
-cs = {0x9fb4, 0x9fb5, 0x9fb6, 0x9fb7, 0x9fb8, 0x9fb9, 0x9fba, 0x9fbb };
+                int[] cs = {
+                  0x9fb4, 0x9fb5, 0x9fb6, 0x9fb7, 0x9fb8, 0x9fb9, 0x9fba,
+                  0x9fbb,
+                };
                 c = cs[ap - 19057];
               }
               if (this.gb2022 && ap >= 39076 && ap <= 39085) {
@@ -364,50 +366,50 @@ cs = {0x9fb4, 0x9fb5, 0x9fb6, 0x9fb7, 0x9fb8, 0x9fb9, 0x9fba, 0x9fbb };
               c = Gb18030.IndexToCodePoint(ap);
               if (this.gb2022) {
                 if (ap >= 6555 && ap <= 7208) {
-if (ap == 6555) {
-  c = 0xe5e5;
-}
-if (ap == 7201) {
-  c = 0xfe17;
-}
-if (ap == 7202) {
-  c = 0xfe18;
-}
-if (ap == 7208) {
-  c = 0xfe19;
-}
-              if (ap >= 7182 && ap <= 7188) {
-                int[] cs = {
-                  0xfe10, 0xfe12, 0xfe11, 0xfe13, 0xfe14, 0xfe15, 0xfe16,
-                };
-                c = cs[ap - 7182];
-              }
-              } else if (ap >= 23775) {
-if (ap == 23775) {
-  c = 0x9fb4;
-}
-if (ap == 23783) {
-  c = 0x9fb5;
-}
-if (ap == 23788) {
-  c = 0x9fb6;
-}
-if (ap == 23789) {
-  c = 0x9fb7;
-}
-if (ap == 23795) {
-  c = 0x9fb8;
-}
-if (ap == 23812) {
-  c = 0x9fb9;
-}
-if (ap == 23829) {
-  c = 0x9fba;
-}
-if (ap == 23845) {
-  c = 0x9fbb;
-}
-              }
+                  if (ap == 6555) {
+                    c = 0xe5e5;
+                  }
+                  if (ap == 7201) {
+                    c = 0xfe17;
+                  }
+                  if (ap == 7202) {
+                    c = 0xfe18;
+                  }
+                  if (ap == 7208) {
+                    c = 0xfe19;
+                  }
+                  if (ap >= 7182 && ap <= 7188) {
+                    int[] cs = {
+                      0xfe10, 0xfe12, 0xfe11, 0xfe13, 0xfe14, 0xfe15, 0xfe16,
+                    };
+                    c = cs[ap - 7182];
+                  }
+                } else if (ap >= 23775) {
+                  if (ap == 23775) {
+                    c = 0x9fb4;
+                  }
+                  if (ap == 23783) {
+                    c = 0x9fb5;
+                  }
+                  if (ap == 23788) {
+                    c = 0x9fb6;
+                  }
+                  if (ap == 23789) {
+                    c = 0x9fb7;
+                  }
+                  if (ap == 23795) {
+                    c = 0x9fb8;
+                  }
+                  if (ap == 23812) {
+                    c = 0x9fb9;
+                  }
+                  if (ap == 23829) {
+                    c = 0x9fba;
+                  }
+                  if (ap == 23845) {
+                    c = 0x9fbb;
+                  }
+                }
               }
             }
             if (c < 0) {
@@ -477,7 +479,7 @@ if (ap == 23845) {
           return 1;
         }
         if (this.gb2022 && (c >= 0x9fb4 && c <= 0xa000) ||
-               (c >= 0xe5e5 && c <= 0xfe19)) {
+          (c >= 0xe5e5 && c <= 0xfe19)) {
           if (c == 0xe78d) {
             return this.Write2(output, 0xa6, 0xd9);
           }

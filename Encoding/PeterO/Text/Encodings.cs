@@ -1492,8 +1492,8 @@ namespace PeterO.Text {
     /// name='reader'/> is null.</exception>
     public static string InputToString(
       #if !NET20
-      this
-      #endif
+       this
+ #endif
 
       ICharacterInput reader) {
       var builder = new StringBuilder();

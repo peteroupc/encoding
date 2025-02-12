@@ -1338,7 +1338,7 @@ private Encodings() {
      * @throws NullPointerException The parameter {@code reader} is null.
      */
     public static String InputToString(
-      ICharacterInput reader) {
+       ICharacterInput reader) {
       StringBuilder builder = new StringBuilder();
       while (true) {
         if (reader == null) {

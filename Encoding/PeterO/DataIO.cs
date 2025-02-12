@@ -27,8 +27,8 @@ namespace PeterO {
     /// name='bytes'/> is null.</exception>
     public static IReader ToReader(
       #if !NET20
-      this
-      #endif
+       this
+ #endif
 
       byte[] bytes) {
       if (bytes == null) {
@@ -107,8 +107,8 @@ namespace PeterO {
     /// name='input'/> is null.</exception>
     public static IReader ToReader(
       #if !NET20
-      this
-      #endif
+       this
+ #endif
 
       Stream input) {
       if (input == null) {
@@ -167,8 +167,8 @@ namespace PeterO {
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
       #if !NET20
-      this
-      #endif
+       this
+ #endif
 
       Stream input) {
       return (IByteReader)ToReader(input);
@@ -189,8 +189,8 @@ namespace PeterO {
     [Obsolete("Use ToReader instead.")]
     public static IByteReader ToByteReader(
       #if !NET20
-      this
-      #endif
+       this
+ #endif
 
       byte[] bytes) {
       return (IByteReader)ToReader(bytes);
@@ -211,8 +211,8 @@ namespace PeterO {
     /// name='output'/> is null.</exception>
     public static IWriter ToWriter(
       #if !NET20
-      this
-      #endif
+       this
+ #endif
 
       Stream output) {
       if (output == null) {
@@ -235,8 +235,8 @@ namespace PeterO {
     /// name='output'/> is null.</exception>
     public static IWriter ToWriter(
       #if !NET20
-      this
-      #endif
+       this
+ #endif
 
       IByteWriter output) {
       if (output == null) {

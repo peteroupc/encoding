@@ -37,7 +37,7 @@ namespace EncodingTest {
       };
       str =
 
-        "xwMQ\u6213\uff99\ufffd.8\u002cY\"\uff9f\ufffd.\u007f\u54047\ufffd\u8617c\uff7eV\u001e\uff96s";
+  "xwMQ\u6213\uff99\ufffd.8\u002cY\"\uff9f\ufffd.\u007f\u54047\ufffd\u8617c\uff7eV\u001e\uff96s";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -65,7 +65,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\uff73\uff7d\u6d95\\\u0001\uff93\u0017i\uff98\uff92\u000b\uff94\ufffd\u0018\uff7b";
+  "\uff73\uff7d\u6d95\\\u0001\uff93\u0017i\uff98\uff92\u000b\uff94\ufffd\u0018\uff7b";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -84,7 +84,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\u000b\u0019m\u007f\u0011\uff68\uff6f\ufffd-i\uff8a[S(\ufffdPY\u0080\u67eeE\uff64";
+  "\u000b\u0019m\u007f\u0011\uff68\uff6f\ufffd-i\uff8a[S(\ufffdPY\u0080\u67eeE\uff64";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -174,7 +174,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\ufffd1\ufffd4y\uff94\u00084\u0004*9x\uff9c\u001c\u874e~\u0017\uff87\u001e\uff7dW\ufffd";
+  "\ufffd1\ufffd4y\uff94\u00084\u0004*9x\uff9c\u001c\u874e~\u0017\uff87\u001e\uff7dW\ufffd";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -184,7 +184,7 @@ namespace EncodingTest {
         (byte)0xf6, (byte)0xa2, 0x5d, 0x51, (byte)0x80, 0x12,
       };
       str =
-        "b\uff73v\u001b'\u759d?D+\u0003RA\u007f\u51ec\u0017\ue4c9]Q\u0080\u0012";
+  "b\uff73v\u001b'\u759d?D+\u0003RA\u007f\u51ec\u0017\ue4c9]Q\u0080\u0012";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -204,7 +204,7 @@ namespace EncodingTest {
       };
       str =
 
-        "#\u007b\uff89\uff83\uff9f0RYe\u002c\uff8eXmg\u002c\uff70\u0000\u5f61\u0004\u000c\u88d4\u7a3fv\uff91";
+  "#\u007b\uff89\uff83\uff9f0RYe\u002c\uff8eXmg\u002c\uff70\u0000\u5f61\u0004\u000c\u88d4\u7a3fv\uff91";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -224,7 +224,7 @@ namespace EncodingTest {
       };
       str =
 
-        "p\uff7c\uff74X\u4e983\uff86\u000cd\ufffd\u0017\uff87V\ue2d6\u0014\uff98f";
+  "p\uff7c\uff74X\u4e983\uff86\u000cd\ufffd\u0017\uff87V\ue2d6\u0014\uff98f";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -240,7 +240,7 @@ namespace EncodingTest {
       };
       str =
 
-        "JX\ufffd\u0003\ufffd\u001e\u0001)f\ufffdF\uff63~}~\ufffd/H-\uff8b\u5f61x";
+  "JX\ufffd\u0003\ufffd\u001e\u0001)f\ufffdF\uff63~}~\ufffd/H-\uff8b\u5f61x";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -251,7 +251,7 @@ namespace EncodingTest {
       };
       str =
 
-        "'\uff77\u0014UEd9*\u5ff0\u9248\uff9a\uff9c\ufffd\u001d8\u0011\uff8c\ufffd";
+  "'\uff77\u0014UEd9*\u5ff0\u9248\uff9a\uff9c\ufffd\u001d8\u0011\uff8c\ufffd";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -269,7 +269,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\u0008-\ufffd2]\ufffd\u9a57\uff6a\u9102\uff86\uff8fp\ufffdM\ufffd)\u001a\uff8f\uff88fz\u000f\u61c7\u6a0c5";
+  "\u0008-\ufffd2]\ufffd\u9a57\uff6a\u9102\uff86\uff8fp\ufffdM\ufffd)\u001a\uff8f\uff88fz\u000f\u61c7\u6a0c5";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -299,7 +299,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\uff7bm\u87b3\uff62e&fCTV\ufffd3\ue555Z\uff68\u0004\u725dh\uff62\uff9aO\u000e";
+  "\uff7bm\u87b3\uff62e&fCTV\ufffd3\ue555Z\uff68\u0004\u725dh\uff62\uff9aO\u000e";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -311,7 +311,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\ufffd\u63bb\u59cb\uff7d\uff82\uff8fm\u002cCt\ufffd5\u9023\uff6a\u007fO\uff9439\ufffdb\uff93";
+  "\ufffd\u63bb\u59cb\uff7d\uff82\uff8fm\u002cCt\ufffd5\u9023\uff6a\u007fO\uff9439\ufffdb\uff93";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -323,7 +323,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\uff82\ufffd:\u67d0N\u0014\uff70D]\ufffd\u0004`1A\uff63\ufffdQ\u0012Q\uff67\uff6bm4\uff84\"c";
+  "\uff82\ufffd:\u67d0N\u0014\uff70D]\ufffd\u0004`1A\uff63\ufffdQ\u0012Q\uff67\uff6bm4\uff84\"c";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -342,7 +342,7 @@ namespace EncodingTest {
         (byte)0xa5, 0x38, 0x18, 0x06, (byte)0xb5, 0x70, (byte)0xcf,
       };
       str =
-        "a-\uff7b\u5b45\uff79Y)\uff92/]:\u7812@\uff658\u0018\u0006\uff75p\uff8f";
+  "a-\uff7b\u5b45\uff79Y)\uff92/]:\u7812@\uff658\u0018\u0006\uff75p\uff8f";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -354,7 +354,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\u0003n\uff61x\uff6c/$\uff62|\uff99\u91f5\ufffd\u8195\u0012~\uff61O\u001b\uff74\uff82\uff6f\ufffd";
+  "\u0003n\uff61x\uff6c/$\uff62|\uff99\u91f5\ufffd\u8195\u0012~\uff61O\u001b\uff74\uff82\uff6f\ufffd";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -366,7 +366,7 @@ namespace EncodingTest {
       };
       str =
 
-        "c(\ue0a2S%\u0004$/\u007b\u9158\ufffdc\ufffd\u0008yx\uff82\uff69\u4e8eo+(f";
+  "c(\ue0a2S%\u0004$/\u007b\u9158\ufffdc\ufffd\u0008yx\uff82\uff69\u4e8eo+(f";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -409,7 +409,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\ufffd$\ufffd<\u7f68\ufffd:!\uff63\u8e50\uff6a3\uff6d\u25bc\u52f9\u6816Uv\u57a3\u001b";
+  "\ufffd$\ufffd<\u7f68\ufffd:!\uff63\u8e50\uff6a3\uff6d\u25bc\u52f9\u6816Uv\u57a3\u001b";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -429,7 +429,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\u001ed&\u0015\ufffd?q[\uff92\uff6dRj\uff62\u0018/u\u6d12\u66b2Y;\u001a\u7aefM9\uff70\u0006";
+  "\u001ed&\u0015\ufffd?q[\uff92\uff6dRj\uff62\u0018/u\u6d12\u66b2Y;\u001a\u7aefM9\uff70\u0006";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -454,7 +454,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\u000b#\uff7c\uff96\u80b4\uff85\u002cx\n\uff8f\u7827\u640f\u700f\u6813k\u0080";
+  "\u000b#\uff7c\uff96\u80b4\uff85\u002cx\n\uff8f\u7827\u640f\u700f\u6813k\u0080";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -482,7 +482,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\u52c9-F8\uff70\u0000\uff80\ufffd\u001bo\ufffd1#G\u002c\ufffd\u001bZ\u001d";
+  "\u52c9-F8\uff70\u0000\uff80\ufffd\u001bo\ufffd1#G\u002c\ufffd\u001bZ\u001d";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -521,7 +521,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\u7d44\uff61\u0001\u0009II\uff90)\ufffd(\uff6a;\u007f\u0009\"\u64c1\u000f\uff96";
+  "\u7d44\uff61\u0001\u0009II\uff90)\ufffd(\uff6a;\u007f\u0009\"\u64c1\u000f\uff96";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -542,7 +542,7 @@ namespace EncodingTest {
       };
       str =
 
-        "wDh\u000b\uff78UX\uff9d\uff7aP'\u000ceD\uff75\ue67d\uff73\u87f6\u86f9E\u8abe\u0007\uff76\uff91";
+  "wDh\u000b\uff78UX\uff9d\uff7aP'\u000ceD\uff75\ue67d\uff73\u87f6\u86f9E\u8abe\u0007\uff76\uff91";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -554,7 +554,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\uff68\u5347\uff82yaF\uff79\u0000\u0010\uff88rp\uff96\uff9c\"st\u3326\ufffd\"\uff91\uff69\uff95\u0010k\u0020";
+  "\uff68\u5347\uff82yaF\uff79\u0000\u0010\uff88rp\uff96\uff9c\"st\u3326\ufffd\"\uff91\uff69\uff95\u0010k\u0020";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -600,7 +600,7 @@ namespace EncodingTest {
         (byte)0xf4,
       };
       str =
-        "\uff65O;NZ\uff9d[\uff7f\u0000\u0080\ufffd?9#I\u56fd;7\uff8d\uff7e\ufffd";
+  "\uff65O;NZ\uff9d[\uff7f\u0000\u0080\ufffd?9#I\u56fd;7\uff8d\uff7e\ufffd";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -636,7 +636,7 @@ namespace EncodingTest {
       };
       str =
 
-        "O\u5b9d\ufffdp\uff97\u0080\u0003\u0020\uff87\ufffd\u70af\uff75ByJ\u0012pB";
+  "O\u5b9d\ufffdp\uff97\u0080\u0003\u0020\uff87\ufffd\u70af\uff75ByJ\u0012pB";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -661,7 +661,7 @@ namespace EncodingTest {
       };
       str =
 
-        "&Gu\uff76\uff7b\uff7a\u0018\u00089\u0008\u5fe4\ufffd\u0000\uff8a\u000fn];\ufffd\u0020_>\ufffd\u0019\u8ecd`5";
+  "&Gu\uff76\uff7b\uff7a\u0018\u00089\u0008\u5fe4\ufffd\u0000\uff8a\u000fn];\ufffd\u0020_>\ufffd\u0019\u8ecd`5";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -686,7 +686,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\ufffd\u0013Q]l:MV\uff73\uff63\ufffd\u9019\u0002\uff7aN\uff6e\ufffd<\ufffd";
+  "\ufffd\u0013Q]l:MV\uff73\uff63\ufffd\u9019\u0002\uff7aN\uff6e\ufffd<\ufffd";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -729,7 +729,7 @@ namespace EncodingTest {
       };
       str =
 
-        "8o\u002c\ufffd\u0016\uff78|\n]\uff8e\uff956\uff63_\ufffd\uff66\u0000\uff7a\u0007\ufffd\uff7c\ufffd";
+  "8o\u002c\ufffd\u0016\uff78|\n]\uff8e\uff956\uff63_\ufffd\uff66\u0000\uff7a\u0007\ufffd\uff7c\ufffd";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -749,7 +749,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\uff71\ufffd\u007f-n\uff9f\uff7d\ufffd\u0080\u50c5\u0012Kw\u0006\u6c86\u000c\uff33";
+  "\uff71\ufffd\u007f-n\uff9f\uff7d\ufffd\u0080\u50c5\u0012Kw\u0006\u6c86\u000c\uff33";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -776,7 +776,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\ufffd)\ufffd1\ue27b\u516d\uff8a^\uff90n(\u30b7\u0080\u0016\u72c2Y\uff66p\ufffd7\u9250BC\ufffd";
+  "\ufffd)\ufffd1\ue27b\u516d\uff8a^\uff90n(\u30b7\u0080\u0016\u72c2Y\uff66p\ufffd7\u9250BC\ufffd";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -826,7 +826,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\uff78\uff9d\uff88\u0013\ufffd\nq\uff84\ufffd1\u0002\uff72*J\ufffd\ufffd";
+  "\uff78\uff9d\uff88\u0013\ufffd\nq\uff84\ufffd1\u0002\uff72*J\ufffd\ufffd";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -838,7 +838,7 @@ namespace EncodingTest {
       };
       str =
 
-        "T\u7724Mt\u0006\u550f8G\ufffd\u0010~\u5101\u7930\uff6f'\u007f\u6191\ufffd\u0019";
+  "T\u7724Mt\u0006\u550f8G\ufffd\u0010~\u5101\u7930\uff6f'\u007f\u6191\ufffd\u0019";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -850,7 +850,7 @@ namespace EncodingTest {
       };
       str =
 
-        "Q\u8caf\u0012$\u0000\u0020\u0005Ig\uff7fJ\uff86\u0015RE\uff6bas\u80b1\rK\uff91g\uff65";
+  "Q\u8caf\u0012$\u0000\u0020\u0005Ig\uff7fJ\uff86\u0015RE\uff6bas\u80b1\rK\uff91g\uff65";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -867,7 +867,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\u541d\u001d\uff75\uff96!\u6d69g\uff88\u0080@\uff76E\ufffd\ufffd*\uff97\uff77\u65edG";
+  "\u541d\u001d\uff75\uff96!\u6d69g\uff88\u0080@\uff76E\ufffd\ufffd*\uff97\uff77\u65edG";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));
@@ -901,7 +901,7 @@ namespace EncodingTest {
       };
       str =
 
-        "\u0018\uff85\u00042VSY\ufffd\ue243\u000f\u7864\u007b_\ufffdot\uff98\u0015U\ufffd\uff84I~R\ufffd";
+  "\u0018\uff85\u00042VSY\ufffd\ue243\u000f\u7864\u007b_\ufffdot\uff98\u0015U\ufffd\uff84I~R\ufffd";
       Assert.AreEqual(
         str,
         Encodings.DecodeToString(charset, bytes));

@@ -28,7 +28,7 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code bytes} is null.
      */
     public static IReader ToReader(
-      byte[] bytes) {
+       byte[] bytes) {
       if (bytes == null) {
         throw new NullPointerException("bytes");
       }
@@ -97,7 +97,7 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code input} is null.
      */
     public static IReader ToReader(
-      InputStream input) {
+       InputStream input) {
       if (input == null) {
         throw new NullPointerException("input");
       }
@@ -146,7 +146,7 @@ private DataIO() {
  */
 @Deprecated
     public static IByteReader ToByteReader(
-      InputStream input) {
+       InputStream input) {
       return (IByteReader)ToReader(input);
     }
 
@@ -163,7 +163,7 @@ private DataIO() {
  */
 @Deprecated
     public static IByteReader ToByteReader(
-      byte[] bytes) {
+       byte[] bytes) {
       return (IByteReader)ToReader(bytes);
     }
 
@@ -180,7 +180,7 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(
-      OutputStream output) {
+       OutputStream output) {
       if (output == null) {
         throw new NullPointerException("output");
       }
@@ -200,7 +200,7 @@ private DataIO() {
      * @throws NullPointerException The parameter {@code output} is null.
      */
     public static IWriter ToWriter(
-      IByteWriter output) {
+       IByteWriter output) {
       if (output == null) {
         throw new NullPointerException("output");
       }

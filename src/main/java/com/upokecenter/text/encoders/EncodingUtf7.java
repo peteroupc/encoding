@@ -280,8 +280,7 @@ import com.upokecenter.text.*;
                 return ch;
               }
               break;
-            default:
-              throw new IllegalStateException("Unexpected state");
+            default: throw new IllegalStateException("Unexpected state");
           }
         }
       }

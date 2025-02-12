@@ -280,8 +280,7 @@ namespace PeterO.Text.Encoders {
                 return ch;
               }
               break;
-            default:
-              throw new InvalidOperationException ("Unexpected state");
+            default: throw new InvalidOperationException("Unexpected state");
           }
         }
       }

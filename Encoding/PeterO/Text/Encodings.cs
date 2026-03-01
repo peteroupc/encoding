@@ -101,7 +101,7 @@ namespace PeterO.Text {
   /// email messages.</para>
   /// <para><b>Classes for Character Encodings</b></para>
   /// <para>This Encodings class provides access to common character
-  /// encodings through classes as described below:</para>
+  /// encodings through classes as described later:</para>
   /// <list type=''>
   /// <item>An <b>encoder class</b> is a class that converts a sequence
   /// of bytes to a sequence of code points in the universal character
